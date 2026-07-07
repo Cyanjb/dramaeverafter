@@ -1,0 +1,8 @@
+platform_id,name,web_url,pricing_model,affiliate_program
+reelshort,ReelShort,,coins + IAP,yes
+dramabox,DramaBox,,coins + IAP,tbc
+shortmax,ShortMax,,coins + IAP,tbc
+my-drama,My Drama,,coins + subscription,tbc
+netshort,NetShort,,coins + IAP,tbc
+goodshort,GoodShort,,coins + IAP,tbc
+vigloo,Vigloo,,coins + IAP,tbc
