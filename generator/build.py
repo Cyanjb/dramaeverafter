@@ -178,9 +178,9 @@ for p in people:
           "performerIn": [{"@type": "TVSeries", "name": t["primary_title"]} for _, t in my_titles]}
     body = f"""
 <section class="hero"><div class="wrap hero-grid">
-<div class="frame"><div class="ph">portrait 9:16</div></div>
+<div class="frame">{f'<img src="{p["photo_ref"]}" alt="{p["name"]}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">' if p.get('photo_ref','').startswith('http') else '<div class="ph">portrait 9:16</div>'}</div>
 <div><p class="eyebrow">Vertical Drama Actor</p><h1>{p['name']}</h1>
-<p class="lede">Known for <strong>{known}</strong>.</p>
+<p class="lede">Known for <strong>{known}</strong>.{f' <a href="{p["socials"]}" rel="nofollow noopener" target="_blank">IMDb profile</a>' if p.get('socials','').startswith('https://www.imdb.com') else ''}</p>
 <div class="stat-row"><div class="stat"><span class="n">{verified_n}</span><span class="l">Titles verified</span></div>
 <div class="stat"><span class="n">{len(plats) or '?'}</span><span class="l">Platforms</span></div></div>
 </div></div></section>
