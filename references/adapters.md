@@ -67,3 +67,26 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
 - OPEN: netshort.com (200, server-rendered /drama/ links + /all-episodes), goodshort.com (200, hydration JSON), vigloo.com (200, sitemaps at /sitemaps/index.xml incl. sitemap-content-en-*.xml), my-drama.com (200 + sitemap).
 - BLOCKED: dramabox.com (403 bash; homepage only via fetch tool, /browse and dramaboxdb.com bot-walled), shortmax.com (503), playlet.com (503), anyreel.com (503), stardusttv.com (403), kalostv.com (200 but 3KB JS stub).
 - Next adapter candidates in order: vigloo (sitemap = easy), netshort (server-rendered), goodshort (hydration parse).
+
+## 7. CandyJar (Inkitt/Galatea) — full catalog adapter (added 2026-07-17)
+- Homepage `https://www.candyjar.com` (bash OK, desktop UA) embeds the FULL catalog in Next.js
+  `self.__next_f.push` chunks: 90 unique series (261 rail appearances — dedupe by id).
+  Fields per series: id, title, coverUrl, summary. NO episodeCount in rails.
+- Sitemaps: robots at candyjar.com (non-www) -> /en/sitemap.xml lists /series/{kebab-title}-{id}.
+- Episode counts: fetch each series page, count distinct `"episodeNumber":N` in the payload.
+- NO cast data anywhere on web (confirmed; reviews note "actor search limitations"). Titles/availability only.
+- Galatea originals (book adaptations): same-name matches on other platforms are DIFFERENT productions; match_queue them.
+
+## 8. Big-platform status (checked 2026-07-17)
+- DramaBox: comprehensively bot-walled. Main site, /browse, dramaboxdb.com, and all three official
+  mirrors (dramaboxapp.com, dramaboxen.com, dramaboxtv.com) return 403 from bash; fetch tool also
+  blocked on everything except the bare homepage. No bulk route. Per-title data only via web
+  search snippets. Revisit occasionally; walls change.
+- DramaWave: no functioning web catalog found (dramawave.com/.tv/.app all dead or 503). App-only.
+  30K+ titles, mostly translated Chinese content — low fit for the English-actor-centric DB anyway.
+- Shortical (a.k.a. "Shorticles"): app-only, no web catalog; small operator (Short Entertainment LTD),
+  rough user reviews. Low priority.
+- GoodShort: OPEN from bash. Server-rendered: /channel/ x8 (browse rails), /drama/ title pages,
+  /tag/ x231 on homepage (includes actor-style tags — same shape as ReelShort). No /sitemap.xml (404).
+  Enumerate via channels + tags. STRONGEST next adapter among the "big" apps.
+- DramaReels (Jan 2026 #1 by downloads): dramareels.app serves 200 (76KB) — unexplored, probe next run.
