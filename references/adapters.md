@@ -90,3 +90,15 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
   /tag/ x231 on homepage (includes actor-style tags — same shape as ReelShort). No /sitemap.xml (404).
   Enumerate via channels + tags. STRONGEST next adapter among the "big" apps.
 - DramaReels (Jan 2026 #1 by downloads): dramareels.app serves 200 (76KB) — unexplored, probe next run.
+
+## 9. GoodShort (Singapore New Reading Tech) — full catalog adapter (added 2026-07-17)
+- No sitemap (404). Enumerate via `https://www.goodshort.com/dramas/playlets?page=1..187`
+  -> ~1853 unique `/drama/{slug}-{numericid}` URLs. Reachable from bash, desktop UA.
+- Per drama page: TVSeries JSON-LD block has name, description, numberOfEpisodes, genre, dateCreated (year).
+  Views: HTML `Views</p><p ...>375.2K</p>` (already K/M format -> snapshots directly).
+  Tropes: `/tag/{trope}-playlets-videos` hrefs on the page. Admit a tag to trope vocab only when it
+  appears on >=3 titles (filters junk); recompute tropes.csv title_count after.
+- NO cast/actor data on drama pages. Titles + availability + tropes + views only.
+- Translated novel adaptations -> same-name matches usually DIFFERENT productions; new collisions go to
+  match_queue (9 held this run). Per 2026-07-18 policy: compare, don't blanket-hold.
+- Result 2026-07-17: 1828 new titles, 1828 availability rows, 1816 snapshots, 97 new tropes, 9 held.
