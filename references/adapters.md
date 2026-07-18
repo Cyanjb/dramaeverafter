@@ -53,3 +53,17 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
 - Near-identical actor names (blog typos are common): hold the rarer spelling out of
   people.csv, log to match_queue. Slugs are permanent; a wrong actor page is worse
   than a one-run delay.
+
+## 5. My Drama (Holywater) — full catalog adapter (added 2026-07-17)
+- Sitemap: `https://my-drama.com/sitemap.xml` -> ~187 `/series/{slug}-{uuid}` URLs. Reachable from bash with desktop UA.
+- Data: Next.js streamed payload (`self.__next_f.push` chunks; join, unicode-unescape).
+  `"seriesData":{...}` block has: name, slug, description, totalEpisodes, cast (camelCase keys), likes, rating, langs, coverUrl.
+- Cast display names: regex `"name":"X","url":"https://my-drama.com/actors/{key}"` pairs in the same payload (from embedded structured data). Actor pages exist at /actors/{key} — unharvested; likely bios/photos for a future run.
+- No view counts (likes + rating instead) -> no snapshots rows; view_count left blank.
+- My Drama is originals-only: same title text as another platform almost certainly means a DIFFERENT production. Never auto-merge cross-platform title matches; match_queue them.
+- ~50 of 173 credited actors overlap the ReelShort roster (US-based Holywater productions); the rest are largely Ukrainian cast (Kyiv productions).
+
+## 6. Platform reachability probe (2026-07-17, from bash, desktop UA)
+- OPEN: netshort.com (200, server-rendered /drama/ links + /all-episodes), goodshort.com (200, hydration JSON), vigloo.com (200, sitemaps at /sitemaps/index.xml incl. sitemap-content-en-*.xml), my-drama.com (200 + sitemap).
+- BLOCKED: dramabox.com (403 bash; homepage only via fetch tool, /browse and dramaboxdb.com bot-walled), shortmax.com (503), playlet.com (503), anyreel.com (503), stardusttv.com (403), kalostv.com (200 but 3KB JS stub).
+- Next adapter candidates in order: vigloo (sitemap = easy), netshort (server-rendered), goodshort (hydration parse).
