@@ -1,30 +1,30 @@
 candidate_a,candidate_b,evidence,status
 jake-hobbs (existing person),Jacob Douglas Hobbs (ReelShort directory),Near-identical name; existing person jake-hobbs credited on Back from Hell to Take My Bow; ReelShort lists a Jacob Douglas Hobbs tag page. Same actor?,"confirmed_same (Cyan, 2026-07-14)"
-availability row 'Meet My Brothers' (existing),after-divorce-i-m-spoiled-by-three-brothers (fandom cast harvest),"Same listed title, different slug; https://www.reelshort.com/movie/after-divorce-i-m-spoiled-by-three-brothers-69b88396a5b6d3639400d47f",
-availability row 'The Ex-Wife's Comeback Strategy' (existing),the-ex-wife-s-comback-strategy (fandom cast harvest),"Same listed title, different slug; https://www.reelshort.com/movie/the-ex-wife-s-comback-strategy-67b552ef9fda67232d0477c1",
-availability row 'Unexpected Knot: Married to a Billionaire Nurse' (existing),fried-chicken-flash-marriage (fandom cast harvest),"Same listed title, different slug; https://www.reelshort.com/movie/fried-chicken-flash-marriage-674e2b072ce8ea42180433cd",
-availability row 'Resisting Mr. Lloyd: An Age Gap Romance' (existing),resisting-mr-llyod-an-age-gap-romance (fandom cast harvest),"Same listed title, different slug; https://www.reelshort.com/movie/resisting-mr-llyod-an-age-gap-romance-67195de648b72d8f950e0a66",
-more frequent spelling 'marc herrmann','Marc Hermann' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 5x.,
-haley-lohrli,'Hayley Lohrli' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 2x.,
-maria-barseghian,'Maria Barseghnian' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 2x.,
-seth-edeen,'Seth Eden' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 2x.,
-more frequent spelling 'aaron russell','Aaron Russel' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-anna-stadler,'Ana Stadler' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-christine-gonzalez,'Christine Gonzales' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-more frequent spelling 'joe solana simon','Joe Solano Simon' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-luke-charles-stafford,'Lukas Charles Stafford' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-peyton-alicia-tucker,'Peyton Alica Tucker' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-more frequent spelling 'romina follinus','Romina Follionus' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-samantha-drews,'Samantha Drew' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-more frequent spelling 'sarah grace donnelly','Sarah-Grace Donelly' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-scott-cooper,'Scot Cooper' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-violet-bennett,'Violet Bennet' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,
-jackson-tiller,'Jakson Tiller' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,
-dasha-tvoronovich,'Dasha Tvoronovych' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,
-mary-vysnevska,'Mariya Vysnevska' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,
-mary-vysnevska,'Mariya Vysnevska' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,
-love-in-the-shadows,love-in-the-shadows (my drama catalog),"Same title text on My Drama (https://my-drama.com/series/love-in-the-shadows-49ec1451-3e2d-4b42-8b65-64412cff8f69); My Drama runs originals, likely a DIFFERENT production. Compare casts before ruling.",
-mary-vysnevska,'Mariya Vysnevska' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,
-mary-vysnevska,'Mariya Vysnevska' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,
-vanessa-von-schwarz,'Vanessa von Schwartz' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,
-serhii-strelnikov,'Serhiy Strelnikov' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,
+availability row 'Meet My Brothers' (existing),after-divorce-i-m-spoiled-by-three-brothers (fandom cast harvest),"Same listed title, different slug; https://www.reelshort.com/movie/after-divorce-i-m-spoiled-by-three-brothers-69b88396a5b6d3639400d47f",confirmed_same
+availability row 'The Ex-Wife's Comeback Strategy' (existing),the-ex-wife-s-comback-strategy (fandom cast harvest),"Same listed title, different slug; https://www.reelshort.com/movie/the-ex-wife-s-comback-strategy-67b552ef9fda67232d0477c1",confirmed_same
+availability row 'Unexpected Knot: Married to a Billionaire Nurse' (existing),fried-chicken-flash-marriage (fandom cast harvest),"Same listed title, different slug; https://www.reelshort.com/movie/fried-chicken-flash-marriage-674e2b072ce8ea42180433cd",confirmed_same
+availability row 'Resisting Mr. Lloyd: An Age Gap Romance' (existing),resisting-mr-llyod-an-age-gap-romance (fandom cast harvest),"Same listed title, different slug; https://www.reelshort.com/movie/resisting-mr-llyod-an-age-gap-romance-67195de648b72d8f950e0a66",confirmed_same
+more frequent spelling 'marc herrmann','Marc Hermann' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 5x.,confirmed_same
+haley-lohrli,'Hayley Lohrli' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 2x.,confirmed_same
+maria-barseghian,'Maria Barseghnian' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 2x.,confirmed_same
+seth-edeen,'Seth Eden' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 2x.,confirmed_same
+more frequent spelling 'aaron russell','Aaron Russel' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+anna-stadler,'Ana Stadler' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+christine-gonzalez,'Christine Gonzales' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+more frequent spelling 'joe solana simon','Joe Solano Simon' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+luke-charles-stafford,'Lukas Charles Stafford' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+peyton-alicia-tucker,'Peyton Alica Tucker' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+more frequent spelling 'romina follinus','Romina Follionus' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+samantha-drews,'Samantha Drew' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+more frequent spelling 'sarah grace donnelly','Sarah-Grace Donelly' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+scott-cooper,'Scot Cooper' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+violet-bennett,'Violet Bennet' (fandom cast harvest),Near-identical actor name; credits held pending ruling. Appears 1x.,confirmed_same
+jackson-tiller,'Jakson Tiller' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,confirmed_same
+dasha-tvoronovich,'Dasha Tvoronovych' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,confirmed_same
+mary-vysnevska,'Mariya Vysnevska' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,confirmed_same
+mary-vysnevska,'Mariya Vysnevska' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,confirmed_same
+love-in-the-shadows,love-in-the-shadows (my drama catalog),"Same title text on My Drama (https://my-drama.com/series/love-in-the-shadows-49ec1451-3e2d-4b42-8b65-64412cff8f69); My Drama runs originals, likely a DIFFERENT production. Compare casts before ruling. RULED 2026-07-18: shared lead Kasey Esser on both; same production distributed on My Drama.",confirmed_same
+mary-vysnevska,'Mariya Vysnevska' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,confirmed_same
+mary-vysnevska,'Mariya Vysnevska' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,confirmed_same
+vanessa-von-schwarz,'Vanessa von Schwartz' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,confirmed_same
+serhii-strelnikov,'Serhiy Strelnikov' (my drama cast),Near-identical actor name from My Drama series cast; credits held pending ruling.,confirmed_same
