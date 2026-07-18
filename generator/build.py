@@ -20,6 +20,8 @@ def pslug(p): return p.get("slug") or slug(p["name"])
 
 people = rows("people.csv")
 titles = rows("titles.csv")
+# Skip malformed rows that would render as ".html" (empty slug AND empty title).
+titles = [t for t in titles if (t.get("slug") or "").strip() or (t.get("primary_title") or "").strip()]
 platforms = {p["platform_id"]: p for p in rows("platforms.csv")}
 availability = rows("availability.csv")
 credits = rows("credits.csv")
