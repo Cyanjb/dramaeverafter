@@ -102,3 +102,21 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
 - Translated novel adaptations -> same-name matches usually DIFFERENT productions; new collisions go to
   match_queue (9 held this run). Per 2026-07-18 policy: compare, don't blanket-hold.
 - Result 2026-07-17: 1828 new titles, 1828 availability rows, 1816 snapshots, 97 new tropes, 9 held.
+
+## 9. NetShort — full-catalog adapter (added 2026-07-24)
+- Domain: netshort.com (NO www — www 301s via Cloudflare; bash OK with desktop UA).
+- Sitemap index: /sitemap_netshortcom.xml -> site_play_1.xml .. site_play_17.xml (15K URLs each,
+  17th partial; 18+ empty). ~244.5K entries total, refreshed daily.
+- Video sitemap format: each <url> has <loc> (/episode/{kebab-title}-{19-digit-id}),
+  <video:title>, <video:description>, <video:thumbnail_loc>. Title+synopsis+cover come FREE
+  from the sitemap — no per-page fetching needed for catalog matching.
+- EP-collapse rule: entries are per-episode for some series ("Title - EP N"); strip
+  /\s*[-–]\s*EP\s*\d+\s*$/i to collapse to series level. 244.5K entries -> ~69.9K unique series.
+- Per-title detail: episode page embeds JSON-LD (script#json-ld) with @type TVSeries:
+  name, description, genre[], numberOfEpisodes, image, canonical /full-episodes/ URL.
+- NO cast data anywhere on web (confirmed — "cast" hits were the word "Outcast").
+- NO view counts on web. Popularity signal = homepage trending rails (~54 curated titles).
+- robots.txt: Crawl-delay 1; python-requests/Scrapy/wget UAs banned — always use browser UA.
+- Strategy (ruled 2026-07-24): NEVER bulk-import the 69.9K tail. (1) cross-match sitemap vs
+  existing titles for availability rows; (2) import new titles ONLY from homepage trending rails.
+- 2026-07-24 run: 167 existing titles matched, 126 already had rows, 41 new availability rows added.
