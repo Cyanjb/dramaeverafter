@@ -74,7 +74,12 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
   Fields per series: id, title, coverUrl, summary. NO episodeCount in rails.
 - Sitemaps: robots at candyjar.com (non-www) -> /en/sitemap.xml lists /series/{kebab-title}-{id}.
 - Episode counts: fetch each series page, count distinct `"episodeNumber":N` in the payload.
-- NO cast data anywhere on web (confirmed; reviews note "actor search limitations"). Titles/availability only.
+- NO cast data on CandyJar's own site (confirmed; reviews note "actor search limitations"). CORRECTION 2026-07-24:
+  cast data DOES exist off-platform for high-profile CandyJar titles via entertainment press (Yahoo, Primetimer,
+  celebethnicity-style bio sites) covering viral actors — e.g. Nick Skonberg's full cast on Loving My Brother's
+  Best Friend was sourced this way. All 90 CandyJar titles still have zero credits as of this date; this is a
+  real, sizeable gap (not "no data exists", just "not on the platform itself") worth a dedicated press-sourced
+  cast pass, prioritized by which titles/actors went viral rather than working the full 90 blind.
 - Galatea originals (book adaptations): same-name matches on other platforms are DIFFERENT productions; match_queue them.
 
 ## 8. Big-platform status (checked 2026-07-17)
@@ -120,3 +125,20 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
 - Strategy (ruled 2026-07-24): NEVER bulk-import the 69.9K tail. (1) cross-match sitemap vs
   existing titles for availability rows; (2) import new titles ONLY from homepage trending rails.
 - 2026-07-24 run: 167 existing titles matched, 126 already had rows, 41 new availability rows added.
+
+## 10. Actor popularity methodology — correction (2026-07-24)
+- WRONG signal: ranking actors by credit COUNT already in our own DB — this just measures how much we've
+  already scraped, not real-world popularity, and misses actors we haven't found yet by definition.
+- BETTER signal: entertainment press coverage ("breakout star", "first superstar", viral/TikTok-fancam
+  coverage, awards like Vertical Drama Fan Love Awards, Rolling Stone/Yahoo/People "hottest leading men"
+  round-ups). Search queries like `"<platform>" hottest leading men vertical drama` or `vertical drama
+  breakout star` surface these round-up articles, which name 5-10 actors at once with cross-links.
+- Real finding this run: Nick Skonberg (called industry's "first superstar" by Yahoo, viral Oct 2025) was
+  completely absent from people.csv despite his title already being in titles.csv with zero credits.
+  Joseph Purcell (Dominic Purcell's son, notable enough for press coverage) had only 1 credit on file.
+  Neither would have surfaced from a DB-credit-count-based priority list.
+- NO Reddit access confirmed 2026-07-24: no MCP connector registered, and reddit.com is unreachable via
+  both web_search (site:reddit.com returns near-zero real results) and web_fetch (robots.txt blocks it,
+  same wall as IMDb direct fetches). Fan opinion mining route instead: entertainment press round-ups >
+  fan-bio aggregator sites (famousbirthdays, celebethnicity-style) > IMDb "known for" > TikTok/YouTube
+  captions surfaced via web_search (not direct platform access).
