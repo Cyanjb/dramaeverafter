@@ -142,3 +142,31 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
   same wall as IMDb direct fetches). Fan opinion mining route instead: entertainment press round-ups >
   fan-bio aggregator sites (famousbirthdays, celebethnicity-style) > IMDb "known for" > TikTok/YouTube
   captions surfaced via web_search (not direct platform access).
+
+## 11. Origin categories — Western vs Chinese (decided 2026-07-26)
+- RULE: every title carries an `origin` field (17th column in titles.csv). Values so far:
+  `western` (default) and `chinese`. Any harvest that adds a title MUST set it. Blank is
+  treated as `western` by the generator, so never rely on blank for a non-Western title.
+- WHY: Western vertical drama (ReelShort/CandyJar/GoodShort/MyDrama/Vigloo/PineDrama, English
+  language) and Chinese duanju (Douyin/Kuaishou native, Chinese language, 60-107 eps) are
+  different products for different audiences. Mixing them dilutes the site.
+- URL ARCHITECTURE (deliberate, do not "tidy" this):
+    western -> /titles/{slug}.html, /where-to-watch/{slug}.html      (ROOT, unchanged)
+    chinese -> /chinese/titles/{slug}.html, /chinese/where-to-watch/{slug}.html
+  Western stays at the root because ~9,076 URLs are already indexed. Prefixing Western with
+  /western/ would 404 every one of them and destroy the accumulated SEO. Never do this.
+- Root sections (homepage, /tropes/, trope x platform pages, platform compare, the homepage
+  "Titles" stat) are WESTERN ONLY. Non-Western origins are browsed from their own section
+  index at /{origin}/index.html, which is auto-generated and linked from the homepage only
+  when that origin actually has titles.
+- ACTORS STAY GLOBAL at /actors/{slug}.html across all origins — one page per performer, so
+  anyone working in both categories has a single complete filmography. Do not split actors.
+- Trope pages are Western-derived. `trope_chip()` renders a trope as an inert span instead of
+  a link when no trope page exists, so Chinese-only tropes can never emit a 404. If Chinese
+  trope browsing is wanted later, generate /chinese/tropes/ rather than polluting the root.
+- Verified at implementation: with 0 Chinese titles the refactor is a byte-for-byte no-op
+  (9,076 pages, zero output files changed). A synthetic Chinese row was used to confirm
+  routing, relative depth (../../ to root assets), and canonicals, then removed.
+- SCALE WARNING: Chinese duanju is 20-50x the size of the Western catalogue (NetShort's
+  sitemap alone = 69,913 unique series, mostly Chinese). Same discipline as section 9: this
+  category needs a curated boundary, never a bulk import.

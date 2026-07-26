@@ -18,6 +18,15 @@ def slug(s):
 def tslug(t): return t.get("slug") or slug(t["primary_title"])
 def pslug(p): return p.get("slug") or slug(p["name"])
 
+# Origin routing. Western is the established section and stays at the root paths
+# (/titles/, /where-to-watch/) so no existing URL ever moves. Any other origin gets
+# its own namespace one level deeper (e.g. /chinese/titles/). See adapters.md sec 11.
+def origin_of(t): return (t.get("origin") or "western").strip().lower() or "western"
+def tdir(t):
+    o = origin_of(t)
+    return "" if o == "western" else o + "/"
+def tdepth(t): return 1 if origin_of(t) == "western" else 2
+
 people = rows("people.csv")
 titles = rows("titles.csv")
 # Skip malformed rows that would render as ".html" (empty slug AND empty title).
@@ -39,7 +48,20 @@ for c in credits:
 def tropes_of(t):
     return [x.strip() for x in t["tropes"].split(";") if x.strip()]
 
-all_tropes = sorted({tr for t in titles for tr in tropes_of(t)})
+# Root sections (home, tropes, platforms, trope+platform pages) cover Western only.
+# Other origins are browsed from their own section index.
+titles_western = [t for t in titles if origin_of(t) == "western"]
+titles_other = [t for t in titles if origin_of(t) != "western"]
+origins_other = sorted({origin_of(t) for t in titles_other})
+
+all_tropes = sorted({tr for t in titles_western for tr in tropes_of(t)})
+all_tropes_set = set(all_tropes)
+
+def trope_chip(tr, pre):
+    """Link only if a trope page exists; otherwise render inert so we never emit a 404."""
+    if tr in all_tropes_set:
+        return f'<a class="trope" href="{pre}tropes/{slug(tr)}.html">{tr}</a>'
+    return f'<span class="trope">{tr}</span>'
 
 CSS = """
 :root{--paper:#FBF7F2;--ink:#2A2226;--plum:#2B1B2E;--wine:#7A2B4A;--gold:#C9962E;--gold-deep:#A87B1F;--blush:#EFD9DE;--line:#E4D8CE}
@@ -135,14 +157,15 @@ def watch_buttons(title_id, pre=""):
         out.append('<span class="watch pending">Platform being verified</span>')
     return "".join(out)
 
-def title_card(t, role_html="", depth=1):
+def title_card(t, role_html="", depth=1, title_pre=None):
     pre = "../" * depth
-    trope_html = "".join(f'<a class="trope" href="{pre}tropes/{slug(tr)}.html">{tr}</a>' for tr in tropes_of(t))
+    tp = pre if title_pre is None else title_pre
+    trope_html = "".join(trope_chip(tr, pre) for tr in tropes_of(t))
     yr = f'{t["year"]} · ' if t["year"] else ""
     return f"""<article class="card">
 <div class="poster"><span>poster 9:16</span></div>
 <div>{role_html}
-<h3><a href="{pre}titles/{tslug(t)}.html">{t['primary_title']}</a></h3>
+<h3><a href="{tp}titles/{tslug(t)}.html">{t['primary_title']}</a></h3>
 <p class="meta">{yr}{t['genres'].replace(';', ',').title()}</p>
 <div class="tropes">{trope_html}</div>
 {watch_buttons(t['title_id'])}
@@ -150,7 +173,7 @@ def title_card(t, role_html="", depth=1):
 
 # --------- build ---------
 # Selective clean: remove ONLY generated artifacts, never data/ or generator/
-for d in ["actors", "titles", "tropes", "where-to-watch"]:
+for d in ["actors", "titles", "tropes", "where-to-watch"] + origins_other:
     p = os.path.join(DIST, d)
     if os.path.exists(p): shutil.rmtree(p)
 for f in ["index.html", "platforms.html", "robots.txt", "sitemap.xml", "style.css"]:
@@ -205,12 +228,13 @@ for p in people:
 # Title pages
 for t in titles:
     sl = tslug(t)
+    d, pre = tdir(t), "../" * tdepth(t)
     cast = ""
     for c in credits_by_title.get(t["title_id"], []):
         pr = p_by_id.get(c["person_id"])
         if pr:
-            cast += f'<li><a href="../actors/{pslug(pr)}.html">{pr["name"]}</a> ({c["role"]})</li>'
-    trope_html = "".join(f'<a class="trope" href="../tropes/{slug(tr)}.html">{tr}</a>' for tr in tropes_of(t))
+            cast += f'<li><a href="{pre}actors/{pslug(pr)}.html">{pr["name"]}</a> ({c["role"]})</li>'
+    trope_html = "".join(trope_chip(tr, pre) for tr in tropes_of(t))
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
           "description": t["synopsis_short"][:160]}
     yr = f'{t["year"]} · ' if t["year"] else ""
@@ -221,7 +245,7 @@ for t in titles:
 <p class="lede">{yr}{t['genres'].replace(';', ',').title()} · {t['status'].title()}</p>
 <div class="tropes" style="margin-top:12px">{trope_html}</div>
 </div></div></section>
-<section><div class="wrap"><p class="crumb"><a href="../index.html">Home</a> / Titles / {t['primary_title']}</p>
+<section><div class="wrap"><p class="crumb"><a href="{pre}index.html">Home</a> / {'' if not d else f'<a href="../index.html">{origin_of(t).title()}</a> / '}Titles / {t['primary_title']}</p>
 {f"<p class=\"updated\">Also known as: {t['alt_titles'].replace(';', ', ')}</p>" if t.get('alt_titles') else ''}
 <p>{t['synopsis_short']}</p>
 <h2 style="margin-top:20px">Where to watch</h2>
@@ -231,14 +255,15 @@ for t in titles:
 </div></section>"""
     html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
                 f"{t['primary_title']}: where to watch, cast and tropes. Updated {UPDATED}.",
-                body, f"{DOMAIN}/titles/{sl}.html", ld)
-    open(os.path.join(DIST, "titles", f"{sl}.html"), "w").write(html)
-    urls.append(f"/titles/{sl}.html")
+                body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t))
+    os.makedirs(os.path.join(DIST, d, "titles"), exist_ok=True)
+    open(os.path.join(DIST, d, "titles", f"{sl}.html"), "w").write(html)
+    urls.append(f"/{d}titles/{sl}.html")
 
 # Trope pages
 for tr in all_tropes:
     sl = slug(tr)
-    matching = [t for t in titles if tr in tropes_of(t)]
+    matching = [t for t in titles_western if tr in tropes_of(t)]
     cards = "".join(title_card(t) for t in matching)
     body = f"""
 <section class="hero"><div class="wrap">
@@ -258,6 +283,7 @@ for tr in all_tropes:
 os.makedirs(os.path.join(DIST, "where-to-watch"), exist_ok=True)
 for t in titles:
     sl = tslug(t)
+    d, pre = tdir(t), "../" * tdepth(t)
     avails = avail_by_title.get(t["title_id"], [])
     plat_names = [platforms[a["platform_id"]]["name"] for a in avails if a["platform_id"] in platforms]
     answer = (f"{t['primary_title']} streams on {', '.join(plat_names)}." if plat_names
@@ -272,7 +298,7 @@ for t in titles:
 <section class="hero"><div class="wrap">
 <p class="eyebrow">Where to Watch</p><h1>Where to Watch {t['primary_title']}</h1>
 <p class="lede">Checked {UPDATED}</p></div></section>
-<section><div class="wrap"><p class="crumb"><a href="../index.html">Home</a> / Where to Watch / {t['primary_title']}</p>
+<section><div class="wrap"><p class="crumb"><a href="{pre}index.html">Home</a> / {'' if not d else f'<a href="../index.html">{origin_of(t).title()}</a> / '}Where to Watch / {t['primary_title']}</p>
 <p>{answer}</p>{free_line}
 {watch_buttons(t['title_id'])}
 <p style="margin-top:16px"><a href="../titles/{sl}.html">Full {t['primary_title']} page: cast, tropes and details &rarr;</a></p>
@@ -281,14 +307,15 @@ for t in titles:
 <p class="note">Spotted it on another app? Report it and help the database grow.</p></div></section>"""
     html = page(f"Where to Watch {t['primary_title']}: All Platforms (2026) | DramaEverAfter",
                 f"Where to watch {t['primary_title']}: every platform it streams on, checked {UPDATED}.",
-                body, f"{DOMAIN}/where-to-watch/{sl}.html")
-    open(os.path.join(DIST, "where-to-watch", f"{sl}.html"), "w").write(html)
-    urls.append(f"/where-to-watch/{sl}.html")
+                body, f"{DOMAIN}/{d}where-to-watch/{sl}.html", depth=tdepth(t))
+    os.makedirs(os.path.join(DIST, d, "where-to-watch"), exist_ok=True)
+    open(os.path.join(DIST, d, "where-to-watch", f"{sl}.html"), "w").write(html)
+    urls.append(f"/{d}where-to-watch/{sl}.html")
 
 # Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
 for tr in all_tropes:
     for pid, pl in platforms.items():
-        matching = [t for t in titles
+        matching = [t for t in titles_western
                     if tr in tropes_of(t)
                     and any(a["platform_id"] == pid for a in avail_by_title.get(t["title_id"], []))
                     and t.get("data_confidence", "verified") == "verified"]
@@ -326,26 +353,56 @@ html = page("Vertical Drama Apps Compared (2026) | DramaEverAfter",
 open(os.path.join(DIST, "platforms.html"), "w").write(html)
 urls.append("/platforms.html")
 
+# Per-origin section indexes (e.g. /chinese/index.html). Western has no section index —
+# it IS the root site. Only emitted for origins that actually have titles.
+ORIGIN_BLURB = {
+    "chinese": ("Chinese Short Drama (Duanju)",
+                "Native Chinese-language vertical dramas from Douyin, Kuaishou and the "
+                "Chinese short-drama studios. Separate from the Western vertical catalogue."),
+}
+for o in origins_other:
+    o_titles = [t for t in titles_other if origin_of(t) == o]
+    heading, blurb = ORIGIN_BLURB.get(o, (o.title() + " Short Drama", ""))
+    cards = "".join(title_card(t, depth=1, title_pre="") for t in o_titles)
+    body = f"""
+<section class="hero"><div class="wrap">
+<p class="eyebrow">Section</p><h1>{heading}</h1>
+<p class="lede">{blurb}</p>
+<div class="stat-row"><div class="stat"><span class="n">{len(o_titles)}</span><span class="l">Titles</span></div></div>
+</div></section>
+<section><div class="wrap"><p class="crumb"><a href="../index.html">Home</a> / {heading}</p>
+<div class="grid">{cards}</div></div></section>"""
+    html = page(f"{heading} | DramaEverAfter",
+                f"{heading}: titles, cast and where to watch. Updated {UPDATED}.",
+                body, f"{DOMAIN}/{o}/index.html", depth=1)
+    os.makedirs(os.path.join(DIST, o), exist_ok=True)
+    open(os.path.join(DIST, o, "index.html"), "w").write(html)
+    urls.append(f"/{o}/index.html")
+
 # Homepage
 actor_tiles = "".join(
     f'<a class="tile" href="actors/{pslug(p)}.html"><div class="nm">{p["name"]}</div>'
     f'<div class="kf">{len(credits_by_person.get(p["person_id"],[]))} titles verified</div></a>'
     for p in people)
 trope_chips = "".join(f'<a class="chip" href="tropes/{slug(tr)}.html">{tr.title()}</a>' for tr in all_tropes)
+section_links = "".join(
+    f'<section><div class="wrap"><h2>{ORIGIN_BLURB.get(o, (o.title()+" Short Drama",""))[0]}</h2>'
+    f'<p><a href="{o}/index.html">Browse the {o} catalogue &rarr;</a></p></div></section>'
+    for o in origins_other)
 body = f"""
 <section class="hero"><div class="wrap">
 <p class="eyebrow">The vertical drama database</p>
 <h1>Find your next ever after.</h1>
 <p class="lede">Every vertical drama, every actor, every platform, one place. Cross-referenced across ReelShort, DramaBox, ShortMax, My Drama, NetShort and more.</p>
 <div class="stat-row">
-<div class="stat"><span class="n">{len(titles)}</span><span class="l">Titles</span></div>
+<div class="stat"><span class="n">{len(titles_western)}</span><span class="l">Titles</span></div>
 <div class="stat"><span class="n">{len(people)}</span><span class="l">Actors</span></div>
 <div class="stat"><span class="n">{len(platforms)}</span><span class="l">Platforms</span></div>
 </div></div></section>
 <section><div class="wrap"><h2>Browse by actor</h2><p class="updated">Updated {UPDATED}</p>
 <div class="grid">{actor_tiles}</div></div></section>
 <section><div class="wrap"><h2>Browse by trope</h2><div class="chipsrow">{trope_chips}</div></div></section>
-<section><div class="wrap"><h2>The apps, compared</h2><p><a href="platforms.html">Every vertical drama platform: pricing and where to start &rarr;</a></p></div></section>"""
+{section_links}<section><div class="wrap"><h2>The apps, compared</h2><p><a href="platforms.html">Every vertical drama platform: pricing and where to start &rarr;</a></p></div></section>"""
 html = page("DramaEverAfter: Every Vertical Drama, Every Platform, One Place",
             "The searchable database of vertical dramas and micro dramas: actors, tropes, and where to watch across ReelShort, DramaBox, ShortMax and more.",
             body, f"{DOMAIN}/", depth=0)
