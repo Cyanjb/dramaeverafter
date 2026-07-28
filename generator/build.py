@@ -85,11 +85,38 @@ def views_label(n):
 def esc_attr(s):
     return (s or "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
 
+# Social / profile links. The socials column holds one or more URLs separated by
+# semicolons, commas or whitespace; the domain decides the label, so filling in an
+# Instagram or TikTok handle later needs no template change. Unknown domains render
+# under their bare hostname rather than being dropped.
+SOCIAL_LABELS = [
+    ("imdb.com", "IMDb"), ("instagram.com", "Instagram"), ("tiktok.com", "TikTok"),
+    ("youtube.com", "YouTube"), ("youtu.be", "YouTube"), ("twitter.com", "X"),
+    ("x.com", "X"), ("facebook.com", "Facebook"), ("threads.net", "Threads"),
+    ("threads.com", "Threads"), ("linkedin.com", "LinkedIn"), ("backstage.com", "Backstage"),
+    ("spotlight.com", "Spotlight"), ("actorsaccess.com", "Actors Access"),
+]
+
+def social_links(p):
+    raw = (p.get("socials") or "").strip()
+    if not raw: return ""
+    out, seen = [], set()
+    for u in re.split(r"[;,\s]+", raw):
+        u = u.strip()
+        if not u.startswith("http"): continue
+        m = re.search(r"https?://(?:www\.)?([^/]+)", u)
+        if not m: continue
+        host = m.group(1).lower()
+        label = next((lbl for dom, lbl in SOCIAL_LABELS if host.endswith(dom)), host)
+        if label in seen: continue
+        seen.add(label)
+        out.append('<a class="chip" href="%s" rel="nofollow noopener" target="_blank">%s</a>' % (esc_attr(u), label))
+    return '<div class="chipsrow socials">%s</div>' % "".join(out) if out else ""
+
 def art_block(img, letter, badge=""):
+    inner = '<span class="ph">%s</span>' % (letter or "?")
     if img:
-        inner = '<img src="%s" alt="" loading="lazy">' % esc_attr(img)
-    else:
-        inner = '<span class="ph">%s</span>' % (letter or "?")
+        inner += ('<img src="%s" alt="" loading="lazy" onerror="this.remove()">' % esc_attr(img))
     b = '<span class="badge">%s</span>' % badge if badge else ""
     return '<span class="art">%s%s</span>' % (inner, b)
 
@@ -181,7 +208,8 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 .card{flex:0 0 146px;scroll-snap-align:start;text-decoration:none;color:var(--ink);display:block}
 .card .art{aspect-ratio:2/3;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(155deg,var(--blush),#fff 55%,var(--line));display:flex;align-items:center;justify-content:center;position:relative}
-.card .art img{width:100%;height:100%;object-fit:cover;display:block}
+.card .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1}
+.card .art .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .card .art .ph{font-family:'Fraunces',Georgia,serif;font-size:2.7rem;font-weight:700;color:var(--wine);opacity:.32}
 .card .art .badge{position:absolute;left:6px;bottom:6px;background:rgba(43,27,46,.84);color:#fff;font-size:.66rem;padding:2px 8px;border-radius:20px}
 .card .t{display:block;font-family:'Fraunces',Georgia,serif;font-size:.85rem;font-weight:700;color:var(--plum);margin-top:8px;line-height:1.25}
@@ -223,6 +251,8 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .hero-stats .l{display:block;font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:3px}
 @media(max-width:640px){.hero-media{min-height:400px}.hero-scrim{background:linear-gradient(180deg,rgba(18,10,20,.55) 0%,rgba(18,10,20,.9) 62%)}.hero-copy{justify-content:flex-end;padding-bottom:26px}}
 .rail-stub{flex:0 0 100%;border:1.5px dashed var(--line);border-radius:14px;padding:26px 20px;text-align:center;color:#7d6e64;font-size:.88rem;background:#fff}
+.chipsrow.socials{margin:10px 0 2px}
+.chipsrow.socials .chip{font-size:.78rem}
 .rail-stub strong{display:block;font-family:'Fraunces',Georgia,serif;color:var(--plum);font-size:1rem;margin-bottom:4px}
 .faq{background:var(--plum);color:#EFE4EA;padding:38px 0 46px}
 .faq h2{color:#fff}
@@ -256,7 +286,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1):
 <span class="tag">Find your next ever after.</span>
 </div></header>
 {body}
-<footer><div class="wrap">DramaEverAfter · Find your next ever after. · Some links are referral links; they cost you nothing and keep this database free.</div></footer>
+<footer><div class="wrap">DramaEverAfter · Find your next ever after. · Some links are referral links; they cost you nothing and keep this database free.<br>Poster and cast images are served by their original platforms and remain the property of their respective owners. DramaEverAfter is not affiliated with any platform listed.</div></footer>
 </body></html>"""
 
 def watch_buttons(title_id, pre=""):
@@ -317,7 +347,7 @@ for p in people:
 <section class="hero"><div class="wrap hero-grid">
 <div class="frame">{f'<img src="{p["photo_ref"]}" alt="{p["name"]}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">' if p.get('photo_ref','').startswith('http') else '<div class="ph">portrait 9:16</div>'}</div>
 <div><p class="eyebrow">Vertical Drama Actor</p><h1>{p['name']}</h1>
-<p class="lede">Known for <strong>{known}</strong>.{f' <a href="{p["socials"]}" rel="nofollow noopener" target="_blank">IMDb profile</a>' if p.get('socials','').startswith('https://www.imdb.com') else ''}</p>
+<p class="lede">Known for <strong>{known}</strong>.</p>{social_links(p)}
 <div class="stat-row"><div class="stat"><span class="n">{verified_n}</span><span class="l">Titles verified</span></div>
 <div class="stat"><span class="n">{len(plats) or '?'}</span><span class="l">Platforms</span></div></div>
 </div></div></section>
