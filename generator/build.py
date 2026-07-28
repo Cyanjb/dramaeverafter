@@ -18,14 +18,17 @@ def slug(s):
 def tslug(t): return t.get("slug") or slug(t["primary_title"])
 def pslug(p): return p.get("slug") or slug(p["name"])
 
-# Origin routing. Western is the established section and stays at the root paths
+# Origin routing. ROOT_ORIGIN is the established section and stays at the root paths
 # (/titles/, /where-to-watch/) so no existing URL ever moves. Any other origin gets
 # its own namespace one level deeper (e.g. /chinese/titles/). See adapters.md sec 11.
-def origin_of(t): return (t.get("origin") or "western").strip().lower() or "western"
+# Renamed western -> english 2026-07-28 at Cyan's call. This is a display/routing
+# value only, never a slug, so the rename moves zero URLs.
+ROOT_ORIGIN = "english"
+def origin_of(t): return (t.get("origin") or ROOT_ORIGIN).strip().lower() or ROOT_ORIGIN
 def tdir(t):
     o = origin_of(t)
-    return "" if o == "western" else o + "/"
-def tdepth(t): return 1 if origin_of(t) == "western" else 2
+    return "" if o == ROOT_ORIGIN else o + "/"
+def tdepth(t): return 1 if origin_of(t) == ROOT_ORIGIN else 2
 
 people = rows("people.csv")
 titles = rows("titles.csv")
@@ -48,14 +51,62 @@ for c in credits:
 def tropes_of(t):
     return [x.strip() for x in t["tropes"].split(";") if x.strip()]
 
-# Root sections (home, tropes, platforms, trope+platform pages) cover Western only.
+# Root sections (home, tropes, platforms, trope+platform pages) cover ROOT_ORIGIN only.
 # Other origins are browsed from their own section index.
-titles_western = [t for t in titles if origin_of(t) == "western"]
-titles_other = [t for t in titles if origin_of(t) != "western"]
+titles_root = [t for t in titles if origin_of(t) == ROOT_ORIGIN]
+titles_other = [t for t in titles if origin_of(t) != ROOT_ORIGIN]
 origins_other = sorted({origin_of(t) for t in titles_other})
 
-all_tropes = sorted({tr for t in titles_western for tr in tropes_of(t)})
+all_tropes = sorted({tr for t in titles_root for tr in tropes_of(t)})
 all_tropes_set = set(all_tropes)
+# --- Popularity + artwork helpers -------------------------------------------
+# Artwork is ~5% populated. Every card falls back to a lettered placeholder so a
+# missing image reads as a design choice, not a broken page. Swap in licensed art
+# later by filling poster_ref / photo_ref; no template change needed.
+def view_num(s):
+    s = (s or "").strip().upper().replace(",", "")
+    if not s: return 0
+    mult = 1
+    if s.endswith("B"): mult, s = 1000000000, s[:-1]
+    elif s.endswith("M"): mult, s = 1000000, s[:-1]
+    elif s.endswith("K"): mult, s = 1000, s[:-1]
+    try: return int(float(s) * mult)
+    except ValueError: return 0
+
+def title_views(t):
+    return max((view_num(a.get("view_count")) for a in avail_by_title.get(t["title_id"], [])), default=0)
+
+def views_label(n):
+    if n >= 1000000000: return "%.1fB views" % (n / 1000000000.0)
+    if n >= 1000000: return "%.0fM views" % (n / 1000000.0)
+    if n >= 1000: return "%.0fK views" % (n / 1000.0)
+    return ""
+
+def esc_attr(s):
+    return (s or "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
+
+def art_block(img, letter, badge=""):
+    if img:
+        inner = '<img src="%s" alt="" loading="lazy">' % esc_attr(img)
+    else:
+        inner = '<span class="ph">%s</span>' % (letter or "?")
+    b = '<span class="badge">%s</span>' % badge if badge else ""
+    return '<span class="art">%s%s</span>' % (inner, b)
+
+def title_card_art(t, pre=""):
+    name = t["primary_title"]
+    return ('<a class="card" href="%s%stitles/%s.html">%s<span class="t">%s</span><span class="s">%s</span></a>'
+            % (pre, tdir(t), tslug(t), art_block((t.get("poster_ref") or "").strip(),
+               name[:1].upper(), views_label(title_views(t))), name, t.get("year", "") or ""))
+
+def person_card_art(p, pre=""):
+    n = len(credits_by_person.get(p["person_id"], []))
+    return ('<a class="card person" href="%sactors/%s.html">%s<span class="t">%s</span><span class="s">%s titles</span></a>'
+            % (pre, pslug(p), art_block((p.get("photo_ref") or "").strip(), p["name"][:1].upper()), p["name"], n))
+
+def rail(cards):
+    return '<div class="rail">%s</div>' % "".join(cards)
+
 
 def trope_chip(tr, pre):
     """Link only if a trope page exists; otherwise render inert so we never emit a 404."""
@@ -120,6 +171,42 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .hero-search input[type=text]{flex:1 1 260px;padding:13px 16px;border:none;border-radius:8px;font-size:1.05rem;font-family:inherit}
 .hero-search button{background:var(--gold);color:#241a05;border:none;font-weight:700;border-radius:8px;padding:0 20px;cursor:pointer;font-size:.95rem}
 .seeall{font-size:.85rem;margin-top:10px;display:inline-block}
+.wrap-wide{max-width:1180px;margin:0 auto;padding:0 20px}
+.hero-art{height:190px;border-radius:16px;margin-bottom:22px;border:1px solid var(--line);background:linear-gradient(120deg,var(--blush) 0%,#fff 45%,var(--gold) 140%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-art .wordmark{font-family:'Fraunces',Georgia,serif;font-size:2.1rem;font-weight:700;color:var(--plum);opacity:.5;letter-spacing:.02em}
+.row-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:2px}
+.row-head a{font-size:.8rem;text-decoration:none;white-space:nowrap}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding:10px 0 14px;scrollbar-width:thin}
+.rail::-webkit-scrollbar{height:8px}
+.rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.card{flex:0 0 146px;scroll-snap-align:start;text-decoration:none;color:var(--ink);display:block}
+.card .art{aspect-ratio:2/3;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(155deg,var(--blush),#fff 55%,var(--line));display:flex;align-items:center;justify-content:center;position:relative}
+.card .art img{width:100%;height:100%;object-fit:cover;display:block}
+.card .art .ph{font-family:'Fraunces',Georgia,serif;font-size:2.7rem;font-weight:700;color:var(--wine);opacity:.32}
+.card .art .badge{position:absolute;left:6px;bottom:6px;background:rgba(43,27,46,.84);color:#fff;font-size:.66rem;padding:2px 8px;border-radius:20px}
+.card .t{display:block;font-family:'Fraunces',Georgia,serif;font-size:.85rem;font-weight:700;color:var(--plum);margin-top:8px;line-height:1.25}
+.card .s{display:block;font-size:.73rem;color:#7d6e64;margin-top:2px}
+.card:hover .art{border-color:var(--wine)}
+.card.person{flex:0 0 118px}
+.card.person .art{aspect-ratio:1/1;border-radius:50%}
+.card.person .t,.card.person .s{text-align:center}
+.stub{border:1.5px dashed var(--line);border-radius:14px;padding:26px 20px;text-align:center;color:#7d6e64;font-size:.9rem;background:#fff}
+.stub strong{display:block;font-family:'Fraunces',Georgia,serif;color:var(--plum);font-size:1.05rem;margin-bottom:4px}
+.facetbar{margin:14px 0 4px}
+.facetgroup{margin-bottom:10px}
+.facetgroup h3{font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:#7d6e64;font-family:'Atkinson Hyperlegible',Georgia,serif;font-weight:700;margin-bottom:7px}
+.facets{display:flex;flex-wrap:wrap;gap:7px}
+.facet{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:6px 12px;font-size:.82rem;font-family:inherit;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
+.facet .c{font-size:.68rem;color:#9b8b80;font-variant-numeric:tabular-nums}
+.facet:hover:not(.off){border-color:var(--wine);color:var(--wine)}
+.facet.on{background:var(--wine);border-color:var(--wine);color:#fff}
+.facet.on .c{color:rgba(255,255,255,.75)}
+.facet.off{opacity:.32;cursor:default}
+.facet-reset{background:none;border:none;color:var(--wine);font-family:inherit;font-size:.8rem;cursor:pointer;text-decoration:underline;padding:6px 2px}
+.facet-more{background:none;border:none;color:var(--wine);font-family:inherit;font-size:.78rem;cursor:pointer;text-decoration:underline;padding:6px 2px}
+.facets.collapsed .extra{display:none}
+.resultgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:16px}
+.resultgrid .card{flex:none;width:auto}
 .faq{background:var(--plum);color:#EFE4EA;padding:38px 0 46px}
 .faq h2{color:#fff}
 .faq details{border-bottom:1px solid #4a3450;padding:13px 0}
@@ -271,7 +358,7 @@ for t in titles:
 # Trope pages
 for tr in all_tropes:
     sl = slug(tr)
-    matching = [t for t in titles_western if tr in tropes_of(t)]
+    matching = [t for t in titles_root if tr in tropes_of(t)]
     cards = "".join(title_card(t) for t in matching)
     body = f"""
 <section class="hero"><div class="wrap">
@@ -323,7 +410,7 @@ for t in titles:
 # Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
 for tr in all_tropes:
     for pid, pl in platforms.items():
-        matching = [t for t in titles_western
+        matching = [t for t in titles_root
                     if tr in tropes_of(t)
                     and any(a["platform_id"] == pid for a in avail_by_title.get(t["title_id"], []))
                     and t.get("data_confidence", "verified") == "verified"]
@@ -362,116 +449,199 @@ open(os.path.join(DIST, "platforms.html"), "w").write(html)
 urls.append("/platforms.html")
 
 # Search index + browse page (client-side search/filter, no backend needed).
-# Scoped to western titles/actors, matching how the rest of root-level browsing is scoped.
-search_actors = [{"n": p["name"], "s": pslug(p), "c": len(credits_by_person.get(p["person_id"], []))} for p in people]
+# Facets are stored as slugs so the chip value and the title tag always match, and
+# so both spellings of a trope (e.g. "Age Gap" / "Age-Gap") collapse to one chip.
+search_actors = [{"n": p["name"], "s": pslug(p),
+                  "c": len(credits_by_person.get(p["person_id"], [])),
+                  "i": (p.get("photo_ref") or "").strip()} for p in people]
+
+trope_counts = defaultdict(int)
+platform_counts = defaultdict(int)
+trope_label = {}
+platform_label = {}
+
 search_titles = []
-for t in titles_western:
-    plat_names = sorted({platforms[a["platform_id"]]["name"] for a in avail_by_title.get(t["title_id"], []) if a["platform_id"] in platforms})
+for t in titles_root:
+    tr_slugs = sorted({slug(x) for x in tropes_of(t) if slug(x)})
+    for x in tropes_of(t):
+        if slug(x): trope_label.setdefault(slug(x), x.title())
+    pl_slugs = sorted({slug(platforms[a["platform_id"]]["name"])
+                       for a in avail_by_title.get(t["title_id"], []) if a["platform_id"] in platforms})
+    for a in avail_by_title.get(t["title_id"], []):
+        if a["platform_id"] in platforms:
+            platform_label.setdefault(slug(platforms[a["platform_id"]]["name"]), platforms[a["platform_id"]]["name"])
+    for s in tr_slugs: trope_counts[s] += 1
+    for s in pl_slugs: platform_counts[s] += 1
     entry = {"n": t["primary_title"], "s": tslug(t)}
     if t.get("year"): entry["y"] = t["year"]
-    tr_str = ";".join(tropes_of(t))
-    if tr_str: entry["tr"] = tr_str
-    if plat_names: entry["pl"] = ";".join(plat_names)
+    if tr_slugs: entry["tr"] = tr_slugs
+    if pl_slugs: entry["pl"] = pl_slugs
+    v = title_views(t)
+    if v: entry["v"] = v
+    img = (t.get("poster_ref") or "").strip()
+    if img: entry["i"] = img
     search_titles.append(entry)
-search_index = {"actors": search_actors, "titles": search_titles}
-open(os.path.join(DIST, "search-index.json"), "w").write(json.dumps(search_index, separators=(",", ":")))
 
-# Dedupe dropdown options by slug: the data holds both "Age Gap" and "Age-Gap" style
-# spellings that map to one trope page; showing both reads as a bug. Matching in the
-# page JS is slug-normalized to match either spelling in title data.
-_seen = set()
-trope_options = ""
-for tr in all_tropes:
-    s = slug(tr)
-    if s in _seen: continue
-    _seen.add(s)
-    trope_options += f'<option value="{s}">{tr.title()}</option>'
-platform_options = "".join(f'<option value="{slug(pl["name"])}">{pl["name"]}</option>' for pl in sorted(platforms.values(), key=lambda p: p["name"]))
+open(os.path.join(DIST, "search-index.json"), "w").write(
+    json.dumps({"actors": search_actors, "titles": search_titles}, separators=(",", ":")))
+
+VISIBLE = 40  # chips shown before "show all"
+
+def facet_chips(group, counts, labels):
+    out = []
+    ordered = sorted(counts.items(), key=lambda kv: (-kv[1], labels.get(kv[0], kv[0])))
+    for i, (s, _n) in enumerate(ordered):
+        extra = " extra" if i >= VISIBLE else ""
+        out.append('<button class="facet%s" data-g="%s" data-v="%s" type="button">%s<span class="c"></span></button>'
+                   % (extra, group, s, labels.get(s, s)))
+    return "".join(out), len(ordered)
+
+trope_facets, n_tropes = facet_chips("trope", trope_counts, trope_label)
+platform_facets, n_platforms = facet_chips("platform", platform_counts, platform_label)
+trope_more = ('<button class="facet-more" data-target="f-trope" type="button">Show all %d tropes</button>' % n_tropes) if n_tropes > VISIBLE else ""
+platform_more = ('<button class="facet-more" data-target="f-platform" type="button">Show all %d apps</button>' % n_platforms) if n_platforms > VISIBLE else ""
 
 BROWSE_JS = """
 <script>
 (function(){
-  var data = null;
-  var qEl = document.getElementById('q');
-  var tropeEl = document.getElementById('f-trope');
-  var platEl = document.getElementById('f-platform');
-  var sortEl = document.getElementById('f-sort');
-  var actorsOut = document.getElementById('results-actors');
-  var titlesOut = document.getElementById('results-titles');
-  var countEl = document.getElementById('result-count');
-  var CAP = 100;
+  var D=null, CAP=60;
+  var active={trope:new Set(), platform:new Set()};
+  var qEl=document.getElementById('q'), sortEl=document.getElementById('f-sort');
+  var titlesOut=document.getElementById('results-titles'), actorsOut=document.getElementById('results-actors');
+  var countEl=document.getElementById('result-count'), resetEl=document.getElementById('f-reset');
+  var chips=[].slice.call(document.querySelectorAll('.facet'));
 
-  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
-  function slugify(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
-  function hasTag(list, val){
-    if(!val) return true;
-    return String(list||'').split(';').some(function(x){ return slugify(x) === val; });
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+  function has(arr,v){return arr && arr.indexOf(v)!==-1;}
+  function vlabel(n){
+    if(!n) return '';
+    if(n>=1e9) return (n/1e9).toFixed(1)+'B views';
+    if(n>=1e6) return Math.round(n/1e6)+'M views';
+    if(n>=1e3) return Math.round(n/1e3)+'K views';
+    return '';
+  }
+  function art(img,letter,badge){
+    var inner = img ? '<img src="'+esc(img)+'" alt="" loading="lazy">' : '<span class="ph">'+esc(letter||'?')+'</span>';
+    return '<span class="art">'+inner+(badge?'<span class="badge">'+esc(badge)+'</span>':'')+'</span>';
+  }
+
+  function matches(t,q){
+    if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
+    var it=active.trope.values(),x;
+    while(!(x=it.next()).done){ if(!has(t.tr,x.value)) return false; }
+    var ip=active.platform.values(),y;
+    while(!(y=ip.next()).done){ if(!has(t.pl,y.value)) return false; }
+    return true;
   }
 
   function run(){
-    if(!data) return;
-    var q = qEl.value.trim().toLowerCase();
-    var trope = tropeEl.value;
-    var platform = platEl.value;
-    var sort = sortEl.value;
+    if(!D) return;
+    var q=qEl.value.trim().toLowerCase();
+    var titles=D.titles.filter(function(t){return matches(t,q);});
 
-    var actors = data.actors.filter(function(a){
-      return !q || a.n.toLowerCase().indexOf(q) !== -1;
-    });
-    actors.sort(sort === 'most'
-      ? function(a,b){ return b.c - a.c; }
-      : function(a,b){ return a.n.localeCompare(b.n); });
+    // Single pass over the current result set tallies every facet at once, so each
+    // chip's number is "results you'd get if you also picked this".
+    var tally={trope:{},platform:{}};
+    for(var i=0;i<titles.length;i++){
+      var t=titles[i],j;
+      if(t.tr) for(j=0;j<t.tr.length;j++) tally.trope[t.tr[j]]=(tally.trope[t.tr[j]]||0)+1;
+      if(t.pl) for(j=0;j<t.pl.length;j++) tally.platform[t.pl[j]]=(tally.platform[t.pl[j]]||0)+1;
+    }
+    for(var c=0;c<chips.length;c++){
+      var el=chips[c], g=el.dataset.g, v=el.dataset.v, n=tally[g][v]||0, on=active[g].has(v);
+      el.querySelector('.c').textContent=n;
+      el.className=(el.className.indexOf('extra')!==-1?'facet extra':'facet')+(on?' on':(n?'':' off'));
+      el.disabled=(!n && !on);
+    }
 
-    var titles = data.titles.filter(function(t){
-      var mq = !q || t.n.toLowerCase().indexOf(q) !== -1;
-      return mq && hasTag(t.tr, trope) && hasTag(t.pl, platform);
-    });
+    var sort=sortEl.value;
+    if(sort==='views') titles.sort(function(a,b){return (b.v||0)-(a.v||0);});
+    else if(sort==='az') titles.sort(function(a,b){return a.n.localeCompare(b.n);});
+    else if(sort==='year') titles.sort(function(a,b){return String(b.y||'').localeCompare(String(a.y||''));});
 
-    countEl.textContent = actors.length + ' actors, ' + titles.length + ' titles match';
+    var actors=D.actors.filter(function(a){return !q || a.n.toLowerCase().indexOf(q)!==-1;});
+    actors.sort(function(a,b){return b.c-a.c;});
 
-    actorsOut.innerHTML = actors.slice(0, CAP).map(function(a){
-      return '<a class="tile" href="actors/'+a.s+'.html"><div class="nm">'+esc(a.n)+'</div><div class="kf">'+a.c+' titles verified</div></a>';
-    }).join('') || '<p class="updated">No actors match.</p>';
-    if (actors.length > CAP) actorsOut.innerHTML += '<p class="updated">+ '+(actors.length-CAP)+' more &mdash; narrow your search to see them</p>';
+    var nf=(active.trope.size+active.platform.size);
+    resetEl.style.display=(nf||q)?'inline-block':'none';
+    countEl.textContent=titles.length.toLocaleString()+' titles'+(q?', '+actors.length.toLocaleString()+' actors':'')+(nf?' · '+nf+' filter'+(nf>1?'s':'')+' on':'');
 
-    titlesOut.innerHTML = titles.slice(0, CAP).map(function(t){
-      return '<a class="tile" href="titles/'+t.s+'.html"><div class="nm">'+esc(t.n)+'</div><div class="kf">'+esc(t.y||'')+'</div></a>';
-    }).join('') || '<p class="updated">No titles match.</p>';
-    if (titles.length > CAP) titlesOut.innerHTML += '<p class="updated">+ '+(titles.length-CAP)+' more &mdash; narrow your search to see them</p>';
+    titlesOut.innerHTML=titles.slice(0,CAP).map(function(t){
+      return '<a class="card" href="titles/'+esc(t.s)+'.html">'+art(t.i,t.n.charAt(0).toUpperCase(),vlabel(t.v))
+        +'<span class="t">'+esc(t.n)+'</span><span class="s">'+esc(t.y||'')+'</span></a>';
+    }).join('') || '<p class="updated">No titles match. Try removing a filter.</p>';
+    if(titles.length>CAP) titlesOut.innerHTML+='<p class="updated">+ '+(titles.length-CAP).toLocaleString()+' more. Narrow with a filter or search.</p>';
+
+    if(q){
+      actorsOut.innerHTML=actors.slice(0,24).map(function(a){
+        return '<a class="card person" href="actors/'+esc(a.s)+'.html">'+art(a.i,a.n.charAt(0).toUpperCase(),'')
+          +'<span class="t">'+esc(a.n)+'</span><span class="s">'+a.c+' titles</span></a>';
+      }).join('') || '<p class="updated">No actors match.</p>';
+      actorsOut.parentNode.style.display='';
+    } else {
+      actorsOut.parentNode.style.display='none';
+    }
   }
 
-  fetch('search-index.json').then(function(r){ return r.json(); }).then(function(d){
-    data = d;
-    var params = new URLSearchParams(window.location.search);
-    if (params.get('q')) qEl.value = params.get('q');
-    run();
+  chips.forEach(function(el){
+    el.addEventListener('click',function(){
+      if(el.disabled) return;
+      var g=el.dataset.g,v=el.dataset.v;
+      if(active[g].has(v)) active[g].delete(v); else active[g].add(v);
+      run();
+    });
+  });
+  [].slice.call(document.querySelectorAll('.facet-more')).forEach(function(b){
+    b.addEventListener('click',function(){
+      var box=document.getElementById(b.dataset.target);
+      var collapsed=box.classList.toggle('collapsed');
+      b.textContent=collapsed?b.dataset.moreLabel:'Show fewer';
+    });
   });
 
-  qEl.addEventListener('input', run);
-  tropeEl.addEventListener('change', run);
-  platEl.addEventListener('change', run);
-  sortEl.addEventListener('change', run);
+  var timer=null;
+  qEl.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,120);});
+  sortEl.addEventListener('change',run);
+  resetEl.addEventListener('click',function(){
+    active.trope.clear(); active.platform.clear(); qEl.value=''; run();
+  });
+
+  fetch('search-index.json').then(function(r){return r.json();}).then(function(d){
+    D=d;
+    var p=new URLSearchParams(window.location.search);
+    if(p.get('q')) qEl.value=p.get('q');
+    if(p.get('trope')) active.trope.add(p.get('trope'));
+    if(p.get('platform')) active.platform.add(p.get('platform'));
+    run();
+  }).catch(function(){ countEl.textContent='Could not load the index. Please refresh.'; });
 })();
 </script>
 """
 
 browse_body = f"""
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="wrap-wide">
 <p class="eyebrow">Search &amp; Browse</p><h1>Find any actor or drama</h1>
-<p class="lede">{len(people)} actors, {len(titles_western)} western titles. Type to search, or filter by trope and platform.</p>
+<p class="lede">{len(titles_root)} titles and {len(people)} actors. Search by name, or stack filters. Greyed-out chips have no matches left.</p>
 <div class="searchbar">
-<input type="text" id="q" placeholder="Search actors or titles&hellip;" autocomplete="off" aria-label="Search actors or titles">
-<select id="f-trope" aria-label="Filter by trope"><option value="">Any trope</option>{trope_options}</select>
-<select id="f-platform" aria-label="Filter by platform"><option value="">Any platform</option>{platform_options}</select>
-<select id="f-sort" aria-label="Sort actors"><option value="az">Actors: A&ndash;Z</option><option value="most">Actors: most titles</option></select>
+<input type="text" id="q" placeholder="Search titles or actors&hellip;" autocomplete="off" aria-label="Search titles or actors">
+<select id="f-sort" aria-label="Sort titles">
+<option value="views">Most watched</option>
+<option value="az">A&ndash;Z</option>
+<option value="year">Newest first</option>
+</select>
+</div>
+<div class="facetbar">
+<div class="facetgroup"><h3>Trope</h3><div class="facets collapsed" id="f-trope">{trope_facets}</div>{trope_more}</div>
+<div class="facetgroup"><h3>App</h3><div class="facets" id="f-platform">{platform_facets}</div>{platform_more}</div>
 </div>
 <p class="result-count" id="result-count">Loading&hellip;</p>
+<button class="facet-reset" id="f-reset" type="button" style="display:none">Reset all filters</button>
 </div></section>
-<section><div class="wrap"><h2>Actors</h2><div class="grid" id="results-actors"></div></div></section>
-<section><div class="wrap"><h2>Titles</h2><div class="grid" id="results-titles"></div></div></section>
+<section><div class="wrap-wide" style="display:none"><h2>Actors</h2><div class="resultgrid" id="results-actors"></div></div></section>
+<section><div class="wrap-wide"><h2>Titles</h2><div class="resultgrid" id="results-titles"></div></div></section>
 {BROWSE_JS}"""
 html = page("Search DramaEverAfter: Every Actor and Title (2026) | DramaEverAfter",
-            f"Search and filter {len(people)} vertical drama actors and {len(titles_western)} titles by trope and platform.",
+            f"Search and filter {len(people)} vertical drama actors and {len(titles_root)} titles by trope and platform.",
             browse_body, f"{DOMAIN}/browse.html", depth=0)
 open(os.path.join(DIST, "browse.html"), "w").write(html)
 urls.append("/browse.html")
@@ -503,42 +673,78 @@ for o in origins_other:
     urls.append(f"/{o}/index.html")
 
 # Homepage
-top_actors = sorted(people, key=lambda p: -len(credits_by_person.get(p["person_id"], [])))[:16]
-spotlight_tiles = "".join(
-    f'<a class="tile" href="actors/{pslug(p)}.html"><div class="nm">{p["name"]}</div>'
-    f'<div class="kf">{len(credits_by_person.get(p["person_id"],[]))} titles verified</div></a>'
-    for p in top_actors)
+# Row order follows how the fan community actually browses (actors, tropes, apps,
+# what's new) rather than by origin. Origin rows sit below as their own sections.
+top_actors = sorted(people, key=lambda p: -len(credits_by_person.get(p["person_id"], [])))[:18]
+featured = sorted(titles_root, key=lambda t: -title_views(t))[:18]
+just_added = sorted(titles_root, key=lambda t: (t.get("last_verified") or ""), reverse=True)[:18]
+
+_plat_counts = defaultdict(int)
+for a in availability:
+    if a["platform_id"] in platforms: _plat_counts[a["platform_id"]] += 1
+top_platforms = sorted(_plat_counts.items(), key=lambda kv: -kv[1])[:16]
+platform_chips = "".join(
+    '<a class="chip" href="browse.html?platform=%s">%s</a>' % (slug(platforms[pid]["name"]), platforms[pid]["name"])
+    for pid, _ in top_platforms)
+
 _seen_chips = set()
 trope_chips = ""
 for tr in all_tropes:
     _s = slug(tr)
     if _s in _seen_chips: continue
     _seen_chips.add(_s)
-    trope_chips += f'<a class="chip" href="tropes/{_s}.html">{tr.title()}</a>'
+    trope_chips += '<a class="chip" href="tropes/%s.html">%s</a>' % (_s, tr.title())
+
 section_links = "".join(
-    f'<section><div class="wrap"><h2>{ORIGIN_BLURB.get(o, (o.title()+" Short Drama",""))[0]}</h2>'
-    f'<p><a href="{o}/index.html">Browse the {o} catalogue &rarr;</a></p></div></section>'
+    '<section><div class="wrap"><h2>%s</h2><p><a href="%s/index.html">Browse the %s catalogue &rarr;</a></p></div></section>'
+    % (ORIGIN_BLURB.get(o, (o.title() + " Short Drama", ""))[0], o, o)
     for o in origins_other)
+
+# Origin sections we have committed to but have no rows for yet render as an honest
+# stub rather than an empty rail.
+STUB_ORIGINS = [("Chinese Originals",
+                 "Chinese-origin verticals are not in the database yet. This section goes live "
+                 "as soon as the first titles are harvested.")]
+stub_sections = "".join(
+    '<section><div class="wrap"><h2>%s</h2><div class="stub"><strong>Coming soon</strong>%s</div></div></section>' % (h, b)
+    for h, b in STUB_ORIGINS if h.split()[0].lower() not in origins_other)
+
 body = f"""
 <section class="hero"><div class="wrap">
+<div class="hero-art"><span class="wordmark">DramaEverAfter</span></div>
 <p class="eyebrow">The vertical drama database</p>
 <h1>Find your next ever after.</h1>
 <p class="lede">Every vertical drama, every actor, every platform, one place. Cross-referenced across ReelShort, DramaBox, ShortMax, My Drama, NetShort and more.</p>
 <form class="hero-search" action="browse.html" method="get">
-<input type="text" name="q" placeholder="Search {len(people)} actors or {len(titles_western)} titles&hellip;" aria-label="Search actors or titles">
+<input type="text" name="q" placeholder="Search {len(people)} actors or {len(titles_root)} titles&hellip;" aria-label="Search actors or titles">
 <button type="submit">Search</button>
 </form>
 <div class="stat-row">
-<div class="stat"><span class="n">{len(titles_western)}</span><span class="l">Titles</span></div>
+<div class="stat"><span class="n">{len(titles_root)}</span><span class="l">Titles</span></div>
 <div class="stat"><span class="n">{len(people)}</span><span class="l">Actors</span></div>
 <div class="stat"><span class="n">{len(platforms)}</span><span class="l">Platforms</span></div>
 </div></div></section>
-<section><div class="wrap"><h2>Most-credited actors</h2><p class="updated">Updated {UPDATED}</p>
-<div class="grid">{spotlight_tiles}</div>
-<a class="seeall" href="browse.html">Search or browse all {len(people)} actors &amp; {len(titles_western)} titles, with trope and platform filters &rarr;</a>
+
+<section><div class="wrap-wide">
+<div class="row-head"><h2>Most watched</h2><a href="browse.html">Browse all &rarr;</a></div>
+{rail([title_card_art(t) for t in featured])}
 </div></section>
+
+<section><div class="wrap-wide">
+<div class="row-head"><h2>Popular actors</h2><a href="browse.html">All {len(people)} actors &rarr;</a></div>
+{rail([person_card_art(p) for p in top_actors])}
+</div></section>
+
 <section><div class="wrap"><h2>Browse by trope</h2><div class="chipsrow">{trope_chips}</div></div></section>
-{section_links}<section><div class="wrap"><h2>The apps, compared</h2><p><a href="platforms.html">Every vertical drama platform: pricing and where to start &rarr;</a></p></div></section>"""
+
+<section><div class="wrap"><h2>Browse by app</h2><div class="chipsrow">{platform_chips}</div>
+<p><a class="seeall" href="platforms.html">Every platform compared: pricing and where to start &rarr;</a></p></div></section>
+
+<section><div class="wrap-wide">
+<div class="row-head"><h2>Just added</h2><p class="updated">Updated {UPDATED}</p></div>
+{rail([title_card_art(t) for t in just_added])}
+</div></section>
+{section_links}{stub_sections}"""
 html = page("DramaEverAfter: Every Vertical Drama, Every Platform, One Place",
             "The searchable database of vertical dramas and micro dramas: actors, tropes, and where to watch across ReelShort, DramaBox, ShortMax and more.",
             body, f"{DOMAIN}/", depth=0)
