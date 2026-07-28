@@ -91,6 +91,23 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .facets.collapsed .extra{display:none}
 .resultgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:16px}
 .resultgrid .card{flex:none;width:auto}
+.hero-banner{position:relative;margin:-1px 0 10px}
+.hero-media{position:relative;min-height:460px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#2B1B2E 0%,#7A2B4A 58%,#C9962E 145%)}
+.hero-media img.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-ph{position:relative;z-index:1;color:rgba(255,255,255,.5);font-family:'Fraunces',Georgia,serif;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;border:1.5px dashed rgba(255,255,255,.34);padding:13px 24px;border-radius:10px}
+.hero-scrim{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(18,10,20,.9) 0%,rgba(18,10,20,.66) 48%,rgba(18,10,20,.15) 100%)}
+.hero-copy{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center}
+.hero-copy .inner{max-width:1180px;width:100%;margin:0 auto;padding:0 24px}
+.hero-copy .eyebrow{color:var(--gold);margin-bottom:6px}
+.hero-copy h1{color:#fff;font-size:clamp(2rem,5.2vw,3.5rem);max-width:15ch;margin-bottom:10px}
+.hero-copy .lede{color:rgba(255,255,255,.88);max-width:46ch;font-size:1rem;margin-bottom:16px}
+.hero-copy .hero-search{max-width:560px;margin-top:0;box-shadow:0 10px 30px rgba(0,0,0,.34)}
+.hero-stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.hero-stats .n{display:block;font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1}
+.hero-stats .l{display:block;font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:3px}
+@media(max-width:640px){.hero-media{min-height:400px}.hero-scrim{background:linear-gradient(180deg,rgba(18,10,20,.55) 0%,rgba(18,10,20,.9) 62%)}.hero-copy{justify-content:flex-end;padding-bottom:26px}}
+.rail-stub{flex:0 0 100%;border:1.5px dashed var(--line);border-radius:14px;padding:26px 20px;text-align:center;color:#7d6e64;font-size:.88rem;background:#fff}
+.rail-stub strong{display:block;font-family:'Fraunces',Georgia,serif;color:var(--plum);font-size:1rem;margin-bottom:4px}
 .faq{background:var(--plum);color:#EFE4EA;padding:38px 0 46px}
 .faq h2{color:#fff}
 .faq details{border-bottom:1px solid #4a3450;padding:13px 0}

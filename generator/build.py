@@ -207,6 +207,23 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .facets.collapsed .extra{display:none}
 .resultgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:16px}
 .resultgrid .card{flex:none;width:auto}
+.hero-banner{position:relative;margin:-1px 0 10px}
+.hero-media{position:relative;min-height:460px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#2B1B2E 0%,#7A2B4A 58%,#C9962E 145%)}
+.hero-media img.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-ph{position:relative;z-index:1;color:rgba(255,255,255,.5);font-family:'Fraunces',Georgia,serif;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;border:1.5px dashed rgba(255,255,255,.34);padding:13px 24px;border-radius:10px}
+.hero-scrim{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(18,10,20,.9) 0%,rgba(18,10,20,.66) 48%,rgba(18,10,20,.15) 100%)}
+.hero-copy{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center}
+.hero-copy .inner{max-width:1180px;width:100%;margin:0 auto;padding:0 24px}
+.hero-copy .eyebrow{color:var(--gold);margin-bottom:6px}
+.hero-copy h1{color:#fff;font-size:clamp(2rem,5.2vw,3.5rem);max-width:15ch;margin-bottom:10px}
+.hero-copy .lede{color:rgba(255,255,255,.88);max-width:46ch;font-size:1rem;margin-bottom:16px}
+.hero-copy .hero-search{max-width:560px;margin-top:0;box-shadow:0 10px 30px rgba(0,0,0,.34)}
+.hero-stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.hero-stats .n{display:block;font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1}
+.hero-stats .l{display:block;font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:3px}
+@media(max-width:640px){.hero-media{min-height:400px}.hero-scrim{background:linear-gradient(180deg,rgba(18,10,20,.55) 0%,rgba(18,10,20,.9) 62%)}.hero-copy{justify-content:flex-end;padding-bottom:26px}}
+.rail-stub{flex:0 0 100%;border:1.5px dashed var(--line);border-radius:14px;padding:26px 20px;text-align:center;color:#7d6e64;font-size:.88rem;background:#fff}
+.rail-stub strong{display:block;font-family:'Fraunces',Georgia,serif;color:var(--plum);font-size:1rem;margin-bottom:4px}
 .faq{background:var(--plum);color:#EFE4EA;padding:38px 0 46px}
 .faq h2{color:#fff}
 .faq details{border-bottom:1px solid #4a3450;padding:13px 0}
@@ -476,6 +493,7 @@ for t in titles_root:
     if t.get("year"): entry["y"] = t["year"]
     if tr_slugs: entry["tr"] = tr_slugs
     if pl_slugs: entry["pl"] = pl_slugs
+    entry["o"] = [origin_of(t)]
     v = title_views(t)
     if v: entry["v"] = v
     img = (t.get("poster_ref") or "").strip()
@@ -496,6 +514,16 @@ def facet_chips(group, counts, labels):
                    % (extra, group, s, labels.get(s, s)))
     return "".join(out), len(ordered)
 
+# Origin facet. Buckets Cyan wants exposed are declared up front, not derived from the
+# data, so the filter shows the full shape of the taxonomy even while a bucket is empty.
+# An empty bucket renders greyed out and disabled, same as any other zero-match chip.
+ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("dubbed", "Dubbed")]
+origin_counts = defaultdict(int)
+for t in titles_root: origin_counts[origin_of(t)] += 1
+origin_facets = "".join(
+    '<button class="facet" data-g="origin" data-v="%s" type="button">%s<span class="c"></span></button>' % (v, lbl)
+    for v, lbl in ORIGIN_BUCKETS)
+
 trope_facets, n_tropes = facet_chips("trope", trope_counts, trope_label)
 platform_facets, n_platforms = facet_chips("platform", platform_counts, platform_label)
 trope_more = ('<button class="facet-more" data-target="f-trope" type="button">Show all %d tropes</button>' % n_tropes) if n_tropes > VISIBLE else ""
@@ -505,11 +533,13 @@ BROWSE_JS = """
 <script>
 (function(){
   var D=null, CAP=60;
-  var active={trope:new Set(), platform:new Set()};
+  var FIELD={trope:'tr', platform:'pl', origin:'o'};
+  var active={};
   var qEl=document.getElementById('q'), sortEl=document.getElementById('f-sort');
   var titlesOut=document.getElementById('results-titles'), actorsOut=document.getElementById('results-actors');
   var countEl=document.getElementById('result-count'), resetEl=document.getElementById('f-reset');
   var chips=[].slice.call(document.querySelectorAll('.facet'));
+  chips.forEach(function(c){ if(!active[c.dataset.g]) active[c.dataset.g]=new Set(); });
 
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
   function has(arr,v){return arr && arr.indexOf(v)!==-1;}
@@ -527,10 +557,10 @@ BROWSE_JS = """
 
   function matches(t,q){
     if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
-    var it=active.trope.values(),x;
-    while(!(x=it.next()).done){ if(!has(t.tr,x.value)) return false; }
-    var ip=active.platform.values(),y;
-    while(!(y=ip.next()).done){ if(!has(t.pl,y.value)) return false; }
+    for(var g in active){
+      var f=t[FIELD[g]], it=active[g].values(), x;
+      while(!(x=it.next()).done){ if(!has(f,x.value)) return false; }
+    }
     return true;
   }
 
@@ -541,11 +571,13 @@ BROWSE_JS = """
 
     // Single pass over the current result set tallies every facet at once, so each
     // chip's number is "results you'd get if you also picked this".
-    var tally={trope:{},platform:{}};
+    var tally={}; for(var g in active) tally[g]={};
     for(var i=0;i<titles.length;i++){
-      var t=titles[i],j;
-      if(t.tr) for(j=0;j<t.tr.length;j++) tally.trope[t.tr[j]]=(tally.trope[t.tr[j]]||0)+1;
-      if(t.pl) for(j=0;j<t.pl.length;j++) tally.platform[t.pl[j]]=(tally.platform[t.pl[j]]||0)+1;
+      var t=titles[i];
+      for(var g2 in active){
+        var f=t[FIELD[g2]]; if(!f) continue;
+        for(var j=0;j<f.length;j++) tally[g2][f[j]]=(tally[g2][f[j]]||0)+1;
+      }
     }
     for(var c=0;c<chips.length;c++){
       var el=chips[c], g=el.dataset.g, v=el.dataset.v, n=tally[g][v]||0, on=active[g].has(v);
@@ -562,7 +594,7 @@ BROWSE_JS = """
     var actors=D.actors.filter(function(a){return !q || a.n.toLowerCase().indexOf(q)!==-1;});
     actors.sort(function(a,b){return b.c-a.c;});
 
-    var nf=(active.trope.size+active.platform.size);
+    var nf=0; for(var g3 in active) nf+=active[g3].size;
     resetEl.style.display=(nf||q)?'inline-block':'none';
     countEl.textContent=titles.length.toLocaleString()+' titles'+(q?', '+actors.length.toLocaleString()+' actors':'')+(nf?' · '+nf+' filter'+(nf>1?'s':'')+' on':'');
 
@@ -603,15 +635,16 @@ BROWSE_JS = """
   qEl.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,120);});
   sortEl.addEventListener('change',run);
   resetEl.addEventListener('click',function(){
-    active.trope.clear(); active.platform.clear(); qEl.value=''; run();
+    for(var g in active) active[g].clear(); qEl.value=''; run();
   });
 
   fetch('search-index.json').then(function(r){return r.json();}).then(function(d){
     D=d;
     var p=new URLSearchParams(window.location.search);
     if(p.get('q')) qEl.value=p.get('q');
-    if(p.get('trope')) active.trope.add(p.get('trope'));
-    if(p.get('platform')) active.platform.add(p.get('platform'));
+    ['trope','platform','origin'].forEach(function(g){
+      if(p.get(g) && active[g]) active[g].add(p.get(g));
+    });
     run();
   }).catch(function(){ countEl.textContent='Could not load the index. Please refresh.'; });
 })();
@@ -631,6 +664,7 @@ browse_body = f"""
 </select>
 </div>
 <div class="facetbar">
+<div class="facetgroup"><h3>Country of origin</h3><div class="facets" id="f-origin">{origin_facets}</div></div>
 <div class="facetgroup"><h3>Trope</h3><div class="facets collapsed" id="f-trope">{trope_facets}</div>{trope_more}</div>
 <div class="facetgroup"><h3>App</h3><div class="facets" id="f-platform">{platform_facets}</div>{platform_more}</div>
 </div>
@@ -702,28 +736,32 @@ section_links = "".join(
 
 # Origin sections we have committed to but have no rows for yet render as an honest
 # stub rather than an empty rail.
-STUB_ORIGINS = [("Chinese Originals",
-                 "Chinese-origin verticals are not in the database yet. This section goes live "
-                 "as soon as the first titles are harvested.")]
+STUB_ORIGINS = []
 stub_sections = "".join(
     '<section><div class="wrap"><h2>%s</h2><div class="stub"><strong>Coming soon</strong>%s</div></div></section>' % (h, b)
     for h, b in STUB_ORIGINS if h.split()[0].lower() not in origins_other)
 
 body = f"""
-<section class="hero"><div class="wrap">
-<div class="hero-art"><span class="wordmark">DramaEverAfter</span></div>
+<section class="hero-banner">
+<div class="hero-media">
+<!-- Swap the placeholder for real art by dropping <img class="hero-img" src="..." alt=""> in here. -->
+<span class="hero-ph">Hero image placeholder</span>
+<div class="hero-scrim"></div>
+<div class="hero-copy"><div class="inner">
 <p class="eyebrow">The vertical drama database</p>
 <h1>Find your next ever after.</h1>
-<p class="lede">Every vertical drama, every actor, every platform, one place. Cross-referenced across ReelShort, DramaBox, ShortMax, My Drama, NetShort and more.</p>
+<p class="lede">Every vertical drama, every actor, every platform, one place. Cross-referenced across ReelShort, DramaBox, ShortMax, My Drama and more.</p>
 <form class="hero-search" action="browse.html" method="get">
 <input type="text" name="q" placeholder="Search {len(people)} actors or {len(titles_root)} titles&hellip;" aria-label="Search actors or titles">
 <button type="submit">Search</button>
 </form>
-<div class="stat-row">
-<div class="stat"><span class="n">{len(titles_root)}</span><span class="l">Titles</span></div>
-<div class="stat"><span class="n">{len(people)}</span><span class="l">Actors</span></div>
-<div class="stat"><span class="n">{len(platforms)}</span><span class="l">Platforms</span></div>
-</div></div></section>
+<div class="hero-stats">
+<div><span class="n">{len(titles_root)}</span><span class="l">Titles</span></div>
+<div><span class="n">{len(people)}</span><span class="l">Actors</span></div>
+<div><span class="n">{len(platforms)}</span><span class="l">Platforms</span></div>
+</div>
+</div></div>
+</div></section>
 
 <section><div class="wrap-wide">
 <div class="row-head"><h2>Most watched</h2><a href="browse.html">Browse all &rarr;</a></div>
@@ -733,6 +771,11 @@ body = f"""
 <section><div class="wrap-wide">
 <div class="row-head"><h2>Popular actors</h2><a href="browse.html">All {len(people)} actors &rarr;</a></div>
 {rail([person_card_art(p) for p in top_actors])}
+</div></section>
+
+<section><div class="wrap-wide">
+<div class="row-head"><h2>Popular Chinese actors</h2></div>
+<div class="rail"><div class="rail-stub"><strong>Coming soon</strong>No Chinese-origin titles are in the database yet, so there are no actors to rank. This strip fills itself the moment the first ones land.</div></div>
 </div></section>
 
 <section><div class="wrap"><h2>Browse by trope</h2><div class="chipsrow">{trope_chips}</div></div></section>
