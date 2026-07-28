@@ -112,6 +112,14 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .chipsrow{display:flex;gap:8px;flex-wrap:wrap}
 .chip{font-size:.82rem;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;text-decoration:none;color:var(--ink)}
 .chip:hover{border-color:var(--wine);color:var(--wine)}
+.searchbar{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.searchbar input[type=text]{flex:1 1 240px;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;color:var(--ink)}
+.searchbar select{padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;color:var(--ink)}
+.result-count{font-size:.82rem;color:#7d6e64;margin:4px 0 14px}
+.hero-search{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;background:#fff;padding:8px;border-radius:12px;box-shadow:0 6px 18px rgba(43,27,46,.12)}
+.hero-search input[type=text]{flex:1 1 260px;padding:13px 16px;border:none;border-radius:8px;font-size:1.05rem;font-family:inherit}
+.hero-search button{background:var(--gold);color:#241a05;border:none;font-weight:700;border-radius:8px;padding:0 20px;cursor:pointer;font-size:.95rem}
+.seeall{font-size:.85rem;margin-top:10px;display:inline-block}
 .faq{background:var(--plum);color:#EFE4EA;padding:38px 0 46px}
 .faq h2{color:#fff}
 .faq details{border-bottom:1px solid #4a3450;padding:13px 0}
@@ -353,6 +361,121 @@ html = page("Vertical Drama Apps Compared (2026) | DramaEverAfter",
 open(os.path.join(DIST, "platforms.html"), "w").write(html)
 urls.append("/platforms.html")
 
+# Search index + browse page (client-side search/filter, no backend needed).
+# Scoped to western titles/actors, matching how the rest of root-level browsing is scoped.
+search_actors = [{"n": p["name"], "s": pslug(p), "c": len(credits_by_person.get(p["person_id"], []))} for p in people]
+search_titles = []
+for t in titles_western:
+    plat_names = sorted({platforms[a["platform_id"]]["name"] for a in avail_by_title.get(t["title_id"], []) if a["platform_id"] in platforms})
+    entry = {"n": t["primary_title"], "s": tslug(t)}
+    if t.get("year"): entry["y"] = t["year"]
+    tr_str = ";".join(tropes_of(t))
+    if tr_str: entry["tr"] = tr_str
+    if plat_names: entry["pl"] = ";".join(plat_names)
+    search_titles.append(entry)
+search_index = {"actors": search_actors, "titles": search_titles}
+open(os.path.join(DIST, "search-index.json"), "w").write(json.dumps(search_index, separators=(",", ":")))
+
+# Dedupe dropdown options by slug: the data holds both "Age Gap" and "Age-Gap" style
+# spellings that map to one trope page; showing both reads as a bug. Matching in the
+# page JS is slug-normalized to match either spelling in title data.
+_seen = set()
+trope_options = ""
+for tr in all_tropes:
+    s = slug(tr)
+    if s in _seen: continue
+    _seen.add(s)
+    trope_options += f'<option value="{s}">{tr.title()}</option>'
+platform_options = "".join(f'<option value="{slug(pl["name"])}">{pl["name"]}</option>' for pl in sorted(platforms.values(), key=lambda p: p["name"]))
+
+BROWSE_JS = """
+<script>
+(function(){
+  var data = null;
+  var qEl = document.getElementById('q');
+  var tropeEl = document.getElementById('f-trope');
+  var platEl = document.getElementById('f-platform');
+  var sortEl = document.getElementById('f-sort');
+  var actorsOut = document.getElementById('results-actors');
+  var titlesOut = document.getElementById('results-titles');
+  var countEl = document.getElementById('result-count');
+  var CAP = 100;
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function slugify(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
+  function hasTag(list, val){
+    if(!val) return true;
+    return String(list||'').split(';').some(function(x){ return slugify(x) === val; });
+  }
+
+  function run(){
+    if(!data) return;
+    var q = qEl.value.trim().toLowerCase();
+    var trope = tropeEl.value;
+    var platform = platEl.value;
+    var sort = sortEl.value;
+
+    var actors = data.actors.filter(function(a){
+      return !q || a.n.toLowerCase().indexOf(q) !== -1;
+    });
+    actors.sort(sort === 'most'
+      ? function(a,b){ return b.c - a.c; }
+      : function(a,b){ return a.n.localeCompare(b.n); });
+
+    var titles = data.titles.filter(function(t){
+      var mq = !q || t.n.toLowerCase().indexOf(q) !== -1;
+      return mq && hasTag(t.tr, trope) && hasTag(t.pl, platform);
+    });
+
+    countEl.textContent = actors.length + ' actors, ' + titles.length + ' titles match';
+
+    actorsOut.innerHTML = actors.slice(0, CAP).map(function(a){
+      return '<a class="tile" href="actors/'+a.s+'.html"><div class="nm">'+esc(a.n)+'</div><div class="kf">'+a.c+' titles verified</div></a>';
+    }).join('') || '<p class="updated">No actors match.</p>';
+    if (actors.length > CAP) actorsOut.innerHTML += '<p class="updated">+ '+(actors.length-CAP)+' more &mdash; narrow your search to see them</p>';
+
+    titlesOut.innerHTML = titles.slice(0, CAP).map(function(t){
+      return '<a class="tile" href="titles/'+t.s+'.html"><div class="nm">'+esc(t.n)+'</div><div class="kf">'+esc(t.y||'')+'</div></a>';
+    }).join('') || '<p class="updated">No titles match.</p>';
+    if (titles.length > CAP) titlesOut.innerHTML += '<p class="updated">+ '+(titles.length-CAP)+' more &mdash; narrow your search to see them</p>';
+  }
+
+  fetch('search-index.json').then(function(r){ return r.json(); }).then(function(d){
+    data = d;
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('q')) qEl.value = params.get('q');
+    run();
+  });
+
+  qEl.addEventListener('input', run);
+  tropeEl.addEventListener('change', run);
+  platEl.addEventListener('change', run);
+  sortEl.addEventListener('change', run);
+})();
+</script>
+"""
+
+browse_body = f"""
+<section class="hero"><div class="wrap">
+<p class="eyebrow">Search &amp; Browse</p><h1>Find any actor or drama</h1>
+<p class="lede">{len(people)} actors, {len(titles_western)} western titles. Type to search, or filter by trope and platform.</p>
+<div class="searchbar">
+<input type="text" id="q" placeholder="Search actors or titles&hellip;" autocomplete="off" aria-label="Search actors or titles">
+<select id="f-trope" aria-label="Filter by trope"><option value="">Any trope</option>{trope_options}</select>
+<select id="f-platform" aria-label="Filter by platform"><option value="">Any platform</option>{platform_options}</select>
+<select id="f-sort" aria-label="Sort actors"><option value="az">Actors: A&ndash;Z</option><option value="most">Actors: most titles</option></select>
+</div>
+<p class="result-count" id="result-count">Loading&hellip;</p>
+</div></section>
+<section><div class="wrap"><h2>Actors</h2><div class="grid" id="results-actors"></div></div></section>
+<section><div class="wrap"><h2>Titles</h2><div class="grid" id="results-titles"></div></div></section>
+{BROWSE_JS}"""
+html = page("Search DramaEverAfter: Every Actor and Title (2026) | DramaEverAfter",
+            f"Search and filter {len(people)} vertical drama actors and {len(titles_western)} titles by trope and platform.",
+            browse_body, f"{DOMAIN}/browse.html", depth=0)
+open(os.path.join(DIST, "browse.html"), "w").write(html)
+urls.append("/browse.html")
+
 # Per-origin section indexes (e.g. /chinese/index.html). Western has no section index —
 # it IS the root site. Only emitted for origins that actually have titles.
 ORIGIN_BLURB = {
@@ -380,11 +503,18 @@ for o in origins_other:
     urls.append(f"/{o}/index.html")
 
 # Homepage
-actor_tiles = "".join(
+top_actors = sorted(people, key=lambda p: -len(credits_by_person.get(p["person_id"], [])))[:16]
+spotlight_tiles = "".join(
     f'<a class="tile" href="actors/{pslug(p)}.html"><div class="nm">{p["name"]}</div>'
     f'<div class="kf">{len(credits_by_person.get(p["person_id"],[]))} titles verified</div></a>'
-    for p in people)
-trope_chips = "".join(f'<a class="chip" href="tropes/{slug(tr)}.html">{tr.title()}</a>' for tr in all_tropes)
+    for p in top_actors)
+_seen_chips = set()
+trope_chips = ""
+for tr in all_tropes:
+    _s = slug(tr)
+    if _s in _seen_chips: continue
+    _seen_chips.add(_s)
+    trope_chips += f'<a class="chip" href="tropes/{_s}.html">{tr.title()}</a>'
 section_links = "".join(
     f'<section><div class="wrap"><h2>{ORIGIN_BLURB.get(o, (o.title()+" Short Drama",""))[0]}</h2>'
     f'<p><a href="{o}/index.html">Browse the {o} catalogue &rarr;</a></p></div></section>'
@@ -394,13 +524,19 @@ body = f"""
 <p class="eyebrow">The vertical drama database</p>
 <h1>Find your next ever after.</h1>
 <p class="lede">Every vertical drama, every actor, every platform, one place. Cross-referenced across ReelShort, DramaBox, ShortMax, My Drama, NetShort and more.</p>
+<form class="hero-search" action="browse.html" method="get">
+<input type="text" name="q" placeholder="Search {len(people)} actors or {len(titles_western)} titles&hellip;" aria-label="Search actors or titles">
+<button type="submit">Search</button>
+</form>
 <div class="stat-row">
 <div class="stat"><span class="n">{len(titles_western)}</span><span class="l">Titles</span></div>
 <div class="stat"><span class="n">{len(people)}</span><span class="l">Actors</span></div>
 <div class="stat"><span class="n">{len(platforms)}</span><span class="l">Platforms</span></div>
 </div></div></section>
-<section><div class="wrap"><h2>Browse by actor</h2><p class="updated">Updated {UPDATED}</p>
-<div class="grid">{actor_tiles}</div></div></section>
+<section><div class="wrap"><h2>Most-credited actors</h2><p class="updated">Updated {UPDATED}</p>
+<div class="grid">{spotlight_tiles}</div>
+<a class="seeall" href="browse.html">Search or browse all {len(people)} actors &amp; {len(titles_western)} titles, with trope and platform filters &rarr;</a>
+</div></section>
 <section><div class="wrap"><h2>Browse by trope</h2><div class="chipsrow">{trope_chips}</div></div></section>
 {section_links}<section><div class="wrap"><h2>The apps, compared</h2><p><a href="platforms.html">Every vertical drama platform: pricing and where to start &rarr;</a></p></div></section>"""
 html = page("DramaEverAfter: Every Vertical Drama, Every Platform, One Place",

@@ -47,6 +47,14 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .chipsrow{display:flex;gap:8px;flex-wrap:wrap}
 .chip{font-size:.82rem;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;text-decoration:none;color:var(--ink)}
 .chip:hover{border-color:var(--wine);color:var(--wine)}
+.searchbar{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.searchbar input[type=text]{flex:1 1 240px;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;color:var(--ink)}
+.searchbar select{padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;color:var(--ink)}
+.result-count{font-size:.82rem;color:#7d6e64;margin:4px 0 14px}
+.hero-search{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;background:#fff;padding:8px;border-radius:12px;box-shadow:0 6px 18px rgba(43,27,46,.12)}
+.hero-search input[type=text]{flex:1 1 260px;padding:13px 16px;border:none;border-radius:8px;font-size:1.05rem;font-family:inherit}
+.hero-search button{background:var(--gold);color:#241a05;border:none;font-weight:700;border-radius:8px;padding:0 20px;cursor:pointer;font-size:.95rem}
+.seeall{font-size:.85rem;margin-top:10px;display:inline-block}
 .faq{background:var(--plum);color:#EFE4EA;padding:38px 0 46px}
 .faq h2{color:#fff}
 .faq details{border-bottom:1px solid #4a3450;padding:13px 0}
