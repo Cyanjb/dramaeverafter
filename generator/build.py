@@ -138,7 +138,7 @@ def title_card_art(t, pre=""):
 def person_card_art(p, pre=""):
     n = len(credits_by_person.get(p["person_id"], []))
     return ('<a class="card person" href="%sactors/%s.html">%s<span class="t">%s</span><span class="s">%s titles</span></a>'
-            % (pre, pslug(p), art_block((p.get("photo_ref") or "").strip(), p["name"][:1].upper()), p["name"], n))
+            % (pre, pslug(p), mono_ring(p["name"], (p.get("photo_ref") or "").strip()), p["name"], n))
 
 def rail(cards):
     return '<div class="rail">%s</div>' % "".join(cards)
@@ -151,7 +151,11 @@ def trope_chip(tr, pre):
     return f'<span class="trope">{tr}</span>'
 
 CSS = """
-:root{--paper:#FBF7F2;--ink:#2A2226;--plum:#2B1B2E;--wine:#7A2B4A;--gold:#C9962E;--gold-deep:#A87B1F;--blush:#EFD9DE;--line:#E4D8CE}
+:root{--paper:#FBF7F2;--ink:#2A2226;--plum:#2B1B2E;--wine:#7A2B4A;--gold:#C9962E;--gold-deep:#A87B1F;--blush:#EFD9DE;--line:#E4D8CE;
+--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-7:32px;--sp-8:40px;--sp-9:48px;--sp-10:64px;
+--r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
+--shadow-card:0 4px 14px rgba(43,27,46,.08);--shadow-card-hover:0 10px 28px rgba(43,27,46,.16);--shadow-hero:0 20px 50px rgba(43,27,46,.22);
+--fs-display-2:1.5rem;--fs-display-3:1.05rem;--fs-body-sm:.875rem;--fs-label:.75rem;--fs-micro:.6875rem}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:'Atkinson Hyperlegible',Georgia,serif;font-size:18px;line-height:1.6}
 h1,h2,h3{font-family:'Fraunces','Playfair Display',Georgia,serif;font-weight:600;line-height:1.15;color:var(--plum)}
@@ -227,7 +231,7 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .card .s{display:block;font-size:.73rem;color:#7d6e64;margin-top:2px}
 .card:hover .art{border-color:var(--wine)}
 .card.person{flex:0 0 118px}
-.card.person .art{aspect-ratio:1/1;border-radius:50%}
+.card.person .ring{width:100%}
 .card.person .t,.card.person .s{text-align:center}
 .stub{border:1.5px dashed var(--line);border-radius:14px;padding:26px 20px;text-align:center;color:#7d6e64;font-size:.9rem;background:#fff}
 .stub strong{display:block;font-family:'Fraunces',Georgia,serif;color:var(--plum);font-size:1.05rem;margin-bottom:4px}
@@ -246,6 +250,39 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .facets.collapsed .extra{display:none}
 .resultgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:16px}
 .resultgrid .card{flex:none;width:auto}
+/* POSTER CARD (list/filmography). Quiet chrome: the covers are already loud. */
+.poster-card{display:grid;grid-template-columns:104px 1fr;gap:var(--sp-4);align-items:start;padding:var(--sp-4) 0;border-bottom:1px solid var(--line)}
+.poster-card:last-child{border-bottom:none}
+.pc-frame{position:relative;aspect-ratio:2/3;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-card);background:linear-gradient(158deg,var(--blush),#fff 58%,var(--line));display:block}
+.pc-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+.poster-card:hover .pc-frame{border-color:var(--wine);box-shadow:var(--shadow-card-hover)}
+.poster-card:hover .pc-frame img{transform:scale(1.03)}
+.pc-views{position:absolute;left:6px;bottom:6px;z-index:2;background:rgba(43,27,46,.84);color:#fff;font-size:var(--fs-micro);padding:2px 7px;border-radius:var(--r-pill)}
+/* No-art fallback: a typographic edition, deliberately designed, not a broken image. */
+.no-art{display:flex;flex-direction:column;justify-content:center;padding:var(--sp-3);text-align:left}
+.no-art .rule{width:22px;height:2px;background:var(--gold);margin-bottom:var(--sp-2)}
+.no-art .ttl{font-family:'Fraunces',Georgia,serif;font-weight:700;color:var(--plum);font-size:.8rem;line-height:1.22;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.pc-body h3{font-family:'Fraunces',Georgia,serif;font-size:var(--fs-display-3);margin:0 0 3px;line-height:1.25}
+.pc-body h3 a{text-decoration:none;color:var(--plum)}
+.pc-body h3 a:hover{color:var(--wine)}
+.pc-meta{font-size:var(--fs-body-sm);color:#7d6e64;margin:0 0 var(--sp-2)}
+/* ACTOR IDENTITY: the monogram is everyone's default, not a fallback for the 94%. */
+.ring{position:relative;aspect-ratio:1/1;border-radius:50%;overflow:hidden;border:2px solid var(--gold);background:linear-gradient(150deg,var(--blush),#fff 62%);display:flex;align-items:center;justify-content:center}
+.ring img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ring .mono{font-family:'Fraunces',Georgia,serif;font-weight:700;color:var(--wine);font-size:1.35rem;letter-spacing:.02em}
+.actor-hero-ring{width:132px;flex:0 0 132px}
+.actor-hero-ring .mono{font-size:2.6rem}
+/* WHERE TO WATCH: one confident button. 91% of titles are on exactly one app. */
+.watch-primary{display:inline-flex;align-items:center;gap:var(--sp-2);background:var(--gold);color:#241a05;font-weight:700;font-size:var(--fs-body-sm);padding:13px var(--sp-6);border-radius:var(--r-pill);text-decoration:none;box-shadow:var(--shadow-card)}
+.watch-primary:hover{background:var(--gold-deep);color:#fff}
+.watch-more{display:block;margin-top:var(--sp-3);font-size:var(--fs-body-sm);color:var(--wine)}
+.watch-pending{display:inline-block;padding:13px var(--sp-5);border:1.5px dashed var(--line);border-radius:var(--r-pill);color:#7d6e64;font-size:var(--fs-body-sm)}
+/* EMPTY STATE: editorial, not an error. */
+.empty-state{border:1.5px dashed var(--line);border-radius:var(--r-lg);padding:var(--sp-7) var(--sp-6);text-align:center;background:#fff}
+.empty-state h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:var(--sp-1);font-size:var(--fs-display-3)}
+.empty-state p{color:#7d6e64;font-size:var(--fs-body-sm);max-width:38ch;margin:0 auto;line-height:1.55}
+.hero-grid .frame{border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card)}
+@media(max-width:640px){.poster-card{grid-template-columns:84px 1fr;gap:var(--sp-3)}}
 .hero-banner{position:relative;margin:-1px 0 10px}
 .hero-media{position:relative;min-height:460px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#2B1B2E 0%,#7A2B4A 58%,#C9962E 145%)}
 .hero-media img.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -301,27 +338,47 @@ def page(title, desc, body, canonical, jsonld=None, depth=1):
 </body></html>"""
 
 def watch_buttons(title_id, pre=""):
-    out = []
-    for a in avail_by_title.get(title_id, []):
-        pl = platforms.get(a["platform_id"], {})
-        link = a["direct_link"] or "#AFFILIATE-LINK-PENDING"
-        out.append(f'<a class="watch" href="{link}">Watch on {pl.get("name","?")}</a>')
-    if not out:
-        out.append('<span class="watch pending">Platform being verified</span>')
-    return "".join(out)
+    rows = avail_by_title.get(title_id, [])
+    if not rows:
+        return '<span class="watch-pending">Platform being verified</span>'
+    a = rows[0]
+    name = platforms.get(a["platform_id"], {}).get("name", "?")
+    link = a["direct_link"] or "#AFFILIATE-LINK-PENDING"
+    out = f'<a class="watch-primary" href="{link}">Watch on {name} &rarr;</a>'
+    if len(rows) > 1:
+        others = ", ".join(platforms.get(r["platform_id"], {}).get("name", "?") for r in rows[1:])
+        out += f'<span class="watch-more">Also on {others}</span>'
+    return out
+
+def poster_frame(t, cls="pc-frame"):
+    """Cover art, or a typographic edition when there is none. Never an empty box."""
+    img = (t.get("poster_ref") or "").strip()
+    v = views_label(title_views(t))
+    badge = '<span class="pc-views">%s</span>' % v if v else ""
+    if img:
+        return '<span class="%s"><img src="%s" alt="" loading="lazy" onerror="this.remove()">%s</span>' % (
+            cls, esc_attr(img), badge)
+    return '<span class="%s no-art"><span class="rule"></span><span class="ttl">%s</span>%s</span>' % (
+        cls, t["primary_title"], badge)
+
+def mono_ring(name, img, cls="ring"):
+    inner = '<span class="mono">%s</span>' % "".join(w[0].upper() for w in name.split()[:2])
+    if img:
+        inner += '<img src="%s" alt="" loading="lazy" onerror="this.remove()">' % esc_attr(img)
+    return '<span class="%s">%s</span>' % (cls, inner)
 
 def title_card(t, role_html="", depth=1, title_pre=None):
     pre = "../" * depth
     tp = pre if title_pre is None else title_pre
     trope_html = "".join(trope_chip(tr, pre) for tr in tropes_of(t))
     yr = f'{t["year"]} · ' if t["year"] else ""
-    return f"""<article class="card">
-<div class="poster">{poster_inner((t.get("poster_ref") or "").strip(), t['primary_title'][:1].upper())}</div>
-<div>{role_html}
+    return f"""<article class="poster-card">
+<a class="pc-art" href="{tp}titles/{tslug(t)}.html">{poster_frame(t)}</a>
+<div class="pc-body">{role_html}
 <h3><a href="{tp}titles/{tslug(t)}.html">{t['primary_title']}</a></h3>
-<p class="meta">{yr}{t['genres'].replace(';', ',').title()}</p>
+<p class="pc-meta">{yr}{t['genres'].replace(';', ',').title()}</p>
 <div class="tropes">{trope_html}</div>
-{watch_buttons(t['title_id'])}
+{watch_buttons(t['title_id'], pre)}
 </div></article>"""
 
 # --------- build ---------
@@ -356,7 +413,7 @@ for p in people:
           "performerIn": [{"@type": "TVSeries", "name": t["primary_title"]} for _, t in my_titles]}
     body = f"""
 <section class="hero"><div class="wrap hero-grid">
-<div class="frame">{f'<img src="{p["photo_ref"]}" alt="{p["name"]}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">' if p.get('photo_ref','').startswith('http') else '<div class="ph">portrait 9:16</div>'}</div>
+{mono_ring(p["name"], (p.get("photo_ref") or "").strip(), "ring actor-hero-ring")}
 <div><p class="eyebrow">Vertical Drama Actor</p><h1>{p['name']}</h1>
 <p class="lede">Known for <strong>{known}</strong>.</p>{social_links(p)}
 <div class="stat-row"><div class="stat"><span class="n">{verified_n}</span><span class="l">Titles verified</span></div>
@@ -393,7 +450,7 @@ for t in titles:
     yr = f'{t["year"]} · ' if t["year"] else ""
     body = f"""
 <section class="hero"><div class="wrap hero-grid">
-<div class="frame">{poster_inner((t.get("poster_ref") or "").strip(), t['primary_title'][:1].upper())}</div>
+{poster_frame(t, "frame")}
 <div><p class="eyebrow">Vertical Drama{' · community reported, verification pending' if t.get('data_confidence')=='needs_check' else ''}</p><h1>{t['primary_title']}</h1>
 <p class="lede">{yr}{t['genres'].replace(';', ',').title()} · {t['status'].title()}</p>
 <div class="tropes" style="margin-top:12px">{trope_html}</div>
@@ -816,7 +873,7 @@ body = f"""
 
 <section><div class="wrap-wide">
 <div class="row-head"><h2>Popular Chinese actors</h2></div>
-<div class="rail"><div class="rail-stub"><strong>Coming soon</strong>No Chinese-origin titles are in the database yet, so there are no actors to rank. This strip fills itself the moment the first ones land.</div></div>
+<div class="rail"><div class="rail-stub empty-state"><h3>Coming soon</h3><p>No Chinese-origin titles are in the database yet, so there are no actors to rank. This strip fills itself the moment the first ones land.</p></div></div>
 </div></section>
 
 <section><div class="wrap"><h2>Browse by trope</h2><div class="chipsrow">{trope_chips}</div></div></section>
