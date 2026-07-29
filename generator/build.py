@@ -120,6 +120,15 @@ def art_block(img, letter, badge=""):
     b = '<span class="badge">%s</span>' % badge if badge else ""
     return '<span class="art">%s%s</span>' % (inner, b)
 
+def poster_inner(img, letter):
+    # Letter tile always renders; poster layers over it and, if the hotlink dies,
+    # onerror removes the <img> and the tile shows through. Same self-healing
+    # pattern as art_block, adapted to the .poster / .frame boxes.
+    inner = '<span class="ph">%s</span>' % (letter or "?")
+    if img:
+        inner += '<img src="%s" alt="" loading="lazy" onerror="this.remove()">' % esc_attr(img)
+    return inner
+
 def title_card_art(t, pre=""):
     name = t["primary_title"]
     return ('<a class="card" href="%s%stitles/%s.html">%s<span class="t">%s</span><span class="s">%s</span></a>'
@@ -170,8 +179,10 @@ h2{font-size:1.45rem;margin-bottom:6px}
 .updated{font-size:.8rem;color:#8a7a70;margin-bottom:16px}
 .card{display:grid;grid-template-columns:84px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
 .card:last-of-type{border-bottom:1px solid var(--line)}
-.poster{aspect-ratio:9/16;background:var(--plum);border-radius:9px;position:relative}
-.poster span{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;color:#b9a0b3;font-size:.58rem}
+.poster{aspect-ratio:9/16;background:linear-gradient(155deg,var(--blush),#fff 55%,var(--line));border-radius:9px;position:relative;overflow:hidden}
+.poster .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',Georgia,serif;font-size:2rem;font-weight:700;color:var(--wine);opacity:.32}
+.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit;z-index:1;display:block}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
 .card h3{font-size:1.15rem}
 .card h3 a{color:var(--plum);text-decoration:none}
 .card h3 a:hover{color:var(--wine)}
@@ -305,7 +316,7 @@ def title_card(t, role_html="", depth=1, title_pre=None):
     trope_html = "".join(trope_chip(tr, pre) for tr in tropes_of(t))
     yr = f'{t["year"]} · ' if t["year"] else ""
     return f"""<article class="card">
-<div class="poster"><span>poster 9:16</span></div>
+<div class="poster">{poster_inner((t.get("poster_ref") or "").strip(), t['primary_title'][:1].upper())}</div>
 <div>{role_html}
 <h3><a href="{tp}titles/{tslug(t)}.html">{t['primary_title']}</a></h3>
 <p class="meta">{yr}{t['genres'].replace(';', ',').title()}</p>
@@ -382,7 +393,7 @@ for t in titles:
     yr = f'{t["year"]} · ' if t["year"] else ""
     body = f"""
 <section class="hero"><div class="wrap hero-grid">
-<div class="frame"><div class="ph">poster 9:16</div></div>
+<div class="frame">{poster_inner((t.get("poster_ref") or "").strip(), t['primary_title'][:1].upper())}</div>
 <div><p class="eyebrow">Vertical Drama{' · community reported, verification pending' if t.get('data_confidence')=='needs_check' else ''}</p><h1>{t['primary_title']}</h1>
 <p class="lede">{yr}{t['genres'].replace(';', ',').title()} · {t['status'].title()}</p>
 <div class="tropes" style="margin-top:12px">{trope_html}</div>
