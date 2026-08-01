@@ -226,11 +226,14 @@ def poster_card(t, pre="", rail_item=False, size_sm=False, show_app=True, note="
                     if app_name in APP_PAGE_NAMES else f'<span class="app-name">{app_name}</span>')
     if note: app_html = f'<span class="card-note">{note}</span>' + app_html
     href = f'{pre}titles/{tslug(t)}.html'
+    star = (f'<button class="fav-btn" type="button" data-fav="{tslug(t)}" '
+            f'aria-label="Save {esc_attr(t["primary_title"])} to my list" aria-pressed="false">'
+            f'<span aria-hidden="true">&#9733;</span></button>')
     return (f'<div class="{cls}" '
             f'data-v="{title_views(t)}" data-n="{esc_attr(t["primary_title"].lower())}" '
             f'data-y="{esc_attr(t.get("year") or "")}" data-app="{slug(app_name) if app_name else ""}" '
             f'data-ai="{"1" if is_ai(t) else ""}">'
-            f'<a class="poster-link" href="{href}">{poster_box(t, app_name)}</a>'
+            f'<a class="poster-link" href="{href}">{poster_box(t, app_name)}</a>{star}'
             f'{app_html}<a class="meta" href="{href}">{meta}</a></div>')
 
 # Reusable client-side re-sort for a static grid (Actor detail, Trope page). Cards
@@ -390,7 +393,22 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .grid.az{grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:12px}
 
 /* ---------- poster card (grid/rail) ---------- */
-.poster-card{display:flex;flex-direction:column;gap:6px;min-width:0;color:inherit}
+.poster-card{display:flex;flex-direction:column;gap:6px;min-width:0;color:inherit;position:relative}
+.fav-btn{position:absolute;top:7px;left:7px;z-index:4;width:32px;height:32px;padding:0;border:0;cursor:pointer;
+border-radius:50%;background:rgba(43,27,46,.55);color:rgba(255,255,255,.85);font-size:16px;line-height:1;
+display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
+.fav-btn:hover{background:rgba(43,27,46,.8);color:#fff}
+.fav-btn[aria-pressed="true"]{background:var(--gold);color:#241A12}
+.fav-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.title-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+.act-btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:11px 18px;border-radius:2px;
+border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:pointer;min-height:44px;font-family:inherit}
+.act-btn:hover{background:var(--wine);color:#fff}
+.act-btn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#241A12}
+.act-btn[aria-pressed="true"]:hover{background:var(--gold-deep);color:#fff}
+.fav-hint{font-size:13px;color:var(--tert);margin-top:10px}
+.mylist-empty{border:1.5px dashed var(--line);border-radius:3px;padding:40px 24px;text-align:center;background:#fff}
+.mylist-empty h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:6px;font-size:19px}
 .poster-card .poster-link{display:block;margin-bottom:4px}
 .poster-card .meta{display:block;text-decoration:none}
 .poster-card .app-name:hover{color:var(--wine-hover);text-decoration:underline}
@@ -648,6 +666,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val=""):
 <a href="{pre}platforms.html">Apps</a>
 <a href="{pre}tropes/index.html">Tropes</a>
 <a href="{pre}blog.html">Blog</a>
+<a href="{pre}my-list.html">My List</a>
 </nav>
 <form class="site-search" action="{pre}browse.html" method="get">
 <span class="glyph">&#8981;</span>
@@ -666,7 +685,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val=""):
 <div class="footer-col"><span class="h">Apps</span>
 {app_links}<a href="{pre}platforms.html">All apps</a></div>
 <div class="footer-col"><span class="h">Site</span>
-<a href="{pre}index.html">Home</a><a href="{pre}blog.html">Blog</a><a href="{pre}contact.html">Contact</a></div>
+<a href="{pre}index.html">Home</a><a href="{pre}my-list.html">My List</a><a href="{pre}blog.html">Blog</a><a href="{pre}contact.html">Contact</a></div>
 </div>
 </footer>
 </body></html>"""
@@ -683,6 +702,73 @@ def watch_buttons(title_id, pre=""):
         others = ", ".join(platforms.get(r["platform_id"], {}).get("name", "?") for r in avails[1:])
         out += f'<span class="watch-more">Also on {others}</span>'
     return out
+
+# Favourites live ONLY in the visitor's own browser (localStorage). Nothing is sent
+# anywhere, there is no account and no backend, so there is nothing to secure and
+# nothing to breach. The UI says "saved on this device" so nobody expects it to sync.
+FAV_JS = """
+<script>
+(function(){
+  var KEY='dea_favs';
+  function read(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+  function write(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch(e){} }
+  function has(s){ return read().indexOf(s)!==-1; }
+  function toggle(s){
+    var v=read(), i=v.indexOf(s);
+    if(i===-1) v.push(s); else v.splice(i,1);
+    write(v); return i===-1;
+  }
+  window.deaFavs={read:read,has:has,toggle:toggle,KEY:KEY};
+
+  function paint(btn){
+    var on=has(btn.dataset.fav);
+    btn.setAttribute('aria-pressed', on?'true':'false');
+    if(btn.classList.contains('act-btn')){
+      var lbl=btn.querySelector('.act-label');
+      if(lbl) lbl.textContent = on ? 'Saved to my list' : 'Save to my list';
+    }
+  }
+  function wire(root){
+    (root||document).querySelectorAll('[data-fav]').forEach(function(b){
+      if(b.dataset.favWired) return;
+      b.dataset.favWired='1';
+      paint(b);
+      b.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        toggle(b.dataset.fav);
+        document.querySelectorAll('[data-fav="'+b.dataset.fav+'"]').forEach(paint);
+        if(window.deaOnFavChange) window.deaOnFavChange();
+      });
+    });
+  }
+  window.deaWireFavs=wire;
+  if(document.readyState!=='loading') wire(); else document.addEventListener('DOMContentLoaded',function(){wire();});
+})();
+</script>
+"""
+
+# Share uses the phone's own share sheet where available and falls back to copying the
+# link. No third-party buttons, so no tracking scripts loaded onto the page.
+SHARE_JS = """
+<script>
+document.addEventListener('click', function(e){
+  var b=e.target.closest('[data-share]');
+  if(!b) return;
+  e.preventDefault();
+  var url=b.dataset.share, title=b.dataset.shareTitle||document.title;
+  if(navigator.share){ navigator.share({title:title,url:url}).catch(function(){}); return; }
+  var done=function(){
+    var l=b.querySelector('.act-label'); if(!l) return;
+    var old=l.textContent; l.textContent='Link copied';
+    setTimeout(function(){ l.textContent=old; }, 1800);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(done).catch(function(){ window.prompt('Copy this link:', url); });
+  } else { window.prompt('Copy this link:', url); }
+});
+</script>
+"""
+
 
 def watch_card(title_id, pre=""):
     return (f'<div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(title_id, pre)}'
@@ -795,7 +881,7 @@ def actor_summary(p, pairs):
 for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + origins_other:
     p = os.path.join(DIST, d)
     if os.path.exists(p): shutil.rmtree(p)
-for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "robots.txt", "sitemap.xml", "style.css"]:
+for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "my-list.html", "robots.txt", "sitemap.xml", "style.css"]:
     p = os.path.join(DIST, f)
     if os.path.exists(p): os.remove(p)
 for d in ["", "actors", "titles", "tropes", "apps"]:
@@ -863,7 +949,7 @@ for p in people:
 <div class="results-head"><h2 style="font-size:24px">Credits</h2>{sort_select('credits-grid')}</div>
 <div class="grid" id="credits-grid">{cards}</div>
 </section>
-{SORT_JS}
+{SORT_JS}{FAV_JS}
 <section class="faq"><div class="wrap"><h2>{p['name']}: quick answers</h2>
 <details><summary>What is {p['name']} best known for?</summary><p>{p['bio_short'].split('.')[0]}.</p></details>
 <details><summary>What apps are {p['name']} dramas on?</summary><p>Verified so far: {plat_line}. Each title above links to where it streams.</p></details>
@@ -983,6 +1069,13 @@ for t in titles:
 <div class="chips" style="margin-bottom:26px">{trope_html}</div>
 <div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
+<div class="title-actions">
+<button class="act-btn" type="button" data-fav="{tslug(t)}" aria-pressed="false">
+<span aria-hidden="true">&#9733;</span><span class="act-label">Save to my list</span></button>
+<button class="act-btn" type="button" data-share="{DOMAIN}/{d}titles/{tslug(t)}.html" data-share-title="{esc_attr(t['primary_title'])}">
+<span aria-hidden="true">&#8599;</span><span class="act-label">Share</span></button>
+</div>
+<p class="fav-hint">Your list is saved on this device only &mdash; no account, nothing sent anywhere.</p>
 {f'<p class="hint" style="margin-top:14px">Also known as: {t["alt_titles"].replace(";", ", ")}</p>' if t.get('alt_titles') else ''}
 <div class="story"><h2>The story</h2><p>{t['synopsis_short']}</p></div>
 </div>
@@ -991,7 +1084,8 @@ for t in titles:
 {f'''<section class="section-warm" style="padding:30px 0 44px">
 <div class="section-head pad"><h2>If you liked this</h2><span class="hint" style="font-size:13.5px;color:var(--tert)">{" &middot; ".join(list(my_tropes)[:2])}</span></div>
 <div class="rail">{similar_html}</div>
-</section>''' if similar_html else ''}"""
+</section>''' if similar_html else ''}
+{FAV_JS}{SHARE_JS}"""
     html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
                 f"{t['primary_title']}: where to watch, cast and tropes. Updated {UPDATED}.",
                 body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t))
@@ -1035,7 +1129,7 @@ for tr in all_tropes:
 <div class="grid" id="trope-grid">{cards}</div>
 {more_html}
 </section>
-{SORT_JS}"""
+{SORT_JS}{FAV_JS}"""
     html = page(f"Best {trope_heading(tr)} Vertical Dramas (2026) | DramaEverAfter",
                 f"Every verified {tr} vertical drama across ReelShort, DramaBox and more. Updated {UPDATED}.",
                 body, f"{DOMAIN}/tropes/{sl}.html")
@@ -1329,7 +1423,9 @@ BROWSE_JS = f"""
     }}
     var href='titles/'+esc(t.s)+'.html';
     return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+
-      '</span></a>'+appHtml+'<a class="meta" href="'+href+'">'+esc(bits.join(' \\u00b7 '))+'</a></div>';
+      '</span></a><button class="fav-btn" type="button" data-fav="'+esc(t.s)+'" aria-pressed="false" '+
+      'aria-label="Save to my list"><span aria-hidden="true">&#9733;</span></button>'+appHtml+
+      '<a class="meta" href="'+href+'">'+esc(bits.join(' \\u00b7 '))+'</a></div>';
   }}
   function actorCard(a){{
     var initials=a.n.split(' ').map(function(w){{return w.charAt(0).toUpperCase();}}).slice(0,2).join('');
@@ -1356,6 +1452,7 @@ BROWSE_JS = f"""
     var slice=lastTitles.slice(0,visibleCount);
     titlesOut.innerHTML=slice.map(posterCard).join('') || '<p class="no-results">No titles match. Try removing a filter.</p>';
     moreWrap.style.display = lastTitles.length>visibleCount ? '' : 'none';
+    if(window.deaWireFavs) window.deaWireFavs(titlesOut);
   }}
 
   function run(){{
@@ -1398,6 +1495,7 @@ BROWSE_JS = f"""
     document.getElementById('active-summary').textContent = (nf||q) ? ((nf?nf+' filter'+(nf>1?'s':'')+' on':'')+(nf&&q?', ':'')+(q?'searching \\"'+q+'\\"':'')) : 'No filters yet \\u2014 showing everything';
 
     renderTitles();
+    if(window.deaWireFavs) window.deaWireFavs(titlesOut);
 
     if(q){{
       actorsOut.innerHTML=actors.slice(0,24).map(actorCard).join('') || '<p class="no-results">No actors match.</p>';
@@ -1494,12 +1592,91 @@ browse_body = f"""
 <section class="section-warm pad" id="results-actors-section" style="display:none;padding:34px 22px 40px">
 <h2 style="margin-bottom:18px">Actors</h2><div class="grid circles" id="results-actors"></div>
 </section>
-{BROWSE_JS}"""
+{FAV_JS}{BROWSE_JS}"""
 html = page("Search DramaEverAfter: Every Actor and Title (2026) | DramaEverAfter",
             f"Search and filter {len(people)} vertical drama actors and {len(titles_root)} titles by trope and platform.",
             browse_body, f"{DOMAIN}/browse.html", depth=0)
 open(os.path.join(DIST, "browse.html"), "w").write(html)
 urls.append("/browse.html")
+
+# My List. Renders entirely from localStorage + the existing search index, so the
+# page itself is static and personal to whoever opens it. No account, no server.
+MYLIST_JS = """
+<script>
+(function(){
+  var out=document.getElementById('mylist-grid'), empty=document.getElementById('mylist-empty'),
+      countEl=document.getElementById('mylist-count'), clearBtn=document.getElementById('mylist-clear');
+  var PLABEL=%(plabel)s, TLABEL=%(tlabel)s, APPPAGE=%(apppage)s, D=null;
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+  function vlabel(n){ if(!n) return '';
+    if(n>=1e9) return (n/1e9).toFixed(1)+'B views';
+    if(n>=1e6) return Math.round(n/1e6)+'M views';
+    if(n>=1e3) return Math.round(n/1e3)+'K views'; return ''; }
+  function card(t){
+    var app=(t.pl&&t.pl[0]&&PLABEL[t.pl[0]])||'';
+    var plate='<span class="poster--empty"><span class="label">No poster</span><span class="ttl">'+esc(t.n)+
+      '</span><span class="app">'+esc(app)+'</span></span>';
+    var img=t.i?'<img src="'+esc(t.i)+'" alt="'+esc(t.n)+'" loading="lazy" onerror="this.remove()">':'';
+    var bits=[]; var vl=vlabel(t.v); if(vl) bits.push(vl); if(t.tr&&t.tr[0]) bits.push(TLABEL[t.tr[0]]||t.tr[0]);
+    var appHtml = app ? (APPPAGE[t.pl[0]]
+      ? '<a class="app-name" href="apps/'+esc(t.pl[0])+'.html">'+esc(app)+'</a>'
+      : '<span class="app-name">'+esc(app)+'</span>') : '';
+    var href='titles/'+esc(t.s)+'.html';
+    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+
+      '</span></a><button class="fav-btn" type="button" data-fav="'+esc(t.s)+'" aria-pressed="false" '+
+      'aria-label="Remove from my list"><span aria-hidden="true">&#9733;</span></button>'+appHtml+
+      '<a class="meta" href="'+href+'">'+esc(bits.join(' · '))+'</a></div>';
+  }
+  function render(){
+    if(!D) return;
+    var favs=window.deaFavs.read();
+    var picked=D.titles.filter(function(t){ return favs.indexOf(t.s)!==-1; });
+    countEl.textContent = picked.length ? picked.length+(picked.length===1?' drama':' dramas')+' saved' : '';
+    clearBtn.style.display = picked.length ? 'inline-flex' : 'none';
+    if(!picked.length){ out.innerHTML=''; empty.style.display=''; return; }
+    empty.style.display='none';
+    out.innerHTML = picked.map(card).join('');
+    window.deaWireFavs(out);
+  }
+  window.deaOnFavChange = render;
+  clearBtn.addEventListener('click', function(){
+    if(!window.confirm('Remove every drama from your list? This cannot be undone.')) return;
+    try{ localStorage.setItem(window.deaFavs.KEY,'[]'); }catch(e){}
+    render();
+  });
+  fetch('search-index.json').then(function(r){return r.json();}).then(function(d){ D=d; render(); })
+    .catch(function(){ empty.style.display=''; });
+})();
+</script>
+""" % {"plabel": json.dumps(platform_label, separators=(",", ":")),
+        "tlabel": json.dumps(trope_label, separators=(",", ":")),
+        "apppage": json.dumps({slug(p["name"]): 1 for p in APPS_WITH_DATA}, separators=(",", ":"))}
+
+mylist_body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Your list</p><h1>Dramas you saved</h1>
+<p class="lede">Star anything on the site and it lands here. Saved in this browser only &mdash;
+no account, no sign-up, and nothing is sent anywhere. Clearing your browser data clears the list.</p>
+<p id="mylist-count" style="font-size:15px;color:var(--sec)"></p>
+</div></section>
+<section class="pad" style="padding:26px 22px 46px">
+<div id="mylist-empty" class="mylist-empty" style="display:none">
+<h3>Nothing saved yet</h3>
+<p>Tap the star on any drama and it will show up here.</p>
+<p style="margin-top:16px"><a class="btn btn-wine" href="browse.html">Browse dramas &rarr;</a></p>
+</div>
+<div class="grid" id="mylist-grid"></div>
+<div style="margin-top:28px">
+<button class="act-btn" id="mylist-clear" type="button" style="display:none">Clear my list</button>
+</div>
+</section>
+{FAV_JS}{MYLIST_JS}"""
+html = page("My List | DramaEverAfter",
+            "The dramas you have saved, kept in your own browser.",
+            mylist_body, f"{DOMAIN}/my-list.html", depth=0)
+open(os.path.join(DIST, "my-list.html"), "w").write(html)
+urls.append("/my-list.html")
+
 
 # Per-origin section indexes (e.g. /chinese/index.html). Western has no section index —
 # it IS the root site. Only emitted for origins that actually have titles.
@@ -1628,7 +1805,8 @@ body = f"""
 <div class="section-head"><h2>Just added</h2><span class="hint" style="font-size:13px;color:var(--tert)">Updated {UPDATED}</span></div>
 <div class="rail" style="padding:0">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in just_added[:10])}</div>
 </section>
-{section_links}"""
+{section_links}
+{FAV_JS}"""
 html = page("DramaEverAfter: Every Vertical Drama, Every Platform, One Place",
             "The searchable database of vertical dramas and micro dramas: actors, tropes, and where to watch across ReelShort, DramaBox, ShortMax and more.",
             body, f"{DOMAIN}/", depth=0)

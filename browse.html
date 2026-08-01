@@ -17,6 +17,7 @@
 <a href="platforms.html">Apps</a>
 <a href="tropes/index.html">Tropes</a>
 <a href="blog.html">Blog</a>
+<a href="my-list.html">My List</a>
 </nav>
 <form class="site-search" action="browse.html" method="get">
 <span class="glyph">&#8981;</span>
@@ -72,6 +73,45 @@
 
 <script>
 (function(){
+  var KEY='dea_favs';
+  function read(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+  function write(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch(e){} }
+  function has(s){ return read().indexOf(s)!==-1; }
+  function toggle(s){
+    var v=read(), i=v.indexOf(s);
+    if(i===-1) v.push(s); else v.splice(i,1);
+    write(v); return i===-1;
+  }
+  window.deaFavs={read:read,has:has,toggle:toggle,KEY:KEY};
+
+  function paint(btn){
+    var on=has(btn.dataset.fav);
+    btn.setAttribute('aria-pressed', on?'true':'false');
+    if(btn.classList.contains('act-btn')){
+      var lbl=btn.querySelector('.act-label');
+      if(lbl) lbl.textContent = on ? 'Saved to my list' : 'Save to my list';
+    }
+  }
+  function wire(root){
+    (root||document).querySelectorAll('[data-fav]').forEach(function(b){
+      if(b.dataset.favWired) return;
+      b.dataset.favWired='1';
+      paint(b);
+      b.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        toggle(b.dataset.fav);
+        document.querySelectorAll('[data-fav="'+b.dataset.fav+'"]').forEach(paint);
+        if(window.deaOnFavChange) window.deaOnFavChange();
+      });
+    });
+  }
+  window.deaWireFavs=wire;
+  if(document.readyState!=='loading') wire(); else document.addEventListener('DOMContentLoaded',function(){wire();});
+})();
+</script>
+
+<script>
+(function(){
   var D=null, STEP=24, visibleCount=STEP, lastTitles=[];
   var PLABEL={"goodshort":"GoodShort","vigloo":"Vigloo","reelshort":"ReelShort","my-drama":"My Drama","dramabox":"DramaBox","shortmax":"ShortMax","shortical":"Shortical","shorts":"Shorts","netshort":"NetShort","candyjar":"CandyJar","pinedrama":"PineDrama","playlet":"Playlet","dreameshort":"DreameShort","kalostv":"KalosTV","dramawave":"DramaWave"};
   var APPPAGE={"goodshort":1,"reelshort":1,"vigloo":1,"my-drama":1,"netshort":1,"pinedrama":1,"candyjar":1,"dramabox":1,"shortical":1,"dreameshort":1,"shortmax":1,"shorts":1,"playlet":1,"kalostv":1,"dramawave":1};
@@ -109,7 +149,9 @@
     }
     var href='titles/'+esc(t.s)+'.html';
     return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+
-      '</span></a>'+appHtml+'<a class="meta" href="'+href+'">'+esc(bits.join(' \u00b7 '))+'</a></div>';
+      '</span></a><button class="fav-btn" type="button" data-fav="'+esc(t.s)+'" aria-pressed="false" '+
+      'aria-label="Save to my list"><span aria-hidden="true">&#9733;</span></button>'+appHtml+
+      '<a class="meta" href="'+href+'">'+esc(bits.join(' \u00b7 '))+'</a></div>';
   }
   function actorCard(a){
     var initials=a.n.split(' ').map(function(w){return w.charAt(0).toUpperCase();}).slice(0,2).join('');
@@ -136,6 +178,7 @@
     var slice=lastTitles.slice(0,visibleCount);
     titlesOut.innerHTML=slice.map(posterCard).join('') || '<p class="no-results">No titles match. Try removing a filter.</p>';
     moreWrap.style.display = lastTitles.length>visibleCount ? '' : 'none';
+    if(window.deaWireFavs) window.deaWireFavs(titlesOut);
   }
 
   function run(){
@@ -178,6 +221,7 @@
     document.getElementById('active-summary').textContent = (nf||q) ? ((nf?nf+' filter'+(nf>1?'s':'')+' on':'')+(nf&&q?', ':'')+(q?'searching \"'+q+'\"':'')) : 'No filters yet \u2014 showing everything';
 
     renderTitles();
+    if(window.deaWireFavs) window.deaWireFavs(titlesOut);
 
     if(q){
       actorsOut.innerHTML=actors.slice(0,24).map(actorCard).join('') || '<p class="no-results">No actors match.</p>';
@@ -238,7 +282,7 @@
 <div class="footer-col"><span class="h">Apps</span>
 <a href="apps/goodshort.html">GoodShort</a><a href="apps/reelshort.html">ReelShort</a><a href="apps/vigloo.html">Vigloo</a><a href="platforms.html">All apps</a></div>
 <div class="footer-col"><span class="h">Site</span>
-<a href="index.html">Home</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+<a href="index.html">Home</a><a href="my-list.html">My List</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
 </div>
 </footer>
 </body></html>

@@ -17,6 +17,7 @@
 <a href="../platforms.html">Apps</a>
 <a href="../tropes/index.html">Tropes</a>
 <a href="../blog.html">Blog</a>
+<a href="../my-list.html">My List</a>
 </nav>
 <form class="site-search" action="../browse.html" method="get">
 <span class="glyph">&#8981;</span>
@@ -34,11 +35,76 @@
 <div class="chips" style="margin-bottom:26px"></div>
 <div class="watch-card"><p class="label">Where to watch</p><a class="watch-btn" href="https://my-drama.com/series/hiding-in-his-shower-22502f60-4073-44b8-a81c-137459f2aa4f"><span>Watch on My Drama</span><span class="arrow">&rarr;</span></a>
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
+<div class="title-actions">
+<button class="act-btn" type="button" data-fav="hiding-in-his-shower" aria-pressed="false">
+<span aria-hidden="true">&#9733;</span><span class="act-label">Save to my list</span></button>
+<button class="act-btn" type="button" data-share="https://dramaeverafter.com/titles/hiding-in-his-shower.html" data-share-title="Hiding in His Shower">
+<span aria-hidden="true">&#8599;</span><span class="act-label">Share</span></button>
+</div>
+<p class="fav-hint">Your list is saved on this device only &mdash; no account, nothing sent anywhere.</p>
 
 <div class="story"><h2>The story</h2><p></p></div>
 </div>
 </section>
 <section class="pad" style="padding:34px 22px 36px"><h2 style="font-size:24px;margin-bottom:20px">Cast</h2><div class="grid cast"><a class="person-row " href="../actors/kyle-fragnoli.html"><span class="ring ring--md"><span>KF</span></span><span class="stack"><span class="name">Kyle Fragnoli</span><span class="sub">Actor · 6 titles</span></span></a><a class="person-row " href="../actors/kateryna-belinska.html"><span class="ring ring--md"><span>KB</span></span><span class="stack"><span class="name">Kateryna Belinska</span><span class="sub">Actor · 9 titles</span></span></a><a class="person-row " href="../actors/yehor-kozlov.html"><span class="ring ring--md"><span>YK</span></span><span class="stack"><span class="name">Yehor Kozlov</span><span class="sub">Actor · 11 titles</span></span></a></div></section>
+
+
+<script>
+(function(){
+  var KEY='dea_favs';
+  function read(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+  function write(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch(e){} }
+  function has(s){ return read().indexOf(s)!==-1; }
+  function toggle(s){
+    var v=read(), i=v.indexOf(s);
+    if(i===-1) v.push(s); else v.splice(i,1);
+    write(v); return i===-1;
+  }
+  window.deaFavs={read:read,has:has,toggle:toggle,KEY:KEY};
+
+  function paint(btn){
+    var on=has(btn.dataset.fav);
+    btn.setAttribute('aria-pressed', on?'true':'false');
+    if(btn.classList.contains('act-btn')){
+      var lbl=btn.querySelector('.act-label');
+      if(lbl) lbl.textContent = on ? 'Saved to my list' : 'Save to my list';
+    }
+  }
+  function wire(root){
+    (root||document).querySelectorAll('[data-fav]').forEach(function(b){
+      if(b.dataset.favWired) return;
+      b.dataset.favWired='1';
+      paint(b);
+      b.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        toggle(b.dataset.fav);
+        document.querySelectorAll('[data-fav="'+b.dataset.fav+'"]').forEach(paint);
+        if(window.deaOnFavChange) window.deaOnFavChange();
+      });
+    });
+  }
+  window.deaWireFavs=wire;
+  if(document.readyState!=='loading') wire(); else document.addEventListener('DOMContentLoaded',function(){wire();});
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(e){
+  var b=e.target.closest('[data-share]');
+  if(!b) return;
+  e.preventDefault();
+  var url=b.dataset.share, title=b.dataset.shareTitle||document.title;
+  if(navigator.share){ navigator.share({title:title,url:url}).catch(function(){}); return; }
+  var done=function(){
+    var l=b.querySelector('.act-label'); if(!l) return;
+    var old=l.textContent; l.textContent='Link copied';
+    setTimeout(function(){ l.textContent=old; }, 1800);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(done).catch(function(){ window.prompt('Copy this link:', url); });
+  } else { window.prompt('Copy this link:', url); }
+});
+</script>
 
 <footer class="site-footer">
 <div class="footer-brand">
@@ -51,7 +117,7 @@
 <div class="footer-col"><span class="h">Apps</span>
 <a href="../apps/goodshort.html">GoodShort</a><a href="../apps/reelshort.html">ReelShort</a><a href="../apps/vigloo.html">Vigloo</a><a href="../platforms.html">All apps</a></div>
 <div class="footer-col"><span class="h">Site</span>
-<a href="../index.html">Home</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
+<a href="../index.html">Home</a><a href="../my-list.html">My List</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
 </div>
 </footer>
 </body></html>

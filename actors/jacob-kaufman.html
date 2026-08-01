@@ -17,6 +17,7 @@
 <a href="../platforms.html">Apps</a>
 <a href="../tropes/index.html">Tropes</a>
 <a href="../blog.html">Blog</a>
+<a href="../my-list.html">My List</a>
 </nav>
 <form class="site-search" action="../browse.html" method="get">
 <span class="glyph">&#8981;</span>
@@ -43,7 +44,7 @@
 </section>
 <section class="pad" style="padding:26px 22px 46px">
 <div class="results-head"><h2 style="font-size:24px">Credits</h2><label class="sort-label">Sort<select class="sort-select" data-sort-for="credits-grid" aria-label="Sort"><option value="views">Most watched</option><option value="year">Newest</option><option value="az">A&ndash;Z</option></select></label></div>
-<div class="grid" id="credits-grid"><div class="poster-card" data-v="95800000" data-n="mic drop diva" data-y="2026" data-app="reelshort" data-ai=""><a class="poster-link" href="../titles/mic-drop-diva.html"><span class="poster"><span class="poster--empty"><span class="label">No poster</span><span class="ttl">Mic Drop Diva</span><span class="app">ReelShort</span></span><img src="https://v-img.crazymaplestudios.com/v-images/book_cover_batch/200000000000003920/c6072b01-7f1c-4b1f-8988-45eb616423cc.jpg" alt="Mic Drop Diva" loading="lazy" onerror="this.remove()"></span></a><span class="card-note">Actor &middot; Tyler Carter</span><a class="app-name" href="../apps/reelshort.html">ReelShort</a><a class="meta" href="../titles/mic-drop-diva.html">96M views &middot; fake-relationship</a></div><div class="poster-card" data-v="23900000" data-n="my hockey alpha" data-y="" data-app="reelshort" data-ai=""><a class="poster-link" href="../titles/my-hockey-alpha.html"><span class="poster"><span class="poster--empty"><span class="label">No poster</span><span class="ttl">My Hockey Alpha</span><span class="app">ReelShort</span></span><img src="https://v-img.crazymaplestudios.com/v-images/book_cover_batch/200000000000000327/f5f28a7a-6a3e-4c9f-8d2b-795d1880421e.jpg" alt="My Hockey Alpha" loading="lazy" onerror="this.remove()"></span></a><span class="card-note">Actor &middot; Justin</span><a class="app-name" href="../apps/reelshort.html">ReelShort</a><a class="meta" href="../titles/my-hockey-alpha.html">24M views &middot; dark romance</a></div></div>
+<div class="grid" id="credits-grid"><div class="poster-card" data-v="95800000" data-n="mic drop diva" data-y="2026" data-app="reelshort" data-ai=""><a class="poster-link" href="../titles/mic-drop-diva.html"><span class="poster"><span class="poster--empty"><span class="label">No poster</span><span class="ttl">Mic Drop Diva</span><span class="app">ReelShort</span></span><img src="https://v-img.crazymaplestudios.com/v-images/book_cover_batch/200000000000003920/c6072b01-7f1c-4b1f-8988-45eb616423cc.jpg" alt="Mic Drop Diva" loading="lazy" onerror="this.remove()"></span></a><button class="fav-btn" type="button" data-fav="mic-drop-diva" aria-label="Save Mic Drop Diva to my list" aria-pressed="false"><span aria-hidden="true">&#9733;</span></button><span class="card-note">Actor &middot; Tyler Carter</span><a class="app-name" href="../apps/reelshort.html">ReelShort</a><a class="meta" href="../titles/mic-drop-diva.html">96M views &middot; fake-relationship</a></div><div class="poster-card" data-v="23900000" data-n="my hockey alpha" data-y="" data-app="reelshort" data-ai=""><a class="poster-link" href="../titles/my-hockey-alpha.html"><span class="poster"><span class="poster--empty"><span class="label">No poster</span><span class="ttl">My Hockey Alpha</span><span class="app">ReelShort</span></span><img src="https://v-img.crazymaplestudios.com/v-images/book_cover_batch/200000000000000327/f5f28a7a-6a3e-4c9f-8d2b-795d1880421e.jpg" alt="My Hockey Alpha" loading="lazy" onerror="this.remove()"></span></a><button class="fav-btn" type="button" data-fav="my-hockey-alpha" aria-label="Save My Hockey Alpha to my list" aria-pressed="false"><span aria-hidden="true">&#9733;</span></button><span class="card-note">Actor &middot; Justin</span><a class="app-name" href="../apps/reelshort.html">ReelShort</a><a class="meta" href="../titles/my-hockey-alpha.html">24M views &middot; dark romance</a></div></div>
 </section>
 
 <script>
@@ -73,6 +74,45 @@ document.querySelectorAll('[data-app-filter-for]').forEach(function(sel){
 });
 </script>
 
+<script>
+(function(){
+  var KEY='dea_favs';
+  function read(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+  function write(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch(e){} }
+  function has(s){ return read().indexOf(s)!==-1; }
+  function toggle(s){
+    var v=read(), i=v.indexOf(s);
+    if(i===-1) v.push(s); else v.splice(i,1);
+    write(v); return i===-1;
+  }
+  window.deaFavs={read:read,has:has,toggle:toggle,KEY:KEY};
+
+  function paint(btn){
+    var on=has(btn.dataset.fav);
+    btn.setAttribute('aria-pressed', on?'true':'false');
+    if(btn.classList.contains('act-btn')){
+      var lbl=btn.querySelector('.act-label');
+      if(lbl) lbl.textContent = on ? 'Saved to my list' : 'Save to my list';
+    }
+  }
+  function wire(root){
+    (root||document).querySelectorAll('[data-fav]').forEach(function(b){
+      if(b.dataset.favWired) return;
+      b.dataset.favWired='1';
+      paint(b);
+      b.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        toggle(b.dataset.fav);
+        document.querySelectorAll('[data-fav="'+b.dataset.fav+'"]').forEach(paint);
+        if(window.deaOnFavChange) window.deaOnFavChange();
+      });
+    });
+  }
+  window.deaWireFavs=wire;
+  if(document.readyState!=='loading') wire(); else document.addEventListener('DOMContentLoaded',function(){wire();});
+})();
+</script>
+
 <section class="faq"><div class="wrap"><h2>Jacob Kaufman: quick answers</h2>
 <details><summary>What is Jacob Kaufman best known for?</summary><p>Watch Movie Now >> Tyler Carter (Actor: Jacob Kaufman ) Tyler Carter of Mic Drop Diva used to be Ivy’s boyfriend.</p></details>
 <details><summary>What apps are Jacob Kaufman dramas on?</summary><p>Verified so far: ReelShort. Each title above links to where it streams.</p></details>
@@ -89,7 +129,7 @@ document.querySelectorAll('[data-app-filter-for]').forEach(function(sel){
 <div class="footer-col"><span class="h">Apps</span>
 <a href="../apps/goodshort.html">GoodShort</a><a href="../apps/reelshort.html">ReelShort</a><a href="../apps/vigloo.html">Vigloo</a><a href="../platforms.html">All apps</a></div>
 <div class="footer-col"><span class="h">Site</span>
-<a href="../index.html">Home</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
+<a href="../index.html">Home</a><a href="../my-list.html">My List</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
 </div>
 </footer>
 </body></html>

@@ -17,6 +17,7 @@
 <a href="../platforms.html">Apps</a>
 <a href="../tropes/index.html">Tropes</a>
 <a href="../blog.html">Blog</a>
+<a href="../my-list.html">My List</a>
 </nav>
 <form class="site-search" action="../browse.html" method="get">
 <span class="glyph">&#8981;</span>
@@ -43,7 +44,7 @@
 </section>
 <section class="pad" style="padding:26px 22px 46px">
 <div class="results-head"><h2 style="font-size:24px">Credits</h2><label class="sort-label">Sort<select class="sort-select" data-sort-for="credits-grid" aria-label="Sort"><option value="views">Most watched</option><option value="year">Newest</option><option value="az">A&ndash;Z</option></select></label></div>
-<div class="grid" id="credits-grid"><div class="poster-card" data-v="55300000" data-n="leaving my alpha husband in ice cold regret" data-y="2025" data-app="reelshort" data-ai=""><a class="poster-link" href="../titles/leaving-my-alpha-husband-in-ice-cold-regret.html"><span class="poster"><span class="poster--empty"><span class="label">No poster</span><span class="ttl">Leaving My Alpha Husband in Ice Cold Regret</span><span class="app">ReelShort</span></span><img src="https://v-img.crazymaplestudios.com/v-images/book_cover_batch/200000000000000350/08645f11-37a0-4ae8-8920-a9354f7a03c4.jpg" alt="Leaving My Alpha Husband in Ice Cold Regret" loading="lazy" onerror="this.remove()"></span></a><span class="card-note">Actor</span><a class="app-name" href="../apps/reelshort.html">ReelShort</a><a class="meta" href="../titles/leaving-my-alpha-husband-in-ice-cold-regret.html">55M views &middot; independent-woman</a></div></div>
+<div class="grid" id="credits-grid"><div class="poster-card" data-v="55300000" data-n="leaving my alpha husband in ice cold regret" data-y="2025" data-app="reelshort" data-ai=""><a class="poster-link" href="../titles/leaving-my-alpha-husband-in-ice-cold-regret.html"><span class="poster"><span class="poster--empty"><span class="label">No poster</span><span class="ttl">Leaving My Alpha Husband in Ice Cold Regret</span><span class="app">ReelShort</span></span><img src="https://v-img.crazymaplestudios.com/v-images/book_cover_batch/200000000000000350/08645f11-37a0-4ae8-8920-a9354f7a03c4.jpg" alt="Leaving My Alpha Husband in Ice Cold Regret" loading="lazy" onerror="this.remove()"></span></a><button class="fav-btn" type="button" data-fav="leaving-my-alpha-husband-in-ice-cold-regret" aria-label="Save Leaving My Alpha Husband in Ice Cold Regret to my list" aria-pressed="false"><span aria-hidden="true">&#9733;</span></button><span class="card-note">Actor</span><a class="app-name" href="../apps/reelshort.html">ReelShort</a><a class="meta" href="../titles/leaving-my-alpha-husband-in-ice-cold-regret.html">55M views &middot; independent-woman</a></div></div>
 </section>
 
 <script>
@@ -73,6 +74,45 @@ document.querySelectorAll('[data-app-filter-for]').forEach(function(sel){
 });
 </script>
 
+<script>
+(function(){
+  var KEY='dea_favs';
+  function read(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+  function write(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch(e){} }
+  function has(s){ return read().indexOf(s)!==-1; }
+  function toggle(s){
+    var v=read(), i=v.indexOf(s);
+    if(i===-1) v.push(s); else v.splice(i,1);
+    write(v); return i===-1;
+  }
+  window.deaFavs={read:read,has:has,toggle:toggle,KEY:KEY};
+
+  function paint(btn){
+    var on=has(btn.dataset.fav);
+    btn.setAttribute('aria-pressed', on?'true':'false');
+    if(btn.classList.contains('act-btn')){
+      var lbl=btn.querySelector('.act-label');
+      if(lbl) lbl.textContent = on ? 'Saved to my list' : 'Save to my list';
+    }
+  }
+  function wire(root){
+    (root||document).querySelectorAll('[data-fav]').forEach(function(b){
+      if(b.dataset.favWired) return;
+      b.dataset.favWired='1';
+      paint(b);
+      b.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        toggle(b.dataset.fav);
+        document.querySelectorAll('[data-fav="'+b.dataset.fav+'"]').forEach(paint);
+        if(window.deaOnFavChange) window.deaOnFavChange();
+      });
+    });
+  }
+  window.deaWireFavs=wire;
+  if(document.readyState!=='loading') wire(); else document.addEventListener('DOMContentLoaded',function(){wire();});
+})();
+</script>
+
 <section class="faq"><div class="wrap"><h2>Annastasia Ortiz: quick answers</h2>
 <details><summary>What is Annastasia Ortiz best known for?</summary><p>.</p></details>
 <details><summary>What apps are Annastasia Ortiz dramas on?</summary><p>Verified so far: ReelShort. Each title above links to where it streams.</p></details>
@@ -89,7 +129,7 @@ document.querySelectorAll('[data-app-filter-for]').forEach(function(sel){
 <div class="footer-col"><span class="h">Apps</span>
 <a href="../apps/goodshort.html">GoodShort</a><a href="../apps/reelshort.html">ReelShort</a><a href="../apps/vigloo.html">Vigloo</a><a href="../platforms.html">All apps</a></div>
 <div class="footer-col"><span class="h">Site</span>
-<a href="../index.html">Home</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
+<a href="../index.html">Home</a><a href="../my-list.html">My List</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
 </div>
 </footer>
 </body></html>

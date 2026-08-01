@@ -78,7 +78,22 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .grid.az{grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:12px}
 
 /* ---------- poster card (grid/rail) ---------- */
-.poster-card{display:flex;flex-direction:column;gap:6px;min-width:0;color:inherit}
+.poster-card{display:flex;flex-direction:column;gap:6px;min-width:0;color:inherit;position:relative}
+.fav-btn{position:absolute;top:7px;left:7px;z-index:4;width:32px;height:32px;padding:0;border:0;cursor:pointer;
+border-radius:50%;background:rgba(43,27,46,.55);color:rgba(255,255,255,.85);font-size:16px;line-height:1;
+display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
+.fav-btn:hover{background:rgba(43,27,46,.8);color:#fff}
+.fav-btn[aria-pressed="true"]{background:var(--gold);color:#241A12}
+.fav-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.title-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+.act-btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:11px 18px;border-radius:2px;
+border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:pointer;min-height:44px;font-family:inherit}
+.act-btn:hover{background:var(--wine);color:#fff}
+.act-btn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#241A12}
+.act-btn[aria-pressed="true"]:hover{background:var(--gold-deep);color:#fff}
+.fav-hint{font-size:13px;color:var(--tert);margin-top:10px}
+.mylist-empty{border:1.5px dashed var(--line);border-radius:3px;padding:40px 24px;text-align:center;background:#fff}
+.mylist-empty h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:6px;font-size:19px}
 .poster-card .poster-link{display:block;margin-bottom:4px}
 .poster-card .meta{display:block;text-decoration:none}
 .poster-card .app-name:hover{color:var(--wine-hover);text-decoration:underline}

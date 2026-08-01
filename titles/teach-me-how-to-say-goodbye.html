@@ -17,6 +17,7 @@
 <a href="../platforms.html">Apps</a>
 <a href="../tropes/index.html">Tropes</a>
 <a href="../blog.html">Blog</a>
+<a href="../my-list.html">My List</a>
 </nav>
 <form class="site-search" action="../browse.html" method="get">
 <span class="glyph">&#8981;</span>
@@ -34,11 +35,76 @@
 <div class="chips" style="margin-bottom:26px"></div>
 <div class="watch-card"><p class="label">Where to watch</p><a class="watch-btn" href="https://www.reelshort.com/movie/teach-me-how-to-say-goodbye-6a33101c56c0faf2ce013299"><span>Watch on ReelShort</span><span class="arrow">&rarr;</span></a>
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
+<div class="title-actions">
+<button class="act-btn" type="button" data-fav="teach-me-how-to-say-goodbye" aria-pressed="false">
+<span aria-hidden="true">&#9733;</span><span class="act-label">Save to my list</span></button>
+<button class="act-btn" type="button" data-share="https://dramaeverafter.com/titles/teach-me-how-to-say-goodbye.html" data-share-title="Teach Me How to Say Goodbye">
+<span aria-hidden="true">&#8599;</span><span class="act-label">Share</span></button>
+</div>
+<p class="fav-hint">Your list is saved on this device only &mdash; no account, nothing sent anywhere.</p>
 
 <div class="story"><h2>The story</h2><p>Grace, a high school princess and Colt, her family's groundskeeper, are deeply in love. However, when Colt learns he has only months to live, he decides he'll do anything to push her away -- to help her let him go. Admist the misunderstandings and heartbreaks, will Grace find out the truth in time, </p></div>
 </div>
 </section>
 <section class="pad" style="padding:34px 22px 36px"><h2 style="font-size:24px;margin-bottom:20px">Cast</h2><div class="grid cast"><a class="person-row " href="../actors/luke-dodge.html"><span class="ring ring--md"><span>LD</span><img src="https://v-mps.crazymaplestudios.com/images/b80be1b0-7754-11f0-a06b-bdb674869ea1.jpg" alt="" loading="lazy" onerror="this.remove()"></span><span class="stack"><span class="name">Luke Dodge</span><span class="sub">Actor · 11 titles</span></span></a><a class="person-row " href="../actors/cayla-brady.html"><span class="ring ring--md"><span>CB</span></span><span class="stack"><span class="name">Cayla Brady</span><span class="sub">Actor · 8 titles</span></span></a><a class="person-row " href="../actors/heaven-nunez.html"><span class="ring ring--md"><span>HN</span></span><span class="stack"><span class="name">Heaven Nunez</span><span class="sub">Actor · 4 titles</span></span></a></div></section>
+
+
+<script>
+(function(){
+  var KEY='dea_favs';
+  function read(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+  function write(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch(e){} }
+  function has(s){ return read().indexOf(s)!==-1; }
+  function toggle(s){
+    var v=read(), i=v.indexOf(s);
+    if(i===-1) v.push(s); else v.splice(i,1);
+    write(v); return i===-1;
+  }
+  window.deaFavs={read:read,has:has,toggle:toggle,KEY:KEY};
+
+  function paint(btn){
+    var on=has(btn.dataset.fav);
+    btn.setAttribute('aria-pressed', on?'true':'false');
+    if(btn.classList.contains('act-btn')){
+      var lbl=btn.querySelector('.act-label');
+      if(lbl) lbl.textContent = on ? 'Saved to my list' : 'Save to my list';
+    }
+  }
+  function wire(root){
+    (root||document).querySelectorAll('[data-fav]').forEach(function(b){
+      if(b.dataset.favWired) return;
+      b.dataset.favWired='1';
+      paint(b);
+      b.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        toggle(b.dataset.fav);
+        document.querySelectorAll('[data-fav="'+b.dataset.fav+'"]').forEach(paint);
+        if(window.deaOnFavChange) window.deaOnFavChange();
+      });
+    });
+  }
+  window.deaWireFavs=wire;
+  if(document.readyState!=='loading') wire(); else document.addEventListener('DOMContentLoaded',function(){wire();});
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(e){
+  var b=e.target.closest('[data-share]');
+  if(!b) return;
+  e.preventDefault();
+  var url=b.dataset.share, title=b.dataset.shareTitle||document.title;
+  if(navigator.share){ navigator.share({title:title,url:url}).catch(function(){}); return; }
+  var done=function(){
+    var l=b.querySelector('.act-label'); if(!l) return;
+    var old=l.textContent; l.textContent='Link copied';
+    setTimeout(function(){ l.textContent=old; }, 1800);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(done).catch(function(){ window.prompt('Copy this link:', url); });
+  } else { window.prompt('Copy this link:', url); }
+});
+</script>
 
 <footer class="site-footer">
 <div class="footer-brand">
@@ -51,7 +117,7 @@
 <div class="footer-col"><span class="h">Apps</span>
 <a href="../apps/goodshort.html">GoodShort</a><a href="../apps/reelshort.html">ReelShort</a><a href="../apps/vigloo.html">Vigloo</a><a href="../platforms.html">All apps</a></div>
 <div class="footer-col"><span class="h">Site</span>
-<a href="../index.html">Home</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
+<a href="../index.html">Home</a><a href="../my-list.html">My List</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
 </div>
 </footer>
 </body></html>
