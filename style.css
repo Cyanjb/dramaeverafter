@@ -82,7 +82,13 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .poster-card .poster-link{display:block;margin-bottom:4px}
 .poster-card .meta{display:block;text-decoration:none}
 .poster-card .app-name:hover{color:var(--wine-hover);text-decoration:underline}
-.poster{position:relative;aspect-ratio:2/3;background:#F1E6E9;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+/* display:block is load-bearing. .poster is a <span>, and it used to be a flex ITEM of
+   an <a class="poster-card">, which blockified it for free. Splitting the card so the app
+   name could be its own link left it as a plain inline box, and an absolutely-positioned
+   image inside an inline containing block resolves to ZERO width -- every poster on the
+   site silently vanished while the HTML still looked perfect. Do not remove. */
+.poster{display:block;position:relative;aspect-ratio:2/3;background:#F1E6E9;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.poster--empty{display:flex}
 .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .poster--empty{height:100%;background:var(--blush);padding:15px 13px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
 .poster--empty .label{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:#A0687D}
