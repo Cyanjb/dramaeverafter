@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact DramaEverAfter: Report a Correction or Missing Title</title>
+<meta name="description" content="Report a correction, a missing title, or get in touch with DramaEverAfter.">
+<link rel="canonical" href="https://dramaeverafter.com/contact.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="site-header">
+<a class="wordmark" href="index.html"><span>Drama</span><em>EverAfter</em></a>
+<nav class="site-nav">
+<a href="browse.html">Browse</a>
+<a href="actors/index.html">Actors</a>
+<a href="platforms.html">Apps</a>
+<a href="tropes/index.html">Tropes</a>
+<a href="blog.html">Blog</a>
+</nav>
+<form class="site-search" action="browse.html" method="get">
+<span class="glyph">&#8981;</span>
+<input type="search" name="q" placeholder="Search a title or actor" aria-label="Search a title or actor" value="">
+</form>
+</header>
+
+<section class="hero"><div class="inner">
+<p class="eyebrow">Contact</p>
+<h1 style="max-width:22ch">Found a mistake? Tell me.</h1>
+<p class="lede">This database is assembled from app catalogues, so names get misspelled and posters go missing. Corrections are the single most useful thing you can send me.</p>
+</div></section>
+<section class="pad" style="padding:34px 22px 46px;display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start">
+<form style="flex:2 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px" onsubmit="return false">
+<div class="field">
+<label>What's this about?</label>
+<div class="chips tight" role="group" aria-label="Reason for contact">
+<button type="button" class="reason-pill" data-reason="correction" aria-pressed="true">A correction</button>
+<button type="button" class="reason-pill" data-reason="missing" aria-pressed="false">A missing title</button>
+<button type="button" class="reason-pill" data-reason="photo" aria-pressed="false">I'm an actor</button>
+<button type="button" class="reason-pill" data-reason="other" aria-pressed="false">Something else</button>
+</div>
+</div>
+<div class="contact-row">
+<div class="field"><label for="c-name">Your name</label><input id="c-name" type="text" placeholder="Optional"></div>
+<div class="field"><label for="c-email">Email</label><input id="c-email" type="email" placeholder="Only if you want a reply"></div>
+</div>
+<div class="field" id="title-field">
+<label id="title-field-label" for="c-page">Which page is wrong?</label>
+<input id="c-page" type="text" placeholder="e.g. How to Tame a Silver Fox">
+<span class="hint" id="title-field-hint">A title, actor or app page. A link is even better.</span>
+</div>
+<div class="field">
+<label for="message-field">Message</label>
+<textarea id="message-field" rows="7" placeholder="What should it say instead?"></textarea>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+<button class="btn btn-gold" type="button">Send it</button>
+<span class="reassure">I read everything myself, usually within a couple of days.</span>
+</div>
+</form>
+<aside class="contact-side">
+<div class="side-card">
+<h2>Faster than the form</h2>
+<div class="kv"><div class="k">Email</div><a href="mailto:hello@dramaeverafter.com">hello@dramaeverafter.com</a></div>
+<div class="kv"><div class="k">Corrections</div><a href="mailto:fix@dramaeverafter.com">fix@dramaeverafter.com</a></div>
+</div>
+<div class="side-card warn">
+<h2>Before you write</h2>
+<ul>
+<li>I'm not affiliated with ReelShort, DramaBox or any other app &mdash; I can't fix your subscription or refund coins.</li>
+<li>Actor photos only go up with the actor's say-so, which is why most profiles are initials.</li>
+<li>Missing title? Send the app and the exact name and it usually goes live the same week.</li>
+</ul>
+</div>
+</aside>
+</section>
+
+<script>
+(function(){
+  var REASONS = {
+    correction: {label:'Which page is wrong?', hint:'A title, actor or app page. A link is even better.', ph:'What should it say instead?'},
+    missing: {label:'Title and app', hint:'The exact name as it appears in the app, please \u2014 spelling varies.', ph:'Anything else you know \u2014 year, lead actors, episode count.'},
+    photo: {label:'Which page is wrong?', hint:'A title, actor or app page. A link is even better.', ph:"Tell me which credits are yours and what you'd like the profile to say."},
+    other: {label:'Which page is wrong?', hint:'A title, actor or app page. A link is even better.', ph:'Tell me what\'s going on.'}
+  };
+  var pills=[].slice.call(document.querySelectorAll('.reason-pill'));
+  var titleField=document.getElementById('title-field'), titleLabel=document.getElementById('title-field-label'),
+      titleHint=document.getElementById('title-field-hint'), msg=document.getElementById('message-field');
+  function select(id){
+    pills.forEach(function(p){ var on=p.dataset.reason===id; p.classList.toggle('on', on); p.setAttribute('aria-pressed', on?'true':'false'); });
+    var r=REASONS[id];
+    titleField.style.display = (id==='correction' || id==='missing') ? '' : 'none';
+    titleLabel.textContent = r.label; titleHint.textContent = r.hint; msg.placeholder = r.ph;
+  }
+  pills.forEach(function(p){ p.addEventListener('click', function(){ select(p.dataset.reason); }); });
+  select('correction');
+})();
+</script>
+
+<footer class="site-footer">
+<div class="footer-brand">
+<div class="wordmark"><span>Drama</span><em>EverAfter</em></div>
+<p>A reader-made index of vertical dramas &mdash; which app, which cast, what next. Some links earn a commission.</p>
+</div>
+<div class="footer-cols">
+<div class="footer-col"><span class="h">Browse</span>
+<a href="browse.html">All titles</a><a href="actors/index.html">Actors</a><a href="tropes/index.html">Tropes</a></div>
+<div class="footer-col"><span class="h">Apps</span>
+<a href="apps/goodshort.html">GoodShort</a><a href="apps/reelshort.html">ReelShort</a><a href="apps/vigloo.html">Vigloo</a><a href="platforms.html">All apps</a></div>
+<div class="footer-col"><span class="h">Site</span>
+<a href="index.html">Home</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+</div>
+</footer>
+</body></html>

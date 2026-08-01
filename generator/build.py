@@ -48,6 +48,14 @@ for c in credits:
     credits_by_person[c["person_id"]].append(c)
     credits_by_title[c["title_id"]].append(c)
 
+# Platforms ranked by verified availability rows. Computed once up front because the
+# site header/footer need it on every page, not just the homepage.
+_plat_counts = defaultdict(int)
+for a in availability:
+    if a["platform_id"] in platforms: _plat_counts[a["platform_id"]] += 1
+TOP_PLATFORMS = sorted(_plat_counts.items(), key=lambda kv: -kv[1])
+APPS_WITH_DATA = [platforms[pid] for pid, n in TOP_PLATFORMS if n > 0]
+
 def tropes_of(t):
     return [x.strip() for x in t["tropes"].split(";") if x.strip()]
 
@@ -111,285 +119,483 @@ def social_links(p):
         if label in seen: continue
         seen.add(label)
         out.append('<a class="chip" href="%s" rel="nofollow noopener" target="_blank">%s</a>' % (esc_attr(u), label))
-    return '<div class="chipsrow socials">%s</div>' % "".join(out) if out else ""
+    return '<div class="chips socials">%s</div>' % "".join(out) if out else ""
 
-def art_block(img, letter, badge=""):
-    inner = '<span class="ph">%s</span>' % (letter or "?")
-    if img:
-        inner += ('<img src="%s" alt="" loading="lazy" onerror="this.remove()">' % esc_attr(img))
-    b = '<span class="badge">%s</span>' % badge if badge else ""
-    return '<span class="art">%s%s</span>' % (inner, b)
+# --------- shared partials -----------------------------------------------
+# The no-poster plate and the initials ring are designed objects, not fallbacks:
+# ~25% of titles and ~94% of actors have no image, so these render on nearly
+# every page and must be byte-for-byte identical wherever they appear.
 
-def poster_inner(img, letter):
-    # Letter tile always renders; poster layers over it and, if the hotlink dies,
-    # onerror removes the <img> and the tile shows through. Same self-healing
-    # pattern as art_block, adapted to the .poster / .frame boxes.
-    inner = '<span class="ph">%s</span>' % (letter or "?")
-    if img:
-        inner += '<img src="%s" alt="" loading="lazy" onerror="this.remove()">' % esc_attr(img)
-    return inner
-
-def title_card_art(t, pre=""):
+def poster_box(t, app_name=""):
+    """Cover art, or a typographic edition when there is none. Image layers over
+    the plate; if the hotlink dies, onerror removes the <img> and the plate
+    (title + app name) shows through instead of a broken image."""
+    img = (t.get("poster_ref") or "").strip()
     name = t["primary_title"]
-    return ('<a class="card" href="%s%stitles/%s.html">%s<span class="t">%s</span><span class="s">%s</span></a>'
-            % (pre, tdir(t), tslug(t), art_block((t.get("poster_ref") or "").strip(),
-               name[:1].upper(), views_label(title_views(t))), name, t.get("year", "") or ""))
+    plate = (f'<span class="poster--empty"><span class="label">No poster</span>'
+             f'<span class="ttl">{name}</span>'
+             f'<span class="app">{app_name}</span></span>')
+    img_html = (f'<img src="{esc_attr(img)}" alt="{esc_attr(name)}" loading="lazy" onerror="this.remove()">'
+                if img else "")
+    return f'<span class="poster">{plate}{img_html}</span>'
 
-def person_card_art(p, pre=""):
+def actor_ring(name, img, size="md", on_warm=False):
+    cls = "ring ring--%s%s" % (size, " on-warm" if on_warm else "")
+    initials = "".join(w[0].upper() for w in name.split()[:2]) or "?"
+    img = (img or "").strip()
+    img_html = f'<img src="{esc_attr(img)}" alt="" loading="lazy" onerror="this.remove()">' if img else ""
+    return f'<span class="{cls}"><span>{initials}</span>{img_html}</span>'
+
+def title_app(t):
+    avails = avail_by_title.get(t["title_id"], [])
+    return platforms.get(avails[0]["platform_id"], {}).get("name", "") if avails else ""
+
+def poster_card(t, pre="", rail_item=False, size_sm=False, show_app=True):
+    """The one poster card used on every rail and every grid: home, browse,
+    title-detail similar rail, actor credits, trope grid, app grid."""
+    app_name = title_app(t)
+    v = views_label(title_views(t))
+    tr = tropes_of(t)
+    bits = [x for x in [v, tr[0] if tr else ""] if x]
+    meta = " &middot; ".join(bits)
+    cls = "poster-card"
+    if rail_item: cls += " rail-item" + (" sm" if size_sm else "")
+    app_html = f'<span class="app-name">{app_name}</span>' if show_app and app_name else ""
+    return (f'<a class="{cls}" href="{pre}titles/{tslug(t)}.html" '
+            f'data-v="{title_views(t)}" data-n="{esc_attr(t["primary_title"].lower())}" '
+            f'data-y="{esc_attr(t.get("year") or "")}" data-app="{slug(app_name) if app_name else ""}">'
+            f'{poster_box(t, app_name)}{app_html}<span class="meta">{meta}</span></a>')
+
+# Reusable client-side re-sort for a static grid (Actor detail, Trope page). Cards
+# already carry data-v/data-n/data-y from poster_card, so no extra JSON payload
+# is needed just to change display order.
+SORT_JS = """
+<script>
+document.querySelectorAll('[data-sort-for]').forEach(function(sel){
+  var grid = document.getElementById(sel.dataset.sortFor);
+  if(!grid) return;
+  sel.addEventListener('change', function(){
+    var cards = Array.prototype.slice.call(grid.children);
+    var mode = sel.value;
+    cards.sort(function(a,b){
+      if(mode==='az') return a.dataset.n.localeCompare(b.dataset.n);
+      if(mode==='year') return (b.dataset.y||'').localeCompare(a.dataset.y||'');
+      return (parseInt(b.dataset.v,10)||0) - (parseInt(a.dataset.v,10)||0);
+    });
+    cards.forEach(function(c){ grid.appendChild(c); });
+  });
+});
+document.querySelectorAll('[data-app-filter-for]').forEach(function(sel){
+  var grid = document.getElementById(sel.dataset.appFilterFor);
+  if(!grid) return;
+  sel.addEventListener('change', function(){
+    var v = sel.value;
+    Array.prototype.forEach.call(grid.children, function(c){
+      c.style.display = (!v || c.dataset.app === v) ? '' : 'none';
+    });
+  });
+});
+</script>
+"""
+
+def sort_select(target_id, label="Sort"):
+    return (f'<label class="sort-label">{label}<select class="sort-select" data-sort-for="{target_id}" aria-label="{label}">'
+            f'<option value="views">Most watched</option><option value="year">Newest</option><option value="az">A&ndash;Z</option>'
+            f'</select></label>')
+
+def actor_tile(p, pre="", ring_size="rail", on_warm=False):
     n = len(credits_by_person.get(p["person_id"], []))
-    return ('<a class="card person" href="%sactors/%s.html">%s<span class="t">%s</span><span class="s">%s titles</span></a>'
-            % (pre, pslug(p), mono_ring(p["name"], (p.get("photo_ref") or "").strip()), p["name"], n))
+    return (f'<a class="actor-tile" href="{pre}actors/{pslug(p)}.html">'
+            f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), ring_size, on_warm)}'
+            f'<span class="stack"><span class="name">{p["name"]}</span><span class="sub">{n} titles</span></span></a>')
 
-def rail(cards):
-    return '<div class="rail">%s</div>' % "".join(cards)
+def person_row(name, sub, img, href, size="sm"):
+    return (f'<a class="person-row {"sm" if size == "sm" else ""}" href="{href}">'
+            f'{actor_ring(name, img, size)}<span class="stack"><span class="name">{name}</span><span class="sub">{sub}</span></span></a>')
 
+def rail(cards, extra_cls=""):
+    return f'<div class="rail {extra_cls}">%s</div>' % "".join(cards)
 
-def trope_chip(tr, pre):
+def chip_link(href, name, count=None):
+    c = f'<span class="c">{count:,}</span>' if count is not None else ""
+    return f'<a class="chip" href="{href}">{name}{c}</a>'
+
+def trope_chip(tr, pre, count=None):
     """Link only if a trope page exists; otherwise render inert so we never emit a 404."""
     if tr in all_tropes_set:
-        return f'<a class="trope" href="{pre}tropes/{slug(tr)}.html">{tr}</a>'
-    return f'<span class="trope">{tr}</span>'
+        return chip_link(f'{pre}tropes/{slug(tr)}.html', tr, count)
+    c = f'<span class="c">{count:,}</span>' if count is not None else ""
+    return f'<span class="chip">{tr}{c}</span>'
 
 CSS = """
-:root{--paper:#FBF7F2;--ink:#2A2226;--plum:#2B1B2E;--wine:#7A2B4A;--gold:#C9962E;--gold-deep:#A87B1F;--blush:#EFD9DE;--line:#E4D8CE;
---sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-7:32px;--sp-8:40px;--sp-9:48px;--sp-10:64px;
---r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
---shadow-card:0 4px 14px rgba(43,27,46,.08);--shadow-card-hover:0 10px 28px rgba(43,27,46,.16);--shadow-hero:0 20px 50px rgba(43,27,46,.22);
---fs-display-2:1.5rem;--fs-display-3:1.05rem;--fs-body-sm:.875rem;--fs-label:.75rem;--fs-micro:.6875rem}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font-family:'Atkinson Hyperlegible',Georgia,serif;font-size:18px;line-height:1.6}
-h1,h2,h3{font-family:'Fraunces','Playfair Display',Georgia,serif;font-weight:600;line-height:1.15;color:var(--plum)}
-a{color:var(--wine)}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px}
-.site-head{border-bottom:1px solid var(--line);padding:14px 0}
-.site-head .wrap{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px}
-.logo{font-family:'Fraunces',Georgia,serif;font-size:1.15rem;font-weight:700;color:var(--plum);text-decoration:none}
-.logo em{font-style:normal;color:var(--gold-deep)}
-.tag{font-size:.78rem;color:#8a7a70}
-.hero{padding:40px 0 32px;background:linear-gradient(180deg,var(--paper) 0%,var(--blush) 140%)}
-.hero-grid{display:grid;grid-template-columns:150px 1fr;gap:26px;align-items:start}
-.frame{aspect-ratio:9/16;background:var(--plum);border-radius:14px;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(43,27,46,.28)}
-.frame::after{content:"EP 01";position:absolute;top:10px;left:10px;font-size:.6rem;letter-spacing:.14em;color:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:2px 6px}
-.frame .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#b9a0b3;font-size:.7rem;text-align:center;padding:0 12px}
-.eyebrow{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
-h1{font-size:clamp(1.9rem,6.5vw,2.7rem)}
-.lede{margin-top:10px;font-size:1.02rem}
-.lede strong{color:var(--wine)}
-.stat-row{display:flex;gap:22px;margin-top:18px;flex-wrap:wrap}
-.stat .n{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:700;color:var(--plum);display:block;line-height:1}
-.stat .l{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#8a7a70}
-section{padding:26px 0}
-h2{font-size:1.45rem;margin-bottom:6px}
-.updated{font-size:.8rem;color:#8a7a70;margin-bottom:16px}
-.card{display:grid;grid-template-columns:84px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
-.card:last-of-type{border-bottom:1px solid var(--line)}
-.poster{aspect-ratio:9/16;background:linear-gradient(155deg,var(--blush),#fff 55%,var(--line));border-radius:9px;position:relative;overflow:hidden}
-.poster .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',Georgia,serif;font-size:2rem;font-weight:700;color:var(--wine);opacity:.32}
-.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit;z-index:1;display:block}
-.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
-.card h3{font-size:1.15rem}
-.card h3 a{color:var(--plum);text-decoration:none}
-.card h3 a:hover{color:var(--wine)}
-.meta{font-size:.82rem;color:#7d6e64;margin:3px 0 8px}
-.tropes{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.trope{font-size:.72rem;background:var(--blush);color:var(--wine);border-radius:5px;padding:3px 8px;text-decoration:none}
-.watch{display:inline-block;background:var(--gold);color:#241a05;text-decoration:none;font-weight:700;font-size:.85rem;border-radius:8px;padding:8px 14px;box-shadow:0 2px 0 var(--gold-deep);margin:0 6px 6px 0}
-.watch:hover{background:#d8a93e}
-.watch.pending{background:#efe7dc;color:#8a7a70;box-shadow:none}
-.role-tag{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
-.tile{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;text-decoration:none;color:var(--ink)}
-.tile:hover{border-color:var(--wine)}
-.tile .nm{font-family:'Fraunces',Georgia,serif;font-weight:700;color:var(--plum);font-size:1.02rem}
-.tile .kf{font-size:.78rem;color:#7d6e64;margin-top:4px}
-.chipsrow{display:flex;gap:8px;flex-wrap:wrap}
-.chip{font-size:.82rem;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;text-decoration:none;color:var(--ink)}
-.chip:hover{border-color:var(--wine);color:var(--wine)}
-.searchbar{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-.searchbar input[type=text]{flex:1 1 240px;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;color:var(--ink)}
-.searchbar select{padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;color:var(--ink)}
-.result-count{font-size:.82rem;color:#7d6e64;margin:4px 0 14px}
-.hero-search{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;background:#fff;padding:8px;border-radius:12px;box-shadow:0 6px 18px rgba(43,27,46,.12)}
-.hero-search input[type=text]{flex:1 1 260px;padding:13px 16px;border:none;border-radius:8px;font-size:1.05rem;font-family:inherit}
-.hero-search button{background:var(--gold);color:#241a05;border:none;font-weight:700;border-radius:8px;padding:0 20px;cursor:pointer;font-size:.95rem}
-.seeall{font-size:.85rem;margin-top:10px;display:inline-block}
-.wrap-wide{max-width:1180px;margin:0 auto;padding:0 20px}
-.hero-art{height:190px;border-radius:16px;margin-bottom:22px;border:1px solid var(--line);background:linear-gradient(120deg,var(--blush) 0%,#fff 45%,var(--gold) 140%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-art .wordmark{font-family:'Fraunces',Georgia,serif;font-size:2.1rem;font-weight:700;color:var(--plum);opacity:.5;letter-spacing:.02em}
-.row-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:2px}
-.row-head a{font-size:.8rem;text-decoration:none;white-space:nowrap}
-.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding:10px 0 14px;scrollbar-width:thin}
+:root{
+--paper:#FBF7F2;--ink:#2A2226;--plum:#2B1B2E;--wine:#7A2B4A;--gold:#C9962E;--gold-deep:#A87B1F;--blush:#EFD9DE;--line:#E4D8CE;
+--muted:#5A4A50;--sec:#6B5A60;--tert:#8A7A70;--ph:#9B8C90;--chip-off-fg:#C2B4AC;--chip-off-bg:#F4EDE6;--chip-off-bd:#EBE0D6;
+--warm:#F8F1EA;--hero-a:#FDF9F5;--hero-b:#F8F1EA;--blush-bd:#DFBFC8;--input-bd:#D8C7BA;--chip-bd:#E0CFC2;--wine-hover:#5C1E37;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:16px;line-height:1.6}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.14;color:var(--plum);margin:0}
+p{margin:0}
+a{color:var(--wine);text-decoration:none}
+a:hover{color:var(--wine-hover)}
+:focus-visible{outline:2px solid var(--wine);outline-offset:2px}
+input,select,button,textarea{font-family:'Atkinson Hyperlegible',system-ui,sans-serif}
+input::placeholder,textarea::placeholder{color:var(--ph)}
+img{max-width:100%}
+
+/* ---------- layout shells ---------- */
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+.wrap-wide{max-width:1320px;margin:0 auto}
+.pad{padding:0 22px}
+
+/* ---------- header ---------- */
+.site-header{border-bottom:1px solid var(--line);background:var(--paper);padding:16px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.wordmark{display:flex;align-items:baseline;gap:2px;flex:0 0 auto;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:23px;color:var(--plum)}
+.wordmark em{font-style:italic;font-weight:400;color:var(--wine)}
+.site-nav{display:flex;gap:20px;flex:0 0 auto;font-size:15px;flex-wrap:wrap}
+.site-nav a{color:var(--ink);border-bottom:2px solid transparent;padding-bottom:2px}
+.site-nav a:hover{color:var(--wine);border-bottom-color:var(--gold)}
+.site-search{flex:1 1 210px;min-width:0;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:2px;padding:0 12px}
+.site-search:focus-within{border-color:var(--wine)}
+.site-search .glyph{color:var(--wine);font-size:15px;flex:0 0 auto}
+.site-search input{flex:1;min-width:0;font-size:16px;line-height:1.2;padding:11px 0;border:0;outline:none;background:transparent;color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{padding:52px 22px 44px;background:linear-gradient(var(--hero-a),var(--hero-b));border-bottom:1px solid var(--line)}
+.hero .inner{max-width:760px}
+.eyebrow{margin:0 0 14px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep)}
+h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text-wrap:balance}
+.hero h1{font-size:clamp(32px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em}
+.lede{margin:0 0 26px;font-size:17px;line-height:1.6;color:var(--muted);max-width:56ch;text-wrap:pretty}
+.hero-search-form{display:flex;flex-wrap:wrap;gap:10px;max-width:560px}
+.hero-search-form input{flex:1 1 240px;min-width:0;font-size:16px;padding:15px 16px;border:1px solid var(--input-bd);background:#fff;border-radius:2px;outline:none;color:var(--ink)}
+.hero-search-form input:focus{border-color:var(--wine)}
+.stat-line{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;font-size:14px;color:var(--sec)}
+.stat-line b{font-family:'Fraunces',Georgia,serif;font-size:17px;color:var(--plum)}
+.stat-line .dot{color:#D9C6B8}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:16px;font-weight:700;padding:15px 26px;border-radius:2px;cursor:pointer;text-decoration:none;min-height:44px;border:0}
+.btn-gold{background:var(--gold);color:#241A12}
+.btn-gold:hover{background:var(--gold-deep);color:#fff}
+.btn-wine{background:var(--paper);color:var(--wine);border:1px solid var(--wine)}
+.btn-wine:hover{background:var(--wine);color:#fff}
+
+/* ---------- section headings ---------- */
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px}
+.section-head h2{font-size:26px}
+.section-head .all{font-size:14px;white-space:nowrap;border-bottom:1px solid var(--line)}
+.section-warm{background:var(--warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* ---------- rails ---------- */
+.rail{display:flex;gap:18px;overflow-x:auto;padding:0 22px 22px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
 .rail::-webkit-scrollbar{height:8px}
-.rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
-.card{flex:0 0 146px;scroll-snap-align:start;text-decoration:none;color:var(--ink);display:block}
-.card .art{aspect-ratio:2/3;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(155deg,var(--blush),#fff 55%,var(--line));display:flex;align-items:center;justify-content:center;position:relative}
-.card .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1}
-.card .art .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.card .art .ph{font-family:'Fraunces',Georgia,serif;font-size:2.7rem;font-weight:700;color:var(--wine);opacity:.32}
-.card .art .badge{position:absolute;left:6px;bottom:6px;background:rgba(43,27,46,.84);color:#fff;font-size:.66rem;padding:2px 8px;border-radius:20px}
-.card .t{display:block;font-family:'Fraunces',Georgia,serif;font-size:.85rem;font-weight:700;color:var(--plum);margin-top:8px;line-height:1.25}
-.card .s{display:block;font-size:.73rem;color:#7d6e64;margin-top:2px}
-.card:hover .art{border-color:var(--wine)}
-.card.person{flex:0 0 118px}
-.card.person .ring{width:100%}
-.card.person .t,.card.person .s{text-align:center}
-.stub{border:1.5px dashed var(--line);border-radius:14px;padding:26px 20px;text-align:center;color:#7d6e64;font-size:.9rem;background:#fff}
-.stub strong{display:block;font-family:'Fraunces',Georgia,serif;color:var(--plum);font-size:1.05rem;margin-bottom:4px}
-.facetbar{margin:14px 0 4px}
-.facetgroup{margin-bottom:10px}
-.facetgroup h3{font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:#7d6e64;font-family:'Atkinson Hyperlegible',Georgia,serif;font-weight:700;margin-bottom:7px}
-.facets{display:flex;flex-wrap:wrap;gap:7px}
-.facet{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:6px 12px;font-size:.82rem;font-family:inherit;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
-.facet .c{font-size:.68rem;color:#9b8b80;font-variant-numeric:tabular-nums}
-.facet:hover:not(.off){border-color:var(--wine);color:var(--wine)}
-.facet.on{background:var(--wine);border-color:var(--wine);color:#fff}
-.facet.on .c{color:rgba(255,255,255,.75)}
-.facet.off{opacity:.32;cursor:default}
-.facet-reset{background:none;border:none;color:var(--wine);font-family:inherit;font-size:.8rem;cursor:pointer;text-decoration:underline;padding:6px 2px}
-.facet-more{background:none;border:none;color:var(--wine);font-family:inherit;font-size:.78rem;cursor:pointer;text-decoration:underline;padding:6px 2px}
-.facets.collapsed .extra{display:none}
-.resultgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:16px}
-.resultgrid .card{flex:none;width:auto}
-/* POSTER CARD (list/filmography). Quiet chrome: the covers are already loud. */
-.poster-card{display:grid;grid-template-columns:104px 1fr;gap:var(--sp-4);align-items:start;padding:var(--sp-4) 0;border-bottom:1px solid var(--line)}
-.poster-card:last-child{border-bottom:none}
-.pc-frame{position:relative;aspect-ratio:2/3;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-card);background:linear-gradient(158deg,var(--blush),#fff 58%,var(--line));display:block}
-.pc-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
-.poster-card:hover .pc-frame{border-color:var(--wine);box-shadow:var(--shadow-card-hover)}
-.poster-card:hover .pc-frame img{transform:scale(1.03)}
-.pc-views{position:absolute;left:6px;bottom:6px;z-index:2;background:rgba(43,27,46,.84);color:#fff;font-size:var(--fs-micro);padding:2px 7px;border-radius:var(--r-pill)}
-/* No-art fallback: a typographic edition, deliberately designed, not a broken image. */
-.no-art{display:flex;flex-direction:column;justify-content:center;padding:var(--sp-3);text-align:left}
-.no-art .rule{width:22px;height:2px;background:var(--gold);margin-bottom:var(--sp-2)}
-.no-art .ttl{font-family:'Fraunces',Georgia,serif;font-weight:700;color:var(--plum);font-size:.8rem;line-height:1.22;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
-.pc-body h3{font-family:'Fraunces',Georgia,serif;font-size:var(--fs-display-3);margin:0 0 3px;line-height:1.25}
-.pc-body h3 a{text-decoration:none;color:var(--plum)}
-.pc-body h3 a:hover{color:var(--wine)}
-.pc-meta{font-size:var(--fs-body-sm);color:#7d6e64;margin:0 0 var(--sp-2)}
-/* ACTOR IDENTITY: the monogram is everyone's default, not a fallback for the 94%. */
-.ring{position:relative;aspect-ratio:1/1;border-radius:50%;overflow:hidden;border:2px solid var(--gold);background:linear-gradient(150deg,var(--blush),#fff 62%);display:flex;align-items:center;justify-content:center}
+.rail::-webkit-scrollbar-track{background:#EFE7DE;border-radius:4px}
+.rail::-webkit-scrollbar-thumb{background:#D9C6B8;border-radius:4px}
+.rail-item{flex:0 0 174px;min-width:0;scroll-snap-align:start}
+.rail-item.sm{flex-basis:158px}
+.rail-item.actor{flex-basis:auto;text-align:center}
+
+/* ---------- grids ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:22px 18px}
+.grid.cast{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.grid.apps{grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px}
+.grid.circles{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px}
+.grid.trope-idx{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px 14px}
+.grid.az{grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:12px}
+
+/* ---------- poster card (grid/rail) ---------- */
+.poster-card{display:flex;flex-direction:column;gap:10px;min-width:0;text-decoration:none;color:inherit}
+.poster{position:relative;aspect-ratio:2/3;background:#F1E6E9;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.poster--empty{height:100%;background:var(--blush);padding:15px 13px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.poster--empty .label{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:#A0687D}
+.poster--empty .ttl{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:16px;line-height:1.22;color:var(--plum);text-wrap:pretty;min-width:0}
+.poster--empty .app{border-top:1px solid var(--blush-bd);padding-top:9px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--wine)}
+.rail-item .poster--empty .ttl{font-size:17px}
+.rail-item.sm .poster--empty .ttl{font-size:15px}
+.actor-tile .stack,.person-row .stack{display:block}
+.poster-card .app-name{font-size:13px;font-weight:700;color:var(--wine)}
+.poster-card .meta{font-size:13px;color:var(--sec);line-height:1.45;text-wrap:pretty;min-width:0}
+.poster-card:hover .poster{border-color:var(--wine)}
+
+/* ---------- actor identity: monogram ring ---------- */
+.ring{position:relative;border-radius:50%;background:var(--blush);overflow:hidden;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',Georgia,serif;font-weight:600;color:var(--wine);letter-spacing:.02em}
 .ring img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ring .mono{font-family:'Fraunces',Georgia,serif;font-weight:700;color:var(--wine);font-size:1.35rem;letter-spacing:.02em}
-.actor-hero-ring{width:132px;flex:0 0 132px}
-.actor-hero-ring .mono{font-size:2.6rem}
-/* WHERE TO WATCH: one confident button. 91% of titles are on exactly one app. */
-.watch-primary{display:inline-flex;align-items:center;gap:var(--sp-2);background:var(--gold);color:#241a05;font-weight:700;font-size:var(--fs-body-sm);padding:13px var(--sp-6);border-radius:var(--r-pill);text-decoration:none;box-shadow:var(--shadow-card)}
-.watch-primary:hover{background:var(--gold-deep);color:#fff}
-.watch-more{display:block;margin-top:var(--sp-3);font-size:var(--fs-body-sm);color:var(--wine)}
-.watch-pending{display:inline-block;padding:13px var(--sp-5);border:1.5px dashed var(--line);border-radius:var(--r-pill);color:#7d6e64;font-size:var(--fs-body-sm)}
-/* EMPTY STATE: editorial, not an error. */
-.empty-state{border:1.5px dashed var(--line);border-radius:var(--r-lg);padding:var(--sp-7) var(--sp-6);text-align:center;background:#fff}
-.empty-state h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:var(--sp-1);font-size:var(--fs-display-3)}
-.empty-state p{color:#7d6e64;font-size:var(--fs-body-sm);max-width:38ch;margin:0 auto;line-height:1.55}
-.hero-grid .frame{border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card)}
-@media(max-width:640px){.poster-card{grid-template-columns:84px 1fr;gap:var(--sp-3)}}
-.hero-banner{position:relative;margin:-1px 0 10px}
-.hero-media{position:relative;min-height:460px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#2B1B2E 0%,#7A2B4A 58%,#C9962E 145%)}
-.hero-media img.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-ph{position:relative;z-index:1;color:rgba(255,255,255,.5);font-family:'Fraunces',Georgia,serif;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;border:1.5px dashed rgba(255,255,255,.34);padding:13px 24px;border-radius:10px}
-.hero-scrim{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(18,10,20,.9) 0%,rgba(18,10,20,.66) 48%,rgba(18,10,20,.15) 100%)}
-.hero-copy{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center}
-.hero-copy .inner{max-width:1180px;width:100%;margin:0 auto;padding:0 24px}
-.hero-copy .eyebrow{color:var(--gold);margin-bottom:6px}
-.hero-copy h1{color:#fff;font-size:clamp(2rem,5.2vw,3.5rem);max-width:15ch;margin-bottom:10px}
-.hero-copy .lede{color:rgba(255,255,255,.88);max-width:46ch;font-size:1rem;margin-bottom:16px}
-.hero-copy .hero-search{max-width:560px;margin-top:0;box-shadow:0 10px 30px rgba(0,0,0,.34)}
-.hero-stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
-.hero-stats .n{display:block;font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1}
-.hero-stats .l{display:block;font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:3px}
-@media(max-width:640px){.hero-media{min-height:400px}.hero-scrim{background:linear-gradient(180deg,rgba(18,10,20,.55) 0%,rgba(18,10,20,.9) 62%)}.hero-copy{justify-content:flex-end;padding-bottom:26px}}
-.rail-stub{flex:0 0 100%;border:1.5px dashed var(--line);border-radius:14px;padding:26px 20px;text-align:center;color:#7d6e64;font-size:.88rem;background:#fff}
-.chipsrow.socials{margin:10px 0 2px}
-.chipsrow.socials .chip{font-size:.78rem}
-.rail-stub strong{display:block;font-family:'Fraunces',Georgia,serif;color:var(--plum);font-size:1rem;margin-bottom:4px}
-.faq{background:var(--plum);color:#EFE4EA;padding:38px 0 46px}
-.faq h2{color:#fff}
-.faq details{border-bottom:1px solid #4a3450;padding:13px 0}
-.faq summary{cursor:pointer;font-weight:700}
-.faq p{margin-top:8px;font-size:.94rem;color:#D9C8D4}
-.faq .note{font-size:.78rem;color:#9b86a0;margin-top:20px}
+.ring--sm{width:46px;height:46px;font-size:16px;box-shadow:inset 0 0 0 2px #fff,0 0 0 1px var(--blush-bd)}
+.ring--md{width:50px;height:50px;font-size:17px;box-shadow:inset 0 0 0 2px #fff,0 0 0 1px var(--blush-bd)}
+.ring--rail{width:78px;height:78px;font-size:24px;box-shadow:inset 0 0 0 3px var(--paper),0 0 0 1px var(--blush-bd)}
+.ring--rail.on-warm{box-shadow:inset 0 0 0 3px var(--warm),0 0 0 1px var(--blush-bd)}
+.ring--hero{width:132px;height:132px;font-size:44px;box-shadow:inset 0 0 0 5px var(--paper),0 0 0 1px var(--blush-bd)}
+
+.actor-tile{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;text-decoration:none;color:inherit}
+.actor-tile .name{font-size:15px;color:var(--ink);line-height:1.3}
+.actor-tile .sub{font-size:13px;color:var(--tert)}
+
+.person-row{display:flex;align-items:center;gap:14px;border:1px solid var(--line);background:#fff;padding:13px 15px;min-width:0;text-decoration:none;color:inherit}
+.person-row:hover{border-color:var(--wine)}
+.person-row.sm{padding:12px 14px;gap:13px}
+.person-row .name{font-size:15.5px;color:var(--ink);line-height:1.3}
+.person-row .sub{font-size:13px;color:var(--tert)}
+
+/* ---------- chips (feed the existing filter JS: data-g / data-v) ---------- */
+.chip{display:inline-flex;align-items:baseline;gap:7px;padding:8px 14px;border:1px solid var(--chip-bd);background:var(--paper);border-radius:999px;font-size:15px;font-family:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
+.chip .c{font-size:12.5px;color:var(--ph)}
+.chip:hover:not(.off){border-color:var(--wine);background:#fff}
+.chip.on{background:var(--wine);border-color:var(--wine);color:#FFF8F2}
+.chip.on .c{color:rgba(255,248,242,.75)}
+.chip.off{border-color:var(--chip-off-bd);background:var(--chip-off-bg);color:var(--chip-off-fg);cursor:not-allowed}
+.chip.off .c{color:var(--chip-off-fg)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips.tight{gap:8px}
+.chips.collapsed .extra{display:none}
+.chip-all{display:inline-flex;align-items:center;padding:9px 16px;border:1px solid var(--wine);border-radius:999px;font-size:15px;font-weight:700;color:var(--wine)}
+.chip-all:hover{background:var(--wine);color:#fff}
+.chip-dashed{margin-top:12px;font-size:14px;padding:9px 15px;background:transparent;border:1px dashed #C0A99A;color:var(--wine);border-radius:999px;cursor:pointer;font-family:inherit}
+.chip-dashed:hover{border-style:solid;border-color:var(--wine)}
+
+/* ---------- app tiles ---------- */
+.app-tile{border:1px solid var(--line);background:#fff;padding:18px 16px;display:flex;flex-direction:column;gap:5px;text-decoration:none;color:inherit}
+.app-tile:hover{border-color:var(--gold)}
+.app-tile .n{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:19px;color:var(--plum)}
+.app-tile .c{font-size:13.5px;color:var(--sec)}
+
+/* ---------- form fields ---------- */
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tert)}
+.field input,.field select,.field textarea{width:100%;font-size:16px;padding:13px 14px;border:1px solid var(--input-bd);background:#fff;border-radius:2px;outline:none;color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--wine)}
+.field textarea{font-family:inherit;line-height:1.55;resize:vertical}
+.field .hint{font-size:13px;color:var(--ph)}
+.sort-label{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--sec)}
+.sort-label select{font-size:16px;padding:9px 11px;border:1px solid var(--input-bd);background:#fff;color:var(--ink);border-radius:2px}
+
+/* ---------- breadcrumb ---------- */
+.crumb{padding:14px 22px;font-size:13.5px;color:var(--tert);border-bottom:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap}
+.crumb a{color:var(--tert)}
+.crumb a:hover{color:var(--wine)}
+.crumb .current{color:var(--sec)}
+
+/* ---------- where-to-watch card ---------- */
+.watch-card{background:#fff;border:1px solid var(--line);padding:20px;max-width:440px}
+.watch-card .label{margin:0 0 14px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--tert)}
+.watch-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--gold);color:#241A12;padding:17px 22px;font-size:18px;font-weight:700;border-radius:2px;text-decoration:none}
+.watch-btn:hover{background:var(--gold-deep);color:#fff}
+.watch-more{display:block;margin-top:12px;font-size:14px;color:var(--wine)}
+.watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--ph);line-height:1.5}
+.watch-pending{display:inline-block;padding:13px 20px;border:1.5px dashed var(--line);border-radius:999px;color:var(--tert);font-size:14px}
+
+/* ---------- title / actor / app hero (two-column, gradient) ---------- */
+.split-hero{display:flex;flex-wrap:wrap;gap:34px;padding:34px 22px 40px;background:linear-gradient(var(--hero-a),var(--hero-b));border-bottom:1px solid var(--line)}
+.split-hero.tight{gap:28px;padding:36px 22px 34px;align-items:flex-start}
+.split-hero .poster-col{flex:0 1 300px;min-width:0}
+.split-hero .poster-col img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;border:1px solid var(--line);border-radius:3px}
+.split-hero .info-col{flex:1 1 400px;min-width:0}
+.views-line{margin:0 0 22px;font-size:15.5px;color:var(--sec)}
+.story{margin-top:28px;max-width:60ch}
+.story h2{margin:0 0 8px;font-size:20px}
+.story p{margin:0;font-size:16px;line-height:1.65;color:#3E3238;text-wrap:pretty}
+
+.stat-figures{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:20px}
+.stat-figures .stat{display:block}
+.stat-figures .n{display:block;font-family:'Fraunces',Georgia,serif;font-size:26px;color:var(--plum);line-height:1.1}
+.stat-figures .l{display:block;font-size:13px;color:var(--tert);letter-spacing:.04em}
+.stat-figures .divider{width:1px;align-self:stretch;background:var(--line)}
+.usual{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;align-items:center}
+.usual .label{font-size:13px;color:var(--tert)}
+
+.app-cta{flex:0 1 320px;min-width:0;background:#fff;border:1px solid var(--line);padding:20px}
+.app-cta .label{margin:0 0 14px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--tert)}
+
+/* ---------- browse ---------- */
+.browse-layout{display:flex;flex-wrap:wrap;align-items:flex-start}
+.browse-aside{flex:1 1 288px;min-width:0;border-right:1px solid var(--line);background:var(--warm);padding:26px 20px 40px;align-self:stretch}
+.browse-aside h1{font-size:27px;margin:0 0 18px}
+.aside-search{display:flex;align-items:center;gap:8px;border:1px solid var(--input-bd);background:#fff;padding:0 12px;margin-bottom:22px}
+.aside-search:focus-within{border-color:var(--wine)}
+.aside-search input{flex:1;min-width:0;font-size:16px;padding:12px 0;border:0;outline:none;background:transparent}
+.active-filters{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:var(--blush);border:1px solid var(--blush-bd);margin-bottom:24px}
+.active-filters .txt{font-size:13.5px;color:var(--wine-hover);line-height:1.4}
+.reset-pill{flex:0 0 auto;font-size:13px;padding:6px 11px;background:transparent;border:1px solid #B98A9B;color:var(--wine);border-radius:999px;cursor:pointer;font-family:inherit}
+.reset-pill:hover{background:var(--wine);color:#fff;border-color:var(--wine)}
+.filter-group{margin-bottom:26px}
+.filter-group h2{margin:0 0 4px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tert);font-family:'Atkinson Hyperlegible',sans-serif;font-weight:700}
+.filter-group .hint{margin:0 0 11px;font-size:13px;color:var(--ph)}
+.results-panel{flex:3 1 560px;min-width:0;padding:26px 22px 46px}
+.results-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:22px}
+.results-head .count{margin:0;font-size:16px;color:var(--ink)}
+.results-head .count b{font-family:'Fraunces',Georgia,serif;font-size:22px;color:var(--plum)}
+.show-more{display:flex;justify-content:center;margin-top:34px}
+.no-results{font-size:15px;color:var(--sec)}
+
+/* ---------- actors A-Z ---------- */
+.az-bar{padding:20px 22px 10px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(251,247,242,.96);backdrop-filter:blur(6px);z-index:5}
+.az-letters{display:flex;flex-wrap:wrap;gap:6px}
+.az-letter{min-width:34px;min-height:34px;padding:0 8px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--chip-bd);background:var(--paper);color:var(--wine);border-radius:2px;font-size:14.5px;font-weight:700;text-decoration:none}
+.az-letter:hover{border-color:var(--wine)}
+.az-letter.empty{border-color:#EDE4DB;background:#F5EFE8;color:var(--chip-off-fg);pointer-events:none}
+.idx-letter{grid-column:1/-1;margin:22px 0 4px;font-size:22px;color:var(--wine);border-bottom:1px solid var(--line);padding-bottom:8px}
+.trope-idx .idx-letter{margin:20px 0 2px;font-size:21px;padding-bottom:7px}
+.pagination{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:36px;flex-wrap:wrap}
+.pagination a{padding:12px 18px;border:1px solid var(--chip-bd);background:#fff;font-size:15px;text-decoration:none;color:var(--ink)}
+.pagination a.next{border-color:var(--wine);font-weight:700;color:var(--wine)}
+.pagination a.next:hover{background:var(--wine);color:#fff}
+.pagination .status{font-size:14px;color:var(--tert)}
+
+/* ---------- all-tropes index ---------- */
+.trope-idx-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:11px 13px;border-bottom:1px solid #EFE5DC;font-size:15.5px;color:var(--ink);min-width:0;text-decoration:none}
+.trope-idx-row:hover{background:var(--warm);color:var(--wine)}
+.trope-idx-row .n{min-width:0;text-wrap:pretty}
+.trope-idx-row .c{flex:0 0 auto;font-size:13px;color:var(--ph)}
+
+/* ---------- blog ---------- */
+.blog-featured{display:flex;flex-wrap:wrap;gap:26px;align-items:stretch;border:1px solid var(--line);background:#fff;overflow:hidden;text-decoration:none;color:inherit}
+.blog-featured:hover{border-color:var(--wine)}
+.blog-featured .copy{flex:1 1 300px;min-width:0;order:2;padding:26px 26px 28px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.blog-featured .art{flex:0 1 340px;min-width:0;order:1;align-self:stretch}
+.blog-featured .art img{width:100%;height:100%;min-height:230px;object-fit:cover;display:block}
+.blog-kicker{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)}
+.blog-featured h2{font-size:clamp(24px,2.6vw,32px);line-height:1.14;letter-spacing:-.01em;text-wrap:pretty}
+.blog-sub{font-size:13.5px;color:var(--tert)}
+.blog-row{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;padding:22px 4px;border-bottom:1px solid #EFE5DC;min-width:0;text-decoration:none;color:inherit}
+.blog-row:hover{background:#FBF5EF}
+.blog-row .thumb{flex:0 0 auto;width:96px;aspect-ratio:2/3;background:var(--blush);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.blog-row .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.blog-row .body{flex:1 1 240px;min-width:0}
+.blog-row h3{font-size:20px;line-height:1.2;text-wrap:pretty}
+.blog-row .excerpt{font-size:15px;line-height:1.6;color:var(--muted);max-width:56ch;text-wrap:pretty}
+.newsletter-block{border:1px solid var(--blush-bd);background:var(--blush);padding:20px}
+.newsletter-block p{font-size:14.5px;line-height:1.55;color:#5C4048}
+.newsletter-block input{width:100%;font-size:16px;padding:13px 14px;border:1px solid #C8A3AF;background:#fff;border-radius:2px;outline:none;color:var(--ink);margin-bottom:10px}
+.topics-block{border:1px solid var(--line);background:#fff;padding:20px}
+.blog-empty{border:1.5px dashed var(--line);border-radius:3px;padding:44px 24px;text-align:center;color:var(--sec);background:#fff}
+.blog-empty h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:6px;font-size:19px}
+
+/* ---------- contact ---------- */
+.reason-pill{padding:9px 15px;border:1px solid var(--chip-bd);background:var(--paper);color:var(--ink);border-radius:999px;font-size:15px;cursor:pointer;font-family:inherit}
+.reason-pill.on{border-color:var(--wine);background:var(--wine);color:#FFF8F2}
+.contact-row{display:flex;flex-wrap:wrap;gap:16px}
+.contact-row .field{flex:1 1 200px;min-width:0}
+.contact-side{flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.side-card{border:1px solid var(--line);background:#fff;padding:20px}
+.side-card h2{font-size:19px;margin-bottom:12px}
+.side-card.warn{border-color:var(--blush-bd);background:var(--blush)}
+.side-card.warn ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:14.5px;line-height:1.55;color:#5C4048}
+.side-card .kv{margin-bottom:14px}
+.side-card .kv:last-child{margin-bottom:0}
+.side-card .kv .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--tert);margin-bottom:4px}
+.reassure{font-size:13.5px;color:var(--tert);max-width:34ch;line-height:1.5}
+
+/* ---------- misc ---------- */
+.empty-state{border:1.5px dashed var(--line);border-radius:3px;padding:32px 26px;text-align:center;background:#fff}
+.empty-state h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:4px;font-size:18px}
+.empty-state p{color:var(--sec);font-size:14px;max-width:38ch;margin:0 auto;line-height:1.55}
 table{border-collapse:collapse;width:100%;font-size:.9rem}
 th{background:var(--plum);color:#fff;text-align:left;padding:8px 10px}
 td{border:1px solid var(--line);padding:8px 10px;vertical-align:top}
 tr:nth-child(even) td{background:#F7F0EA}
-footer{padding:26px 0;font-size:.8rem;color:#8a7a70;border-top:1px solid var(--line);margin-top:30px}
-.crumb{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#8a7a70;margin-bottom:10px}
-.crumb a{color:#8a7a70}
-@media(max-width:540px){.hero-grid{grid-template-columns:104px 1fr;gap:16px}.card{grid-template-columns:66px 1fr;gap:13px}body{font-size:17px}}
+
+/* ---------- socials + faq (pre-existing SEO content, restyled) ---------- */
+.chips.socials{margin:14px 0 2px}
+.chips.socials .chip{font-size:13px}
+.faq{background:var(--plum);color:#EFE4EA;padding:34px 22px 40px}
+.faq h2{color:#fff;font-size:22px;margin-bottom:10px}
+.faq details{border-bottom:1px solid #4a3450;padding:13px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:15px}
+.faq p{margin-top:8px;font-size:14px;line-height:1.55;color:#D9C8D4}
+.faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
+
+/* ---------- footer ---------- */
+footer.site-footer{border-top:1px solid var(--line);background:var(--plum);color:#E8DCD4;padding:34px 22px 30px;display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between}
+.footer-brand{max-width:38ch}
+.footer-brand .wordmark{font-family:'Fraunces',Georgia,serif;font-size:20px;margin-bottom:8px}
+.footer-brand .wordmark em{font-style:italic;color:var(--gold)}
+.footer-brand .wordmark span{color:#F6EEE6}
+.footer-brand p{margin:0;font-size:13.5px;line-height:1.6;color:#BCA9AF}
+.footer-cols{display:flex;gap:40px;flex-wrap:wrap;font-size:14px}
+.footer-col{display:flex;flex-direction:column;gap:8px}
+.footer-col .h{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A7480}
+.footer-col a{color:#E8DCD4}
+.footer-col a:hover{color:#fff}
 """
 
-def page(title, desc, body, canonical, jsonld=None, depth=1):
+def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val=""):
     pre = "../" * depth
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
+    app_links = "".join(
+        f'<a href="{pre}apps/{slug(pl["name"])}.html">{pl["name"]}</a>'
+        for pl in APPS_WITH_DATA[:3])
+    q = esc_attr(nav_search_val)
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canonical}">
 {ld}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{pre}style.css">
 </head><body>
-<header class="site-head"><div class="wrap">
-<a class="logo" href="{pre}index.html">Drama<em>EverAfter</em></a>
-<span class="tag">Find your next ever after.</span>
-</div></header>
+<header class="site-header">
+<a class="wordmark" href="{pre}index.html"><span>Drama</span><em>EverAfter</em></a>
+<nav class="site-nav">
+<a href="{pre}browse.html">Browse</a>
+<a href="{pre}actors/index.html">Actors</a>
+<a href="{pre}platforms.html">Apps</a>
+<a href="{pre}tropes/index.html">Tropes</a>
+<a href="{pre}blog.html">Blog</a>
+</nav>
+<form class="site-search" action="{pre}browse.html" method="get">
+<span class="glyph">&#8981;</span>
+<input type="search" name="q" placeholder="Search a title or actor" aria-label="Search a title or actor" value="{q}">
+</form>
+</header>
 {body}
-<footer><div class="wrap">DramaEverAfter · Find your next ever after. · Some links are referral links; they cost you nothing and keep this database free.<br>Poster and cast images are served by their original platforms and remain the property of their respective owners. DramaEverAfter is not affiliated with any platform listed.</div></footer>
+<footer class="site-footer">
+<div class="footer-brand">
+<div class="wordmark"><span>Drama</span><em>EverAfter</em></div>
+<p>A reader-made index of vertical dramas &mdash; which app, which cast, what next. Some links earn a commission.</p>
+</div>
+<div class="footer-cols">
+<div class="footer-col"><span class="h">Browse</span>
+<a href="{pre}browse.html">All titles</a><a href="{pre}actors/index.html">Actors</a><a href="{pre}tropes/index.html">Tropes</a></div>
+<div class="footer-col"><span class="h">Apps</span>
+{app_links}<a href="{pre}platforms.html">All apps</a></div>
+<div class="footer-col"><span class="h">Site</span>
+<a href="{pre}index.html">Home</a><a href="{pre}blog.html">Blog</a><a href="{pre}contact.html">Contact</a></div>
+</div>
+</footer>
 </body></html>"""
 
 def watch_buttons(title_id, pre=""):
-    rows = avail_by_title.get(title_id, [])
-    if not rows:
+    avails = avail_by_title.get(title_id, [])
+    if not avails:
         return '<span class="watch-pending">Platform being verified</span>'
-    a = rows[0]
+    a = avails[0]
     name = platforms.get(a["platform_id"], {}).get("name", "?")
     link = a["direct_link"] or "#AFFILIATE-LINK-PENDING"
-    out = f'<a class="watch-primary" href="{link}">Watch on {name} &rarr;</a>'
-    if len(rows) > 1:
-        others = ", ".join(platforms.get(r["platform_id"], {}).get("name", "?") for r in rows[1:])
+    out = f'<a class="watch-btn" href="{link}"><span>Watch on {name}</span><span class="arrow">&rarr;</span></a>'
+    if len(avails) > 1:
+        others = ", ".join(platforms.get(r["platform_id"], {}).get("name", "?") for r in avails[1:])
         out += f'<span class="watch-more">Also on {others}</span>'
     return out
 
-def poster_frame(t, cls="pc-frame"):
-    """Cover art, or a typographic edition when there is none. Never an empty box."""
-    img = (t.get("poster_ref") or "").strip()
-    v = views_label(title_views(t))
-    badge = '<span class="pc-views">%s</span>' % v if v else ""
-    if img:
-        return '<span class="%s"><img src="%s" alt="" loading="lazy" onerror="this.remove()">%s</span>' % (
-            cls, esc_attr(img), badge)
-    return '<span class="%s no-art"><span class="rule"></span><span class="ttl">%s</span>%s</span>' % (
-        cls, t["primary_title"], badge)
-
-def mono_ring(name, img, cls="ring"):
-    inner = '<span class="mono">%s</span>' % "".join(w[0].upper() for w in name.split()[:2])
-    if img:
-        inner += '<img src="%s" alt="" loading="lazy" onerror="this.remove()">' % esc_attr(img)
-    return '<span class="%s">%s</span>' % (cls, inner)
-
-def title_card(t, role_html="", depth=1, title_pre=None):
-    pre = "../" * depth
-    tp = pre if title_pre is None else title_pre
-    trope_html = "".join(trope_chip(tr, pre) for tr in tropes_of(t))
-    yr = f'{t["year"]} · ' if t["year"] else ""
-    return f"""<article class="poster-card">
-<a class="pc-art" href="{tp}titles/{tslug(t)}.html">{poster_frame(t)}</a>
-<div class="pc-body">{role_html}
-<h3><a href="{tp}titles/{tslug(t)}.html">{t['primary_title']}</a></h3>
-<p class="pc-meta">{yr}{t['genres'].replace(';', ',').title()}</p>
-<div class="tropes">{trope_html}</div>
-{watch_buttons(t['title_id'], pre)}
-</div></article>"""
+def watch_card(title_id, pre=""):
+    return (f'<div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(title_id, pre)}'
+            f'<p class="watch-disclosure">We may earn a commission, which is what keeps this database free.</p></div>')
 
 # --------- build ---------
 # Selective clean: remove ONLY generated artifacts, never data/ or generator/
-for d in ["actors", "titles", "tropes", "where-to-watch"] + origins_other:
+for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + origins_other:
     p = os.path.join(DIST, d)
     if os.path.exists(p): shutil.rmtree(p)
-for f in ["index.html", "platforms.html", "robots.txt", "sitemap.xml", "style.css"]:
+for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "robots.txt", "sitemap.xml", "style.css"]:
     p = os.path.join(DIST, f)
     if os.path.exists(p): os.remove(p)
-for d in ["", "actors", "titles", "tropes"]:
+for d in ["", "actors", "titles", "tropes", "apps"]:
     os.makedirs(os.path.join(DIST, d), exist_ok=True)
 open(os.path.join(DIST, "style.css"), "w").write(CSS)
 urls = []
@@ -398,32 +604,53 @@ urls = []
 for p in people:
     sl = pslug(p)
     my_credits = credits_by_person.get(p["person_id"], [])
-    my_titles = [(c, t_by_id[c["title_id"]]) for c in my_credits if c["title_id"] in t_by_id]
+    my_titles = [t_by_id[c["title_id"]] for c in my_credits if c["title_id"] in t_by_id]
     verified_n = len(my_titles)
-    cards = ""
-    for c, t in my_titles:
-        role = c["role"].replace("+", "·").title()
-        chr_ = f" · {c['character_name']}" if c["character_name"] else ""
-        cards += title_card(t, f'<span class="role-tag">{role}{chr_}</span>')
-    plats = sorted({platforms[a["platform_id"]]["name"] for c, t in my_titles for a in avail_by_title.get(t["title_id"], [])})
-    plat_line = ", ".join(plats) if plats else "platform verification in progress"
-    known = my_titles[0][1]["primary_title"] if my_titles else "vertical dramas"
+    plat_counts = defaultdict(int)
+    for t in my_titles:
+        for a in avail_by_title.get(t["title_id"], []):
+            if a["platform_id"] in platforms: plat_counts[platforms[a["platform_id"]]["name"]] += 1
+    top_plats = sorted(plat_counts.items(), key=lambda kv: -kv[1])
+    trope_counts_p = defaultdict(int)
+    for t in my_titles:
+        for tr in tropes_of(t): trope_counts_p[tr] += 1
+    top_tropes_p = sorted(trope_counts_p.items(), key=lambda kv: -kv[1])
+    years = sorted({t["year"] for t in my_titles if t.get("year")})
+    active = f"{years[0]}–{years[-1]}" if len(years) > 1 else (years[0] if years else "—")
+    mostly = f", mostly {top_plats[0][0]}" if top_plats else ""
+    turns_up = (" Turns up in %s and %s stories more than anything else." % (top_tropes_p[0][0], top_tropes_p[1][0])
+                if len(top_tropes_p) > 1 else (" Mostly known for %s stories." % top_tropes_p[0][0] if top_tropes_p else ""))
+    oneliner = f"{verified_n} title{'s' if verified_n != 1 else ''} in the database{mostly}.{turns_up}"
+    usual_html = "".join(trope_chip(tr, "../", cnt) for tr, cnt in top_tropes_p[:8])
+    cards = "".join(poster_card(t, "../") for t in sorted(my_titles, key=lambda x: -title_views(x)))
+    plat_line = ", ".join(n for n, _ in top_plats) if top_plats else "platform verification in progress"
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "jobTitle": "Actor",
           "description": p["bio_short"][:160],
-          "performerIn": [{"@type": "TVSeries", "name": t["primary_title"]} for _, t in my_titles]}
+          "performerIn": [{"@type": "TVSeries", "name": t["primary_title"]} for t in my_titles]}
     body = f"""
-<section class="hero"><div class="wrap hero-grid">
-{mono_ring(p["name"], (p.get("photo_ref") or "").strip(), "ring actor-hero-ring")}
-<div><p class="eyebrow">Vertical Drama Actor</p><h1>{p['name']}</h1>
-<p class="lede">Known for <strong>{known}</strong>.</p>{social_links(p)}
-<div class="stat-row"><div class="stat"><span class="n">{verified_n}</span><span class="l">Titles verified</span></div>
-<div class="stat"><span class="n">{len(plats) or '?'}</span><span class="l">Platforms</span></div></div>
-</div></div></section>
-<section><div class="wrap"><p class="crumb"><a href="../index.html">Home</a> / Actors / {p['name']}</p>
-<p>{p['bio_short']}</p></div></section>
-<section><div class="wrap"><h2>Every {p['name']} vertical drama</h2>
-<p class="updated">Updated {UPDATED} · {verified_n} titles verified so far, more added weekly</p>
-{cards}</div></section>
+<nav class="crumb"><a href="../actors/index.html">Actors</a><span>/</span><span class="current">{p['name']}</span></nav>
+<section class="split-hero tight">
+{actor_ring(p['name'], (p.get('photo_ref') or '').strip(), "hero")}
+<div class="info-col">
+<p class="eyebrow">Actor</p><h1>{p['name']}</h1>
+<p class="lede">{oneliner}</p>
+<div class="stat-figures">
+<div class="stat"><span class="n">{verified_n}</span><span class="l">titles</span></div>
+<div class="divider"></div>
+<div class="stat"><span class="n">{len(plat_counts) or '?'}</span><span class="l">apps</span></div>
+<div class="divider"></div>
+<div class="stat"><span class="n">{active}</span><span class="l">active</span></div>
+</div>
+{f'<div class="usual"><span class="label">Usual tropes</span>{usual_html}</div>' if usual_html else ''}
+{social_links(p)}
+</div>
+</section>
+<section class="pad" style="padding:24px 22px 0"><p style="max-width:60ch;font-size:15px;line-height:1.6;color:var(--muted)">{p['bio_short']}</p></section>
+<section class="pad" style="padding:26px 22px 46px">
+<div class="results-head"><h2 style="font-size:24px">Credits</h2>{sort_select('credits-grid')}</div>
+<div class="grid" id="credits-grid">{cards}</div>
+</section>
+{SORT_JS}
 <section class="faq"><div class="wrap"><h2>{p['name']}: quick answers</h2>
 <details><summary>What is {p['name']} best known for?</summary><p>{p['bio_short'].split('.')[0]}.</p></details>
 <details><summary>What apps are {p['name']} dramas on?</summary><p>Verified so far: {plat_line}. Each title above links to where it streams.</p></details>
@@ -435,34 +662,116 @@ for p in people:
     open(os.path.join(DIST, "actors", f"{sl}.html"), "w").write(html)
     urls.append(f"/actors/{sl}.html")
 
+# Actors A-Z (NEW): a real single-page directory rather than the prototype's fake
+# pagination -- with 1,850 rows, a jump-to-letter anchor bar serves the same intent
+# (find a letter fast) better than paging through ~74 screens.
+def surname(name): return name.split()[-1] if name.split() else name
+photo_n = sum(1 for p in people if (p.get("photo_ref") or "").strip())
+directory = sorted(people, key=lambda p: surname(p["name"]).lower())
+present_letters = {surname(p["name"])[0].upper() for p in people if surname(p["name"])}
+az_bar = "".join(
+    f'<a class="az-letter" href="#letter-{L}">{L}</a>' if L in present_letters
+    else f'<span class="az-letter empty" aria-disabled="true">{L}</span>'
+    for L in "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+rows_html, cur = [], ""
+for p in directory:
+    L = surname(p["name"])[0].upper() if surname(p["name"]) else "#"
+    if L != cur:
+        cur = L
+        rows_html.append(f'<h2 class="idx-letter" id="letter-{L}">{L}</h2>')
+    n = len(credits_by_person.get(p["person_id"], []))
+    app = title_app(t_by_id[credits_by_person[p["person_id"]][0]["title_id"]]) if credits_by_person.get(p["person_id"]) and credits_by_person[p["person_id"]][0]["title_id"] in t_by_id else ""
+    sub = f"{n} title{'s' if n != 1 else ''}" + (f" &middot; {app}" if app else "")
+    rows_html.append(
+        f'<a class="person-row sm" href="{pslug(p)}.html" data-n="{esc_attr(p["name"].lower())}">'
+        f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), "sm")}'
+        f'<span class="stack"><span class="name">{p["name"]}</span><span class="sub">{sub}</span></span></a>')
+AZ_JS = """
+<script>
+(function(){
+  var input=document.getElementById('actor-search');
+  var rows=[].slice.call(document.querySelectorAll('#az-index [data-n]'));
+  var headers=[].slice.call(document.querySelectorAll('#az-index .idx-letter'));
+  input.addEventListener('input', function(){
+    var q=input.value.trim().toLowerCase();
+    rows.forEach(function(r){ r.style.display = (!q || r.dataset.n.indexOf(q)!==-1) ? '' : 'none'; });
+    headers.forEach(function(h){
+      var next=h.nextElementSibling, show=false;
+      while(next && !next.classList.contains('idx-letter')){ if(next.style.display!=='none') show=true; next=next.nextElementSibling; }
+      h.style.display = show ? '' : 'none';
+    });
+  });
+})();
+</script>
+"""
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Directory</p><h1>Actors</h1>
+<p class="lede">{len(people):,} people, listed by surname. Only {photo_n} have a photo anywhere we can link to, so most are initials &mdash; the credit list is the useful part anyway.</p>
+<form class="aside-search" style="max-width:420px" onsubmit="return false">
+<span class="glyph" style="color:var(--wine)">&#8981;</span>
+<input type="text" id="actor-search" placeholder="Search actors" autocomplete="off" aria-label="Search actors">
+</form>
+</div></section>
+<section class="az-bar"><div class="az-letters">{az_bar}</div></section>
+<section class="pad" style="padding:28px 22px 46px">
+<div class="grid az" id="az-index">{"".join(rows_html)}</div>
+</section>
+{AZ_JS}"""
+html = page("Every Vertical Drama Actor, A-Z | DramaEverAfter",
+            f"An A-Z directory of {len(people):,} vertical drama actors, with credits and where to watch.",
+            body, f"{DOMAIN}/actors/index.html", depth=1)
+open(os.path.join(DIST, "actors", "index.html"), "w").write(html)
+urls.append("/actors/index.html")
+
+ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "dubbed": "Dubbed release"}
+
 # Title pages
 for t in titles:
     sl = tslug(t)
     d, pre = tdir(t), "../" * tdepth(t)
-    cast = ""
+    cast_html = ""
     for c in credits_by_title.get(t["title_id"], []):
         pr = p_by_id.get(c["person_id"])
-        if pr:
-            cast += f'<li><a href="{pre}actors/{pslug(pr)}.html">{pr["name"]}</a> ({c["role"]})</li>'
+        if not pr: continue
+        role = (c["role"] or "").replace("+", " · ").title() or "Cast"
+        n_titles = len(credits_by_person.get(c["person_id"], []))
+        cast_html += person_row(pr["name"], f"{role} · {n_titles} titles",
+                                 (pr.get("photo_ref") or "").strip(), f"{pre}actors/{pslug(pr)}.html", "md")
+    my_tropes = set(tropes_of(t))
+    origin_pool = titles_root if origin_of(t) == ROOT_ORIGIN else [x for x in titles_other if origin_of(x) == origin_of(t)]
+    similar = sorted([x for x in origin_pool if x["title_id"] != t["title_id"] and my_tropes & set(tropes_of(x))],
+                      key=lambda x: -title_views(x))[:10]
+    similar_html = "".join(poster_card(x, pre, rail_item=True, size_sm=True) for x in similar)
     trope_html = "".join(trope_chip(tr, pre) for tr in tropes_of(t))
+    lang_label = ORIGIN_LABEL.get(origin_of(t), origin_of(t).title())
+    v = views_label(title_views(t))
+    views_bits = [x for x in [v, lang_label] if x]
+    ep = f"{t['episode_count']} episodes" if t.get("episode_count") else ""
+    eyebrow_bits = [x for x in ["Vertical drama", t.get("year"), ep] if x]
+    if t.get("data_confidence") == "needs_check": eyebrow_bits.append("community reported")
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
           "description": t["synopsis_short"][:160]}
-    yr = f'{t["year"]} · ' if t["year"] else ""
     body = f"""
-<section class="hero"><div class="wrap hero-grid">
-{poster_frame(t, "frame")}
-<div><p class="eyebrow">Vertical Drama{' · community reported, verification pending' if t.get('data_confidence')=='needs_check' else ''}</p><h1>{t['primary_title']}</h1>
-<p class="lede">{yr}{t['genres'].replace(';', ',').title()} · {t['status'].title()}</p>
-<div class="tropes" style="margin-top:12px">{trope_html}</div>
-</div></div></section>
-<section><div class="wrap"><p class="crumb"><a href="{pre}index.html">Home</a> / {'' if not d else f'<a href="../index.html">{origin_of(t).title()}</a> / '}Titles / {t['primary_title']}</p>
-{f"<p class=\"updated\">Also known as: {t['alt_titles'].replace(';', ', ')}</p>" if t.get('alt_titles') else ''}
-<p>{t['synopsis_short']}</p>
-<h2 style="margin-top:20px">Where to watch</h2>
-<p class="updated">Checked {UPDATED}</p>
-{watch_buttons(t['title_id'])}
-{'<h2 style="margin-top:20px">Cast</h2><ul style="padding-left:20px">' + cast + '</ul>' if cast else ''}
-</div></section>"""
+<nav class="crumb"><a href="{pre}index.html">Home</a><span>/</span>{f'<a href="{pre}index.html">{origin_of(t).title()}</a><span>/</span>' if d else ''}<span class="current">{t['primary_title']}</span></nav>
+<section class="split-hero">
+<div class="poster-col">{poster_box(t, title_app(t))}</div>
+<div class="info-col">
+<p class="eyebrow">{" &middot; ".join(str(x) for x in eyebrow_bits)}</p>
+<h1>{t['primary_title']}</h1>
+<p class="views-line">{" &middot; ".join(views_bits)}</p>
+<div class="chips" style="margin-bottom:26px">{trope_html}</div>
+<div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
+<p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
+{f'<p class="hint" style="margin-top:14px">Also known as: {t["alt_titles"].replace(";", ", ")}</p>' if t.get('alt_titles') else ''}
+<div class="story"><h2>The story</h2><p>{t['synopsis_short']}</p></div>
+</div>
+</section>
+{f'<section class="pad" style="padding:34px 22px 36px"><h2 style="font-size:24px;margin-bottom:20px">Cast</h2><div class="grid cast">{cast_html}</div></section>' if cast_html else ''}
+{f'''<section class="section-warm" style="padding:30px 0 44px">
+<div class="section-head pad"><h2>If you liked this</h2><span class="hint" style="font-size:13.5px;color:var(--tert)">{" &middot; ".join(list(my_tropes)[:2])}</span></div>
+<div class="rail">{similar_html}</div>
+</section>''' if similar_html else ''}"""
     html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
                 f"{t['primary_title']}: where to watch, cast and tropes. Updated {UPDATED}.",
                 body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t))
@@ -473,20 +782,64 @@ for t in titles:
 # Trope pages
 for tr in all_tropes:
     sl = slug(tr)
-    matching = [t for t in titles_root if tr in tropes_of(t)]
-    cards = "".join(title_card(t) for t in matching)
+    matching = sorted([t for t in titles_root if tr in tropes_of(t)], key=lambda x: -title_views(x))
+    pair_counts = defaultdict(int)
+    for t in matching:
+        for other in tropes_of(t):
+            if other != tr: pair_counts[other] += 1
+    pair_html = "".join(trope_chip(o, "../", c) for o, c in sorted(pair_counts.items(), key=lambda kv: -kv[1])[:6])
+    apps_here = sorted({title_app(t) for t in matching if title_app(t)})
+    app_opts = "".join(f'<option value="{slug(a)}">{a}</option>' for a in apps_here)
+    cards = "".join(poster_card(t, "../") for t in matching)
     body = f"""
-<section class="hero"><div class="wrap">
-<p class="eyebrow">Trope</p><h1>Best {tr.title()} Vertical Dramas</h1>
-<p class="lede">{len(matching)} verified titles and counting. Updated {UPDATED}.</p>
+<nav class="crumb"><a href="../tropes/index.html">Tropes</a><span>/</span><span class="current">{tr.title()}</span></nav>
+<section class="hero"><div class="inner">
+<p class="eyebrow">Trope</p><h1>{tr.title()}</h1>
+<p class="lede">{len(matching):,} titles carry this trope. Updated {UPDATED}.</p>
+{f'<div class="chips" style="align-items:center"><span class="hint" style="font-size:13px;color:var(--tert);margin-right:4px">Often paired with</span>{pair_html}</div>' if pair_html else ''}
 </div></section>
-<section><div class="wrap"><p class="crumb"><a href="../index.html">Home</a> / Tropes / {tr.title()}</p>
-{cards}</div></section>"""
+<section class="pad" style="padding:24px 22px 46px">
+<div class="results-head">
+<p class="count"><b>{len(matching):,}</b> titles</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+{f'<label class="sort-label">App<select id="trope-app-{sl}" data-app-filter-for="trope-grid" aria-label="Filter by app"><option value="">Any app</option>{app_opts}</select></label>' if app_opts else ''}
+{sort_select('trope-grid')}
+</div>
+</div>
+<div class="grid" id="trope-grid">{cards}</div>
+</section>
+{SORT_JS}"""
     html = page(f"Best {tr.title()} Vertical Dramas (2026) | DramaEverAfter",
                 f"Every verified {tr} vertical drama across ReelShort, DramaBox and more. Updated {UPDATED}.",
                 body, f"{DOMAIN}/tropes/{sl}.html")
     open(os.path.join(DIST, "tropes", f"{sl}.html"), "w").write(html)
     urls.append(f"/tropes/{sl}.html")
+
+# All-tropes index (NEW): a counted A-Z list, not a chip cloud -- 226 chips is a wall.
+trope_total = defaultdict(int)
+for t in titles_root:
+    for tr in tropes_of(t): trope_total[tr] += 1
+tropes_sorted = sorted(all_tropes, key=lambda x: x.lower())
+idx_rows, cur_letter = [], ""
+for tr in tropes_sorted:
+    letter = tr[0].upper()
+    if letter != cur_letter:
+        cur_letter = letter
+        idx_rows.append(f'<h2 class="idx-letter">{letter}</h2>')
+    idx_rows.append(f'<a class="trope-idx-row" href="{slug(tr)}.html"><span class="n">{tr.title()}</span><span class="c">{trope_total[tr]:,}</span></a>')
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Index</p><h1>All {len(all_tropes)} tropes</h1>
+<p class="lede">Every tag in the database with a count next to it. If you know what you're in the mood for, start here.</p>
+</div></section>
+<section class="pad" style="padding:26px 22px 46px">
+<div class="grid trope-idx trope-idx">{"".join(idx_rows)}</div>
+</section>"""
+html = page(f"All {len(all_tropes)} Vertical Drama Tropes | DramaEverAfter",
+            f"Every trope in the database, counted. Browse {len(all_tropes)} tropes A to Z.",
+            body, f"{DOMAIN}/tropes/index.html")
+open(os.path.join(DIST, "tropes", "index.html"), "w").write(html)
+urls.append("/tropes/index.html")
 
 
 # Where-to-watch pages (money keywords: "where to watch X", "is X on reelshort or dramabox")
@@ -505,14 +858,16 @@ for t in titles:
     faq_items = f"""<details open><summary>Where can I watch {t['primary_title']}?</summary><p>{answer}</p></details>
 <details><summary>Is {t['primary_title']} free?</summary><p>{'See free episode counts above. ' if free_line else ''}Most vertical drama apps unlock early episodes free, then charge coins or a subscription for the rest.</p></details>"""
     body = f"""
-<section class="hero"><div class="wrap">
-<p class="eyebrow">Where to Watch</p><h1>Where to Watch {t['primary_title']}</h1>
+<nav class="crumb"><a href="{pre}index.html">Home</a><span>/</span><span class="current">Where to Watch {t['primary_title']}</span></nav>
+<section class="hero"><div class="inner">
+<p class="eyebrow">Where to Watch</p><h1>{t['primary_title']}</h1>
 <p class="lede">Checked {UPDATED}</p></div></section>
-<section><div class="wrap"><p class="crumb"><a href="{pre}index.html">Home</a> / {'' if not d else f'<a href="../index.html">{origin_of(t).title()}</a> / '}Where to Watch / {t['primary_title']}</p>
-<p>{answer}</p>{free_line}
-{watch_buttons(t['title_id'])}
-<p style="margin-top:16px"><a href="../titles/{sl}.html">Full {t['primary_title']} page: cast, tropes and details &rarr;</a></p>
-</div></section>
+<section class="pad" style="padding:26px 22px 40px">
+<p style="font-size:16px;line-height:1.6;max-width:60ch">{answer}</p>{free_line}
+<div class="watch-card" style="margin-top:16px"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
+<p class="watch-disclosure">We may earn a commission, which is what keeps this database free.</p></div>
+<p style="margin-top:16px"><a href="{pre}titles/{sl}.html">Full {t['primary_title']} page: cast, tropes and details &rarr;</a></p>
+</section>
 <section class="faq"><div class="wrap"><h2>Quick answers</h2>{faq_items}
 <p class="note">Spotted it on another app? Report it and help the database grow.</p></div></section>"""
     html = page(f"Where to Watch {t['primary_title']}: All Platforms (2026) | DramaEverAfter",
@@ -533,30 +888,92 @@ for tr in all_tropes:
             continue
         trs, pls = slug(tr), slug(pl["name"])
         os.makedirs(os.path.join(DIST, "tropes", trs), exist_ok=True)
-        cards = "".join(title_card(t, depth=2) for t in matching)
+        cards = "".join(poster_card(t, "../../", show_app=False) for t in sorted(matching, key=lambda x: -title_views(x)))
         body = f"""
-<section class="hero"><div class="wrap">
-<p class="eyebrow">Trope x Platform</p><h1>Best {tr.title()} Dramas on {pl['name']}</h1>
+<nav class="crumb"><a href="../../index.html">Home</a><span>/</span><a href="../{trs}.html">{tr.title()}</a><span>/</span><span class="current">{pl['name']}</span></nav>
+<section class="hero"><div class="inner">
+<p class="eyebrow">Trope &times; Platform</p><h1>Best {tr.title()} Dramas on {pl['name']}</h1>
 <p class="lede">{len(matching)} verified titles. Updated {UPDATED}.</p></div></section>
-<section><div class="wrap"><p class="crumb"><a href="../../index.html">Home</a> / <a href="../{trs}.html">{tr.title()}</a> / {pl['name']}</p>
-{cards}</div></section>"""
+<section class="pad" style="padding:24px 22px 46px"><div class="grid">{cards}</div></section>"""
         html = page(f"Best {tr.title()} Vertical Dramas on {pl['name']} (2026) | DramaEverAfter",
                     f"Every verified {tr} vertical drama on {pl['name']}. Updated {UPDATED}.",
                     body, f"{DOMAIN}/tropes/{trs}/{pls}.html", depth=2)
         open(os.path.join(DIST, "tropes", trs, f"{pls}.html"), "w").write(html)
         urls.append(f"/tropes/{trs}/{pls}.html")
 
-# Platforms page
+# Apps: one NEW per-platform page for every app with real availability data
+# (design screen 8), plus platforms.html restyled as the "all apps" index. The
+# old pricing/affiliate comparison table is kept as supplementary content below
+# the grid rather than deleted -- it isn't part of the ten designed screens, but
+# it's real data other pages link to and searches may already rank for.
+os.makedirs(os.path.join(DIST, "apps"), exist_ok=True)
+for pid, n in TOP_PLATFORMS:
+    if n == 0: continue
+    pl = platforms[pid]
+    pls = slug(pl["name"])
+    app_titles = sorted([t for t in titles_root if any(a["platform_id"] == pid for a in avail_by_title.get(t["title_id"], []))],
+                         key=lambda x: -title_views(x))
+    with_posters = sum(1 for t in app_titles if (t.get("poster_ref") or "").strip())
+    origin_tally = defaultdict(int)
+    for t in app_titles: origin_tally[origin_of(t)] += 1
+    dom_origin = max(origin_tally.items(), key=lambda kv: kv[1])[0] if origin_tally else "english"
+    lang_word = {"english": "English", "chinese": "Chinese", "dubbed": "Dubbed"}.get(dom_origin, dom_origin.title())
+    actor_tally = defaultdict(int)
+    for t in app_titles:
+        for c in credits_by_title.get(t["title_id"], []): actor_tally[c["person_id"]] += 1
+    regulars = sorted(actor_tally.items(), key=lambda kv: -kv[1])[:8]
+    regulars_html = "".join(actor_tile(p_by_id[pid_], "../", "app", on_warm=True) for pid_, _ in regulars if pid_ in p_by_id)
+    grid_html = "".join(poster_card(t, "../", show_app=False) for t in app_titles[:10])
+    web_url = (pl.get("web_url") or "").strip() or "#"
+    body = f"""
+<nav class="crumb"><a href="../platforms.html">Apps</a><span>/</span><span class="current">{pl['name']}</span></nav>
+<section class="split-hero">
+<div class="info-col">
+<p class="eyebrow">App</p><h1>{pl['name']}</h1>
+<p class="lede">{len(app_titles):,} titles in the database{f", mostly {lang_word.lower()}" if lang_word else ""}.</p>
+<div class="stat-figures">
+<div class="stat"><span class="n">{len(app_titles):,}</span><span class="l">titles</span></div>
+<div class="divider"></div>
+<div class="stat"><span class="n">{with_posters:,}</span><span class="l">with posters</span></div>
+<div class="divider"></div>
+<div class="stat"><span class="n">{lang_word}</span><span class="l">mostly original</span></div>
+</div>
+</div>
+<div class="app-cta"><p class="label">Get the app</p>
+<a class="watch-btn" href="{esc_attr(web_url)}"><span>Open {pl['name']}</span><span class="arrow">&rarr;</span></a>
+<p class="watch-disclosure">Pricing: {pl.get('pricing_model') or 'varies by title'}. We may earn a commission &mdash; that's what pays for this database.</p>
+</div>
+</section>
+<section class="pad" style="padding:30px 22px 20px">
+<div class="section-head"><h2>Most watched on {pl['name']}</h2><a class="all" href="../tropes/index.html">Browse by trope &rarr;</a></div>
+<div class="grid">{grid_html}</div>
+</section>
+{f'''<section class="section-warm" style="padding:28px 0 44px;margin-top:26px">
+<div class="pad"><h2 style="margin-bottom:20px">Regulars on this app</h2><div class="grid circles">{regulars_html}</div></div>
+</section>''' if regulars_html else ''}"""
+    html = page(f"{pl['name']}: Titles, Pricing and Where to Start (2026) | DramaEverAfter",
+                f"{pl['name']} on DramaEverAfter: {len(app_titles):,} titles, regulars, and how to get started.",
+                body, f"{DOMAIN}/apps/{pls}.html", depth=1)
+    open(os.path.join(DIST, "apps", f"{pls}.html"), "w").write(html)
+    urls.append(f"/apps/{pls}.html")
+
+# Platforms page -> "all apps" index
+app_tiles = "".join(
+    f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} titles</span></a>'
+    for pid, n in TOP_PLATFORMS if n > 0)
 prows = ""
 for p in platforms.values():
     aff = "Yes" if p["affiliate_program"].upper().startswith("YES") else "TBC"
     prows += f"<tr><td><b>{p['name']}</b></td><td>{p['pricing_model']}</td><td>{aff}</td></tr>"
 body = f"""
-<section class="hero"><div class="wrap"><p class="eyebrow">Guide</p><h1>Every Vertical Drama App</h1>
-<p class="lede">The platforms, compared. Updated {UPDATED}.</p></div></section>
-<section><div class="wrap"><p class="crumb"><a href="index.html">Home</a> / Platforms</p>
+<nav class="crumb"><a href="index.html">Home</a><span>/</span><span class="current">Apps</span></nav>
+<section class="hero"><div class="inner"><p class="eyebrow">Guide</p><h1>Every vertical drama app</h1>
+<p class="lede">{len(APPS_WITH_DATA)} apps with verified catalogues, {len(platforms)} tracked in all. Updated {UPDATED}.</p></div></section>
+<section class="pad" style="padding:34px 22px 40px"><div class="grid apps">{app_tiles}</div></section>
+<section class="section-warm pad" style="padding:34px 22px 44px">
+<h2 style="margin-bottom:16px">Compare pricing</h2>
 <table><tr><th>Platform</th><th>Pricing</th><th>Referral links</th></tr>{prows}</table>
-</div></section>"""
+</section>"""
 html = page("Vertical Drama Apps Compared (2026) | DramaEverAfter",
             f"ReelShort, DramaBox, ShortMax and more compared: pricing and where to start. Updated {UPDATED}.",
             body, f"{DOMAIN}/platforms.html", depth=0)
@@ -601,14 +1018,14 @@ for t in titles_root:
 open(os.path.join(DIST, "search-index.json"), "w").write(
     json.dumps({"actors": search_actors, "titles": search_titles}, separators=(",", ":")))
 
-VISIBLE = 40  # chips shown before "show all"
+VISIBLE = 14  # chips shown before "show all N" disclosure, per design ("14 most common of 226")
 
 def facet_chips(group, counts, labels):
     out = []
     ordered = sorted(counts.items(), key=lambda kv: (-kv[1], labels.get(kv[0], kv[0])))
     for i, (s, _n) in enumerate(ordered):
         extra = " extra" if i >= VISIBLE else ""
-        out.append('<button class="facet%s" data-g="%s" data-v="%s" type="button">%s<span class="c"></span></button>'
+        out.append('<button class="chip%s" data-g="%s" data-v="%s" type="button" aria-pressed="false">%s<span class="c"></span></button>'
                    % (extra, group, s, labels.get(s, s)))
     return "".join(out), len(ordered)
 
@@ -619,158 +1036,197 @@ ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("dubbed", "Du
 origin_counts = defaultdict(int)
 for t in titles_root: origin_counts[origin_of(t)] += 1
 origin_facets = "".join(
-    '<button class="facet" data-g="origin" data-v="%s" type="button">%s<span class="c"></span></button>' % (v, lbl)
+    '<button class="chip" data-g="origin" data-v="%s" type="button" aria-pressed="false">%s<span class="c"></span></button>' % (v, lbl)
     for v, lbl in ORIGIN_BUCKETS)
 
 trope_facets, n_tropes = facet_chips("trope", trope_counts, trope_label)
 platform_facets, n_platforms = facet_chips("platform", platform_counts, platform_label)
-trope_more = ('<button class="facet-more" data-target="f-trope" type="button">Show all %d tropes</button>' % n_tropes) if n_tropes > VISIBLE else ""
-platform_more = ('<button class="facet-more" data-target="f-platform" type="button">Show all %d apps</button>' % n_platforms) if n_platforms > VISIBLE else ""
+trope_more = ('<button class="chip-dashed" data-target="f-trope" type="button">Show all %d tropes &#9662;</button>' % n_tropes) if n_tropes > VISIBLE else ""
+platform_more = ('<button class="chip-dashed" data-target="f-platform" type="button">Show all %d apps &#9662;</button>' % n_platforms) if n_platforms > VISIBLE else ""
 
-BROWSE_JS = """
+BROWSE_JS = f"""
 <script>
-(function(){
-  var D=null, CAP=60;
-  var FIELD={trope:'tr', platform:'pl', origin:'o'};
-  var active={};
+(function(){{
+  var D=null, STEP=24, visibleCount=STEP, lastTitles=[];
+  var PLABEL={json.dumps(platform_label, separators=(',', ':'))};
+  var TLABEL={json.dumps(trope_label, separators=(',', ':'))};
+  var FIELD={{trope:'tr', platform:'pl', origin:'o'}};
+  var active={{}};
   var qEl=document.getElementById('q'), sortEl=document.getElementById('f-sort');
   var titlesOut=document.getElementById('results-titles'), actorsOut=document.getElementById('results-actors');
   var countEl=document.getElementById('result-count'), resetEl=document.getElementById('f-reset');
-  var chips=[].slice.call(document.querySelectorAll('.facet'));
-  chips.forEach(function(c){ if(!active[c.dataset.g]) active[c.dataset.g]=new Set(); });
+  var moreBtn=document.getElementById('f-more'), moreWrap=document.getElementById('f-more-wrap');
+  var chips=[].slice.call(document.querySelectorAll('.chip[data-g]'));
+  chips.forEach(function(c){{ if(!active[c.dataset.g]) active[c.dataset.g]=new Set(); }});
 
-  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
-  function has(arr,v){return arr && arr.indexOf(v)!==-1;}
-  function vlabel(n){
+  function esc(s){{return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}}
+  function has(arr,v){{return arr && arr.indexOf(v)!==-1;}}
+  function vlabel(n){{
     if(!n) return '';
     if(n>=1e9) return (n/1e9).toFixed(1)+'B views';
     if(n>=1e6) return Math.round(n/1e6)+'M views';
     if(n>=1e3) return Math.round(n/1e3)+'K views';
     return '';
-  }
-  function art(img,letter,badge){
-    var inner = img ? '<img src="'+esc(img)+'" alt="" loading="lazy">' : '<span class="ph">'+esc(letter||'?')+'</span>';
-    return '<span class="art">'+inner+(badge?'<span class="badge">'+esc(badge)+'</span>':'')+'</span>';
-  }
+  }}
+  function posterCard(t){{
+    var appName=(t.pl && t.pl[0] && PLABEL[t.pl[0]]) || '';
+    var plate='<span class="poster--empty"><span class="label">No poster</span><span class="ttl">'+esc(t.n)+'</span><span class="app">'+esc(appName)+'</span></span>';
+    var img=t.i ? '<img src="'+esc(t.i)+'" alt="'+esc(t.n)+'" loading="lazy" onerror="this.remove()">' : '';
+    var bits=[]; var vl=vlabel(t.v); if(vl) bits.push(vl); if(t.tr && t.tr[0]) bits.push(TLABEL[t.tr[0]]||t.tr[0]);
+    var appHtml=appName ? '<span class="app-name">'+esc(appName)+'</span>' : '';
+    return '<a class="poster-card" href="titles/'+esc(t.s)+'.html"><span class="poster">'+plate+img+'</span>'+appHtml+
+      '<span class="meta">'+esc(bits.join(' \\u00b7 '))+'</span></a>';
+  }}
+  function actorCard(a){{
+    var initials=a.n.split(' ').map(function(w){{return w.charAt(0).toUpperCase();}}).slice(0,2).join('');
+    var img=a.i ? '<img src="'+esc(a.i)+'" alt="" loading="lazy" onerror="this.remove()">' : '';
+    return '<a class="actor-tile" href="actors/'+esc(a.s)+'.html"><span class="ring ring--rail"><span>'+esc(initials)+'</span>'+img+'</span>'+
+      '<span class="stack"><span class="name">'+esc(a.n)+'</span><span class="sub">'+a.c+' titles</span></span></a>';
+  }}
 
-  function matches(t,q){
+  function matches(t,q){{
     if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
-    for(var g in active){
+    for(var g in active){{
       var f=t[FIELD[g]], it=active[g].values(), x;
-      while(!(x=it.next()).done){ if(!has(f,x.value)) return false; }
-    }
+      while(!(x=it.next()).done){{ if(!has(f,x.value)) return false; }}
+    }}
     return true;
-  }
+  }}
 
-  function run(){
+  function renderTitles(){{
+    var slice=lastTitles.slice(0,visibleCount);
+    titlesOut.innerHTML=slice.map(posterCard).join('') || '<p class="no-results">No titles match. Try removing a filter.</p>';
+    moreWrap.style.display = lastTitles.length>visibleCount ? '' : 'none';
+  }}
+
+  function run(){{
     if(!D) return;
+    visibleCount=STEP;
     var q=qEl.value.trim().toLowerCase();
-    var titles=D.titles.filter(function(t){return matches(t,q);});
+    var titles=D.titles.filter(function(t){{return matches(t,q);}});
 
-    // Single pass over the current result set tallies every facet at once, so each
+    // Single pass over the current result set tallies every chip at once, so each
     // chip's number is "results you'd get if you also picked this".
-    var tally={}; for(var g in active) tally[g]={};
-    for(var i=0;i<titles.length;i++){
+    var tally={{}}; for(var g in active) tally[g]={{}};
+    for(var i=0;i<titles.length;i++){{
       var t=titles[i];
-      for(var g2 in active){
+      for(var g2 in active){{
         var f=t[FIELD[g2]]; if(!f) continue;
         for(var j=0;j<f.length;j++) tally[g2][f[j]]=(tally[g2][f[j]]||0)+1;
-      }
-    }
-    for(var c=0;c<chips.length;c++){
+      }}
+    }}
+    for(var c=0;c<chips.length;c++){{
       var el=chips[c], g=el.dataset.g, v=el.dataset.v, n=tally[g][v]||0, on=active[g].has(v);
-      el.querySelector('.c').textContent=n;
-      el.className=(el.className.indexOf('extra')!==-1?'facet extra':'facet')+(on?' on':(n?'':' off'));
+      el.querySelector('.c').textContent=n.toLocaleString();
+      el.className=(el.className.indexOf('extra')!==-1?'chip extra':'chip')+(on?' on':(n?'':' off'));
       el.disabled=(!n && !on);
-    }
+      el.setAttribute('aria-pressed', on ? 'true' : 'false');
+      el.setAttribute('aria-disabled', (!n && !on) ? 'true' : 'false');
+    }}
 
     var sort=sortEl.value;
-    if(sort==='views') titles.sort(function(a,b){return (b.v||0)-(a.v||0);});
-    else if(sort==='az') titles.sort(function(a,b){return a.n.localeCompare(b.n);});
-    else if(sort==='year') titles.sort(function(a,b){return String(b.y||'').localeCompare(String(a.y||''));});
+    if(sort==='views') titles.sort(function(a,b){{return (b.v||0)-(a.v||0);}});
+    else if(sort==='az') titles.sort(function(a,b){{return a.n.localeCompare(b.n);}});
+    else if(sort==='year') titles.sort(function(a,b){{return String(b.y||'').localeCompare(String(a.y||''));}});
+    lastTitles=titles;
 
-    var actors=D.actors.filter(function(a){return !q || a.n.toLowerCase().indexOf(q)!==-1;});
-    actors.sort(function(a,b){return b.c-a.c;});
+    var actors=D.actors.filter(function(a){{return !q || a.n.toLowerCase().indexOf(q)!==-1;}});
+    actors.sort(function(a,b){{return b.c-a.c;}});
 
     var nf=0; for(var g3 in active) nf+=active[g3].size;
     resetEl.style.display=(nf||q)?'inline-block':'none';
-    countEl.textContent=titles.length.toLocaleString()+' titles'+(q?', '+actors.length.toLocaleString()+' actors':'')+(nf?' · '+nf+' filter'+(nf>1?'s':'')+' on':'');
+    countEl.innerHTML='<b>'+titles.length.toLocaleString()+'</b> titles'+(q?', '+actors.length.toLocaleString()+' actors':'');
+    document.getElementById('active-summary').textContent = (nf||q) ? ((nf?nf+' filter'+(nf>1?'s':'')+' on':'')+(nf&&q?', ':'')+(q?'searching \\"'+q+'\\"':'')) : 'No filters yet \\u2014 showing everything';
 
-    titlesOut.innerHTML=titles.slice(0,CAP).map(function(t){
-      return '<a class="card" href="titles/'+esc(t.s)+'.html">'+art(t.i,t.n.charAt(0).toUpperCase(),vlabel(t.v))
-        +'<span class="t">'+esc(t.n)+'</span><span class="s">'+esc(t.y||'')+'</span></a>';
-    }).join('') || '<p class="updated">No titles match. Try removing a filter.</p>';
-    if(titles.length>CAP) titlesOut.innerHTML+='<p class="updated">+ '+(titles.length-CAP).toLocaleString()+' more. Narrow with a filter or search.</p>';
+    renderTitles();
 
-    if(q){
-      actorsOut.innerHTML=actors.slice(0,24).map(function(a){
-        return '<a class="card person" href="actors/'+esc(a.s)+'.html">'+art(a.i,a.n.charAt(0).toUpperCase(),'')
-          +'<span class="t">'+esc(a.n)+'</span><span class="s">'+a.c+' titles</span></a>';
-      }).join('') || '<p class="updated">No actors match.</p>';
+    if(q){{
+      actorsOut.innerHTML=actors.slice(0,24).map(actorCard).join('') || '<p class="no-results">No actors match.</p>';
       actorsOut.parentNode.style.display='';
-    } else {
+    }} else {{
       actorsOut.parentNode.style.display='none';
-    }
-  }
+    }}
+  }}
 
-  chips.forEach(function(el){
-    el.addEventListener('click',function(){
+  chips.forEach(function(el){{
+    el.addEventListener('click',function(){{
       if(el.disabled) return;
       var g=el.dataset.g,v=el.dataset.v;
       if(active[g].has(v)) active[g].delete(v); else active[g].add(v);
       run();
-    });
-  });
-  [].slice.call(document.querySelectorAll('.facet-more')).forEach(function(b){
-    b.addEventListener('click',function(){
+    }});
+  }});
+  [].slice.call(document.querySelectorAll('.chip-dashed')).forEach(function(b){{
+    b.addEventListener('click',function(){{
       var box=document.getElementById(b.dataset.target);
       var collapsed=box.classList.toggle('collapsed');
-      b.textContent=collapsed?b.dataset.moreLabel:'Show fewer';
-    });
-  });
+      b.innerHTML=collapsed?b.dataset.moreLabel:'Show fewer &#9652;';
+    }});
+  }});
+  moreBtn.addEventListener('click',function(){{ visibleCount+=STEP; renderTitles(); }});
 
   var timer=null;
-  qEl.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,120);});
+  qEl.addEventListener('input',function(){{clearTimeout(timer);timer=setTimeout(run,120);}});
   sortEl.addEventListener('change',run);
-  resetEl.addEventListener('click',function(){
+  resetEl.addEventListener('click',function(){{
     for(var g in active) active[g].clear(); qEl.value=''; run();
-  });
+  }});
 
-  fetch('search-index.json').then(function(r){return r.json();}).then(function(d){
+  fetch('search-index.json').then(function(r){{return r.json();}}).then(function(d){{
     D=d;
     var p=new URLSearchParams(window.location.search);
     if(p.get('q')) qEl.value=p.get('q');
-    ['trope','platform','origin'].forEach(function(g){
+    ['trope','platform','origin'].forEach(function(g){{
       if(p.get(g) && active[g]) active[g].add(p.get(g));
-    });
+    }});
     run();
-  }).catch(function(){ countEl.textContent='Could not load the index. Please refresh.'; });
-})();
+  }}).catch(function(){{ countEl.textContent='Could not load the index. Please refresh.'; }});
+}})();
 </script>
 """
 
 browse_body = f"""
-<section class="hero"><div class="wrap-wide">
-<p class="eyebrow">Search &amp; Browse</p><h1>Find any actor or drama</h1>
-<p class="lede">{len(titles_root)} titles and {len(people)} actors. Search by name, or stack filters. Greyed-out chips have no matches left.</p>
-<div class="searchbar">
-<input type="text" id="q" placeholder="Search titles or actors&hellip;" autocomplete="off" aria-label="Search titles or actors">
-<select id="f-sort" aria-label="Sort titles">
+<div class="browse-layout">
+<aside class="browse-aside">
+<h1>Browse titles</h1>
+<form class="aside-search" onsubmit="return false">
+<span class="glyph" style="color:var(--wine)">&#8981;</span>
+<input type="text" id="q" placeholder="Search within results" autocomplete="off" aria-label="Search within results">
+</form>
+<div class="active-filters">
+<span class="txt" id="active-summary">No filters yet &mdash; showing everything</span>
+<button class="reset-pill" id="f-reset" type="button" style="display:none">Reset</button>
+</div>
+<div class="filter-group">
+<h2>Country of origin</h2><p class="hint">Pick one</p>
+<div class="chips tight" id="f-origin">{origin_facets}</div>
+</div>
+<div class="filter-group">
+<h2>Trope</h2><p class="hint">{VISIBLE} most common of {n_tropes}</p>
+<div class="chips tight collapsed" id="f-trope">{trope_facets}</div>{trope_more}
+</div>
+<div class="filter-group">
+<h2>App</h2><p class="hint">{VISIBLE if n_platforms > VISIBLE else n_platforms} of {n_platforms} shown</p>
+<div class="chips tight collapsed" id="f-platform">{platform_facets}</div>{platform_more}
+<p class="hint" style="margin-top:14px">Greyed chips would return nothing with your current picks. They stay put so the panel never jumps.</p>
+</div>
+</aside>
+<section class="results-panel">
+<div class="results-head">
+<p class="count" id="result-count">Loading&hellip;</p>
+<label class="sort-label">Sort<select id="f-sort" aria-label="Sort titles">
 <option value="views">Most watched</option>
 <option value="az">A&ndash;Z</option>
 <option value="year">Newest first</option>
-</select>
+</select></label>
 </div>
-<div class="facetbar">
-<div class="facetgroup"><h3>Country of origin</h3><div class="facets" id="f-origin">{origin_facets}</div></div>
-<div class="facetgroup"><h3>Trope</h3><div class="facets collapsed" id="f-trope">{trope_facets}</div>{trope_more}</div>
-<div class="facetgroup"><h3>App</h3><div class="facets" id="f-platform">{platform_facets}</div>{platform_more}</div>
+<div class="grid" id="results-titles"></div>
+<div class="show-more" id="f-more-wrap" style="display:none"><button class="btn btn-wine" id="f-more" type="button">Show 24 more</button></div>
+</section>
 </div>
-<p class="result-count" id="result-count">Loading&hellip;</p>
-<button class="facet-reset" id="f-reset" type="button" style="display:none">Reset all filters</button>
-</div></section>
-<section><div class="wrap-wide" style="display:none"><h2>Actors</h2><div class="resultgrid" id="results-actors"></div></div></section>
-<section><div class="wrap-wide"><h2>Titles</h2><div class="resultgrid" id="results-titles"></div></div></section>
+<section class="section-warm pad" id="results-actors-section" style="display:none;padding:34px 22px 40px">
+<h2 style="margin-bottom:18px">Actors</h2><div class="grid circles" id="results-actors"></div>
+</section>
 {BROWSE_JS}"""
 html = page("Search DramaEverAfter: Every Actor and Title (2026) | DramaEverAfter",
             f"Search and filter {len(people)} vertical drama actors and {len(titles_root)} titles by trope and platform.",
@@ -788,15 +1244,15 @@ ORIGIN_BLURB = {
 for o in origins_other:
     o_titles = [t for t in titles_other if origin_of(t) == o]
     heading, blurb = ORIGIN_BLURB.get(o, (o.title() + " Short Drama", ""))
-    cards = "".join(title_card(t, depth=1, title_pre="") for t in o_titles)
+    cards = "".join(poster_card(t, "") for t in o_titles)
     body = f"""
-<section class="hero"><div class="wrap">
+<nav class="crumb"><a href="../index.html">Home</a><span>/</span><span class="current">{heading}</span></nav>
+<section class="hero"><div class="inner">
 <p class="eyebrow">Section</p><h1>{heading}</h1>
 <p class="lede">{blurb}</p>
-<div class="stat-row"><div class="stat"><span class="n">{len(o_titles)}</span><span class="l">Titles</span></div></div>
+<div class="stat-line"><b>{len(o_titles):,}</b> titles</div>
 </div></section>
-<section><div class="wrap"><p class="crumb"><a href="../index.html">Home</a> / {heading}</p>
-<div class="grid">{cards}</div></div></section>"""
+<section class="pad" style="padding:26px 22px 46px"><div class="grid">{cards}</div></section>"""
     html = page(f"{heading} | DramaEverAfter",
                 f"{heading}: titles, cast and where to watch. Updated {UPDATED}.",
                 body, f"{DOMAIN}/{o}/index.html", depth=1)
@@ -805,92 +1261,184 @@ for o in origins_other:
     urls.append(f"/{o}/index.html")
 
 # Homepage
-# Row order follows how the fan community actually browses (actors, tropes, apps,
-# what's new) rather than by origin. Origin rows sit below as their own sections.
 top_actors = sorted(people, key=lambda p: -len(credits_by_person.get(p["person_id"], [])))[:18]
-featured = sorted(titles_root, key=lambda t: -title_views(t))[:18]
+featured = sorted(titles_root, key=lambda t: -title_views(t))[:9]
 just_added = sorted(titles_root, key=lambda t: (t.get("last_verified") or ""), reverse=True)[:18]
 
-_plat_counts = defaultdict(int)
-for a in availability:
-    if a["platform_id"] in platforms: _plat_counts[a["platform_id"]] += 1
-top_platforms = sorted(_plat_counts.items(), key=lambda kv: -kv[1])[:16]
-platform_chips = "".join(
-    '<a class="chip" href="browse.html?platform=%s">%s</a>' % (slug(platforms[pid]["name"]), platforms[pid]["name"])
-    for pid, _ in top_platforms)
+home_apps = "".join(
+    f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} titles</span></a>'
+    for pid, n in TOP_PLATFORMS[:6] if n > 0)
 
-_seen_chips = set()
-trope_chips = ""
-for tr in all_tropes:
-    _s = slug(tr)
-    if _s in _seen_chips: continue
-    _seen_chips.add(_s)
-    trope_chips += '<a class="chip" href="tropes/%s.html">%s</a>' % (_s, tr.title())
+home_tropes = sorted(all_tropes, key=lambda x: -trope_total[x])[:14]
+home_trope_chips = "".join(trope_chip(tr, "", trope_total[tr]) for tr in home_tropes)
 
 section_links = "".join(
-    '<section><div class="wrap"><h2>%s</h2><p><a href="%s/index.html">Browse the %s catalogue &rarr;</a></p></div></section>'
-    % (ORIGIN_BLURB.get(o, (o.title() + " Short Drama", ""))[0], o, o)
+    f'<section class="pad" style="padding:10px 22px 28px"><h2 style="font-size:20px;margin-bottom:6px">{ORIGIN_BLURB.get(o, (o.title() + " Short Drama", ""))[0]}</h2>'
+    f'<a href="{o}/index.html">Browse the catalogue &rarr;</a></section>'
     for o in origins_other)
 
-# Origin sections we have committed to but have no rows for yet render as an honest
-# stub rather than an empty rail.
-STUB_ORIGINS = []
-stub_sections = "".join(
-    '<section><div class="wrap"><h2>%s</h2><div class="stub"><strong>Coming soon</strong>%s</div></div></section>' % (h, b)
-    for h, b in STUB_ORIGINS if h.split()[0].lower() not in origins_other)
-
 body = f"""
-<section class="hero-banner">
-<div class="hero-media">
-<!-- Swap the placeholder for real art by dropping <img class="hero-img" src="..." alt=""> in here. -->
-<span class="hero-ph">Hero image placeholder</span>
-<div class="hero-scrim"></div>
-<div class="hero-copy"><div class="inner">
-<p class="eyebrow">The vertical drama database</p>
-<h1>Find your next ever after.</h1>
-<p class="lede">Every vertical drama, every actor, every platform, one place. Cross-referenced across ReelShort, DramaBox, ShortMax, My Drama and more.</p>
-<form class="hero-search" action="browse.html" method="get">
-<input type="text" name="q" placeholder="Search {len(people)} actors or {len(titles_root)} titles&hellip;" aria-label="Search actors or titles">
-<button type="submit">Search</button>
+<section class="hero"><div class="inner">
+<p class="eyebrow">Looking for that app? that actor? that drama?</p>
+<h1>All the Drama Ever After. Find it. Watch it. Love it.</h1>
+<p class="lede">Every micro-drama we can find, the cast behind it, and the one app it actually streams on. No account, no algorithm, no autoplay.</p>
+<form class="hero-search-form" action="browse.html" method="get">
+<input type="search" name="q" placeholder="e.g. Silver Fox, or Sarah Moliski" aria-label="Search actors or titles">
+<button class="btn btn-gold" type="submit">Search</button>
 </form>
-<div class="hero-stats">
-<div><span class="n">{len(titles_root)}</span><span class="l">Titles</span></div>
-<div><span class="n">{len(people)}</span><span class="l">Actors</span></div>
-<div><span class="n">{len(platforms)}</span><span class="l">Platforms</span></div>
+<div class="stat-line">
+<span><b>{len(titles_root):,}</b> titles</span><span class="dot">&middot;</span>
+<span><b>{len(people):,}</b> actors</span><span class="dot">&middot;</span>
+<span><b>{len(APPS_WITH_DATA)}</b> apps</span>
 </div>
-</div></div>
 </div></section>
 
-<section><div class="wrap-wide">
-<div class="row-head"><h2>Most watched</h2><a href="browse.html">Browse all &rarr;</a></div>
-{rail([title_card_art(t) for t in featured])}
-</div></section>
+<section style="padding:40px 0 8px">
+<div class="section-head pad"><h2>Most watched right now</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
+<div class="rail">{"".join(poster_card(t, "", rail_item=True) for t in featured)}</div>
+</section>
 
-<section><div class="wrap-wide">
-<div class="row-head"><h2>Popular actors</h2><a href="browse.html">All {len(people)} actors &rarr;</a></div>
-{rail([person_card_art(p) for p in top_actors])}
-</div></section>
+<section class="section-warm pad" style="padding:34px 22px 40px">
+<h2 style="margin-bottom:6px">Browse by trope</h2>
+<p style="font-size:15px;color:var(--sec);margin-bottom:20px">The shortcut most people actually use. {len(all_tropes)} in all.</p>
+<div class="chips">{home_trope_chips}<a class="chip-all" href="tropes/index.html">All {len(all_tropes)} tropes &rarr;</a></div>
+</section>
 
-<section><div class="wrap-wide">
-<div class="row-head"><h2>Popular Chinese actors</h2></div>
-<div class="rail"><div class="rail-stub empty-state"><h3>Coming soon</h3><p>No Chinese-origin titles are in the database yet, so there are no actors to rank. This strip fills itself the moment the first ones land.</p></div></div>
-</div></section>
+<section class="pad" style="padding:38px 22px 40px">
+<h2 style="margin-bottom:20px">Where these stream</h2>
+<div class="grid apps">{home_apps}</div>
+</section>
 
-<section><div class="wrap"><h2>Browse by trope</h2><div class="chipsrow">{trope_chips}</div></div></section>
+<section class="pad" style="padding:34px 22px 46px;border-top:1px solid var(--line)">
+<div class="section-head"><h2>Faces you keep seeing</h2><a class="all" href="actors/index.html">All actors &rarr;</a></div>
+<div class="grid circles">{"".join(actor_tile(p, "") for p in top_actors)}</div>
+</section>
 
-<section><div class="wrap"><h2>Browse by app</h2><div class="chipsrow">{platform_chips}</div>
-<p><a class="seeall" href="platforms.html">Every platform compared: pricing and where to start &rarr;</a></p></div></section>
-
-<section><div class="wrap-wide">
-<div class="row-head"><h2>Just added</h2><p class="updated">Updated {UPDATED}</p></div>
-{rail([title_card_art(t) for t in just_added])}
-</div></section>
-{section_links}{stub_sections}"""
+<section class="section-warm pad" style="padding:30px 22px 44px">
+<div class="section-head"><h2>Just added</h2><span class="hint" style="font-size:13px;color:var(--tert)">Updated {UPDATED}</span></div>
+<div class="rail" style="padding:0">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in just_added[:10])}</div>
+</section>
+{section_links}"""
 html = page("DramaEverAfter: Every Vertical Drama, Every Platform, One Place",
             "The searchable database of vertical dramas and micro dramas: actors, tropes, and where to watch across ReelShort, DramaBox, ShortMax and more.",
             body, f"{DOMAIN}/", depth=0)
 open(os.path.join(DIST, "index.html"), "w").write(html)
 urls.insert(0, "/")
+
+# Blog (NEW): template + layout only. No posts.csv exists yet, so this renders an
+# honest empty state rather than fabricated content. Linked from nav/footer now so
+# the URL is stable; drop real posts in later with no template change needed.
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Reading room</p>
+<h1 style="max-width:24ch">What to watch next, and why it's everywhere</h1>
+<p class="lede">Recaps, trope explainers and app comparisons. Nothing published yet &mdash; check back soon.</p>
+</div></section>
+<section class="pad" style="padding:34px 22px 46px;display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start">
+<div style="flex:3 1 480px;min-width:0">
+<h2 style="margin-bottom:16px">Latest</h2>
+<div class="blog-empty"><h3>No posts yet</h3><p>The first recap is being written. Check back soon, or follow along elsewhere.</p></div>
+</div>
+<aside class="contact-side" style="flex:1 1 250px">
+<div class="newsletter-block">
+<h2 style="font-size:20px;margin-bottom:8px">One email a week</h2>
+<p>The new titles worth your evening, plus whatever I got sucked into. No sponsored fluff.</p>
+<form onsubmit="return false">
+<input type="email" placeholder="you@email.com" aria-label="Email address">
+<button class="btn btn-gold" type="button" style="width:100%">Sign me up</button>
+</form>
+</div>
+</aside>
+</section>"""
+html = page("The DramaEverAfter Blog: Recaps, Trope Explainers and App Comparisons",
+            "Vertical drama recaps, trope explainers and app comparisons from DramaEverAfter.",
+            body, f"{DOMAIN}/blog.html", depth=0)
+open(os.path.join(DIST, "blog.html"), "w").write(html)
+urls.append("/blog.html")
+
+# Contact (NEW): reason-chooser form is fully interactive client-side (pure
+# presentation, no network call) -- only the actual submission is left unwired,
+# per the go-ahead to ship UI only for now.
+CONTACT_JS = """
+<script>
+(function(){
+  var REASONS = {
+    correction: {label:'Which page is wrong?', hint:'A title, actor or app page. A link is even better.', ph:'What should it say instead?'},
+    missing: {label:'Title and app', hint:'The exact name as it appears in the app, please \\u2014 spelling varies.', ph:'Anything else you know \\u2014 year, lead actors, episode count.'},
+    photo: {label:'Which page is wrong?', hint:'A title, actor or app page. A link is even better.', ph:"Tell me which credits are yours and what you'd like the profile to say."},
+    other: {label:'Which page is wrong?', hint:'A title, actor or app page. A link is even better.', ph:'Tell me what\\'s going on.'}
+  };
+  var pills=[].slice.call(document.querySelectorAll('.reason-pill'));
+  var titleField=document.getElementById('title-field'), titleLabel=document.getElementById('title-field-label'),
+      titleHint=document.getElementById('title-field-hint'), msg=document.getElementById('message-field');
+  function select(id){
+    pills.forEach(function(p){ var on=p.dataset.reason===id; p.classList.toggle('on', on); p.setAttribute('aria-pressed', on?'true':'false'); });
+    var r=REASONS[id];
+    titleField.style.display = (id==='correction' || id==='missing') ? '' : 'none';
+    titleLabel.textContent = r.label; titleHint.textContent = r.hint; msg.placeholder = r.ph;
+  }
+  pills.forEach(function(p){ p.addEventListener('click', function(){ select(p.dataset.reason); }); });
+  select('correction');
+})();
+</script>
+"""
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Contact</p>
+<h1 style="max-width:22ch">Found a mistake? Tell me.</h1>
+<p class="lede">This database is assembled from app catalogues, so names get misspelled and posters go missing. Corrections are the single most useful thing you can send me.</p>
+</div></section>
+<section class="pad" style="padding:34px 22px 46px;display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start">
+<form style="flex:2 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px" onsubmit="return false">
+<div class="field">
+<label>What's this about?</label>
+<div class="chips tight" role="group" aria-label="Reason for contact">
+<button type="button" class="reason-pill" data-reason="correction" aria-pressed="true">A correction</button>
+<button type="button" class="reason-pill" data-reason="missing" aria-pressed="false">A missing title</button>
+<button type="button" class="reason-pill" data-reason="photo" aria-pressed="false">I'm an actor</button>
+<button type="button" class="reason-pill" data-reason="other" aria-pressed="false">Something else</button>
+</div>
+</div>
+<div class="contact-row">
+<div class="field"><label for="c-name">Your name</label><input id="c-name" type="text" placeholder="Optional"></div>
+<div class="field"><label for="c-email">Email</label><input id="c-email" type="email" placeholder="Only if you want a reply"></div>
+</div>
+<div class="field" id="title-field">
+<label id="title-field-label" for="c-page">Which page is wrong?</label>
+<input id="c-page" type="text" placeholder="e.g. How to Tame a Silver Fox">
+<span class="hint" id="title-field-hint">A title, actor or app page. A link is even better.</span>
+</div>
+<div class="field">
+<label for="message-field">Message</label>
+<textarea id="message-field" rows="7" placeholder="What should it say instead?"></textarea>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+<button class="btn btn-gold" type="button">Send it</button>
+<span class="reassure">I read everything myself, usually within a couple of days.</span>
+</div>
+</form>
+<aside class="contact-side">
+<div class="side-card">
+<h2>Faster than the form</h2>
+<div class="kv"><div class="k">Email</div><a href="mailto:hello@dramaeverafter.com">hello@dramaeverafter.com</a></div>
+<div class="kv"><div class="k">Corrections</div><a href="mailto:fix@dramaeverafter.com">fix@dramaeverafter.com</a></div>
+</div>
+<div class="side-card warn">
+<h2>Before you write</h2>
+<ul>
+<li>I'm not affiliated with ReelShort, DramaBox or any other app &mdash; I can't fix your subscription or refund coins.</li>
+<li>Actor photos only go up with the actor's say-so, which is why most profiles are initials.</li>
+<li>Missing title? Send the app and the exact name and it usually goes live the same week.</li>
+</ul>
+</div>
+</aside>
+</section>
+{CONTACT_JS}"""
+html = page("Contact DramaEverAfter: Report a Correction or Missing Title",
+            "Report a correction, a missing title, or get in touch with DramaEverAfter.",
+            body, f"{DOMAIN}/contact.html", depth=0)
+open(os.path.join(DIST, "contact.html"), "w").write(html)
+urls.append("/contact.html")
 
 # sitemap + robots
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
