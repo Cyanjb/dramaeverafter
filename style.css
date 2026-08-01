@@ -78,7 +78,10 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .grid.az{grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:12px}
 
 /* ---------- poster card (grid/rail) ---------- */
-.poster-card{display:flex;flex-direction:column;gap:10px;min-width:0;text-decoration:none;color:inherit}
+.poster-card{display:flex;flex-direction:column;gap:6px;min-width:0;color:inherit}
+.poster-card .poster-link{display:block;margin-bottom:4px}
+.poster-card .meta{display:block;text-decoration:none}
+.poster-card .app-name:hover{color:var(--wine-hover);text-decoration:underline}
 .poster{position:relative;aspect-ratio:2/3;background:#F1E6E9;border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .poster--empty{height:100%;background:var(--blush);padding:15px 13px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}

@@ -61,6 +61,8 @@ for a in availability:
     if a["platform_id"] in platforms: _plat_counts[a["platform_id"]] += 1
 TOP_PLATFORMS = sorted(_plat_counts.items(), key=lambda kv: -kv[1])
 APPS_WITH_DATA = [platforms[pid] for pid, n in TOP_PLATFORMS if n > 0]
+# Only these get an /apps/ page, so only these may be linked from a card caption.
+APP_PAGE_NAMES = {p["name"] for p in APPS_WITH_DATA}
 
 def _raw_tropes(t):
     return [x.strip() for x in t["tropes"].split(";") if x.strip()]
@@ -203,12 +205,20 @@ def poster_card(t, pre="", rail_item=False, size_sm=False, show_app=True, note="
     meta = " &middot; ".join(bits)
     cls = "poster-card"
     if rail_item: cls += " rail-item" + (" sm" if size_sm else "")
-    app_html = f'<span class="app-name">{app_name}</span>' if show_app and app_name else ""
+    # The card is a wrapper, not one big anchor: the poster links to the title and the
+    # app name links to that app's page. Anchors cannot nest, which is why the caption
+    # sits outside the poster link rather than inside it.
+    app_html = ""
+    if show_app and app_name:
+        app_html = (f'<a class="app-name" href="{pre}apps/{slug(app_name)}.html">{app_name}</a>'
+                    if app_name in APP_PAGE_NAMES else f'<span class="app-name">{app_name}</span>')
     if note: app_html = f'<span class="card-note">{note}</span>' + app_html
-    return (f'<a class="{cls}" href="{pre}titles/{tslug(t)}.html" '
+    href = f'{pre}titles/{tslug(t)}.html'
+    return (f'<div class="{cls}" '
             f'data-v="{title_views(t)}" data-n="{esc_attr(t["primary_title"].lower())}" '
             f'data-y="{esc_attr(t.get("year") or "")}" data-app="{slug(app_name) if app_name else ""}">'
-            f'{poster_box(t, app_name)}{app_html}<span class="meta">{meta}</span></a>')
+            f'<a class="poster-link" href="{href}">{poster_box(t, app_name)}</a>'
+            f'{app_html}<a class="meta" href="{href}">{meta}</a></div>')
 
 # Reusable client-side re-sort for a static grid (Actor detail, Trope page). Cards
 # already carry data-v/data-n/data-y from poster_card, so no extra JSON payload
@@ -367,7 +377,10 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .grid.az{grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:12px}
 
 /* ---------- poster card (grid/rail) ---------- */
-.poster-card{display:flex;flex-direction:column;gap:10px;min-width:0;text-decoration:none;color:inherit}
+.poster-card{display:flex;flex-direction:column;gap:6px;min-width:0;color:inherit}
+.poster-card .poster-link{display:block;margin-bottom:4px}
+.poster-card .meta{display:block;text-decoration:none}
+.poster-card .app-name:hover{color:var(--wine-hover);text-decoration:underline}
 .poster{position:relative;aspect-ratio:2/3;background:#F1E6E9;border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .poster--empty{height:100%;background:var(--blush);padding:15px 13px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
@@ -664,6 +677,41 @@ def watch_card(title_id, pre=""):
 def _plural(n, word):
     return f"{n} {word}" + ("" if n == 1 else "s")
 
+# --------- sourced biography cleanup ---------------------------------------
+# bio_short was harvested from the ReelShort fandom blog and a lot of it arrived
+# with article furniture attached: "Sarah Moliski as Haley Actress, host and...",
+# "Part 1: Who's in ...", or circular junk like "X is the actor playing Y".
+# The character-name prefix is strippable EXACTLY, because we already hold the
+# real character names in credits.csv -- no guessing at where the name ends.
+_chars_by_person = defaultdict(set)
+for _c in credits:
+    _ch = (_c.get("character_name") or "").strip()
+    if _ch: _chars_by_person[_c["person_id"]].add(_ch)
+
+_BIO_JUNK = [
+    re.compile(r"\bis the (actor|actress) (playing|behind)\b", re.I),
+    re.compile(r"\bfans have praised\b", re.I),
+    re.compile(r"Meet the .{0,24}(Cast|Lineup)", re.I),
+    re.compile(r"^\S+\s+as\s+[A-Z]"),          # still a role fragment after cleaning
+]
+
+def clean_bio(p):
+    """Return a presentable sourced biography, or '' if what we harvested is junk."""
+    b = re.sub(r"\s+", " ", (p.get("bio_short") or "").strip())
+    if not b:
+        return ""
+    name = p["name"]
+    for ch in sorted(_chars_by_person.get(p["person_id"], ()), key=len, reverse=True):
+        b = re.sub(r"^" + re.escape(name) + r"\s+as\s+" + re.escape(ch) + r"\s*[,.:;-]?\s*",
+                   "", b, flags=re.I)
+    b = re.sub(r"^Part\s*\d+\s*[:.-]?\s*", "", b).strip()
+    # 40, not 60: "ReelShort actor known for dark mafia romance leads." is a perfectly
+    # good short bio, and the junk patterns above already catch the genuinely useless
+    # short ones ("X is the actor playing Y", headline questions).
+    if len(b) < 40 or b.endswith("?") or any(r.search(b) for r in _BIO_JUNK):
+        return ""
+    return b
+
 def actor_summary(p, pairs):
     """pairs: list of (credit_row, title_row) for this person."""
     if not pairs:
@@ -756,11 +804,12 @@ for p in people:
     top_tropes_p = sorted(trope_counts_p.items(), key=lambda kv: -kv[1])
     years = sorted({t["year"] for t in my_titles if t.get("year")})
     active = f"{years[0]}–{years[-1]}" if len(years) > 1 else (years[0] if years else "—")
-    oneliner = actor_summary(p, my_pairs)
-    # bio_short holds real sourced biography for 703 people. Keep it visually and
-    # semantically separate from the derived summary above so a reader (and a
-    # future maintainer) can tell which is which.
-    real_bio = (p.get("bio_short") or "").strip()
+    # ONE biography per actor, never two. A cleaned sourced bio is better writing
+    # than anything derived, so it leads when we have one; otherwise the derived
+    # factual summary stands alone. The stat figures and trope chips below already
+    # carry the numbers, so nothing is lost by not printing both.
+    real_bio = clean_bio(p)
+    oneliner = real_bio or actor_summary(p, my_pairs)
     usual_html = "".join(trope_chip(tr, "../", cnt) for tr, cnt in top_tropes_p[:8])
     cards = "".join(poster_card(t, "../", note=note_for.get(t["title_id"], ""))
                     for t in sorted(my_titles, key=lambda x: -title_views(x)))
@@ -775,6 +824,7 @@ for p in people:
 <div class="info-col">
 <p class="eyebrow">Actor</p><h1>{p['name']}</h1>
 <p class="lede">{oneliner}</p>
+{social_links(p)}
 <div class="stat-figures">
 <div class="stat"><span class="n">{verified_n}</span><span class="l">titles</span></div>
 <div class="divider"></div>
@@ -783,10 +833,8 @@ for p in people:
 <div class="stat"><span class="n">{active}</span><span class="l">active</span></div>
 </div>
 {f'<div class="usual"><span class="label">Usual tropes</span>{usual_html}</div>' if usual_html else ''}
-{social_links(p)}
 </div>
 </section>
-{f'''<section class="pad" style="padding:26px 22px 0"><div class="bio"><h2>About {p['name']}</h2><p>{real_bio}</p></div></section>''' if real_bio else ''}
 <section class="pad" style="padding:26px 22px 46px">
 <div class="results-head"><h2 style="font-size:24px">Credits</h2>{sort_select('credits-grid')}</div>
 <div class="grid" id="credits-grid">{cards}</div>
@@ -1221,6 +1269,7 @@ BROWSE_JS = f"""
 (function(){{
   var D=null, STEP=24, visibleCount=STEP, lastTitles=[];
   var PLABEL={json.dumps(platform_label, separators=(',', ':'))};
+  var APPPAGE={json.dumps({slug(p["name"]): 1 for p in APPS_WITH_DATA}, separators=(',', ':'))};
   var TLABEL={json.dumps(trope_label, separators=(',', ':'))};
   var FIELD={{trope:'tr', platform:'pl', origin:'o'}};
   var active={{}};
@@ -1245,9 +1294,17 @@ BROWSE_JS = f"""
     var plate='<span class="poster--empty"><span class="label">No poster</span><span class="ttl">'+esc(t.n)+'</span><span class="app">'+esc(appName)+'</span></span>';
     var img=t.i ? '<img src="'+esc(t.i)+'" alt="'+esc(t.n)+'" loading="lazy" onerror="this.remove()">' : '';
     var bits=[]; var vl=vlabel(t.v); if(vl) bits.push(vl); if(t.tr && t.tr[0]) bits.push(TLABEL[t.tr[0]]||t.tr[0]);
-    var appHtml=appName ? '<span class="app-name">'+esc(appName)+'</span>' : '';
-    return '<a class="poster-card" href="titles/'+esc(t.s)+'.html"><span class="poster">'+plate+img+'</span>'+appHtml+
-      '<span class="meta">'+esc(bits.join(' \\u00b7 '))+'</span></a>';
+    // Mirrors poster_card() in build.py: wrapper div, poster and caption link to the
+    // title, app name links to that app's page. Anchors cannot nest.
+    var appHtml='';
+    if(appName){{
+      appHtml = APPPAGE[t.pl[0]]
+        ? '<a class="app-name" href="apps/'+esc(t.pl[0])+'.html">'+esc(appName)+'</a>'
+        : '<span class="app-name">'+esc(appName)+'</span>';
+    }}
+    var href='titles/'+esc(t.s)+'.html';
+    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+
+      '</span></a>'+appHtml+'<a class="meta" href="'+href+'">'+esc(bits.join(' \\u00b7 '))+'</a></div>';
   }}
   function actorCard(a){{
     var initials=a.n.split(' ').map(function(w){{return w.charAt(0).toUpperCase();}}).slice(0,2).join('');
@@ -1434,8 +1491,46 @@ for o in origins_other:
 
 # Homepage
 top_actors = sorted(people, key=lambda p: -len(credits_by_person.get(p["person_id"], [])))[:18]
-featured = sorted(titles_root, key=lambda t: -title_views(t))[:9]
-just_added = sorted(titles_root, key=lambda t: (t.get("last_verified") or ""), reverse=True)[:18]
+
+# Straight "most watched" returned 9 ReelShort cards out of 9, because ReelShort
+# reports much larger view counts than anyone else. That misrepresents a catalogue
+# that is actually 1,821 GoodShort to 573 ReelShort, and buries every other app.
+# Take each platform's best titles in turn so the rail reads as a cross-section.
+def spread_by_platform(pool, limit, per_platform=2, key=None):
+    key = key or (lambda t: -title_views(t))
+    buckets = defaultdict(list)
+    for t in sorted(pool, key=key):
+        buckets[title_app(t) or "?"].append(t)
+    order = sorted(buckets, key=lambda k: -len(buckets[k]))
+    out, round_i = [], 0
+    while len(out) < limit and round_i < per_platform:
+        added = False
+        for name in order:
+            if len(buckets[name]) > round_i:
+                out.append(buckets[name][round_i]); added = True
+                if len(out) >= limit: break
+        if not added: break
+        round_i += 1
+    return out
+
+# Only GoodShort and ReelShort report view counts at all, so a "most watched" rail can
+# only ever honestly cover those two. Spread within them rather than letting ReelShort's
+# larger numbers take every slot.
+featured = spread_by_platform([t for t in titles_root if title_views(t)], 12, per_platform=6)
+
+# The variety rail. Every app that has artwork gets representation here, ranked by views
+# where we have them and by recency where we do not -- which is why it is NOT labelled
+# "most watched": we have no view data for five of these seven apps.
+_with_art = [t for t in titles_root if (t.get("poster_ref") or "").strip()]
+across_apps = spread_by_platform(
+    _with_art, 14, per_platform=2,
+    key=lambda t: (-title_views(t), (t.get("last_verified") or "")))
+
+# "Just added" was 0/10 with artwork: the newest rows are exactly the ones the poster
+# harvest has not reached yet. Show recent titles that actually have a cover so the
+# homepage is not a wall of blank plates; the artless ones still surface everywhere else.
+_recent = sorted(titles_root, key=lambda t: (t.get("last_verified") or ""), reverse=True)
+just_added = [t for t in _recent if (t.get("poster_ref") or "").strip()][:12]
 
 home_apps = "".join(
     f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} titles</span></a>'
@@ -1468,6 +1563,11 @@ body = f"""
 <section style="padding:40px 0 8px">
 <div class="section-head pad"><h2>Most watched right now</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
 <div class="rail">{"".join(poster_card(t, "", rail_item=True) for t in featured)}</div>
+</section>
+
+<section style="padding:8px 0 8px">
+<div class="section-head pad"><h2>Across every app</h2><a class="all" href="platforms.html">All {len(APPS_WITH_DATA)} apps &rarr;</a></div>
+<div class="rail">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in across_apps)}</div>
 </section>
 
 <section class="section-warm pad" style="padding:34px 22px 40px">
