@@ -90,8 +90,19 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
   mirrors (dramaboxapp.com, dramaboxen.com, dramaboxtv.com) return 403 from bash; fetch tool also
   blocked on everything except the bare homepage. No bulk route. Per-title data only via web
   search snippets. Revisit occasionally; walls change.
-- DramaWave: no functioning web catalog found (dramawave.com/.tv/.app all dead or 503). App-only.
-  30K+ titles, mostly translated Chinese content — low fit for the English-actor-centric DB anyway.
+- DramaWave: PARTIALLY CORRECTED 2026-08-01. dramawave.com/.tv/.app are indeed dead, but
+  `mydramawave.com` is live (HTTP 200, robots.txt allows all) and there IS an API host at
+  `api.mydramawave.com`. Found via the app's YouTube channel, @dramawaveapp.
+  BUT: mydramawave.com is a client-rendered SPA - /sitemap.xml returns the same HTML shell as
+  the homepage, and the page contains zero occurrences of "actor", "cast" or "episode". The
+  main JS bundle (static-v1.mydramawave.com/frontend_static/assets/index-*.js, ~229KB) names
+  the API host but its drama endpoints are code-split into lazily-loaded chunks; the only
+  paths recoverable from the main bundle are novel-section ones (/novel-search, /novel/my-list).
+  So an adapter is POSSIBLE but needs endpoint discovery (watch network traffic in a browser),
+  which was not done.
+  PRIORITY: LOW for now. We hold exactly 1 DramaWave title, and the catalogue is 30K+ mostly
+  translated Chinese content — low fit for the English-actor-centric DB. This becomes
+  interesting if/when the /chinese/ section is populated (see sec 11), not before.
 - Shortical (a.k.a. "Shorticles"): app-only, no web catalog; small operator (Short Entertainment LTD),
   rough user reviews. Low priority.
 - GoodShort: OPEN from bash. Server-rendered: /channel/ x8 (browse rails), /drama/ title pages,
