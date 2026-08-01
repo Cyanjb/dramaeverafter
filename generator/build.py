@@ -1274,7 +1274,10 @@ for pid, n in TOP_PLATFORMS:
     regulars = sorted(actor_tally.items(), key=lambda kv: -kv[1])[:8]
     regulars_html = "".join(actor_tile(p_by_id[pid_], "../", "app", on_warm=True) for pid_, _ in regulars if pid_ in p_by_id)
     grid_html = "".join(poster_card(t, "../", show_app=False) for t in app_titles[:10])
-    web_url = (pl.get("web_url") or "").strip() or "#"
+    # A button with href="#" looks live and does nothing, which is worse than no
+    # button: every app page shipped one of these because web_url was empty for all
+    # 15 platforms. Render the CTA only when there is somewhere real to send people.
+    web_url = (pl.get("web_url") or "").strip()
     body = f"""
 <nav class="crumb"><a href="../platforms.html">Apps</a><span>/</span><span class="current">{pl['name']}</span></nav>
 <section class="split-hero">
@@ -1290,8 +1293,8 @@ for pid, n in TOP_PLATFORMS:
 </div>
 </div>
 <div class="app-cta"><p class="label">Get the app</p>
-<a class="watch-btn" href="{esc_attr(web_url)}"><span>Open {pl['name']}</span><span class="arrow">&rarr;</span></a>
-<p class="watch-disclosure">Pricing: {pl.get('pricing_model') or 'varies by title'}. We may earn a commission &mdash; that's what pays for this database.</p>
+{f'<a class="watch-btn" href="{esc_attr(web_url)}"><span>Open {pl["name"]}</span><span class="arrow">&rarr;</span></a>' if web_url else f'<p class="watch-pending">No public web link on file for {pl["name"]}</p>'}
+<p class="watch-disclosure">Pricing: {pl.get('pricing_model') or 'varies by title'}.{' We may earn a commission &mdash; that&rsquo;s what pays for this database.' if web_url else ''}</p>
 </div>
 </section>
 <section class="pad" style="padding:30px 22px 20px">

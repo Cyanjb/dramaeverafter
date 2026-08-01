@@ -1,11 +1,11 @@
 platform_id,name,web_url,pricing_model,affiliate_program
-reelshort,ReelShort,,coins + IAP,yes
+reelshort,ReelShort,https://www.reelshort.com/,coins + IAP,yes
 dramabox,DramaBox,,coins + IAP,tbc
 shortmax,ShortMax,,coins + IAP,tbc
-my-drama,My Drama,,coins + subscription,tbc
-netshort,NetShort,,coins + IAP,tbc
-goodshort,GoodShort,,coins + IAP,tbc
-vigloo,Vigloo,,coins + IAP,tbc
+my-drama,My Drama,https://my-drama.com/,coins + subscription,tbc
+netshort,NetShort,https://netshort.com/,coins + IAP,tbc
+goodshort,GoodShort,https://www.goodshort.com/,coins + IAP,tbc
+vigloo,Vigloo,https://www.vigloo.com/,coins + IAP,tbc
 shortical,Shortical,,coins + IAP,tbc
 shorts,Shorts,,coins + IAP,tbc
 flickreels,FlickReels,,coins + IAP,tbc
@@ -13,12 +13,12 @@ playlet,Playlet,,coins + IAP,tbc
 kalostv,KalosTV,,coins + IAP,tbc
 stardusttv,StardustTV,,coins + IAP,tbc
 gammatime,GammaTime,,coins + subscription,tbc
-pinedrama,PineDrama,,free (ad-supported),tbc
+pinedrama,PineDrama,https://pinedrama.com/,free (ad-supported),tbc
 anyreel,AnyReel,,ad-reward coins,tbc
 veloria,Veloria,,coins + IAP,tbc
 starshort,StarShort,,coins + IAP,tbc
 dramapops,DramaPops,,coins + IAP,tbc
-candyjar,CandyJar,,subscription (ad-free),tbc
+candyjar,CandyJar,https://candyjar.com/,subscription (ad-free),tbc
 dramawave,DramaWave,,coins + IAP,tbc
 dramareels,DramaReels,,coins + IAP,tbc
 dreameshort,DreameShort,,tbc,tbc
