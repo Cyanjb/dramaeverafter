@@ -9,9 +9,9 @@ Polite by default: bounded concurrency, a real UA, one retry, and it stops on a 
 of failures rather than hammering a host that has started refusing us.
 
 Usage:
-    python3 harvest_posters.py [--limit N] [--platform reelshort|goodshort] [--dry-run]
+    python3 harvest_posters.py [--limit N] [--platform <platform_id>] [--dry-run]
 """
-import csv, os, re, sys, time, argparse, io
+import csv, os, re, sys, time, argparse, io, html as htmllib
 from concurrent.futures import ThreadPoolExecutor
 import urllib.request, urllib.error
 
@@ -19,7 +19,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "..", "data")
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
-PLATFORMS = ("reelshort", "goodshort")
+# All six serve a usable og:image on their title pages (probed 2026-08-01).
+# The four added in that pass are where the remaining gap actually lives:
+# my-drama 184, pinedrama 137, netshort 127, candyjar 90 titles with no art.
+PLATFORMS = ("reelshort", "goodshort", "my-drama", "pinedrama", "netshort", "candyjar")
 WORKERS = 8
 TIMEOUT = 25
 
@@ -53,7 +56,9 @@ def poster_from(html):
     for pat in OG:
         m = pat.search(html)
         if m:
-            u = m.group(1).replace("\\u002F", "/").strip()
+            # My Drama HTML-escapes apostrophes inside the cover URL (&#x27;), which
+            # would otherwise be written to titles.csv as a permanently broken link.
+            u = htmllib.unescape(m.group(1).replace("\\u002F", "/").replace("\\/", "/")).strip()
             # Reject logos/sprites: we want a cover, not site furniture.
             if u.startswith("http") and not re.search(r"(logo|favicon|sprite|placeholder)", u, re.I):
                 return u

@@ -1447,7 +1447,7 @@ body = f"""
 <h2>Before you write</h2>
 <ul>
 <li>I'm not affiliated with ReelShort, DramaBox or any other app &mdash; I can't fix your subscription or refund coins.</li>
-<li>Actor photos only go up with the actor's say-so, which is why most profiles are initials.</li>
+<li>Actor photos are the apps' own promotional stills, which is why most profiles are still initials. If you're an actor and want yours changed or removed, tell me and it's done.</li>
 <li>Missing title? Send the app and the exact name and it usually goes live the same week.</li>
 </ul>
 </div>
