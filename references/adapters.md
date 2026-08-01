@@ -35,7 +35,10 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
 ## 4. Blocked or rejected sources (tested 2026-07-17)
 - Reddit: 403 from bash (old. and www.). Reachable via Claude's web search/fetch tools only.
 - fandom.com wikis: 403 from bash; ReelShort runs its own fandom section anyway (see 3).
-- IMDb: bot-blocked from bash; works via search/fetch tools. Use for per-actor verification.
+- IMDb: bot-blocked from bash AND from the fetch tool (403 as of 2026-08-01 - the fetch route
+  used to work, it no longer does). Only web SEARCH reaches it. That is still enough: search
+  results surface imdb.com/title/ttXXX/characters/nmXXX/ URLs, which are IMDb asserting that a
+  named person played a named role - the strongest cheap evidence available for a credit.
 - Dailymotion: reachable, public API at api.dailymotion.com, but content is pirated
   re-uploads with junk metadata. NEVER link or ingest. Off-brand for a where-to-watch site.
 - TikTok: serves stub pages to bash. /discover/ pages surface via web search and can
@@ -145,16 +148,19 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
 
 ## 11. Origin categories — Western vs Chinese (decided 2026-07-26)
 - RULE: every title carries an `origin` field (17th column in titles.csv). Values so far:
-  `western` (default) and `chinese`. Any harvest that adds a title MUST set it. Blank is
-  treated as `western` by the generator, so never rely on blank for a non-Western title.
+  `english` (default) and `chinese`. Any harvest that adds a title MUST set it. Blank is
+  treated as `english` by the generator, so never rely on blank for a non-English title.
+  NOTE: this value was renamed western -> english on 2026-07-28. build.py's ROOT_ORIGIN is
+  "english"; this doc said "western" until 2026-08-01. It is routing/display only, never a
+  slug, so the rename moved zero URLs.
 - WHY: Western vertical drama (ReelShort/CandyJar/GoodShort/MyDrama/Vigloo/PineDrama, English
   language) and Chinese duanju (Douyin/Kuaishou native, Chinese language, 60-107 eps) are
   different products for different audiences. Mixing them dilutes the site.
 - URL ARCHITECTURE (deliberate, do not "tidy" this):
-    western -> /titles/{slug}.html, /where-to-watch/{slug}.html      (ROOT, unchanged)
+    english -> /titles/{slug}.html, /where-to-watch/{slug}.html      (ROOT, unchanged)
     chinese -> /chinese/titles/{slug}.html, /chinese/where-to-watch/{slug}.html
-  Western stays at the root because ~9,076 URLs are already indexed. Prefixing Western with
-  /western/ would 404 every one of them and destroy the accumulated SEO. Never do this.
+  English stays at the root because ~9,076 URLs are already indexed. Prefixing English with
+  /english/ would 404 every one of them and destroy the accumulated SEO. Never do this.
 - Root sections (homepage, /tropes/, trope x platform pages, platform compare, the homepage
   "Titles" stat) are WESTERN ONLY. Non-Western origins are browsed from their own section
   index at /{origin}/index.html, which is auto-generated and linked from the homepage only
@@ -170,3 +176,45 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
 - SCALE WARNING: Chinese duanju is 20-50x the size of the Western catalogue (NetShort's
   sitemap alone = 69,913 unique series, mostly Chinese). Same discipline as section 9: this
   category needs a curated boundary, never a bulk import.
+
+## 12. Vigloo — cast adapter (documented 2026-08-01, method recovered)
+
+- 369 people carry `source=vigloo_2026-07-20` but this file had NO Vigloo section, so the
+  method was undocumented. Recovered and recorded here.
+- WHERE THE CAST IS: content pages ship a schema.org TVSeries block inside
+  `<script type="application/ld+json">`, and that block carries an `actor` array:
+      "actor":[{"@type":"Person","name":"Jung Jaebin"},{"@type":"Person","name":"Na Raon"}]
+- TRAP: a summarising fetch tool reports "no cast anywhere on this page" for these URLs,
+  because converting the page to text discards the JSON-LD. Read the RAW html. This cost a
+  wrong conclusion once already ("Vigloo publishes no cast") before the raw fetch was tried.
+- Names are already display-formatted; no camelCase expansion needed (unlike My Drama sec 5).
+- URL shape: `https://www.vigloo.com/en/content/{8-digit-id}`, same for covered and uncovered
+  titles, so the shape tells you nothing about whether cast exists.
+- THE REMAINING GAP IS NOT RECOVERABLE FROM VIGLOO. Checked all 64 uncovered titles on
+  2026-08-01: 0 yielded a cast. They are in one of two states:
+    * no `actor` array in the JSON-LD at all (e.g. 15000926 My Four Billionaire Stepsisters)
+    * an `actor` array holding a literal placeholder, `{"@type":"Person","name":"-"}`
+      (e.g. 15001058 My Ex Sold Everything for Nothing)
+  Guard against that "-" placeholder; a naive parser will happily create a person named "-".
+- Titles that DO carry cast skew Korean-licensed (Timeleap Joseon etc.), which is likely why
+  coverage stalled at 129/193 rather than the harvest being incomplete.
+- Script: `generator/harvest_vigloo_cast.py`. Safe to re-run; it only touches titles with no
+  credits, and will pick up newly-added Vigloo titles that do publish a cast.
+
+## 13. Cast-data availability by platform (checked 2026-08-01)
+
+Cast is the scarcest field in the DB: 2,269 of 3,407 titles have none. Status per platform,
+so nobody re-tests these:
+- ReelShort  93% covered - fandom blog cast lists (sec 3) is the richest source in the project
+- My Drama   75% - `cast` array in the Next.js payload (sec 5), camelCase tokens
+- Vigloo     67% - JSON-LD `actor` array (sec 12); the rest publish none, confirmed exhaustively
+- CandyJar   46% - NOT on candyjar.com; sourced per-title from IMDb (sec 7 + the 2026-08-01 pass)
+- PineDrama   1% - no cast on pinedrama.com (confirmed 2026-08-01)
+- NetShort    0% - no cast anywhere on web (confirmed 2026-07-24 and again 2026-08-01)
+- GoodShort   0% - no cast on drama pages (confirmed 2026-07-17 and again 2026-08-01).
+                   1,820 titles, by far the largest single gap in the database.
+- DramaBox      - bot-walled entirely (sec 8)
+
+For the platforms at 0%, the only route is per-title off-platform sourcing (IMDb search, or
+entertainment press for viral titles). There is no bulk option. Do not re-probe the platform
+sites hoping for a different answer.
