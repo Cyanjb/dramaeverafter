@@ -91,7 +91,6 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
 .act-btn:hover{background:var(--wine);color:#fff}
 .act-btn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#241A12}
 .act-btn[aria-pressed="true"]:hover{background:var(--gold-deep);color:#fff}
-.fav-hint{font-size:13px;color:var(--tert);margin-top:10px}
 .mylist-empty{border:1.5px dashed var(--line);border-radius:3px;padding:40px 24px;text-align:center;background:#fff}
 .mylist-empty h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:6px;font-size:19px}
 .poster-card .poster-link{display:block;margin-bottom:4px}
@@ -107,7 +106,7 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
 .ai-badge{position:absolute;top:6px;right:6px;z-index:3;background:rgba(43,27,46,.86);color:#F6EEE6;
 font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:2px;line-height:1}
 .ai-toggle{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);cursor:pointer;
-padding:10px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:2px;margin-bottom:20px}
+padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:2px;margin:26px 0 0}
 .ai-toggle input{width:17px;height:17px;accent-color:var(--wine);cursor:pointer}
 .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .poster--empty{height:100%;background:var(--blush);padding:15px 13px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}

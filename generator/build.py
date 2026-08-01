@@ -406,7 +406,6 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
 .act-btn:hover{background:var(--wine);color:#fff}
 .act-btn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#241A12}
 .act-btn[aria-pressed="true"]:hover{background:var(--gold-deep);color:#fff}
-.fav-hint{font-size:13px;color:var(--tert);margin-top:10px}
 .mylist-empty{border:1.5px dashed var(--line);border-radius:3px;padding:40px 24px;text-align:center;background:#fff}
 .mylist-empty h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:6px;font-size:19px}
 .poster-card .poster-link{display:block;margin-bottom:4px}
@@ -422,7 +421,7 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
 .ai-badge{position:absolute;top:6px;right:6px;z-index:3;background:rgba(43,27,46,.86);color:#F6EEE6;
 font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:2px;line-height:1}
 .ai-toggle{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);cursor:pointer;
-padding:10px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:2px;margin-bottom:20px}
+padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:2px;margin:26px 0 0}
 .ai-toggle input{width:17px;height:17px;accent-color:var(--wine);cursor:pointer}
 .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .poster--empty{height:100%;background:var(--blush);padding:15px 13px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
@@ -1075,7 +1074,6 @@ for t in titles:
 <button class="act-btn" type="button" data-share="{DOMAIN}/{d}titles/{tslug(t)}.html" data-share-title="{esc_attr(t['primary_title'])}">
 <span aria-hidden="true">&#8599;</span><span class="act-label">Share</span></button>
 </div>
-<p class="fav-hint">Your list is saved on this device only &mdash; no account, nothing sent anywhere.</p>
 {f'<p class="hint" style="margin-top:14px">Also known as: {t["alt_titles"].replace(";", ", ")}</p>' if t.get('alt_titles') else ''}
 <div class="story"><h2>The story</h2><p>{t['synopsis_short']}</p></div>
 </div>
@@ -1558,10 +1556,6 @@ browse_body = f"""
 <span class="txt" id="active-summary">No filters yet &mdash; showing everything</span>
 <button class="reset-pill" id="f-reset" type="button" style="display:none">Reset</button>
 </div>
-<label class="ai-toggle" for="hide-ai">
-<input type="checkbox" id="hide-ai" checked>
-<span>Hide AI-generated titles</span>
-</label>
 <div class="filter-group">
 <h2>Country of origin</h2><p class="hint">Pick one</p>
 <div class="chips tight" id="f-origin">{origin_facets}</div>
@@ -1575,6 +1569,10 @@ browse_body = f"""
 <div class="chips tight collapsed" id="f-platform">{platform_facets}</div>{platform_more}
 <p class="hint" style="margin-top:14px">Greyed chips would return nothing with your current picks. They stay put so the panel never jumps.</p>
 </div>
+<label class="ai-toggle" for="hide-ai">
+<input type="checkbox" id="hide-ai" checked>
+<span>Hide AI-generated titles</span>
+</label>
 </aside>
 <section class="results-panel">
 <div class="results-head">
