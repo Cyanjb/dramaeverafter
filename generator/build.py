@@ -343,7 +343,7 @@ img{max-width:100%}
 .site-nav{display:flex;gap:20px;flex:0 0 auto;font-size:15px;flex-wrap:wrap}
 .site-nav a{color:var(--ink);border-bottom:2px solid transparent;padding-bottom:2px}
 .site-nav a:hover{color:var(--wine);border-bottom-color:var(--gold)}
-.site-search{flex:1 1 210px;min-width:0;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:2px;padding:0 12px}
+.site-search{flex:1 1 210px;max-width:340px;min-width:0;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:2px;padding:0 12px;margin-left:auto}
 .site-search:focus-within{border-color:var(--wine)}
 .site-search .glyph{color:var(--wine);font-size:15px;flex:0 0 auto}
 .site-search input{flex:1;min-width:0;font-size:16px;line-height:1.2;padding:11px 0;border:0;outline:none;background:transparent;color:var(--ink)}
@@ -1771,11 +1771,20 @@ across_apps = spread_by_platform(
     _with_art, 14, per_platform=2,
     key=lambda t: (-title_views(t), (t.get("last_verified") or "")))
 
-# "Just added" was 0/10 with artwork: the newest rows are exactly the ones the poster
-# harvest has not reached yet. Show recent titles that actually have a cover so the
-# homepage is not a wall of blank plates; the artless ones still surface everywhere else.
-_recent = sorted(titles_root, key=lambda t: (t.get("last_verified") or ""), reverse=True)
-just_added = [t for t in _recent if (t.get("poster_ref") or "").strip()][:12]
+# NEW RELEASES. This used to sort on last_verified, which is 2026-07 for all 3,407
+# rows because the catalogue was scraped in one pass -- so the old "Just added" rail
+# was effectively arbitrary. `year` is the only genuine release signal we hold (no
+# release-date column exists), so this is titles from the current year, newest year
+# first, ranked by views where we have them. Artwork is required so the rail is not a
+# wall of blank plates.
+_year_now = int(UPDATED.split()[-1]) if UPDATED.split()[-1].isdigit() else 2026
+def _release_year(t):
+    y = (t.get("year") or "").strip()
+    return int(y) if y.isdigit() else 0
+_with_art_dated = [t for t in titles_root
+                   if (t.get("poster_ref") or "").strip() and _release_year(t) >= _year_now - 1]
+new_releases = sorted(_with_art_dated,
+                      key=lambda t: (-_release_year(t), -title_views(t)))[:12]
 
 home_apps = "".join(
     f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} titles</span></a>'
@@ -1832,8 +1841,8 @@ body = f"""
 </section>
 
 <section class="section-warm pad" style="padding:30px 22px 44px">
-<div class="section-head"><h2>Just added</h2><span class="hint" style="font-size:13px;color:var(--tert)">Updated {UPDATED}</span></div>
-<div class="rail" style="padding:0">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in just_added[:10])}</div>
+<div class="section-head"><h2>New releases</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
+<div class="rail" style="padding:0">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in new_releases)}</div>
 </section>
 {section_links}
 {FAV_JS}"""
