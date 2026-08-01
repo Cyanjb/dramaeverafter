@@ -169,6 +169,17 @@ def social_links(p):
 # ~25% of titles and ~94% of actors have no image, so these render on nearly
 # every page and must be byte-for-byte identical wherever they appear.
 
+def is_ai(t):
+    """AI-generated titles are flagged by hand in titles.csv `ai`.
+
+    Deliberately NOT inferred. Two signals narrow the candidates -- ReelShort stamps
+    an 'Ai GENERATE' badge on the poster, and an AI title tends to have no cast on a
+    platform that normally lists one -- but neither is conclusive: of the first three
+    no-cast ReelShort titles checked, two carried the badge and one was plainly
+    live-action. Calling a real production AI-generated is a false accusation against
+    the people in it, so nothing lands here without a human confirming the poster."""
+    return (t.get("ai") or "").strip().lower() in ("yes", "y", "true", "1")
+
 def poster_box(t, app_name=""):
     """Cover art, or a typographic edition when there is none. Image layers over
     the plate; if the hotlink dies, onerror removes the <img> and the plate
@@ -180,7 +191,8 @@ def poster_box(t, app_name=""):
              f'<span class="app">{app_name}</span></span>')
     img_html = (f'<img src="{esc_attr(img)}" alt="{esc_attr(name)}" loading="lazy" onerror="this.remove()">'
                 if img else "")
-    return f'<span class="poster">{plate}{img_html}</span>'
+    ai = '<span class="ai-badge" title="AI-generated">AI</span>' if is_ai(t) else ""
+    return f'<span class="poster">{plate}{img_html}{ai}</span>'
 
 def actor_ring(name, img, size="md", on_warm=False):
     cls = "ring ring--%s%s" % (size, " on-warm" if on_warm else "")
@@ -216,7 +228,8 @@ def poster_card(t, pre="", rail_item=False, size_sm=False, show_app=True, note="
     href = f'{pre}titles/{tslug(t)}.html'
     return (f'<div class="{cls}" '
             f'data-v="{title_views(t)}" data-n="{esc_attr(t["primary_title"].lower())}" '
-            f'data-y="{esc_attr(t.get("year") or "")}" data-app="{slug(app_name) if app_name else ""}">'
+            f'data-y="{esc_attr(t.get("year") or "")}" data-app="{slug(app_name) if app_name else ""}" '
+            f'data-ai="{"1" if is_ai(t) else ""}">'
             f'<a class="poster-link" href="{href}">{poster_box(t, app_name)}</a>'
             f'{app_html}<a class="meta" href="{href}">{meta}</a></div>')
 
@@ -388,6 +401,13 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
    site silently vanished while the HTML still looked perfect. Do not remove. */
 .poster{display:block;position:relative;aspect-ratio:2/3;background:#F1E6E9;border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .poster--empty{display:flex}
+.ai-badge{position:absolute;top:6px;right:6px;z-index:3;background:rgba(43,27,46,.86);color:#F6EEE6;
+font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:2px;line-height:1}
+.ai-note{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:8px 13px;border:1px solid var(--blush-bd);
+background:var(--blush);border-radius:2px;font-size:13.5px;color:var(--wine-hover)}
+.ai-toggle{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);cursor:pointer;
+padding:10px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:2px;margin-bottom:20px}
+.ai-toggle input{width:17px;height:17px;accent-color:var(--wine);cursor:pointer}
 .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .poster--empty{height:100%;background:var(--blush);padding:15px 13px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
 .poster--empty .label{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:#A0687D}
@@ -962,6 +982,7 @@ for t in titles:
 <p class="eyebrow">{" &middot; ".join(str(x) for x in eyebrow_bits)}</p>
 <h1>{t['primary_title']}</h1>
 <p class="views-line">{" &middot; ".join(views_bits)}</p>
+{'<p class="ai-note">This title is AI-generated. The app labels it on its own artwork.</p>' if is_ai(t) else ''}
 <div class="chips" style="margin-bottom:26px">{trope_html}</div>
 <div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
@@ -1235,6 +1256,7 @@ for t in titles_root:
     if tr_slugs: entry["tr"] = tr_slugs
     if pl_slugs: entry["pl"] = pl_slugs
     entry["o"] = [origin_of(t)]
+    if is_ai(t): entry["ai"] = 1
     v = title_views(t)
     if v: entry["v"] = v
     img = (t.get("poster_ref") or "").strip()
@@ -1319,7 +1341,12 @@ BROWSE_JS = f"""
       '<span class="stack"><span class="name">'+esc(a.n)+'</span><span class="sub">'+a.c+' titles</span></span></a>';
   }}
 
+  var hideAiEl=document.getElementById('hide-ai');
+  // Default is to HIDE AI titles; the choice is remembered between visits.
+  try{{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }}catch(e){{}}
+
   function matches(t,q){{
+    if(hideAiEl.checked && t.ai) return false;
     if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
     for(var g in active){{
       var f=t[FIELD[g]], it=active[g].values(), x;
@@ -1403,6 +1430,10 @@ BROWSE_JS = f"""
   var timer=null;
   qEl.addEventListener('input',function(){{clearTimeout(timer);timer=setTimeout(run,120);}});
   sortEl.addEventListener('change',run);
+  hideAiEl.addEventListener('change',function(){{
+    try{{ localStorage.setItem('dea_hide_ai', hideAiEl.checked?'1':'0'); }}catch(e){{}}
+    run();
+  }});
   resetEl.addEventListener('click',function(){{
     for(var g in active) active[g].clear(); qEl.value=''; run();
   }});
@@ -1432,6 +1463,10 @@ browse_body = f"""
 <span class="txt" id="active-summary">No filters yet &mdash; showing everything</span>
 <button class="reset-pill" id="f-reset" type="button" style="display:none">Reset</button>
 </div>
+<label class="ai-toggle" for="hide-ai">
+<input type="checkbox" id="hide-ai" checked>
+<span>Hide AI-generated titles</span>
+</label>
 <div class="filter-group">
 <h2>Country of origin</h2><p class="hint">Pick one</p>
 <div class="chips tight" id="f-origin">{origin_facets}</div>

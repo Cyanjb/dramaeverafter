@@ -35,6 +35,10 @@
 <span class="txt" id="active-summary">No filters yet &mdash; showing everything</span>
 <button class="reset-pill" id="f-reset" type="button" style="display:none">Reset</button>
 </div>
+<label class="ai-toggle" for="hide-ai">
+<input type="checkbox" id="hide-ai" checked>
+<span>Hide AI-generated titles</span>
+</label>
 <div class="filter-group">
 <h2>Country of origin</h2><p class="hint">Pick one</p>
 <div class="chips tight" id="f-origin"><button class="chip" data-g="origin" data-v="english" type="button" aria-pressed="false">English<span class="c"></span></button><button class="chip" data-g="origin" data-v="chinese" type="button" aria-pressed="false">Chinese<span class="c"></span></button><button class="chip" data-g="origin" data-v="dubbed" type="button" aria-pressed="false">Dubbed<span class="c"></span></button></div>
@@ -114,7 +118,12 @@
       '<span class="stack"><span class="name">'+esc(a.n)+'</span><span class="sub">'+a.c+' titles</span></span></a>';
   }
 
+  var hideAiEl=document.getElementById('hide-ai');
+  // Default is to HIDE AI titles; the choice is remembered between visits.
+  try{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }catch(e){}
+
   function matches(t,q){
+    if(hideAiEl.checked && t.ai) return false;
     if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
     for(var g in active){
       var f=t[FIELD[g]], it=active[g].values(), x;
@@ -198,6 +207,10 @@
   var timer=null;
   qEl.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,120);});
   sortEl.addEventListener('change',run);
+  hideAiEl.addEventListener('change',function(){
+    try{ localStorage.setItem('dea_hide_ai', hideAiEl.checked?'1':'0'); }catch(e){}
+    run();
+  });
   resetEl.addEventListener('click',function(){
     for(var g in active) active[g].clear(); qEl.value=''; run();
   });
