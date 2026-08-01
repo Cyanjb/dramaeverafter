@@ -24,6 +24,12 @@ def pslug(p): return p.get("slug") or slug(p["name"])
 # Renamed western -> english 2026-07-28 at Cyan's call. This is a display/routing
 # value only, never a slug, so the rename moves zero URLs.
 ROOT_ORIGIN = "english"
+
+# Cards rendered into a static listing page before we hand off to Browse. Without a
+# cap, /tropes/revenge.html emitted 1,849 poster cards and weighed 1.1 MB, which is
+# indefensible for a phone-first audience. Browse already does progressive reveal over
+# the whole index client-side, so the overflow link points there pre-filtered.
+GRID_CAP = 60
 def origin_of(t): return (t.get("origin") or ROOT_ORIGIN).strip().lower() or ROOT_ORIGIN
 def tdir(t):
     o = origin_of(t)
@@ -56,8 +62,43 @@ for a in availability:
 TOP_PLATFORMS = sorted(_plat_counts.items(), key=lambda kv: -kv[1])
 APPS_WITH_DATA = [platforms[pid] for pid, n in TOP_PLATFORMS if n > 0]
 
-def tropes_of(t):
+def _raw_tropes(t):
     return [x.strip() for x in t["tropes"].split(";") if x.strip()]
+
+# Trope canonicalisation. The data holds 266 distinct trope STRINGS that collapse to
+# only 226 slugs: "CEO"/"ceo", "age gap"/"age-gap" and 38 other pairs. Because the
+# page filename comes from the slug, each pair wrote the same .html twice and the
+# second write won, so a trope page listed only ONE variant's titles. That hid 1,945
+# titles across 40 pages (/tropes/ceo.html showed 103 of 1,830).
+#
+# Fixing it at the source rather than per page: the most-frequent spelling becomes
+# the canonical name for its slug, and tropes_of() returns canonical names deduped
+# by slug. Everything downstream -- pages, chips, counts, the A-Z index, trope x
+# platform pages -- then agrees by construction.
+_trope_freq = defaultdict(int)
+for _t in titles:
+    for _x in _raw_tropes(_t): _trope_freq[_x] += 1
+TROPE_CANON = {}
+for _name, _n in sorted(_trope_freq.items(), key=lambda kv: (-kv[1], kv[0])):
+    TROPE_CANON.setdefault(slug(_name), _name)
+
+_tropes_cache = {}
+def tropes_of(t):
+    # Memoised per title. Canonicalising runs a regex per trope, and the trope x
+    # platform loop calls this ~54 million times (226 tropes x 70 platforms x 3,407
+    # titles); without the cache that step alone dominated the whole build.
+    key = t["title_id"]
+    hit = _tropes_cache.get(key)
+    if hit is not None:
+        return hit
+    seen, out = set(), []
+    for x in _raw_tropes(t):
+        s = slug(x)
+        if s and s not in seen:
+            seen.add(s)
+            out.append(TROPE_CANON.get(s, x))
+    _tropes_cache[key] = out
+    return out
 
 # Root sections (home, tropes, platforms, trope+platform pages) cover ROOT_ORIGIN only.
 # Other origins are browsed from their own section index.
@@ -223,12 +264,28 @@ def chip_link(href, name, count=None):
     c = f'<span class="c">{count:,}</span>' if count is not None else ""
     return f'<a class="chip" href="{href}">{name}{c}</a>'
 
+# Trope names are stored lowercase, which reads fine mid-sentence ("billionaire
+# stories") but wrong for genuine acronyms. Only well-established ones are listed;
+# ambiguous short tags like "sm" are left alone rather than guessed at.
+TROPE_ACRONYMS = {"ceo": "CEO", "bl": "BL", "gl": "GL", "dilf": "DILF", "milf": "MILF",
+                  "fbi": "FBI", "cia": "CIA", "mma": "MMA", "nyc": "NYC", "vip": "VIP",
+                  "ai": "AI", "cfo": "CFO", "pi": "PI"}
+
+def trope_text(name):
+    """Trope as it should read inside a sentence or a chip."""
+    return " ".join(TROPE_ACRONYMS.get(w.lower(), w) for w in name.split())
+
+def trope_heading(name):
+    """Trope as a page heading: title-case, but acronyms stay uppercase."""
+    return " ".join(TROPE_ACRONYMS.get(w.lower(), w.title()) for w in name.split())
+
 def trope_chip(tr, pre, count=None):
     """Link only if a trope page exists; otherwise render inert so we never emit a 404."""
+    label = trope_text(tr)
     if tr in all_tropes_set:
-        return chip_link(f'{pre}tropes/{slug(tr)}.html', tr, count)
+        return chip_link(f'{pre}tropes/{slug(tr)}.html', label, count)
     c = f'<span class="c">{count:,}</span>' if count is not None else ""
-    return f'<span class="chip">{tr}{c}</span>'
+    return f'<span class="chip">{label}{c}</span>'
 
 CSS = """
 :root{
@@ -320,6 +377,9 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .rail-item .poster--empty .ttl{font-size:17px}
 .rail-item.sm .poster--empty .ttl{font-size:15px}
 .actor-tile .stack,.person-row .stack{display:block}
+.bio{max-width:62ch}
+.bio h2{font-size:20px;margin-bottom:8px}
+.bio p{font-size:16px;line-height:1.65;color:#3E3238;text-wrap:pretty}
 .poster-card .app-name{font-size:13px;font-weight:700;color:var(--wine)}
 .poster-card .card-note{display:block;font-size:13px;color:var(--ink);line-height:1.35;text-wrap:pretty}
 .poster-card .meta{font-size:13px;color:var(--sec);line-height:1.45;text-wrap:pretty;min-width:0}
@@ -591,6 +651,73 @@ def watch_card(title_id, pre=""):
     return (f'<div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(title_id, pre)}'
             f'<p class="watch-disclosure">We may earn a commission, which is what keeps this database free.</p></div>')
 
+# --------- derived actor summary -------------------------------------------
+# Computed at build time from credits/availability/titles, never stored in
+# people.csv. Two reasons: it would duplicate data that is already there and go
+# stale the moment a credit is added, and bio_short holds REAL sourced biography
+# for 703 people -- mixing generated text into that column would make it
+# impossible to tell the two apart later.
+#
+# Hard rule: every clause below must be traceable to a row in the CSVs. No claim
+# about a real person that the database cannot support.
+
+def _plural(n, word):
+    return f"{n} {word}" + ("" if n == 1 else "s")
+
+def actor_summary(p, pairs):
+    """pairs: list of (credit_row, title_row) for this person."""
+    if not pairs:
+        return "No verified credits in the database yet. This page fills in as titles are confirmed."
+    titles = [t for _c, t in pairs]
+    n = len(titles)
+
+    plat = defaultdict(int)
+    for t in titles:
+        for a in avail_by_title.get(t["title_id"], []):
+            if a["platform_id"] in platforms:
+                plat[platforms[a["platform_id"]]["name"]] += 1
+    top_plat = sorted(plat.items(), key=lambda kv: -kv[1])
+
+    trope_n = defaultdict(int)
+    for t in titles:
+        for tr in tropes_of(t): trope_n[tr] += 1
+    top_tr = [tr for tr, _ in sorted(trope_n.items(), key=lambda kv: -kv[1])[:2]]
+
+    # Co-stars: people sharing a title with this person, most frequent first.
+    co = defaultdict(int)
+    for t in titles:
+        for c in credits_by_title.get(t["title_id"], []):
+            if c["person_id"] != p["person_id"] and c["person_id"] in p_by_id:
+                co[c["person_id"]] += 1
+    top_co = sorted(co.items(), key=lambda kv: -kv[1])
+    best = max(titles, key=lambda t: title_views(t))
+
+    # Sentence 1: volume and where. "all of them" only makes sense for more than one.
+    if len(top_plat) == 1:
+        where = f"on {top_plat[0][0]}" if n == 1 else f"all of them on {top_plat[0][0]}"
+        s1 = f"Appears in {_plural(n, 'title')} in the database, {where}."
+    elif len(top_plat) > 1:
+        s1 = (f"Appears in {_plural(n, 'title')} in the database, most of them on "
+              f"{top_plat[0][0]}, and also turns up on {top_plat[1][0]}.")
+    else:
+        s1 = f"Appears in {_plural(n, 'title')} in the database."
+
+    out = [s1]
+    # Sentence 2: what kind of stories, only when a trope actually repeats.
+    if top_tr and trope_n[top_tr[0]] > 1:
+        named = [trope_text(x) for x in top_tr]
+        kinds = " and ".join(named) if len(named) > 1 and trope_n[top_tr[1]] > 1 else named[0]
+        out.append(f"Those credits lean toward {kinds} stories.")
+    # Sentence 3: a recurring co-star, only if they have genuinely repeated.
+    if top_co and top_co[0][1] > 1:
+        out.append(f"Has shared {_plural(top_co[0][1], 'title')} with "
+                   f"{p_by_id[top_co[0][0]]['name']}, more than with anyone else.")
+    # Sentence 4: the most-watched credit, only when we have a real view count.
+    if title_views(best):
+        out.append(f"The most-watched credit here is {best['primary_title']}, "
+                   f"at {views_label(title_views(best)).replace(' views', ' views')}.")
+    return " ".join(out)
+
 # --------- build ---------
 # Selective clean: remove ONLY generated artifacts, never data/ or generator/
 for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + origins_other:
@@ -629,16 +756,17 @@ for p in people:
     top_tropes_p = sorted(trope_counts_p.items(), key=lambda kv: -kv[1])
     years = sorted({t["year"] for t in my_titles if t.get("year")})
     active = f"{years[0]}–{years[-1]}" if len(years) > 1 else (years[0] if years else "—")
-    mostly = f", mostly {top_plats[0][0]}" if top_plats else ""
-    turns_up = (" Turns up in %s and %s stories more than anything else." % (top_tropes_p[0][0], top_tropes_p[1][0])
-                if len(top_tropes_p) > 1 else (" Mostly known for %s stories." % top_tropes_p[0][0] if top_tropes_p else ""))
-    oneliner = f"{verified_n} title{'s' if verified_n != 1 else ''} in the database{mostly}.{turns_up}"
+    oneliner = actor_summary(p, my_pairs)
+    # bio_short holds real sourced biography for 703 people. Keep it visually and
+    # semantically separate from the derived summary above so a reader (and a
+    # future maintainer) can tell which is which.
+    real_bio = (p.get("bio_short") or "").strip()
     usual_html = "".join(trope_chip(tr, "../", cnt) for tr, cnt in top_tropes_p[:8])
     cards = "".join(poster_card(t, "../", note=note_for.get(t["title_id"], ""))
                     for t in sorted(my_titles, key=lambda x: -title_views(x)))
     plat_line = ", ".join(n for n, _ in top_plats) if top_plats else "platform verification in progress"
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "jobTitle": "Actor",
-          "description": p["bio_short"][:160],
+          "description": (real_bio or oneliner)[:160],
           "performerIn": [{"@type": "TVSeries", "name": t["primary_title"]} for t in my_titles]}
     body = f"""
 <nav class="crumb"><a href="../actors/index.html">Actors</a><span>/</span><span class="current">{p['name']}</span></nav>
@@ -658,7 +786,7 @@ for p in people:
 {social_links(p)}
 </div>
 </section>
-<section class="pad" style="padding:24px 22px 0"><p style="max-width:60ch;font-size:15px;line-height:1.6;color:var(--muted)">{p['bio_short']}</p></section>
+{f'''<section class="pad" style="padding:26px 22px 0"><div class="bio"><h2>About {p['name']}</h2><p>{real_bio}</p></div></section>''' if real_bio else ''}
 <section class="pad" style="padding:26px 22px 46px">
 <div class="results-head"><h2 style="font-size:24px">Credits</h2>{sort_select('credits-grid')}</div>
 <div class="grid" id="credits-grid">{cards}</div>
@@ -810,26 +938,33 @@ for tr in all_tropes:
     pair_html = "".join(trope_chip(o, "../", c) for o, c in sorted(pair_counts.items(), key=lambda kv: -kv[1])[:6])
     apps_here = sorted({title_app(t) for t in matching if title_app(t)})
     app_opts = "".join(f'<option value="{slug(a)}">{a}</option>' for a in apps_here)
-    cards = "".join(poster_card(t, "../") for t in matching)
+    shown = matching[:GRID_CAP]
+    cards = "".join(poster_card(t, "../") for t in shown)
+    more = len(matching) - len(shown)
+    count_line = (f'Showing <b>{len(shown)}</b> of {len(matching):,} titles'
+                  if more else f'<b>{len(matching):,}</b> titles')
+    more_html = (f'<div class="show-more"><a class="btn btn-wine" href="../browse.html?trope={sl}">'
+                 f'See all {len(matching):,} on Browse &rarr;</a></div>') if more else ""
     body = f"""
-<nav class="crumb"><a href="../tropes/index.html">Tropes</a><span>/</span><span class="current">{tr.title()}</span></nav>
+<nav class="crumb"><a href="../tropes/index.html">Tropes</a><span>/</span><span class="current">{trope_heading(tr)}</span></nav>
 <section class="hero"><div class="inner">
-<p class="eyebrow">Trope</p><h1>{tr.title()}</h1>
+<p class="eyebrow">Trope</p><h1>{trope_heading(tr)}</h1>
 <p class="lede">{len(matching):,} titles carry this trope. Updated {UPDATED}.</p>
 {f'<div class="chips" style="align-items:center"><span class="hint" style="font-size:13px;color:var(--tert);margin-right:4px">Often paired with</span>{pair_html}</div>' if pair_html else ''}
 </div></section>
 <section class="pad" style="padding:24px 22px 46px">
 <div class="results-head">
-<p class="count"><b>{len(matching):,}</b> titles</p>
+<p class="count">{count_line}</p>
 <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
 {f'<label class="sort-label">App<select id="trope-app-{sl}" data-app-filter-for="trope-grid" aria-label="Filter by app"><option value="">Any app</option>{app_opts}</select></label>' if app_opts else ''}
 {sort_select('trope-grid')}
 </div>
 </div>
 <div class="grid" id="trope-grid">{cards}</div>
+{more_html}
 </section>
 {SORT_JS}"""
-    html = page(f"Best {tr.title()} Vertical Dramas (2026) | DramaEverAfter",
+    html = page(f"Best {trope_heading(tr)} Vertical Dramas (2026) | DramaEverAfter",
                 f"Every verified {tr} vertical drama across ReelShort, DramaBox and more. Updated {UPDATED}.",
                 body, f"{DOMAIN}/tropes/{sl}.html")
     open(os.path.join(DIST, "tropes", f"{sl}.html"), "w").write(html)
@@ -846,7 +981,7 @@ for tr in tropes_sorted:
     if letter != cur_letter:
         cur_letter = letter
         idx_rows.append(f'<h2 class="idx-letter">{letter}</h2>')
-    idx_rows.append(f'<a class="trope-idx-row" href="{slug(tr)}.html"><span class="n">{tr.title()}</span><span class="c">{trope_total[tr]:,}</span></a>')
+    idx_rows.append(f'<a class="trope-idx-row" href="{slug(tr)}.html"><span class="n">{trope_heading(tr)}</span><span class="c">{trope_total[tr]:,}</span></a>')
 body = f"""
 <section class="hero"><div class="inner">
 <p class="eyebrow">Index</p><h1>All {len(all_tropes)} tropes</h1>
@@ -898,24 +1033,41 @@ for t in titles:
     urls.append(f"/{d}where-to-watch/{sl}.html")
 
 # Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
+#
+# This used to be a nested scan: for every trope, for every platform, walk all 3,407
+# titles. That is 226 x 70 x 3,407 = ~54 million iterations and it dominated the build.
+# Indexing titles by trope once, then bucketing that much smaller pool by platform,
+# produces exactly the same pages in a fraction of the time.
+_verified_root = [t for t in titles_root if t.get("data_confidence", "verified") == "verified"]
+titles_by_trope = defaultdict(list)
+for _t in _verified_root:
+    for _tr in tropes_of(_t):
+        titles_by_trope[_tr].append(_t)
+
 for tr in all_tropes:
-    for pid, pl in platforms.items():
-        matching = [t for t in titles_root
-                    if tr in tropes_of(t)
-                    and any(a["platform_id"] == pid for a in avail_by_title.get(t["title_id"], []))
-                    and t.get("data_confidence", "verified") == "verified"]
-        if len(matching) < 5:
+    pool = titles_by_trope.get(tr, [])
+    if len(pool) < 5:
+        continue
+    by_plat = defaultdict(list)
+    for _t in pool:
+        # A title can carry several availability rows for one platform; count it once.
+        for _pid in {a["platform_id"] for a in avail_by_title.get(_t["title_id"], [])}:
+            by_plat[_pid].append(_t)
+    for pid, matching in by_plat.items():
+        pl = platforms.get(pid)
+        if pl is None or len(matching) < 5:
             continue
         trs, pls = slug(tr), slug(pl["name"])
         os.makedirs(os.path.join(DIST, "tropes", trs), exist_ok=True)
-        cards = "".join(poster_card(t, "../../", show_app=False) for t in sorted(matching, key=lambda x: -title_views(x)))
+        ranked_m = sorted(matching, key=lambda x: -title_views(x))[:GRID_CAP]
+        cards = "".join(poster_card(t, "../../", show_app=False) for t in ranked_m)
         body = f"""
-<nav class="crumb"><a href="../../index.html">Home</a><span>/</span><a href="../{trs}.html">{tr.title()}</a><span>/</span><span class="current">{pl['name']}</span></nav>
+<nav class="crumb"><a href="../../index.html">Home</a><span>/</span><a href="../{trs}.html">{trope_heading(tr)}</a><span>/</span><span class="current">{pl['name']}</span></nav>
 <section class="hero"><div class="inner">
-<p class="eyebrow">Trope &times; Platform</p><h1>Best {tr.title()} Dramas on {pl['name']}</h1>
+<p class="eyebrow">Trope &times; Platform</p><h1>Best {trope_heading(tr)} Dramas on {pl['name']}</h1>
 <p class="lede">{len(matching)} verified titles. Updated {UPDATED}.</p></div></section>
 <section class="pad" style="padding:24px 22px 46px"><div class="grid">{cards}</div></section>"""
-        html = page(f"Best {tr.title()} Vertical Dramas on {pl['name']} (2026) | DramaEverAfter",
+        html = page(f"Best {trope_heading(tr)} Vertical Dramas on {pl['name']} (2026) | DramaEverAfter",
                     f"Every verified {tr} vertical drama on {pl['name']}. Updated {UPDATED}.",
                     body, f"{DOMAIN}/tropes/{trs}/{pls}.html", depth=2)
         open(os.path.join(DIST, "tropes", trs, f"{pls}.html"), "w").write(html)
@@ -1016,7 +1168,7 @@ search_titles = []
 for t in titles_root:
     tr_slugs = sorted({slug(x) for x in tropes_of(t) if slug(x)})
     for x in tropes_of(t):
-        if slug(x): trope_label.setdefault(slug(x), x.title())
+        if slug(x): trope_label.setdefault(slug(x), trope_heading(x))
     pl_slugs = sorted({slug(platforms[a["platform_id"]]["name"])
                        for a in avail_by_title.get(t["title_id"], []) if a["platform_id"] in platforms})
     for a in avail_by_title.get(t["title_id"], []):

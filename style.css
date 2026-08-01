@@ -88,6 +88,9 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .rail-item .poster--empty .ttl{font-size:17px}
 .rail-item.sm .poster--empty .ttl{font-size:15px}
 .actor-tile .stack,.person-row .stack{display:block}
+.bio{max-width:62ch}
+.bio h2{font-size:20px;margin-bottom:8px}
+.bio p{font-size:16px;line-height:1.65;color:#3E3238;text-wrap:pretty}
 .poster-card .app-name{font-size:13px;font-weight:700;color:var(--wine)}
 .poster-card .card-note{display:block;font-size:13px;color:var(--ink);line-height:1.35;text-wrap:pretty}
 .poster-card .meta{font-size:13px;color:var(--sec);line-height:1.45;text-wrap:pretty;min-width:0}
