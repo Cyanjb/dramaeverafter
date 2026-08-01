@@ -150,9 +150,11 @@ def title_app(t):
     avails = avail_by_title.get(t["title_id"], [])
     return platforms.get(avails[0]["platform_id"], {}).get("name", "") if avails else ""
 
-def poster_card(t, pre="", rail_item=False, size_sm=False, show_app=True):
+def poster_card(t, pre="", rail_item=False, size_sm=False, show_app=True, note=""):
     """The one poster card used on every rail and every grid: home, browse,
-    title-detail similar rail, actor credits, trope grid, app grid."""
+    title-detail similar rail, actor credits, trope grid, app grid.
+    `note` carries page-specific context (the role/character on an actor page).
+    It never repeats the title, per the caption rule."""
     app_name = title_app(t)
     v = views_label(title_views(t))
     tr = tropes_of(t)
@@ -161,6 +163,7 @@ def poster_card(t, pre="", rail_item=False, size_sm=False, show_app=True):
     cls = "poster-card"
     if rail_item: cls += " rail-item" + (" sm" if size_sm else "")
     app_html = f'<span class="app-name">{app_name}</span>' if show_app and app_name else ""
+    if note: app_html = f'<span class="card-note">{note}</span>' + app_html
     return (f'<a class="{cls}" href="{pre}titles/{tslug(t)}.html" '
             f'data-v="{title_views(t)}" data-n="{esc_attr(t["primary_title"].lower())}" '
             f'data-y="{esc_attr(t.get("year") or "")}" data-app="{slug(app_name) if app_name else ""}">'
@@ -318,6 +321,7 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .rail-item.sm .poster--empty .ttl{font-size:15px}
 .actor-tile .stack,.person-row .stack{display:block}
 .poster-card .app-name{font-size:13px;font-weight:700;color:var(--wine)}
+.poster-card .card-note{display:block;font-size:13px;color:var(--ink);line-height:1.35;text-wrap:pretty}
 .poster-card .meta{font-size:13px;color:var(--sec);line-height:1.45;text-wrap:pretty;min-width:0}
 .poster-card:hover .poster{border-color:var(--wine)}
 
@@ -604,7 +608,15 @@ urls = []
 for p in people:
     sl = pslug(p)
     my_credits = credits_by_person.get(p["person_id"], [])
-    my_titles = [t_by_id[c["title_id"]] for c in my_credits if c["title_id"] in t_by_id]
+    my_pairs = [(c, t_by_id[c["title_id"]]) for c in my_credits if c["title_id"] in t_by_id]
+    my_titles = [t for _c, t in my_pairs]
+    # Character name is the single most useful fact on an actor's own page, so it
+    # rides along on the card caption. 1,509 of 3,585 credits have one.
+    note_for = {}
+    for c, t in my_pairs:
+        role = (c.get("role") or "").replace("+", " &middot; ").title() or "Cast"
+        ch = (c.get("character_name") or "").strip()
+        note_for[t["title_id"]] = f"{role} &middot; {ch}" if ch else role
     verified_n = len(my_titles)
     plat_counts = defaultdict(int)
     for t in my_titles:
@@ -622,7 +634,8 @@ for p in people:
                 if len(top_tropes_p) > 1 else (" Mostly known for %s stories." % top_tropes_p[0][0] if top_tropes_p else ""))
     oneliner = f"{verified_n} title{'s' if verified_n != 1 else ''} in the database{mostly}.{turns_up}"
     usual_html = "".join(trope_chip(tr, "../", cnt) for tr, cnt in top_tropes_p[:8])
-    cards = "".join(poster_card(t, "../") for t in sorted(my_titles, key=lambda x: -title_views(x)))
+    cards = "".join(poster_card(t, "../", note=note_for.get(t["title_id"], ""))
+                    for t in sorted(my_titles, key=lambda x: -title_views(x)))
     plat_line = ", ".join(n for n, _ in top_plats) if top_plats else "platform verification in progress"
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "jobTitle": "Actor",
           "description": p["bio_short"][:160],
@@ -746,9 +759,16 @@ for t in titles:
     trope_html = "".join(trope_chip(tr, pre) for tr in tropes_of(t))
     lang_label = ORIGIN_LABEL.get(origin_of(t), origin_of(t).title())
     v = views_label(title_views(t))
-    views_bits = [x for x in [v, lang_label] if x]
+    # Genres are distinct from tropes and are set on 2,306 titles; the source data
+    # mixes "romance"/"Romance" so normalise case. Status renders only when it is a
+    # real viewer-facing state -- the old page printed the internal "Needs_Check"
+    # flag straight into the copy.
+    genres = ", ".join(sorted({g.strip().title() for g in (t.get("genres") or "").split(";") if g.strip()}))
+    status = (t.get("status") or "").strip().lower()
+    status_label = status.title() if status in ("complete", "ongoing") else ""
+    views_bits = [x for x in [v, genres, lang_label] if x]
     ep = f"{t['episode_count']} episodes" if t.get("episode_count") else ""
-    eyebrow_bits = [x for x in ["Vertical drama", t.get("year"), ep] if x]
+    eyebrow_bits = [x for x in ["Vertical drama", t.get("year"), ep, status_label] if x]
     if t.get("data_confidence") == "needs_check": eyebrow_bits.append("community reported")
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
           "description": t["synopsis_short"][:160]}
