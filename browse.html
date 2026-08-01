@@ -49,6 +49,10 @@
 <div class="chips tight collapsed" id="f-platform"><button class="chip" data-g="platform" data-v="goodshort" type="button" aria-pressed="false">GoodShort<span class="c"></span></button><button class="chip" data-g="platform" data-v="reelshort" type="button" aria-pressed="false">ReelShort<span class="c"></span></button><button class="chip" data-g="platform" data-v="vigloo" type="button" aria-pressed="false">Vigloo<span class="c"></span></button><button class="chip" data-g="platform" data-v="my-drama" type="button" aria-pressed="false">My Drama<span class="c"></span></button><button class="chip" data-g="platform" data-v="netshort" type="button" aria-pressed="false">NetShort<span class="c"></span></button><button class="chip" data-g="platform" data-v="pinedrama" type="button" aria-pressed="false">PineDrama<span class="c"></span></button><button class="chip" data-g="platform" data-v="candyjar" type="button" aria-pressed="false">CandyJar<span class="c"></span></button><button class="chip" data-g="platform" data-v="dramabox" type="button" aria-pressed="false">DramaBox<span class="c"></span></button><button class="chip" data-g="platform" data-v="dreameshort" type="button" aria-pressed="false">DreameShort<span class="c"></span></button><button class="chip" data-g="platform" data-v="shortical" type="button" aria-pressed="false">Shortical<span class="c"></span></button><button class="chip" data-g="platform" data-v="dramawave" type="button" aria-pressed="false">DramaWave<span class="c"></span></button><button class="chip" data-g="platform" data-v="kalostv" type="button" aria-pressed="false">KalosTV<span class="c"></span></button><button class="chip" data-g="platform" data-v="playlet" type="button" aria-pressed="false">Playlet<span class="c"></span></button><button class="chip" data-g="platform" data-v="shortmax" type="button" aria-pressed="false">ShortMax<span class="c"></span></button><button class="chip extra" data-g="platform" data-v="shorts" type="button" aria-pressed="false">Shorts<span class="c"></span></button></div><button class="chip-dashed" data-target="f-platform" type="button">Show all 15 apps &#9662;</button>
 <p class="hint" style="margin-top:14px">Greyed chips would return nothing with your current picks. They stay put so the panel never jumps.</p>
 </div>
+<label class="ai-toggle" for="only-book">
+<input type="checkbox" id="only-book">
+<span>Only titles based on a book</span>
+</label>
 <label class="ai-toggle" for="hide-ai">
 <input type="checkbox" id="hide-ai" checked>
 <span>Hide AI-generated titles</span>
@@ -160,12 +164,14 @@
       '<span class="stack"><span class="name">'+esc(a.n)+'</span><span class="sub">'+a.c+' titles</span></span></a>';
   }
 
+  var onlyBookEl=document.getElementById('only-book');
   var hideAiEl=document.getElementById('hide-ai');
   // Default is to HIDE AI titles; the choice is remembered between visits.
   try{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }catch(e){}
 
   function matches(t,q){
     if(hideAiEl.checked && t.ai) return false;
+    if(onlyBookEl.checked && !t.bk) return false;
     if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
     for(var g in active){
       var f=t[FIELD[g]], it=active[g].values(), x;
@@ -251,6 +257,7 @@
   var timer=null;
   qEl.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,120);});
   sortEl.addEventListener('change',run);
+  onlyBookEl.addEventListener('change', run);
   hideAiEl.addEventListener('change',function(){
     try{ localStorage.setItem('dea_hide_ai', hideAiEl.checked?'1':'0'); }catch(e){}
     run();

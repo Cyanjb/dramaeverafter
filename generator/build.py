@@ -180,6 +180,17 @@ def is_ai(t):
     the people in it, so nothing lands here without a human confirming the poster."""
     return (t.get("ai") or "").strip().lower() in ("yes", "y", "true", "1")
 
+def book_of(t):
+    """Book adaptation. Returns the author name, or 'yes' when we know it is an
+    adaptation but not by whom, or '' when it is not one.
+
+    Populated two ways, neither of them a guess: 11 titles state it outright in the
+    synopsis ("Based on the novel by Sarah Brianne"), and Cyan supplied the rest by
+    hand. NOT inferred from platform -- CandyJar is Inkitt/Galatea and its catalogue
+    is largely novel adaptations, but 'largely' is not 'all', and claiming a book
+    behind a title that has none would be as wrong as the AI label."""
+    return (t.get("book") or "").strip()
+
 def poster_box(t, app_name=""):
     """Cover art, or a typographic edition when there is none. Image layers over
     the plate; if the hotlink dies, onerror removes the <img> and the plate
@@ -232,7 +243,7 @@ def poster_card(t, pre="", rail_item=False, size_sm=False, show_app=True, note="
     return (f'<div class="{cls}" '
             f'data-v="{title_views(t)}" data-n="{esc_attr(t["primary_title"].lower())}" '
             f'data-y="{esc_attr(t.get("year") or "")}" data-app="{slug(app_name) if app_name else ""}" '
-            f'data-ai="{"1" if is_ai(t) else ""}">'
+            f'data-ai="{"1" if is_ai(t) else ""}" data-book="{"1" if book_of(t) else ""}">'
             f'<a class="poster-link" href="{href}">{poster_box(t, app_name)}</a>{star}'
             f'{app_html}<a class="meta" href="{href}">{meta}</a></div>')
 
@@ -421,6 +432,7 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
 .poster--empty{display:flex}
 .ai-badge{position:absolute;top:6px;right:6px;z-index:3;background:rgba(43,27,46,.86);color:#F6EEE6;
 font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:2px;line-height:1}
+.book-note{margin:0 0 16px;font-size:14.5px;color:var(--wine)}
 .ai-toggle{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);cursor:pointer;
 padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:2px;margin:26px 0 0}
 .ai-toggle input{width:17px;height:17px;accent-color:var(--wine);cursor:pointer}
@@ -1066,6 +1078,7 @@ for t in titles:
 <p class="eyebrow">{" &middot; ".join(str(x) for x in eyebrow_bits)}</p>
 <h1>{t['primary_title']}</h1>
 <p class="views-line">{" &middot; ".join(views_bits)}</p>
+{f'<p class="book-note"><span aria-hidden="true">&#128214;</span> Based on the novel{" by " + book_of(t) if book_of(t) != "yes" else ""}</p>' if book_of(t) else ''}
 <div class="chips" style="margin-bottom:26px">{trope_html}</div>
 <div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
@@ -1347,6 +1360,7 @@ for t in titles_root:
     if pl_slugs: entry["pl"] = pl_slugs
     entry["o"] = [origin_of(t)]
     if is_ai(t): entry["ai"] = 1
+    if book_of(t): entry["bk"] = 1
     v = title_views(t)
     if v: entry["v"] = v
     img = (t.get("poster_ref") or "").strip()
@@ -1433,12 +1447,14 @@ BROWSE_JS = f"""
       '<span class="stack"><span class="name">'+esc(a.n)+'</span><span class="sub">'+a.c+' titles</span></span></a>';
   }}
 
+  var onlyBookEl=document.getElementById('only-book');
   var hideAiEl=document.getElementById('hide-ai');
   // Default is to HIDE AI titles; the choice is remembered between visits.
   try{{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }}catch(e){{}}
 
   function matches(t,q){{
     if(hideAiEl.checked && t.ai) return false;
+    if(onlyBookEl.checked && !t.bk) return false;
     if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
     for(var g in active){{
       var f=t[FIELD[g]], it=active[g].values(), x;
@@ -1524,6 +1540,7 @@ BROWSE_JS = f"""
   var timer=null;
   qEl.addEventListener('input',function(){{clearTimeout(timer);timer=setTimeout(run,120);}});
   sortEl.addEventListener('change',run);
+  onlyBookEl.addEventListener('change', run);
   hideAiEl.addEventListener('change',function(){{
     try{{ localStorage.setItem('dea_hide_ai', hideAiEl.checked?'1':'0'); }}catch(e){{}}
     run();
@@ -1570,6 +1587,10 @@ browse_body = f"""
 <div class="chips tight collapsed" id="f-platform">{platform_facets}</div>{platform_more}
 <p class="hint" style="margin-top:14px">Greyed chips would return nothing with your current picks. They stay put so the panel never jumps.</p>
 </div>
+<label class="ai-toggle" for="only-book">
+<input type="checkbox" id="only-book">
+<span>Only titles based on a book</span>
+</label>
 <label class="ai-toggle" for="hide-ai">
 <input type="checkbox" id="hide-ai" checked>
 <span>Hide AI-generated titles</span>

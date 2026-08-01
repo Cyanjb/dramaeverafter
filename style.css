@@ -106,6 +106,7 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
 .poster--empty{display:flex}
 .ai-badge{position:absolute;top:6px;right:6px;z-index:3;background:rgba(43,27,46,.86);color:#F6EEE6;
 font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:2px;line-height:1}
+.book-note{margin:0 0 16px;font-size:14.5px;color:var(--wine)}
 .ai-toggle{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);cursor:pointer;
 padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:2px;margin:26px 0 0}
 .ai-toggle input{width:17px;height:17px;accent-color:var(--wine);cursor:pointer}
