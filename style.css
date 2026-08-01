@@ -91,6 +91,7 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
 .act-btn:hover{background:var(--wine);color:#fff}
 .act-btn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#241A12}
 .act-btn[aria-pressed="true"]:hover{background:var(--gold-deep);color:#fff}
+.mylist-actions{display:flex;flex-wrap:wrap;gap:10px}
 .mylist-empty{border:1.5px dashed var(--line);border-radius:3px;padding:40px 24px;text-align:center;background:#fff}
 .mylist-empty h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:6px;font-size:19px}
 .poster-card .poster-link{display:block;margin-bottom:4px}

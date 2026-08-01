@@ -406,6 +406,7 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
 .act-btn:hover{background:var(--wine);color:#fff}
 .act-btn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#241A12}
 .act-btn[aria-pressed="true"]:hover{background:var(--gold-deep);color:#fff}
+.mylist-actions{display:flex;flex-wrap:wrap;gap:10px}
 .mylist-empty{border:1.5px dashed var(--line);border-radius:3px;padding:40px 24px;text-align:center;background:#fff}
 .mylist-empty h3{font-family:'Fraunces',Georgia,serif;color:var(--plum);margin-bottom:6px;font-size:19px}
 .poster-card .poster-link{display:block;margin-bottom:4px}
@@ -1603,7 +1604,9 @@ MYLIST_JS = """
 <script>
 (function(){
   var out=document.getElementById('mylist-grid'), empty=document.getElementById('mylist-empty'),
-      countEl=document.getElementById('mylist-count'), clearBtn=document.getElementById('mylist-clear');
+      countEl=document.getElementById('mylist-count'), clearBtn=document.getElementById('mylist-clear'),
+      copyBtn=document.getElementById('mylist-copy'), noteEl=document.getElementById('mylist-note');
+  var lastPicked=[];
   var PLABEL=%(plabel)s, TLABEL=%(tlabel)s, APPPAGE=%(apppage)s, D=null;
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
   function vlabel(n){ if(!n) return '';
@@ -1631,12 +1634,37 @@ MYLIST_JS = """
     var picked=D.titles.filter(function(t){ return favs.indexOf(t.s)!==-1; });
     countEl.textContent = picked.length ? picked.length+(picked.length===1?' drama':' dramas')+' saved' : '';
     clearBtn.style.display = picked.length ? 'inline-flex' : 'none';
+    copyBtn.style.display = picked.length ? 'inline-flex' : 'none';
+    noteEl.style.display = picked.length ? '' : 'none';
+    lastPicked = picked;
     if(!picked.length){ out.innerHTML=''; empty.style.display=''; return; }
     empty.style.display='none';
     out.innerHTML = picked.map(card).join('');
     window.deaWireFavs(out);
   }
   window.deaOnFavChange = render;
+  function asText(){
+    var lines=['My DramaEverAfter list', ''];
+    lastPicked.forEach(function(t,i){
+      var app=(t.pl&&t.pl[0]&&PLABEL[t.pl[0]])||'';
+      lines.push((i+1)+'. '+t.n+(app?'  ('+app+')':''));
+      lines.push('   %(domain)s/titles/'+t.s+'.html');
+      lines.push('');
+    });
+    lines.push('Saved from %(domain)s');
+    // fromCharCode(10) rather than a backslash-n literal: this JS is generated from a
+    // Python string, so an escape sequence here has to survive both layers intact. It
+    // did not, and the literal newline it produced was a JS syntax error that killed
+    // the whole script silently -- the page built fine and rendered nothing.
+    return lines.join(String.fromCharCode(10));
+  }
+  copyBtn.addEventListener('click', function(){
+    var txt=asText(), lbl=copyBtn.querySelector('.act-label');
+    var ok=function(){ var o=lbl.textContent; lbl.textContent='Copied'; setTimeout(function(){ lbl.textContent=o; },1800); };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(ok).catch(function(){ window.prompt('Copy your list:', txt); });
+    } else { window.prompt('Copy your list:', txt); }
+  });
   clearBtn.addEventListener('click', function(){
     if(!window.confirm('Remove every drama from your list? This cannot be undone.')) return;
     try{ localStorage.setItem(window.deaFavs.KEY,'[]'); }catch(e){}
@@ -1646,7 +1674,7 @@ MYLIST_JS = """
     .catch(function(){ empty.style.display=''; });
 })();
 </script>
-""" % {"plabel": json.dumps(platform_label, separators=(",", ":")),
+""" % {"domain": DOMAIN, "plabel": json.dumps(platform_label, separators=(",", ":")),
         "tlabel": json.dumps(trope_label, separators=(",", ":")),
         "apppage": json.dumps({slug(p["name"]): 1 for p in APPS_WITH_DATA}, separators=(",", ":"))}
 
@@ -1664,9 +1692,13 @@ no account, no sign-up, and nothing is sent anywhere. Clearing your browser data
 <p style="margin-top:16px"><a class="btn btn-wine" href="browse.html">Browse dramas &rarr;</a></p>
 </div>
 <div class="grid" id="mylist-grid"></div>
-<div style="margin-top:28px">
+<div class="mylist-actions" style="margin-top:28px">
+<button class="act-btn" id="mylist-copy" type="button" style="display:none">
+<span aria-hidden="true">&#128203;</span><span class="act-label">Copy my list</span></button>
 <button class="act-btn" id="mylist-clear" type="button" style="display:none">Clear my list</button>
 </div>
+<p id="mylist-note" class="hint" style="display:none;margin-top:12px;font-size:13px;color:var(--tert)">
+Saved in this browser. Copy your list to keep it somewhere permanent, or to move it to another device.</p>
 </section>
 {FAV_JS}{MYLIST_JS}"""
 html = page("My List | DramaEverAfter",
