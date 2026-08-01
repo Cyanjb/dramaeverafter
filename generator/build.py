@@ -403,8 +403,6 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .poster--empty{display:flex}
 .ai-badge{position:absolute;top:6px;right:6px;z-index:3;background:rgba(43,27,46,.86);color:#F6EEE6;
 font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:2px;line-height:1}
-.ai-note{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:8px 13px;border:1px solid var(--blush-bd);
-background:var(--blush);border-radius:2px;font-size:13.5px;color:var(--wine-hover)}
 .ai-toggle{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);cursor:pointer;
 padding:10px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:2px;margin-bottom:20px}
 .ai-toggle input{width:17px;height:17px;accent-color:var(--wine);cursor:pointer}
@@ -982,7 +980,6 @@ for t in titles:
 <p class="eyebrow">{" &middot; ".join(str(x) for x in eyebrow_bits)}</p>
 <h1>{t['primary_title']}</h1>
 <p class="views-line">{" &middot; ".join(views_bits)}</p>
-{'<p class="ai-note">This title is AI-generated. The app labels it on its own artwork.</p>' if is_ai(t) else ''}
 <div class="chips" style="margin-bottom:26px">{trope_html}</div>
 <div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
