@@ -1049,6 +1049,9 @@ for t in titles:
         n_titles = len(credits_by_person.get(c["person_id"], []))
         cast_html += person_row(pr["name"], f"{role} · {n_titles} titles",
                                  (pr.get("photo_ref") or "").strip(), f"{pre}actors/{pslug(pr)}.html", "md")
+    # Set is for the overlap test below only. Anything rendered reads from tropes_of()
+    # directly: set order follows Python's per-process string hash, so displaying from
+    # it rewrote the "If you liked this" hint on 2,267 pages every rebuild.
     my_tropes = set(tropes_of(t))
     origin_pool = titles_root if origin_of(t) == ROOT_ORIGIN else [x for x in titles_other if origin_of(x) == origin_of(t)]
     similar = sorted([x for x in origin_pool if x["title_id"] != t["title_id"] and my_tropes & set(tropes_of(x))],
@@ -1094,7 +1097,7 @@ for t in titles:
 </section>
 {f'<section class="pad" style="padding:34px 22px 36px"><h2 style="font-size:24px;margin-bottom:20px">Cast</h2><div class="grid cast">{cast_html}</div></section>' if cast_html else ''}
 {f'''<section class="section-warm" style="padding:30px 0 44px">
-<div class="section-head pad"><h2>If you liked this</h2><span class="hint" style="font-size:13.5px;color:var(--tert)">{" &middot; ".join(list(my_tropes)[:2])}</span></div>
+<div class="section-head pad"><h2>If you liked this</h2><span class="hint" style="font-size:13.5px;color:var(--tert)">{" &middot; ".join(tropes_of(t)[:2])}</span></div>
 <div class="rail">{similar_html}</div>
 </section>''' if similar_html else ''}
 {FAV_JS}{SHARE_JS}"""
