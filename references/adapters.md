@@ -229,3 +229,56 @@ so nobody re-tests these:
 For the platforms at 0%, the only route is per-title off-platform sourcing (IMDb search, or
 entertainment press for viral titles). There is no bulk option. Do not re-probe the platform
 sites hoping for a different answer.
+
+## 14. Sandbox network policy — a false negative to watch for (2026-08-02)
+
+The 2026-08-02 run could not scrape AT ALL, and the cause was the session
+environment, NOT the platforms. Recording it so nobody writes a platform off
+on this evidence.
+
+- Symptom from bash: `curl: (56) CONNECT tunnel failed, response 403` for
+  reelshort, goodshort, netshort, my-drama, vigloo and candyjar alike.
+- Symptom from the fetch tool: HTTP 403 with no body, on every URL tried.
+- THE TELL: `https://example.com/` also returned 403. A blanket block. When a
+  neutral control host fails, the wall is local — stop testing platforms and
+  check the environment before concluding anything about a site.
+- Reachable regardless: github.com and the package registries (the policy's
+  allowlist). Web SEARCH still worked; only fetching was blocked. Search alone
+  returns editorial coverage, never catalog rows, so it cannot feed a delta run.
+- Fix is environmental: the Claude Code environment's network policy has to
+  allow the platform domains. See
+  https://code.claude.com/docs/en/claude-code-on-the-web
+- Contrast with sec 4 and sec 8, which record REAL bot walls (IMDb, DramaBox).
+  Those were diagnosed in an environment where control hosts worked. A 403 only
+  means "the platform blocks us" if unrelated hosts succeed in the same session.
+- Section 6's reachability table was NOT re-verified on 2026-08-02 and its
+  results still stand from 2026-07-17; nothing here supersedes it.
+
+## 15. The skill's bundled copy of this file is stale (2026-08-02)
+
+`~/.claude/skills/dramaeverafter-pipeline/references/adapters.md` is a much
+older, generic version of this document — it stops at Tier 2 sources and lacks
+sections 5-13 entirely. Worse, it CONTRADICTS this file: it states platform
+sites "are not reachable from bash", while sec 1 here records that they are,
+with a desktop User-Agent.
+
+THIS FILE, IN THE REPO, IS THE SOURCE OF TRUTH. Read `references/adapters.md`
+from the cloned repo at Stage 2, never the skill's bundled copy. The skill's
+copy should be deleted or replaced with a pointer to this one.
+
+## 16. Generator determinism (fixed 2026-08-02)
+
+Not an adapter note, but it affects how you read a Stage 4 diff.
+
+`build.py` used to render the "If you liked this" hint from a Python `set`, so
+per-process hash randomisation rewrote that line on ~2,267 of 3,408 title pages
+on EVERY build. Any Stage 4 rebuild therefore produced a ~2,300-file diff that
+had nothing to do with the data, which made real changes impossible to spot.
+
+Fixed by rendering from `tropes_of()` (deterministic ordered list, already used
+by the trope chips on the same page). Verified byte-identical across
+PYTHONHASHSEED=random and PYTHONHASHSEED=0.
+
+EXPECTATION NOW: a rebuild with unchanged data produces ZERO changed files. If
+you ever see a large diff again with no data change behind it, treat it as a
+regression of this bug, not as normal build noise.
