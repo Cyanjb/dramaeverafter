@@ -1718,14 +1718,14 @@ and nothing is sent anywhere &mdash; your list stays in this browser.</p>
 <p>Tap the star on any drama and it will show up here.</p>
 <p style="margin-top:16px"><a class="btn btn-wine" href="browse.html">Browse dramas &rarr;</a></p>
 </div>
-<div class="grid" id="mylist-grid"></div>
-<div class="mylist-actions" style="margin-top:28px">
+<div class="mylist-actions">
 <button class="act-btn" id="mylist-copy" type="button" style="display:none">
 <span aria-hidden="true">&#128203;</span><span class="act-label">Copy my list</span></button>
 <button class="act-btn" id="mylist-clear" type="button" style="display:none">Clear my list</button>
 </div>
-<p id="mylist-note" class="hint" style="display:none;margin-top:12px;font-size:13px;color:var(--tert)">
+<p id="mylist-note" class="hint" style="display:none;margin:12px 0 26px;font-size:13px;color:var(--tert)">
 Tip: copy your list to keep it if you switch devices.</p>
+<div class="grid" id="mylist-grid"></div>
 </section>
 {FAV_JS}{MYLIST_JS}"""
 html = page("My List | DramaEverAfter",
