@@ -177,7 +177,15 @@ def is_ai(t):
     platform that normally lists one -- but neither is conclusive: of the first three
     no-cast ReelShort titles checked, two carried the badge and one was plainly
     live-action. Calling a real production AI-generated is a false accusation against
-    the people in it, so nothing lands here without a human confirming the poster."""
+    the people in it, so nothing lands here without a human confirming the poster.
+
+    The column is tri-state, because "checked, not AI" has to be recordable:
+        (blank)  never checked
+        yes      confirmed AI-generated from the poster badge
+        no       confirmed NOT AI by a human, do not re-queue
+    Only `yes` is truthy here, so `no` renders exactly like blank. It exists so
+    make_worklists.py can keep a settled title out of AI-CHECK.md; without it a
+    ruling was lost and the same title came back to the top of the queue."""
     return (t.get("ai") or "").strip().lower() in ("yes", "y", "true", "1")
 
 def book_of(t):

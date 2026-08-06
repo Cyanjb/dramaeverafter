@@ -282,3 +282,32 @@ PYTHONHASHSEED=random and PYTHONHASHSEED=0.
 EXPECTATION NOW: a rebuild with unchanged data produces ZERO changed files. If
 you ever see a large diff again with no data change behind it, treat it as a
 regression of this bug, not as normal build noise.
+
+## 17. The manual worklists are generated now (2026-08-02)
+
+CAST-WANTED.md and AI-CHECK.md were hand-written, so nothing took a title off
+them once it was settled. Both had rotted:
+
+- All four confirmed-AI titles were still in CAST-WANTED.md, two at slots 1 and
+  3. AI productions have no human cast, so those were IMDb lookups that could
+  never succeed - the worst kind of stale entry, right at the top.
+- AI-CHECK.md still queued three decided titles, including Love at Dangerous
+  Speeds at slot 1, which its own header names as confirmed NOT AI.
+
+ROOT CAUSE: `titles.csv.ai` had no way to say "checked, not AI". Blank meant
+unchecked, so a not-AI ruling had nowhere to live and the title returned to the
+queue forever. The column is tri-state now - blank / yes / no - and only `yes`
+is truthy in build.py's is_ai(), so `no` renders identically to blank (verified:
+setting it changed 0 of 9,010 pages).
+
+Both files are now built by `generator/make_worklists.py` from data/, so a
+ruling recorded in the CSVs leaves the queue automatically. Re-run it after any
+pass that adds credits or sets ai.
+
+AI-CHECK's platform filter is deliberately just reelshort + my-drama, the two
+that publish cast for their own catalogue (93% and 75%, sec 13). Vigloo and
+CandyJar are NOT candidates despite partial coverage: sec 12 proved Vigloo's
+remaining titles publish no cast at all, and sec 7/13 that CandyJar publishes
+none on-platform. Their blanks are already explained, so including them added
+~106 posters to check for a signal that was never there. An AI clue requires a
+platform that normally lists cast - not merely one we have partial data for.
