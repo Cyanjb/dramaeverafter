@@ -3,7 +3,7 @@
 Save each IMDb page as PDF and hand them over. Click the search link, pick the
 result whose plot matches the synopsis shown, then save that page.
 
-2243 titles have no cast at all. This lists the top 120 by view
+2233 titles have no cast at all. This lists the top 120 by view
 count. Confirmed-AI titles are excluded - they have no cast to find.
 
 1. Love at Dangerous Speeds
@@ -186,422 +186,422 @@ count. Confirmed-AI titles are excluded - they have no cast to find.
    plot: In order to repay the favor of saving her life, Skylar hides her identity and marries William. She secretly supports him to become a newcomer in the b
    search: https://www.imdb.com/find/?q=Comeback+of+a+Hidden+Empress+&s=tt
 
-37. Cousins by Name Lovers in Secret
-   app: GoodShort   views: 4.7M
-   plot: Plagued by an embarrassing condition, Bille seeks an intimate checkup from her cousin Vincent, the college physician—only to awaken a forbidden desire
-   search: https://www.imdb.com/find/?q=Cousins+by+Name+Lovers+in+Secret+&s=tt
-
-38. Found A Homeless Genius To Save My Company
-   app: GoodShort   views: 4.6M
-   plot: Ethan Dalton was once a squeegee kid, washing cars on the street—until Richard Harrington changed his life with a single act of kindness.Fifteen years
-   search: https://www.imdb.com/find/?q=Found+A+Homeless+Genius+To+Save+My+Company+&s=tt
-
-39. After Awakening Siblings Strike Back
+37. After Awakening Siblings Strike Back
    app: GoodShort   views: 4.4M
    plot: A pair of orphaned siblings were separated in childhood. Years later, the sister became a billionaire and tirelessly searched for her brother’s wherea
    search: https://www.imdb.com/find/?q=After+Awakening+Siblings+Strike+Back+&s=tt
 
-40. Daddy's Birthday Became Daughter's Funeral
+38. Daddy's Birthday Became Daughter's Funeral
    app: GoodShort   views: 4.4M
    plot: Maria drives her daughter to celebrate the birthday of Logan, her husband. When a crash traps them, Logan—a skilled doctor—rushes to save his ex-lover
    search: https://www.imdb.com/find/?q=Daddy%27s+Birthday+Became+Daughter%27s+Funeral+&s=tt
 
-41. Dare to Harm the Billionaire's Wife?
+39. Dare to Harm the Billionaire's Wife?
    app: GoodShort   views: 4.3M
    plot: Vincent comes from wealth on both sides - his mother is the chairman of the Wilson Group and his father is a mysterious gangster lord. He hides his ri
    search: https://www.imdb.com/find/?q=Dare+to+Harm+the+Billionaire%27s+Wife%3F+&s=tt
 
-42. Giving Birth and Getting Divorced
+40. Giving Birth and Getting Divorced
    app: GoodShort   views: 4.3M
    plot: Olivia abandons her billionaire family for Rory, but when childbirth becomes a life-or-death crisis, his true colors emerge. The arrival of Rory's “be
    search: https://www.imdb.com/find/?q=Giving+Birth+and+Getting+Divorced+&s=tt
 
-43. Golden Feather: Temptation Game
+41. Golden Feather: Temptation Game
    app: ReelShort   views: 4.2M
    plot: At the Golden Feather Academy, after being rejected, Queen Celine offers her playboy stepbrother Leo a night with her if he can seduce and destroy the
    search: https://www.imdb.com/find/?q=Golden+Feather%3A+Temptation+Game+&s=tt
 
-44. Bitchy BFF It's Your Turn to Pay
+42. Bitchy BFF It's Your Turn to Pay
    app: GoodShort   views: 4.1M
    plot: In her past life, Alison Swain mistook a bitch for her best friend. She fell right into all the traps set by Stella Lane, got abandoned by her family,
    search: https://www.imdb.com/find/?q=Bitchy+BFF+It%27s+Your+Turn+to+Pay+&s=tt
 
-45. Case Closed: The Legal Queen Returns
+43. Case Closed: The Legal Queen Returns
    app: GoodShort   views: 4.1M
    plot: Rose Newton spent three years as the perfect wife to cold lawyer Ian Fuller, even giving him a bracelet of ten beads—ten chances to earn her forgivene
    search: https://www.imdb.com/find/?q=Case+Closed%3A+The+Legal+Queen+Returns+&s=tt
 
-46. Dear Husband Let's Get Divorced
+44. Dear Husband Let's Get Divorced
    app: GoodShort   views: 4.1M
    plot: &quot;Today's our wedding anniversary, but my husband spent it celebrating his ex-girlfriend's birthday...&quot; Natalie resolves to end her marriage 
    search: https://www.imdb.com/find/?q=Dear+Husband+Let%27s+Get+Divorced+&s=tt
 
-47. Revenge for The Truth in Her Diary
+45. Revenge for The Truth in Her Diary
    app: GoodShort   views: 4.1M
    plot: Clara is the biological daughter of her family, but her parents and brothers always blindly favored her adoptive sister, Emily. After years of torment
    search: https://www.imdb.com/find/?q=Revenge+for+The+Truth+in+Her+Diary+&s=tt
 
-48. Three Strikes Dad's Out
+46. Three Strikes Dad's Out
    app: GoodShort   views: 4.1M
    plot: She was the Kingsley heiress who gave up her crown for love. Karina fell for her boss, William, and after one reckless night, carried his child. He ma
    search: https://www.imdb.com/find/?q=Three+Strikes+Dad%27s+Out+&s=tt
 
-49. After Divorce I Enter My Cougar Era
+47. After Divorce I Enter My Cougar Era
    app: GoodShort   views: 4.0M
    plot: Beth Hart, a woman who sacrificed everything for her family, faces infidelity, manipulation, and societal judgment. ​ With the help of Matthew, a youn
    search: https://www.imdb.com/find/?q=After+Divorce+I+Enter+My+Cougar+Era+&s=tt
 
-50. Code of the Heiress
+48. Code of the Heiress
    app: GoodShort   views: 4.0M
    plot: Legendary hacker Claire hides as a housewife but is betrayed. After divorce, she marries mysterious Daniel to take revenge and uncover her family’s da
    search: https://www.imdb.com/find/?q=Code+of+the+Heiress+&s=tt
 
-51. I'm the Mafia Girl Boss and He's My Man
+49. I'm the Mafia Girl Boss and He's My Man
    app: GoodShort   views: 4.0M
    plot: When deliveryman Ken accidentally saves mafia boss Elle, she falls for him instantly and begins a relentless pursuit. Caught in schemes by his fiancée
    search: https://www.imdb.com/find/?q=I%27m+the+Mafia+Girl+Boss+and+He%27s+My+Man+&s=tt
 
-52. My New Daddy is a Five-Star General
+50. My New Daddy is a Five-Star General
    app: GoodShort   views: 4.0M
    plot: Desperate to save her son from a brain tumor, Jessica seeks out her husband, Patrick, only to find he’s betrayed their marriage for his career, hiding
    search: https://www.imdb.com/find/?q=My+New+Daddy+is+a+Five-Star+General+&s=tt
 
-53. Smile My Cheating Husband You're on Camera
+51. Smile My Cheating Husband You're on Camera
    app: GoodShort   views: 4.0M
    plot: A brilliant OB-GYN discovers her husband’s betrayal mid-surgery—his mistress is her patient. Humiliated, pregnant, and out for justice, she exposes th
    search: https://www.imdb.com/find/?q=Smile+My+Cheating+Husband+You%27re+on+Camera+&s=tt
 
-54. Mistaken Encounter,Unexpected Love
+52. Mistaken Encounter,Unexpected Love
    app: GoodShort   views: 3.9M
    plot: When heartbroken travelers Eileen and Leon cross paths amidst betrayal and rejection from their own relationships, a tipsy encounter leads to a night 
    search: https://www.imdb.com/find/?q=Mistaken+Encounter%2CUnexpected+Love+&s=tt
 
-55. He's Too Late for Her Mafia Majesty
+53. He's Too Late for Her Mafia Majesty
    app: GoodShort   views: 3.8M
    plot: Mia Falcone, the Don’s daughter, gave up everything for Leo Romano after he took three bullets to save her. For seven years, she lived in secrecy as h
    search: https://www.imdb.com/find/?q=He%27s+Too+Late+for+Her+Mafia+Majesty+&s=tt
 
-56. My Gift-Wrapped Billionaire
+54. My Gift-Wrapped Billionaire
    app: GoodShort   views: 3.8M
    plot: On a fateful Valentine's night, Vanessa, a struggling actress, stumbles upon Daniel Jones, a dashing and wealthy entertainment mogul from Los Angeles,
    search: https://www.imdb.com/find/?q=My+Gift-Wrapped+Billionaire+&s=tt
 
-57. The Father's Guardian Angel
+55. The Father's Guardian Angel
    app: GoodShort   views: 3.8M
    plot: Isabelle, the CEO of New York City’s Weston Group, wants to bring her elderly father, Jerry, from her hometown to the city so she can take care of him
    search: https://www.imdb.com/find/?q=The+Father%27s+Guardian+Angel+&s=tt
 
-58. [ENG DUB] Fatal Allure: Spoiling My Wife
+56. [ENG DUB] Fatal Allure: Spoiling My Wife
    app: GoodShort   views: 3.7M
    plot: She is a world renowned designer born in a super-rich family with a prestigious background. In order to repay a life-saving favor, she got married wit
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+Fatal+Allure%3A+Spoiling+My+Wife+&s=tt
 
-59. Destined Redemption
+57. Destined Redemption
    app: GoodShort   views: 3.6M
    plot: After experiencing a period of boyfriend's domestic violence, Joyce move to a new city by the suggestion of her best friend. she met a handsome and he
    search: https://www.imdb.com/find/?q=Destined+Redemption+&s=tt
 
-60. Lycan Queen Fights Back
+58. Lycan Queen Fights Back
    app: GoodShort   views: 3.6M
    plot: Aurora, noble Lycan queen, drank a witch’s potion to mate with her savior Jacob, at the cost of her powers and scent, only to be betrayed and mocked a
    search: https://www.imdb.com/find/?q=Lycan+Queen+Fights+Back+&s=tt
 
-61. Sweet Revenge for the Wrong Diagnosis
+59. Sweet Revenge for the Wrong Diagnosis
    app: GoodShort   views: 3.6M
    plot: When Lily and her doctor meet in private to discuss a the results of a cancer screening, her husband Mason accidentally overhears. Believing that Lily
    search: https://www.imdb.com/find/?q=Sweet+Revenge+for+the+Wrong+Diagnosis+&s=tt
 
-62. Hear Me Once More
+60. Hear Me Once More
    app: GoodShort   views: 3.4M
    plot: An abusive parent makes young Dorothy and Nelson the closest of allies - but a car accident tears them apart. When their paths cross once again in adu
    search: https://www.imdb.com/find/?q=Hear+Me+Once+More+&s=tt
 
-63. Mother-in-Law Steals My Mr. Right
+61. Mother-in-Law Steals My Mr. Right
    app: GoodShort   views: 3.3M
    plot: Dumped by her ex, Lena falls into bed with her irresistible CEO—but vanishes by morning. As the CEO searches for the mystery woman who stole his heart
    search: https://www.imdb.com/find/?q=Mother-in-Law+Steals+My+Mr.+Right+&s=tt
 
-64. Save Me Baby Daddy
+62. Save Me Baby Daddy
    app: GoodShort   views: 3.3M
    plot: Living under the shadow of her stepmother and stepsister, an accidental encounter leave Bella unexpectedly pregnant. Bella has had trouble conceiving,
    search: https://www.imdb.com/find/?q=Save+Me+Baby+Daddy+&s=tt
 
-65. The Canary of the Mafia Boss
+63. The Canary of the Mafia Boss
    app: GoodShort   views: 3.3M
    plot: Valentina, an American girl who just graduated from college, thought she could start a new chapter in her life, but she didn't expect to find disaster
    search: https://www.imdb.com/find/?q=The+Canary+of+the+Mafia+Boss+&s=tt
 
-66. CEO's Substitute Wife
+64. CEO's Substitute Wife
    app: GoodShort   views: 3.2M
    plot: Following the tragic death of her twin sister Alice, Ariel takes her place in order to enact revenge on Alice's cheating fiancé and manipulative adopt
    search: https://www.imdb.com/find/?q=CEO%27s+Substitute+Wife+&s=tt
 
-67. [ENG DUB] The Formidable Rich Ex-wife
+65. [ENG DUB] The Formidable Rich Ex-wife
    app: GoodShort   views: 3.2M
    plot: In a world of wealth and privilege, she's the heiress to a vast fortune. Out of gratitude for saving her life, she marries her vegetative husband for 
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+The+Formidable+Rich+Ex-wife+&s=tt
 
-68. From Rejected to the Alpha Queen
+66. From Rejected to the Alpha Queen
    app: GoodShort   views: 3.2M
    plot: The only daughter of the Alpha King, Isabella, lost everything during a massacre and even became a slave to another pack. Years later, her childhood k
    search: https://www.imdb.com/find/?q=From+Rejected+to+the+Alpha+Queen+&s=tt
 
-69. You Had Your Chance
+67. You Had Your Chance
    app: GoodShort   views: 3.2M
    plot: Karina's stepson's birth mother returns, threatening to take the boy Karina raised and helped heal from a congenital leg disability. After a heated ar
    search: https://www.imdb.com/find/?q=You+Had+Your+Chance+&s=tt
 
-70. Power of Three Set me Free
+68. Power of Three Set me Free
    app: GoodShort   views: 3.1M
    plot: When Emily Harper is sold out by her family to the highest bidder, she escapes and has a one-night stand with billionaire Charles Sinclair. She gives 
    search: https://www.imdb.com/find/?q=Power+of+Three+Set+me+Free+&s=tt
 
-71. The Phoenix's Rebirth for Revenge
+69. The Phoenix's Rebirth for Revenge
    app: GoodShort   views: 3.1M
    plot: In her previous life, Aurora was tormented by her family to death.  Now, returned to life ten years prior, she embarks on a ruthless journey to send h
    search: https://www.imdb.com/find/?q=The+Phoenix%27s+Rebirth+for+Revenge+&s=tt
 
-72. Sneak Me in Your Closet Lost in Deja Vu
+70. Sneak Me in Your Closet Lost in Deja Vu
    app: GoodShort   views: 3.0M
    plot: Memory stolen. Love betrayed. As Gabriel clings to a new wife, Sebastian fights the shadows alone. But destiny doesn’t forget. When the past catches u
    search: https://www.imdb.com/find/?q=Sneak+Me+in+Your+Closet+Lost+in+Deja+Vu+&s=tt
 
-73. A Dangerous Desire for Mr. Shelby
+71. A Dangerous Desire for Mr. Shelby
    app: GoodShort   views: 2.9M
    plot: Tommy, the ruthless second-in-command of a mafia family, crosses paths with Mathilda, a college student, sparking an unexpected connection. As secrets
    search: https://www.imdb.com/find/?q=A+Dangerous+Desire+for+Mr.+Shelby+&s=tt
 
-74. Fated in the End Zone
+72. Fated in the End Zone
    app: GoodShort   views: 2.9M
    plot: Monica’s first love was the high school quarterback, Sebastian, who grew up to be a star football player while Monica is now just a cleaner. Sebastian
    search: https://www.imdb.com/find/?q=Fated+in+the+End+Zone+&s=tt
 
-75. Now Racer Mom's Untouchable
+73. Now Racer Mom's Untouchable
    app: GoodShort   views: 2.9M
    plot: Racing prodigy Elena gave up her career for love and family, only to be betrayed by her husband and son. She came to her senses, divorced him, and wit
    search: https://www.imdb.com/find/?q=Now+Racer+Mom%27s+Untouchable+&s=tt
 
-76. Oops! I married a CEO by mistake
+74. Oops! I married a CEO by mistake
    app: GoodShort   views: 2.9M
    plot: Abigail lies dead in the hospital, while her fiancé Kyle and stepsister Chloe gloat over their murder of her.Overhearing their evil plan, Abigail late
    search: https://www.imdb.com/find/?q=Oops%21+I+married+a+CEO+by+mistake+&s=tt
 
-77. Spark My Body and Master My Soul
+75. Spark My Body and Master My Soul
    app: GoodShort   views: 2.9M
    plot: College student Anna is betrayed by her boyfriend, who tries to sell her virginity at a club. Business tycoon Ryder saves her... but then invites her 
    search: https://www.imdb.com/find/?q=Spark+My+Body+and+Master+My+Soul+&s=tt
 
-78. The Beautiful Payback of a Billionaire Mother
+76. The Beautiful Payback of a Billionaire Mother
    app: GoodShort   views: 2.9M
    plot: At seven, Hailey left her mother Claire to avoid burdening her during cancer. Years later, now a billionaire, Claire eventually finds Hailey—betrayed 
    search: https://www.imdb.com/find/?q=The+Beautiful+Payback+of+a+Billionaire+Mother+&s=tt
 
-79. [ENG DUB] My Memory-Loss Darling Wife
+77. [ENG DUB] My Memory-Loss Darling Wife
    app: GoodShort   views: 2.8M
    plot: After being betrayed and buried alive by her family, Zelma miraculously survives but loses her memory, regressing to the mentality of a five-year-old 
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+My+Memory-Loss+Darling+Wife+&s=tt
 
-80. His Journey Back Home from Ashes to Gold
+78. His Journey Back Home from Ashes to Gold
    app: GoodShort   views: 2.8M
    plot: After Mia’s only son, Noah, was rescued and adopted by the CEO of the Brown Group following a car accident, Mia and her husband, Adam, never stopped s
    search: https://www.imdb.com/find/?q=His+Journey+Back+Home+from+Ashes+to+Gold+&s=tt
 
-81. Objection I'm not Gay
+79. Objection I'm not Gay
    app: GoodShort   views: 2.7M
    plot: Kit Sterling and Daniel Finch are bitter enemies - lawyers battling it out in the courtroom. But after a night of black-out drinking, Kit wakes up nex
    search: https://www.imdb.com/find/?q=Objection+I%27m+not+Gay+&s=tt
 
-82. [ENG DUB] Don't Mess With the Heiress
+80. [ENG DUB] Don't Mess With the Heiress
    app: GoodShort   views: 2.6M
    plot: The wealthiest tycoon's daughter, Eva Stone, conceals her identity to be with the financially struggling Wills Zuck. However, Wills, driven by ambitio
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+Don%27t+Mess+With+the+Heiress+&s=tt
 
-83. She Finds Redemption in His Love
-   app: GoodShort   views: 2.6M
-   plot: Grace, an orphan imprisoned by her adoptive family, is raised to be sold to a corrupt official. Desperate to escape with her disabled brother, she sed
-   search: https://www.imdb.com/find/?q=She+Finds+Redemption+in+His+Love+&s=tt
-
-84. Sleeping Handsome, Let's Mate!
+81. Sleeping Handsome, Let's Mate!
    app: GoodShort   views: 2.6M
    plot: Avery, a struggling call girl, seizes the chance to marry the sole heir of the rich Waldorf family to earn money for her mother's medical bills. Howev
    search: https://www.imdb.com/find/?q=Sleeping+Handsome%2C+Let%27s+Mate%21+&s=tt
 
-85. Zillionaire's Mighty Return on Christmas
+82. Zillionaire's Mighty Return on Christmas
    app: GoodShort   views: 2.6M
    plot: On Christmas Eve, James Halper visits his wife's family, only to be treated with disdain. Little do they know, he is the new Chairman of Empyrean Grou
    search: https://www.imdb.com/find/?q=Zillionaire%27s+Mighty+Return+on+Christmas+&s=tt
 
-86. Accidental Marriage to My Poor CEO
+83. Accidental Marriage to My Poor CEO
    app: GoodShort   views: 2.5M
    plot: Lila needs money to save an orphanage，so she hastily marries William, thinking he’s just a poor guy. But after falling for him, she discovers he’s act
    search: https://www.imdb.com/find/?q=Accidental+Marriage+to+My+Poor+CEO+&s=tt
 
-87. [ENG DUB] Spoiled Rotten: Flash Marriage to My Child's Father
+84. [ENG DUB] Spoiled Rotten: Flash Marriage to My Child's Father
    app: GoodShort   views: 2.5M
    plot: 5 years ago, Lydia Tate accidentally saved Eric Lucia,Lucia Group's CEO, and got pregnant overnight. 6 years later, Lydia met him again while her fami
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+Spoiled+Rotten%3A+Flash+Marriage+to+My+Child%27s+Father+&s=tt
 
-88. [ENG DUB] Wed to the Unknown Heir
+85. [ENG DUB] Wed to the Unknown Heir
    app: GoodShort   views: 2.5M
    plot: After her father had an affair and her mother passed away, Clara's stepmother moved in with her illegitimate son, throwing Clara into a world of troub
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+Wed+to+the+Unknown+Heir+&s=tt
 
-89. Assemble My Avenging Billionaires
-   app: GoodShort   views: 2.4M
-   plot: The Harper heiress, Jacqueline, once believed love was worth losing everything. When betrayal and violence shatter that faith, she walks away and come
-   search: https://www.imdb.com/find/?q=Assemble+My+Avenging+Billionaires+&s=tt
-
-90. [ENG DUB] The Mystical Loong: One True Dragon
+86. [ENG DUB] The Mystical Loong: One True Dragon
    app: GoodShort   views: 2.4M
    plot: Rumors in the martial world suggest that gaining the favor and assistance of the esteemed and aloof Young Lord of Ferrell International guarantees a s
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+The+Mystical+Loong%3A+One+True+Dragon+&s=tt
 
-91. Avenging Heiress Plunged Into Darkness
+87. Avenging Heiress Plunged Into Darkness
    app: GoodShort   views: 2.3M
    plot: On a dark and stormy night, Mia found her mother killed in the study. Jack, her father, handed her over to the police as a suspect without giving her 
    search: https://www.imdb.com/find/?q=Avenging+Heiress+Plunged+Into+Darkness+&s=tt
 
-92. Echoes of Her Cry
+88. Echoes of Her Cry
    app: GoodShort   views: 2.3M
    plot: After a disastrous fire, Emma cries for help as her daughter, Cindy, is trapped under the rubble. Her EMT husband, Tim, comes to help, but is lured aw
    search: https://www.imdb.com/find/?q=Echoes+of+Her+Cry+&s=tt
 
-93. Friends with Benefits Play the Swap Game
+89. Friends with Benefits Play the Swap Game
    app: GoodShort   views: 2.3M
    plot: Emily Davis has never been in a relationship before. But for a chance to win $210,000, she teams up with her best friend of 24 years, Alex Carter, and
    search: https://www.imdb.com/find/?q=Friends+with+Benefits+Play+the+Swap+Game+&s=tt
 
-94. The Forbidden Love
+90. The Forbidden Love
    app: GoodShort   views: 2.3M
    plot: Finally out of Jail, with only $5 in her pocket, Jane end up at &quot;Parasides&quot;, a strip club at downtown of Los Angeles. She wants to start her
    search: https://www.imdb.com/find/?q=The+Forbidden+Love+&s=tt
 
-95. From Gold Digger to His Lucky Charm
+91. From Gold Digger to His Lucky Charm
    app: GoodShort   views: 2.2M
    plot: A year into her contract marriage with billionaire Becket, Tessa is still a virgin. When her grandma-in-law demands a baby, Tessa lies, claiming Becke
    search: https://www.imdb.com/find/?q=From+Gold+Digger+to+His+Lucky+Charm+&s=tt
 
-96. [ENG DUB] Bricklaying for Six Years, My Goddess Proposes to Me
+92. [ENG DUB] Bricklaying for Six Years, My Goddess Proposes to Me
    app: GoodShort   views: 2.1M
    plot: Quinn Thorne, a club waiter, accidentally rescued Sera Dutt when she was drugged. Quinn is mistaken for an antidote by Sera, who takes half of his nec
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+Bricklaying+for+Six+Years%2C+My+Goddess+Proposes+to+Me+&s=tt
 
-97. Intertwined Desires: The Love of a Rebel
+93. Intertwined Desires: The Love of a Rebel
    app: GoodShort   views: 2.1M
    plot: Sold out by someone in dark web, Chloe Morgan bumps into mafia lord, Shaun Luther in the riches’ hunting game. Once an aristocracy, Chloe is now dragg
    search: https://www.imdb.com/find/?q=Intertwined+Desires%3A+The+Love+of+a+Rebel+&s=tt
 
-98. The Final Goodbye to the Closest Kin
+94. The Final Goodbye to the Closest Kin
    app: GoodShort   views: 2.1M
    plot: Annie never knew her mother's love. Carole despised her, reserving all her doting affection for Fiona, the daughter of a past romance. Carole believed
    search: https://www.imdb.com/find/?q=The+Final+Goodbye+to+the+Closest+Kin+&s=tt
 
-99. [ENG DUB] The All-Powerful: He Who Rules It All
+95. [ENG DUB] The All-Powerful: He Who Rules It All
    app: GoodShort   views: 2.0M
    plot: In gratitude to his wife, Malty Sitch, for saving his life, Troy Drake disguises himself as an ordinary man while secretly helping the Stitch family b
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+The+All-Powerful%3A+He+Who+Rules+It+All+&s=tt
 
-100. My Big Sister Strikes with Her Mafia Dynasty
+96. My Big Sister Strikes with Her Mafia Dynasty
    app: GoodShort   views: 2.0M
    plot: Irina Petrov may look like a nobody in mechanic overalls, but she is actually the ruthless Mafia Queen who rules New York. She comes to her sister Sas
    search: https://www.imdb.com/find/?q=My+Big+Sister+Strikes+with+Her+Mafia+Dynasty+&s=tt
 
-101. The Day You Came Back
+97. The Day You Came Back
    app: GoodShort   views: 2.0M
    plot: Eleanor has guarded her twin secret for years, avoiding college sweetheart Theodore. Fate reunites them as she desperately seeks funds for her daughte
    search: https://www.imdb.com/find/?q=The+Day+You+Came+Back+&s=tt
 
-102. [ENG DUB] &quot;Ordinary&quot; Life and &quot;Poor&quot; Husband
+98. [ENG DUB] &quot;Ordinary&quot; Life and &quot;Poor&quot; Husband
    app: GoodShort   views: 1.9M
    plot: Carol, a part-time food delivery worker who lost her mother, coincidentally helped the grandfather of Denton's wealthiest man. Later, this elderly gen
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+%26quot%3BOrdinary%26quot%3B+Life+and+%26quot%3BPoor%26quot%3B+Husband+&s=tt
 
-103. Exchanging Our Hearts
+99. Exchanging Our Hearts
    app: GoodShort   views: 1.9M
    plot: Amelia thought she’d keep her biggest secret to herself forever, but she didn’t expect her ex-fiancé Nathan to become the world’s greatest lawyer and 
    search: https://www.imdb.com/find/?q=Exchanging+Our+Hearts+&s=tt
 
-104. Having His Baby Becoming His Darling
+100. Having His Baby Becoming His Darling
    app: GoodShort   views: 1.9M
    plot: Escaping from a pervert trying to buy her virginity, Julia kisses a stranger—Stephen, a billionaire who’s allergic to women. Years after their one-nig
    search: https://www.imdb.com/find/?q=Having+His+Baby+Becoming+His+Darling+&s=tt
 
-105. I'd Rather Die Than Ever Want Your Love Again
+101. I'd Rather Die Than Ever Want Your Love Again
    app: GoodShort   views: 1.9M
    plot: After years of sacrifice for her family and betrayal by the man she loved, a woman presumed dead is rescued by a powerful mafia godfather—only to be f
    search: https://www.imdb.com/find/?q=I%27d+Rather+Die+Than+Ever+Want+Your+Love+Again+&s=tt
 
-106. &quot;Ordinary&quot; Life and &quot;Poor&quot; Husband
+102. &quot;Ordinary&quot; Life and &quot;Poor&quot; Husband
    app: GoodShort   views: 1.9M
    plot: Carol, a part-time food delivery worker who lost her mother, coincidentally helped the grandfather of Denton's wealthiest man. Later, this elderly gen
    search: https://www.imdb.com/find/?q=%26quot%3BOrdinary%26quot%3B+Life+and+%26quot%3BPoor%26quot%3B+Husband+&s=tt
 
-107. The Alpha and His Contract Luna
+103. The Alpha and His Contract Luna
    app: GoodShort   views: 1.9M
    plot: Lauren Turner is a werewolf who is struggling to contain the crazy wolf inside of her. But her life starts to change and gets even more complicated wh
    search: https://www.imdb.com/find/?q=The+Alpha+and+His+Contract+Luna+&s=tt
 
-108. The Goddess of Divorce Blessed Me with a CEO
+104. The Goddess of Divorce Blessed Me with a CEO
    app: GoodShort   views: 1.9M
    plot: Hedda awakens in the hospital after a car accident, only to find her husband cheating on her with her best friend. Her broken heart leads the goddess 
    search: https://www.imdb.com/find/?q=The+Goddess+of+Divorce+Blessed+Me+with+a+CEO+&s=tt
 
-109. Vengeance and Untold Love
+105. Vengeance and Untold Love
    app: GoodShort   views: 1.9M
    plot: Ethan mistakenly believed that Scarlett's father had killed his own father, leading him to confine Scarlett in a mental hospital, where she endured to
    search: https://www.imdb.com/find/?q=Vengeance+and+Untold+Love+&s=tt
 
-110. Divorced Mom Beats Them All
+106. Divorced Mom Beats Them All
    app: GoodShort   views: 1.8M
    plot: For seven years, Clara lived in the perfect romance her husband, Dean, had crafted just for her—until the day her hospitalized daughter led her to Dea
    search: https://www.imdb.com/find/?q=Divorced+Mom+Beats+Them+All+&s=tt
 
-111. [ENG DUB] Too Famous to Abandon Now
+107. [ENG DUB] Too Famous to Abandon Now
    app: GoodShort   views: 1.8M
    plot: Leroy was the concubine's son — the one the family never truly accepted. Banished to the graveyard, he became the apprentice of Madam Gibson, the Grav
    search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+Too+Famous+to+Abandon+Now+&s=tt
 
-112. Love Triangle with Three Magnates
+108. Love Triangle with Three Magnates
    app: GoodShort   views: 1.8M
    plot: Claire Gould, the heiress of a billion-dollar conglomerate, conceals her identity to repay a life-saving favor by marrying a commoner. Little did she 
    search: https://www.imdb.com/find/?q=Love+Triangle+with+Three+Magnates+&s=tt
 
-113. Goodbye to the Wedding That Wasn't Mine
+109. Goodbye to the Wedding That Wasn't Mine
    app: GoodShort   views: 1.7M
    plot: One month before her wedding, Rowan Hale discovers her fiancé Victor’s cruel plan—he intends to use her as a surrogate for another woman’s child. Deva
    search: https://www.imdb.com/find/?q=Goodbye+to+the+Wedding+That+Wasn%27t+Mine+&s=tt
 
-114. Paint Me Yours Miss Bad Kisser
+110. Paint Me Yours Miss Bad Kisser
    app: GoodShort   views: 1.7M
    plot: One furious punch, one ruined masterpiece, and she’s humiliated as ‘frigid’ before the crowd. But when Rosa, in a blaze of fury, crushes her lips to a
    search: https://www.imdb.com/find/?q=Paint+Me+Yours+Miss+Bad+Kisser+&s=tt
 
-115. Rise of the Slum-Born Queen
+111. Rise of the Slum-Born Queen
    app: GoodShort   views: 1.7M
    plot: To pay for her mom’s treatment, Ashley is assaulted by her uncle and betrayed by her boyfriend, cousin, and family—until a mysterious CEO, Orion, save
    search: https://www.imdb.com/find/?q=Rise+of+the+Slum-Born+Queen+&s=tt
 
-116. Wed to the Unknown Heir
+112. Wed to the Unknown Heir
    app: GoodShort   views: 1.7M
    plot: After her father had an affair and her mother passed away, Clara's stepmother moved in with her illegitimate son, throwing Clara into a world of troub
    search: https://www.imdb.com/find/?q=Wed+to+the+Unknown+Heir+&s=tt
 
-117. How to Train Your CEO Good Boy
+113. How to Train Your CEO Good Boy
    app: GoodShort   views: 1.6M
    plot: Escaping her abusive husband, Liz Bolin becomes a BDSM queen - the dominatrix Hydra Lily. She meets the mysterious, dominant Mr. Raven and makes him h
    search: https://www.imdb.com/find/?q=How+to+Train+Your+CEO+Good+Boy+&s=tt
 
-118. The Elegy Of A Lost Romance
+114. The Elegy Of A Lost Romance
    app: GoodShort   views: 1.6M
    plot: Six years ago, Vivian Yeo basked in the lap of luxury as the pampered heiress of a wealthy family, while Tristan Starling grappled with the challenges
    search: https://www.imdb.com/find/?q=The+Elegy+Of+A+Lost+Romance+&s=tt
 
-119. When Flowers Seek Revenge
+115. When Flowers Seek Revenge
    app: GoodShort   views: 1.6M
    plot: Nova was separated from her mother as a child and has been searching for years. Now a wealthy tycoon, she returns home, where her bullied mother suffe
    search: https://www.imdb.com/find/?q=When+Flowers+Seek+Revenge+&s=tt
 
-120. Alpha of Aberdeen
+116. Alpha of Aberdeen
    app: GoodShort   views: 1.5M
    plot: Chloe, a quiet, and reserved college student, has a werewolf bestie Amelia, and she had no plans to bring herself into Amelia's world, knowing all too
    search: https://www.imdb.com/find/?q=Alpha+of+Aberdeen+&s=tt
+
+117. Hate You Hard Love You Harder
+   app: GoodShort   views: 1.5M
+   plot: Burdened by her father’s debt, Seoyoon ends her relationship with Leejun through a painful lie. While chasing after her, Leejun is nearly killed in an
+   search: https://www.imdb.com/find/?q=Hate+You+Hard+Love+You+Harder+&s=tt
+
+118. After Divorce, Stripper CEO and I Dominate Hollywood
+   app: GoodShort   views: 1.4M
+   plot: Hollywood superstar Judy's wedding of the century takes a scandalous turn, when her cheating groom's sex tape is leaked to millions of livestream view
+   search: https://www.imdb.com/find/?q=After+Divorce%2C+Stripper+CEO+and+I+Dominate+Hollywood+&s=tt
+
+119. [ENG DUB]From Chance Encounter to Cherished Bride
+   app: GoodShort   views: 1.4M
+   plot: Moon Shawn, determined to avoid a blind date with a thrice-married suitor, impulsively kissed Salem Lachlan, a prominent figure from Landon's top fami
+   search: https://www.imdb.com/find/?q=%5BENG+DUB%5DFrom+Chance+Encounter+to+Cherished+Bride+&s=tt
+
+120. [ENG DUB] My Ex-husband Can't Stop Chasing Me After Divorce
+   app: GoodShort   views: 1.4M
+   plot: For three years, Emily Davis faithfully carried out her duties as Benjamin Parker's wife, believing her gentleness could eventually thaw his heart. Sa
+   search: https://www.imdb.com/find/?q=%5BENG+DUB%5D+My+Ex-husband+Can%27t+Stop+Chasing+Me+After+Divorce+&s=tt
