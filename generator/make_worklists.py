@@ -118,13 +118,34 @@ def main():
              'Open each poster. ReelShort stamps an "Ai GENERATE" badge top-right on AI titles.',
              "Tell me which ones have it and I will set ai=yes; tell me the clean ones and I will",
              "set ai=no, which keeps them off this list for good.", ""]
-    out2 += [f"{len(check)} to check."]
     out2 += [f"Already confirmed AI ({len(yes)}): {', '.join(yes) if yes else 'none'}."]
     out2 += [f"Already confirmed NOT AI ({len(no)}): {', '.join(no) if no else 'none'}.", ""]
-    for i, (v, pid, t) in enumerate(check, 1):
-        out2 += [f"{i}. {t['primary_title']}",
-                 f"   {plat_name.get(pid, pid)}   views: {views_label(v)}",
-                 f"   poster: {(t['poster_ref'] or '').strip() or '(none on file)'}", ""]
+
+    # Split by whether the poster can actually settle it. Only ReelShort stamps the
+    # "Ai GENERATE" badge, so only ReelShort rows are answerable by looking. My Drama
+    # rows have no badge to find, and guessing there would put a false AI label on a
+    # real cast, so they are listed separately as blocked rather than as work.
+    rs = [r for r in check if r[1] == "reelshort"]
+    md = [r for r in check if r[1] != "reelshort"]
+
+    def entries(seq):
+        body = []
+        for i, (v, pid, t) in enumerate(seq, 1):
+            body += [f"{i}. {t['primary_title']}",
+                     f"   {plat_name.get(pid, pid)}   views: {views_label(v)}",
+                     f"   poster: {(t['poster_ref'] or '').strip() or '(none on file)'}", ""]
+        return body
+
+    out2 += [f"## Checkable now - {len(rs)} ReelShort", "",
+             "The badge settles these. Open the poster, tell me which carry it.", ""]
+    out2 += entries(rs)
+    out2 += [f"## Blocked - {len(md)} My Drama", "",
+             "Listed for completeness, NOT work to do. My Drama publishes no AI badge, so",
+             "there is nothing on the poster to check. Cast is missing here because the",
+             "payload omitted it, which is not evidence of anything. Tagging these from a",
+             "hunch would put a false AI label on real actors. They need a different",
+             "source, not a longer look.", ""]
+    out2 += entries(md)
 
     for path, body in (("CAST-WANTED.md", out), ("AI-CHECK.md", out2)):
         if args.dry_run:
