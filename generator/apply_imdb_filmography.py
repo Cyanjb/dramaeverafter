@@ -33,6 +33,18 @@ def loose(s):
     return re.sub(r"[^a-z0-9]", "", (s or "").lower())
 
 
+def bare(s):
+    """loose(), minus a leading article. IMDb and the platforms disagree about these
+    constantly - the CandyJar company list has "Alpha's Doe" and "Billionaire's Baby"
+    where we hold "The Alpha's Doe" and "The Billionaire's Baby". Without this they
+    read as new titles, which is the one mistake that would pollute titles.csv.
+
+    The article MUST be stripped before loose() collapses spaces. Doing it after
+    turns "Alpha's Doe" into "lphasdoe", because the bare "a" of "alphas" then looks
+    like the article. A regression test caught exactly that."""
+    return loose(re.sub(r"^(the|a|an)\s+", "", (s or "").strip().lower()))
+
+
 def term_of(p):
     raw = open(p, "rb").read()
     c = raw.count(b"\r\n")
@@ -61,14 +73,16 @@ def main():
     batch = json.load(open(args.staging, encoding="utf-8"))
     titles, people, credits, queue = load("titles.csv"), load("people.csv"), load("credits.csv"), load("match_queue.csv")
 
-    by_exact, by_loose = {}, {}
+    by_exact, by_loose, by_bare = {}, {}, {}
     for t in titles:
         by_exact[t["primary_title"].strip().lower()] = t
         by_loose.setdefault(loose(t["primary_title"]), t)
+        by_bare.setdefault(bare(t["primary_title"]), t)
         for a in (t["alt_titles"] or "").split("|"):
             if a.strip():
                 by_exact.setdefault(a.strip().lower(), t)
                 by_loose.setdefault(loose(a), t)
+                by_bare.setdefault(bare(a), t)
     people_by_id = {p["person_id"]: p for p in people}
     existing = {(c["title_id"], c["person_id"]): c for c in credits}
 
@@ -96,7 +110,7 @@ def main():
                 # Loose match: same letters and digits, different punctuation. Real in
                 # this data ("Mr. Diazs Deaf Bride" vs "Mr. Diaz's Deaf Bride"), but it
                 # is a judgement call, so it is queued rather than applied.
-                lm = by_loose.get(loose(title))
+                lm = by_loose.get(loose(title)) or by_bare.get(bare(title))
                 if lm:
                     queued.append((pid, title, lm["primary_title"], character))
                 else:
