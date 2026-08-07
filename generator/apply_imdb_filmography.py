@@ -74,11 +74,21 @@ def main():
 
     added, filled, unmatched, queued, skipped = [], [], [], [], []
 
+    people_touched = 0
     for pid, rec in batch.items():
         person = people_by_id.get(pid)
         if not person:
             print(f"  ! person_id not in people.csv, skipping entirely: {pid}")
             continue
+        # An IMDb person page also carries the two fields we are chronically short of.
+        # Both fill-blank-only: an "Alternative names" line is IMDb recording a billing
+        # variant itself, which is the evidence sec 10 of adapters.md wanted for the
+        # Artem Plonder ruling, and socials have no other reliable source.
+        for field, key in (("aka_names", "aka"), ("socials", "socials")):
+            val = (rec.get(key) or "").strip()
+            if val and not (person.get(field) or "").strip():
+                person[field] = val
+                people_touched += 1
         for title, character, year in rec["credits"]:
             key = title.strip().lower()
             t = by_exact.get(key)
@@ -114,6 +124,7 @@ def main():
                                   f"character {character or 'n/a'}. Confirm same production.",
                       "status": "pending"})
 
+    print(f"people  {people_touched} aka/socials fields filled")
     print(f"added   {len(added)} credits")
     print(f"filled  {len(filled)} blank character names")
     print(f"skipped {len(skipped)} already complete")
@@ -126,6 +137,8 @@ def main():
         print("\n[dry-run] nothing written")
         return
     save("credits.csv", ["title_id", "person_id", "role", "character_name"], credits)
+    if people_touched:
+        save("people.csv", list(people[0].keys()), people)
     if queued:
         save("match_queue.csv", ["candidate_a", "candidate_b", "evidence", "status"], queue)
     print("\nwritten")
