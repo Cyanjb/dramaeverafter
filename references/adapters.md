@@ -283,7 +283,7 @@ EXPECTATION NOW: a rebuild with unchanged data produces ZERO changed files. If
 you ever see a large diff again with no data change behind it, treat it as a
 regression of this bug, not as normal build noise.
 
-## 17. The manual worklists are generated now (2026-08-02)
+## 17. The manual worklists are generated now (2026-08-06)
 
 CAST-WANTED.md and AI-CHECK.md were hand-written, so nothing took a title off
 them once it was settled. Both had rotted:
