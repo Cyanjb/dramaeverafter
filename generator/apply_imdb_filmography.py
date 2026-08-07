@@ -85,6 +85,11 @@ def main():
                 by_bare.setdefault(bare(a), t)
     people_by_id = {p["person_id"]: p for p in people}
     existing = {(c["title_id"], c["person_id"]): c for c in credits}
+    # Re-running the same staging file (or two people who both list the same near-miss
+    # title) must not re-queue a ruling that is already pending. A run on 7 Aug did
+    # exactly that - same near-match, same evidence, appended twice - and turned up 3
+    # more pre-existing duplicates from earlier passes, cleaned up in the same commit.
+    queued_seen = {(q["candidate_a"], q["candidate_b"]) for q in queue}
 
     added, filled, unmatched, queued, skipped = [], [], [], [], []
 
@@ -131,18 +136,24 @@ def main():
             existing[ck] = row
             added.append((t["primary_title"], person["name"], character))
 
+    queued_new = 0
     for pid, listed, near, character in queued:
-        queue.append({"candidate_a": f"{listed} (IMDb, credited to {pid})",
-                      "candidate_b": near,
-                      "evidence": f"IMDb filmography {SOURCE}: punctuation-only difference, "
-                                  f"character {character or 'n/a'}. Confirm same production.",
-                      "status": "pending"})
+        row = {"candidate_a": f"{listed} (IMDb, credited to {pid})", "candidate_b": near}
+        key = (row["candidate_a"], row["candidate_b"])
+        if key in queued_seen:
+            continue
+        queued_seen.add(key)
+        queued_new += 1
+        row["evidence"] = (f"IMDb filmography {SOURCE}: punctuation-only difference, "
+                            f"character {character or 'n/a'}. Confirm same production.")
+        row["status"] = "pending"
+        queue.append(row)
 
     print(f"people  {people_touched} aka/socials fields filled")
     print(f"added   {len(added)} credits")
     print(f"filled  {len(filled)} blank character names")
     print(f"skipped {len(skipped)} already complete")
-    print(f"queued  {len(queued)} near-matches for a ruling")
+    print(f"queued  {queued_new} near-matches for a ruling ({len(queued) - queued_new} already pending, skipped)")
     print(f"UNMATCHED (not created - no platform evidence): {len(unmatched)}")
     for pid, title, character, year in unmatched:
         print(f"    {year}  {title}   [{character}]")
@@ -153,7 +164,7 @@ def main():
     save("credits.csv", ["title_id", "person_id", "role", "character_name"], credits)
     if people_touched:
         save("people.csv", list(people[0].keys()), people)
-    if queued:
+    if queued_new:
         save("match_queue.csv", ["candidate_a", "candidate_b", "evidence", "status"], queue)
     print("\nwritten")
 
