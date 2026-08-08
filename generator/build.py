@@ -188,6 +188,17 @@ def is_ai(t):
     ruling was lost and the same title came back to the top of the queue."""
     return (t.get("ai") or "").strip().lower() in ("yes", "y", "true", "1")
 
+def is_upcoming(t):
+    """Announced but not yet released. status=upcoming is the only truthy value.
+
+    Every title in the database was a released one until Aug 2026, so every page
+    could safely imply "watchable now". An upcoming title breaks that assumption,
+    which is why it carries a badge and is hidden from Browse by default: someone
+    searching wants something they can watch tonight. It still gets a page, so the
+    title is indexable BEFORE release rather than after everyone else has covered
+    it, which is the whole point of carrying one."""
+    return (t.get("status") or "").strip().lower() == "upcoming"
+
 def book_of(t):
     """Book adaptation. Returns the author name, or 'yes' when we know it is an
     adaptation but not by whom, or '' when it is not one.
@@ -211,7 +222,9 @@ def poster_box(t, app_name=""):
     img_html = (f'<img src="{esc_attr(img)}" alt="{esc_attr(name)}" loading="lazy" onerror="this.remove()">'
                 if img else "")
     ai = '<span class="ai-badge" title="AI-generated">AI</span>' if is_ai(t) else ""
-    return f'<span class="poster">{plate}{img_html}{ai}</span>'
+    # Sits left so it never collides with the AI badge; a title can be both.
+    soon = '<span class="soon-badge" title="Not released yet">SOON</span>' if is_upcoming(t) else ""
+    return f'<span class="poster">{plate}{img_html}{ai}{soon}</span>'
 
 def actor_ring(name, img, size="md", on_warm=False):
     cls = "ring ring--%s%s" % (size, " on-warm" if on_warm else "")
@@ -251,7 +264,12 @@ def poster_card(t, pre="", rail_item=False, size_sm=False, show_app=True, note="
     return (f'<div class="{cls}" '
             f'data-v="{title_views(t)}" data-n="{esc_attr(t["primary_title"].lower())}" '
             f'data-y="{esc_attr(t.get("year") or "")}" data-app="{slug(app_name) if app_name else ""}" '
-            f'data-ai="{"1" if is_ai(t) else ""}" data-book="{"1" if book_of(t) else ""}">'
+            f'data-ai="{"1" if is_ai(t) else ""}" data-book="{"1" if book_of(t) else ""}"'
+            # Emitted ONLY when true. data-ai and data-book are always emitted, and
+            # copying that here rewrote 5,074 pages to add an empty attribute -- which
+            # is exactly the noise the deterministic build exists to prevent, since it
+            # buries the one page that actually changed.
+            f'{" data-upcoming=1" if is_upcoming(t) else ""}>'
             f'<a class="poster-link" href="{href}">{poster_box(t, app_name)}</a>{star}'
             f'{app_html}<a class="meta" href="{href}">{meta}</a></div>')
 
@@ -439,6 +457,9 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
 .poster{display:block;position:relative;aspect-ratio:2/3;background:#F1E6E9;border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .poster--empty{display:flex}
 .ai-badge{position:absolute;top:6px;right:6px;z-index:3;background:rgba(43,27,46,.86);color:#F6EEE6;
+font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:2px;line-height:1}
+/* Left, so a title that is both AI and unreleased shows both badges side by side. */
+.soon-badge{position:absolute;top:6px;left:6px;z-index:3;background:var(--wine);color:#F6EEE6;
 font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:2px;line-height:1}
 .book-note{margin:0 0 16px;font-size:14.5px;color:var(--wine)}
 .ai-toggle{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);cursor:pointer;
@@ -713,10 +734,23 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val=""):
 def watch_buttons(title_id, pre=""):
     avails = avail_by_title.get(title_id, [])
     if not avails:
+        # An unreleased title has no availability for a reason, so saying "platform
+        # being verified" would be wrong twice: it implies we are mid-check, and it
+        # implies the show is watchable somewhere. Say what is actually true.
+        t = t_by_id.get(title_id)
+        if t is not None and is_upcoming(t):
+            return '<span class="watch-pending">Not released yet</span>'
         return '<span class="watch-pending">Platform being verified</span>'
     a = avails[0]
     name = platforms.get(a["platform_id"], {}).get("name", "?")
     link = a["direct_link"] or "#AFFILIATE-LINK-PENDING"
+    # An upcoming title normally DOES have a known platform -- that is the whole point
+    # of announcing it -- so it reaches here with an availability row and would other-
+    # wise render "Watch on ReelShort" for something nobody can watch. Say "Coming to"
+    # and do not link out, because the destination has nothing to play yet.
+    t_up = t_by_id.get(title_id)
+    if t_up is not None and is_upcoming(t_up):
+        return f'<span class="watch-pending">Coming to {name}</span>'
     out = f'<a class="watch-btn" href="{link}"><span>Watch on {name}</span><span class="arrow">&rarr;</span></a>'
     if len(avails) > 1:
         others = ", ".join(platforms.get(r["platform_id"], {}).get("name", "?") for r in avails[1:])
@@ -1375,6 +1409,7 @@ for t in titles_root:
     entry["o"] = [origin_of(t)]
     if is_ai(t): entry["ai"] = 1
     if book_of(t): entry["bk"] = 1
+    if is_upcoming(t): entry["up"] = 1
     v = title_views(t)
     if v: entry["v"] = v
     img = (t.get("poster_ref") or "").strip()
@@ -1449,7 +1484,12 @@ BROWSE_JS = f"""
         : '<span class="app-name">'+esc(appName)+'</span>';
     }}
     var href='titles/'+esc(t.s)+'.html';
-    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+
+    // Badges must mirror poster_box() in build.py. They were missing here, so a title
+    // shown by UNchecking "hide AI" (or "hide unreleased") rendered with no marking at
+    // all: the filter hid it, and the moment you asked to see it the warning vanished.
+    var badge=(t.ai?'<span class="ai-badge" title="AI-generated">AI</span>':'')+
+              (t.up?'<span class="soon-badge" title="Not released yet">SOON</span>':'');
+    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+badge+
       '</span></a><button class="fav-btn" type="button" data-fav="'+esc(t.s)+'" aria-pressed="false" '+
       'aria-label="Save to my list"><span aria-hidden="true">&#9733;</span></button>'+appHtml+
       '<a class="meta" href="'+href+'">'+esc(bits.join(' \\u00b7 '))+'</a></div>';
@@ -1463,11 +1503,16 @@ BROWSE_JS = f"""
 
   var onlyBookEl=document.getElementById('only-book');
   var hideAiEl=document.getElementById('hide-ai');
+  var hideSoonEl=document.getElementById('hide-upcoming');
   // Default is to HIDE AI titles; the choice is remembered between visits.
   try{{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }}catch(e){{}}
+  // Same for unreleased titles: a search here means "what can I watch", so they
+  // are out by default and opting in is one click.
+  try{{ var su=localStorage.getItem('dea_hide_upcoming'); if(su!==null) hideSoonEl.checked=(su==='1'); }}catch(e){{}}
 
   function matches(t,q){{
     if(hideAiEl.checked && t.ai) return false;
+    if(hideSoonEl.checked && t.up) return false;
     if(onlyBookEl.checked && !t.bk) return false;
     if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
     for(var g in active){{
@@ -1559,6 +1604,10 @@ BROWSE_JS = f"""
     try{{ localStorage.setItem('dea_hide_ai', hideAiEl.checked?'1':'0'); }}catch(e){{}}
     run();
   }});
+  hideSoonEl.addEventListener('change',function(){{
+    try{{ localStorage.setItem('dea_hide_upcoming', hideSoonEl.checked?'1':'0'); }}catch(e){{}}
+    run();
+  }});
   resetEl.addEventListener('click',function(){{
     for(var g in active) active[g].clear(); qEl.value=''; run();
   }});
@@ -1609,6 +1658,10 @@ browse_body = f"""
 <input type="checkbox" id="hide-ai" checked>
 <span>Hide AI-generated titles</span>
 </label>
+<label class="ai-toggle" for="hide-upcoming">
+<input type="checkbox" id="hide-upcoming" checked>
+<span>Hide titles not out yet</span>
+</label>
 </aside>
 <section class="results-panel">
 <div class="results-head">
@@ -1658,7 +1711,12 @@ MYLIST_JS = """
       ? '<a class="app-name" href="apps/'+esc(t.pl[0])+'.html">'+esc(app)+'</a>'
       : '<span class="app-name">'+esc(app)+'</span>') : '';
     var href='titles/'+esc(t.s)+'.html';
-    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+
+    // Badges must mirror poster_box() in build.py. They were missing here, so a title
+    // shown by UNchecking "hide AI" (or "hide unreleased") rendered with no marking at
+    // all: the filter hid it, and the moment you asked to see it the warning vanished.
+    var badge=(t.ai?'<span class="ai-badge" title="AI-generated">AI</span>':'')+
+              (t.up?'<span class="soon-badge" title="Not released yet">SOON</span>':'');
+    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+badge+
       '</span></a><button class="fav-btn" type="button" data-fav="'+esc(t.s)+'" aria-pressed="false" '+
       'aria-label="Remove from my list"><span aria-hidden="true">&#9733;</span></button>'+appHtml+
       '<a class="meta" href="'+href+'">'+esc(bits.join(' · '))+'</a></div>';
