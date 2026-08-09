@@ -10,7 +10,7 @@ We're continuing work on DramaEverAfter. Read these Craft docs first, in this or
 2. **7. DEA TASKS (what needs Cyan)** — my to-do list, not your work queue
 3. **7. DEA POPULAR ACTORS (Reddit fan panels)** — the 38 fan-picked names
 
-Repo is `github.com/Cyanjb/dramaeverafter` (public). **Check out branch `claude/popular-actors-rail`, not `main`** — last session's work is pushed there and unmerged. Starting from main rebuilds the rail from scratch.
+Repo is `github.com/Cyanjb/dramaeverafter` (public). `main` is at `263fe71` and carries everything below — the 9 Aug work was merged, so just clone and work from `main`.
 
 ## FIRST THING: are you running locally?
 
