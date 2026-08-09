@@ -3,7 +3,7 @@
 Save each IMDb page as PDF and hand them over. Click the search link, pick the
 result whose plot matches the synopsis shown, then save that page.
 
-2221 titles have no cast at all. This lists the top 120 by view
+2217 titles have no cast at all. This lists the top 120 by view
 count. Confirmed-AI titles are excluded - they have no cast to find.
 
 1. Blood and Bones of the Disowned Daughter
