@@ -311,3 +311,29 @@ remaining titles publish no cast at all, and sec 7/13 that CandyJar publishes
 none on-platform. Their blanks are already explained, so including them added
 ~106 posters to check for a signal that was never there. An AI clue requires a
 platform that normally lists cast - not merely one we have partial data for.
+
+## 18. My Drama descriptions were DROPPED BY US, not withheld (diagnosed 2026-08-08)
+
+126 of 186 My Drama titles carry no synopsis_short, which made My Drama look like a
+platform that publishes thin metadata. It is not. Our parser lost the field.
+
+- All 186 come from ONE run, mydrama_2026-07-17, same last_verified. There is no
+  second, worse pass to blame.
+- Of the 126 with no description, 125 still have episode_count and 124 have
+  poster_ref. Sec 5 records all three as living in the SAME `"seriesData"` block,
+  so the parser reached that block and wrote its neighbours.
+- Sec 5 also lists `description` as a field the payload carries.
+
+Therefore: re-run the sec 5 adapter and fill synopsis_short fill-blank-only. No
+human input needed, and it is worth ~112 COMPLETE entries under the 8 Aug quality
+bar, which makes it the cheapest completeness win in the database.
+
+Not executed on 8 Aug because the environment blocked every platform domain; the
+sec 14 control-host tell fired (example.com also failed), so nothing here is
+evidence about My Drama's site.
+
+GENERALISE THIS. Counting coverage per FIELD hides this whole class of bug, and it
+sat unnoticed for three weeks because "cast is the biggest gap" was the only metric
+anyone looked at. generator/completeness.py now scores leads + platform + link +
+description together. WHEN ONE FIELD IS SHORT ON A PLATFORM WHILE ITS PAYLOAD
+SIBLINGS ARE PRESENT, SUSPECT THE PARSER BEFORE THE SOURCE.

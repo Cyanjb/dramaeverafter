@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search DramaEverAfter: Every Actor and Title (2026) | DramaEverAfter</title>
-<meta name="description" content="Search and filter 1968 vertical drama actors and 3414 titles by trope and platform.">
+<meta name="description" content="Search and filter 2029 vertical drama actors and 3416 titles by trope and platform.">
 <link rel="canonical" href="https://dramaeverafter.com/browse.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,6 +56,10 @@
 <label class="ai-toggle" for="hide-ai">
 <input type="checkbox" id="hide-ai" checked>
 <span>Hide AI-generated titles</span>
+</label>
+<label class="ai-toggle" for="hide-upcoming">
+<input type="checkbox" id="hide-upcoming" checked>
+<span>Hide titles not out yet</span>
 </label>
 </aside>
 <section class="results-panel">
@@ -152,7 +156,12 @@
         : '<span class="app-name">'+esc(appName)+'</span>';
     }
     var href='titles/'+esc(t.s)+'.html';
-    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+
+    // Badges must mirror poster_box() in build.py. They were missing here, so a title
+    // shown by UNchecking "hide AI" (or "hide unreleased") rendered with no marking at
+    // all: the filter hid it, and the moment you asked to see it the warning vanished.
+    var badge=(t.ai?'<span class="ai-badge" title="AI-generated">AI</span>':'')+
+              (t.up?'<span class="soon-badge" title="Not released yet">SOON</span>':'');
+    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+badge+
       '</span></a><button class="fav-btn" type="button" data-fav="'+esc(t.s)+'" aria-pressed="false" '+
       'aria-label="Save to my list"><span aria-hidden="true">&#9733;</span></button>'+appHtml+
       '<a class="meta" href="'+href+'">'+esc(bits.join(' \u00b7 '))+'</a></div>';
@@ -166,11 +175,16 @@
 
   var onlyBookEl=document.getElementById('only-book');
   var hideAiEl=document.getElementById('hide-ai');
+  var hideSoonEl=document.getElementById('hide-upcoming');
   // Default is to HIDE AI titles; the choice is remembered between visits.
   try{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }catch(e){}
+  // Same for unreleased titles: a search here means "what can I watch", so they
+  // are out by default and opting in is one click.
+  try{ var su=localStorage.getItem('dea_hide_upcoming'); if(su!==null) hideSoonEl.checked=(su==='1'); }catch(e){}
 
   function matches(t,q){
     if(hideAiEl.checked && t.ai) return false;
+    if(hideSoonEl.checked && t.up) return false;
     if(onlyBookEl.checked && !t.bk) return false;
     if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
     for(var g in active){
@@ -260,6 +274,10 @@
   onlyBookEl.addEventListener('change', run);
   hideAiEl.addEventListener('change',function(){
     try{ localStorage.setItem('dea_hide_ai', hideAiEl.checked?'1':'0'); }catch(e){}
+    run();
+  });
+  hideSoonEl.addEventListener('change',function(){
+    try{ localStorage.setItem('dea_hide_upcoming', hideSoonEl.checked?'1':'0'); }catch(e){}
     run();
   });
   resetEl.addEventListener('click',function(){

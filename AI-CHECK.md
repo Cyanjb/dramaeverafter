@@ -10,7 +10,7 @@ set ai=no, which keeps them off this list for good.
 Already confirmed AI (4): My Brothers Begged, But I'm the Dragon's Queen, Reborn, I Gifted Her My Hell, Rejected Luna Is the Alpha Queen, The Luna's Second Choice.
 Already confirmed NOT AI (1): Love at Dangerous Speeds.
 
-## Checkable now - 4 ReelShort
+## Checkable now - 5 ReelShort
 
 The badge settles these. Open the poster, tell me which carry it.
 
@@ -27,6 +27,10 @@ The badge settles these. Open the poster, tell me which carry it.
    poster: https://v-mps.crazymaplestudios.com/images/301e1850-dfc7-11f0-84ad-6b5693b490dc.jpg
 
 4. Mafia's Missing Wife, Back with Twins
+   ReelShort   views: n/a
+   poster: (none on file)
+
+5. Bound by Duty
    ReelShort   views: n/a
    poster: (none on file)
 
