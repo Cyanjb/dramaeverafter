@@ -310,9 +310,9 @@ def sort_select(target_id, label="Sort"):
             f'<option value="views">Most watched</option><option value="year">Newest</option><option value="az">A&ndash;Z</option>'
             f'</select></label>')
 
-def actor_tile(p, pre="", ring_size="rail", on_warm=False):
+def actor_tile(p, pre="", ring_size="rail", on_warm=False, cls=""):
     n = len(credits_by_person.get(p["person_id"], []))
-    return (f'<a class="actor-tile" href="{pre}actors/{pslug(p)}.html">'
+    return (f'<a class="actor-tile{(" " + cls) if cls else ""}" href="{pre}actors/{pslug(p)}.html">'
             f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), ring_size, on_warm)}'
             f'<span class="stack"><span class="name">{p["name"]}</span><span class="sub">{n} titles</span></span></a>')
 
@@ -1057,6 +1057,25 @@ AZ_JS = """
 })();
 </script>
 """
+# POPULAR ACTORS rail. Ranked by FANS, not by view_count: view_count in
+# availability.csv is a display string ("218.1M"), so int() silently yields 0 and
+# every actor ties -- and even parsed it would only reward whoever happened to be
+# cast in one viral title. data/popular_actors.csv holds the 38 actors named by
+# the Reddit fan panels of 9 Aug 2026, which is an independent following signal.
+# The 8 with no credits yet carry in_rail=no and stay out, because a tile reading
+# "0 titles" is a dead end; they are Cyan's IMDb filmography targets instead.
+popular = [r for r in rows("popular_actors.csv") if r.get("in_rail") == "yes"]
+p_by_id = {p["person_id"]: p for p in people}
+popular_people = [p_by_id[r["person_id"]] for r in popular if r["person_id"] in p_by_id]
+popular_html = "".join(
+    actor_tile(p, "../", cls="rail-item actor") for p in popular_people)
+popular_section = f"""
+<section class="pad" style="padding:26px 0 6px">
+<div class="section-head" style="padding:0 22px"><h2>Popular actors</h2>
+<span class="all" style="color:var(--ink-soft)">Picked by fans</span></div>
+<div class="rail">{popular_html}</div>
+</section>""" if popular_people else ""
+
 body = f"""
 <section class="hero"><div class="inner">
 <p class="eyebrow">Directory</p><h1>Actors</h1>
@@ -1066,6 +1085,7 @@ body = f"""
 <input type="text" id="actor-search" placeholder="Search actors" autocomplete="off" aria-label="Search actors">
 </form>
 </div></section>
+{popular_section}
 <section class="az-bar"><div class="az-letters">{az_bar}</div></section>
 <section class="pad" style="padding:28px 22px 46px">
 <div class="grid az" id="az-index">{"".join(rows_html)}</div>
