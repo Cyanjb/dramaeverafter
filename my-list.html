@@ -108,7 +108,12 @@ Tip: copy your list to keep it if you switch devices.</p>
       ? '<a class="app-name" href="apps/'+esc(t.pl[0])+'.html">'+esc(app)+'</a>'
       : '<span class="app-name">'+esc(app)+'</span>') : '';
     var href='titles/'+esc(t.s)+'.html';
-    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+
+    // Badges must mirror poster_box() in build.py. They were missing here, so a title
+    // shown by UNchecking "hide AI" (or "hide unreleased") rendered with no marking at
+    // all: the filter hid it, and the moment you asked to see it the warning vanished.
+    var badge=(t.ai?'<span class="ai-badge" title="AI-generated">AI</span>':'')+
+              (t.up?'<span class="soon-badge" title="Not released yet">SOON</span>':'');
+    return '<div class="poster-card"><a class="poster-link" href="'+href+'"><span class="poster">'+plate+img+badge+
       '</span></a><button class="fav-btn" type="button" data-fav="'+esc(t.s)+'" aria-pressed="false" '+
       'aria-label="Remove from my list"><span aria-hidden="true">&#9733;</span></button>'+appHtml+
       '<a class="meta" href="'+href+'">'+esc(bits.join(' · '))+'</a></div>';
