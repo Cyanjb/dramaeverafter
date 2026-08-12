@@ -1,0 +1,37 @@
+{
+  "name": "Ali Badalov",
+  "nm": "nm4943527",
+  "person_id": "ali-badalov",
+  "confident": true,
+  "height": "6' 2\" (1.88 m)",
+  "official_site": "http://www.abadalov.com/",
+  "no_aka": "No Alternative name field and no per-credit '(as ...)' billing. Second filmography today with nothing to add to aka_names.",
+  "NOTABLE": "Like Sam Myerson, he has a mainstream résumé beside the verticals - Law & Order, FBI - plus three podcast series. 33 previous credits, 17 of them vertical.",
+  "CORROBORATES_A_RULING": "He plays Andrew Rhodes in 'Cohabitating Lover', which IMDb types TV Movie. Earlier today that title was promoted out of Kirby Ellwood's type_uncertain list on the grounds that we HOLD it (on pinedrama) and this database only indexes verticals. A second tracked actor appearing in it is independent support for that call - Ellwood is Corinne Carlton in the same title.",
+  "UNPARSEABLE_ROWS": [
+    {"raw": "Cryo Seduction 7.2 TV Mini Series Elliot James", "why": "No year survived - the Upcoming 2 / Previous 33 pagination controls fall immediately after this row, the same trap seen on the Myerson and Offerdahl pages. Title and character are intact, so the credit IS staged, but with year null rather than a guess."}
+  ],
+  "non_vertical_excluded_note": "Excluded as non-vertical: Law & Order (TV series, 1 ep), FBI (TV series, 1 ep), Birth Order (TV series, 1 ep), Together Forever (TV series, 3 eps); the podcast series The Phantom of Ocean Park, The Bonds of Affection and My Russian Clementine; and the shorts Cacti Don't Die, Icarus, Red April, Flora, End of the Night, Broken Notes, Infectious, I Was Right, Can You Delete Yourself?.",
+  "credits": [
+    {"title": "Cryo Seduction", "character": "Elliot James", "year": null, "note": "Year lost to the pagination control. Not guessed."},
+    {"title": "Taming the Heiress Part 2", "character": "Julian / Julian Davis", "year": 2025, "episodes": 4},
+    {"title": "Taming the Heiress Part 1", "character": "Julian Davis", "year": 2025},
+    {"title": "Cohabitating Lover", "character": "Andrew Rhodes", "year": 2025},
+    {"title": "Audrey in Full Bloom", "character": "Ryder Marlow", "year": 2025},
+    {"title": "Husband for Hire", "character": "Jack Miller-Wyatt", "year": 2025, "episodes": 1},
+    {"title": "A Lover in a Wheelchair Who Cannot Escape", "character": "Steven", "year": 2025},
+    {"title": "A Hollywood Match", "character": "Liam", "year": 2025},
+    {"title": "A Wizard's Love Spell with a Billionaire", "character": "Frank", "year": 2024},
+    {"title": "Truth or Dare", "character": "Ryder", "year": 2024},
+    {"title": "Her Posessive Guard", "character": "Adam", "year": 2024, "note": "Title spelled 'Posessive' on IMDb. Transcribed as shown, not corrected."},
+    {"title": "Teaching My Robot Boyfriend How to Love", "character": "James Alta", "year": 2024},
+    {"title": "Tangled Ties & Tipsy Vows", "character": "Dillon / Dylan Winston", "year": 2024, "episodes": 11},
+    {"title": "Love Mission", "character": "Luke Maldini", "year": 2024},
+    {"title": "My 2 Fiancés", "character": "Rick Bass", "year": 2024},
+    {"title": "Insta Millionaire: Mystery Donor", "character": "Alex Ambrose", "year": 2024},
+    {"title": "Oh No! I Slept with My Husband!", "character": "Nathan Wright", "year": 2024}
+  ],
+  "caption_rule": "CAST ONLY. IMDb's bio prose is deliberately not transcribed.",
+  "_drive_id": "1Acgia4d_xIZH6Wx4ZQD75xGNgsKufqU0",
+  "_kind": "actor"
+}
