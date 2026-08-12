@@ -314,7 +314,8 @@ def actor_tile(p, pre="", ring_size="rail", on_warm=False, cls=""):
     n = len(credits_by_person.get(p["person_id"], []))
     return (f'<a class="actor-tile{(" " + cls) if cls else ""}" href="{pre}actors/{pslug(p)}.html">'
             f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), ring_size, on_warm)}'
-            f'<span class="stack"><span class="name">{p["name"]}</span><span class="sub">{n} titles</span></span></a>')
+            f'<span class="stack"><span class="name">{p["name"]}</span>'
+            f'<span class="sub">{n} title{"s" if n != 1 else ""}</span></span></a>')
 
 def person_row(name, sub, img, href, size="sm"):
     return (f'<a class="person-row {"sm" if size == "sm" else ""}" href="{href}">'
@@ -1066,13 +1067,43 @@ AZ_JS = """
 # "0 titles" is a dead end; they are Cyan's IMDb filmography targets instead.
 popular = [r for r in rows("popular_actors.csv") if r.get("in_rail") == "yes"]
 p_by_id = {p["person_id"]: p for p in people}
-popular_people = [p_by_id[r["person_id"]] for r in popular if r["person_id"] in p_by_id]
+fan_people = [p_by_id[r["person_id"]] for r in popular if r["person_id"] in p_by_id]
+fan_ids = {p["person_id"] for p in fan_people}
+
+# BLENDED RAIL, Cyan 12 Aug. The fan panels alone left the database's most prominent
+# actors off a rail called "Popular actors": only 5 of the 30 fan picks were in the
+# top 50 by credits, and Evan Adams -- 28 credits across EIGHT apps, the widest reach
+# we hold -- was absent entirely. So the rail is now fans PLUS reach.
+#
+# The FAN half stays in popular_actors.csv because which actors a panel named is
+# human judgement that cannot be computed. The REACH half is computed HERE, on every
+# build, deliberately: storing it would re-create exactly the staleness that made 10
+# of 38 stored credit counts wrong after one credits pass.
+#
+# Ranked on credits with platform spread as the tie-break, NOT on view_count, which
+# is a display string ("218.1M") that int() silently reads as 0, and which would only
+# reward whoever happened to be cast in one viral title.
+_apps_of = {}
+for _p in people:
+    _tids = [c["title_id"] for c in credits_by_person.get(_p["person_id"], [])]
+    _apps_of[_p["person_id"]] = len({a["platform_id"] for t in _tids
+                                     for a in avail_by_title.get(t, [])})
+_reach = sorted((p for p in people if credits_by_person.get(p["person_id"])),
+                key=lambda p: (-len(credits_by_person[p["person_id"]]),
+                               -_apps_of[p["person_id"]], p["person_id"]))
+reach_people = [p for p in _reach if p["person_id"] not in fan_ids][:10]
+
+# One ordering for the merged rail so the strongest faces lead, whichever half they
+# came from. Stable on person_id so the build stays deterministic.
+popular_people = sorted(fan_people + reach_people,
+                        key=lambda p: (-len(credits_by_person.get(p["person_id"], [])),
+                                       -_apps_of[p["person_id"]], p["person_id"]))
 popular_html = "".join(
     actor_tile(p, "../", cls="rail-item actor") for p in popular_people)
 popular_section = f"""
 <section class="pad" style="padding:26px 0 6px">
 <div class="section-head" style="padding:0 22px"><h2>Popular actors</h2>
-<span class="all" style="color:var(--ink-soft)">Picked by fans</span></div>
+<span class="all" style="color:var(--ink-soft)">Fan favourites and our most credited</span></div>
 <div class="rail">{popular_html}</div>
 </section>""" if popular_people else ""
 
@@ -1109,7 +1140,8 @@ for t in titles:
         if not pr: continue
         role = (c["role"] or "").replace("+", " · ").title() or "Cast"
         n_titles = len(credits_by_person.get(c["person_id"], []))
-        cast_html += person_row(pr["name"], f"{role} · {n_titles} titles",
+        cast_html += person_row(pr["name"],
+                                 f"{role} · {n_titles} title{'s' if n_titles != 1 else ''}",
                                  (pr.get("photo_ref") or "").strip(), f"{pre}actors/{pslug(pr)}.html", "md")
     # Set is for the overlap test below only. Anything rendered reads from tropes_of()
     # directly: set order follows Python's per-process string hash, so displaying from
@@ -1348,7 +1380,7 @@ for pid, n in TOP_PLATFORMS:
 <section class="split-hero">
 <div class="info-col">
 <p class="eyebrow">App</p><h1>{pl['name']}</h1>
-<p class="lede">{len(app_titles):,} titles in the database{f", mostly {lang_word.lower()}" if lang_word else ""}.</p>
+<p class="lede">{len(app_titles):,} title{"s" if len(app_titles) != 1 else ""} in the database{f", mostly {lang_word.lower()}" if lang_word else ""}.</p>
 <div class="stat-figures">
 <div class="stat"><span class="n">{len(app_titles):,}</span><span class="l">titles</span></div>
 <div class="divider"></div>
@@ -1370,14 +1402,15 @@ for pid, n in TOP_PLATFORMS:
 <div class="pad"><h2 style="margin-bottom:20px">Regulars on this app</h2><div class="grid circles">{regulars_html}</div></div>
 </section>''' if regulars_html else ''}"""
     html = page(f"{pl['name']}: Titles, Pricing and Where to Start (2026) | DramaEverAfter",
-                f"{pl['name']} on DramaEverAfter: {len(app_titles):,} titles, regulars, and how to get started.",
+                f"{pl['name']} on DramaEverAfter: {len(app_titles):,} "
+                f"title{'s' if len(app_titles) != 1 else ''}, regulars, and how to get started.",
                 body, f"{DOMAIN}/apps/{pls}.html", depth=1)
     open(os.path.join(DIST, "apps", f"{pls}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/apps/{pls}.html")
 
 # Platforms page -> "all apps" index
 app_tiles = "".join(
-    f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} titles</span></a>'
+    f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} title{"s" if n != 1 else ""}</span></a>'
     for pid, n in TOP_PLATFORMS if n > 0)
 prows = ""
 for p in platforms.values():
@@ -1900,7 +1933,7 @@ new_releases = sorted(_with_art_dated,
                       key=lambda t: (-_release_year(t), -title_views(t)))[:12]
 
 home_apps = "".join(
-    f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} titles</span></a>'
+    f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} title{"s" if n != 1 else ""}</span></a>'
     for pid, n in TOP_PLATFORMS[:6] if n > 0)
 
 home_tropes = sorted(all_tropes, key=lambda x: -trope_total[x])[:14]
