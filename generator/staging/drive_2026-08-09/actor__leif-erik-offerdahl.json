@@ -1,0 +1,30 @@
+{
+  "name": "Leif Erik Offerdahl",
+  "nm": "nm7928031",
+  "person_id": "leif-erik-offerdahl",
+  "confident": true,
+  "AKA_TO_ADD": "IMDb records the alternative name 'Leif Erik' - he is billed that way on the 2024 feature Lethally Blonde - and one vertical credit, 'Crossing the Line to Love', is billed 'as Leif Offerdahl'. So there are TWO variants: 'Leif Erik' and 'Leif Offerdahl'. aka_names is empty for him.",
+  "LAYOUT_TRAP_RECOVERED": "The SAME pagination trap as Sam Myerson's page, and it is now clearly systematic rather than a one-off. 'Sit Down, Be Humble 7.5 TV Mini Series' is followed by 'Upcoming 1' and 'Previous 16' before its character and year, 'Charles Winston 2024', resume on the far side. Rejoined because the row either side is intact and no other credit is missing a character. WORTH GENERALISING: on an IMDb person page, the Upcoming/Previous controls can land INSIDE a credit row, so a title or a character can be split from its own line.",
+  "CROSS_REFERENCE": "He plays Fabian Winston in 'Crossing the Line to Love'; Kirby Ellwood, from another PDF in this batch, plays Nichole Anderson Winston in the same title. Two tracked actors, one production, and both characters are Winstons.",
+  "non_vertical_excluded_note": "Excluded as non-vertical: Lethally Blonde (2024 feature, 'Corey', billed as Leif Erik).",
+  "credits": [
+    {"title": "Saltwater Sins", "character": "Theo", "year": 2026},
+    {"title": "Good to See You Again, My Billionaire Baby Daddy", "character": "Cole Harrington", "year": 2026},
+    {"title": "This Christmas I Married a Grease-Stained Billionaire", "character": "Leo Carter", "year": 2025, "episodes": 1},
+    {"title": "Match Made in the Ring", "character": "Xaden Lennox", "year": 2025},
+    {"title": "Hatefully Yours", "character": "Ethan Cross", "year": 2025},
+    {"title": "Wildfire Between Us", "character": "Alexander", "year": 2025, "episodes": 1},
+    {"title": "Crossing the Line to Love", "character": "Fabian Winston", "year": 2025, "episodes": 1, "credited_as": "Leif Offerdahl"},
+    {"title": "The Boy I Hate", "character": "Tristan Montgomery", "year": 2025, "episodes": 1},
+    {"title": "The CEO's Baby Mama", "character": "Alex Anderson", "year": 2025},
+    {"title": "7 Days Locked with a Call Boy", "character": "Philip Wesley", "year": 2025},
+    {"title": "The Mafia's Mistaken Lover", "character": "Thomas Gravino", "year": 2025},
+    {"title": "Situationship with My Billionaire Friend", "character": "Asher", "year": 2025},
+    {"title": "Sit Down, Be Humble", "character": "Charles Winston", "year": 2024, "note": "Title and character rejoined across IMDb's Upcoming/Previous pagination controls."},
+    {"title": "Dear Husband, Delete My Number", "character": "Joseph", "year": 2024},
+    {"title": "Duke with Benefits", "character": "Caleb Owens", "year": 2024}
+  ],
+  "caption_rule": "CAST ONLY. IMDb's bio prose is deliberately not transcribed.",
+  "_drive_id": "1BDWTBdQvkHz9EK1t3zR_SgvV5BYLtPc6",
+  "_kind": "actor"
+}
