@@ -1,0 +1,51 @@
+{
+  "title": "In Love with Mr. Mafia",
+  "imdb_id": "tt41743211",
+  "platform": "candyjar",
+  "year": 2026,
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)"
+  ],
+  "cross_check": "Ben Trotter is nm2338643 here and in Next Door (as Mr. Ward) - same id, different character, which is what a correct reconstruction should look like.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Lily Brooks O'Briant",
+      "character": "Luna",
+      "nm": "nm7106360"
+    },
+    {
+      "order": 2,
+      "name": "Jack Rykert",
+      "character": "Alessandro",
+      "nm": "nm15658643"
+    },
+    {
+      "order": 3,
+      "name": "Sean McHugh",
+      "character": "Antonio",
+      "nm": "nm0570484"
+    },
+    {
+      "order": 4,
+      "name": "Katherine Morshedian",
+      "character": "Mia Dow",
+      "nm": "nm10261119"
+    },
+    {
+      "order": 5,
+      "name": "Cameron Richter",
+      "character": "Gio",
+      "nm": "nm11728697"
+    },
+    {
+      "order": 6,
+      "name": "Ben Trotter",
+      "character": "Kevin Campbell",
+      "nm": "nm2338643"
+    }
+  ],
+  "_drive_id": "1ZT_czq8meTySKSKH2hYU9tzuhmL9NMmP",
+  "_kind": "candyjar_title"
+}

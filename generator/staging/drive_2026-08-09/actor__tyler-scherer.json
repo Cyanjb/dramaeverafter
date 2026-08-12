@@ -1,0 +1,238 @@
+{
+  "name": "Tyler Scherer",
+  "nm": "nm6919636",
+  "person_id": "tyler-scherer",
+  "confident": true,
+  "height": "6'1\" (1.85 m)",
+  "official_site": "https://www.tylerscherer.com/",
+  "AKA_TO_ADD": "IMDb alternative name 'Ty Scherer'; billed that way on The Maid Did It.",
+  "BIDIRECTIONAL_VERIFICATION": "Second independent confirmation of a title-page reconstruction. His filmography lists Boardroom Attraction as 'Laken' - exactly what I reconstructed from that title page, where the first two actors and their two characters were collapsed onto single lines. nm6919636 also matches the id READ FIRST already records for him.",
+  "CONFLICT_TO_CHECK": "He credits 'The Duke's Masked Bride' as 'Duke Edgar' (2026). Jackson Tiller credits 'Duke's Masked Bride' as 'Duke Edgar Collins' (2025). Same-ish title, near-identical character, different years and different article. Either two productions, or one production listed twice on IMDb. Do NOT create both blindly - queue it.",
+  "non_vertical_excluded": [
+    {
+      "title": "Lemon Drop",
+      "type": "feature",
+      "character": "Barback Mike",
+      "year": 2018
+    },
+    {
+      "title": "The Wrong Mother",
+      "type": "feature",
+      "character": "Officer Collins",
+      "year": 2017
+    },
+    {
+      "title": "Bad Days",
+      "type": "Short",
+      "character": "Will",
+      "year": 2021
+    },
+    {
+      "title": "Layla",
+      "type": "Short",
+      "character": "Derek",
+      "year": 2020
+    },
+    {
+      "title": "Innocence",
+      "type": "Short",
+      "character": "Brian",
+      "year": 2014
+    }
+  ],
+  "credits": [
+    {
+      "title": "My Husband Made Me Have His Uncle's Baby",
+      "character": "Lucas",
+      "year": 2026
+    },
+    {
+      "title": "Pregnant with the Hockey Star's Baby",
+      "character": "Brad Connor",
+      "episodes": 1,
+      "year": 2026
+    },
+    {
+      "title": "The Mafia King's Surrogate Bride",
+      "character": "Vincent Mancini",
+      "year": 2026
+    },
+    {
+      "title": "Mafia Heiress's Forbidden Obsession",
+      "character": "Theo",
+      "year": 2026
+    },
+    {
+      "title": "The Maid Did It",
+      "character": "Alan",
+      "episodes": 1,
+      "year": 2026,
+      "credited_as": "Ty Scherer"
+    },
+    {
+      "title": "Swipe Left",
+      "character": "Ethan",
+      "year": 2026
+    },
+    {
+      "title": "Marrying a Prisoner",
+      "character": "Brad",
+      "episodes": 1,
+      "year": 2026
+    },
+    {
+      "title": "The Sound of Us",
+      "character": "Logan Shaw",
+      "year": 2026
+    },
+    {
+      "title": "The Duke's Masked Bride",
+      "character": "Duke Edgar",
+      "year": 2026
+    },
+    {
+      "title": "Forgive Me Father",
+      "character": "Brad Stone / Michael",
+      "year": 2026
+    },
+    {
+      "title": "Did You Have to Be a Hockey Star?",
+      "character": "Tyler Carson",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "Daddy Don't Go, Please Save Mommy",
+      "character": "Adrian Langford",
+      "year": 2025
+    },
+    {
+      "title": "Taming the Landlord",
+      "character": "George Ashford",
+      "year": 2025
+    },
+    {
+      "title": "Professor, I'm Addicted to You",
+      "character": "Ethan Carter",
+      "episodes": 2,
+      "year": 2025
+    },
+    {
+      "title": "Coaching His Heart",
+      "character": "Tom Wright",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "My Knockout Fake Husband",
+      "character": "Luke Maddox",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "Mafia King's Missing Wife Back with Twins",
+      "character": "Luca Moretti",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "I Kissed a CEO and He Liked It",
+      "character": "Kyle Wright",
+      "episodes": 10,
+      "year": 2025
+    },
+    {
+      "title": "Chasing Kiarra",
+      "character": "Aidan Gold",
+      "year": 2025
+    },
+    {
+      "title": "To Be by My Side",
+      "character": "Damien Hawke",
+      "episodes": 60,
+      "year": 2025
+    },
+    {
+      "title": "Love Game with the Disabled Boss",
+      "character": "Will Winchester",
+      "year": 2025
+    },
+    {
+      "title": "The Captain's Baby Girl",
+      "character": "Ethan",
+      "year": 2025
+    },
+    {
+      "title": "Shhh, Professor! Please Don't Tell",
+      "character": "Jackson",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "Hired to Obey",
+      "character": "David Watkins",
+      "year": 2025
+    },
+    {
+      "title": "Ex-Husband Step Aside: Lady Boss Returns",
+      "character": "Andrew Miller",
+      "episodes": 49,
+      "year": 2025
+    },
+    {
+      "title": "Happy Ever After with My Groom's Brother",
+      "character": "Xavier Leonardi",
+      "year": 2025
+    },
+    {
+      "title": "DILFs",
+      "character": "Mason Barnett",
+      "year": 2025
+    },
+    {
+      "title": "Boardroom Attraction",
+      "character": "Laken",
+      "year": 2025
+    },
+    {
+      "title": "Tied to My Dangerous Mafia Husband",
+      "character": "Ryan",
+      "episodes": 63,
+      "year": 2025
+    },
+    {
+      "title": "Faux Fiance",
+      "character": "Chase",
+      "episodes": 1,
+      "year": 2024
+    },
+    {
+      "title": "Bossy CEO Loves a Menopausal Me",
+      "character": "Hans Norton",
+      "year": 2024
+    },
+    {
+      "title": "My Sister's Wedding",
+      "character": "Tate",
+      "year": 2024
+    },
+    {
+      "title": "Lady Boss Takes on Vegas Bullies!",
+      "character": "Lawrence Stanton",
+      "episodes": 80,
+      "year": 2024
+    },
+    {
+      "title": "Devil's Triangle",
+      "character": "Anthony Cavanaugh",
+      "year": 2024
+    },
+    {
+      "title": "The CEO's Tempting Secretary",
+      "character": "Talos",
+      "year": 2024
+    }
+  ],
+  "_drive_id": "1zrDqTlk_ae9evOD9BL-9pQCX2MbwKrTB",
+  "_kind": "actor"
+}

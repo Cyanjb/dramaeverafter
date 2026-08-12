@@ -1,0 +1,45 @@
+{
+  "title": "Beastly Lights",
+  "imdb_id": "tt42357339",
+  "platform": "candyjar",
+  "year": 2026,
+  "confident": true,
+  "production_companies": [
+    "Candy Jar (co1130595)"
+  ],
+  "company_note": "Credited to Candy Jar (co1130595) ONLY - no Inkitt Media. This is the counter-example to the 'co1110145 is a superset' idea.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Navene Shata",
+      "character": "Jazelle",
+      "nm": "nm11073166"
+    },
+    {
+      "order": 2,
+      "name": "Neela Jolene",
+      "character": "Freya",
+      "nm": "nm12227636"
+    },
+    {
+      "order": 3,
+      "name": "Pablo Kaestli",
+      "character": "Liam",
+      "nm": "nm12554265"
+    },
+    {
+      "order": 4,
+      "name": "Anthony Casabianca",
+      "character": "Mason",
+      "nm": "nm11316990"
+    },
+    {
+      "order": 5,
+      "name": "Sarah Sampino",
+      "character": "Lucinda",
+      "nm": "nm5740849"
+    }
+  ],
+  "_drive_id": "1GQb_hng5_5PUP5V5Ci8RzgEBvFoe4tRv",
+  "_kind": "candyjar_title"
+}

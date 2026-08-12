@@ -1,0 +1,314 @@
+{
+  "name": "Jarred Harper",
+  "nm": "nm8953979",
+  "person_id": "jarred-harper",
+  "confident": true,
+  "born": "1991-09-02, Atlanta, Georgia, USA",
+  "official_site": "http://www.jarredharper.com/",
+  "AKA_TO_ADD": "people.csv has aka_names EMPTY for him. IMDb lists alternative name 'Jared Harper', and individual credits are billed 'as Jared Harper' (4 titles) and 'as Jarod Harper' (1 title). Adding 'Jared Harper; Jarod Harper' to aka_names would let future passes match those billings instead of creating new people. No duplicate person row exists today - checked.",
+  "MISSING_TITLE": "One credit in the PDF has NO title: a 7.8-rated TV Mini Series, character 'Ray Chandler', 2026. The title text did not survive the PDF layout. Recorded here so it is not silently lost, but NOT guessed and NOT included in credits below.",
+  "non_vertical_excluded": [
+    {
+      "title": "Touch of a Stranger",
+      "type": "Music Video",
+      "character": "Jason Walker",
+      "year": 2026
+    },
+    {
+      "title": "The Food That Built America",
+      "type": "TV Series",
+      "character": "Keith Lively",
+      "episodes": 2,
+      "year": "2022-2026"
+    },
+    {
+      "title": "An Egypt Affair",
+      "type": "feature",
+      "character": "Dylan Fontaine",
+      "year": 2023
+    },
+    {
+      "title": "Into the Wild Frontier",
+      "type": "TV Series",
+      "character": "Jeremiah Dixon",
+      "year": 2023
+    },
+    {
+      "title": "American Housewife",
+      "type": "TV Series",
+      "character": "Carnival Worker",
+      "year": 2019
+    },
+    {
+      "title": "New York Homicide",
+      "type": "TV Series",
+      "character": "Daniel Oliveira",
+      "year": 2023
+    },
+    {
+      "title": "Human Nature Show",
+      "type": "TV Movie",
+      "character": "Noah",
+      "year": 2025
+    },
+    {
+      "title": "The Greatest",
+      "type": "feature",
+      "character": "Henry McKlien",
+      "year": 2024
+    },
+    {
+      "title": "The Institute",
+      "type": "feature",
+      "character": "Steve Williams",
+      "year": 2022
+    },
+    {
+      "title": "Have You Seen This Man",
+      "type": "TV Mini Series",
+      "character": "Agent Mullaney",
+      "episodes": 3,
+      "year": 2022,
+      "why": "pre-dates the vertical boom and reads as a conventional mini-series - excluded pending a check"
+    },
+    {
+      "title": "Mr. Williams, Madame is Dying",
+      "type": "Video",
+      "character": "Hunter Williams",
+      "year": 2024,
+      "why": "listed as Video; some verticals are typed this way, so worth a second look"
+    },
+    {
+      "title": "Meet Natasha",
+      "type": "Short",
+      "character": "Marco Lombardi",
+      "year": 2022
+    },
+    {
+      "title": "The Hawthorne Bounty",
+      "type": "Short",
+      "year": 2023
+    },
+    {
+      "title": "Greencard",
+      "type": "Short",
+      "character": "Mark",
+      "year": 2020
+    },
+    {
+      "title": "Paramnesia",
+      "type": "Short",
+      "character": "Connor",
+      "year": 2020
+    }
+  ],
+  "credits": [
+    {
+      "title": "Dead Signal",
+      "character": "Scott",
+      "year": 2026
+    },
+    {
+      "title": "His Wife Is Back and She's Stunning",
+      "character": "Nick",
+      "year": 2026
+    },
+    {
+      "title": "Rise of the Divorced Combat Queen",
+      "character": "Adam Hawkins",
+      "year": 2026
+    },
+    {
+      "title": "Lost and Found",
+      "character": "Leo",
+      "year": 2026
+    },
+    {
+      "title": "Ghosted MD",
+      "character": "Jason Walker",
+      "year": 2025
+    },
+    {
+      "title": "Ugly Cinderella and Her Hobo Billionaire",
+      "character": "Ethan York",
+      "year": 2025
+    },
+    {
+      "title": "After Frozen, Triplet Sons Regret",
+      "character": "James Williams",
+      "episodes": 1,
+      "year": 2025,
+      "credited_as": "Jarod Harper"
+    },
+    {
+      "title": "Mancini's Forbidden Bride",
+      "character": "Luca Mancini",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "Alpha Is Not My Type",
+      "character": "Alston Gray",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "The Queen Strikes Back with Three Tycoons",
+      "character": "Patrick Landon",
+      "episodes": 2,
+      "year": 2025
+    },
+    {
+      "title": "Act Like You Love Me",
+      "character": "George Justin Fitzgerald",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "My Ex's Billionaire Brother",
+      "character": "Nate Sinclair",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "Duke's Masked Bride",
+      "character": "Duke Edgar Collins",
+      "year": 2025
+    },
+    {
+      "title": "CEO Wants My Little Rascal",
+      "character": "Ethan Landreth",
+      "year": 2025
+    },
+    {
+      "title": "The Love Switch: Billionaire CEO vs Mafia King",
+      "character": "Zane Corsano",
+      "year": 2025
+    },
+    {
+      "title": "Falling for the Billionaire CEO",
+      "character": "Sebastian Armstrong",
+      "year": 2025
+    },
+    {
+      "title": "Flash Marriage with My MMA Husband",
+      "character": "Patrick",
+      "episodes": 1,
+      "year": 2025,
+      "credited_as": "Jared Harper"
+    },
+    {
+      "title": "Cause You Were Never Mine",
+      "character": "Bruce",
+      "year": 2025
+    },
+    {
+      "title": "Love Me Two Times",
+      "character": "Liam",
+      "episodes": 1,
+      "year": 2025,
+      "credited_as": "Jared Harper"
+    },
+    {
+      "title": "Spoiled by My Billionaire Sugar Daddy",
+      "character": "Declan Reed",
+      "year": 2024
+    },
+    {
+      "title": "Double Agent in Passion",
+      "character": "Victor Valentino",
+      "episodes": 1,
+      "year": 2024,
+      "credited_as": "Jared Harper"
+    },
+    {
+      "title": "The Rejected Luna Returns with a Son",
+      "character": "Reagan Walton",
+      "episodes": 1,
+      "year": 2024
+    },
+    {
+      "title": "The Best Mistake Ever",
+      "character": "James",
+      "episodes": 1,
+      "year": 2024,
+      "credited_as": "Jared Harper"
+    },
+    {
+      "title": "Love at First Sight",
+      "character": "William",
+      "year": 2024
+    },
+    {
+      "title": "My Ex-Husband Can't Stop Spoiling Me",
+      "character": "Nicholas",
+      "year": 2024
+    },
+    {
+      "title": "Escape the Billionaire's Embrace",
+      "character": "Logan",
+      "episodes": 1,
+      "year": 2024
+    },
+    {
+      "title": "My Gift-Wrapped Billionaire",
+      "character": "Daniel",
+      "year": 2024
+    },
+    {
+      "title": "No Escape from My Ruthless Alpha",
+      "character": "Alpha Logan",
+      "year": 2024
+    },
+    {
+      "title": "We Are Never Ever Getting Back Together",
+      "character": "Aidan",
+      "year": 2024
+    },
+    {
+      "title": "Got Pregnant with Ex-Boss's Baby",
+      "character": "Louis",
+      "year": 2024
+    },
+    {
+      "title": "The Substitute Bride",
+      "character": "Spencer Holland",
+      "episodes": 1,
+      "year": 2024
+    },
+    {
+      "title": "Rekindled Heartache",
+      "character": "Blaine Dexter",
+      "episodes": 3,
+      "year": 2024
+    },
+    {
+      "title": "My Alpha King Call Boy",
+      "character": "Alexander",
+      "year": 2024
+    },
+    {
+      "title": "Snatched a Billionaire to Be My Husband",
+      "character": "Byron Hansen",
+      "year": 2024
+    },
+    {
+      "title": "The Alpha's Rejected Mate",
+      "character": "Cole",
+      "year": 2023
+    },
+    {
+      "title": "Revenge Marriage, Sweet Love",
+      "character": "Shaun Lyons",
+      "year": 2023
+    },
+    {
+      "title": "The Double Life of My Billionaire Husband",
+      "character": "Sebastian Klein / Bash Myers",
+      "episodes": 4,
+      "year": 2023
+    }
+  ],
+  "_drive_id": "1Dc5Nl33ZbI8OlM6_hF7UO7bZG5G7uqTU",
+  "_kind": "actor"
+}

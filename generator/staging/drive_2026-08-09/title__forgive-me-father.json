@@ -1,0 +1,73 @@
+{
+  "title": "Forgive Me Father",
+  "imdb_id": "tt39392648",
+  "platform": "shortical",
+  "year": 2026,
+  "genres": [
+    "Drama"
+  ],
+  "confident": true,
+  "production_companies": [
+    "shortical (co1167893)"
+  ],
+  "PLATFORM_URL_FOUND": {
+    "platform_id": "shortical",
+    "web_url": "https://www.shortical.com/",
+    "evidence": "IMDb lists the production company as 'shortical' (co1167893) with official site www.shortical.com. Verified live: returns 200 over https, both apex and www.",
+    "why_it_matters": "platforms.csv has web_url EMPTY for Shortical, which is one of the seven apps whose pages show a dead button (DEA TASKS, low priority). The July reachability probe recorded Shortical as serving a 3KB JS stub, so it was never confirmed. This fills it from a title page rather than a platform scrape."
+  },
+  "BIDIRECTIONAL_VERIFICATION": "Third confirmation. Tyler Scherer's own filmography lists 'Forgive Me Father' as 'Brad Stone / Michael'; this title page shows him as 'Brad Stone ...' (truncated). Consistent, and Joseph Tonna playing 'Young Michael' supports the two-name role.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Tess Dinerstein",
+      "character": "Anna",
+      "nm": "nm3771470",
+      "episodes": 1
+    },
+    {
+      "order": 2,
+      "name": "Corinne Heinzman",
+      "character": "Martha",
+      "nm": "nm7691329",
+      "episodes": 1
+    },
+    {
+      "order": 3,
+      "name": "Cayman Cardiff",
+      "character": "",
+      "nm": "nm13604121",
+      "episodes": 1,
+      "note": "no characters/ link for cst_3, so IMDb lists no character - the blank is real. He also has his own actor PDF in this folder."
+    },
+    {
+      "order": 4,
+      "name": "Guy Richardson",
+      "character": "Rick white",
+      "nm": "nm0991142",
+      "episodes": 1
+    },
+    {
+      "order": 5,
+      "name": "Laura Richardson",
+      "character": "Edith",
+      "nm": "nm0724667",
+      "episodes": 1
+    },
+    {
+      "order": 6,
+      "name": "Tyler Scherer",
+      "character": "Brad Stone",
+      "nm": "nm6919636",
+      "note": "rendered truncated as 'Brad Stone ...'; his own filmography gives the full role as 'Brad Stone / Michael'"
+    },
+    {
+      "order": 7,
+      "name": "Joseph Tonna",
+      "character": "Young Michael",
+      "nm": "nm17566469"
+    }
+  ],
+  "_drive_id": "11nV0yzeZb34yriUOAXiq0OanPS2kk8s3",
+  "_kind": "title"
+}

@@ -1,0 +1,53 @@
+{
+  "title": "Alpha's Doe",
+  "imdb_id": "tt43387956",
+  "platform": "candyjar",
+  "year": 2026,
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)",
+    "Candy Jar (co1130595)"
+  ],
+  "cross_check": "James Hyde is nm0005037 here and in French Kiss - consistent.",
+  "NOTABLE": "Nick Milone (nm9488836) is one of the 8 fan-panel actors carrying ZERO credits in the database, which is why he is held out of the Popular Actors rail with in_rail=no. This is a real credit for him.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Halle Fletcher",
+      "character": "Doe",
+      "nm": "nm12690249"
+    },
+    {
+      "order": 2,
+      "name": "Nick Milone",
+      "character": "Ace",
+      "nm": "nm9488836"
+    },
+    {
+      "order": 3,
+      "name": "Rib Hillis",
+      "character": "Mitchell Kennicot",
+      "nm": "nm0385032"
+    },
+    {
+      "order": 4,
+      "name": "Kirsten Kendall",
+      "character": "Clara",
+      "nm": "nm16253439"
+    },
+    {
+      "order": 5,
+      "name": "James Hyde",
+      "character": "William Stoll",
+      "nm": "nm0005037"
+    },
+    {
+      "order": 6,
+      "name": "Vishay V. Singh",
+      "character": "Ron",
+      "nm": "nm13451436"
+    }
+  ],
+  "_drive_id": "1ChXApG5OTaGwbW9pBeuHb0tIkHLW2x4q",
+  "_kind": "candyjar_title"
+}

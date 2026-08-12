@@ -1,0 +1,73 @@
+{
+  "title": "The Tutors",
+  "imdb_id": "tt37521454",
+  "platform": "candyjar",
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)"
+  ],
+  "cast": [
+    {
+      "order": 1,
+      "name": "Kiana Nicole Washington",
+      "character": "Roxie",
+      "nm": "nm10217270"
+    },
+    {
+      "order": 2,
+      "name": "Maurice Hardwick",
+      "character": "Kai",
+      "nm": "nm10599565"
+    },
+    {
+      "order": 3,
+      "name": "Angelie Simone",
+      "character": "Nari",
+      "nm": "nm11312128"
+    },
+    {
+      "order": 4,
+      "name": "Tate Simms",
+      "character": "Cheerleader 2",
+      "nm": "nm15302338"
+    },
+    {
+      "order": 5,
+      "name": "Parion Roberts",
+      "character": "Student 1",
+      "nm": "nm10607241"
+    },
+    {
+      "order": 6,
+      "name": "Mayreni Sweis",
+      "character": "Cheerleader 1",
+      "nm": "nm14305569"
+    },
+    {
+      "order": 7,
+      "name": "Halili Knox",
+      "character": "Mrs. Bunson & Roxie's Mom",
+      "nm": "nm2515726"
+    },
+    {
+      "order": 8,
+      "name": "Jirachaya Kiri",
+      "character": "Chelsea",
+      "nm": "nm17563644"
+    },
+    {
+      "order": 9,
+      "name": "Maureen Valenzuela",
+      "character": "Student 2",
+      "nm": "nm9044386"
+    },
+    {
+      "order": 10,
+      "name": "Aquanetta Brooks",
+      "character": "USC Scout",
+      "nm": "nm16553679"
+    }
+  ],
+  "_drive_id": "1qn_Sp9X44gznZz5Bld9jyJWe3bt1CySy",
+  "_kind": "candyjar_title"
+}

@@ -1,0 +1,128 @@
+{
+  "title": "Beneath Crimson Sails",
+  "imdb_id": "tt41410427",
+  "platform": "candyjar",
+  "year": 2026,
+  "country": "Canada",
+  "genres": [
+    "Adventure",
+    "Drama",
+    "Fantasy",
+    "Romance"
+  ],
+  "runtime": "1h 36m, 9:16",
+  "confident": true,
+  "production_companies": [
+    "Generativity Productions (co0558957)",
+    "Meep Productions (co0835809)"
+  ],
+  "EXPLAINS_THE_11": "Third of the 11, and a DIFFERENT reason from the other two. Boardroom Attraction and The Billionaire's Masquerade are absent from co1130595 because they sit under co1110145. This one carries NO CandyJar company credit at all - it is a Canadian independent (Generativity / Meep) whose official site is an Instagram account, distributed on CandyJar. So the 11 are not one phenomenon: some are on the other company entity, some are outside productions with no CandyJar credit anywhere. Neither company page would ever have listed this.",
+  "cross_check": "Carin Smolinski is nm16639668 here and in 'Our Dirty Little Secrets' (the ShortMax Canadian title flagged DO_NOT_APPLY). Same id, both Canadian productions - which independently supports the reading that that title really is a separate Canadian show, not our CandyJar row.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Nic Westaway",
+      "character": "Rob",
+      "nm": "nm3511513"
+    },
+    {
+      "order": 2,
+      "name": "Julie Bruns",
+      "character": "Catherine",
+      "nm": "nm6721916"
+    },
+    {
+      "order": 3,
+      "name": "Lyra Stern",
+      "character": "Belle",
+      "nm": "nm18369915"
+    },
+    {
+      "order": 4,
+      "name": "Steven Kammerer",
+      "character": "Silas",
+      "nm": "nm9750569"
+    },
+    {
+      "order": 5,
+      "name": "Arabella Bushnell",
+      "character": "Bar Owner",
+      "nm": "nm1799258"
+    },
+    {
+      "order": 6,
+      "name": "David Aboussafy",
+      "character": "",
+      "nm": "nm6119882",
+      "note": "character truncated in the PDF as 'Drunken Man ...' - left blank rather than guessed"
+    },
+    {
+      "order": 7,
+      "name": "Gavin LeClaire",
+      "character": "Captain Steele",
+      "nm": "nm16253116"
+    },
+    {
+      "order": 8,
+      "name": "Deniz Sinaki",
+      "character": "The Undine",
+      "nm": "nm13687548"
+    },
+    {
+      "order": 9,
+      "name": "Carin Smolinski",
+      "character": "Jenny",
+      "nm": "nm16639668"
+    },
+    {
+      "order": 10,
+      "name": "Adrian Neblett",
+      "character": "Barnaby",
+      "nm": "nm4618560"
+    },
+    {
+      "order": 11,
+      "name": "Reg Rozee",
+      "character": "Floron",
+      "nm": "nm9338520"
+    },
+    {
+      "order": 12,
+      "name": "Randi-Lee Leonard",
+      "character": "Marion LaSlap",
+      "nm": "nm7540310"
+    },
+    {
+      "order": 13,
+      "name": "Stardust Macpherson",
+      "character": "Young Rob",
+      "nm": "nm18369820"
+    },
+    {
+      "order": 14,
+      "name": "Rosie Wozniewski",
+      "character": "Young Catherine",
+      "nm": "nm18369824"
+    },
+    {
+      "order": 15,
+      "name": "Lucas Pearson",
+      "character": "Bandit Thom",
+      "nm": "nm18369822"
+    },
+    {
+      "order": 16,
+      "name": "Ross Smith",
+      "character": "Sloane, The Unsavory Man",
+      "nm": "nm18369823"
+    },
+    {
+      "order": 17,
+      "name": "Brian Kazun",
+      "character": "Bandit Randall",
+      "nm": "nm18369825"
+    }
+  ],
+  "_drive_id": "1ihQMAo3WF4nCmGNkqx1w64ivOHYNoSIl",
+  "_kind": "candyjar_title_of_the_11"
+}

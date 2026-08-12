@@ -1,0 +1,38 @@
+{
+  "title": "Half of My Heart",
+  "imdb_id": "tt37070351",
+  "platform": "candyjar",
+  "year": 2025,
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)"
+  ],
+  "cast": [
+    {
+      "order": 1,
+      "name": "Erin Kuykendall",
+      "character": "Anya",
+      "nm": "nm12944543"
+    },
+    {
+      "order": 2,
+      "name": "Adam Sinclair",
+      "character": "Dimitri Winslow",
+      "nm": "nm0801554"
+    },
+    {
+      "order": 3,
+      "name": "Freddy Piazza",
+      "character": "Blake Rossi",
+      "nm": "nm14081222"
+    },
+    {
+      "order": 4,
+      "name": "Alexia Jeanet",
+      "character": "Vanessa",
+      "nm": "nm14688768"
+    }
+  ],
+  "_drive_id": "1s8h_NDx9YJ22PD7kxUIwxP_yTJK-WYrh",
+  "_kind": "candyjar_title"
+}

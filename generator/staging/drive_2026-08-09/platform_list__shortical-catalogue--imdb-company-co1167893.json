@@ -1,0 +1,133 @@
+{
+  "title": "Shortical catalogue (IMDb company co1167893)",
+  "platform": "shortical",
+  "platform_source": "filename 'Shortical titles.pdf' + IMDb company page co1167893 'shortical (IL)'",
+  "confident": true,
+  "complete_catalogue": "IMDb reports 1-24 of 24, so this is Shortical's ENTIRE listed catalogue, not a page of it.",
+  "web_url_confirmed": "https://www.shortical.com/ (from the Forgive Me Father title page, verified 200)",
+  "note": "Ranked by IMDb popularity ascending, so order 1 is the most popular. Titles carry tt ids, which makes them unambiguous.",
+  "credits": [
+    {
+      "rank": 1,
+      "title": "Foul Play with My Brother's Best Friend",
+      "imdb_id": "tt42785788"
+    },
+    {
+      "rank": 2,
+      "title": "Academy of Lies",
+      "imdb_id": "tt40878832"
+    },
+    {
+      "rank": 3,
+      "title": "The Maid and the Ice Prince",
+      "imdb_id": "tt42574489"
+    },
+    {
+      "rank": 4,
+      "title": "Against All Odds",
+      "imdb_id": "tt43608379"
+    },
+    {
+      "rank": 5,
+      "title": "Breaking News",
+      "imdb_id": "tt39796975"
+    },
+    {
+      "rank": 6,
+      "title": "My Bestie is the Superstar Queen",
+      "imdb_id": "tt43295979"
+    },
+    {
+      "rank": 7,
+      "title": "Undress a Billionaire",
+      "imdb_id": "tt39067837"
+    },
+    {
+      "rank": 8,
+      "title": "His Bride by Bet",
+      "imdb_id": "tt42065660"
+    },
+    {
+      "rank": 9,
+      "title": "Off Limits",
+      "imdb_id": "tt43572721"
+    },
+    {
+      "rank": 10,
+      "title": "His Wife Is Back and She's Stunning",
+      "imdb_id": "tt42883507"
+    },
+    {
+      "rank": 11,
+      "title": "The Maid Did It",
+      "imdb_id": "tt41877708"
+    },
+    {
+      "rank": 12,
+      "title": "Dash of Fire",
+      "imdb_id": "tt42803111"
+    },
+    {
+      "rank": 13,
+      "title": "Forgive Me Father",
+      "imdb_id": "tt39392648"
+    },
+    {
+      "rank": 14,
+      "title": "Crossing the Line with My Neighbor",
+      "imdb_id": "tt39279127"
+    },
+    {
+      "rank": 15,
+      "title": "The Stable Girl and the Billionaire",
+      "imdb_id": "tt41543926"
+    },
+    {
+      "rank": 16,
+      "title": "Lost and Found",
+      "imdb_id": "tt40062294"
+    },
+    {
+      "rank": 17,
+      "title": "Keys to My Heart",
+      "imdb_id": "tt37677383"
+    },
+    {
+      "rank": 18,
+      "title": "Marrying a Prisoner",
+      "imdb_id": "tt41097175"
+    },
+    {
+      "rank": 19,
+      "title": "Step Aside! The Chairman Is Here",
+      "imdb_id": "tt41214319"
+    },
+    {
+      "rank": 20,
+      "title": "My Billionaire Husband's Secret Life",
+      "imdb_id": "tt35932743"
+    },
+    {
+      "rank": 21,
+      "title": "All You Need Is Love",
+      "imdb_id": "tt40574330"
+    },
+    {
+      "rank": 22,
+      "title": "Love & Open Marriage",
+      "imdb_id": "tt38708901"
+    },
+    {
+      "rank": 23,
+      "title": "Pulse of Love",
+      "imdb_id": "tt37674410"
+    },
+    {
+      "rank": 24,
+      "title": "Forbidden Fragrance",
+      "imdb_id": "tt41986868"
+    }
+  ],
+  "_drive_id": "1kEP91nKMHC-3IU9DlJi3ao2ILdEYCRz8",
+  "_kind": "platform_list"
+}

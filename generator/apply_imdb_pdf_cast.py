@@ -11,7 +11,7 @@ Same safety rules as every other pass: exact match reuses the person, near-match
 goes to match_queue uncredited, new people are needs_check, character names are
 fill-blank-only (never overwrite an existing value).
 """
-import csv, io, os, re, sys, difflib, time
+import csv, io, os, re, sys, difflib, time, json, unicodedata
 
 DATA = os.environ["DEA_DATA"]
 SOURCE = "imdb_pdf_" + time.strftime("%Y-%m-%d")
@@ -196,7 +196,14 @@ CAST = {
     ],
 }
 
-def slug(s): return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+def ascii_fold(s):
+    # "Kübler" -> "Kubler". Without this, slug() drops the accented letter entirely and
+    # yields "arne-k-bler"; 12 people added before this fix carry that older shape
+    # (ch-na-verony, andr-s-de-la-mora). Those are already published URLs and are
+    # deliberately NOT rewritten here - only newly created people get the clean form.
+    return "".join(c for c in unicodedata.normalize("NFKD", s)
+                   if not unicodedata.combining(c))
+def slug(s): return re.sub(r"[^a-z0-9]+", "-", ascii_fold(s).lower()).strip("-")
 def loose(s): return re.sub(r"[^a-z0-9]", "", s.lower())
 def term_of(p):
     raw = open(p, "rb").read(); c = raw.count(b"\r\n")
@@ -207,6 +214,13 @@ def save(n, fields, recs):
     w = csv.DictWriter(buf, fieldnames=fields, lineterminator=term_of(p))
     w.writeheader(); w.writerows(recs)
     open(p, "w", newline="", encoding="utf-8").write(buf.getvalue())
+
+# --json <path> swaps the hardcoded CAST above for a staged batch of the same shape,
+# {primary_title: [[actor, character], ...]}. The dict above is a RECORD of what an
+# earlier session applied, not a queue, so a JSON run replaces it rather than adding
+# to it - re-running spent entries would only print noise.
+if "--json" in sys.argv:
+    CAST = json.load(open(sys.argv[sys.argv.index("--json") + 1], encoding="utf-8"))
 
 titles, people, credits, queue = load("titles.csv"), load("people.csv"), load("credits.csv"), load("match_queue.csv")
 by_title = {t["primary_title"]: t for t in titles}

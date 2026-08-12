@@ -1,0 +1,357 @@
+{
+  "name": "Kasey Esser",
+  "nm": "nm6820472",
+  "person_id": "kasey-esser",
+  "confident": true,
+  "born": "1989-02-03, Evansville, Indiana, USA",
+  "height": "6'4\" (1.93 m)",
+  "official_site": "http://www.kaseyesser.com/",
+  "bio_fact": "Labelled the 'breakout star' of the verticals industry by Rolling Stone; best known as Alpha Alexander in Fated To My Forbidden Alpha.",
+  "NOTABLE": "Top actor in the Popular Actors rail (17 credits on file). Also credits 'It Was Always You' as Lucas - the title Cyan created this week, whose page deployment was verified.",
+  "non_vertical_excluded": [
+    {
+      "title": "Banana",
+      "type": "TV Series",
+      "character": "Fit Guy",
+      "episodes": 1,
+      "year": 2026
+    },
+    {
+      "title": "Peach Blossom",
+      "type": "Short",
+      "character": "EL-5",
+      "year": 2025
+    },
+    {
+      "title": "Spoiled by the Billionaire",
+      "type": "Video",
+      "character": "Alexander",
+      "year": 2024,
+      "why": "typed Video; some verticals are listed this way - worth a second look"
+    },
+    {
+      "title": "The Things I Can't Say",
+      "type": "Short",
+      "character": "Professor",
+      "year": 2023
+    },
+    {
+      "title": "Lauren Gottshall: Easy for Me",
+      "type": "Video",
+      "year": 2021
+    },
+    {
+      "title": "Morgenstein Family",
+      "type": "Short",
+      "character": "Edward Morgenstein",
+      "year": 2021
+    },
+    {
+      "title": "TRAPP/E.D",
+      "type": "Short",
+      "character": "Daniel",
+      "year": 2021
+    },
+    {
+      "title": "The Package",
+      "type": "Short",
+      "character": "Evan Kline",
+      "year": 2017
+    },
+    {
+      "title": "Baker's Man",
+      "type": "feature",
+      "character": "Gary The Grabber (uncredited)",
+      "year": 2017
+    }
+  ],
+  "credits": [
+    {
+      "title": "Laws of Attraction",
+      "character": "Ezekiel",
+      "year": 2026
+    },
+    {
+      "title": "The Blossom in His Syllabus",
+      "character": "Nova Carter",
+      "year": 2026
+    },
+    {
+      "title": "The Unclaimed True Luna",
+      "character": "Lucian Blackmoor",
+      "year": 2026
+    },
+    {
+      "title": "Love Under Fire",
+      "character": "Shane Halstead",
+      "episodes": 1,
+      "year": 2026
+    },
+    {
+      "title": "Brave New Beginning with My Fire Captain",
+      "character": "Dalton Shaw",
+      "episodes": 1,
+      "year": 2026
+    },
+    {
+      "title": "Swan Queen Dancing Back into His Arms",
+      "character": "Caleb Shaw",
+      "year": 2026
+    },
+    {
+      "title": "The Christmas Contract: Mafia Stand-In Bride",
+      "character": "Damon",
+      "year": 2025
+    },
+    {
+      "title": "Love in the Shadows",
+      "character": "Robert Kensington",
+      "year": 2025
+    },
+    {
+      "title": "Your Husband Is Mine",
+      "character": "Damien Vale",
+      "year": 2025
+    },
+    {
+      "title": "Till Divorce Do Us Part",
+      "character": "Jax",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "I Wish It Weren't You",
+      "character": "",
+      "year": 2025
+    },
+    {
+      "title": "Bound to the President's Heart",
+      "character": "Matt Powers",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "It Was Always You",
+      "character": "Lucas",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "After His Affair I Slept with His Best Friend",
+      "character": "Edward Parker",
+      "year": 2025
+    },
+    {
+      "title": "Fly Me Away, My Captain Husband",
+      "character": "Travis",
+      "year": 2025
+    },
+    {
+      "title": "Never Let Me Go",
+      "character": "Daniel Salvatori",
+      "year": 2025
+    },
+    {
+      "title": "Never Cheat on a Hidden Heiress",
+      "character": "Chase Bennett",
+      "episodes": 51,
+      "year": 2025
+    },
+    {
+      "title": "The CEO's Mermaid Bride",
+      "character": "Sebastian",
+      "episodes": 62,
+      "year": 2025
+    },
+    {
+      "title": "The Fake Marriage of Two Bosses",
+      "character": "Vlado Smith",
+      "year": 2025
+    },
+    {
+      "title": "I Accidentally Slept with My Professor",
+      "character": "Nick",
+      "year": 2025
+    },
+    {
+      "title": "My Online Crush Is My Contract Husband",
+      "character": "Nathan",
+      "year": 2025
+    },
+    {
+      "title": "Love on Your Taste Buds",
+      "character": "Shawn",
+      "year": 2025
+    },
+    {
+      "title": "Hillbilly Girl Marries a Billionaire",
+      "character": "Luc",
+      "year": 2025
+    },
+    {
+      "title": "My Beloved True Gentleman",
+      "character": "Eddie Giovanni",
+      "year": 2025
+    },
+    {
+      "title": "Serving My Enemy Alpha",
+      "character": "Alpha Hayden",
+      "year": 2025
+    },
+    {
+      "title": "My Vampire Bodyguard",
+      "character": "Kyle Nicholas",
+      "year": 2025
+    },
+    {
+      "title": "The Love Switch: Billionaire CEO vs Mafia King",
+      "character": "Levi Grayson",
+      "year": 2025
+    },
+    {
+      "title": "Contractually Yours",
+      "character": "Jack Thorne",
+      "year": 2025
+    },
+    {
+      "title": "A Flash Marriage with the Billionaire Tycoon",
+      "character": "Lucian",
+      "year": 2025
+    },
+    {
+      "title": "The Champion's Hidden Secret",
+      "character": "Nathan Phelps",
+      "year": 2025
+    },
+    {
+      "title": "All I Want for Christmas Is a Husband",
+      "character": "Ashton Cunningham",
+      "year": 2024
+    },
+    {
+      "title": "A Bird in the Cage",
+      "character": "Ryan",
+      "year": 2024
+    },
+    {
+      "title": "How to Divorce a Billionaire",
+      "character": "William",
+      "year": 2024
+    },
+    {
+      "title": "Snatched a Billionaire in One Night",
+      "character": "Jasper Miller",
+      "year": 2024
+    },
+    {
+      "title": "The Secret of My Billion-Dollar Marriage",
+      "character": "Lucas Fischer",
+      "year": 2024
+    },
+    {
+      "title": "Pregnant by My Brother-in-Law",
+      "character": "Julian Thorne",
+      "year": 2024
+    },
+    {
+      "title": "My Callboy CEO",
+      "character": "Tristan Caldwell",
+      "year": 2024
+    },
+    {
+      "title": "My Billion Dollar Waiter",
+      "character": "Arthur Marshall",
+      "year": 2024
+    },
+    {
+      "title": "Falling in Love with My Ex Husband Again",
+      "character": "Paul",
+      "year": 2024
+    },
+    {
+      "title": "Night with My Vampire Mate",
+      "character": "Luca",
+      "episodes": 1,
+      "year": 2024
+    },
+    {
+      "title": "But Daddy I Love Him",
+      "character": "Jonathan",
+      "year": 2024
+    },
+    {
+      "title": "Flash Vows",
+      "character": "Robert Johnsons",
+      "year": 2024
+    },
+    {
+      "title": "Undercover Heiress",
+      "character": "Nick Branson",
+      "year": 2024
+    },
+    {
+      "title": "Freeze! My Wanted Lover",
+      "character": "Vincent Corleone",
+      "year": 2024
+    },
+    {
+      "title": "Fated to My Cruel CEO",
+      "character": "Edward Algar",
+      "year": 2024
+    },
+    {
+      "title": "I Accidentally Hired a Billionaire Husband",
+      "character": "Oliver",
+      "year": 2024
+    },
+    {
+      "title": "My Poor Husband's Billionaire Secret",
+      "character": "Lucas Anderson",
+      "year": 2024
+    },
+    {
+      "title": "Hollywood Staged Romance, Live 24/7",
+      "character": "Charles Spike",
+      "year": 2024
+    },
+    {
+      "title": "The Rise of Mr. and Mrs. Mafia",
+      "character": "Lance",
+      "year": 2024
+    },
+    {
+      "title": "Fleeing Husband: Please Love Me All Over Again",
+      "character": "Alexis Rathbone",
+      "year": 2024
+    },
+    {
+      "title": "Married But Available: Perfume and Moon",
+      "character": "Alpha Arthur",
+      "year": 2024
+    },
+    {
+      "title": "The Forbidden Alpha",
+      "character": "Ethan",
+      "year": 2023
+    },
+    {
+      "title": "The Alpha's Daughter",
+      "character": "Alexander",
+      "episodes": 17,
+      "year": 2023
+    },
+    {
+      "title": "Goodbye, My CEO",
+      "character": "James Knight",
+      "year": 2023
+    },
+    {
+      "title": "Fated to My Forbidden Alpha",
+      "character": "Alexander Kane",
+      "episodes": 37,
+      "year": 2023
+    }
+  ],
+  "_drive_id": "1OmxrunK0XNvmHvL7p9mKwiOtddzZ7Hwj",
+  "_kind": "actor"
+}

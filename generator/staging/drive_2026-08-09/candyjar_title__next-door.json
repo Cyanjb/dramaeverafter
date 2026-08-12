@@ -1,0 +1,52 @@
+{
+  "title": "Next Door",
+  "imdb_id": "tt42495282",
+  "platform": "candyjar",
+  "direct_link": "https://candyjar.com/en/series/next-door-629",
+  "year": 2026,
+  "aka": "Next Door: Lesson to Love",
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)"
+  ],
+  "cast": [
+    {
+      "order": 1,
+      "name": "Bella Chadwick",
+      "character": "Carrie",
+      "nm": "nm14674059"
+    },
+    {
+      "order": 2,
+      "name": "Justin Stanek",
+      "character": "River",
+      "nm": "nm15851578"
+    },
+    {
+      "order": 3,
+      "name": "Nicolas Hermick",
+      "character": "Kit",
+      "nm": "nm14022738"
+    },
+    {
+      "order": 4,
+      "name": "Nick Lunetta",
+      "character": "Darius",
+      "nm": "nm8974844"
+    },
+    {
+      "order": 5,
+      "name": "Ben Trotter",
+      "character": "Mr. Ward",
+      "nm": "nm2338643"
+    },
+    {
+      "order": 6,
+      "name": "Sophie Steele",
+      "character": "Hadley",
+      "nm": "nm14618597"
+    }
+  ],
+  "_drive_id": "13PG1yOHk8vkMU4KAm5wBkMPT-YRAtDk3",
+  "_kind": "candyjar_title"
+}

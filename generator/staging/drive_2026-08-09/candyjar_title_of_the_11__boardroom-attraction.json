@@ -1,0 +1,71 @@
+{
+  "title": "Boardroom Attraction",
+  "imdb_id": "tt35664719",
+  "platform": "candyjar",
+  "year": 2025,
+  "aka": "CEO's Equal",
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)"
+  ],
+  "RESOLVES_ONE_OF_THE_11": "This is one of the 11 CandyJar titles READ FIRST records as absent from the co1130595 company page. It IS a real CandyJar title - official site CandyJar - and it is credited to Inkitt Media (co1110145) ONLY. That is precisely why co1130595's page never listed it. Direct evidence that the missing 11 live under the other company entity.",
+  "cross_check": "Tyler Scherer is nm6919636 here, matching the nm id READ FIRST already records for him as a GoodShort filmography target. Independent confirmation the reconstruction is landing on the right people.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Sydney Gates",
+      "character": "Alex",
+      "nm": "nm15029835"
+    },
+    {
+      "order": 2,
+      "name": "Tyler Scherer",
+      "character": "Laken",
+      "nm": "nm6919636"
+    },
+    {
+      "order": 3,
+      "name": "John Henry Richardson",
+      "character": "Mr. Blandford",
+      "nm": "nm0724604"
+    },
+    {
+      "order": 4,
+      "name": "Heather McPhaul",
+      "character": "Karen",
+      "nm": "nm1573698"
+    },
+    {
+      "order": 5,
+      "name": "Cassie Ghersi",
+      "character": "Camila",
+      "nm": "nm8154114"
+    },
+    {
+      "order": 6,
+      "name": "Don Pecchia",
+      "character": "Mr. Harris",
+      "nm": "nm5669490"
+    },
+    {
+      "order": 7,
+      "name": "Levi Bernhardt",
+      "character": "Jayce",
+      "nm": "nm12435647"
+    },
+    {
+      "order": 8,
+      "name": "Lori Caulfield",
+      "character": "Chez Luxe Waitress",
+      "nm": "nm3194253"
+    },
+    {
+      "order": 9,
+      "name": "Lola Buckland",
+      "character": "Mahlia",
+      "nm": "nm16982808"
+    }
+  ],
+  "_drive_id": "1KjqMpMArKA0GXAzuYJDiXACJcVbGqQz9",
+  "_kind": "candyjar_title_of_the_11"
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Gideon",
+  "platform": "candyjar",
+  "source_site": "ShortDramaDB (not IMDb)",
+  "confident": true,
+  "NO_CAST": "The page states 'No cast added for this drama'. That is a real result, not a parse failure - ShortDramaDB simply has no cast for it. Gideon still needs an IMDb title page.",
+  "possible_direct_link": "https://candyjar.com/en/s/2/e/1",
+  "link_caveat": "The page renders this with a double slash (candyjar.com//en/s/2/e/1) and the path is oddly generic (/s/2/e/1) rather than a named series slug like the /en/series/grayson-671 form seen elsewhere. Verify before storing it as direct_link.",
+  "sourcing_note": "Single page supplied by Cyan as a targeted gap-fill. Craft records shortdramadb as refused for SYSTEMATIC extraction; one page consulted as a reference is the permitted case, and no description text is taken from it.",
+  "cast": [],
+  "_drive_id": "1ONSXr6M_GT75UiePsD9criFgneQgQG0V",
+  "_kind": "candyjar_title_of_the_11"
+}

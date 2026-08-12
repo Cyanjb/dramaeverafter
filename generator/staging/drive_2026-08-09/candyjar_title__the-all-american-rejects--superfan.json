@@ -1,0 +1,131 @@
+{
+  "title": "The All-American Rejects: Superfan",
+  "imdb_id": "tt42946430",
+  "platform": "candyjar",
+  "year": 2026,
+  "genres": [
+    "Comedy"
+  ],
+  "confident": true,
+  "production_companies": [
+    "Candy Jar (co1130595)",
+    "Poster Child Pictures (co1110352)"
+  ],
+  "cast_note": "IMDb header says Top Cast 23; the PDF captured 18, matching cst_1..cst_18. Many are 'Self' credits - this is a comedy featuring the real band, so those are genuine roles, not placeholders.",
+  "NOTABLE": "Nick Ritacco is nm8897964 here. people.csv already holds him clean and verified as 'Nick Ritacco' (the old mojibake row was fixed), and IMDb independently confirms that spelling over 'Ritaccio'. We do not currently hold his nm id - worth adding, per the standing rule to record nm ids.",
+  "cross_check": "Eric Guilmette is nm12187579 here and led My Silent Treasure - consistent.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Tyson Ritter",
+      "character": "Tyson Ritter",
+      "nm": "nm1930711"
+    },
+    {
+      "order": 2,
+      "name": "Nick Wheeler",
+      "character": "Nick Wheeler",
+      "nm": "nm2404605"
+    },
+    {
+      "order": 3,
+      "name": "Mike Kennerty",
+      "character": "Mike",
+      "nm": "nm4879840"
+    },
+    {
+      "order": 4,
+      "name": "Chris Gaylor",
+      "character": "Chris",
+      "nm": "nm4879506"
+    },
+    {
+      "order": 5,
+      "name": "Anna Lore",
+      "character": "Danica",
+      "nm": "nm4741273"
+    },
+    {
+      "order": 6,
+      "name": "Jason Scott Jenkins",
+      "character": "Muscle",
+      "nm": "nm2451792"
+    },
+    {
+      "order": 7,
+      "name": "Eric Guilmette",
+      "character": "Josh",
+      "nm": "nm12187579"
+    },
+    {
+      "order": 8,
+      "name": "Rebecca Stoughton",
+      "character": "Self",
+      "nm": "nm13386865"
+    },
+    {
+      "order": 9,
+      "name": "Nick Ritacco",
+      "character": "Self",
+      "nm": "nm8897964"
+    },
+    {
+      "order": 10,
+      "name": "Catherine Hardwicke",
+      "character": "Self",
+      "nm": "nm0362566"
+    },
+    {
+      "order": 11,
+      "name": "Mark Pontarelli",
+      "character": "Self",
+      "nm": "nm11195528"
+    },
+    {
+      "order": 12,
+      "name": "Tiffany Alvord",
+      "character": "Self",
+      "nm": "nm3849933"
+    },
+    {
+      "order": 13,
+      "name": "Ryan Seacrest",
+      "character": "",
+      "nm": "nm0780435",
+      "uncertain_character": true,
+      "note": "PDF renders this slot as 'Ryan Seacrest The Ryan Serhant'. Slot 18 is separately Ryan Serhant as 'The Ryan Serhant', so the character text here has almost certainly bled across from that row. Name is safe (nm0780435); character left blank rather than guessed."
+    },
+    {
+      "order": 14,
+      "name": "Sarah Moliski",
+      "character": "Self",
+      "nm": "nm6885730"
+    },
+    {
+      "order": 15,
+      "name": "Jeff Violette",
+      "character": "Self",
+      "nm": "nm13296233"
+    },
+    {
+      "order": 16,
+      "name": "Brooke Moltrum",
+      "character": "Self",
+      "nm": "nm11940632"
+    },
+    {
+      "order": 17,
+      "name": "Kelsey Maskell",
+      "character": "Self",
+      "nm": "nm7960085"
+    },
+    {
+      "order": 18,
+      "name": "Ryan Serhant",
+      "character": "The Ryan Serhant",
+      "nm": "nm2743406"
+    }
+  ],
+  "_drive_id": "1q7LIJ2Hk0JbykHcZV7njUNQSi5EIz1Wy",
+  "_kind": "candyjar_title"
+}

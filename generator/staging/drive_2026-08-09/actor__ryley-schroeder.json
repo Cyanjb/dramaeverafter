@@ -1,0 +1,50 @@
+{
+  "name": "Ryley Schroeder",
+  "nm": "nm12486389",
+  "person_id": "ryley-schroeder",
+  "confident": true,
+  "height": "6'2\" (1.88 m)",
+  "NOTABLE": "Fan-panel rail member with 1 credit on file. Seven vertical credits here. Two of them - Torn Between My Stepbrothers and From Campus Simp to Hidden Heiress - also have title-page PDFs sitting in this same Drive folder, so those can be cross-checked from both directions.",
+  "CROSS_REFERENCE": "He plays Finley Hargrove in 'Reborn as Three Cowboys' Ranch Princess'; Jackson Tiller plays Boaz Hargrove in the same title. Two tracked actors, same show, same surname - a strong import candidate.",
+  "non_vertical_excluded_note": "Career is otherwise shorts and one feature: Sugar Beach (2025), Vince Vinetti: Hitman, The Hard Case, Smith & Wilson, 11:59, Hector, A Train to Catch, Surgery, I'm Fine. - all excluded.",
+  "credits": [
+    {
+      "title": "The Professor's Secret",
+      "character": "Danny",
+      "year": 2026
+    },
+    {
+      "title": "Breaking My Bodyguard",
+      "character": "Dante",
+      "year": 2026
+    },
+    {
+      "title": "Reborn as Three Cowboys' Ranch Princess",
+      "character": "Finley Hargrove",
+      "year": 2026
+    },
+    {
+      "title": "Bucked by My Father's Cowboy",
+      "character": "Hart Bronson",
+      "year": 2026
+    },
+    {
+      "title": "Torn Between My Stepbrothers",
+      "character": "Tyler Treves",
+      "episodes": 1,
+      "year": 2026
+    },
+    {
+      "title": "From Campus Simp to Hidden Heiress",
+      "character": "Miles",
+      "year": 2026
+    },
+    {
+      "title": "I'd Rather Die Than Ever Want Your Love Again",
+      "character": "Liam",
+      "year": 2026
+    }
+  ],
+  "_drive_id": "1rfqBRPN_hqaoPZGK1gwECmahfSj86h7f",
+  "_kind": "actor"
+}

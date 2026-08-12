@@ -1,0 +1,61 @@
+{
+  "title": "Exercise Discretion",
+  "imdb_id": "tt37748257",
+  "platform": "candyjar",
+  "year": 2025,
+  "aka": "She's the (Undercover) Boss (IMDb ORIGINAL title); Shes the (Undercover) Boss",
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)",
+    "Candy Jar (co1130595)"
+  ],
+  "DUPLICATE_FOUND": {
+    "summary": "titles.csv holds TWO castless candyjar rows for what IMDb says is ONE production: 'exercise-discretion' and 'she-s-the-undercover-boss'. tt37748257 displays as 'Exercise Discretion' with original title 'She's the (Undercover) Boss'.",
+    "why_it_matters": "READ FIRST counts 'Exercise Discretion' among the bounded 28 needing cast AND 'She's the (Undercover) Boss' among the 11 absent from the co1130595 company page. It was never absent - it is the same show under its original title. So the 11 is really 10, and CandyJar's true castless count is one lower than believed.",
+    "action": "match_queue for a human ruling - NEVER AUTO-MERGE, and slugs are permanent so neither row can be renamed.",
+    "candidate_a": "exercise-discretion",
+    "candidate_b": "she-s-the-undercover-boss"
+  },
+  "apply_cast_to": "exercise-discretion",
+  "apply_note": "Staged against exercise-discretion because that is IMDb's display title and matches our row exactly. If Cyan rules the surviving row is she-s-the-undercover-boss instead, re-point before applying.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Bryce Tipple",
+      "character": "Jett",
+      "nm": "nm7205791"
+    },
+    {
+      "order": 2,
+      "name": "Marc Sylwestrzak",
+      "character": "Keir",
+      "nm": "nm6549874"
+    },
+    {
+      "order": 3,
+      "name": "Natasha Stricklin",
+      "character": "Aria",
+      "nm": "nm7602099"
+    },
+    {
+      "order": 4,
+      "name": "Charles Realubit",
+      "character": "Glen",
+      "nm": "nm10601120"
+    },
+    {
+      "order": 5,
+      "name": "Brian Combs",
+      "character": "Gray",
+      "nm": "nm17476339"
+    },
+    {
+      "order": 6,
+      "name": "Stephanie Pardi",
+      "character": "Lena",
+      "nm": "nm12993694"
+    }
+  ],
+  "_drive_id": "1HMf7TmO7FuFz9i21hhUM-k6mQ_kv3ktp",
+  "_kind": "candyjar_title"
+}

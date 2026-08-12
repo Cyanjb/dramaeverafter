@@ -337,3 +337,157 @@ sat unnoticed for three weeks because "cast is the biggest gap" was the only met
 anyone looked at. generator/completeness.py now scores leads + platform + link +
 description together. WHEN ONE FIELD IS SHORT ON A PLATFORM WHILE ITS PAYLOAD
 SIBLINGS ARE PRESENT, SUSPECT THE PARSER BEFORE THE SOURCE.
+
+## 19. My Drama descriptions — EXECUTED (2026-08-09)
+
+Sec 18 was right. 125 of the 126 blanks refilled from the platform; the 126th has
+no direct_link so there was nothing to fetch. My Drama 14% -> 74% complete, site
+total 723 -> 835 of 3,199 title-platform pairs, and My Drama became the third
+platform to clear the 50-complete breadth bar. Script: `harvest_mydrama_descriptions.py`.
+
+READ THE ld+json, NOT THE seriesData PAYLOAD. The description appears twice on a
+series page. Sec 5 documents the streamed Next.js `"seriesData"` block, which is
+escaped and needs unescaping — and the obvious `html.encode().decode('unicode_escape')`
+reinterprets each UTF-8 byte as latin-1, producing exactly the invisible C1
+mojibake already on the traps list. The same text sits in a clean schema.org
+ld+json `@graph` as the node with `"@type": "TVSeries"`, which `json.loads` returns
+with codepoints intact. Verified: the fetched text for a title we already held was
+byte-identical to what was on file.
+
+A CONTROL RE-READ IS WORTH THE EXTRA REQUESTS. Re-reading the 59 titles that
+ALREADY had a description is what proved the reader before 125 writes: 51 came
+back identical.
+
+BUT DO NOT LET THE CONTROL CONFUSE ITS TWO FAILURE MODES — the first run aborted
+on good data because of this. A control mismatch is either OUR READER mangling
+characters (a bug, must stop the run) or MY DRAMA HAVING REWRITTEN the copy since
+the 17 July scrape (not a bug, says nothing about the blanks). Tell them apart by
+WHERE the strings diverge: a reader fault diverges at a punctuation or non-ASCII
+character, a rewrite diverges at a word. Only the encoding class should gate a run.
+
+MY DRAMA REWRITES ITS SYNOPSES. 7 of the 59 now carry materially different copy
+('Sex therapist' -> 'Psychologist'; Mr. Denver is wholly new text). NOT APPLIED,
+because CONVENTIONS.md makes non-blank fields fill-blank-only — they are recorded
+in `generator/staging/mydrama_desc_2026-08-09.json` under
+`control.changed_upstream_not_applied` for a human ruling. One more, 'Betrayal at
+the Altar', is TRUNCATED MID-WORD on our side ('...love and jus'), which is our
+bug rather than their rewrite and is the one worth fixing regardless.
+
+## 20. Actor photos — the two ReelShort routes (2026-08-09)
+
+ROUTE 1, actor_info on a movie page. A ReelShort `/movie/` page embeds
+`"actor_info": {"actors": [{"actor_name", "actor_pic", "inside_url", "outside_url"}]}`,
+where actor_pic is the `v-mps.crazymaplestudios.com/actorIMG/` URL. All 109 photos
+already on file come from here. `outside_url` is an IMDb `nm` link and is currently
+thrown away — worth harvesting, given the standing rule to record nm ids.
+
+ROUTE 1 IS EXHAUSTED, MEASURED NOT ASSUMED. Across the 80 ReelShort pages
+crediting a fan-panel actor, actor_info yielded 46 distinct names and EVERY ONE
+already had a photo; 25 of the 80 pages carry no actor_info at all. It is a
+curated subset, so a miss there is normal and is not a parse failure.
+
+ROUTE 2, the fandom blog. reelshort.com/fandom is WordPress with an open REST
+search at `/fandom/wp-json/wp/v2/search?search=`, and actor profile pieces carry
+headshots under `/fandom/wp-content/uploads/YYYY/MM/`. This yielded 6 of the 33
+fan-panel actors. Script: `harvest_actor_photos.py`.
+
+THE FANDOM SEARCH IS FUZZY AND WILL HAND YOU THE WRONG PERSON — querying 'Ben
+Taylor' returns an article about BEN ARMSTRONG. A hit is only safe when the
+ARTICLE SLUG and the IMAGE FILENAME both contain the actor's full name slug. A
+name appearing in an article's body is never enough.
+
+REFUSE SHARED PHOTOS. Files like `jarred-harper-and-meg-bush.jpg` pass a naive
+substring test but show two people, and a 78px avatar cannot say which face is
+which. Accept only filenames whose stem EQUALS the name slug; report the rest.
+This is what took the yield from 8 down to 6, correctly.
+
+THE FANDOM HOST SOFT BLOCKS BY RETURNING HTTP 200 WITH AN EMPTY BODY. It is not
+an error and not a parse problem — treat an empty body as retryable, pace requests
+(~2s, serial), and cache to disk. Recovery took about 20 seconds.
+
+CORRECTION TO SEC 5: MY DRAMA ACTOR PAGES CARRY NO PHOTOS AND NO BIOS. Sec 5's
+'likely bios/photos, unharvested' was a guess and it is wrong. `/actors/{key}`
+returns a Person node with name, givenName, familyName, jobTitle, url and
+performerIn — no `image`, empty description — and all 27 images on the page are
+series COVERS. The page is still a good credit source; it is not a photo source.
+
+## 21. build.py wrote cp1252 on Windows and crashed mid-build (2026-08-09)
+
+19 of its 20 `open()` calls omitted `encoding=`, so on Windows they inherited
+cp1252 while every previous session ran on a UTF-8 sandbox. The build died on the
+first actor bio containing a full-width comma (U+FF0C) — AFTER writing 8,991 files
+in the wrong codec. Fixed by making all 19 writes explicit UTF-8.
+
+TWO THINGS TO NOTE. A partial build leaves the tree in a state that looks like a
+huge legitimate diff, so revert the generated output before re-running rather than
+building on top of it. And the crash is the lucky case: a bio with only Latin-1
+characters would have been written as cp1252 SILENTLY, differing from the repo's
+UTF-8 and corrupting curly quotes and em dashes without any error at all.
+
+## 22. THE DRIVE LEDGER — how to work a large PDF batch (established 2026-08-09)
+
+READ THIS BEFORE STARTING ANY MULTI-FILE DRIVE BATCH. It exists because a
+session listed a 93-file folder, reported the categories back, and that reading
+of the folder was mistaken for having PROCESSED the folder. Four files had
+actually been read. A listing is metadata; it is not work.
+
+THE RULE: A BATCH OF MORE THAN ABOUT TEN FILES GETS A LEDGER BEFORE ANY FILE IS
+TRANSCRIBED. The ledger is the single source of truth for what has been done,
+and it lives on disk, never in the chat.
+
+  generator/staging/drive_<date>_ledger.json
+    one row per file: {id, title, kind, status, credits?, note?}
+    status is todo | done | no_data | blocked
+    validate on creation: entry count == folder count, and zero duplicate ids
+
+  generator/staging/drive_<date>/
+    ONE SMALL JSON PER TRANSCRIBED PAGE, plus an append-only _progress.log
+    and the _stage.py helper that writes both in one step.
+
+WHY PER-FILE OUTPUTS RATHER THAN ONE GROWING DOCUMENT. Appending to a single
+staging file makes every write re-read and re-emit the whole document, which
+gets more expensive with each entry and crowds out the actual work. Small files
+keep each write flat-cost and let a batch be merged and applied in one pass at
+the end. The same reasoning applies to the ledger: tick it in bulk at the end of
+a pass rather than after every single file.
+
+WHY IT MATTERS BEYOND BOOKKEEPING. A long batch will outlive the session's
+context. The ledger is what lets the next pass — or the next session — answer
+'what is left' without re-reading anything, and it is what makes an honest
+progress number possible instead of an impression of one. Report progress as
+'N of TOTAL files', never as a list of categories found.
+
+STATUS no_data IS A RESULT, NOT A FAILURE. A CandyJar platform page carrying no
+cast is a finding worth recording once so nobody opens it again.
+
+## 23. THE PLATFORM IS IN THE FILENAME (Cyan, 2026-08-10)
+
+Cyan encodes the PLATFORM in some Drive filenames, and where she does, that is
+authoritative. It matters more than it sounds: IMDb never says which app a title
+streams on, and platform is the one field that cannot be inferred from a title
+page. The filename is often the ONLY source for it.
+
+Forms seen in the 9 Aug batch:
+
+  "Candyjar Drama- Grayson (TV Mini Series 2026) - IMDb.pdf"   -> candyjar
+  "Shortmax drama- The Billion Dollar Baby ... - IMDb.pdf"     -> shortmax
+  "Watch Study Buddy _ ... on CandyJar.pdf"                    -> candyjar
+  "Goodshort Titles from IMDB.pdf"                             -> goodshort
+  "Drama Box Titles from IMDB.pdf"                             -> dramabox
+  "Shortical titles.pdf" / "Shortmax Titles.pdf"               -> shortical / shortmax
+  "DramaPops Titles.pdf" / "Dramawave Title list from IMDB.pdf"-> dramapops / dramawave
+
+NOT a platform: "Gideon - ShortDramaDB.pdf". ShortDramaDB is the SOURCE SITE the
+page was saved from; that page's own content says the title streams on CandyJar.
+Distinguish where-it-was-saved-from from what-app-it-is-on.
+
+READ FILENAMES AT INVENTORY TIME, NOT JUST FILE CONTENTS. A session working this
+batch reported that the ~200-title import queue was inert because platform was
+unknowable from IMDb - while the platform-labelled title lists sat unread in the
+same folder. The ledger now carries a platform_from_filename field; populate it
+when building the ledger, before transcribing anything.
+
+CONSEQUENCE FOR PRIORITY. The per-platform title-list PDFs are worth MORE than the
+filmographies, because a filmography yields credits for titles we may not hold,
+while a platform list yields exactly the title-to-platform mapping that turns an
+unmatched filmography credit into an importable row.

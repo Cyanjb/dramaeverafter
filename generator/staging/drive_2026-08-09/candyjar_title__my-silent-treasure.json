@@ -1,0 +1,60 @@
+{
+  "title": "My Silent Treasure",
+  "imdb_id": "tt40106019",
+  "platform": "candyjar",
+  "year": 2026,
+  "genres": [
+    "Western"
+  ],
+  "confident": true,
+  "production_companies": [
+    "Purplelight Pictures (co0742318)"
+  ],
+  "VERIFY_PLATFORM": "This page has NO 'Official site' line and credits only Purplelight Pictures - not Inkitt Media / Candy Jar like the other CandyJar titles in this batch. The title matches ours exactly and we already hold it as candyjar (it was on the co1130595 company list), so the cast below is safe to apply to our existing row. But the CandyJar attribution itself is worth a second look: Purplelight may be a production house making a CandyJar original, or our platform attribution may be wrong. Cast pairing is unaffected either way.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Eric Guilmette",
+      "character": "Dean Weston",
+      "nm": "nm12187579"
+    },
+    {
+      "order": 2,
+      "name": "Elina Golde",
+      "character": "Nora",
+      "nm": "nm7897312"
+    },
+    {
+      "order": 3,
+      "name": "Benedikt Sebastian",
+      "character": "Joe Slade",
+      "nm": "nm7509519"
+    },
+    {
+      "order": 4,
+      "name": "D. Mitry",
+      "character": "Don Tomas",
+      "nm": "nm7371314"
+    },
+    {
+      "order": 5,
+      "name": "Mariana Tostado",
+      "character": "Ana",
+      "nm": "nm16901298"
+    },
+    {
+      "order": 6,
+      "name": "Jose Luis Medrano",
+      "character": "Pancho",
+      "nm": "nm12247683"
+    },
+    {
+      "order": 7,
+      "name": "Sergio Riobueno",
+      "character": "Ramon (The Lawyer)",
+      "nm": "nm16239261"
+    }
+  ],
+  "_drive_id": "1tmBKoIrX7-yU0phSfcEoQRbfn6rX1Xfp",
+  "_kind": "candyjar_title"
+}

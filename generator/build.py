@@ -940,7 +940,7 @@ for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.h
     if os.path.exists(p): os.remove(p)
 for d in ["", "actors", "titles", "tropes", "apps"]:
     os.makedirs(os.path.join(DIST, d), exist_ok=True)
-open(os.path.join(DIST, "style.css"), "w").write(CSS)
+open(os.path.join(DIST, "style.css"), "w", encoding="utf-8").write(CSS)
 urls = []
 
 # Actor pages
@@ -1012,7 +1012,7 @@ for p in people:
     html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch (2026) | DramaEverAfter",
                 f"Every vertical drama {p['name']} has starred in, with platforms and where to watch. Updated {UPDATED}.",
                 body, f"{DOMAIN}/actors/{sl}.html", ld)
-    open(os.path.join(DIST, "actors", f"{sl}.html"), "w").write(html)
+    open(os.path.join(DIST, "actors", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/actors/{sl}.html")
 
 # Actors A-Z (NEW): a real single-page directory rather than the prototype's fake
@@ -1094,7 +1094,7 @@ body = f"""
 html = page("Every Vertical Drama Actor, A-Z | DramaEverAfter",
             f"An A-Z directory of {len(people):,} vertical drama actors, with credits and where to watch.",
             body, f"{DOMAIN}/actors/index.html", depth=1)
-open(os.path.join(DIST, "actors", "index.html"), "w").write(html)
+open(os.path.join(DIST, "actors", "index.html"), "w", encoding="utf-8").write(html)
 urls.append("/actors/index.html")
 
 ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "dubbed": "Dubbed release"}
@@ -1144,7 +1144,6 @@ for t in titles:
 <h1>{t['primary_title']}</h1>
 <p class="views-line">{" &middot; ".join(views_bits)}</p>
 {f'<p class="book-note"><span aria-hidden="true">&#128214;</span> Based on the novel{" by " + book_of(t) if book_of(t) != "yes" else ""}</p>' if book_of(t) else ''}
-<div class="chips" style="margin-bottom:26px">{trope_html}</div>
 <div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
 <div class="title-actions">
@@ -1155,6 +1154,7 @@ for t in titles:
 </div>
 {f'<p class="hint" style="margin-top:14px">Also known as: {t["alt_titles"].replace(";", ", ")}</p>' if t.get('alt_titles') else ''}
 <div class="story"><h2>The story</h2><p>{t['synopsis_short']}</p></div>
+{f'<div class="chips" style="margin-top:22px">{trope_html}</div>' if trope_html else ''}
 </div>
 </section>
 {f'<section class="pad" style="padding:34px 22px 36px"><h2 style="font-size:24px;margin-bottom:20px">Cast</h2><div class="grid cast">{cast_html}</div></section>' if cast_html else ''}
@@ -1167,7 +1167,7 @@ for t in titles:
                 f"{t['primary_title']}: where to watch, cast and tropes. Updated {UPDATED}.",
                 body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t))
     os.makedirs(os.path.join(DIST, d, "titles"), exist_ok=True)
-    open(os.path.join(DIST, d, "titles", f"{sl}.html"), "w").write(html)
+    open(os.path.join(DIST, d, "titles", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/{d}titles/{sl}.html")
 
 # Trope pages
@@ -1210,7 +1210,7 @@ for tr in all_tropes:
     html = page(f"Best {trope_heading(tr)} Vertical Dramas (2026) | DramaEverAfter",
                 f"Every verified {tr} vertical drama across ReelShort, DramaBox and more. Updated {UPDATED}.",
                 body, f"{DOMAIN}/tropes/{sl}.html")
-    open(os.path.join(DIST, "tropes", f"{sl}.html"), "w").write(html)
+    open(os.path.join(DIST, "tropes", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/tropes/{sl}.html")
 
 # All-tropes index (NEW): a counted A-Z list, not a chip cloud -- 226 chips is a wall.
@@ -1236,7 +1236,7 @@ body = f"""
 html = page(f"All {len(all_tropes)} Vertical Drama Tropes | DramaEverAfter",
             f"Every trope in the database, counted. Browse {len(all_tropes)} tropes A to Z.",
             body, f"{DOMAIN}/tropes/index.html")
-open(os.path.join(DIST, "tropes", "index.html"), "w").write(html)
+open(os.path.join(DIST, "tropes", "index.html"), "w", encoding="utf-8").write(html)
 urls.append("/tropes/index.html")
 
 
@@ -1272,7 +1272,7 @@ for t in titles:
                 f"Where to watch {t['primary_title']}: every platform it streams on, checked {UPDATED}.",
                 body, f"{DOMAIN}/{d}where-to-watch/{sl}.html", depth=tdepth(t))
     os.makedirs(os.path.join(DIST, d, "where-to-watch"), exist_ok=True)
-    open(os.path.join(DIST, d, "where-to-watch", f"{sl}.html"), "w").write(html)
+    open(os.path.join(DIST, d, "where-to-watch", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/{d}where-to-watch/{sl}.html")
 
 # Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
@@ -1313,7 +1313,7 @@ for tr in all_tropes:
         html = page(f"Best {trope_heading(tr)} Vertical Dramas on {pl['name']} (2026) | DramaEverAfter",
                     f"Every verified {tr} vertical drama on {pl['name']}. Updated {UPDATED}.",
                     body, f"{DOMAIN}/tropes/{trs}/{pls}.html", depth=2)
-        open(os.path.join(DIST, "tropes", trs, f"{pls}.html"), "w").write(html)
+        open(os.path.join(DIST, "tropes", trs, f"{pls}.html"), "w", encoding="utf-8").write(html)
         urls.append(f"/tropes/{trs}/{pls}.html")
 
 # Apps: one NEW per-platform page for every app with real availability data
@@ -1372,7 +1372,7 @@ for pid, n in TOP_PLATFORMS:
     html = page(f"{pl['name']}: Titles, Pricing and Where to Start (2026) | DramaEverAfter",
                 f"{pl['name']} on DramaEverAfter: {len(app_titles):,} titles, regulars, and how to get started.",
                 body, f"{DOMAIN}/apps/{pls}.html", depth=1)
-    open(os.path.join(DIST, "apps", f"{pls}.html"), "w").write(html)
+    open(os.path.join(DIST, "apps", f"{pls}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/apps/{pls}.html")
 
 # Platforms page -> "all apps" index
@@ -1395,7 +1395,7 @@ body = f"""
 html = page("Vertical Drama Apps Compared (2026) | DramaEverAfter",
             f"ReelShort, DramaBox, ShortMax and more compared: pricing and where to start. Updated {UPDATED}.",
             body, f"{DOMAIN}/platforms.html", depth=0)
-open(os.path.join(DIST, "platforms.html"), "w").write(html)
+open(os.path.join(DIST, "platforms.html"), "w", encoding="utf-8").write(html)
 urls.append("/platforms.html")
 
 # Search index + browse page (client-side search/filter, no backend needed).
@@ -1436,7 +1436,7 @@ for t in titles_root:
     if img: entry["i"] = img
     search_titles.append(entry)
 
-open(os.path.join(DIST, "search-index.json"), "w").write(
+open(os.path.join(DIST, "search-index.json"), "w", encoding="utf-8").write(
     json.dumps({"actors": search_actors, "titles": search_titles}, separators=(",", ":")))
 
 VISIBLE = 14  # chips shown before "show all N" disclosure, per design ("14 most common of 226")
@@ -1703,7 +1703,7 @@ browse_body = f"""
 html = page("Search DramaEverAfter: Every Actor and Title (2026) | DramaEverAfter",
             f"Search and filter {len(people)} vertical drama actors and {len(titles_root)} titles by trope and platform.",
             browse_body, f"{DOMAIN}/browse.html", depth=0)
-open(os.path.join(DIST, "browse.html"), "w").write(html)
+open(os.path.join(DIST, "browse.html"), "w", encoding="utf-8").write(html)
 urls.append("/browse.html")
 
 # My List. Renders entirely from localStorage + the existing search index, so the
@@ -1817,7 +1817,7 @@ Tip: copy your list to keep it if you switch devices.</p>
 html = page("My List | DramaEverAfter",
             "The dramas you have saved, kept in your own browser.",
             mylist_body, f"{DOMAIN}/my-list.html", depth=0)
-open(os.path.join(DIST, "my-list.html"), "w").write(html)
+open(os.path.join(DIST, "my-list.html"), "w", encoding="utf-8").write(html)
 urls.append("/my-list.html")
 
 
@@ -1844,7 +1844,7 @@ for o in origins_other:
                 f"{heading}: titles, cast and where to watch. Updated {UPDATED}.",
                 body, f"{DOMAIN}/{o}/index.html", depth=1)
     os.makedirs(os.path.join(DIST, o), exist_ok=True)
-    open(os.path.join(DIST, o, "index.html"), "w").write(html)
+    open(os.path.join(DIST, o, "index.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/{o}/index.html")
 
 # Homepage
@@ -1962,7 +1962,7 @@ body = f"""
 html = page("DramaEverAfter: Every Vertical Drama, Every Platform, One Place",
             "The searchable database of vertical dramas and micro dramas: actors, tropes, and where to watch across ReelShort, DramaBox, ShortMax and more.",
             body, f"{DOMAIN}/", depth=0)
-open(os.path.join(DIST, "index.html"), "w").write(html)
+open(os.path.join(DIST, "index.html"), "w", encoding="utf-8").write(html)
 urls.insert(0, "/")
 
 # Blog (NEW): template + layout only. No posts.csv exists yet, so this renders an
@@ -1993,7 +1993,7 @@ body = f"""
 html = page("The DramaEverAfter Blog: Recaps, Trope Explainers and App Comparisons",
             "Vertical drama recaps, trope explainers and app comparisons from DramaEverAfter.",
             body, f"{DOMAIN}/blog.html", depth=0)
-open(os.path.join(DIST, "blog.html"), "w").write(html)
+open(os.path.join(DIST, "blog.html"), "w", encoding="utf-8").write(html)
 urls.append("/blog.html")
 
 # Contact (NEW): reason-chooser form is fully interactive client-side (pure
@@ -2077,13 +2077,13 @@ body = f"""
 html = page("Contact DramaEverAfter: Report a Correction or Missing Title",
             "Report a correction, a missing title, or get in touch with DramaEverAfter.",
             body, f"{DOMAIN}/contact.html", depth=0)
-open(os.path.join(DIST, "contact.html"), "w").write(html)
+open(os.path.join(DIST, "contact.html"), "w", encoding="utf-8").write(html)
 urls.append("/contact.html")
 
 # sitemap + robots
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sm += "".join(f"<url><loc>{DOMAIN}{u}</loc></url>\n" for u in urls) + "</urlset>"
-open(os.path.join(DIST, "sitemap.xml"), "w").write(sm)
-open(os.path.join(DIST, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n")
+open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(sm)
+open(os.path.join(DIST, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n")
 
 print(f"Built {len(urls)} pages -> dist/")

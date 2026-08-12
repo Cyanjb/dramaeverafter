@@ -1,6 +1,6 @@
 person_id,slug,name,panel,credits,has_photo,in_rail,source
 kasey-esser,kasey-esser,Kasey Esser,first-name grid,17,yes,yes,reddit_fan_panels_2026-08-09
-armand-procacci,armand-procacci,Armand Procacci,first-name grid,12,no,yes,reddit_fan_panels_2026-08-09
+armand-procacci,armand-procacci,Armand Procacci,first-name grid,12,yes,yes,reddit_fan_panels_2026-08-09
 jackson-tiller,jackson-tiller,Jackson Tiller,first-name grid,10,no,yes,reddit_fan_panels_2026-08-09
 jarred-harper,jarred-harper,Jarred Harper,first-name grid,10,no,yes,reddit_fan_panels_2026-08-09
 aaron-oberst,aaron-oberst,Aaron Oberst,B-D-E,8,yes,yes,reddit_fan_panels_2026-08-09
@@ -9,11 +9,11 @@ neven-tomic,neven-tomic,Neven Tomic,first-name grid,5,yes,yes,reddit_fan_panels_
 ben-taylor,ben-taylor,Ben Taylor,Charming,4,no,yes,reddit_fan_panels_2026-08-09
 carson-polish,carson-polish,Carson Polish,The Eyes Have It,4,no,yes,reddit_fan_panels_2026-08-09
 jacob-tittl,jacob-tittl,Jacob Tittl,Chisled,4,no,yes,reddit_fan_panels_2026-08-09
-pierre-longer,pierre-longer,Pierre Longer,Swoon,4,no,yes,reddit_fan_panels_2026-08-09
-tate-doppler,tate-doppler,Tate Doppler,Charming,4,no,yes,reddit_fan_panels_2026-08-09
-alex-pychtin,alex-pychtin,Alex Pychtin,B-D-E,3,no,yes,reddit_fan_panels_2026-08-09
-connor-tuohy,connor-tuohy,Connor Tuohy,Chisled,3,no,yes,reddit_fan_panels_2026-08-09
-grant-lowell-garcia,grant-lowell-garcia,Grant Lowell Garcia,The Eyes Have It,3,no,yes,reddit_fan_panels_2026-08-09
+pierre-longer,pierre-longer,Pierre Longer,Swoon,4,yes,yes,reddit_fan_panels_2026-08-09
+tate-doppler,tate-doppler,Tate Doppler,Charming,4,yes,yes,reddit_fan_panels_2026-08-09
+alex-pychtin,alex-pychtin,Alex Pychtin,B-D-E,3,yes,yes,reddit_fan_panels_2026-08-09
+connor-tuohy,connor-tuohy,Connor Tuohy,Chisled,3,yes,yes,reddit_fan_panels_2026-08-09
+grant-lowell-garcia,grant-lowell-garcia,Grant Lowell Garcia,The Eyes Have It,3,yes,yes,reddit_fan_panels_2026-08-09
 jude-gabrielson,jude-gabrielson,Jude Gabrielson,Smokin,3,no,yes,reddit_fan_panels_2026-08-09
 robbie-silverman,robbie-silverman,Robbie Silverman,Meets the Parents,3,yes,yes,reddit_fan_panels_2026-08-09
 zane-haney,zane-haney,Zane Haney,Meets the Parents,3,no,yes,reddit_fan_panels_2026-08-09

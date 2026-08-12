@@ -1,0 +1,57 @@
+{
+  "title": "Conflict of Interest",
+  "imdb_id": "tt37908349",
+  "platform": "candyjar",
+  "year": 2025,
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)",
+    "Candy Jar (co1130595)"
+  ],
+  "cast": [
+    {
+      "order": 1,
+      "name": "Ariel Yasmine",
+      "character": "Poppy Troy",
+      "nm": "nm4724672"
+    },
+    {
+      "order": 2,
+      "name": "Giovanni DeVal",
+      "character": "Bryce O'Connell",
+      "nm": "nm3740384"
+    },
+    {
+      "order": 3,
+      "name": "Abby Bryan",
+      "character": "Alyssa",
+      "nm": "nm14238931"
+    },
+    {
+      "order": 4,
+      "name": "Gordon Butler",
+      "character": "Gala Attendee",
+      "nm": "nm0124934"
+    },
+    {
+      "order": 5,
+      "name": "Kyle Kimlick",
+      "character": "Michael",
+      "nm": "nm12370719"
+    },
+    {
+      "order": 6,
+      "name": "Joshua Yuen",
+      "character": "Partygoer",
+      "nm": "nm14407158"
+    },
+    {
+      "order": 7,
+      "name": "Grant Brittan",
+      "character": "Mr. Sandpepper",
+      "nm": "nm0110104"
+    }
+  ],
+  "_drive_id": "1dJvefOBqr-TYnOV_fTdydTuEqVyWrrvW",
+  "_kind": "candyjar_title"
+}

@@ -1,0 +1,59 @@
+{
+  "title": "The Billionaire's Masquerade",
+  "imdb_id": "tt35632663",
+  "platform": "candyjar",
+  "year": 2025,
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)"
+  ],
+  "apply_cast_to": "billionaire-s-masquerade",
+  "APPLY_TARGET_WARNING": "titles.csv holds TWO similar rows and they are NOT duplicates: 'The Billionaire's Masquerade' (the-billionaire-s-masquerade) is a REELSHORT title with 2 cast, and 'Billionaire's Masquerade' (billionaire-s-masquerade) is the CANDYJAR one with none. This IMDb page displays WITH the article but its official site is CandyJar and its company is Inkitt Media, so it is the CandyJar production. Matching on the title string alone would attach all 7 of these people to the wrong show on the wrong platform. Apply to billionaire-s-masquerade only. This is the leading-article trap in the traps list, in its most dangerous form: the article variant is a real, different title rather than a spelling slip.",
+  "RESOLVES_ONE_OF_THE_11": "Second confirmation of the pattern. Another of the 11 absent from co1130595, and again credited to Inkitt Media (co1110145) only.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Kimberly McClain",
+      "character": "Ivy Waldon",
+      "nm": "nm14653000"
+    },
+    {
+      "order": 2,
+      "name": "Sam Schweikert",
+      "character": "Philip",
+      "nm": "nm3817696"
+    },
+    {
+      "order": 3,
+      "name": "Amber Laird",
+      "character": "Carly",
+      "nm": "nm7459658"
+    },
+    {
+      "order": 4,
+      "name": "Jacob John Caldwell",
+      "character": "Dancer",
+      "nm": "nm15652109"
+    },
+    {
+      "order": 5,
+      "name": "Robert Postrozny",
+      "character": "Jake",
+      "nm": "nm2396686"
+    },
+    {
+      "order": 6,
+      "name": "Kate Lanza",
+      "character": "Katharine",
+      "nm": "nm5298433"
+    },
+    {
+      "order": 7,
+      "name": "Maxwell Ross",
+      "character": "Matt",
+      "nm": "nm13246242"
+    }
+  ],
+  "_drive_id": "1Hznw1oJgRm8f4aOZSXWoj-okhlb4JkCh",
+  "_kind": "candyjar_title_of_the_11"
+}

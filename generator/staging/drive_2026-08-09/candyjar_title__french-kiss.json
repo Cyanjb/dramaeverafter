@@ -1,0 +1,55 @@
+{
+  "title": "French Kiss",
+  "imdb_id": "tt39311179",
+  "platform": "candyjar",
+  "year": 2025,
+  "genres": [
+    "Drama",
+    "Romance"
+  ],
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)",
+    "Candy Jar (co1130595)"
+  ],
+  "cast": [
+    {
+      "order": 1,
+      "name": "Melissa Papel",
+      "character": "Bianca",
+      "nm": "nm3383318"
+    },
+    {
+      "order": 2,
+      "name": "CÃ©line Planata",
+      "character": "Jenna",
+      "nm": "nm11333774"
+    },
+    {
+      "order": 3,
+      "name": "James Hyde",
+      "character": "James",
+      "nm": "nm0005037"
+    },
+    {
+      "order": 4,
+      "name": "Tyler Crosby",
+      "character": "Jonah",
+      "nm": "nm3262319"
+    },
+    {
+      "order": 5,
+      "name": "Vincent Archer",
+      "character": "Liam",
+      "nm": "nm18098889"
+    },
+    {
+      "order": 6,
+      "name": "Bryndal Braithwaite",
+      "character": "Vivianne",
+      "nm": "nm16359136"
+    }
+  ],
+  "_drive_id": "1DZUuOfEKD-eoAWoqVPIYeKk4gCTJRqti",
+  "_kind": "candyjar_title"
+}

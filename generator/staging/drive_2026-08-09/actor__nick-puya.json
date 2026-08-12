@@ -1,0 +1,122 @@
+{
+  "name": "Nick Puya",
+  "nm": "nm8650150",
+  "person_id": "nick-puya",
+  "confident": true,
+  "height": "6'4\" (1.93 m)",
+  "AKA_TO_ADD": "IMDb alternative name 'Nicholas Puya' (billed that way on the 2018 short Form 1).",
+  "BIDIRECTIONAL_VERIFICATION": "This page independently confirms two title-page reconstructions from earlier in this batch. His own filmography lists 'Luna Graced' as Roman Luko and 'Spoiled Rotten' as Logan - exactly the character names I reconstructed from those CandyJar title pages, where the actor and character columns were scrambled. Actor page and title page agree from opposite directions, which is the strongest confirmation available in this data.",
+  "ARTICLE_TRAP_EXAMPLE": "He credits 'Billionaire's Baby' (2024). The traps list names this exact pair - IMDb drops the article the platforms keep, and we hold 'The Billionaire's Baby'. The matcher strips leading articles before collapsing, so it should land correctly; worth watching on apply.",
+  "non_vertical_excluded_note": "Filtered out: Murder in Nashville and Trapped in the Rocky Mountains (TV movies), Bad Boys for Life, The Beach Bum, Flamingo Heist, Souls of Silence, On the Arm, Madden NFL 23 (video game), Gym Shorts, Cake: The Series, Al Otro Lado del Muro, and ~12 shorts.",
+  "credits": [
+    {
+      "title": "The Mafia Heir I Hired as a Bodyguard",
+      "character": "Xavier",
+      "year": 2026
+    },
+    {
+      "title": "Off Limits",
+      "character": "Chris",
+      "year": 2026
+    },
+    {
+      "title": "Cyberking Reclaims His Throne",
+      "character": "Max Lennon",
+      "year": 2026
+    },
+    {
+      "title": "Owned by the Mafia Boss",
+      "character": "Luca",
+      "year": 2026
+    },
+    {
+      "title": "My Janitor Dad Is the Final Boss",
+      "character": "Leif",
+      "year": 2026
+    },
+    {
+      "title": "Ms. CEO's Baby Daddy Is the Merchant of Death",
+      "character": "Connor Reed",
+      "episodes": 1,
+      "year": 2026
+    },
+    {
+      "title": "The Rose Comes with Thorns",
+      "character": "Locke",
+      "year": 2026
+    },
+    {
+      "title": "I Forgot I Married Him",
+      "character": "Klaus",
+      "year": 2025
+    },
+    {
+      "title": "The Godfather's Secret Lover",
+      "character": "James Corleone",
+      "year": 2025
+    },
+    {
+      "title": "Luna Graced",
+      "character": "Roman Luko",
+      "year": 2025
+    },
+    {
+      "title": "The Fake Debutante and the True Billionaire",
+      "character": "Ethan Cullen",
+      "year": 2025
+    },
+    {
+      "title": "The Missing Miracle Doctor",
+      "character": "Lucas",
+      "year": 2025
+    },
+    {
+      "title": "Six Years Too Late to Love Her",
+      "character": "Nicholas",
+      "year": 2025
+    },
+    {
+      "title": "One More Taste of Love",
+      "character": "Alfie Harrison",
+      "year": 2025
+    },
+    {
+      "title": "Hold Me Tight, Mr. Firefighter",
+      "character": "Raymond Longwood",
+      "year": 2025
+    },
+    {
+      "title": "Spoiled Rotten",
+      "character": "Logan",
+      "year": 2025
+    },
+    {
+      "title": "Showtime Ladies!",
+      "character": "Benjamin",
+      "year": 2025
+    },
+    {
+      "title": "Boss! U Almost Got Her",
+      "character": "Clyde Croft",
+      "year": 2025
+    },
+    {
+      "title": "I Became Mrs Grayson by Bragging",
+      "character": "Liam Grayson",
+      "year": 2025
+    },
+    {
+      "title": "Billionaire's Baby",
+      "character": "Gideon Maslow",
+      "year": 2024
+    },
+    {
+      "title": "The Wreck of Echo 10-4",
+      "character": "Giuseppe L'Aquila",
+      "episodes": 4,
+      "year": 2022
+    }
+  ],
+  "_drive_id": "1Ii07gN2CicM86fi2BwO2Gkk45ohoo5LH",
+  "_kind": "actor"
+}

@@ -1,0 +1,126 @@
+{
+  "title": "Billionaire Love Start with Lies",
+  "imdb_id": "tt35702185",
+  "platform": "candyjar",
+  "year": 2025,
+  "confident": true,
+  "production_companies": [
+    "Unreal Imagine (co1028735)"
+  ],
+  "VERIFY_PLATFORM": "IMDb's official site for this is VIGLOO (vigloo.onelink.me/SrIM/ll2qs3ui), and the company is Unreal Imagine - no CandyJar or Inkitt credit at all. We hold it as candyjar. Two readings: it is on BOTH platforms (common, and would add a second watch option to a title that has one), or our candyjar attribution is wrong. Cast is unaffected - the title matches ours exactly. Worth an availability row for vigloo if Cyan confirms.",
+  "possible_vigloo_link": "https://vigloo.onelink.me/SrIM/ll2qs3ui",
+  "cast_note": "IMDb header says Top Cast 20; the PDF captured 18, matching cst_1..cst_18 in the link block. The remaining 2 are not in this document and are simply absent, not dropped.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Jessica Jacoby",
+      "character": "Rita Kelly",
+      "nm": "nm7791382"
+    },
+    {
+      "order": 2,
+      "name": "Rick Shepherd",
+      "character": "Davis Hart",
+      "nm": "nm9195401"
+    },
+    {
+      "order": 3,
+      "name": "Allie Rick",
+      "character": "Alina Austin",
+      "nm": "nm12014696"
+    },
+    {
+      "order": 4,
+      "name": "Dwayne Tarver",
+      "character": "Scott Hart",
+      "nm": "nm2686180"
+    },
+    {
+      "order": 5,
+      "name": "Derek Ocampo",
+      "character": "Peter",
+      "nm": "nm5381748"
+    },
+    {
+      "order": 6,
+      "name": "Ari Rene'",
+      "character": "Mara",
+      "nm": "nm8396541"
+    },
+    {
+      "order": 7,
+      "name": "Valery Rozo",
+      "character": "Ava",
+      "nm": "nm16010209"
+    },
+    {
+      "order": 8,
+      "name": "April Reddin",
+      "character": "Mrs. Castro",
+      "nm": "nm17010698"
+    },
+    {
+      "order": 9,
+      "name": "Kevin Rauch",
+      "character": "Luke",
+      "nm": "nm0030929"
+    },
+    {
+      "order": 10,
+      "name": "Lavelle Lemonier",
+      "character": "Police Officer",
+      "nm": "nm12513020"
+    },
+    {
+      "order": 11,
+      "name": "Jae Garcia",
+      "character": "Coffee Shop Customer 1",
+      "nm": "nm3238560"
+    },
+    {
+      "order": 12,
+      "name": "Donika Hunking",
+      "character": "Claire",
+      "nm": "nm15765066"
+    },
+    {
+      "order": 13,
+      "name": "Justin Stapleton",
+      "character": "Stripper #1",
+      "nm": "nm8967528"
+    },
+    {
+      "order": 14,
+      "name": "Bryan Ross",
+      "character": "Server",
+      "nm": "nm1757199"
+    },
+    {
+      "order": 15,
+      "name": "Daniel Schneider",
+      "character": "Henry Ballway",
+      "nm": "nm16393766"
+    },
+    {
+      "order": 16,
+      "name": "Julia Andryushchenko",
+      "character": "",
+      "nm": "nm17010699",
+      "note": "character is truncated in the PDF as 'Gala ...' - left blank rather than guessed"
+    },
+    {
+      "order": 17,
+      "name": "Danny Arana",
+      "character": "Coffee Shop Customer 2",
+      "nm": "nm16464057"
+    },
+    {
+      "order": 18,
+      "name": "Yana Roykhman",
+      "character": "Woman 4",
+      "nm": "nm6347009"
+    }
+  ],
+  "_drive_id": "1EGTcTgu36Hze7mKR0lDgwpkJNaNQ-L61",
+  "_kind": "candyjar_title"
+}

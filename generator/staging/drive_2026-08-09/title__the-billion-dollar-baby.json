@@ -1,0 +1,110 @@
+{
+  "title": "The Billion Dollar Baby",
+  "imdb_id": "tt36242374",
+  "platform": "shortmax",
+  "platform_source": "filename prefix 'Shortmax drama-' AND IMDb production company ShortMax (co1065580)",
+  "year": 2025,
+  "aka": "Le BÃ©bÃ© Ã  Milliard de Dollars",
+  "confident": true,
+  "production_companies": [
+    "ShortMax (co1065580)",
+    "Time Span Entertainment (co1099090)"
+  ],
+  "PLATFORM_URL_FOUND": {
+    "platform_id": "shortmax",
+    "web_url": "https://www.shorttv.live/",
+    "evidence": "IMDb official site 'Short TV' -> shorttv.live. Verified live: 200.",
+    "corroboration": "The ShortMax title 'Our Dirty Little Secrets' (read earlier, flagged DO_NOT_APPLY) carries a direct_link on h5.shorttv.live - same domain, independently.",
+    "caveat": "The per-title deep link IMDb gives (https://www.shorttv.live/drama/the-billion-dollar-baby-5835) returns 404. The homepage is good; individual direct_links from IMDb are NOT reliable for this platform and need checking one by one.",
+    "why_it_matters": "platforms.csv has web_url EMPTY for ShortMax, one of the seven apps showing a dead button. The July probe recorded ShortMax as returning 503, so it was never confirmed."
+  },
+  "cross_check": "Cameron Porras is nm13577245 here, matching the nm id READ FIRST already records for him as the second-best GoodShort filmography target. Kirby Ellwood (nm11077716) has her own actor PDF in this folder.",
+  "cast": [
+    {
+      "order": 1,
+      "name": "Kirby Ellwood",
+      "character": "Eliza Kingsley",
+      "nm": "nm11077716"
+    },
+    {
+      "order": 2,
+      "name": "Cameron Porras",
+      "character": "Ethan Blake",
+      "nm": "nm13577245"
+    },
+    {
+      "order": 3,
+      "name": "Robyn Cantrell",
+      "character": "Lisette",
+      "nm": "nm16010324"
+    },
+    {
+      "order": 4,
+      "name": "Tricia Connor Jackson",
+      "character": "Mom",
+      "nm": "nm14507335"
+    },
+    {
+      "order": 5,
+      "name": "Zachary B. Rist",
+      "character": "Ryan Blake",
+      "nm": "nm9647863"
+    },
+    {
+      "order": 6,
+      "name": "Jose Rosete",
+      "character": "Evil Doctor",
+      "nm": "nm1352774"
+    },
+    {
+      "order": 7,
+      "name": "Lil Safonova",
+      "character": "Guest",
+      "nm": "nm14267255"
+    },
+    {
+      "order": 8,
+      "name": "SÃ©lynne Silver",
+      "character": "Emma",
+      "nm": "nm9806129"
+    },
+    {
+      "order": 9,
+      "name": "Ava Margarett",
+      "character": "Young Eliza",
+      "nm": "nm10962435"
+    },
+    {
+      "order": 10,
+      "name": "Rob Melendez",
+      "character": "Tony",
+      "nm": "nm16529890"
+    },
+    {
+      "order": 11,
+      "name": "Laura Lejuwaan",
+      "character": "Eliza's Mom",
+      "nm": "nm13865555"
+    },
+    {
+      "order": 12,
+      "name": "Tomas Johansson",
+      "character": "Doctor",
+      "nm": "nm3840800"
+    },
+    {
+      "order": 13,
+      "name": "Fabien Gravillon",
+      "character": "Chef #1",
+      "nm": "nm2306211"
+    },
+    {
+      "order": 14,
+      "name": "Michelle Gatpo",
+      "character": "Nurse",
+      "nm": "nm12844269"
+    }
+  ],
+  "_drive_id": "15hge2bX6QGQs47lCwI6JtqPTyEdxnWFO",
+  "_kind": "title"
+}

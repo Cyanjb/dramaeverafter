@@ -1,0 +1,308 @@
+{
+  "name": "Armand Procacci",
+  "nm": "nm11768336",
+  "person_id": "armand-procacci",
+  "confident": true,
+  "imdb_alternative_name": "Arman Procacci",
+  "aka_note": "IMDb lists the alternative name as 'Arman Procacci'. people.csv currently holds aka_names 'Armund Procacci' - a different variant. Both may be real credit spellings; worth holding both rather than replacing.",
+  "official_site": "https://armandprocacci.wixsite.com/mysite",
+  "duplicate_on_imdb": "'Beyond the Holy Lie' (TV Series, Liam, 2026) and 'Beyond the Holy Line' (TV Mini Series, Liam, 2026) both appear, same character and year. Almost certainly one production listed twice on IMDb with a typo. Do NOT create two titles - queue for a ruling.",
+  "non_vertical_excluded": [
+    {
+      "title": "Heels",
+      "type": "TV Series",
+      "character": "Joshua",
+      "episodes": 2,
+      "year": 2023
+    },
+    {
+      "title": "Rap Sh!t",
+      "type": "TV Series",
+      "character": "Tony",
+      "episodes": 1,
+      "year": 2022
+    },
+    {
+      "title": "Why Are You Here?",
+      "type": "Short",
+      "character": "Nathan",
+      "year": 2020
+    },
+    {
+      "title": "Maybe Next Time",
+      "type": "Short",
+      "character": "Victor",
+      "year": 2020
+    },
+    {
+      "title": "Helium",
+      "type": "Short",
+      "character": "David",
+      "year": 2024
+    },
+    {
+      "title": "Human Nature Show",
+      "type": "TV Movie",
+      "character": "",
+      "year": 2025
+    },
+    {
+      "title": "Triumph of the Heart",
+      "type": "feature/unclear",
+      "character": "Freddy",
+      "year": 2025
+    }
+  ],
+  "credits": [
+    {
+      "title": "You've Been Replaced, First Love",
+      "character": "",
+      "year": 2026
+    },
+    {
+      "title": "Beyond the Holy Lie",
+      "character": "Liam",
+      "year": 2026
+    },
+    {
+      "title": "Beyond the Holy Line",
+      "character": "Liam",
+      "year": 2026,
+      "suspect_duplicate_of": "Beyond the Holy Lie"
+    },
+    {
+      "title": "Not the Bride He Wanted",
+      "character": "Lucian Wolfe",
+      "episodes": 3,
+      "year": 2026
+    },
+    {
+      "title": "Pucking My Brother's Offside Rival",
+      "character": "Tyler Hayes",
+      "year": 2026
+    },
+    {
+      "title": "The Day I Take Off My Wedding Ring",
+      "character": "Ken",
+      "year": null
+    },
+    {
+      "title": "Prince Charming x3",
+      "character": "Keyden Blackwood",
+      "year": 2026
+    },
+    {
+      "title": "Miss Perfect and Her Monster",
+      "character": "Tyler Blake",
+      "episodes": 1,
+      "year": 2026
+    },
+    {
+      "title": "Nerdy Girl's Hot Chemistry with Biker Bad Boy",
+      "character": "Beau Clement",
+      "year": 2026
+    },
+    {
+      "title": "Return of the Abandoned Basketball God",
+      "character": "Dylan Carter",
+      "year": 2025
+    },
+    {
+      "title": "Christmas with a Country Bad Boy",
+      "character": "Colt Storm",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "The Man Who Stands Beside You",
+      "character": "Damian Reed",
+      "year": 2025
+    },
+    {
+      "title": "I Am the Mafia Girl Boss and He's My Man",
+      "character": "Ken",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "My Taboo Crush Is My Stepbrother",
+      "character": "Aiden Blake",
+      "year": 2025
+    },
+    {
+      "title": "My Ex-Husband's Son Is My Secret Pleasure",
+      "character": "Xavier",
+      "episodes": 1,
+      "year": 2025,
+      "credited_as": "Arman Procacci"
+    },
+    {
+      "title": "Alpha Daddy Take Mommy Home",
+      "character": "Lucian Blackwood",
+      "year": 2025
+    },
+    {
+      "title": "One Night Altitude",
+      "character": "Grayson Hawthorne",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "Missing Heiress: Spoiled by Three Billionaires",
+      "character": "Noah Lawrence",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "The Fated Encounter: Love in Disguise",
+      "character": "Winston Harris",
+      "year": 2025
+    },
+    {
+      "title": "Mated to My Rival Alpha",
+      "character": "Alex",
+      "year": 2025
+    },
+    {
+      "title": "Rich, Ripped & All Mine!",
+      "character": "Griffin",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "Pregnant with His Forbidden Secret Desires",
+      "character": "Luccio",
+      "year": 2025
+    },
+    {
+      "title": "His Brother, My Lover",
+      "character": "Orlando",
+      "year": 2025
+    },
+    {
+      "title": "The Queen Strikes Back with Three Tycoons",
+      "character": "Adrian Hawke",
+      "episodes": 2,
+      "year": 2025
+    },
+    {
+      "title": "Escape to Italy: With My Undercover Lover",
+      "character": "Alessandro",
+      "year": 2025
+    },
+    {
+      "title": "My Unexpected Billionaire Husband",
+      "character": "Liam",
+      "year": 2025
+    },
+    {
+      "title": "Debt of Desire and Love with a Billionaire",
+      "character": "Francis",
+      "year": 2025
+    },
+    {
+      "title": "Runaway Luna: Claimed by Two",
+      "character": "Roland",
+      "year": 2025
+    },
+    {
+      "title": "Shoot Your Heart",
+      "character": "Darren Murphy",
+      "year": 2025
+    },
+    {
+      "title": "Addicted to You: The CEO's Love",
+      "character": "Leo",
+      "year": 2025
+    },
+    {
+      "title": "I'm a Queen, Not a Mistress",
+      "character": "Teddy",
+      "year": 2025
+    },
+    {
+      "title": "Dare to Harm the Billionaire's Wife?",
+      "character": "Adam",
+      "year": 2025
+    },
+    {
+      "title": "The Double Life of the Billionaire Couple",
+      "character": "Ryan Morgan",
+      "year": 2025
+    },
+    {
+      "title": "Alpha, She Wasn't the One",
+      "character": "Leon",
+      "year": 2024
+    },
+    {
+      "title": "The Hart-Breaker",
+      "character": "Ethan",
+      "year": 2024
+    },
+    {
+      "title": "Too Late to Say I Love You",
+      "character": "Francis",
+      "year": 2024
+    },
+    {
+      "title": "Under the Sunlight",
+      "character": "Sebastian Winkler",
+      "year": 2024
+    },
+    {
+      "title": "I Sold My Special Services to a Billionaire",
+      "character": "Evan James",
+      "year": 2024
+    },
+    {
+      "title": "Triple Life with My Billionaire Crush",
+      "character": "LEO",
+      "year": 2024
+    },
+    {
+      "title": "Fated to My Bad Boy Alpha",
+      "character": "Lucas",
+      "year": 2024
+    },
+    {
+      "title": "Don't Challenge the Lady Billionaire",
+      "character": "Charles Hughes",
+      "year": "2024-2025"
+    },
+    {
+      "title": "Yes Mr. CEO, We Have a Baby!",
+      "character": "Ken",
+      "year": 2024
+    },
+    {
+      "title": "A Heartbeat Away",
+      "character": "Sean",
+      "episodes": 1,
+      "year": 2024
+    },
+    {
+      "title": "Say You Remember, Say You Love",
+      "character": "Jason Clooney",
+      "year": 2024
+    },
+    {
+      "title": "Wake Up Dad! Wedding Time",
+      "character": "Roman Spencer",
+      "year": 2024
+    },
+    {
+      "title": "A Girl Nobody Wanted",
+      "character": "Shane",
+      "episodes": 1,
+      "year": 2024
+    },
+    {
+      "title": "The Substitute Bride",
+      "character": "York Godfrey",
+      "year": 2024
+    }
+  ],
+  "_drive_id": "1iat3KtNsp64yCDT50ZVIdM0_dexyYrPa",
+  "_kind": "actor"
+}

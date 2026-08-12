@@ -1,0 +1,43 @@
+{
+  "title": "The Ecstasy of Faking It",
+  "imdb_id": "tt43709556",
+  "platform": "candyjar",
+  "year": 2026,
+  "aka": "The Ecstacy of Faking It (IMDb original title, misspelled)",
+  "genres": [
+    "Micro-Drama",
+    "Romance"
+  ],
+  "confident": true,
+  "production_companies": [
+    "Inkitt Media (co1110145)"
+  ],
+  "cast": [
+    {
+      "order": 1,
+      "name": "Jabari Banks",
+      "character": "Adrian",
+      "nm": "nm12053278"
+    },
+    {
+      "order": 2,
+      "name": "Zeke Alton",
+      "character": "Mr. Scott",
+      "nm": "nm8057866"
+    },
+    {
+      "order": 3,
+      "name": "Nia Baker",
+      "character": "Emily",
+      "nm": "nm11302314"
+    },
+    {
+      "order": 4,
+      "name": "Will Collins",
+      "character": "Charlie",
+      "nm": "nm8146327"
+    }
+  ],
+  "_drive_id": "1SpWYnJvHX_ziN7ASeNGYpeQYWd7maeI3",
+  "_kind": "candyjar_title"
+}

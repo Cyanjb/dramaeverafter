@@ -1,0 +1,282 @@
+{
+  "source": "imdb_candyjar_2026-08-09",
+  "note": "Cast transcribed from Cyan's IMDb title-page PDFs (Drive folder 1P6HAJ2z..., supplied 9 Aug 2026). CAST ONLY. No IMDb storyline text is taken: synopsis_short and Browse captions are never copied or reworded from IMDb or a platform, per the standing caption rule.",
+  "method": "IMDb title-page PDFs scramble the actor and character columns, so pairing is reconstructed from the ordered nm ids in the link block (ref_=tt_cst_t_N) cross-checked against the visible name/character run and the 'Stars' line. Where the reconstruction is not certain the entry carries confident=false and must not be applied.",
+  "lead_on_the_second_company_entity": "READ FIRST asks whether the 11 CandyJar titles absent from co1130595 sit under a second IMDb company. These PDFs suggest they do. Grayson and Luna Graced credit BOTH Inkitt Media (co1110145) and Candy Jar (co1130595); Don't Say Te Amo credits ONLY Inkitt Media (co1110145). So co1110145 is the parent entity and is a superset, not a sibling. Worth pulling co1110145's company page the way co1130595's was pulled on 3 Aug - it should list the 11 and probably much of the rest of the catalogue. NOT yet verified.",
+  "titles": [
+    {
+      "title": "Grayson",
+      "imdb_id": "tt43702965",
+      "platform": "candyjar",
+      "direct_link": "https://candyjar.com/en/series/grayson-671",
+      "year": 2026,
+      "aka": "Rivals Turn Lovers",
+      "confident": true,
+      "cast": [
+        {
+          "order": 1,
+          "name": "Ashlynn Judy",
+          "character": "Kassia",
+          "nm": "nm12048932"
+        },
+        {
+          "order": 2,
+          "name": "Gabriel Jayne",
+          "character": "Grayson",
+          "nm": "nm6593286"
+        },
+        {
+          "order": 3,
+          "name": "Alexandra Swanbeck",
+          "character": "Olivia",
+          "nm": "nm9507218"
+        },
+        {
+          "order": 4,
+          "name": "Hannah Chandler",
+          "character": "Student 1",
+          "nm": "nm14561825"
+        },
+        {
+          "order": 5,
+          "name": "David Donah",
+          "character": "Ed",
+          "nm": "nm0231911"
+        },
+        {
+          "order": 6,
+          "name": "Kemma Filby",
+          "character": "Robin",
+          "nm": "nm8620674"
+        },
+        {
+          "order": 7,
+          "name": "Jonah Zane Azoulay",
+          "character": "Ethan",
+          "nm": "nm9708931"
+        },
+        {
+          "order": 8,
+          "name": "Andrew Alcantar",
+          "character": "Student 2",
+          "nm": "nm13564396"
+        },
+        {
+          "order": 9,
+          "name": "Tasha Smith",
+          "character": "Emily",
+          "nm": "nm5604553"
+        },
+        {
+          "order": 10,
+          "name": "Emma Nowicki",
+          "character": "Student 3",
+          "nm": "nm12046477"
+        }
+      ]
+    },
+    {
+      "title": "Don't Say Te Amo",
+      "imdb_id": "tt43665062",
+      "platform": "candyjar",
+      "direct_link": "",
+      "year": 2026,
+      "confident": true,
+      "production_companies": [
+        "Inkitt Media (co1110145)"
+      ],
+      "cast": [
+        {
+          "order": 1,
+          "name": "Ben Ubiñas",
+          "character": "Alex",
+          "nm": "nm6694631"
+        },
+        {
+          "order": 2,
+          "name": "Lonny Presman",
+          "character": "Danny",
+          "nm": "nm16920556"
+        },
+        {
+          "order": 3,
+          "name": "Chantal Groves",
+          "character": "Mia",
+          "nm": "nm13661445"
+        },
+        {
+          "order": 4,
+          "name": "Rocío López",
+          "character": "Lourdes",
+          "nm": "nm6096585"
+        },
+        {
+          "order": 5,
+          "name": "Luis Antonio Aldana",
+          "character": "Sebastian",
+          "nm": "nm1577888"
+        },
+        {
+          "order": 6,
+          "name": "Alexine Salmons",
+          "character": "Hannah",
+          "nm": "nm17307087"
+        },
+        {
+          "order": 7,
+          "name": "Jacqueline Reza",
+          "character": "Jasmine",
+          "nm": "nm14813937"
+        }
+      ]
+    },
+    {
+      "title": "Luna Graced",
+      "imdb_id": "tt38221065",
+      "platform": "candyjar",
+      "direct_link": "",
+      "year": 2025,
+      "aka": "Cursed by the Moon",
+      "confident": true,
+      "cast": [
+        {
+          "order": 1,
+          "name": "Faith Orta",
+          "character": "Abigail (Abby) Canaver",
+          "nm": "nm13515839"
+        },
+        {
+          "order": 2,
+          "name": "Nick Puya",
+          "character": "Roman Luko",
+          "nm": "nm8650150"
+        },
+        {
+          "order": 3,
+          "name": "Rick Shepherd",
+          "character": "Carson Oru",
+          "nm": "nm9195401"
+        },
+        {
+          "order": 4,
+          "name": "Kaileigh Jenkins",
+          "character": "Taylor",
+          "nm": "nm13663662"
+        },
+        {
+          "order": 5,
+          "name": "Tristan Ott",
+          "character": "",
+          "nm": "nm1941410",
+          "note": "no characters/ link for cst_5 on the page, so IMDb lists no character for him - the blank is real, not a dropped field"
+        },
+        {
+          "order": 6,
+          "name": "Karly-Paige Im",
+          "character": "Belle",
+          "nm": "nm13508914"
+        }
+      ]
+    },
+    {
+      "title": "Hated by My Mate",
+      "imdb_id": "tt38347878",
+      "platform": "candyjar",
+      "direct_link": "",
+      "year": 2026,
+      "confident": true,
+      "cast": [
+        {
+          "order": 1,
+          "name": "Luna Rivera",
+          "character": "Aurora",
+          "nm": "nm9854879"
+        },
+        {
+          "order": 2,
+          "name": "Christopher LeMonda",
+          "character": "Wolfgang",
+          "nm": "nm7981538"
+        },
+        {
+          "order": 3,
+          "name": "Theresa San-Nicolas",
+          "character": "Mrs. Kallah",
+          "nm": "nm0760776"
+        },
+        {
+          "order": 4,
+          "name": "Shawn Savage",
+          "character": "Colt",
+          "nm": "nm1391516"
+        },
+        {
+          "order": 5,
+          "name": "Lexi Stein",
+          "character": "Tallulah",
+          "nm": "nm8104072"
+        },
+        {
+          "order": 6,
+          "name": "Ryan Winkler",
+          "character": "Rogue",
+          "nm": "nm11649144"
+        }
+      ]
+    },
+    {
+      "title": "Spoiled Rotten",
+      "imdb_id": "tt37286908",
+      "platform": "candyjar",
+      "direct_link": "",
+      "year": 2025,
+      "aka": "Rule-Breaker's Charm",
+      "confident": true,
+      "production_companies": [
+        "Inkitt Media (co1110145)"
+      ],
+      "cast": [
+        {
+          "order": 1,
+          "name": "Faith Orta",
+          "character": "Maggie",
+          "nm": "nm13515839"
+        },
+        {
+          "order": 2,
+          "name": "Nick Puya",
+          "character": "Logan",
+          "nm": "nm8650150"
+        },
+        {
+          "order": 3,
+          "name": "Ashley Ahlquist",
+          "character": "Estelle",
+          "nm": "nm3208995"
+        },
+        {
+          "order": 4,
+          "name": "Justin Berti",
+          "character": "Richard",
+          "nm": "nm2618325"
+        },
+        {
+          "order": 5,
+          "name": "Trevor Teichmann",
+          "character": "Carter",
+          "nm": "nm3146759"
+        }
+      ]
+    }
+  ],
+  "platform_metadata_only": [
+    {
+      "title": "Study Buddy",
+      "platform": "candyjar",
+      "direct_link": "https://candyjar.com/en/series/study-buddy-664",
+      "episode_count": 37,
+      "cast": [],
+      "note": "CandyJar's own page carries NO cast, confirming adapters.md sec 13. Still needs an IMDb title page. Its synopsis was deliberately NOT taken."
+    }
+  ]
+}

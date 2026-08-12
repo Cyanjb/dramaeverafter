@@ -1,0 +1,645 @@
+{
+  "folder": "1P6HAJ2zuWmNSY7l9oZtiMkERwKDj7I4Z",
+  "supplied": "2026-08-09 by Cyan",
+  "total_files": 93,
+  "rule": "CAST ONLY from these PDFs. IMDb storyline / platform synopsis text is never copied into synopsis_short and never reworded into a Browse caption. Captions are written from scratch.",
+  "status_values": [
+    "todo",
+    "done",
+    "no_data",
+    "blocked"
+  ],
+  "files": [
+    {
+      "id": "1Igsonoe-n6liK5taVNH6QswVdcE5SAr0",
+      "title": "Grayson",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 10,
+      "platform_from_filename": "candyjar",
+      "filename_note": "filename prefix 'Candyjar Drama-'"
+    },
+    {
+      "id": "1DuyscJ72oshr8Hu5ZhWwBgCgVWjpI61Z",
+      "title": "Hated by My Mate",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 6
+    },
+    {
+      "id": "1lTxXAUQ9XR0nLRKqQ5Nmw4AbE35pGPpq",
+      "title": "Luna Graced",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 6
+    },
+    {
+      "id": "1-3JWKvWkRyppNp2KvglFuPAsXpa1TdfY",
+      "title": "Don't Say Te Amo",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 7
+    },
+    {
+      "id": "1R7HCOOzh220tqVsIh8t9Ls8X_CeLBhQn",
+      "title": "Study Buddy (CandyJar page)",
+      "kind": "candyjar_platform",
+      "status": "no_data",
+      "note": "platform page carries no cast; needs an IMDb page",
+      "platform_from_filename": "candyjar",
+      "filename_note": "filename '... on CandyJar'"
+    },
+    {
+      "id": "1q7LIJ2Hk0JbykHcZV7njUNQSi5EIz1Wy",
+      "title": "The All-American Rejects: Superfan",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 18
+    },
+    {
+      "id": "1DZUuOfEKD-eoAWoqVPIYeKk4gCTJRqti",
+      "title": "French Kiss",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 6
+    },
+    {
+      "id": "1eXHUszdmTIH63XBtmnLr4SOv5RC44vkx",
+      "title": "Spoiled Rotten",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 5
+    },
+    {
+      "id": "1Bn4q0u5m9kciP8NLrH1UUQYv_mErCPPK",
+      "title": "Our Dirty Little Secrets",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 11
+    },
+    {
+      "id": "1SpWYnJvHX_ziN7ASeNGYpeQYWd7maeI3",
+      "title": "The Ecstasy of Faking It",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 4
+    },
+    {
+      "id": "1dJvefOBqr-TYnOV_fTdydTuEqVyWrrvW",
+      "title": "Conflict of Interest",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 7
+    },
+    {
+      "id": "1tmBKoIrX7-yU0phSfcEoQRbfn6rX1Xfp",
+      "title": "My Silent Treasure",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 7
+    },
+    {
+      "id": "1OQguxPx5fScXk6vd-SIlskitkHV3Qiwg",
+      "title": "Enemies with Benefits",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 0
+    },
+    {
+      "id": "13PG1yOHk8vkMU4KAm5wBkMPT-YRAtDk3",
+      "title": "Next Door",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 6
+    },
+    {
+      "id": "1HMf7TmO7FuFz9i21hhUM-k6mQ_kv3ktp",
+      "title": "Exercise Discretion",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 6
+    },
+    {
+      "id": "1cPaDstQ4cjUeeNLa1ojcajvCGkn5SYEZ",
+      "title": "Secrets of Siren",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 5
+    },
+    {
+      "id": "1qn_Sp9X44gznZz5Bld9jyJWe3bt1CySy",
+      "title": "The Tutors",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 10
+    },
+    {
+      "id": "1GQb_hng5_5PUP5V5Ci8RzgEBvFoe4tRv",
+      "title": "Beastly Lights",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 5
+    },
+    {
+      "id": "1EGTcTgu36Hze7mKR0lDgwpkJNaNQ-L61",
+      "title": "Billionaire Love Start with Lies",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 18
+    },
+    {
+      "id": "1BQA826pzshhUtWeuEndKzPwpAygHQd10",
+      "title": "Not All About You",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 8
+    },
+    {
+      "id": "1ZT_czq8meTySKSKH2hYU9tzuhmL9NMmP",
+      "title": "In Love with Mr. Mafia",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 6
+    },
+    {
+      "id": "1s8h_NDx9YJ22PD7kxUIwxP_yTJK-WYrh",
+      "title": "Half of My Heart",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 4
+    },
+    {
+      "id": "1ChXApG5OTaGwbW9pBeuHb0tIkHLW2x4q",
+      "title": "Alpha's Doe",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 6
+    },
+    {
+      "id": "16YTzCtJeXz_KKnguB5rAdMyM0lV0mAu7",
+      "title": "Secrets of Vixen",
+      "kind": "candyjar_title",
+      "status": "done",
+      "credits": 6
+    },
+    {
+      "id": "1ihQMAo3WF4nCmGNkqx1w64ivOHYNoSIl",
+      "title": "Beneath Crimson Sails",
+      "kind": "candyjar_title_of_the_11",
+      "status": "done",
+      "credits": 17
+    },
+    {
+      "id": "1Hznw1oJgRm8f4aOZSXWoj-okhlb4JkCh",
+      "title": "The Billionaire's Masquerade",
+      "kind": "candyjar_title_of_the_11",
+      "status": "done",
+      "credits": 7
+    },
+    {
+      "id": "1KjqMpMArKA0GXAzuYJDiXACJcVbGqQz9",
+      "title": "Boardroom Attraction",
+      "kind": "candyjar_title_of_the_11",
+      "status": "done",
+      "credits": 9
+    },
+    {
+      "id": "1ONSXr6M_GT75UiePsD9criFgneQgQG0V",
+      "title": "Gideon (ShortDramaDB)",
+      "kind": "candyjar_title_of_the_11",
+      "status": "done",
+      "credits": 0,
+      "filename_note": "filename names ShortDramaDB, which is the SOURCE SITE not the platform; the page itself says CandyJar"
+    },
+    {
+      "id": "1utTl9EfYwaT7qt-FsBIEU1q7EFqpAQbc",
+      "title": "From Campus Simp to Hidden Heiress",
+      "kind": "title",
+      "status": "todo"
+    },
+    {
+      "id": "15hge2bX6QGQs47lCwI6JtqPTyEdxnWFO",
+      "title": "The Billion Dollar Baby (ShortMax)",
+      "kind": "title",
+      "status": "done",
+      "platform_from_filename": "shortmax",
+      "filename_note": "filename prefix 'Shortmax drama-'",
+      "credits": 14
+    },
+    {
+      "id": "18ISk4Rz6aA5Y23IOB9YLTqJ_i-SrZfxE",
+      "title": "Foul Play with My Brother's Best Friend",
+      "kind": "title",
+      "status": "todo"
+    },
+    {
+      "id": "11nV0yzeZb34yriUOAXiq0OanPS2kk8s3",
+      "title": "Forgive Me Father",
+      "kind": "title",
+      "status": "done",
+      "credits": 7
+    },
+    {
+      "id": "1z9ZSwQQDwSRcAd8PjEpH2bCZ1osqEVc_",
+      "title": "Keeping Secrets with the Rowing Captain",
+      "kind": "title",
+      "status": "todo"
+    },
+    {
+      "id": "1BjulFMdIH_BLx_vEBDfZm09tcGdQKZiq",
+      "title": "I Became Mrs Grayson by Bragging",
+      "kind": "title",
+      "status": "todo"
+    },
+    {
+      "id": "1X5TMngnH7DgLxb5IxOAh2Xv2xW_rVXvK",
+      "title": "Fever Cage",
+      "kind": "title",
+      "status": "todo"
+    },
+    {
+      "id": "1xMZiIxA072QRP-u4WiVVsHcKCqTArKsI",
+      "title": "Torn Between My Stepbrothers",
+      "kind": "title",
+      "status": "todo"
+    },
+    {
+      "id": "1aZa85HpQZ4yjzMqAFqgDPpa81auusaH9",
+      "title": "Can't Get Enough of You",
+      "kind": "title",
+      "status": "todo"
+    },
+    {
+      "id": "1MTC4v7wakd6aNDjaFDMvznh3_6C5ybZ-",
+      "title": "My Husband's Secret Crush",
+      "kind": "title",
+      "status": "todo"
+    },
+    {
+      "id": "1bsqK7h6vH4X8UqsVN7sWr-tTyHOURZca",
+      "title": "Revenge Puck",
+      "kind": "title",
+      "status": "todo"
+    },
+    {
+      "id": "1vnX2tSlYyTUBP7ok14ZTjM4ddKkun0mR",
+      "title": "Jesse A. Morales",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1zmJ059pBoxTbi4_c0gWiMyRU6YjM5Os2",
+      "title": "Sam Myerson",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1F3vdrU2jbeW1aLsd_VOz8Zr0kzK8UVRh",
+      "title": "Myles Clohessy",
+      "kind": "actor",
+      "status": "done",
+      "credits": 17
+    },
+    {
+      "id": "1VQWbpNxe-e8plwssZOVOv6yGOuOgZIDA",
+      "title": "Alex Pychtin",
+      "kind": "actor",
+      "status": "done",
+      "credits": 23
+    },
+    {
+      "id": "1VxjlD-XmADkZK5NOCJloXY4bI5GLYMVN",
+      "title": "Kyle Fragnoli",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1Acgia4d_xIZH6Wx4ZQD75xGNgsKufqU0",
+      "title": "Ali Badalov",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "12lbMHrKY7jzQ6gGsf8Vm9XjZoTv3w7Q-",
+      "title": "TJ Wilk",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1YxIMX0TTfK_nNfVUHwkmQ6RWCFoHgJ9a",
+      "title": "Grady Eldridge",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "18N81moH1hTcjInuzqe2jbTNen253vbxe",
+      "title": "Nicholas Garabedian",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1mU2-BUOl62dFdAewDym0cPp__4Z29Uo3",
+      "title": "Griffin Blazi",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "12gcOagAZF8PlGmfZ8ezRSVso5mJAkEnw",
+      "title": "Seth Edeen",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1BDWTBdQvkHz9EK1t3zR_SgvV5BYLtPc6",
+      "title": "Leif Erik Offerdahl",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1uoSSSCTE5qMF8TONTYawCyzTWcAxxOeg",
+      "title": "Jake Hobbs",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1uO9-QSK8PD2snnax8KTB1fHTurGhIIwS",
+      "title": "Elijah Van Zanten",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1eri397ruo3c1Fbj5SDtyPjMU4qmkGqum",
+      "title": "John Palmer",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1HMx0i4BmOtp1wZFE8mTKst66Mupucw13",
+      "title": "Luke Charles Stafford",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1HxjmiZpI2WgdDdk5pFkDholNn-Ex38nM",
+      "title": "Tristan Rewald",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1z7wHfLXGH45vS4ThbUZT886JQcpsQaKs",
+      "title": "Evan Bacic",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1Dc5Nl33ZbI8OlM6_hF7UO7bZG5G7uqTU",
+      "title": "Jarred Harper",
+      "kind": "actor",
+      "status": "done",
+      "credits": 37
+    },
+    {
+      "id": "1Cdo50UIPCELDOVO-PWoMia2sSNRatNpq",
+      "title": "Jordan Frank",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1PbUWvZYa4ubVRiH2GBqbeiUhhO3_5XUn",
+      "title": "Robert Palmer Watkins",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1OmxrunK0XNvmHvL7p9mKwiOtddzZ7Hwj",
+      "title": "Kasey Esser",
+      "kind": "actor",
+      "status": "done",
+      "credits": 55
+    },
+    {
+      "id": "1Cc6KMLNS5SrXLRvwx6RYgjNHTXDhAOZG",
+      "title": "Chase Mattson",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1J6mD1b9MRC5DMPq8uNQI8U23CxbQ6OPD",
+      "title": "Richard Sharrah",
+      "kind": "actor",
+      "status": "done",
+      "credits": 18
+    },
+    {
+      "id": "1HPC2S09BsDwU057C_xjpFls-vC00G3hL",
+      "title": "David Lovio",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1iat3KtNsp64yCDT50ZVIdM0_dexyYrPa",
+      "title": "Armand Procacci",
+      "kind": "actor",
+      "status": "done",
+      "credits": 47
+    },
+    {
+      "id": "1cIN4Po5QopKGwP1sQwJmyJ0fUdF0UcTS",
+      "title": "Travis DesLaurier",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1Q-vXqIv6BOpAlrHKCU4bTSyONe6X0C06",
+      "title": "Ethan Vaughan",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "18aRFe5ltKiRlyU4Ow24unfBG0S9Y-VjQ",
+      "title": "Cayman Cardiff",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1diRQGNy5LlAjZUCaO3Ywn32tAP1AsFiM",
+      "title": "Patric Palkens",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1Ze0wJdtqcipxlHTbZrrNL3qV9Vr6N9Kf",
+      "title": "Aaron Oberst",
+      "kind": "actor",
+      "status": "done",
+      "credits": 31
+    },
+    {
+      "id": "1zrDqTlk_ae9evOD9BL-9pQCX2MbwKrTB",
+      "title": "Tyler Scherer",
+      "kind": "actor",
+      "status": "done",
+      "credits": 35
+    },
+    {
+      "id": "1OvLY3OI8nvymu8z4eQwKo1_sHedpTpfA",
+      "title": "Marc Herrmann",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "16SVKGzgOUvtQ8AIV0ZObxc-oXBZRwW_1",
+      "title": "Fülöp Budavári",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "19LbvclgNR6ARTyzuRRMsIeOsJmg_F37t",
+      "title": "David Edwin Williams",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1Unc6bv8nYEWcBHVENWQhFcSFk-cgCGw2",
+      "title": "Tim Stein",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1m3nKa6oij3AsJYOjpLF9mpDWdOjSQTnp",
+      "title": "Kirby Ellwood",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "15IH1YjgGQNsAxQmNXPzHdOgh5njQvO3U",
+      "title": "Haley Evans",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1rfqBRPN_hqaoPZGK1gwECmahfSj86h7f",
+      "title": "Ryley Schroeder",
+      "kind": "actor",
+      "status": "done",
+      "credits": 7
+    },
+    {
+      "id": "1Ii07gN2CicM86fi2BwO2Gkk45ohoo5LH",
+      "title": "Nick Puya",
+      "kind": "actor",
+      "status": "done",
+      "credits": 21
+    },
+    {
+      "id": "1HKt8f69ZyCvuteLGRBwVsqhZ6FG6PWWQ",
+      "title": "Jackson Tiller",
+      "kind": "actor",
+      "status": "done",
+      "credits": 41
+    },
+    {
+      "id": "1IqaVZW90A2RcqvwURkgncDxYceIvG0jl",
+      "title": "Emma Rose Ball",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1i2EHhF4ZggNpVkFlgExsnAiXluhRMlQ1",
+      "title": "Noah Andre",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1oKwq6W6irwlTAzPlnzbIqktFhV2e2MNI",
+      "title": "Marie Bach Hansen",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1jKl9iKQDAeTgdZzY456pay1L6Elsl3Ha",
+      "title": "Brittany Marsicek",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1QvW9JwiOdx5IHvj7ptzkN295PgNW2fHo",
+      "title": "Sarah-Grace Donnelly",
+      "kind": "actor",
+      "status": "todo"
+    },
+    {
+      "id": "1OLeE0AjdExurTTrS_BSOXTWVwUgXFFaQ",
+      "title": "GoodShort titles from IMDb",
+      "kind": "platform_list",
+      "status": "done",
+      "platform_from_filename": "goodshort",
+      "filename_note": "filename 'Goodshort Titles from IMDB'",
+      "credits": 190,
+      "note": "IMDb company page parsed to 190 distinct titles for goodshort"
+    },
+    {
+      "id": "14X65jFMCAOEESYpsmECu_8_un5wbPyXE",
+      "title": "DramaBox titles from IMDb",
+      "kind": "platform_list",
+      "status": "done",
+      "platform_from_filename": "dramabox",
+      "filename_note": "filename 'Drama Box Titles from IMDB'",
+      "credits": 413,
+      "note": "IMDb company page parsed to 413 distinct titles for dramabox"
+    },
+    {
+      "id": "1agbZoJSv2ZT5NAN0NHiQQ-Q9iVEOJp6M",
+      "title": "ShortMax titles",
+      "kind": "platform_list",
+      "status": "done",
+      "platform_from_filename": "shortmax",
+      "filename_note": "filename 'Shortmax Titles'",
+      "credits": 186,
+      "note": "IMDb company page parsed to 186 distinct titles for shortmax"
+    },
+    {
+      "id": "1Cz0VdruSnkMH-X4VnPyVE2781ccWCiXv",
+      "title": "DramaWave titles from IMDb",
+      "kind": "platform_list",
+      "status": "done",
+      "platform_from_filename": "dramawave",
+      "filename_note": "filename 'Dramawave Title list from IMDB'",
+      "credits": 194,
+      "note": "IMDb company page parsed to 194 distinct titles for dramawave"
+    },
+    {
+      "id": "1ey20k6H6qocYLpcXXmXRk1Ui-ZIEVoSW",
+      "title": "DramaPops titles",
+      "kind": "platform_list",
+      "status": "done",
+      "platform_from_filename": "dramapops",
+      "filename_note": "filename 'DramaPops Titles'",
+      "credits": 50,
+      "note": "IMDb company page parsed to 50 distinct titles for dramapops"
+    },
+    {
+      "id": "1kEP91nKMHC-3IU9DlJi3ao2ILdEYCRz8",
+      "title": "Shortical titles",
+      "kind": "platform_list",
+      "status": "done",
+      "platform_from_filename": "shortical",
+      "filename_note": "filename 'Shortical titles'",
+      "credits": 24,
+      "note": "IMDb company page parsed to 24 distinct titles for shortical"
+    },
+    {
+      "id": "1eCN3VH9-kLDIur9fcJ2wKcA_GVz48kFX",
+      "title": "fan list Vertical Dramas - Favourite",
+      "kind": "other",
+      "status": "todo"
+    },
+    {
+      "id": "1Xj6LFZxGgsfCzIjlgqv0qVNI8f54lUvT",
+      "title": "Screenshot 2026-08-09 205001.png",
+      "kind": "other",
+      "status": "todo"
+    }
+  ],
+  "filename_platform_rule": "Cyan encodes the PLATFORM in some Drive filenames. Where a filename carries it, that is authoritative - IMDb never states which app a title is on, so the filename is often the ONLY source for the one field that cannot be guessed. Read filenames at inventory time, not just file contents."
+}

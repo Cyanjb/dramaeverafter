@@ -1,0 +1,145 @@
+{
+  "name": "Alex Pychtin",
+  "nm": "nm3894432",
+  "person_id": "alex-pychtin",
+  "confident": true,
+  "height": "5'9.75\" (1.77 m)",
+  "NOTABLE": "Fan-panel rail member with 3 credits on file. 25 vertical credits here. His existing bio in people.csv already matches this page (Canadian-Australian, 200M+ views, Amazon/Showtime/Hallmark), so the identification is solid.",
+  "UNPARSEABLE_ROWS": [
+    {
+      "raw": "Leo Grant 2026",
+      "why": "title text did not survive the PDF layout; 'Leo Grant' is probably the character. NOT guessed."
+    },
+    {
+      "raw": "Drax Narcissist 2026",
+      "why": "could be title 'Drax' with character 'Narcissist', or a title that lost its text. NOT guessed."
+    }
+  ],
+  "non_vertical_excluded_note": "Filtered out: Totally Killer (2023), Yellowjackets (TV Series), Flying Tiger (TV Series), Make Me a Match (TV Movie), Wild Goat Surf, Hong Kong 1942, Black Pulse, Love After Love, The Grand Grandmaster, The Captain, Golden Job, an Oral B commercial, and the shorts Turning, He, 714, Roundhay Hall, Perfectly Flawed.",
+  "credits": [
+    {
+      "title": "My Assistant Is A Hot Super Cat",
+      "character": "William Grayson",
+      "year": 2026
+    },
+    {
+      "title": "One Night or Forever",
+      "character": "Felix",
+      "year": 2026
+    },
+    {
+      "title": "Secretly Pregnant by the Homeless Billionaire",
+      "character": "Ethan Ashbourne",
+      "year": 2026
+    },
+    {
+      "title": "Big Brother Has Become the Man Behind Me",
+      "character": "Stephen Harrington",
+      "year": 2026
+    },
+    {
+      "title": "Idiot Boss Fired Me",
+      "character": "",
+      "year": 2026
+    },
+    {
+      "title": "Cut Ties, Now They Kneel!",
+      "character": "Paul Jackson",
+      "year": 2026
+    },
+    {
+      "title": "Mute But Deadly",
+      "character": "Nicholas Astor",
+      "year": 2026
+    },
+    {
+      "title": "Call Me Stepmom, Fxxkboy",
+      "character": "Dante Reyes",
+      "year": 2026
+    },
+    {
+      "title": "The Maid Is Actually an Heiress",
+      "character": "Philip",
+      "year": 2026
+    },
+    {
+      "title": "The King Returns on Christmas Eve",
+      "character": "Richard Mansfield",
+      "year": 2025
+    },
+    {
+      "title": "I Died and Became His Lost Love",
+      "character": "Chrisel Preston",
+      "year": 2025
+    },
+    {
+      "title": "The Homeless Fishmonger Is My Billionaire Husband",
+      "character": "Vincent",
+      "year": 2025
+    },
+    {
+      "title": "In Love with My Exs Father",
+      "character": "Gabriel",
+      "episodes": 60,
+      "year": 2025
+    },
+    {
+      "title": "Surrogate for My Ex's Billionaire Uncle",
+      "character": "Adrian Crawford",
+      "episodes": 64,
+      "year": 2025
+    },
+    {
+      "title": "Hit the Jackpot! My Broken Chef Husband Is a Billionaire",
+      "character": "Frank Salisbury",
+      "year": 2025
+    },
+    {
+      "title": "Alpha King, Your Pregnant Luna Escaped",
+      "character": "Victor",
+      "episodes": 57,
+      "year": 2025
+    },
+    {
+      "title": "Ms. Doctor and Her Hidden Billionaire Husband",
+      "character": "Kian Barney",
+      "episodes": 62,
+      "year": 2025
+    },
+    {
+      "title": "Secret Heiress Spoiled by Two Rockstars",
+      "character": "Aden Cole",
+      "year": 2025
+    },
+    {
+      "title": "Contract Marriage Before Election",
+      "character": "James Rothstein",
+      "episodes": 1,
+      "year": 2025
+    },
+    {
+      "title": "The Heiress Blacklisted Her Husband",
+      "character": "Patrick Hilton",
+      "episodes": 86,
+      "year": 2025
+    },
+    {
+      "title": "Daddy's Best Friend Made Me His Billionaire Wife",
+      "character": "Nicolas Powell",
+      "year": 2025
+    },
+    {
+      "title": "Pregnant by the Billionaire",
+      "character": "Carter Prescott",
+      "episodes": 68,
+      "year": 2024
+    },
+    {
+      "title": "Lady Alpha's Undercover Romances",
+      "character": "Dylan",
+      "year": 2024
+    }
+  ],
+  "_drive_id": "1VQWbpNxe-e8plwssZOVOv6yGOuOgZIDA",
+  "_kind": "actor"
+}

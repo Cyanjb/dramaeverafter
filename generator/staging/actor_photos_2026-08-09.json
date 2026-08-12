@@ -1,0 +1,51 @@
+{
+  "source": "reelshort_cdn_2026-08-09",
+  "platform": "reelshort",
+  "field": "photo_ref",
+  "mode": "fill-blank-only",
+  "read_from": "ReelShort movie page actor_info.actors[]",
+  "photos": {
+    "alex-pychtin": {
+      "name": "Alex Pychtin",
+      "photo_ref": "https://www.reelshort.com/fandom/wp-content/uploads/2025/11/alex-pychtin.jpg",
+      "imdb_url": "",
+      "seen_on_title": "https://www.reelshort.com/fandom/alex-pychtin-01-6-3faa2218/",
+      "image_type": "jpeg"
+    },
+    "armand-procacci": {
+      "name": "Armand Procacci",
+      "photo_ref": "https://www.reelshort.com/fandom/wp-content/uploads/2026/04/armand-procacci.jpg",
+      "imdb_url": "",
+      "seen_on_title": "https://www.reelshort.com/fandom/armand-procacci-01-6-3faa2218ct/",
+      "image_type": "jpeg"
+    },
+    "connor-tuohy": {
+      "name": "Connor Tuohy",
+      "photo_ref": "https://www.reelshort.com/fandom/wp-content/uploads/2025/11/connor-tuohy.jpg",
+      "imdb_url": "",
+      "seen_on_title": "https://www.reelshort.com/fandom/connor-tuohy-01-6-3faa2218/",
+      "image_type": "jpeg"
+    },
+    "grant-lowell-garcia": {
+      "name": "Grant Lowell Garcia",
+      "photo_ref": "https://www.reelshort.com/fandom/wp-content/uploads/2025/12/grant-lowell-garcia.jpg",
+      "imdb_url": "",
+      "seen_on_title": "https://www.reelshort.com/fandom/grant-lowell-garcia-01-6-3faa2218/",
+      "image_type": "jpeg"
+    },
+    "pierre-longer": {
+      "name": "Pierre Longer",
+      "photo_ref": "https://www.reelshort.com/fandom/wp-content/uploads/2025/08/pierre-longer.jpg",
+      "imdb_url": "",
+      "seen_on_title": "https://www.reelshort.com/fandom/pierre-longer-01-6/",
+      "image_type": "jpeg"
+    },
+    "tate-doppler": {
+      "name": "Tate Doppler",
+      "photo_ref": "https://www.reelshort.com/fandom/wp-content/uploads/2026/03/tate-doppler.jpg",
+      "imdb_url": "",
+      "seen_on_title": "https://www.reelshort.com/fandom/tate-doppler-01-6-3faa2218/",
+      "image_type": "jpeg"
+    }
+  }
+}

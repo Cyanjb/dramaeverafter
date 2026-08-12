@@ -1,0 +1,48 @@
+1DZUuOfEKD-eoAWoqVPIYeKk4gCTJRqti	candyjar_title	French Kiss	6
+1dJvefOBqr-TYnOV_fTdydTuEqVyWrrvW	candyjar_title	Conflict of Interest	7
+1Bn4q0u5m9kciP8NLrH1UUQYv_mErCPPK	title_DO_NOT_APPLY	Our Dirty Little Secrets	11
+1SpWYnJvHX_ziN7ASeNGYpeQYWd7maeI3	candyjar_title	The Ecstasy of Faking It	4
+1tmBKoIrX7-yU0phSfcEoQRbfn6rX1Xfp	candyjar_title	My Silent Treasure	7
+1OQguxPx5fScXk6vd-SIlskitkHV3Qiwg	title_DO_NOT_APPLY	Enemies with Benefits (Thai GMMTV series - WRONG TITLE)	0
+13PG1yOHk8vkMU4KAm5wBkMPT-YRAtDk3	candyjar_title	Next Door	6
+1HMf7TmO7FuFz9i21hhUM-k6mQ_kv3ktp	candyjar_title	Exercise Discretion	6
+1cPaDstQ4cjUeeNLa1ojcajvCGkn5SYEZ	candyjar_title	Secrets of Siren	5
+1qn_Sp9X44gznZz5Bld9jyJWe3bt1CySy	candyjar_title	The Tutors	10
+1GQb_hng5_5PUP5V5Ci8RzgEBvFoe4tRv	candyjar_title	Beastly Lights	5
+1EGTcTgu36Hze7mKR0lDgwpkJNaNQ-L61	candyjar_title	Billionaire Love Start with Lies	18
+1BQA826pzshhUtWeuEndKzPwpAygHQd10	candyjar_title	Not All About You	8
+1ZT_czq8meTySKSKH2hYU9tzuhmL9NMmP	candyjar_title	In Love with Mr. Mafia	6
+1s8h_NDx9YJ22PD7kxUIwxP_yTJK-WYrh	candyjar_title	Half of My Heart	4
+1ChXApG5OTaGwbW9pBeuHb0tIkHLW2x4q	candyjar_title	Alpha's Doe	6
+16YTzCtJeXz_KKnguB5rAdMyM0lV0mAu7	candyjar_title	Secrets of Vixen	6
+1q7LIJ2Hk0JbykHcZV7njUNQSi5EIz1Wy	candyjar_title	The All-American Rejects: Superfan	18
+1KjqMpMArKA0GXAzuYJDiXACJcVbGqQz9	candyjar_title_of_the_11	Boardroom Attraction	9
+1Hznw1oJgRm8f4aOZSXWoj-okhlb4JkCh	candyjar_title_of_the_11	The Billionaire's Masquerade	7
+1ihQMAo3WF4nCmGNkqx1w64ivOHYNoSIl	candyjar_title_of_the_11	Beneath Crimson Sails	17
+1ONSXr6M_GT75UiePsD9criFgneQgQG0V	candyjar_title_of_the_11	Gideon	0
+1iat3KtNsp64yCDT50ZVIdM0_dexyYrPa	actor	Armand Procacci	47
+1Dc5Nl33ZbI8OlM6_hF7UO7bZG5G7uqTU	actor	Jarred Harper	37
+1HKt8f69ZyCvuteLGRBwVsqhZ6FG6PWWQ	actor	Jackson Tiller	41
+1F3vdrU2jbeW1aLsd_VOz8Zr0kzK8UVRh	actor	Myles Clohessy	17
+1OmxrunK0XNvmHvL7p9mKwiOtddzZ7Hwj	actor	Kasey Esser	55
+1VQWbpNxe-e8plwssZOVOv6yGOuOgZIDA	actor	Alex Pychtin	23
+1rfqBRPN_hqaoPZGK1gwECmahfSj86h7f	actor	Ryley Schroeder	7
+1Ze0wJdtqcipxlHTbZrrNL3qV9Vr6N9Kf	actor	Aaron Oberst	31
+1Ii07gN2CicM86fi2BwO2Gkk45ohoo5LH	actor	Nick Puya	21
+1zrDqTlk_ae9evOD9BL-9pQCX2MbwKrTB	actor	Tyler Scherer	35
+1J6mD1b9MRC5DMPq8uNQI8U23CxbQ6OPD	actor	Richard Sharrah	18
+11nV0yzeZb34yriUOAXiq0OanPS2kk8s3	title	Forgive Me Father	7
+1kEP91nKMHC-3IU9DlJi3ao2ILdEYCRz8	platform_list	Shortical catalogue (IMDb company co1167893)	24
+15hge2bX6QGQs47lCwI6JtqPTyEdxnWFO	title	The Billion Dollar Baby	14
+2026-08-12  APPLIED TO THE DATABASE (first application from this batch; everything
+            before this line was transcription only).
+  filmographies  11 files via apply_imdb_filmography.py <- _to_filmography_batch.py
+                 +43 credits, 36 blank character_names filled, 9 aka/socials fields,
+                 8 near-matches queued for a ruling, 221 unmatched (no platform evidence)
+  title pages    19 titles via apply_imdb_pdf_cast.py --json <- _to_cast_batch.py
+                 +153 credits, +96 people, 0 queued
+  NOT applied    'Forgive Me Father' and 'The Billion Dollar Baby' - neither title is in
+                 titles.csv, and titles are chosen not swept, so no rows were created.
+                 The 2 whole-file DO_NOT_APPLY PDFs were never opened.
+  repaired       3 mojibake names found in the transcription (CÃ©line/Arne KÃ¼bler/
+                 SÃ©lynne). people.csv had zero corrupted names before this and still does.
