@@ -1,0 +1,31 @@
+{
+  "title": "From Campus Simp to Hidden Heiress",
+  "imdb_id": "tt41455629",
+  "platform": "goodshort",
+  "platform_source": "IMDb production company co1045147 = GoodShort, which is the same company id as the parsed goodshort catalogue. The filename carries no platform, so this is the only source.",
+  "year": 2026,
+  "release_date": "2026-03-30",
+  "country": "United States",
+  "language": "English",
+  "genres": ["Drama"],
+  "rating": "8.1/10 from 76",
+  "confident": true,
+  "production_companies": ["GoodShort (co1045147)", "LLS Films (co1110560)"],
+  "held_as": "from-campus-simp-to-hidden-heiress",
+  "pairing_method": "Reconstructed from the ORDERED nm ids in the tt_cst_t_1..9 links, per the standing method - the visible text interleaves the actor and character columns. 9 nm ids, 9 name/character pairs, no leftovers.",
+  "BIDIRECTIONAL_VERIFICATION": "Cast slot 4 is nm12486389, which is Ryley Schroeder's nm in people.csv, and the page names Ryley Schroeder as Miles. His own staged filmography (actor__ryley-schroeder.json) independently flags this title as having a title-page PDF in the same folder. Two directions agree.",
+  "cast": [
+    {"order": 1, "name": "Haley Evans", "character": "Leah", "nm": "nm15937249"},
+    {"order": 2, "name": "Fülöp Budavári", "character": "Jeffery", "nm": "nm12594358"},
+    {"order": 3, "name": "Olivia Rose Williams", "character": "Bianca", "nm": "nm17198698"},
+    {"order": 4, "name": "Ryley Schroeder", "character": "Miles", "nm": "nm12486389"},
+    {"order": 5, "name": "Martina Monti", "character": "Linda", "nm": "nm13829139"},
+    {"order": 6, "name": "David Moskowitz", "character": "Coffee Shop Manager", "nm": "nm0608781"},
+    {"order": 7, "name": "Robyn Cantrell", "character": "Kathy", "nm": "nm16010324"},
+    {"order": 8, "name": "Peter Luecke", "character": "Ethan", "nm": "nm16077185"},
+    {"order": 9, "name": "Sophia Marie", "character": "Amber", "nm": "nm11654687"}
+  ],
+  "caption_rule": "CAST ONLY. The IMDb storyline prose on this page is deliberately NOT transcribed - captions and synopses are written from scratch.",
+  "_drive_id": "1utTl9EfYwaT7qt-FsBIEU1q7EFqpAQbc",
+  "_kind": "title"
+}

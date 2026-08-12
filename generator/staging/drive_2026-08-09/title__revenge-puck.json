@@ -1,0 +1,29 @@
+{
+  "title": "Revenge Puck",
+  "imdb_id": "tt43346443",
+  "platform": "dramabox",
+  "platform_source": "IMDb production company co1028734 = Drama Box, the same company id as the parsed dramabox catalogue. Official Site resolves to dramaboxdb.com.",
+  "year": 2026,
+  "release_date": "2026-06-02",
+  "country": "United States",
+  "language": "English",
+  "genres": ["Romance"],
+  "aka": ["Falso amor, verdadera venganza"],
+  "rating": "8.1/10 from 209",
+  "episode_count_note": "IMDb shows 1 season, 2026, and an episode guide listing 1.",
+  "confident": true,
+  "production_companies": ["Drama Box (co1028734)"],
+  "held_as": "revenge-puck",
+  "pairing_method": "Reconstructed from the ORDERED nm ids in tt_cst_t_1..5. This page's visible text interleaves the two columns badly - the names arrive as 'Hannah Lowery Evan Adams' then the characters run separately - so the pairing was cross-checked against the STORYLINE, which independently names Lucy as the lead, Adam as the ex-boyfriend hockey star, and Blake as the rival she fake-dates. All three land where the ordered nm ids put them.",
+  "BIDIRECTIONAL_VERIFICATION": "nm12201270 is Evan Adams here at slot 2, and the same nm12201270 is Evan Adams at slot 2 of Keeping Secrets with the Rowing Captain, transcribed from a different PDF in this batch. Two independent pages agree on the id.",
+  "cast": [
+    {"order": 1, "name": "Hannah Lowery", "character": "Lucy", "nm": "nm12434081"},
+    {"order": 2, "name": "Evan Adams", "character": "Blake Ashburn", "nm": "nm12201270"},
+    {"order": 3, "name": "Connor Barton", "character": "Adam Johns", "nm": "nm12365734"},
+    {"order": 4, "name": "Riley Davis", "character": "Emma", "nm": "nm13713952"},
+    {"order": 5, "name": "Darrell Philip", "character": "Hotel Ballroom Announcer", "nm": "nm3093394"}
+  ],
+  "caption_rule": "CAST ONLY. The storyline text was used to DISAMBIGUATE the pairing and is deliberately not transcribed as copy - captions and synopses are written from scratch.",
+  "_drive_id": "1bsqK7h6vH4X8UqsVN7sWr-tTyHOURZca",
+  "_kind": "title"
+}
