@@ -1,0 +1,29 @@
+{
+  "name": "Noah Andre",
+  "nm": "nm15813938",
+  "person_id": "noah-andre",
+  "confident": true,
+  "born": "2004-06-08, USA",
+  "imdb_starmeter": "Top 5,000",
+  "also_credited_as": "Actor, Casting Department (2), Sound Department (1) on IMDb. Only the ACTOR credits are staged.",
+  "PRIORITY_HIT": "He plays Zeke Evans in STUDY BUDDY - one of the 28 CandyJar titles the READ FIRST doc lists as needing cast, and the title DEA TASKS names as the third biggest CandyJar win after Grayson. This is the first cast evidence for it to come out of the batch.",
+  "UNPARSEABLE_ROWS": [
+    {"raw": "Iris  Ryan", "why": "Appears under Known for with no type, no year and no rating. Cannot tell whether 'Iris' is a title with character 'Ryan', or two separate fragments. NOT guessed."}
+  ],
+  "no_aka": "No Alternative name field on this page, and no per-credit '(as ...)' billing. He is the first of today's filmographies with nothing to add to aka_names.",
+  "non_vertical_excluded_note": "Excluded as non-vertical: The Monster's Club: The Aftermath, sizzle reel (short), ¡Que Suene La Banda! (short), The White Lighter (TV Movie), Dawn the Messier Objects (short), Myopia (short). Ur So Sweet (2024) is a Casting Department credit on a short, not acting.",
+  "credits": [
+    {"title": "Study Buddy", "character": "Zeke Evans", "year": 2026},
+    {"title": "Roommate Benefits: the Governor's Son", "character": "Cole Warner", "year": 2026, "episodes": 1},
+    {"title": "The Seduction Game", "character": "Preston Whitmore", "year": 2026},
+    {"title": "Faking It with the Hockey Captain", "character": "Liam West", "year": 2026},
+    {"title": "XOXO, He Dumped the Queen Bee for Me", "character": "Theo Sinclair", "year": 2026},
+    {"title": "Falling for My Bodyguard", "character": "Jesse", "year": 2026},
+    {"title": "Life Is Not a Game", "character": "TJ Jupiter", "year": 2026},
+    {"title": "Secret Society: Till Blood Do Us Part", "character": "Alex", "year": 2026},
+    {"title": "Cheer Up, Baby!", "character": "William Haney", "year": 2025, "episodes": 57}
+  ],
+  "caption_rule": "CAST ONLY. IMDb's bio prose is deliberately not transcribed.",
+  "_drive_id": "1i2EHhF4ZggNpVkFlgExsnAiXluhRMlQ1",
+  "_kind": "actor"
+}
