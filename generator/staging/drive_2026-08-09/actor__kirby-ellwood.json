@@ -11,54 +11,253 @@
   "NOTABLE": "67 actress credits against 7 already on file, the largest filmography in the batch so far. Self-verified on IMDbPro, which makes the alternative name and the birth data hers rather than a contributor's guess.",
   "CROSS_REFERENCE": "Three of her credits are titles with their own PDFs in this same Drive batch: 'Fever Cage' and 'Foul Play with My Brother's Best Friend' are still untranscribed title pages, and 'The Billion Dollar Baby' is already staged (she is Eliza Kingsley). She also plays Janie Townsend in 'My Secret Husband Is My Boss', where Jake Hobbs - transcribed from another PDF in this batch - plays Jack Townsend.",
   "type_uncertain_NOT_staged": [
-    {"title": "Cohabitating Lover", "character": "Corinne Carlton", "year": 2025, "imdb_type": "TV Movie"},
-    {"title": "From Fast Food Girl to First Lady", "character": "Claire", "year": 2024, "imdb_type": "TV Movie"},
-    {"title": "Straight A Pregnancy", "character": "Kelsey Barrington", "year": 2024, "imdb_type": "none listed"},
-    {"title": "The Casanova Killer: The Paul John Knowles Story", "character": "Anna", "year": 2026, "imdb_type": "none listed"},
-    {"_why": "IMDb types these as TV Movie or gives no type, while every confirmed vertical on this page is 'TV Mini Series'. The first two read like vertical titles and may well be verticals typed loosely by IMDb, so they are NOT staged as credits and NOT discarded - they need a ruling."}
+    {
+      "title": "From Fast Food Girl to First Lady",
+      "character": "Claire",
+      "year": 2024,
+      "imdb_type": "TV Movie"
+    },
+    {
+      "title": "The Casanova Killer: The Paul John Knowles Story",
+      "character": "Anna",
+      "year": 2026,
+      "imdb_type": "none listed"
+    },
+    {
+      "_why": "IMDb types these as TV Movie or gives no type, while every confirmed vertical on this page is 'TV Mini Series'. The first two read like vertical titles and may well be verticals typed loosely by IMDb, so they are NOT staged as credits and NOT discarded - they need a ruling."
+    }
   ],
   "non_vertical_excluded_note": "Excluded as non-vertical: 80 for Brady (2023 feature, uncredited), Gacy: Serial Killer Next Door (2024), Bear-Lee: A Story (2023 TV Movie), Dhar Mann (TV series, 1 ep), Mery Diamondz: It's a Girl (music video), and the shorts Baby: A Labubu Christmas Horror, The Flower Woman, Conviction. Also excluded: the 13 pre-2023 shorts billed as Kirby Schmieding (Across the Table, The Sweeper, Miraculous Cells, Scouts, Customer Service, App-etite, Generation Hope, She Watches from the Woods, Place du Souvenir, You've Already Gone, Just for Attention, Scorched, Detox).",
   "credits": [
-    {"title": "Marry Me Twice, Mr. Grant", "character": "Nora Blake", "year": 2026},
-    {"title": "Falling for You A Thousand Times", "character": "Amelia", "year": 2026},
-    {"title": "The Bride on Fire", "character": "Selena", "year": 2026},
-    {"title": "Things I Wanted to Say", "character": "Summer Savage", "year": 2026},
-    {"title": "Claimed by My Mate's Alpha Brother", "character": "Callie Stone", "year": 2026},
-    {"title": "Fever Cage", "character": "Erin White", "year": 2026, "episodes": 1},
-    {"title": "Loving the Disguised Billionaire", "character": "Sophia", "year": 2026, "episodes": 1},
-    {"title": "The Maid and the Ice Prince", "character": "", "year": 2026},
-    {"title": "Twisted Heart", "character": "Susie Southern", "year": 2026},
-    {"title": "Puck Me Baby One More Time", "character": "Lila", "year": 2026, "episodes": 1},
-    {"title": "Kidnapped by the Gangster", "character": "Chloe", "year": 2026, "episodes": 1},
-    {"title": "After I Died, He Went Mad", "character": "Lilian", "year": 2025},
-    {"title": "Stop Bullying His Girl: The Boxer King Returns!", "character": "Grace Hart", "year": 2025},
-    {"title": "Sweet Wild Bride of Mine", "character": "Eliza Spencer", "year": 2025},
-    {"title": "Stand Up My Billionaire Husband", "character": "Jessica Carter Harrington", "year": 2025},
-    {"title": "The Baby Sis Strikes Back", "character": "Hailey Stewart", "year": 2025, "episodes": 1},
-    {"title": "Return of the Hidden Chef Goddess", "character": "Daisy", "year": 2025, "episodes": 1},
-    {"title": "Mafia King's Missing Wife Back with Twins", "character": "Sarah Carter", "year": 2025, "episodes": 1},
-    {"title": "Having His Baby, Becoming His Darling", "character": "Julia Parker", "year": 2025, "episodes": 67},
-    {"title": "Second Chance with Mafia Lover", "character": "Nadia", "year": 2025},
-    {"title": "Mr. Governor, Let Go of Our Baby", "character": "Nicola Gray", "year": 2025, "episodes": 1},
-    {"title": "Sleeping Beauty and Three Brothers", "character": "Stella Newsom", "year": 2025, "episodes": 1},
-    {"title": "Doctor Boss Is My Baby Daddy", "character": "Molly Maguire", "year": 2025, "episodes": 1},
-    {"title": "Crossing the Line to Love", "character": "Nichole Anderson Winston", "year": 2025},
-    {"title": "Song of My Mother's Tears", "character": "Ashley", "year": 2025},
-    {"title": "The Billion Dollar Baby", "character": "Eliza Kingsley", "year": 2025},
-    {"title": "Loathed by the Alpha", "character": "Cara", "year": 2025},
-    {"title": "My Heart Dies from Home", "character": "Greta White / Clara Walker", "year": 2025, "episodes": 1},
-    {"title": "The Billionaire's Matchmaker", "character": "Emily Carter", "year": 2025},
-    {"title": "I Gave a Second Chance to Cupid", "character": "Serena Vylina", "year": 2025},
-    {"title": "How to Divorce a Billionaire", "character": "Olivia Bennett", "year": 2024},
-    {"title": "The Double Life of Mr. President", "character": "Claire", "year": 2024, "episodes": 1},
-    {"title": "Single Dad Hunt", "character": "Rachel Lane", "year": 2024},
-    {"title": "Spoiled by Four Billionaires", "character": "Yvonne Hoffman", "year": 2024},
-    {"title": "My Secret Husband Is My Boss", "character": "Janie Townsend", "year": 2024},
-    {"title": "Flash Vows", "character": "Alison Miller", "year": 2024, "episodes": 1},
-    {"title": "The Back of the Unwanted Bride", "character": "", "year": 2024, "episodes": 72},
-    {"title": "Final Call for Love", "character": "June Carter", "year": 2024, "episodes": 1},
-    {"title": "One Million Reasons to Love a Prince", "character": "Lyla", "year": 2024},
-    {"title": "The Billionaire's Baby Bargain", "character": "Abby Hart", "year": 2024, "episodes": 1}
+    {
+      "title": "Marry Me Twice, Mr. Grant",
+      "character": "Nora Blake",
+      "year": 2026
+    },
+    {
+      "title": "Falling for You A Thousand Times",
+      "character": "Amelia",
+      "year": 2026
+    },
+    {
+      "title": "The Bride on Fire",
+      "character": "Selena",
+      "year": 2026
+    },
+    {
+      "title": "Things I Wanted to Say",
+      "character": "Summer Savage",
+      "year": 2026
+    },
+    {
+      "title": "Claimed by My Mate's Alpha Brother",
+      "character": "Callie Stone",
+      "year": 2026
+    },
+    {
+      "title": "Fever Cage",
+      "character": "Erin White",
+      "year": 2026,
+      "episodes": 1
+    },
+    {
+      "title": "Loving the Disguised Billionaire",
+      "character": "Sophia",
+      "year": 2026,
+      "episodes": 1
+    },
+    {
+      "title": "The Maid and the Ice Prince",
+      "character": "",
+      "year": 2026
+    },
+    {
+      "title": "Twisted Heart",
+      "character": "Susie Southern",
+      "year": 2026
+    },
+    {
+      "title": "Puck Me Baby One More Time",
+      "character": "Lila",
+      "year": 2026,
+      "episodes": 1
+    },
+    {
+      "title": "Kidnapped by the Gangster",
+      "character": "Chloe",
+      "year": 2026,
+      "episodes": 1
+    },
+    {
+      "title": "After I Died, He Went Mad",
+      "character": "Lilian",
+      "year": 2025
+    },
+    {
+      "title": "Stop Bullying His Girl: The Boxer King Returns!",
+      "character": "Grace Hart",
+      "year": 2025
+    },
+    {
+      "title": "Sweet Wild Bride of Mine",
+      "character": "Eliza Spencer",
+      "year": 2025
+    },
+    {
+      "title": "Stand Up My Billionaire Husband",
+      "character": "Jessica Carter Harrington",
+      "year": 2025
+    },
+    {
+      "title": "The Baby Sis Strikes Back",
+      "character": "Hailey Stewart",
+      "year": 2025,
+      "episodes": 1
+    },
+    {
+      "title": "Return of the Hidden Chef Goddess",
+      "character": "Daisy",
+      "year": 2025,
+      "episodes": 1
+    },
+    {
+      "title": "Mafia King's Missing Wife Back with Twins",
+      "character": "Sarah Carter",
+      "year": 2025,
+      "episodes": 1
+    },
+    {
+      "title": "Having His Baby, Becoming His Darling",
+      "character": "Julia Parker",
+      "year": 2025,
+      "episodes": 67
+    },
+    {
+      "title": "Second Chance with Mafia Lover",
+      "character": "Nadia",
+      "year": 2025
+    },
+    {
+      "title": "Mr. Governor, Let Go of Our Baby",
+      "character": "Nicola Gray",
+      "year": 2025,
+      "episodes": 1
+    },
+    {
+      "title": "Sleeping Beauty and Three Brothers",
+      "character": "Stella Newsom",
+      "year": 2025,
+      "episodes": 1
+    },
+    {
+      "title": "Doctor Boss Is My Baby Daddy",
+      "character": "Molly Maguire",
+      "year": 2025,
+      "episodes": 1
+    },
+    {
+      "title": "Crossing the Line to Love",
+      "character": "Nichole Anderson Winston",
+      "year": 2025
+    },
+    {
+      "title": "Song of My Mother's Tears",
+      "character": "Ashley",
+      "year": 2025
+    },
+    {
+      "title": "The Billion Dollar Baby",
+      "character": "Eliza Kingsley",
+      "year": 2025
+    },
+    {
+      "title": "Loathed by the Alpha",
+      "character": "Cara",
+      "year": 2025
+    },
+    {
+      "title": "My Heart Dies from Home",
+      "character": "Greta White / Clara Walker",
+      "year": 2025,
+      "episodes": 1
+    },
+    {
+      "title": "The Billionaire's Matchmaker",
+      "character": "Emily Carter",
+      "year": 2025
+    },
+    {
+      "title": "I Gave a Second Chance to Cupid",
+      "character": "Serena Vylina",
+      "year": 2025
+    },
+    {
+      "title": "How to Divorce a Billionaire",
+      "character": "Olivia Bennett",
+      "year": 2024
+    },
+    {
+      "title": "The Double Life of Mr. President",
+      "character": "Claire",
+      "year": 2024,
+      "episodes": 1
+    },
+    {
+      "title": "Single Dad Hunt",
+      "character": "Rachel Lane",
+      "year": 2024
+    },
+    {
+      "title": "Spoiled by Four Billionaires",
+      "character": "Yvonne Hoffman",
+      "year": 2024
+    },
+    {
+      "title": "My Secret Husband Is My Boss",
+      "character": "Janie Townsend",
+      "year": 2024
+    },
+    {
+      "title": "Flash Vows",
+      "character": "Alison Miller",
+      "year": 2024,
+      "episodes": 1
+    },
+    {
+      "title": "The Back of the Unwanted Bride",
+      "character": "",
+      "year": 2024,
+      "episodes": 72
+    },
+    {
+      "title": "Final Call for Love",
+      "character": "June Carter",
+      "year": 2024,
+      "episodes": 1
+    },
+    {
+      "title": "One Million Reasons to Love a Prince",
+      "character": "Lyla",
+      "year": 2024
+    },
+    {
+      "title": "The Billionaire's Baby Bargain",
+      "character": "Abby Hart",
+      "year": 2024,
+      "episodes": 1
+    },
+    {
+      "title": "Cohabitating Lover",
+      "character": "Corinne Carlton",
+      "year": 2025,
+      "type_resolved": "We HOLD this title (Cohabitating Lover on pinedrama, Straight A Pregnancy on reelshort), so it is a vertical despite IMDb typing it TV Movie / no type. Promoted from type_uncertain 2026-08-13."
+    },
+    {
+      "title": "Straight A Pregnancy",
+      "character": "Kelsey Barrington",
+      "year": 2024,
+      "type_resolved": "We HOLD this title (Cohabitating Lover on pinedrama, Straight A Pregnancy on reelshort), so it is a vertical despite IMDb typing it TV Movie / no type. Promoted from type_uncertain 2026-08-13."
+    }
   ],
   "caption_rule": "CAST ONLY. IMDb's bio prose is deliberately not transcribed.",
   "_drive_id": "1m3nKa6oij3AsJYOjpLF9mpDWdOjSQTnp",
