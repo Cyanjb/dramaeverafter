@@ -1,0 +1,30 @@
+{
+  "title": "You've Been Replaced, First Love",
+  "platform": "reelshort",
+  "platform_source": "TWO independent sources agree. (1) The FILENAME Cyan supplied begins 'Reelshort - ', which adapters.md sec 23 makes authoritative. (2) The PDF's own Details block, page 7: 'Production companies  Swzz Media Productions  ReelShort'. This is the first title in the batch where the filename rule and the production-company field could be checked against each other, and they match.",
+  "year": 2026,
+  "release_date": "2026-08-01",
+  "country": "United States",
+  "language": "English",
+  "genres": ["Drama"],
+  "aka": ["Has sido reemplazado, primer amor"],
+  "rating": "8.0/10 from 83",
+  "production_companies": ["Swzz Media Productions", "ReelShort"],
+  "confident": true,
+  "held_as": null,
+  "IMPORT_CANDIDATE": "NOT in titles.csv. It is one of Armand Procacci's 33 missing titles, and it now has a platform, a year, a release date and an aka - everything needed to create it properly except a poster and a synopsis, which only the platform can supply.",
+  "SOURCE_ROUTE_CAVEAT": "This PDF was read from Downloads via the PDF Tools MCP, which returns TEXT ONLY. The Drive route (read_file_content on a Drive file id) additionally returns the page's LINK LIST, i.e. the ordered nm ids, and that is what makes actor/character pairing reconstructable on a scrambled cast grid. Without it, only pairs confirmed by a second signal can be trusted. RECOMMENDATION: supply these through the Drive folder, not Downloads.",
+  "cast_note": "IMDb lists Top Cast 24. Only THREE are transcribed, because the extracted text interleaves the actor and character columns with no nm ids to reconstruct against - e.g. page 2 reads 'Armand Procacci Jason CaceresAlexAshley DavidsonJessieClaire KerofskyKate'. The remaining 21 are deliberately NOT guessed.",
+  "cast": [
+    {"order": 1, "name": "Katherine Gibson", "character": "Tessa Lane", "confidence": "Named first in the Stars line and paired on page 1."},
+    {"order": 2, "name": "Jake Lively", "character": "Miles Palmer", "confidence": "Named second in the Stars line and paired on page 1."},
+    {"order": 3, "name": "Armand Procacci", "character": "Jason Caceres", "confidence": "Third in the Stars line. The storyline independently names Jason as the first love who humiliates Tessa, which fits a third-billed male lead."}
+  ],
+  "cast_NOT_transcribed": [
+    "Jason Caceres or Alex, Ashley Davidson, Jessie, Claire Kerofsky, Kate, Michelle Carney, Annie, Taysha Hill, Elena Lane, Jessica Moore, Mrs. Wheeler, Maxwell Maydaniuk, Young Miles, Steven T. Bartlett, Ben, Rory Amidon, Young Tessa, Shane Roelle, David Lane, Brian Collura, Caleb, Latasha Pippen, Karen, Kimberly Niccole, Dr. Allison, Richard Scott, Butch Simmons, Joey Kane, Ryan",
+    "_why": "These are the raw fragments in page order. Which are actors and which are characters cannot be determined without the nm ids. Re-read via Drive to resolve."
+  ],
+  "caption_rule": "CAST ONLY. The storyline was used to VERIFY one pairing and is deliberately not transcribed as copy - captions and synopses are written from scratch.",
+  "_source_path": "C:\\\\Users\\\\cyanj\\\\Downloads\\\\Reelshort - You've Been Replaced, First Love (TV Mini Series 2026) - IMDb.pdf",
+  "_kind": "title"
+}
