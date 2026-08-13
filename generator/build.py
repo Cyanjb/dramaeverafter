@@ -108,7 +108,23 @@ titles_root = [t for t in titles if origin_of(t) == ROOT_ORIGIN]
 titles_other = [t for t in titles if origin_of(t) != ROOT_ORIGIN]
 origins_other = sorted({origin_of(t) for t in titles_other})
 
-all_tropes = sorted({tr for t in titles_root for tr in tropes_of(t)})
+# THE 5+ RULE NOW GOVERNS PLAIN TROPE PAGES TOO (Cyan, 13 Aug). The architecture doc
+# has always said "a trope or combo page publishes only at 5+ verified titles", but
+# the threshold was implemented ONLY for trope x platform combo pages, so 44 plain
+# trope pages had published with fewer - 10 of them with exactly one title. A trope
+# page with one title is a dead end that promises a category and delivers a single
+# card, the same reason the zero-credit actors were kept out of the Popular Actors rail.
+#
+# Nothing else needs changing to make this coherent: trope_chip() already renders an
+# inert chip when a trope has no page ("so we never emit a 404"), the index and the
+# combo loop both read all_tropes, and the tropes/ directory is rmtree'd each build,
+# so the withdrawn pages remove themselves.
+TROPE_MIN = 5
+_trope_page_n = defaultdict(int)
+for _t in titles_root:
+    for _tr in tropes_of(_t):
+        _trope_page_n[_tr] += 1
+all_tropes = sorted(tr for tr, n in _trope_page_n.items() if n >= TROPE_MIN)
 all_tropes_set = set(all_tropes)
 # --- Popularity + artwork helpers -------------------------------------------
 # Artwork is ~5% populated. Every card falls back to a lettered placeholder so a
