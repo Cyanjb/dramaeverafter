@@ -1,6 +1,6 @@
 # Actors who need a photo
 
-2013 credited actors have no photo_ref. Ranked by REACH - the summed
+2037 credited actors have no photo_ref. Ranked by REACH - the summed
 views of every title they are credited on - so the faces a visitor is most likely
 to meet come first. Regenerate with `py generator/make_gap_report.py`.
 
@@ -157,6 +157,6 @@ Commons, then the platform's own actor page. NEVER a shared photo - a file named
 | 145 | Timothy Stein | 182M | 1 | - | - | /actors/timothy-stein.html |
 | 146 | Tommy Green | 182M | 1 | - | - | /actors/tommy-green.html |
 | 147 | Diane Box Worman | 181M | 2 | - | - | /actors/diane-box-worman.html |
-| 148 | Jose Rosete | 180M | 2 | - | - | /actors/jose-rosete.html |
+| 148 | Jose Rosete | 180M | 3 | - | - | /actors/jose-rosete.html |
 | 149 | Eric Taylor Guilmette | 180M | 5 | - | - | /actors/eric-taylor-guilmette.html |
 | 150 | Logan Hannigan | 179M | 4 | - | - | /actors/logan-hannigan.html |

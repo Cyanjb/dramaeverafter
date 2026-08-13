@@ -1,6 +1,6 @@
 # Actors whose IMDb filmography has never been read
 
-2100 of 2138 credited actors. 28 have been read.
+2124 of 2162 credited actors. 28 have been read.
 
 WHY THIS IS THE HIGHEST-VALUE LIST. Measured 13 Aug across the 28 actors already
 read: IMDb credits them on 810 titles and we hold 476, so even a read actor is
@@ -24,12 +24,12 @@ the filename if you know it, and Downloads is fine - Drive is not required.
 | 9 | Meg Bush | 1.1B | 21 | - | https://www.imdb.com/name/nm8703744/ |
 | 10 | Jenna Gilmer | 1.0B | 10 | - | https://www.imdb.com/name/nm10669924/ |
 | 11 | Luke Dodge | 1.0B | 11 | - | https://www.imdb.com/name/nm15065527/ |
-| 12 | Cameron Porras | 1.0B | 12 | - | https://www.imdb.com/name/nm13577245/ |
+| 12 | Cameron Porras | 1.0B | 13 | - | https://www.imdb.com/name/nm13577245/ |
 | 13 | Maria Barseghian | 1.0B | 15 | - | https://www.imdb.com/name/nm9981575/ |
 | 14 | Stacey Marie Keba | 932M | 5 | - | search by name |
 | 15 | Christopher Quartuccio | 905M | 13 | - | search by name |
 | 16 | Adam Daniel | 887M | 10 | - | https://www.imdb.com/name/nm1491262/ |
-| 17 | Tess Dinerstein | 864M | 7 | - | https://www.imdb.com/name/nm3771470/ |
+| 17 | Tess Dinerstein | 864M | 8 | - | https://www.imdb.com/name/nm3771470/ |
 | 18 | Rebecca Stoughton | 856M | 20 | - | https://www.imdb.com/name/nm13386865/ |
 | 19 | Mark Vega | 833M | 4 | - | search by name |
 | 20 | Audrey Fafard | 821M | 2 | - | search by name |
@@ -82,7 +82,7 @@ the filename if you know it, and Downloads is fine - Drive is not required.
 | 67 | Neela Jolene | 438M | 10 | - | https://www.imdb.com/name/nm12227636/ |
 | 68 | Christine Gonzalez | 433M | 6 | - | https://www.imdb.com/name/nm16803938/ |
 | 69 | Alexis Jewel | 431M | 2 | - | search by name |
-| 70 | Katherine Gibson | 424M | 4 | - | https://www.imdb.com/name/nm13946181/ |
+| 70 | Katherine Gibson | 424M | 5 | - | https://www.imdb.com/name/nm13946181/ |
 | 71 | Elise Luthman | 421M | 4 | - | search by name |
 | 72 | Nate Flores | 421M | 10 | - | https://www.imdb.com/name/nm17007766/ |
 | 73 | Jade Duong | 417M | 1 | - | search by name |
