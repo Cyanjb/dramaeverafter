@@ -1,7 +1,7 @@
 {
  "name": "Jesse A. Morales",
  "nm": "nm5960414",
- "person_id": "jesse-a-morales",
+ "person_id": "jesse-morales",
  "confident": true,
  "source_pdf": "Jesse A. Morales - IMDb.pdf",
  "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
@@ -162,5 +162,6 @@
  ],
  "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
  "_drive_id": "1vnX2tSlYyTUBP7ok14ZTjM4ddKkun0mR",
- "_kind": "actor"
+ "_kind": "actor",
+ "MERGED_BY_RULING": "Cyan, 13 Aug: merged into jesse-morales. IDENTICAL IMDb id. people.csv already held nm5960414 for jesse-morales and the saved PDF is nm5960414."
 }

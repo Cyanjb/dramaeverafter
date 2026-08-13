@@ -13,7 +13,7 @@ the filename if you know it, and Downloads is fine - Drive is not required.
 
 | # | Actor | Reach | Titles held | Fan panel | IMDb |
 |--:|-------|------:|------------:|-----------|------|
-| 1 | Jesse Morales | 2.1B | 23 | - | https://www.imdb.com/name/nm5960414/ |
+| 1 | Jesse Morales | 2.1B | 30 | - | https://www.imdb.com/name/nm5960414/ |
 | 2 | Samantha Drews | 1.7B | 19 | - | https://www.imdb.com/name/nm11843540/ |
 | 3 | Autumn Noel | 1.4B | 18 | - | https://www.imdb.com/name/nm9857783/ |
 | 4 | Chris Quartuccio | 1.4B | 13 | - | https://www.imdb.com/name/nm9404185/ |

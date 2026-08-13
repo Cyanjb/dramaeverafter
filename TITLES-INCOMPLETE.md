@@ -3,7 +3,7 @@
 The bar (Cyan, 13 Aug): a title, a caption WE wrote, at least the leads,
 a link to the platform, and at least one trope.
 
-2690 titles fail on at least one field. 837 fail on ONE field
+2689 titles fail on at least one field. 839 fail on ONE field
 only - those are the cheapest wins and they are listed first below.
 
 `caption(copied)` means the text is exactly 300 characters or 300 bytes, which is
@@ -39,69 +39,69 @@ copyright and on duplicate-content grounds both.
 | 23 | The Three Badasses Who Want Me | 37M | trope | ReelShort |
 | 24 | Nero: Made Men | 36M | caption(thin) | ReelShort |
 | 25 | Reborn to See the Football Stars Ruin Themselves | 36M | cast | ReelShort |
-| 26 | Reborn, I Gifted Her My Hell | 30M | cast | ReelShort |
-| 27 | Lady Boss Takes on Vegas Bullies! | 29M | trope | ReelShort |
-| 28 | Now You Know Who I Am | 28M | caption(thin) | ReelShort |
-| 29 | You Fired the Backbone of Detroit | 28M | trope | ReelShort |
-| 30 | Secret Billionaire Returns on Christmas | 26M | trope | ReelShort |
-| 31 | My Mate is a Vampire | 24M | trope | ReelShort |
-| 32 | A Blind Date with my Mr. Meant-to-Be | 23M | cast | GoodShort |
-| 33 | Feast of Power | 23M | trope | ReelShort |
-| 34 | The Reborn Wife's Redemption | 23M | trope | ReelShort |
-| 35 | Marry Me, Mr. White | 21M | trope | ReelShort |
-| 36 | The Billionaire's Fake Wife | 21M | caption(thin) | ReelShort |
-| 37 | The Comeback Play | 21M | trope | ReelShort |
-| 38 | Crossing The Line To Love | 20M | trope | ReelShort |
-| 39 | Kidnapped by the Mafia | 18M | caption(copied) | GoodShort |
-| 40 | Things I Wanted to Say | 16M | caption(thin) | ReelShort |
-| 41 | Carter Reed | 16M | caption(thin) | ReelShort |
-| 42 | Mistaken for a Gold Digger | 15M | cast | GoodShort |
-| 43 | The Lady Boss is Done Pretending | 13M | caption(copied) | GoodShort |
-| 44 | Trapped and Redeemed By His Love | 12M | cast | GoodShort |
-| 45 | Uncle Richard is My Baby Daddy | 10M | cast | GoodShort |
-| 46 | Love Trap with My Dashing Knight | 10M | cast | ReelShort |
-| 47 | We Never Said We Went Bankrupt! | 10M | cast | ReelShort |
-| 48 | My Second Husband’s A Prince Charming! | 10M | cast | GoodShort |
-| 49 | The Return of My Drama Queen | 9M | caption(thin) | ReelShort |
-| 50 | Flash Vows | 8M | trope | ReelShort |
-| 51 | Leashed to My Demanding Boss 24/7 | 8M | cast | GoodShort |
-| 52 | Returned To Make Them Pay | 7M | cast | GoodShort |
-| 53 | Desserts Lies and Love | 6M | cast | GoodShort |
-| 54 | Perfect Landing into your Arms | 6M | cast | GoodShort |
-| 55 | Teach Me How to Say Goodbye | 6M | trope | ReelShort |
-| 56 | From Small-Town Outcast to Blooming Rose | 5M | cast | GoodShort |
-| 57 | Found My Daddy at the Construction Site | 5M | caption(copied) | GoodShort |
-| 58 | Bullies Beware of the Billionaire Belle | 5M | cast | GoodShort |
-| 59 | Dear Husband, Do you Remember me? | 5M | cast | GoodShort |
-| 60 | Love Under Fire | 5M | trope | ReelShort |
-| 61 | Found A Homeless Genius To Save My Company | 5M | caption(copied) | GoodShort |
-| 62 | Giving Birth and Getting Divorced | 4M | cast | GoodShort |
-| 63 | Golden Feather: Temptation Game | 4M | cast | NetShort, ReelShort |
-| 64 | Dear Husband Let's Get Divorced | 4M | cast | GoodShort |
-| 65 | After Divorce I Enter My Cougar Era | 4M | cast | GoodShort |
-| 66 | Code of the Heiress | 4M | cast | GoodShort |
-| 67 | I'm the Mafia Girl Boss and He's My Man | 4M | cast | GoodShort |
-| 68 | Love Under Attack | 4M | trope | ReelShort |
-| 69 | Smile My Cheating Husband You're on Camera | 4M | cast | GoodShort |
-| 70 | Love's U-Turn, From a Mistake | 4M | cast | GoodShort |
-| 71 | He's Too Late for Her Mafia Majesty | 4M | cast | GoodShort |
-| 72 | My Gift-Wrapped Billionaire | 4M | caption(copied) | GoodShort |
-| 73 | Lycan Queen Fights Back | 4M | cast | GoodShort |
-| 74 | Hear Me Once More | 3M | cast | GoodShort |
-| 75 | Mother-in-Law Steals My Mr. Right | 3M | cast | GoodShort |
-| 76 | The Canary of the Mafia Boss | 3M | cast | GoodShort |
-| 77 | You Had Your Chance | 3M | cast | GoodShort |
-| 78 | The Phoenix's Rebirth for Revenge | 3M | cast | GoodShort |
-| 79 | Sneak Me in Your Closet Lost in Deja Vu | 3M | cast | GoodShort |
-| 80 | A Dangerous Desire for Mr. Shelby | 3M | cast | GoodShort |
-| 81 | Now Racer Mom's Untouchable | 3M | caption(copied) | GoodShort |
-| 82 | The Beautiful Payback of a Billionaire Mother | 3M | cast | GoodShort |
-| 83 | She Finds Redemption in His Love | 3M | cast | GoodShort |
-| 84 | Sleeping Handsome, Let's Mate! | 3M | cast | GoodShort |
-| 85 | Zillionaire's Mighty Return on Christmas | 3M | cast | GoodShort |
-| 86 | Accidental Marriage to My Poor CEO | 2M | cast | GoodShort |
-| 87 | One Last Temptation Before I Say I Do | 2M | cast | GoodShort |
-| 88 | The Outcast Makes a Comeback | 2M | cast | GoodShort |
+| 26 | A Mistaken Surrogate for the Ruthless Billionaire | 33M | caption(copied) | GoodShort |
+| 27 | Reborn, I Gifted Her My Hell | 30M | cast | ReelShort |
+| 28 | Lady Boss Takes on Vegas Bullies! | 29M | trope | ReelShort |
+| 29 | Now You Know Who I Am | 28M | caption(thin) | ReelShort |
+| 30 | You Fired the Backbone of Detroit | 28M | trope | ReelShort |
+| 31 | Secret Billionaire Returns on Christmas | 26M | trope | ReelShort |
+| 32 | My Mate is a Vampire | 24M | trope | ReelShort |
+| 33 | A Blind Date with my Mr. Meant-to-Be | 23M | cast | GoodShort |
+| 34 | Feast of Power | 23M | trope | ReelShort |
+| 35 | The Reborn Wife's Redemption | 23M | trope | ReelShort |
+| 36 | Marry Me, Mr. White | 21M | trope | ReelShort |
+| 37 | The Billionaire's Fake Wife | 21M | caption(thin) | ReelShort |
+| 38 | The Comeback Play | 21M | trope | ReelShort |
+| 39 | Crossing The Line To Love | 20M | trope | ReelShort |
+| 40 | Kidnapped by the Mafia | 18M | caption(copied) | GoodShort |
+| 41 | Things I Wanted to Say | 16M | caption(thin) | ReelShort |
+| 42 | Carter Reed | 16M | caption(thin) | ReelShort |
+| 43 | Mistaken for a Gold Digger | 15M | cast | GoodShort |
+| 44 | The Lady Boss is Done Pretending | 13M | caption(copied) | GoodShort |
+| 45 | Trapped and Redeemed By His Love | 12M | cast | GoodShort |
+| 46 | Uncle Richard is My Baby Daddy | 10M | cast | GoodShort |
+| 47 | Love Trap with My Dashing Knight | 10M | cast | ReelShort |
+| 48 | We Never Said We Went Bankrupt! | 10M | cast | ReelShort |
+| 49 | My Second Husband’s A Prince Charming! | 10M | cast | GoodShort |
+| 50 | The Return of My Drama Queen | 9M | caption(thin) | ReelShort |
+| 51 | Flash Vows | 8M | trope | ReelShort |
+| 52 | Leashed to My Demanding Boss 24/7 | 8M | cast | GoodShort |
+| 53 | Returned To Make Them Pay | 7M | cast | GoodShort |
+| 54 | Desserts Lies and Love | 6M | cast | GoodShort |
+| 55 | Perfect Landing into your Arms | 6M | cast | GoodShort |
+| 56 | Teach Me How to Say Goodbye | 6M | trope | ReelShort |
+| 57 | From Small-Town Outcast to Blooming Rose | 5M | cast | GoodShort |
+| 58 | Found My Daddy at the Construction Site | 5M | caption(copied) | GoodShort |
+| 59 | Bullies Beware of the Billionaire Belle | 5M | cast | GoodShort |
+| 60 | Dear Husband, Do you Remember me? | 5M | cast | GoodShort |
+| 61 | Love Under Fire | 5M | trope | ReelShort |
+| 62 | Found A Homeless Genius To Save My Company | 5M | caption(copied) | GoodShort |
+| 63 | Giving Birth and Getting Divorced | 4M | cast | GoodShort |
+| 64 | Golden Feather: Temptation Game | 4M | cast | NetShort, ReelShort |
+| 65 | Dear Husband Let's Get Divorced | 4M | cast | GoodShort |
+| 66 | After Divorce I Enter My Cougar Era | 4M | cast | GoodShort |
+| 67 | Code of the Heiress | 4M | cast | GoodShort |
+| 68 | I'm the Mafia Girl Boss and He's My Man | 4M | cast | GoodShort |
+| 69 | Love Under Attack | 4M | trope | ReelShort |
+| 70 | Smile My Cheating Husband You're on Camera | 4M | cast | GoodShort |
+| 71 | Love's U-Turn, From a Mistake | 4M | cast | GoodShort |
+| 72 | He's Too Late for Her Mafia Majesty | 4M | cast | GoodShort |
+| 73 | My Gift-Wrapped Billionaire | 4M | caption(copied) | GoodShort |
+| 74 | Lycan Queen Fights Back | 4M | cast | GoodShort |
+| 75 | Hear Me Once More | 3M | cast | GoodShort |
+| 76 | Mother-in-Law Steals My Mr. Right | 3M | cast | GoodShort |
+| 77 | The Canary of the Mafia Boss | 3M | cast | GoodShort |
+| 78 | You Had Your Chance | 3M | cast | GoodShort |
+| 79 | The Phoenix's Rebirth for Revenge | 3M | cast | GoodShort |
+| 80 | Sneak Me in Your Closet Lost in Deja Vu | 3M | cast | GoodShort |
+| 81 | A Dangerous Desire for Mr. Shelby | 3M | cast | GoodShort |
+| 82 | Now Racer Mom's Untouchable | 3M | caption(copied) | GoodShort |
+| 83 | The Beautiful Payback of a Billionaire Mother | 3M | cast | GoodShort |
+| 84 | She Finds Redemption in His Love | 3M | cast | GoodShort |
+| 85 | Sleeping Handsome, Let's Mate! | 3M | cast | GoodShort |
+| 86 | Zillionaire's Mighty Return on Christmas | 3M | cast | GoodShort |
+| 87 | Accidental Marriage to My Poor CEO | 2M | cast | GoodShort |
+| 88 | One Last Temptation Before I Say I Do | 2M | cast | GoodShort |
 | 89 | [ENG DUB] Wed to the Unknown Heir | 2M | cast | GoodShort |
 | 90 | Avenging Heiress Plunged Into Darkness | 2M | caption(copied) | GoodShort |
 | 91 | The Forbidden Love | 2M | cast | GoodShort |
@@ -187,135 +187,135 @@ copyright and on duplicate-content grounds both.
 | 16 | Freed by the Sexy Farmer | 36M | caption(copied), trope | ReelShort |
 | 17 | Out of My Way! The Reborn Mafia Queen Is Here | 36M | cast, caption(copied), trope | ReelShort |
 | 18 | Private School Playboys | 34M | caption(copied), trope | ReelShort |
-| 19 | A Mistaken Surrogate for the Ruthless Billionaire | 33M | cast, caption(copied) | GoodShort |
-| 20 | Deadly Affair with My Brother-in-Law | 32M | cast, caption(copied), trope | ReelShort |
-| 21 | My Husband Killed Me, then I Won the Mega Ball! | 30M | cast, caption(copied), trope | ReelShort |
-| 22 | Accelerating Love | 28M | caption(copied), trope | ReelShort |
-| 23 | My Step-Brother is My Ex?! | 28M | caption(copied), trope | ReelShort |
-| 24 | My Gorgeous Wife is an Ex-Convict | 26M | cast, caption(copied), trope | ReelShort |
-| 25 | Curse of the Dragon King | 26M | cast, caption(copied), trope | ReelShort |
-| 26 | Don't Challenge the Lady Billionaire | 26M | cast, caption(copied) | GoodShort |
-| 27 | The Boy I Hate | 24M | caption(copied), trope | ReelShort |
-| 28 | Submitting to My Best Friend's Dad | 23M | caption(copied), trope | NetShort, ReelShort |
-| 29 | My Enemy Alpha | 21M | cast, trope | ReelShort |
-| 30 | Ms. Detective and Mr. Thief | 21M | caption(copied), trope | ReelShort |
-| 31 | Seduction Cove | 19M | caption(copied), trope | ReelShort |
-| 32 | Falling for My Nemesis Stepbrother | 16M | cast, caption(copied), trope | ReelShort |
-| 33 | Rock On! Band Beauty in Disguise | 16M | cast, caption(copied), trope | ReelShort |
-| 34 | Park Avenue Girls Don't Play Nice | 15M | caption(copied), trope | ReelShort |
-| 35 | The Warlord Returns | 15M | caption(copied), trope | ReelShort |
-| 36 | The Adjuster | 14M | cast, trope | ReelShort |
-| 37 | Irresistible love with my brother in law | 11M | caption(copied), trope | ReelShort |
-| 38 | Virginity Pact | 10M | cast, caption(copied), trope | ReelShort |
-| 39 | Love by Contract | 9M | cast, caption(copied) | GoodShort |
-| 40 | Heiress Hidden In The Clouds | 9M | cast, caption(copied), trope | ReelShort |
-| 41 | My Gangster Baby Daddy Pampers Me to Paradise | 9M | cast, caption(copied) | GoodShort |
-| 42 | [ENG DUB] Flash Marriage CEO Spoils Me a Lot | 9M | cast, caption(copied) | GoodShort |
-| 43 | Perfect Love | 8M | cast, caption(copied) | GoodShort |
-| 44 | The Lady Boss from Betrayed to Beloved | 8M | cast, caption(copied) | GoodShort |
-| 45 | The Secret Between US | 8M | cast, caption(thin) | ReelShort |
-| 46 | I'm a Queen Not a Mistress | 8M | cast, caption(copied) | GoodShort |
-| 47 | The Day We Got Married | 7M | cast, caption(copied), trope | ReelShort |
-| 48 | The Last Gambling God | 7M | cast, caption(copied), trope | NetShort, ReelShort |
-| 49 | Becoming My Ex’s Mother in Law | 7M | cast, caption(copied) | GoodShort |
-| 50 | A Billionaire Stay-at-home Dad's Two Treasures | 6M | cast, caption(copied) | GoodShort |
-| 51 | Divorced Queen Returns to The Stage | 6M | caption(copied), trope | ReelShort |
-| 52 | Wildfire Between Us | 6M | caption(copied), trope | NetShort, ReelShort |
-| 53 | Accidentally Brought a CEO Home | 6M | cast, caption(copied) | GoodShort |
-| 54 | Bound to the Bastard Billionaire | 6M | cast, caption(copied) | GoodShort |
-| 55 | Sneak Me in Your Closet My Prince | 6M | cast, caption(copied) | GoodShort |
-| 56 | My Sister is Not Someone to Mess with | 6M | cast, caption(copied) | GoodShort |
-| 57 | The MVP's Plus Size Love | 6M | cast, trope | ReelShort |
-| 58 | Secret Love With My Billionaire Revenge Partner | 6M | caption(copied), trope | ReelShort |
-| 59 | Forbidden Love with My Husband's Son | 6M | cast, caption(copied) | GoodShort |
-| 60 | Lady CEO's Fatal Contract | 6M | cast, caption(copied), trope | ReelShort |
-| 61 | Return of the Abandoned Heiress | 6M | cast, caption(copied) | GoodShort |
-| 62 | The Breaking Point of Love | 6M | cast, caption(copied) | GoodShort |
-| 63 | Maid's Vendetta | 5M | caption(copied), trope | ReelShort |
-| 64 | He Took A Mistress I Took the Sky | 5M | cast, caption(copied) | GoodShort |
-| 65 | Make My Mom Bloom Again | 5M | cast, caption(copied) | GoodShort |
-| 66 | Chasing My Billionaire Ex-wife | 5M | cast, caption(copied) | GoodShort |
-| 67 | Angel's Masterpiece | 5M | cast, caption(copied) | GoodShort |
-| 68 | Comeback of a Hidden Empress | 5M | cast, caption(copied) | GoodShort |
-| 69 | Cousins by Name Lovers in Secret | 5M | cast, caption(copied) | GoodShort |
-| 70 | After Awakening Siblings Strike Back | 4M | cast, caption(copied) | GoodShort |
-| 71 | Daddy's Birthday Became Daughter's Funeral | 4M | cast, caption(copied) | GoodShort |
-| 72 | Dare to Harm the Billionaire's Wife? | 4M | cast, caption(copied) | GoodShort |
-| 73 | Bitchy BFF It's Your Turn to Pay | 4M | cast, caption(copied) | GoodShort |
-| 74 | Case Closed: The Legal Queen Returns | 4M | cast, caption(copied) | GoodShort |
-| 75 | Revenge for The Truth in Her Diary | 4M | cast, caption(copied) | GoodShort |
-| 76 | Three Strikes Dad's Out | 4M | cast, caption(copied) | GoodShort |
-| 77 | My New Daddy is a Five-Star General | 4M | cast, caption(copied) | GoodShort |
-| 78 | Mistaken Encounter,Unexpected Love | 4M | cast, caption(copied) | GoodShort |
-| 79 | The Father's Guardian Angel | 4M | cast, caption(copied) | GoodShort |
-| 80 | [ENG DUB] Fatal Allure: Spoiling My Wife | 4M | cast, caption(copied) | GoodShort |
-| 81 | Destined Redemption | 4M | cast, caption(copied) | GoodShort |
-| 82 | Sweet Revenge for the Wrong Diagnosis | 4M | cast, caption(copied) | GoodShort |
-| 83 | Save Me Baby Daddy | 3M | cast, caption(copied) | GoodShort |
-| 84 | CEO's Substitute Wife | 3M | cast, caption(copied) | GoodShort |
-| 85 | From Rejected to the Alpha Queen | 3M | cast, caption(copied) | GoodShort |
-| 86 | [ENG DUB] The Formidable Rich Ex-wife | 3M | cast, caption(copied) | GoodShort |
-| 87 | Power of Three Set me Free | 3M | cast, caption(copied) | GoodShort |
-| 88 | Fated in the End Zone | 3M | cast, caption(copied) | GoodShort |
-| 89 | Oops! I married a CEO by mistake | 3M | cast, caption(copied) | GoodShort |
-| 90 | Spark My Body and Master My Soul | 3M | cast, caption(copied) | GoodShort |
-| 91 | His Journey Back Home from Ashes to Gold | 3M | cast, caption(copied) | GoodShort |
-| 92 | [ENG DUB] My Memory-Loss Darling Wife | 3M | cast, caption(copied) | GoodShort |
-| 93 | Objection I'm not Gay | 3M | cast, caption(copied) | GoodShort |
-| 94 | [ENG DUB] Don't Mess With the Heiress | 3M | cast, caption(copied) | GoodShort |
-| 95 | [ENG DUB] Spoiled Rotten: Flash Marriage to My Child's Father | 2M | cast, caption(copied) | GoodShort |
-| 96 | Assemble My Avenging Billionaires | 2M | cast, caption(copied) | GoodShort |
-| 97 | [ENG DUB] The Mystical Loong: One True Dragon | 2M | cast, caption(copied) | GoodShort |
-| 98 | Echoes of Her Cry | 2M | cast, caption(copied) | GoodShort |
-| 99 | Friends with Benefits Play the Swap Game | 2M | cast, caption(copied) | GoodShort |
-| 100 | My Husband's Nephew is My Guilty Pleasure | 2M | cast, caption(copied) | GoodShort |
-| 101 | The Final Goodbye to the Closest Kin | 2M | cast, caption(copied) | GoodShort |
-| 102 | My Big Sister Strikes with Her Mafia Dynasty | 2M | cast, caption(copied) | GoodShort |
-| 103 | [ENG DUB] The All-Powerful: He Who Rules It All | 2M | cast, caption(copied) | GoodShort |
-| 104 | &quot;Ordinary&quot; Life and &quot;Poor&quot; Husband | 2M | cast, caption(copied) | GoodShort |
-| 105 | Deadly Mile High Club | 2M | cast, trope | ReelShort |
-| 106 | Exchanging Our Hearts | 2M | cast, caption(copied) | GoodShort |
-| 107 | Having His Baby Becoming His Darling | 2M | cast, caption(copied) | GoodShort |
-| 108 | The Alpha and His Contract Luna | 2M | cast, caption(copied) | GoodShort |
-| 109 | The Goddess of Divorce Blessed Me with a CEO | 2M | cast, caption(copied) | GoodShort |
-| 110 | Vengeance and Untold Love | 2M | cast, caption(copied) | GoodShort |
-| 111 | [ENG DUB] &quot;Ordinary&quot; Life and &quot;Poor&quot; Husband | 2M | cast, caption(copied) | GoodShort |
-| 112 | Divorced Mom Beats Them All | 2M | cast, caption(copied) | GoodShort |
-| 113 | Love Triangle with Three Magnates | 2M | cast, caption(copied) | GoodShort |
-| 114 | [ENG DUB] Too Famous to Abandon Now | 2M | cast, caption(copied) | GoodShort |
-| 115 | Goodbye to the Wedding That Wasn't Mine | 2M | cast, caption(copied) | GoodShort |
-| 116 | Paint Me Yours Miss Bad Kisser | 2M | cast, caption(copied) | GoodShort |
-| 117 | How to Train Your CEO Good Boy | 2M | cast, caption(copied) | GoodShort |
-| 118 | The Elegy Of A Lost Romance | 2M | cast, caption(copied) | GoodShort |
-| 119 | Hate You Hard Love You Harder | 2M | cast, caption(copied) | GoodShort |
-| 120 | After Divorce, Stripper CEO and I Dominate Hollywood | 1M | cast, caption(copied) | GoodShort |
-| 121 | From Chance Encounter to Cherished Bride | 1M | cast, caption(copied) | GoodShort |
-| 122 | The Diagnosis of Heartbreak | 1M | cast, caption(copied) | GoodShort |
-| 123 | [ENG DUB] My Ex-husband Can't Stop Chasing Me After Divorce | 1M | cast, caption(copied) | GoodShort |
-| 124 | [ENG DUB] Titan Era: Ten Divine Beasts Rise with Me | 1M | cast, caption(copied) | GoodShort |
-| 125 | [ENG DUB]From Chance Encounter to Cherished Bride | 1M | cast, caption(copied) | GoodShort |
-| 126 | After We Loved | 1M | cast, caption(copied) | GoodShort |
-| 127 | My Wifey: Ace Of All Trades | 1M | cast, caption(copied) | GoodShort |
-| 128 | Playground Rules Don't Apply to Princesses | 1M | cast, caption(copied) | GoodShort |
-| 129 | [ENG DUB] Unexpected Gift from My Boss | 1M | cast, caption(copied) | GoodShort |
-| 130 | Allergic to All, Addicted to Mommy | 1M | cast, caption(copied) | GoodShort |
-| 131 | Mafia King’s Contract Groom | 1M | cast, caption(copied) | GoodShort |
-| 132 | [ENG DUB] Love's Dance Through Time | 1M | cast, caption(copied) | GoodShort |
-| 133 | [ENG DUB] The Reckoning of Gold and Blood | 1M | cast, caption(copied) | GoodShort |
-| 134 | [ENG DUB] Watch Me Flip This Fate | 1M | cast, caption(copied) | GoodShort |
-| 135 | Dark Web of Desire | 1M | cast, caption(copied) | GoodShort |
-| 136 | Lies Can't Stop My Love | 1M | cast, caption(copied) | GoodShort |
-| 137 | My Flirtatious Substitute Husband | 1M | cast, caption(copied) | GoodShort |
-| 138 | My Hidden Mafia Dad Ends It All | 1M | cast, caption(copied) | GoodShort |
-| 139 | [ENG DUB] A Dazzling Beauty | 1M | cast, caption(copied) | GoodShort |
-| 140 | [ENG DUB] All or Nothing: The Fatal Gamble | 1M | cast, caption(copied) | GoodShort |
-| 141 | [ENG DUB] Reckoning with Lies: Tess's Journey Back | 1M | cast, caption(copied) | GoodShort |
-| 142 | Luna Reborn: Alpha's Second Chance | 1M | cast, caption(copied) | GoodShort |
-| 143 | Sorry Captain Your Ex-Wife Is a Top Gun | 1M | cast, caption(copied) | GoodShort |
-| 144 | The Mist Between Our Graves | 1M | cast, caption(copied) | GoodShort |
-| 145 | Unseen Goodbye, Unspoken Lies | 1M | cast, caption(copied) | GoodShort |
-| 146 | [ENG DUB] She Rose Before the Future Came | 1M | cast, caption(copied) | GoodShort |
-| 147 | [ENG DUB] The Elegy Of A Lost Romance | 1M | cast, caption(copied) | GoodShort |
-| 148 | [ENG DUB] When a Fashion Queen Fell Back in Time | 990K | cast, caption(copied) | GoodShort |
-| 149 | [ENG DUB] The Baby Star They Regret Losing | 986K | cast, caption(copied) | GoodShort |
-| 150 | [ENG DUB] Born of Mountains, Destined for Miracles | 976K | cast, caption(copied) | GoodShort |
+| 19 | Deadly Affair with My Brother-in-Law | 32M | cast, caption(copied), trope | ReelShort |
+| 20 | My Husband Killed Me, then I Won the Mega Ball! | 30M | cast, caption(copied), trope | ReelShort |
+| 21 | Accelerating Love | 28M | caption(copied), trope | ReelShort |
+| 22 | My Step-Brother is My Ex?! | 28M | caption(copied), trope | ReelShort |
+| 23 | My Gorgeous Wife is an Ex-Convict | 26M | cast, caption(copied), trope | ReelShort |
+| 24 | Curse of the Dragon King | 26M | cast, caption(copied), trope | ReelShort |
+| 25 | Don't Challenge the Lady Billionaire | 26M | cast, caption(copied) | GoodShort |
+| 26 | The Boy I Hate | 24M | caption(copied), trope | ReelShort |
+| 27 | Submitting to My Best Friend's Dad | 23M | caption(copied), trope | NetShort, ReelShort |
+| 28 | My Enemy Alpha | 21M | cast, trope | ReelShort |
+| 29 | Ms. Detective and Mr. Thief | 21M | caption(copied), trope | ReelShort |
+| 30 | Seduction Cove | 19M | caption(copied), trope | ReelShort |
+| 31 | Falling for My Nemesis Stepbrother | 16M | cast, caption(copied), trope | ReelShort |
+| 32 | Rock On! Band Beauty in Disguise | 16M | cast, caption(copied), trope | ReelShort |
+| 33 | Park Avenue Girls Don't Play Nice | 15M | caption(copied), trope | ReelShort |
+| 34 | The Warlord Returns | 15M | caption(copied), trope | ReelShort |
+| 35 | The Adjuster | 14M | cast, trope | ReelShort |
+| 36 | Irresistible love with my brother in law | 11M | caption(copied), trope | ReelShort |
+| 37 | Virginity Pact | 10M | cast, caption(copied), trope | ReelShort |
+| 38 | Love by Contract | 9M | cast, caption(copied) | GoodShort |
+| 39 | Heiress Hidden In The Clouds | 9M | cast, caption(copied), trope | ReelShort |
+| 40 | My Gangster Baby Daddy Pampers Me to Paradise | 9M | cast, caption(copied) | GoodShort |
+| 41 | [ENG DUB] Flash Marriage CEO Spoils Me a Lot | 9M | cast, caption(copied) | GoodShort |
+| 42 | Perfect Love | 8M | cast, caption(copied) | GoodShort |
+| 43 | The Lady Boss from Betrayed to Beloved | 8M | cast, caption(copied) | GoodShort |
+| 44 | The Secret Between US | 8M | cast, caption(thin) | ReelShort |
+| 45 | I'm a Queen Not a Mistress | 8M | cast, caption(copied) | GoodShort |
+| 46 | The Day We Got Married | 7M | cast, caption(copied), trope | ReelShort |
+| 47 | The Last Gambling God | 7M | cast, caption(copied), trope | NetShort, ReelShort |
+| 48 | Becoming My Ex’s Mother in Law | 7M | cast, caption(copied) | GoodShort |
+| 49 | A Billionaire Stay-at-home Dad's Two Treasures | 6M | cast, caption(copied) | GoodShort |
+| 50 | Divorced Queen Returns to The Stage | 6M | caption(copied), trope | ReelShort |
+| 51 | Wildfire Between Us | 6M | caption(copied), trope | NetShort, ReelShort |
+| 52 | Accidentally Brought a CEO Home | 6M | cast, caption(copied) | GoodShort |
+| 53 | Bound to the Bastard Billionaire | 6M | cast, caption(copied) | GoodShort |
+| 54 | Sneak Me in Your Closet My Prince | 6M | cast, caption(copied) | GoodShort |
+| 55 | My Sister is Not Someone to Mess with | 6M | cast, caption(copied) | GoodShort |
+| 56 | The MVP's Plus Size Love | 6M | cast, trope | ReelShort |
+| 57 | Secret Love With My Billionaire Revenge Partner | 6M | caption(copied), trope | ReelShort |
+| 58 | Forbidden Love with My Husband's Son | 6M | cast, caption(copied) | GoodShort |
+| 59 | Lady CEO's Fatal Contract | 6M | cast, caption(copied), trope | ReelShort |
+| 60 | Return of the Abandoned Heiress | 6M | cast, caption(copied) | GoodShort |
+| 61 | The Breaking Point of Love | 6M | cast, caption(copied) | GoodShort |
+| 62 | Maid's Vendetta | 5M | caption(copied), trope | ReelShort |
+| 63 | He Took A Mistress I Took the Sky | 5M | cast, caption(copied) | GoodShort |
+| 64 | Make My Mom Bloom Again | 5M | cast, caption(copied) | GoodShort |
+| 65 | Chasing My Billionaire Ex-wife | 5M | cast, caption(copied) | GoodShort |
+| 66 | Angel's Masterpiece | 5M | cast, caption(copied) | GoodShort |
+| 67 | Comeback of a Hidden Empress | 5M | cast, caption(copied) | GoodShort |
+| 68 | Cousins by Name Lovers in Secret | 5M | cast, caption(copied) | GoodShort |
+| 69 | After Awakening Siblings Strike Back | 4M | cast, caption(copied) | GoodShort |
+| 70 | Daddy's Birthday Became Daughter's Funeral | 4M | cast, caption(copied) | GoodShort |
+| 71 | Dare to Harm the Billionaire's Wife? | 4M | cast, caption(copied) | GoodShort |
+| 72 | Bitchy BFF It's Your Turn to Pay | 4M | cast, caption(copied) | GoodShort |
+| 73 | Case Closed: The Legal Queen Returns | 4M | cast, caption(copied) | GoodShort |
+| 74 | Revenge for The Truth in Her Diary | 4M | cast, caption(copied) | GoodShort |
+| 75 | Three Strikes Dad's Out | 4M | cast, caption(copied) | GoodShort |
+| 76 | My New Daddy is a Five-Star General | 4M | cast, caption(copied) | GoodShort |
+| 77 | Mistaken Encounter,Unexpected Love | 4M | cast, caption(copied) | GoodShort |
+| 78 | The Father's Guardian Angel | 4M | cast, caption(copied) | GoodShort |
+| 79 | [ENG DUB] Fatal Allure: Spoiling My Wife | 4M | cast, caption(copied) | GoodShort |
+| 80 | Destined Redemption | 4M | cast, caption(copied) | GoodShort |
+| 81 | Sweet Revenge for the Wrong Diagnosis | 4M | cast, caption(copied) | GoodShort |
+| 82 | Save Me Baby Daddy | 3M | cast, caption(copied) | GoodShort |
+| 83 | CEO's Substitute Wife | 3M | cast, caption(copied) | GoodShort |
+| 84 | From Rejected to the Alpha Queen | 3M | cast, caption(copied) | GoodShort |
+| 85 | [ENG DUB] The Formidable Rich Ex-wife | 3M | cast, caption(copied) | GoodShort |
+| 86 | Power of Three Set me Free | 3M | cast, caption(copied) | GoodShort |
+| 87 | Fated in the End Zone | 3M | cast, caption(copied) | GoodShort |
+| 88 | Oops! I married a CEO by mistake | 3M | cast, caption(copied) | GoodShort |
+| 89 | Spark My Body and Master My Soul | 3M | cast, caption(copied) | GoodShort |
+| 90 | His Journey Back Home from Ashes to Gold | 3M | cast, caption(copied) | GoodShort |
+| 91 | [ENG DUB] My Memory-Loss Darling Wife | 3M | cast, caption(copied) | GoodShort |
+| 92 | Objection I'm not Gay | 3M | cast, caption(copied) | GoodShort |
+| 93 | [ENG DUB] Don't Mess With the Heiress | 3M | cast, caption(copied) | GoodShort |
+| 94 | [ENG DUB] Spoiled Rotten: Flash Marriage to My Child's Father | 2M | cast, caption(copied) | GoodShort |
+| 95 | Assemble My Avenging Billionaires | 2M | cast, caption(copied) | GoodShort |
+| 96 | [ENG DUB] The Mystical Loong: One True Dragon | 2M | cast, caption(copied) | GoodShort |
+| 97 | Echoes of Her Cry | 2M | cast, caption(copied) | GoodShort |
+| 98 | Friends with Benefits Play the Swap Game | 2M | cast, caption(copied) | GoodShort |
+| 99 | My Husband's Nephew is My Guilty Pleasure | 2M | cast, caption(copied) | GoodShort |
+| 100 | The Final Goodbye to the Closest Kin | 2M | cast, caption(copied) | GoodShort |
+| 101 | My Big Sister Strikes with Her Mafia Dynasty | 2M | cast, caption(copied) | GoodShort |
+| 102 | [ENG DUB] The All-Powerful: He Who Rules It All | 2M | cast, caption(copied) | GoodShort |
+| 103 | &quot;Ordinary&quot; Life and &quot;Poor&quot; Husband | 2M | cast, caption(copied) | GoodShort |
+| 104 | Deadly Mile High Club | 2M | cast, trope | ReelShort |
+| 105 | Exchanging Our Hearts | 2M | cast, caption(copied) | GoodShort |
+| 106 | Having His Baby Becoming His Darling | 2M | cast, caption(copied) | GoodShort |
+| 107 | The Alpha and His Contract Luna | 2M | cast, caption(copied) | GoodShort |
+| 108 | The Goddess of Divorce Blessed Me with a CEO | 2M | cast, caption(copied) | GoodShort |
+| 109 | Vengeance and Untold Love | 2M | cast, caption(copied) | GoodShort |
+| 110 | [ENG DUB] &quot;Ordinary&quot; Life and &quot;Poor&quot; Husband | 2M | cast, caption(copied) | GoodShort |
+| 111 | Divorced Mom Beats Them All | 2M | cast, caption(copied) | GoodShort |
+| 112 | Love Triangle with Three Magnates | 2M | cast, caption(copied) | GoodShort |
+| 113 | [ENG DUB] Too Famous to Abandon Now | 2M | cast, caption(copied) | GoodShort |
+| 114 | Goodbye to the Wedding That Wasn't Mine | 2M | cast, caption(copied) | GoodShort |
+| 115 | Paint Me Yours Miss Bad Kisser | 2M | cast, caption(copied) | GoodShort |
+| 116 | How to Train Your CEO Good Boy | 2M | cast, caption(copied) | GoodShort |
+| 117 | The Elegy Of A Lost Romance | 2M | cast, caption(copied) | GoodShort |
+| 118 | Hate You Hard Love You Harder | 2M | cast, caption(copied) | GoodShort |
+| 119 | After Divorce, Stripper CEO and I Dominate Hollywood | 1M | cast, caption(copied) | GoodShort |
+| 120 | From Chance Encounter to Cherished Bride | 1M | cast, caption(copied) | GoodShort |
+| 121 | The Diagnosis of Heartbreak | 1M | cast, caption(copied) | GoodShort |
+| 122 | [ENG DUB] My Ex-husband Can't Stop Chasing Me After Divorce | 1M | cast, caption(copied) | GoodShort |
+| 123 | [ENG DUB] Titan Era: Ten Divine Beasts Rise with Me | 1M | cast, caption(copied) | GoodShort |
+| 124 | [ENG DUB]From Chance Encounter to Cherished Bride | 1M | cast, caption(copied) | GoodShort |
+| 125 | After We Loved | 1M | cast, caption(copied) | GoodShort |
+| 126 | My Wifey: Ace Of All Trades | 1M | cast, caption(copied) | GoodShort |
+| 127 | Playground Rules Don't Apply to Princesses | 1M | cast, caption(copied) | GoodShort |
+| 128 | [ENG DUB] Unexpected Gift from My Boss | 1M | cast, caption(copied) | GoodShort |
+| 129 | Allergic to All, Addicted to Mommy | 1M | cast, caption(copied) | GoodShort |
+| 130 | Mafia King’s Contract Groom | 1M | cast, caption(copied) | GoodShort |
+| 131 | [ENG DUB] Love's Dance Through Time | 1M | cast, caption(copied) | GoodShort |
+| 132 | [ENG DUB] The Reckoning of Gold and Blood | 1M | cast, caption(copied) | GoodShort |
+| 133 | [ENG DUB] Watch Me Flip This Fate | 1M | cast, caption(copied) | GoodShort |
+| 134 | Dark Web of Desire | 1M | cast, caption(copied) | GoodShort |
+| 135 | Lies Can't Stop My Love | 1M | cast, caption(copied) | GoodShort |
+| 136 | My Flirtatious Substitute Husband | 1M | cast, caption(copied) | GoodShort |
+| 137 | My Hidden Mafia Dad Ends It All | 1M | cast, caption(copied) | GoodShort |
+| 138 | [ENG DUB] A Dazzling Beauty | 1M | cast, caption(copied) | GoodShort |
+| 139 | [ENG DUB] All or Nothing: The Fatal Gamble | 1M | cast, caption(copied) | GoodShort |
+| 140 | [ENG DUB] Reckoning with Lies: Tess's Journey Back | 1M | cast, caption(copied) | GoodShort |
+| 141 | Luna Reborn: Alpha's Second Chance | 1M | cast, caption(copied) | GoodShort |
+| 142 | Sorry Captain Your Ex-Wife Is a Top Gun | 1M | cast, caption(copied) | GoodShort |
+| 143 | The Mist Between Our Graves | 1M | cast, caption(copied) | GoodShort |
+| 144 | Unseen Goodbye, Unspoken Lies | 1M | cast, caption(copied) | GoodShort |
+| 145 | [ENG DUB] She Rose Before the Future Came | 1M | cast, caption(copied) | GoodShort |
+| 146 | [ENG DUB] The Elegy Of A Lost Romance | 1M | cast, caption(copied) | GoodShort |
+| 147 | [ENG DUB] When a Fashion Queen Fell Back in Time | 990K | cast, caption(copied) | GoodShort |
+| 148 | [ENG DUB] The Baby Star They Regret Losing | 986K | cast, caption(copied) | GoodShort |
+| 149 | [ENG DUB] Born of Mountains, Destined for Miracles | 976K | cast, caption(copied) | GoodShort |
+| 150 | OMG My Husband Is a Callboy | 972K | cast, caption(copied) | GoodShort |

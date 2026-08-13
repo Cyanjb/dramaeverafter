@@ -1,7 +1,7 @@
 {
  "name": "Robert Palmer Watkins",
  "nm": "nm4981388",
- "person_id": "robert-palmer-watkins",
+ "person_id": "robert-watkins",
  "confident": false,
  "source_pdf": "Robert Palmer Watkins - IMDb.pdf",
  "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
@@ -322,5 +322,6 @@
  "needs_review": true,
  "review_reason": "17 linked credits could not be parsed at all",
  "_drive_id": "1PbUWvZYa4ubVRiH2GBqbeiUhhO3_5XUn",
- "_kind": "actor"
+ "_kind": "actor",
+ "MERGED_BY_RULING": "Cyan, 13 Aug: merged into robert-watkins. Same production under two title names. robert-watkins' only credit is 'Meet My Brothers', alt_titles \"After Divorce I'm Spoiled by Three Brothers\"; the IMDb page credits \"After Divorce, I'm Spoiled by Three Brothers\" as Dominic Lane. Those titles are already ruled confirmed_same."
 }
