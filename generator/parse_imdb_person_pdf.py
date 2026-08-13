@@ -168,11 +168,23 @@ def credit_units(text):
         ym = YEAR_RE.search(strip_pagination(lines[year_i])[0].strip())
         chars = [strip_pagination(x)[0].strip() for x in lines[i + 1:year_i]]
         chars = [c for c in chars if c]
-        character = ""
+        character, billed_as = "", ""
         if chars:
             parts = [p.strip() for p in re.split(r"\s{3,}", chars[0]) if p.strip()]
             character = parts[0] if parts else ""
+        # IMDb appends the BILLING VARIANT to the character when the actor was
+        # credited under another name: "Kane Hudson (as Jesse Morales)". That is not
+        # part of the character and must never reach character_name - eight credits
+        # went live reading 'Julian Barlow (as Jesse Morales)' before this was caught.
+        # It is also genuine aka evidence, so it is kept in its own field rather than
+        # discarded, per the rule to record a name variant when one is seen.
+        m_as = re.search(r"\s*\(as ([^)]+)\)\s*$", character)
+        if m_as:
+            billed_as = m_as.group(1).strip()
+            character = character[:m_as.start()].strip()
         rec = {"title": title, "character": character, "year": int(ym.group(2))}
+        if billed_as:
+            rec["billed_as"] = billed_as
         if ym.group(1):
             rec["episodes"] = int(ym.group(1))
         hits.append({"rec": rec, "kind": m.group(1),
