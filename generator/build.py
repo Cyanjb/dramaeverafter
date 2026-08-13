@@ -1185,7 +1185,7 @@ for t in titles:
 <span aria-hidden="true">&#8599;</span><span class="act-label">Share</span></button>
 </div>
 {f'<p class="hint" style="margin-top:14px">Also known as: {t["alt_titles"].replace(";", ", ")}</p>' if t.get('alt_titles') else ''}
-<div class="story"><h2>The story</h2><p>{t['synopsis_short']}</p></div>
+{f'<div class="story"><h2>The story</h2><p>{t["synopsis_short"]}</p></div>' if (t.get("synopsis_short") or "").strip() else ''}
 {f'<div class="chips" style="margin-top:22px">{trope_html}</div>' if trope_html else ''}
 </div>
 </section>
