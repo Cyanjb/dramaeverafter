@@ -1,7 +1,7 @@
 {
   "title": "You've Been Replaced, First Love",
   "platform": "reelshort",
-  "platform_source": "TWO independent sources agree. (1) The FILENAME Cyan supplied begins 'Reelshort - ', which adapters.md sec 23 makes authoritative. (2) The PDF's own Details block, page 7: 'Production companies  Swzz Media Productions  ReelShort'. This is the first title in the batch where the filename rule and the production-company field could be checked against each other, and they match.",
+  "platform_source": "TWO independent sources agree. (1) The FILENAME begins 'Reelshort - ', which adapters.md sec 23 makes authoritative. (2) The PDF's own Details block, page 7: 'Production companies  Swzz Media Productions  ReelShort'. First title in this batch where both could be checked against each other.",
   "year": 2026,
   "release_date": "2026-08-01",
   "country": "United States",
@@ -11,20 +11,32 @@
   "rating": "8.0/10 from 83",
   "production_companies": ["Swzz Media Productions", "ReelShort"],
   "confident": true,
-  "held_as": null,
-  "IMPORT_CANDIDATE": "NOT in titles.csv. It is one of Armand Procacci's 33 missing titles, and it now has a platform, a year, a release date and an aka - everything needed to create it properly except a poster and a synopsis, which only the platform can supply.",
-  "SOURCE_ROUTE_CAVEAT": "This PDF was read from Downloads via the PDF Tools MCP, which returns TEXT ONLY. The Drive route (read_file_content on a Drive file id) additionally returns the page's LINK LIST, i.e. the ordered nm ids, and that is what makes actor/character pairing reconstructable on a scrambled cast grid. Without it, only pairs confirmed by a second signal can be trusted. RECOMMENDATION: supply these through the Drive folder, not Downloads.",
-  "cast_note": "IMDb lists Top Cast 24. Only THREE are transcribed, because the extracted text interleaves the actor and character columns with no nm ids to reconstruct against - e.g. page 2 reads 'Armand Procacci Jason CaceresAlexAshley DavidsonJessieClaire KerofskyKate'. The remaining 21 are deliberately NOT guessed.",
+  "IMPORT_CANDIDATE": "NOT in titles.csv. One of Armand Procacci's 33 missing titles. Now has platform, year, release date, aka and 18 cast - everything to create it properly except poster and synopsis, which only the platform supplies.",
+  "METHOD_THIS_PROVES": "A LOCAL PDF CAN BE PAIRED AS RELIABLY AS A DRIVE FILE. Two steps, both needed. (1) pypdf exposes the page's LINK ANNOTATIONS, and IMDb's cast links carry ?ref_=tt_cst_t_N, giving the billing ORDER and the nm id for each slot. (2) pypdf's extract_text(extraction_mode='layout') preserves the two-column grid, so each row reads 'left actor | right actor' then 'left character | right character'. INDENTATION IS THE LOAD-BEARING SIGNAL - stripping whitespace destroys the only thing that says which column a lone character belongs to.",
+  "HOW_THE_AMBIGUITY_WAS_SETTLED": "Flat text gave 'Armand Procacci Jason CaceresAlexAshley DavidsonJessieClaire KerofskyKate', which reads equally well as 'Procacci -> Jason Caceres' or 'Procacci -> Jason, Caceres -> Alex'. Layout mode shows 'Alex' at indent 92, the RIGHT column, so it belongs to Jason Caceres, who is an ACTOR not a character. Cyan read it that way unaided. Slot 3's nm is nm11768336 - Procacci's own id in people.csv - which independently confirms the whole slot ordering.",
+  "pairing_method": "Ordered nm ids from PDF link annotations (tt_cst_t_1..18), aligned to a two-column layout grid read left-to-right, top-to-bottom. Confirmed by slot 3 = nm11768336 = Armand Procacci.",
+  "cast_count_note": "IMDb says Top Cast 24. Eighteen carry nm links in the saved pages; the remaining six are not present in this PDF and are NOT invented.",
   "cast": [
-    {"order": 1, "name": "Katherine Gibson", "character": "Tessa Lane", "confidence": "Named first in the Stars line and paired on page 1."},
-    {"order": 2, "name": "Jake Lively", "character": "Miles Palmer", "confidence": "Named second in the Stars line and paired on page 1."},
-    {"order": 3, "name": "Armand Procacci", "character": "Jason Caceres", "confidence": "Third in the Stars line. The storyline independently names Jason as the first love who humiliates Tessa, which fits a third-billed male lead."}
+    {"order": 1, "name": "Katherine Gibson", "character": "Tessa Lane", "nm": "nm13946181"},
+    {"order": 2, "name": "Jake Lively", "character": "Miles Palmer", "nm": "nm17513736"},
+    {"order": 3, "name": "Armand Procacci", "character": "", "nm": "nm11768336", "character_missing": "His character cell is EMPTY in the extraction - the left-column character on that row simply is not in the text layer. The storyline names a 'Jason', but 'Jason Caceres' turns out to be the actor in slot 4, so inferring 'Jason' here would be a guess. Left blank."},
+    {"order": 4, "name": "Jason Caceres", "character": "Alex", "nm": "nm5077481"},
+    {"order": 5, "name": "Ashley Davidson", "character": "Jessie", "nm": "nm10069913"},
+    {"order": 6, "name": "Claire Kerofsky", "character": "Kate", "nm": "nm13816501"},
+    {"order": 7, "name": "Michelle Carney", "character": "Annie", "nm": "nm14892614"},
+    {"order": 8, "name": "Taysha Hill", "character": "Elena Lane", "nm": "nm17493883"},
+    {"order": 9, "name": "Jessica Moore", "character": "Mrs. Wheeler", "nm": "nm10523783"},
+    {"order": 10, "name": "Maxwell Maydaniuk", "character": "Young Miles", "nm": "nm15740770"},
+    {"order": 11, "name": "Steven T. Bartlett", "character": "Ben", "nm": "nm2882595"},
+    {"order": 12, "name": "Rory Amidon", "character": "Young Tessa", "nm": "nm16749635"},
+    {"order": 13, "name": "Shane Roelle", "character": "David Lane", "nm": "nm6897653"},
+    {"order": 14, "name": "Brian Collura", "character": "Caleb", "nm": "nm8242512"},
+    {"order": 15, "name": "Latasha Pippen", "character": "Karen", "nm": "nm2903698"},
+    {"order": 16, "name": "Kimberly Niccole", "character": "Dr. Allison", "nm": "nm4184152"},
+    {"order": 17, "name": "Richard Scott", "character": "Butch Simmons", "nm": "nm12876121", "note": "Character wrapped across two lines in the PDF as 'Butch' / 'Simmons'."},
+    {"order": 18, "name": "Joey Kane", "character": "Ryan", "nm": "nm15737988"}
   ],
-  "cast_NOT_transcribed": [
-    "Jason Caceres or Alex, Ashley Davidson, Jessie, Claire Kerofsky, Kate, Michelle Carney, Annie, Taysha Hill, Elena Lane, Jessica Moore, Mrs. Wheeler, Maxwell Maydaniuk, Young Miles, Steven T. Bartlett, Ben, Rory Amidon, Young Tessa, Shane Roelle, David Lane, Brian Collura, Caleb, Latasha Pippen, Karen, Kimberly Niccole, Dr. Allison, Richard Scott, Butch Simmons, Joey Kane, Ryan",
-    "_why": "These are the raw fragments in page order. Which are actors and which are characters cannot be determined without the nm ids. Re-read via Drive to resolve."
-  ],
-  "caption_rule": "CAST ONLY. The storyline was used to VERIFY one pairing and is deliberately not transcribed as copy - captions and synopses are written from scratch.",
+  "caption_rule": "CAST ONLY. The storyline was read to test a pairing and is deliberately not transcribed as copy - captions and synopses are written from scratch.",
   "_source_path": "C:\\\\Users\\\\cyanj\\\\Downloads\\\\Reelshort - You've Been Replaced, First Love (TV Mini Series 2026) - IMDb.pdf",
   "_kind": "title"
 }
