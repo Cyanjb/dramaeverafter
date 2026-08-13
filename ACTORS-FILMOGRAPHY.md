@@ -1,6 +1,6 @@
 # Actors whose IMDb filmography has never been read
 
-2149 of 2202 credited actors. 46 have been read.
+2159 of 2212 credited actors. 46 have been read.
 
 WHY THIS IS THE HIGHEST-VALUE LIST. Measured 13 Aug across the 28 actors already
 read: IMDb credits them on 810 titles and we hold 476, so even a read actor is

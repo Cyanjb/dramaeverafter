@@ -1,6 +1,6 @@
 # Actors who need a photo
 
-2078 credited actors have no photo_ref. Ranked by REACH - the summed
+2088 credited actors have no photo_ref. Ranked by REACH - the summed
 views of every title they are credited on - so the faces a visitor is most likely
 to meet come first. Regenerate with `py generator/make_gap_report.py`.
 
@@ -45,7 +45,7 @@ Commons, then the platform's own actor page. NEVER a shared photo - a file named
 | 33 | Miguel Browne | 460M | 1 | - | - | /actors/miguel-browne.html |
 | 34 | Alexis Jewel | 431M | 2 | - | - | /actors/alexis-jewell.html |
 | 35 | Elise Luthman | 421M | 4 | - | - | /actors/elise-luthman.html |
-| 36 | Nick Puya | 417M | 7 | - | https://www.imdb.com/name/nm8650150/ | /actors/nick-puya.html |
+| 36 | Nick Puya | 417M | 8 | - | https://www.imdb.com/name/nm8650150/ | /actors/nick-puya.html |
 | 37 | Jade Duong | 417M | 1 | - | - | /actors/jade-duong.html |
 | 38 | Kerwin Gonzalez | 414M | 1 | - | - | /actors/kerwin-gonzalez.html |
 | 39 | Mollie Green | 412M | 9 | - | - | /actors/mollie-green.html |

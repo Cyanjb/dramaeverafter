@@ -1,7 +1,7 @@
 {
  "title": "I Became Mrs Grayson by Bragging",
- "platform": null,
- "platform_source": "IMDb production-company field: NVert Productions, Narval Films, YRBW Productions",
+ "platform": "dramabox",
+ "platform_source": "CYAN, 13 Aug 2026: found it on DramaBox by searching the title. The IMDb page's production-company field names only production houses (NVert Productions, Narval Films, YRBW Productions), so the page itself could not supply a platform and the title was correctly held back under the production-houses-are-not-a-platform rule. A human finding the title on the app IS the evidence that rule was waiting for. Not corroborated by our parsed DramaBox company catalogue, which is a PARTIAL listing - we hold 76 DramaBox titles and they publish thousands - so its absence there is not evidence against.",
  "production_companies": "NVert Productions, Narval Films, YRBW Productions",
  "source_pdf": "I Became Mrs Grayson by Bragging (TV Mini Series 2025) - IMDb.pdf",
  "read_by": "parse_imdb_title_pdf.py (pypdf layout mode, column pairing)",
@@ -121,8 +121,6 @@
   }
  ],
  "caption_rule": "CAST ONLY. No IMDb storyline is copied or reworded.",
- "needs_review": true,
- "review_reason": "no known platform in the production-company field (NVert Productions, Narval Films, YRBW Productions)",
  "_drive_id": "1BjulFMdIH_BLx_vEBDfZm09tcGdQKZiq",
  "_kind": "title"
 }

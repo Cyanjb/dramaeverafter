@@ -3,7 +3,7 @@
 The bar (Cyan, 13 Aug): a title, a caption WE wrote, at least the leads,
 a link to the platform, and at least one trope.
 
-2689 titles fail on at least one field. 839 fail on ONE field
+2690 titles fail on at least one field. 839 fail on ONE field
 only - those are the cheapest wins and they are listed first below.
 
 `caption(copied)` means the text is exactly 300 characters or 300 bytes, which is
