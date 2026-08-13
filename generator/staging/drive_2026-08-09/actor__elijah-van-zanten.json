@@ -1,0 +1,272 @@
+{
+ "name": "Elijah Van Zanten",
+ "nm": "nm13906689",
+ "person_id": "elijah-van-zanten",
+ "confident": false,
+ "source_pdf": "Elijah Van Zanten - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 50,
+  "credits_parsed": 46,
+  "unparsed_gap": 4,
+  "vertical": 36,
+  "excluded_non_vertical": 4,
+  "type_uncertain": 6
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "A Shot at Love",
+   "character": "Nacho Rivera",
+   "year": 2026
+  },
+  {
+   "title": "Baby Daddy at the Front Desk",
+   "character": "BRIAN WINSTON",
+   "year": 2026
+  },
+  {
+   "title": "I'm Having Babies in Economy, They're Making Babies in First Class",
+   "character": "Ethan",
+   "year": 2026
+  },
+  {
+   "title": "Lace Game with the CEO",
+   "character": "Chris",
+   "year": 2026
+  },
+  {
+   "title": "Step Aside Ex, She's the Hidden Lycan Queen!",
+   "character": "King William Caesar",
+   "year": 2026
+  },
+  {
+   "title": "The Mafia Boss Wants His Pregnant Bride",
+   "character": "Alden Norton",
+   "year": 2026
+  },
+  {
+   "title": "The Mafia Under Her Whip",
+   "character": "Silas",
+   "year": 2026
+  },
+  {
+   "title": "The Perfect Play",
+   "character": "Maxwell",
+   "year": 2026
+  },
+  {
+   "title": "A Virgin Surrogate for the Billionaire",
+   "character": "Tristian Brown",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "After Divorce, the Billionaire Crushed on Me",
+   "character": "Kevin Dodge",
+   "year": 2025
+  },
+  {
+   "title": "Executive Affair: Resigning from Your Love",
+   "character": "Xander Anderson",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Giving Birth and Getting Divorced",
+   "character": "Rory",
+   "year": 2025
+  },
+  {
+   "title": "Legally Bound to Love",
+   "character": "Diego Malone",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Love Is Sweet Torture",
+   "character": "Grayson",
+   "year": 2025
+  },
+  {
+   "title": "Lured Into Desire",
+   "character": "Lucian",
+   "year": 2025
+  },
+  {
+   "title": "Mistaken Surrogate for the B-Ball Bad Boy",
+   "character": "Justin Crosby",
+   "year": 2025
+  },
+  {
+   "title": "My Runaway Fiancé Became My Bodyguard",
+   "character": "Rod",
+   "year": 2025
+  },
+  {
+   "title": "Oops! My Baby's Daddy Is a Hollywood Mogul",
+   "character": "Keith",
+   "year": 2025
+  },
+  {
+   "title": "Please Bind Me, Uncle",
+   "character": "Griffith Landon",
+   "year": 2025
+  },
+  {
+   "title": "Pregnant with My Infertile Alpha King",
+   "character": "Bart",
+   "year": 2025
+  },
+  {
+   "title": "Right Love on the Wrong Date",
+   "character": "Timothy Baron",
+   "year": 2025
+  },
+  {
+   "title": "The 'ED' CEO Helps Me Raise a Child",
+   "character": "Eric",
+   "year": 2025
+  },
+  {
+   "title": "Wild for My Boy Toy",
+   "character": "Devin",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "You Had Your Chance",
+   "character": "John",
+   "year": 2025
+  },
+  {
+   "title": "After Divorce: I Become Heiress",
+   "character": "Aiden Taylor",
+   "year": 2024
+  },
+  {
+   "title": "Alpha's Revenge: Wolf King & His Human Luna",
+   "character": "Tyler",
+   "year": 2024,
+   "episodes": 1
+  },
+  {
+   "title": "Faux Fiance",
+   "character": "Adam",
+   "year": 2024,
+   "episodes": 1
+  },
+  {
+   "title": "My Husband Is a Big Shot",
+   "character": "Ben",
+   "year": 2024
+  },
+  {
+   "title": "Reborn as a Vampire",
+   "character": "CEO",
+   "year": 2024
+  },
+  {
+   "title": "Reborn to Revenge: The Betrayed Luna",
+   "character": "Bruce",
+   "year": 2024
+  },
+  {
+   "title": "Spoil Me Please",
+   "character": "Ian",
+   "year": 2024
+  },
+  {
+   "title": "Spoiled by Four Billionaires",
+   "character": "Roy Magnus",
+   "year": 2024
+  },
+  {
+   "title": "The Heiress and Her Three Princes",
+   "character": "Leon",
+   "year": 2024
+  },
+  {
+   "title": "Become the Idol: Crazy Beach",
+   "character": "Chris",
+   "year": 2023
+  },
+  {
+   "title": "The Woman in the House Across the Street from the Girl in the Window",
+   "character": "Strip Club Waiter",
+   "year": 2022,
+   "episodes": 1
+  },
+  {
+   "title": "Welcome to Chippendales",
+   "character": "Chippendales Staff (uncredited)",
+   "year": 2022,
+   "episodes": 3
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "My Fiancé's Driver Kisses Me",
+   "character": "Ethan Hale",
+   "year": 2026,
+   "type": "TV Series"
+  },
+  {
+   "title": "This Is the Zodiac Speaking",
+   "character": "Recreations cast (uncredited)",
+   "year": 2024,
+   "type": "TV Series"
+  },
+  {
+   "title": "Better Off with Hally Leadbetter",
+   "character": "Cart Attendant",
+   "year": 2023,
+   "type": "TV Series"
+  },
+  {
+   "title": "Murf the Surf",
+   "character": "Cop 2",
+   "year": 2023,
+   "type": "TV Series"
+  },
+  {
+   "title": "Minx",
+   "character": "Model (uncredited)",
+   "year": 2022,
+   "type": "TV Series"
+  },
+  {
+   "title": "Magic for Humans",
+   "character": "Magician Participant",
+   "year": 2019,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "Mad Scientists: A.I. Maxima",
+   "type": "Short",
+   "year": 2023
+  },
+  {
+   "title": "Tip",
+   "type": "Short",
+   "year": 2023
+  },
+  {
+   "title": "Anitta: Boys Don't Cry",
+   "type": "Music Video",
+   "year": 2022
+  },
+  {
+   "title": "Imagine Dragons: Bones",
+   "type": "Music Video",
+   "year": 2022
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "needs_review": true,
+ "review_reason": "4 linked credits could not be parsed at all",
+ "_drive_id": "1uO9-QSK8PD2snnax8KTB1fHTurGhIIwS",
+ "_kind": "actor"
+}

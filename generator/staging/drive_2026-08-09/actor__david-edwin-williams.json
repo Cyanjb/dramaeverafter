@@ -1,0 +1,99 @@
+{
+ "name": "David Edwin Williams",
+ "nm": "nm6589958",
+ "person_id": "david-edwin-williams",
+ "confident": true,
+ "source_pdf": "David Edwin Williams - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 16,
+  "credits_parsed": 13,
+  "unparsed_gap": 3,
+  "vertical": 1,
+  "excluded_non_vertical": 5,
+  "type_uncertain": 7
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "Fever Cage",
+   "character": "Dr. Victor K. Lorenz",
+   "year": 2026,
+   "episodes": 1
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "Law & Order",
+   "character": "Matt Thomas",
+   "year": 2025,
+   "type": "TV Series"
+  },
+  {
+   "title": "Action Hero Academy Shorts",
+   "character": "Rogue Agent (as David Edwin)",
+   "year": 2023,
+   "type": "TV Series"
+  },
+  {
+   "title": "Uncoupled",
+   "character": "Buff Gym Guy",
+   "year": 2022,
+   "type": "TV Series"
+  },
+  {
+   "title": "Bull",
+   "character": "Paul Fisher (as David Edwin)",
+   "year": 2018,
+   "type": "TV Series"
+  },
+  {
+   "title": "Millenniums",
+   "character": "Mike Thompson (as David E. Williams)",
+   "year": 2018,
+   "type": "TV Series"
+  },
+  {
+   "title": "My Crazy Love",
+   "character": "Craig aka Bear (as David E. Williams)",
+   "year": 2015,
+   "type": "TV Series"
+  },
+  {
+   "title": "Deadly Sins",
+   "character": "David Temple (as David Williams)",
+   "year": 2014,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "The Good, the Hot, and the Oh So Dumb: A Shakespeare Dating Fable",
+   "type": "Video",
+   "year": 2020
+  },
+  {
+   "title": "The Box with Jacqueline",
+   "type": "TV Movie",
+   "year": 2019
+  },
+  {
+   "title": "Impulse Legal",
+   "type": "TV Short",
+   "year": 2016
+  },
+  {
+   "title": "The Bench",
+   "type": "Short",
+   "year": 2016
+  },
+  {
+   "title": "Once upon a time Doritos",
+   "type": "Short",
+   "year": 2015
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "19LbvclgNR6ARTyzuRRMsIeOsJmg_F37t",
+ "_kind": "actor"
+}

@@ -1,0 +1,166 @@
+{
+ "name": "Jesse A. Morales",
+ "nm": "nm5960414",
+ "person_id": "jesse-a-morales",
+ "confident": true,
+ "source_pdf": "Jesse A. Morales - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 27,
+  "credits_parsed": 26,
+  "unparsed_gap": 1,
+  "vertical": 23,
+  "excluded_non_vertical": 2,
+  "type_uncertain": 1
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "Ace! The Golf King's Reconquest",
+   "character": "Bobby Woods",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "After Divorce, I'm Spoiled by Three Brothers",
+   "character": "Timothy",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "Sweet Temptation",
+   "character": "Cassio Moretti",
+   "year": 2026,
+   "episodes": 3,
+   "promoted": "TV Series on IMDb, but we hold the title, so it is a vertical (Kirby Ellwood precedent)"
+  },
+  {
+   "title": "The Billionaire and the Baby Trap",
+   "character": "Jean Cole Vance",
+   "year": 2026
+  },
+  {
+   "title": "The Cooking Queen: A Recipe for Divorce",
+   "character": "Claude Wyndham",
+   "year": 2026
+  },
+  {
+   "title": "The Imperfect Marriage",
+   "character": "Quentin",
+   "year": 2026
+  },
+  {
+   "title": "Accidental Triplets with the Billionaire",
+   "character": "Oscar (as Jesse Morales)",
+   "year": 2025
+  },
+  {
+   "title": "After Divorce, My Ex-Wife Became a Billionaire",
+   "character": "Kane Hudson (as Jesse Morales)",
+   "year": 2025
+  },
+  {
+   "title": "American Sniper: The Last Round",
+   "character": "Chris Redford (as Jesse Morales)",
+   "year": 2025
+  },
+  {
+   "title": "Baby Trapped by the Billionaire",
+   "character": "Evan Brandt (as Jesse Morales)",
+   "year": 2025,
+   "episodes": 3
+  },
+  {
+   "title": "Chained to My Prison Guard",
+   "character": "Jack Rayne (as Jesse Morales)",
+   "year": 2025
+  },
+  {
+   "title": "Dominated by My Dad's Boss",
+   "character": "Dom (as Jesse Morales)",
+   "year": 2025
+  },
+  {
+   "title": "How to Tame a Sliver Fox",
+   "character": "Chris Collins (as Jesse Morales)",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Pregnant by My Ex's Professor Dad",
+   "character": "Charles Hayes (as Jesse Morales)",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Queen of the Court",
+   "character": "Finn Reid (as Jesse Morales)",
+   "year": 2025
+  },
+  {
+   "title": "Rented a Billionaire Husband for Christmas",
+   "character": "Maximus Harrison (as Jesse Morales)",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Swapped My Ex for His Billionaire Uncle",
+   "character": "Damon (as Jesse Morales)",
+   "year": 2025
+  },
+  {
+   "title": "You Fired a Genius Surgeon",
+   "character": "Adrian Marksman (as Jesse Morales)",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Fake Married to My Billionaire CEO",
+   "character": "Calladan Vandalay (as Jesse Morales)",
+   "year": 2024
+  },
+  {
+   "title": "His One and Only Love",
+   "character": "Leo (as Jesse Morales)",
+   "year": 2024
+  },
+  {
+   "title": "Mr. Hill's Adorable Wife",
+   "character": "Andrew Hills",
+   "year": 2024
+  },
+  {
+   "title": "My Firefighter Ex-Husband Burns in Regret",
+   "character": "Jace (as Jesse Morales)",
+   "year": 2024
+  },
+  {
+   "title": "Recipe for Faking a Marriage",
+   "character": "Julian Barlow (as Jesse Morales)",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "This Is Us",
+   "character": "Magic Mike Dancer (as Jesse Morales)",
+   "year": 2018,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "No Bull",
+   "type": "Short",
+   "year": 2022
+  },
+  {
+   "title": "Channing Tatum Dances at Prank Magic Mike XXL Screening",
+   "type": "Video",
+   "year": 2015
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "1vnX2tSlYyTUBP7ok14ZTjM4ddKkun0mR",
+ "_kind": "actor"
+}

@@ -1,0 +1,110 @@
+{
+ "name": "Chase Mattson",
+ "nm": "nm12432734",
+ "person_id": "chase-mattson",
+ "confident": true,
+ "source_pdf": "Chase Mattson - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 18,
+  "credits_parsed": 15,
+  "unparsed_gap": 3,
+  "vertical": 11,
+  "excluded_non_vertical": 1,
+  "type_uncertain": 3
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "High Society",
+   "character": "Cesare Buonaparte",
+   "year": 2026
+  },
+  {
+   "title": "In the Palm of His Hand",
+   "character": "Matteo Franconi",
+   "year": 2026
+  },
+  {
+   "title": "Married to the Don",
+   "character": "Tristan Vanderbilt",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "My Duplicated Husband",
+   "character": "Officer Paul",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "Hello Again, Secret Ex, Claim Your DNA Surprise",
+   "character": "Wesley Anderson",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Pregnant with Billionaire's Twins, Love Begins",
+   "character": "William Norman",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "The Contract with My Mini Me",
+   "character": "Alex Wynter",
+   "year": 2025
+  },
+  {
+   "title": "The Man Who Stands Beside You",
+   "character": "Charlie Walton",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "You Messed with the CEO's Wife",
+   "character": "Nathaniel Whitmore",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "My Poor Husband Is a Billionaire",
+   "character": "Ethan Smith",
+   "year": 2024
+  },
+  {
+   "title": "Shelter in the Mafia",
+   "character": "Ken Miller",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "Fatal Game",
+   "character": "",
+   "year": 2025,
+   "type": "TV Series"
+  },
+  {
+   "title": "My Intern Is a Hollywood Star Vampire",
+   "character": "Freddy",
+   "year": 2025,
+   "type": "TV Series"
+  },
+  {
+   "title": "House of Creators",
+   "character": "",
+   "year": 2021,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "The Artist and the Prostitute",
+   "type": "Short",
+   "year": 2023
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "1Cc6KMLNS5SrXLRvwx6RYgjNHTXDhAOZG",
+ "_kind": "actor"
+}

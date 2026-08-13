@@ -1,0 +1,95 @@
+{
+ "name": "Marie Bach Hansen",
+ "nm": "nm1314550",
+ "person_id": "marie-bach-hansen",
+ "confident": false,
+ "source_pdf": "Marie Bach Hansen - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 20,
+  "credits_parsed": 12,
+  "unparsed_gap": 8,
+  "vertical": 2,
+  "excluded_non_vertical": 5,
+  "type_uncertain": 5
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "My Husband's Secret Crush",
+   "character": "Classmate",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "Secrets We Keep",
+   "character": "Cecilie",
+   "year": 2025,
+   "episodes": 6
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "Chorus Girls",
+   "character": "Sussie",
+   "year": 2023,
+   "type": "TV Series"
+  },
+  {
+   "title": "Hvide Sande",
+   "character": "Helene Falck",
+   "year": 2021,
+   "type": "TV Series"
+  },
+  {
+   "title": "The Team",
+   "character": "Nelly Winther",
+   "year": 2018,
+   "type": "TV Series"
+  },
+  {
+   "title": "The Legacy",
+   "character": "Signe Larsen",
+   "year": 2014,
+   "type": "TV Series"
+  },
+  {
+   "title": "Borgen",
+   "character": "Pædagog",
+   "year": 2013,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "Hjerternes fest",
+   "type": "Short",
+   "year": 2021
+  },
+  {
+   "title": "Dronning Ingrid",
+   "type": "Short",
+   "year": 2020
+  },
+  {
+   "title": "Afrejse",
+   "type": "Short",
+   "year": 2019
+  },
+  {
+   "title": "En flirt",
+   "type": "Short",
+   "year": 2019
+  },
+  {
+   "title": "Retrograde",
+   "type": "Short",
+   "year": 2013
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "needs_review": true,
+ "review_reason": "8 linked credits could not be parsed at all",
+ "_drive_id": "1oKwq6W6irwlTAzPlnzbIqktFhV2e2MNI",
+ "_kind": "actor"
+}

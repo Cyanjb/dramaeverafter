@@ -1,0 +1,128 @@
+{
+ "title": "I Became Mrs Grayson by Bragging",
+ "platform": null,
+ "platform_source": "IMDb production-company field: NVert Productions, Narval Films, YRBW Productions",
+ "production_companies": "NVert Productions, Narval Films, YRBW Productions",
+ "source_pdf": "I Became Mrs Grayson by Bragging (TV Mini Series 2025) - IMDb.pdf",
+ "read_by": "parse_imdb_title_pdf.py (pypdf layout mode, column pairing)",
+ "counts": {
+  "imdb_cast_links": 18,
+  "pairs_parsed": 18,
+  "with_character": 18
+ },
+ "cast": [
+  {
+   "order": 1,
+   "name": "Brittany Marsicek",
+   "character": "Alice Black",
+   "nm": "nm8050100"
+  },
+  {
+   "order": 2,
+   "name": "Nick Puya",
+   "character": "Liam Grayson",
+   "nm": "nm8650150"
+  },
+  {
+   "order": 3,
+   "name": "Sarah Sampino",
+   "character": "Jennifer Cox",
+   "nm": "nm5740849"
+  },
+  {
+   "order": 4,
+   "name": "Kelton White",
+   "character": "Simon Dennis",
+   "nm": "nm6793248"
+  },
+  {
+   "order": 5,
+   "name": "Rebecca Ritz",
+   "character": "Catherine Greyson",
+   "nm": "nm1179821"
+  },
+  {
+   "order": 6,
+   "name": "Todd Karner",
+   "character": "Davis Cox",
+   "nm": "nm3892934"
+  },
+  {
+   "order": 7,
+   "name": "Michael Sullivan",
+   "character": "Shareholder 3",
+   "nm": "nm7004863"
+  },
+  {
+   "order": 8,
+   "name": "Jason Caceres",
+   "character": "Employee A",
+   "nm": "nm5077481"
+  },
+  {
+   "order": 9,
+   "name": "Kåius Härrisøn",
+   "character": "Dr. Schneider",
+   "nm": "nm3151489"
+  },
+  {
+   "order": 10,
+   "name": "Ted Wells",
+   "character": "George Greyson",
+   "nm": "nm0920439"
+  },
+  {
+   "order": 11,
+   "name": "Trip Langley",
+   "character": "Shareholder 5",
+   "nm": "nm2850367"
+  },
+  {
+   "order": 12,
+   "name": "Kaleb Shorey",
+   "character": "Officer Jackson",
+   "nm": "nm5609696"
+  },
+  {
+   "order": 13,
+   "name": "Andi Rexha",
+   "character": "TIM",
+   "nm": "nm6293298"
+  },
+  {
+   "order": 14,
+   "name": "Helena Jauregui",
+   "character": "Party Guest 2",
+   "nm": "nm16039690"
+  },
+  {
+   "order": 15,
+   "name": "Jordan Demario",
+   "character": "Shareholder B",
+   "nm": "nm9979778"
+  },
+  {
+   "order": 16,
+   "name": "Neora Luria",
+   "character": "Shareholder A",
+   "nm": "nm3480037"
+  },
+  {
+   "order": 17,
+   "name": "Sharon Brennan",
+   "character": "Shareholder 4",
+   "nm": "nm10964343"
+  },
+  {
+   "order": 18,
+   "name": "Oya Croston",
+   "character": "Cleaning Lady",
+   "nm": "nm16542333"
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline is copied or reworded.",
+ "needs_review": true,
+ "review_reason": "no known platform in the production-company field (NVert Productions, Narval Films, YRBW Productions)",
+ "_drive_id": "1BjulFMdIH_BLx_vEBDfZm09tcGdQKZiq",
+ "_kind": "title"
+}

@@ -1,0 +1,120 @@
+{
+ "name": "Patric Palkens",
+ "nm": "nm12546754",
+ "person_id": "patric-palkens",
+ "confident": false,
+ "source_pdf": "Patric Palkens - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 20,
+  "credits_parsed": 18,
+  "unparsed_gap": 2,
+  "vertical": 16,
+  "excluded_non_vertical": 2,
+  "type_uncertain": 0
+ },
+ "pagination_trap_rows_recovered": [
+  "Taming a Fussy Billionaire: My Chef Bride"
+ ],
+ "credits": [
+  {
+   "title": "Blushroom Presents: Heat Check",
+   "character": "Cam",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "My Missing Husband Came Back the Day I Delivered",
+   "character": "Damon Hawthorne",
+   "year": 2026
+  },
+  {
+   "title": "The Thorn in His Rose",
+   "character": "Marcus",
+   "year": 2026
+  },
+  {
+   "title": "The Top Heiress Won't Be Your Wife",
+   "character": "Ethan Reynolds",
+   "year": 2026
+  },
+  {
+   "title": "Accidental Surrogate for My Captain Ex",
+   "character": "Damien Green",
+   "year": 2025
+  },
+  {
+   "title": "Carrying His Babies, Stealing His Heart",
+   "character": "Sebastian",
+   "year": 2025
+  },
+  {
+   "title": "Last Spark of Us",
+   "character": "Zachary",
+   "year": 2025
+  },
+  {
+   "title": "Love Me Again, My Hidden Lover",
+   "character": "John",
+   "year": 2025
+  },
+  {
+   "title": "My Cold-Hearted Mafia King",
+   "character": "Damien Russo",
+   "year": 2025
+  },
+  {
+   "title": "Save Me, Baby Daddy!",
+   "character": "Richard Anderson",
+   "year": 2025
+  },
+  {
+   "title": "Taming a Fussy Billionaire: My Chef Bride",
+   "character": "Alex Thompson",
+   "year": 2025
+  },
+  {
+   "title": "Tempted by Mafia Boss",
+   "character": "Simon Conti",
+   "year": 2025
+  },
+  {
+   "title": "The Christmas Baby My Boss Must Never Know",
+   "character": "Noah Evens",
+   "year": 2025
+  },
+  {
+   "title": "The Crown Beyond the Grave",
+   "character": "Eric Blackwell",
+   "year": 2025
+  },
+  {
+   "title": "Too Late to Beg for Forgiveness",
+   "character": "Taron Cullen",
+   "year": 2025
+  },
+  {
+   "title": "Kiss of Power, Endless Desire",
+   "character": "Zion Baldwin",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [],
+ "non_vertical_excluded": [
+  {
+   "title": "Channel 43",
+   "type": "Short",
+   "year": 2023
+  },
+  {
+   "title": "Hiding Place",
+   "type": "Short",
+   "year": 2021
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "needs_review": true,
+ "review_reason": "1 row(s) had a pagination control stripped out of them - check those titles against another field before trusting them; ",
+ "_drive_id": "1diRQGNy5LlAjZUCaO3Ywn32tAP1AsFiM",
+ "_kind": "actor"
+}

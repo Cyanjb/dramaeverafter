@@ -1,0 +1,124 @@
+{
+ "name": "Grady Eldridge",
+ "nm": "nm6186762",
+ "person_id": "grady-eldridge",
+ "confident": true,
+ "source_pdf": "Grady Eldridge - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 19,
+  "credits_parsed": 18,
+  "unparsed_gap": 1,
+  "vertical": 6,
+  "excluded_non_vertical": 6,
+  "type_uncertain": 6
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "The Arrangement: Part 4",
+   "character": "Xavier Knight",
+   "year": 2025
+  },
+  {
+   "title": "The Arrangement: Parts 3 & 4",
+   "character": "Xavier Knight",
+   "year": 2025
+  },
+  {
+   "title": "Eavesdropping",
+   "character": "Ethan",
+   "year": 2024,
+   "episodes": 45
+  },
+  {
+   "title": "The Arrangement",
+   "character": "Xavier Knight",
+   "year": 2024
+  },
+  {
+   "title": "Do Me Over",
+   "character": "Ethan Cole",
+   "year": 2023,
+   "episodes": 3
+  },
+  {
+   "title": "The Poly Couple",
+   "character": "Jack",
+   "year": 2022
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "General Hospital",
+   "character": "Simon",
+   "year": 2026,
+   "type": "TV Series"
+  },
+  {
+   "title": "Hacks",
+   "character": "Eli",
+   "year": 2026,
+   "type": "TV Series"
+  },
+  {
+   "title": "Friendzoned",
+   "character": "Blake",
+   "year": 2025,
+   "type": "TV Series"
+  },
+  {
+   "title": "Doctor Odyssey",
+   "character": "Raphael",
+   "year": 2024,
+   "type": "TV Series"
+  },
+  {
+   "title": "The Sex Lives of College Girls",
+   "character": "Gabe",
+   "year": 2024,
+   "type": "TV Series"
+  },
+  {
+   "title": "Boytalk",
+   "character": "Officer Holiday",
+   "year": 2022,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "Metal",
+   "type": "Short",
+   "year": 2025
+  },
+  {
+   "title": "Slut Chain",
+   "type": "Short",
+   "year": 2024
+  },
+  {
+   "title": "Bolognese",
+   "type": "Short",
+   "year": 2022
+  },
+  {
+   "title": "Em Beihold: 12345",
+   "type": "Music Video",
+   "year": 2022
+  },
+  {
+   "title": "The Patron",
+   "type": "Short",
+   "year": 2021
+  },
+  {
+   "title": "The Vixen",
+   "type": "Short",
+   "year": 2016
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "1YxIMX0TTfK_nNfVUHwkmQ6RWCFoHgJ9a",
+ "_kind": "actor"
+}

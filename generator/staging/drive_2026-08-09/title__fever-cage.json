@@ -1,0 +1,126 @@
+{
+ "title": "Fever Cage",
+ "platform": "dramapops",
+ "platform_source": "IMDb production-company field: Dramapops, Cosmic Film Co.",
+ "production_companies": "Dramapops, Cosmic Film Co.",
+ "source_pdf": "Fever Cage (TV Mini Series 2026– ) - IMDb.pdf",
+ "read_by": "parse_imdb_title_pdf.py (pypdf layout mode, column pairing)",
+ "counts": {
+  "imdb_cast_links": 18,
+  "pairs_parsed": 18,
+  "with_character": 18
+ },
+ "cast": [
+  {
+   "order": 1,
+   "name": "Kirby Ellwood",
+   "character": "Erin White",
+   "nm": "nm11077716"
+  },
+  {
+   "order": 2,
+   "name": "David Edwin Williams",
+   "character": "Dr. Victor K. Lorenz",
+   "nm": "nm6589958"
+  },
+  {
+   "order": 3,
+   "name": "Allison Gann",
+   "character": "Isabella Saville",
+   "nm": "nm18297719"
+  },
+  {
+   "order": 4,
+   "name": "Jay Hunter Morris",
+   "character": "Sam Saville",
+   "nm": "nm3584567"
+  },
+  {
+   "order": 5,
+   "name": "Donald Ome",
+   "character": "Alistair Graves",
+   "nm": "nm14057784"
+  },
+  {
+   "order": 6,
+   "name": "William Brock",
+   "character": "Rick Miller",
+   "nm": "nm5936161"
+  },
+  {
+   "order": 7,
+   "name": "Bryan Frank",
+   "character": "John Logan",
+   "nm": "nm1254514"
+  },
+  {
+   "order": 8,
+   "name": "Zarian Porter",
+   "character": "Security Guard",
+   "nm": "nm12632372"
+  },
+  {
+   "order": 9,
+   "name": "Don Knill",
+   "character": "Bald Man",
+   "nm": "nm5523516"
+  },
+  {
+   "order": 10,
+   "name": "Ryan Scott",
+   "character": "Orderly  …",
+   "nm": "nm14612748"
+  },
+  {
+   "order": 11,
+   "name": "Gloria Mays",
+   "character": "Police Officer",
+   "nm": "nm11124309"
+  },
+  {
+   "order": 12,
+   "name": "Devon Mckelvin",
+   "character": "Security Guard 2",
+   "nm": "nm9458900"
+  },
+  {
+   "order": 13,
+   "name": "Victoria B. Dawson",
+   "character": "Board Member A",
+   "nm": "nm17492499"
+  },
+  {
+   "order": 14,
+   "name": "Molly Douglas",
+   "character": "Flashback Patient",
+   "nm": "nm10233689"
+  },
+  {
+   "order": 15,
+   "name": "Stephanie Brekke Williams",
+   "character": "Severe Nurse",
+   "nm": "nm18251503"
+  },
+  {
+   "order": 16,
+   "name": "August Armstrong",
+   "character": "Reporter",
+   "nm": "nm18575916"
+  },
+  {
+   "order": 17,
+   "name": "Emily Schmidt",
+   "character": "Nurse B",
+   "nm": "nm13852019"
+  },
+  {
+   "order": 18,
+   "name": "Kiersten Swearingen",
+   "character": "Background Board Member",
+   "nm": "nm18298039"
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline is copied or reworded.",
+ "_drive_id": "1X5TMngnH7DgLxb5IxOAh2Xv2xW_rVXvK",
+ "_kind": "title"
+}

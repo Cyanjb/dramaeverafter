@@ -1,0 +1,87 @@
+{
+ "name": "Fülöp Budavári",
+ "nm": "nm12594358",
+ "person_id": "fulop-budavari",
+ "confident": true,
+ "source_pdf": "Fülöp Budavári - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 12,
+  "credits_parsed": 12,
+  "unparsed_gap": 0,
+  "vertical": 10,
+  "excluded_non_vertical": 0,
+  "type_uncertain": 2
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "From Campus Simp to Hidden Heiress",
+   "character": "Jeffery",
+   "year": 2026
+  },
+  {
+   "title": "My Twin Billionaire Husbands",
+   "character": "Ryan & Cole Stevens",
+   "year": 2026
+  },
+  {
+   "title": "Supermarket Girl: Spoiled by My CEO Husband",
+   "character": "Arthur",
+   "year": 2026
+  },
+  {
+   "title": "Alpha Mate Unchained",
+   "character": "Rowan Greythorne",
+   "year": 2025
+  },
+  {
+   "title": "Dr. Kiss Me Stat",
+   "character": "Doctor 4",
+   "year": 2025
+  },
+  {
+   "title": "Mafia Bad Boy Is My Savior",
+   "character": "Adrian",
+   "year": 2025
+  },
+  {
+   "title": "Moving on from My Bodyguard",
+   "character": "Aaron",
+   "year": 2025
+  },
+  {
+   "title": "Sold as the Alpha King's Breeder",
+   "character": "Soren",
+   "year": 2025
+  },
+  {
+   "title": "The Cowgirl Rules Now",
+   "character": "Liam",
+   "year": 2025
+  },
+  {
+   "title": "My Sister's Wedding",
+   "character": "Sebastian",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "My Secret Affair with Ex's Brother",
+   "character": "Caden",
+   "year": 2026,
+   "type": "TV Series"
+  },
+  {
+   "title": "Oltári történetek",
+   "character": "Ferenc Vadász",
+   "year": 2022,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "16SVKGzgOUvtQ8AIV0ZObxc-oXBZRwW_1",
+ "_kind": "actor"
+}

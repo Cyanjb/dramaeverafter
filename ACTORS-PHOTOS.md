@@ -1,6 +1,6 @@
 # Actors who need a photo
 
-2037 credited actors have no photo_ref. Ranked by REACH - the summed
+2078 credited actors have no photo_ref. Ranked by REACH - the summed
 views of every title they are credited on - so the faces a visitor is most likely
 to meet come first. Regenerate with `py generator/make_gap_report.py`.
 
@@ -131,7 +131,7 @@ Commons, then the platform's own actor page. NEVER a shared photo - a file named
 | 119 | Greta Hicks | 213M | 1 | - | - | /actors/greta-hicks.html |
 | 120 | Courtney Green | 213M | 2 | - | - | /actors/courtney-green.html |
 | 121 | Vera Catherine Price | 212M | 2 | - | - | /actors/vera-catherine-price.html |
-| 122 | Chase Mattson | 207M | 4 | - | - | /actors/chase-mattson.html |
+| 122 | Chase Mattson | 207M | 4 | - | https://www.imdb.com/name/nm12432734/ | /actors/chase-mattson.html |
 | 123 | Luke Stafford | 202M | 2 | - | - | /actors/luke-stafford.html |
 | 124 | Angelie Simone | 201M | 2 | - | - | /actors/angelie-simone.html |
 | 125 | Elena Hollander | 201M | 1 | - | - | /actors/elena-hollander.html |

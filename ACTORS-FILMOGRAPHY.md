@@ -1,6 +1,6 @@
 # Actors whose IMDb filmography has never been read
 
-2124 of 2162 credited actors. 28 have been read.
+2149 of 2202 credited actors. 46 have been read.
 
 WHY THIS IS THE HIGHEST-VALUE LIST. Measured 13 Aug across the 28 actors already
 read: IMDb credits them on 810 titles and we hold 476, so even a read actor is
@@ -52,7 +52,7 @@ the filename if you know it, and Downloads is fine - Drive is not required.
 | 37 | Sophia Delucchi | 597M | 3 | - | search by name |
 | 38 | Ryan Vincent | 589M | 8 | - | https://www.imdb.com/name/nm8001223/ |
 | 39 | Cayla Brady | 580M | 15 | - | https://www.imdb.com/name/nm6053666/ |
-| 40 | Evan Adams | 558M | 28 | - | https://www.imdb.com/name/nm12201270/ |
+| 40 | Evan Adams | 558M | 29 | - | https://www.imdb.com/name/nm12201270/ |
 | 41 | Scarlett Shields | 558M | 7 | - | search by name |
 | 42 | Joe Solana Simon | 528M | 3 | - | search by name |
 | 43 | Cameron Somers | 527M | 6 | - | https://www.imdb.com/name/nm11156502/ |

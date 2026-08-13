@@ -1,0 +1,96 @@
+{
+ "title": "Can't Get Enough of You",
+ "platform": "dramabox",
+ "platform_source": "IMDb production-company field: Drama Box",
+ "production_companies": "Drama Box",
+ "source_pdf": "Can't Get Enough of You (TV Mini Series 2026) - IMDb.pdf",
+ "read_by": "parse_imdb_title_pdf.py (pypdf layout mode, column pairing)",
+ "counts": {
+  "imdb_cast_links": 13,
+  "pairs_parsed": 13,
+  "with_character": 12
+ },
+ "cast": [
+  {
+   "order": 1,
+   "name": "Erin Orcutt",
+   "character": "Carey Lowden",
+   "nm": "nm9912469"
+  },
+  {
+   "order": 2,
+   "name": "Shay Dinneen",
+   "character": "Nolan Heaton",
+   "nm": "nm14714901"
+  },
+  {
+   "order": 3,
+   "name": "Jesse Katz",
+   "character": "Dylan Jones",
+   "nm": "nm15013783"
+  },
+  {
+   "order": 4,
+   "name": "B Hale",
+   "character": "Sarah Lowden",
+   "nm": "nm13449462"
+  },
+  {
+   "order": 5,
+   "name": "Riley Davis",
+   "character": "Jessie",
+   "nm": "nm13713952"
+  },
+  {
+   "order": 6,
+   "name": "Adam Chisnall",
+   "character": "Tom",
+   "nm": "nm12523605"
+  },
+  {
+   "order": 7,
+   "name": "Buzz Leer",
+   "character": "Frank",
+   "nm": "nm12089587"
+  },
+  {
+   "order": 8,
+   "name": "Michael Cline",
+   "character": "Lorry",
+   "nm": "nm12111883"
+  },
+  {
+   "order": 9,
+   "name": "Sj Mendelson",
+   "character": "Beverly Heaton",
+   "nm": "nm1966442"
+  },
+  {
+   "order": 10,
+   "name": "Sandie Sepaniak",
+   "character": "Jane",
+   "nm": "nm5579262"
+  },
+  {
+   "order": 11,
+   "name": "Jordan Kass",
+   "character": "Roger Smith",
+   "nm": "nm3859702"
+  },
+  {
+   "order": 12,
+   "name": "Spencer Nash Novatt",
+   "character": "Baby August",
+   "nm": "nm18041229"
+  },
+  {
+   "order": 13,
+   "name": "I Bec",
+   "character": "",
+   "nm": "nm18291687"
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline is copied or reworded.",
+ "_drive_id": "1aZa85HpQZ4yjzMqAFqgDPpa81auusaH9",
+ "_kind": "title"
+}

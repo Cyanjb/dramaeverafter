@@ -1,0 +1,173 @@
+{
+ "name": "Brittany Marsicek",
+ "nm": "nm8050100",
+ "person_id": "brittany-marsicek",
+ "confident": true,
+ "source_pdf": "Brittany Marsicek - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 30,
+  "credits_parsed": 27,
+  "unparsed_gap": 3,
+  "vertical": 21,
+  "excluded_non_vertical": 5,
+  "type_uncertain": 1
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "Lycan Princess Marries Her Nemesis",
+   "character": "Aria Kingsley",
+   "year": 2026
+  },
+  {
+   "title": "Swapped Heiress and Disowned Swan",
+   "character": "Beth Brown",
+   "year": 2026
+  },
+  {
+   "title": "Campus Rivals",
+   "character": "Hannah Myers",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Designed for Desire",
+   "character": "Cecilia Brooks",
+   "year": 2025,
+   "episodes": 69
+  },
+  {
+   "title": "Ex-Husband Step Aside: Lady Boss Returns",
+   "character": "Callie Wade",
+   "year": 2025,
+   "episodes": 50
+  },
+  {
+   "title": "Falling for My Call Boy CEO",
+   "character": "Lilian",
+   "year": 2025,
+   "episodes": 2
+  },
+  {
+   "title": "I Became Mrs Grayson by Bragging",
+   "character": "Alice Black",
+   "year": 2025
+  },
+  {
+   "title": "Last Pick to First Choice",
+   "character": "Erin Sanders",
+   "year": 2025,
+   "episodes": 2
+  },
+  {
+   "title": "Love, Lies, and Christmas Surprise",
+   "character": "Emily",
+   "year": 2025
+  },
+  {
+   "title": "Lycan Queen Fights Back",
+   "character": "Natalie",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Pay Your Rent with Love",
+   "character": "Eva White",
+   "year": 2025
+  },
+  {
+   "title": "Quarterback's Team Doctor",
+   "character": "Sloane Everett",
+   "year": 2025
+  },
+  {
+   "title": "Smile My Cheating Husband You're on Camera",
+   "character": "Susan Maxwell",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "The Hockey Star Can't Stop Missing Me",
+   "character": "Diana",
+   "year": 2025
+  },
+  {
+   "title": "30 Days Till I Marry My Husband's Nemesis",
+   "character": "Blair Rose",
+   "year": 2024,
+   "promoted": "TV Series on IMDb, but we hold the title, so it is a vertical (Kirby Ellwood precedent)"
+  },
+  {
+   "title": "Cherished by My Ex-Husband's Brother",
+   "character": "Chloe Grey",
+   "year": 2024,
+   "episodes": 58
+  },
+  {
+   "title": "Echoes of Her Cry",
+   "character": "Emma",
+   "year": 2024
+  },
+  {
+   "title": "Fated Deal with the Mafia King",
+   "character": "Molly Linton Magnani",
+   "year": 2024,
+   "episodes": 1
+  },
+  {
+   "title": "In Bed with Your Lies",
+   "character": "Cathy Shelton",
+   "year": 2024
+  },
+  {
+   "title": "No One Messes with Ms. Keller",
+   "character": "Nancy Keller Lawson",
+   "year": 2024,
+   "episodes": 1
+  },
+  {
+   "title": "Oh No! I Slept with My Husband!",
+   "character": "Elizabeth Nelson",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "Smosh",
+   "character": "Camera Girl",
+   "year": 2023,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "Sunset Drive",
+   "type": "Short",
+   "year": 2023
+  },
+  {
+   "title": "Getting It",
+   "type": "Short",
+   "year": 2022
+  },
+  {
+   "title": "F9: Jet-Engine-Kart LA Race",
+   "type": "Short",
+   "year": 2021
+  },
+  {
+   "title": "Drumming with Excitement",
+   "type": "Video",
+   "year": 2017
+  },
+  {
+   "title": "Wanderbus",
+   "type": "Short",
+   "year": 2015
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "1jKl9iKQDAeTgdZzY456pay1L6Elsl3Ha",
+ "_kind": "actor"
+}

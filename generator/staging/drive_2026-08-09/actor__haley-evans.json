@@ -1,0 +1,128 @@
+{
+ "name": "Haley Evans",
+ "nm": "nm15937249",
+ "person_id": "haley-evans",
+ "confident": true,
+ "source_pdf": "Haley Evans - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 19,
+  "credits_parsed": 19,
+  "unparsed_gap": 0,
+  "vertical": 17,
+  "excluded_non_vertical": 1,
+  "type_uncertain": 1
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "From Campus Simp to Hidden Heiress",
+   "character": "Leah",
+   "year": 2026
+  },
+  {
+   "title": "I Left My Cheating Ex and Became a Billionaire",
+   "character": "Sarah Long",
+   "year": 2026
+  },
+  {
+   "title": "Oops! My Rich Husband Is Faking Coma",
+   "character": "Anne Morris Belluci",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "Your Husband Is the Tech King",
+   "character": "Elsa Parker",
+   "year": 2026
+  },
+  {
+   "title": "All I Want Is You",
+   "character": "Rosalie",
+   "year": 2025,
+   "episodes": 2
+  },
+  {
+   "title": "Divorced with a Secret Baby",
+   "character": "Laura Smith Huxley",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Love Game with the Disabled Boss",
+   "character": "Vanya",
+   "year": 2025
+  },
+  {
+   "title": "My Man Remembers He's Rich",
+   "character": "Charlotte Layton",
+   "year": 2025
+  },
+  {
+   "title": "The Hacker Heiress Strikes Back",
+   "character": "Emily",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "The Princess Returns",
+   "character": "Princess Isabella",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "The Undercover Lady Boss",
+   "character": "Melanie Walton",
+   "year": 2025
+  },
+  {
+   "title": "Wanted by the Rogue Alpha",
+   "character": "Isla",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "When Love Returns",
+   "character": "Emily Brooks",
+   "year": 2025
+  },
+  {
+   "title": "Chasing My Rejected Wife",
+   "character": "Stella Price",
+   "year": 2024
+  },
+  {
+   "title": "My Unwanted Billionaire Ex",
+   "character": "Charlotte Pop",
+   "year": 2024
+  },
+  {
+   "title": "Submitting to My Best Friend's Dad",
+   "character": "Allegra Joel",
+   "year": 2024
+  },
+  {
+   "title": "Surprise Vows with My CEO Husband",
+   "character": "Katherine Hansen",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "Mean Girl Murders",
+   "character": "Teen Heidi",
+   "year": 2024,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "The Soop",
+   "type": "Short",
+   "year": 2024
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "15IH1YjgGQNsAxQmNXPzHdOgh5njQvO3U",
+ "_kind": "actor"
+}

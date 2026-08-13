@@ -1,0 +1,70 @@
+{
+ "name": "Emma Rose Ball",
+ "nm": "nm17374430",
+ "person_id": "emma-rose-ball",
+ "confident": true,
+ "source_pdf": "Emma Rose Ball - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 10,
+  "credits_parsed": 9,
+  "unparsed_gap": 1,
+  "vertical": 9,
+  "excluded_non_vertical": 0,
+  "type_uncertain": 0
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "Brave New Beginning with My Fire Captain",
+   "character": "Anya Petrova Shaw",
+   "year": 2026
+  },
+  {
+   "title": "Falling for My Hate-Crush",
+   "character": "Daisy",
+   "year": 2026
+  },
+  {
+   "title": "Her Billionaire Father Spoils Her Rotten",
+   "character": "Abby",
+   "year": 2026
+  },
+  {
+   "title": "The Light of My Life",
+   "character": "Jenny",
+   "year": 2026
+  },
+  {
+   "title": "Torn Between My Stepbrothers",
+   "character": "Hailey Morgan",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "Good Girl Turned Bad",
+   "character": "Katelyn Carter",
+   "year": 2025
+  },
+  {
+   "title": "Surrogate for the Broken Billionaire",
+   "character": "Melissa",
+   "year": 2025
+  },
+  {
+   "title": "The Captain's Baby Girl",
+   "character": "Lexie Blake",
+   "year": 2025
+  },
+  {
+   "title": "What Exactly Lies in the Dance Studio",
+   "character": "Ayla",
+   "year": 2025
+  }
+ ],
+ "type_uncertain_not_staged": [],
+ "non_vertical_excluded": [],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "1IqaVZW90A2RcqvwURkgncDxYceIvG0jl",
+ "_kind": "actor"
+}

@@ -1,0 +1,186 @@
+{
+ "name": "Sarah-Grace Donnelly",
+ "nm": "nm9919641",
+ "person_id": "sarah-grace-donnelly",
+ "confident": false,
+ "source_pdf": "Sarah-Grace Donnelly - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 36,
+  "credits_parsed": 30,
+  "unparsed_gap": 6,
+  "vertical": 23,
+  "excluded_non_vertical": 2,
+  "type_uncertain": 5
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "99 Ways to Kill My Heart",
+   "character": "Zoe Parker",
+   "year": 2026
+  },
+  {
+   "title": "After Divorce, I Became My Ex's Urologist",
+   "character": "Chloe Bennett",
+   "year": 2026
+  },
+  {
+   "title": "After I Left, the Twins Went Crazy",
+   "character": "Amber Stone",
+   "year": 2026
+  },
+  {
+   "title": "Breaking My Bodyguard",
+   "character": "Vera",
+   "year": 2026
+  },
+  {
+   "title": "Bucked by My Father's Cowboy",
+   "character": "Jessa Fey",
+   "year": 2026
+  },
+  {
+   "title": "Everybody Step Aside, the Matriarch Is Back",
+   "character": "Selena",
+   "year": 2026
+  },
+  {
+   "title": "My Husband Is the Father of Her Son",
+   "character": "Kate",
+   "year": 2026
+  },
+  {
+   "title": "Whispers from the Ashes",
+   "character": "Sabrina",
+   "year": 2026
+  },
+  {
+   "title": "Ashes of Love",
+   "character": "Anna",
+   "year": 2025
+  },
+  {
+   "title": "Contractually Yours",
+   "character": "Lily Dunning",
+   "year": 2025
+  },
+  {
+   "title": "Deeply Trapped",
+   "character": "Serena Martin",
+   "year": 2025
+  },
+  {
+   "title": "Flash Marriage to My Billionaire Hobo Hubby",
+   "character": "Katie Carter",
+   "year": 2025
+  },
+  {
+   "title": "Gold Digger's True Love",
+   "character": "Juliet",
+   "year": 2025
+  },
+  {
+   "title": "His Love Was A Lie",
+   "character": "Charlotte Delaney",
+   "year": 2025,
+   "episodes": 22
+  },
+  {
+   "title": "Taming the Gold Belt King",
+   "character": "Evelyn Lancaster",
+   "year": 2025
+  },
+  {
+   "title": "The Divorce Attorney's Secret Affair",
+   "character": "Aria",
+   "year": 2025
+  },
+  {
+   "title": "Why Mrs Riley Kills",
+   "character": "Vivian",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "An Unreliable Guide on Dating Your CEO",
+   "character": "Annie",
+   "year": 2024,
+   "episodes": 66
+  },
+  {
+   "title": "Divorce Has Never Felt So Good",
+   "character": "Natalie",
+   "year": 2024
+  },
+  {
+   "title": "Fleeing Husband: Please Love Me All Over Again",
+   "character": "Vylina Lance Rathbone",
+   "year": 2024
+  },
+  {
+   "title": "My Poor Husband's Billionaire Secret",
+   "character": "Charlotte",
+   "year": 2024
+  },
+  {
+   "title": "The Big Shot Is My Ex-wife",
+   "character": "Caroline",
+   "year": 2024
+  },
+  {
+   "title": "The Lady Boss CEO Is My Daughter",
+   "character": "Elodie Atkins",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "Lady CEO's Revenge",
+   "character": "Catherine Neal Dunton",
+   "year": 2024,
+   "type": "TV Series"
+  },
+  {
+   "title": "Saturday Night Live",
+   "character": "Pretty Girl (uncredited)",
+   "year": 2023,
+   "type": "TV Series"
+  },
+  {
+   "title": "Cloak & Dagger",
+   "character": "Cheerleader (uncredited)",
+   "year": 2018,
+   "type": "TV Series"
+  },
+  {
+   "title": "Queen Sugar",
+   "character": "High School Student",
+   "year": 2017,
+   "type": "TV Series"
+  },
+  {
+   "title": "American Horror Story",
+   "character": "Academy Witch (uncredited)",
+   "year": 2014,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "Seasick",
+   "type": "Short",
+   "year": 2021
+  },
+  {
+   "title": "Dirty Blonde",
+   "type": "Short",
+   "year": 2019
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "needs_review": true,
+ "review_reason": "6 linked credits could not be parsed at all",
+ "_drive_id": "1QvW9JwiOdx5IHvj7ptzkN295PgNW2fHo",
+ "_kind": "actor"
+}

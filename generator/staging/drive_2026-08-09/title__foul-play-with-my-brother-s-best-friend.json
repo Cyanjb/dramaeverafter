@@ -1,0 +1,54 @@
+{
+ "title": "Foul Play with My Brother's Best Friend",
+ "platform": "shortical",
+ "platform_source": "IMDb production-company field: shortical",
+ "production_companies": "shortical",
+ "source_pdf": "Foul Play with My Brother's Best Friend (TV Mini Series 2026– ) - IMDb.pdf",
+ "read_by": "parse_imdb_title_pdf.py (pypdf layout mode, column pairing)",
+ "counts": {
+  "imdb_cast_links": 6,
+  "pairs_parsed": 6,
+  "with_character": 6
+ },
+ "cast": [
+  {
+   "order": 1,
+   "name": "Evan Adams",
+   "character": "Jaden",
+   "nm": "nm12201270"
+  },
+  {
+   "order": 2,
+   "name": "Miranda Redmond",
+   "character": "Joanna",
+   "nm": "nm16169747"
+  },
+  {
+   "order": 3,
+   "name": "Madison McConnachie",
+   "character": "Sara",
+   "nm": "nm12015428"
+  },
+  {
+   "order": 4,
+   "name": "Kiana Pollard",
+   "character": "Cheerleader",
+   "nm": "nm17507875"
+  },
+  {
+   "order": 5,
+   "name": "Bella Mraz",
+   "character": "Lu",
+   "nm": "nm15417823"
+  },
+  {
+   "order": 6,
+   "name": "Kendyl Twa",
+   "character": "Rebecca",
+   "nm": "nm15697825"
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline is copied or reworded.",
+ "_drive_id": "18ISk4Rz6aA5Y23IOB9YLTqJ_i-SrZfxE",
+ "_kind": "title"
+}

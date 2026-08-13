@@ -1,0 +1,268 @@
+{
+ "name": "Travis DesLaurier",
+ "nm": "nm9027672",
+ "person_id": "travis-deslaurier",
+ "confident": false,
+ "source_pdf": "Travis DesLaurier - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 49,
+  "credits_parsed": 45,
+  "unparsed_gap": 4,
+  "vertical": 32,
+  "excluded_non_vertical": 7,
+  "type_uncertain": 6
+ },
+ "pagination_trap_rows_recovered": [
+  "The Billionaire's Second First Love"
+ ],
+ "credits": [
+  {
+   "title": "Almost Lover",
+   "character": "Edward",
+   "year": 2026
+  },
+  {
+   "title": "Daddy's Birthday Became Daughter's Funeral",
+   "character": "Logan",
+   "year": 2026
+  },
+  {
+   "title": "Dumping My Hollywood Superstar Husband",
+   "character": "Evan Cole",
+   "year": 2026
+  },
+  {
+   "title": "Family Meant to Be",
+   "character": "Elliot Anderson",
+   "year": 2026
+  },
+  {
+   "title": "Five Years Behind Bars, My Family Begs",
+   "character": "Axel Ralph",
+   "year": 2026
+  },
+  {
+   "title": "From Mail-Order Bride to Billionaire's Wife",
+   "character": "Eric Hawkins",
+   "year": 2026
+  },
+  {
+   "title": "Love Arrived After Goodbye",
+   "character": "Adrian Blake",
+   "year": 2026
+  },
+  {
+   "title": "Never Betray the Woman Who Built You",
+   "character": "Marcus",
+   "year": 2026
+  },
+  {
+   "title": "Not Your Daughter Tonight",
+   "character": "Diego",
+   "year": 2026
+  },
+  {
+   "title": "Tempting My Keeper",
+   "character": "Elias Weaver",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "The Mute Heiress Strikes Back",
+   "character": "Ryan",
+   "year": 2026
+  },
+  {
+   "title": "The Stable Girl and the Billionaire",
+   "character": "Vince",
+   "year": 2026
+  },
+  {
+   "title": "Divorced at the Wedding Day",
+   "character": "Enzo",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Dr. Kiss Me Stat",
+   "character": "Aron",
+   "year": 2025
+  },
+  {
+   "title": "Falling for My Call Boy CEO",
+   "character": "Asher Klein",
+   "year": 2025
+  },
+  {
+   "title": "From 99-Heartbreaks to Billionaire's First Love",
+   "character": "Henry Collins",
+   "year": 2025
+  },
+  {
+   "title": "From Janitor to Mrs. Billionaire",
+   "character": "Alex Bennett",
+   "year": 2025
+  },
+  {
+   "title": "Get Into Bed with My Husband's Best Friend",
+   "character": "Adrian",
+   "year": 2025
+  },
+  {
+   "title": "Hate the Way I Love You",
+   "character": "Jonathan Scott",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Lassoed by a Cowboy's Love",
+   "character": "Beau Hayes",
+   "year": 2025
+  },
+  {
+   "title": "Last Pick to First Choice",
+   "character": "Nolan Duffy",
+   "year": 2025
+  },
+  {
+   "title": "Mommy, Why Did Daddy Let Me Die",
+   "character": "William",
+   "year": 2025
+  },
+  {
+   "title": "My Classmate Is My Great-Grandson",
+   "character": "Alexander Sterling",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Pregnant for My Bully's Dad",
+   "character": "Leon Pullman",
+   "year": 2025
+  },
+  {
+   "title": "The Billionaire's Second First Love",
+   "character": "Harold Perry",
+   "year": 2025
+  },
+  {
+   "title": "They Love Me Too Late",
+   "character": "Gavin",
+   "year": 2025
+  },
+  {
+   "title": "Triplets Fighting to Be My Son's Daddy",
+   "character": "James Wills",
+   "year": 2025
+  },
+  {
+   "title": "Meta 911",
+   "character": "Stevie Wonder",
+   "year": 2024,
+   "episodes": 12
+  },
+  {
+   "title": "True Love's Kiss",
+   "character": "Hank Grayson",
+   "year": 2024
+  },
+  {
+   "title": "Whirlwind Marriage, Secret Twins",
+   "character": "Ryan Chelsea",
+   "year": 2024
+  },
+  {
+   "title": "Alexanderthetitan",
+   "character": "Phillip",
+   "year": 2023,
+   "episodes": 2
+  },
+  {
+   "title": "Plunder Pictures Short Films",
+   "character": "Jackson",
+   "year": 2023,
+   "episodes": 5
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "The Rookie",
+   "character": "Richard",
+   "year": 2025,
+   "type": "TV Series"
+  },
+  {
+   "title": "Dexter: Original Sin",
+   "character": "Brett",
+   "year": 2024,
+   "type": "TV Series"
+  },
+  {
+   "title": "The Pirate Bay",
+   "character": "Scott Dinsdale",
+   "year": 2024,
+   "type": "TV Series"
+  },
+  {
+   "title": "Killing It",
+   "character": "Influencer Dude",
+   "year": 2023,
+   "type": "TV Series"
+  },
+  {
+   "title": "Truth Be Told",
+   "character": "Bartender",
+   "year": 2021,
+   "type": "TV Series"
+  },
+  {
+   "title": "Single Parents",
+   "character": "Dave",
+   "year": 2020,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "X People",
+   "type": "Short",
+   "year": 2024
+  },
+  {
+   "title": "Found IT",
+   "type": "Short",
+   "year": 2021
+  },
+  {
+   "title": "Rag Doll",
+   "type": "Short",
+   "year": 2020
+  },
+  {
+   "title": "Operation: Cancel Christmas",
+   "type": "Short",
+   "year": 2019
+  },
+  {
+   "title": "Poles: A Bipolar Story",
+   "type": "Short",
+   "year": 2019
+  },
+  {
+   "title": "Can't Sleep",
+   "type": "Short",
+   "year": 2018
+  },
+  {
+   "title": "Codependent Ghost Girl",
+   "type": "Video",
+   "year": 2016
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "needs_review": true,
+ "review_reason": "1 row(s) had a pagination control stripped out of them - check those titles against another field before trusting them; 4 linked credits could not be parsed at all",
+ "_drive_id": "1cIN4Po5QopKGwP1sQwJmyJ0fUdF0UcTS",
+ "_kind": "actor"
+}

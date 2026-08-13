@@ -1,0 +1,138 @@
+{
+ "name": "David Lovio",
+ "nm": "nm13149419",
+ "person_id": "david-lovio",
+ "confident": true,
+ "source_pdf": "David Lovio - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 24,
+  "credits_parsed": 22,
+  "unparsed_gap": 2,
+  "vertical": 16,
+  "excluded_non_vertical": 6,
+  "type_uncertain": 0
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "Her Second Chance: The Return of the True Heiress",
+   "character": "Ethan Cole",
+   "year": 2026
+  },
+  {
+   "title": "Where Were You When I Fell",
+   "character": "Gavin Hart",
+   "year": 2026
+  },
+  {
+   "title": "Bind Me with Your Blood",
+   "character": "",
+   "year": 2025
+  },
+  {
+   "title": "From Rejected to Alpha Queen",
+   "character": "Alpha Jonas Lemus",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "How I Became the CEO's Darling",
+   "character": "Lyle Roberts",
+   "year": 2025
+  },
+  {
+   "title": "Loved the Wrong, No Forgiveness",
+   "character": "Alex Miller",
+   "year": 2025
+  },
+  {
+   "title": "Ms. Billionaire's Love Business24",
+   "character": "Daniel",
+   "year": 2025
+  },
+  {
+   "title": "Never Ever Again",
+   "character": "Parker Reynolds",
+   "year": 2025
+  },
+  {
+   "title": "Punch Me Baby",
+   "character": "Rowan",
+   "year": 2025
+  },
+  {
+   "title": "Rejected Slave Meets Her Alpha",
+   "character": "Edwin",
+   "year": 2025
+  },
+  {
+   "title": "Return of the Unwanted Daughter",
+   "character": "Leonardo Harris",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Inaccessible Family Love",
+   "character": "Colleague2",
+   "year": 2024
+  },
+  {
+   "title": "Love Again, My Princess",
+   "character": "Charles Perlman",
+   "year": 2024
+  },
+  {
+   "title": "Return of the Abandoned Heiress",
+   "character": "Colleague #2",
+   "year": 2024
+  },
+  {
+   "title": "The Agreement",
+   "character": "Alessandro",
+   "year": 2024
+  },
+  {
+   "title": "A Love Prescription of Mr. Devil",
+   "character": "Thug 2",
+   "year": 2023,
+   "episodes": 57
+  }
+ ],
+ "type_uncertain_not_staged": [],
+ "non_vertical_excluded": [
+  {
+   "title": "The Long Answer",
+   "type": "Short",
+   "year": 2026
+  },
+  {
+   "title": "When I See You at the End of the World",
+   "type": "Short",
+   "year": 2026
+  },
+  {
+   "title": "Daffodils",
+   "type": "Short",
+   "year": 2024
+  },
+  {
+   "title": "Something in the Woods",
+   "type": "Short",
+   "year": 2024
+  },
+  {
+   "title": "Best Buds 2: Into the Nightmare",
+   "type": "Short",
+   "year": 2022
+  },
+  {
+   "title": "Best Buds",
+   "type": "Short",
+   "year": 2021
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "1HPC2S09BsDwU057C_xjpFls-vC00G3hL",
+ "_kind": "actor"
+}

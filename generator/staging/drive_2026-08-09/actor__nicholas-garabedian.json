@@ -1,0 +1,195 @@
+{
+ "name": "Nicholas Garabedian",
+ "nm": "nm9752738",
+ "person_id": "nicholas-garabedian",
+ "confident": true,
+ "source_pdf": "Nicholas Garabedian - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 37,
+  "credits_parsed": 34,
+  "unparsed_gap": 3,
+  "vertical": 27,
+  "excluded_non_vertical": 7,
+  "type_uncertain": 0
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "Being Fired? Now I'm Out of Their League!",
+   "character": "Julian Clark",
+   "year": 2026
+  },
+  {
+   "title": "Falling for the Pretender",
+   "character": "Chase Montgomery",
+   "year": 2026
+  },
+  {
+   "title": "Her Beast",
+   "character": "Jonathan Reed",
+   "year": 2026
+  },
+  {
+   "title": "Warning! The Greatest Demon Hunter Is Out!",
+   "character": "Samuel Wood",
+   "year": 2026
+  },
+  {
+   "title": "Accidentally Brought a CEO Home",
+   "character": "Steven Williams",
+   "year": 2025
+  },
+  {
+   "title": "Christmas Awakening I See Your Countdown",
+   "character": "Landon Mortimer",
+   "year": 2025
+  },
+  {
+   "title": "Enemies with Benefits",
+   "character": "Chase",
+   "year": 2025
+  },
+  {
+   "title": "From XL to Extra Love",
+   "character": "Lucas",
+   "year": 2025
+  },
+  {
+   "title": "Love Under Contract",
+   "character": "Shane Marks",
+   "year": 2025
+  },
+  {
+   "title": "Memory Reset: Mr. Resistant Begged for Love",
+   "character": "Charles",
+   "year": 2025
+  },
+  {
+   "title": "Moving on from My Bodyguard",
+   "character": "Will Claflin",
+   "year": 2025
+  },
+  {
+   "title": "My Million-Dollar Substitute Job",
+   "character": "Gavin",
+   "year": 2025
+  },
+  {
+   "title": "The Queen Takes Both",
+   "character": "Noah Anderson",
+   "year": 2025
+  },
+  {
+   "title": "Twin Matchmakers: Billionaire Dad's Love Quest",
+   "character": "Victor Denver",
+   "year": 2025
+  },
+  {
+   "title": "Falling for My Estranged Wife",
+   "character": "Harrison",
+   "year": 2024
+  },
+  {
+   "title": "Falling in Love with My Brothers Fiancee",
+   "character": "Charlie Lawton",
+   "year": 2024
+  },
+  {
+   "title": "Free My Heart",
+   "character": "Jonathan Whiteford",
+   "year": 2024
+  },
+  {
+   "title": "Got Pregnant with Ex-Boss's Baby",
+   "character": "Felix",
+   "year": 2024
+  },
+  {
+   "title": "Married for Greencard, Stayed for Love",
+   "character": "James Williams",
+   "year": 2024
+  },
+  {
+   "title": "My Fated Alpha: Rejected & Reclaimed",
+   "character": "Alpha Bernard",
+   "year": 2024
+  },
+  {
+   "title": "My Secret CEO",
+   "character": "Alex",
+   "year": 2024
+  },
+  {
+   "title": "My Wife Is My Divorce Lawyer",
+   "character": "Richard Norman",
+   "year": 2024
+  },
+  {
+   "title": "Once Upon a Divorce: The Double Life of Lady Diana",
+   "character": "Henry Maxwell",
+   "year": 2024
+  },
+  {
+   "title": "Reborn: The Legend Luna Awakening",
+   "character": "Leo",
+   "year": 2024
+  },
+  {
+   "title": "Tears After I Do",
+   "character": "Jesse",
+   "year": 2024
+  },
+  {
+   "title": "Tempting Luna Identity",
+   "character": "Oscar Lancaster",
+   "year": 2023
+  },
+  {
+   "title": "The Boss Affair",
+   "character": "Luke Walker (as Nick Garabedian)",
+   "year": 2023
+  }
+ ],
+ "type_uncertain_not_staged": [],
+ "non_vertical_excluded": [
+  {
+   "title": "Dax & Lio: Shoot Your Shot",
+   "type": "Short",
+   "year": 2024
+  },
+  {
+   "title": "The Get In",
+   "type": "Short",
+   "year": 2024
+  },
+  {
+   "title": "Bite Me",
+   "type": "Short",
+   "year": 2023
+  },
+  {
+   "title": "One Night in Ravenwood",
+   "type": "Short",
+   "year": 2023
+  },
+  {
+   "title": "Candy House",
+   "type": "Short",
+   "year": 2022
+  },
+  {
+   "title": "Obsessed",
+   "type": "Short",
+   "year": 2021
+  },
+  {
+   "title": "Last Summer",
+   "type": "Short",
+   "year": 2018
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "18N81moH1hTcjInuzqe2jbTNen253vbxe",
+ "_kind": "actor"
+}

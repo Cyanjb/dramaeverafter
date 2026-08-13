@@ -1,0 +1,131 @@
+{
+ "name": "Jordan Frank",
+ "nm": "nm16346660",
+ "person_id": "jordan-frank",
+ "confident": true,
+ "source_pdf": "Jordan Frank - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 22,
+  "credits_parsed": 20,
+  "unparsed_gap": 2,
+  "vertical": 19,
+  "excluded_non_vertical": 1,
+  "type_uncertain": 0
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "Alpha King's Silent Cinderella",
+   "character": "Alpha King Evan",
+   "year": 2026
+  },
+  {
+   "title": "Be Mine My Hobo Valentine",
+   "character": "Floren Wilson",
+   "year": 2026
+  },
+  {
+   "title": "Billionaire Daddy, You Have Sextuplets!",
+   "character": "Lucas Blackwood",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "Caught Between the Mafia Brothers",
+   "character": "Knox Moretti",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "Cry for Me When I Left",
+   "character": "Christopher Kaufman",
+   "year": 2026
+  },
+  {
+   "title": "My Tangled Therapy with a Dark Hockey Star",
+   "character": "Jax",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "Taming My Enemy Hockey Captain",
+   "character": "Cameron Moss",
+   "year": 2026,
+   "episodes": 12
+  },
+  {
+   "title": "Baby, Please Don't Marry Him",
+   "character": "Justin Wilson",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Billionaire Completes My Bucket List",
+   "character": "Cassian",
+   "year": 2025
+  },
+  {
+   "title": "Bye Mr. Ex, Your Commander Is Calling",
+   "character": "Sebastian Cole",
+   "year": 2025
+  },
+  {
+   "title": "Desires Die Hard",
+   "character": "Evan",
+   "year": 2025
+  },
+  {
+   "title": "Good with Her Hands",
+   "character": "Adam Shelton",
+   "year": 2025
+  },
+  {
+   "title": "Missing Heiress: Spoiled by Three Billionaires",
+   "character": "Carter Lawrence",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "My Husband Sold Me to My Ex",
+   "character": "Paul",
+   "year": 2025
+  },
+  {
+   "title": "Objection! The Legal Queen in Charge Now",
+   "character": "Will Caprio",
+   "year": 2025
+  },
+  {
+   "title": "Reborn Queen CEO, Ex-Husband Cries",
+   "character": "Alexander",
+   "year": 2025
+  },
+  {
+   "title": "The One I Never Forget",
+   "character": "Justin Miller",
+   "year": 2025
+  },
+  {
+   "title": "Tides of Desire22",
+   "character": "Finn",
+   "year": 2025
+  },
+  {
+   "title": "My Ex-Wife Is a Superwoman",
+   "character": "Charles Wilson",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [],
+ "non_vertical_excluded": [
+  {
+   "title": "Royal Accident",
+   "type": "TV Movie",
+   "year": 2025
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "_drive_id": "1Cdo50UIPCELDOVO-PWoMia2sSNRatNpq",
+ "_kind": "actor"
+}

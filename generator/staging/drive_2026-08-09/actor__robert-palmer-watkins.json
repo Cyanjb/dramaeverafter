@@ -1,0 +1,326 @@
+{
+ "name": "Robert Palmer Watkins",
+ "nm": "nm4981388",
+ "person_id": "robert-palmer-watkins",
+ "confident": false,
+ "source_pdf": "Robert Palmer Watkins - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 72,
+  "credits_parsed": 55,
+  "unparsed_gap": 17,
+  "vertical": 22,
+  "excluded_non_vertical": 16,
+  "type_uncertain": 17
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "After Divorce, I'm Spoiled by Three Brothers",
+   "character": "Dominic Lane",
+   "year": 2026,
+   "episodes": 1
+  },
+  {
+   "title": "Broke Single Mom's Accidental Fairytale",
+   "character": "James",
+   "year": 2026
+  },
+  {
+   "title": "Nanny and the Alpha Daddy",
+   "character": "Alpha Caleb",
+   "year": 2026
+  },
+  {
+   "title": "A Billionaire Stay-at-Home Dad's Two Treasures",
+   "character": "Grayson",
+   "year": 2025
+  },
+  {
+   "title": "A Hollywood Match",
+   "character": "Dylan",
+   "year": 2025
+  },
+  {
+   "title": "Angel's Masterpiece",
+   "character": "Adam Dawson",
+   "year": 2025
+  },
+  {
+   "title": "Dominated by My Father's Killer",
+   "character": "David Lewis",
+   "year": 2025
+  },
+  {
+   "title": "Escaping the Bridezilla",
+   "character": "Sebastian",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Exchanging Our Hearts",
+   "character": "Nathan Williams",
+   "year": 2025
+  },
+  {
+   "title": "Frozen Wife, Unfrozen Revenge",
+   "character": "Dominic Westwood",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "Having His Baby, Becoming His Darling",
+   "character": "Stephen Livingston",
+   "year": 2025,
+   "episodes": 67
+  },
+  {
+   "title": "How to Train Your Good Boy CEO",
+   "character": "Reggie",
+   "year": 2025
+  },
+  {
+   "title": "Mistaken for a Gold Digger",
+   "character": "William Kensington",
+   "year": 2025,
+   "episodes": 68
+  },
+  {
+   "title": "Mother-in-Law Steals My Mr. Right",
+   "character": "Christian Morgan",
+   "year": 2025
+  },
+  {
+   "title": "Spark My Body and Master My Soul",
+   "character": "Ryder Hawthorne",
+   "year": 2025
+  },
+  {
+   "title": "The Billionaire's Accidental Bride",
+   "character": "Eric Roberts",
+   "year": 2025
+  },
+  {
+   "title": "The Outcast Makes a Comeback",
+   "character": "Marshall Harrington",
+   "year": 2025
+  },
+  {
+   "title": "The Triple Life of My Accidental Husband",
+   "character": "Adam",
+   "year": 2025,
+   "episodes": 1
+  },
+  {
+   "title": "A Mistaken Surrogate for the Ruthless Billionaire",
+   "character": "David Carlson",
+   "year": 2024
+  },
+  {
+   "title": "CEO's Mistaken Lover",
+   "character": "Lester",
+   "year": 2024
+  },
+  {
+   "title": "Love, Lies, and Alibis",
+   "character": "Jake Hawkins",
+   "year": 2024
+  },
+  {
+   "title": "Second Baby Second Chance",
+   "character": "Wyatt",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [
+  {
+   "title": "Bite Me, My Mafia Daddy",
+   "character": "Adam",
+   "year": 2025,
+   "type": "TV Series"
+  },
+  {
+   "title": "Tub Life",
+   "character": "Rob Danger",
+   "year": 2024,
+   "type": "TV Series"
+  },
+  {
+   "title": "S.W.A.T.",
+   "character": "Mason Jones",
+   "year": 2022,
+   "type": "TV Series"
+  },
+  {
+   "title": "The Walking Dead: World Beyond",
+   "character": "Lieutenant Frank Newton",
+   "year": 2020,
+   "type": "TV Series"
+  },
+  {
+   "title": "Green Valley",
+   "character": "Eddie",
+   "year": 2019,
+   "type": "TV Series"
+  },
+  {
+   "title": "Cupid's Match",
+   "character": "Cupid",
+   "year": 2018,
+   "type": "TV Series"
+  },
+  {
+   "title": "Laura",
+   "character": "Nicholas",
+   "year": 2016,
+   "type": "TV Series"
+  },
+  {
+   "title": "Killer Kids",
+   "character": "David Biro",
+   "year": 2015,
+   "type": "TV Series"
+  },
+  {
+   "title": "Last Life",
+   "character": "Shane Isaacs",
+   "year": 2015,
+   "type": "TV Series"
+  },
+  {
+   "title": "Devil in the Details",
+   "character": "Killer",
+   "year": 2014,
+   "type": "TV Series"
+  },
+  {
+   "title": "General Hospital",
+   "character": "Dillon Quartermaine",
+   "year": 2014,
+   "type": "TV Series"
+  },
+  {
+   "title": "My Crazy Ex",
+   "character": "Brian",
+   "year": 2014,
+   "type": "TV Series"
+  },
+  {
+   "title": "Sketch Juice",
+   "character": "Jonathan",
+   "year": 2014,
+   "type": "TV Series"
+  },
+  {
+   "title": "Welcome Home, Loser",
+   "character": "Trent",
+   "year": 2014,
+   "type": "TV Series"
+  },
+  {
+   "title": "Frat House Musical",
+   "character": "Peter",
+   "year": 2012,
+   "type": "TV Series"
+  },
+  {
+   "title": "The Girl's Guide to Depravity",
+   "character": "Jared",
+   "year": 2012,
+   "type": "TV Series"
+  },
+  {
+   "title": "1000 Ways to Die",
+   "character": "Jason",
+   "year": 2011,
+   "type": "TV Series"
+  }
+ ],
+ "non_vertical_excluded": [
+  {
+   "title": "Rekindle Heartache",
+   "type": "Video",
+   "year": 2024
+  },
+  {
+   "title": "Midnight Ruin",
+   "type": "Short",
+   "year": 2023
+  },
+  {
+   "title": "Trapped in the Farmhouse",
+   "type": "TV Movie",
+   "year": 2023
+  },
+  {
+   "title": "A Prince and Pauper Christmas",
+   "type": "TV Movie",
+   "year": 2022
+  },
+  {
+   "title": "Puncture",
+   "type": "Short",
+   "year": 2021
+  },
+  {
+   "title": "Surviving Theater 9",
+   "type": "Short",
+   "year": 2018
+  },
+  {
+   "title": "Willie Jones: Runs in Our Blood",
+   "type": "Music Video",
+   "year": 2018
+  },
+  {
+   "title": "Doom of Valyria (Animated Pilot Concept)",
+   "type": "Video",
+   "year": 2017
+  },
+  {
+   "title": "Nigel and Prunella",
+   "type": "Short",
+   "year": 2017
+  },
+  {
+   "title": "BeLL: Losing My Religion",
+   "type": "Music Video",
+   "year": 2016
+  },
+  {
+   "title": "Robert Palmer Watkins: Love Yourself",
+   "type": "Music Video",
+   "year": 2016
+  },
+  {
+   "title": "Robert Palmer Watkins: Good for You",
+   "type": "Music Video",
+   "year": 2015
+  },
+  {
+   "title": "Executive Protection",
+   "type": "TV Movie",
+   "year": 2013
+  },
+  {
+   "title": "Upside Down",
+   "type": "Short",
+   "year": 2013
+  },
+  {
+   "title": "Teddy Bear",
+   "type": "Short",
+   "year": 2012
+  },
+  {
+   "title": "Flip Turn",
+   "type": "Short",
+   "year": 2011
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "needs_review": true,
+ "review_reason": "17 linked credits could not be parsed at all",
+ "_drive_id": "1PbUWvZYa4ubVRiH2GBqbeiUhhO3_5XUn",
+ "_kind": "actor"
+}

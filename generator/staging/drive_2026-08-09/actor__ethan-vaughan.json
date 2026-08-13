@@ -1,0 +1,83 @@
+{
+ "name": "Ethan Vaughan",
+ "nm": "nm14874708",
+ "person_id": "ethan-vaughan",
+ "confident": false,
+ "source_pdf": "Ethan Vaughan - IMDb.pdf",
+ "read_by": "parse_imdb_person_pdf.py (pypdf layout mode + link-count check)",
+ "counts": {
+  "imdb_credit_links": 16,
+  "credits_parsed": 11,
+  "unparsed_gap": 5,
+  "vertical": 8,
+  "excluded_non_vertical": 3,
+  "type_uncertain": 0
+ },
+ "pagination_trap_rows_recovered": [],
+ "credits": [
+  {
+   "title": "Underwater Lover",
+   "character": "Blaze",
+   "year": 2026
+  },
+  {
+   "title": "Heartless Husband Chasing Me Back",
+   "character": "Franco",
+   "year": 2025
+  },
+  {
+   "title": "The End of the Fxxxing Housewife",
+   "character": "Ryan Shaw",
+   "year": 2025
+  },
+  {
+   "title": "Alpha's Forbidden Mate",
+   "character": "Alpha Arthur Althan",
+   "year": 2024
+  },
+  {
+   "title": "But Daddy I Love Him",
+   "character": "Elias",
+   "year": 2024
+  },
+  {
+   "title": "Saved by the Billionaire",
+   "character": "Justin Gray",
+   "year": 2024
+  },
+  {
+   "title": "The CEO's Wife is a Badass",
+   "character": "Brandon Pearson",
+   "year": 2024,
+   "episodes": 1
+  },
+  {
+   "title": "The Three Badasses Who Want Me",
+   "character": "Devin Sterling",
+   "year": 2024
+  }
+ ],
+ "type_uncertain_not_staged": [],
+ "non_vertical_excluded": [
+  {
+   "title": "Creatures of Passion",
+   "type": "Short",
+   "year": 2025
+  },
+  {
+   "title": "The Fraud",
+   "type": "Short",
+   "year": 2025
+  },
+  {
+   "title": "Atlas",
+   "type": "Short",
+   "year": 2023
+  }
+ ],
+ "caption_rule": "CAST ONLY. No IMDb storyline or platform synopsis is copied or reworded. Captions are written from scratch.",
+ "needs_review": true,
+ "review_reason": "5 linked credits could not be parsed at all",
+ "_drive_id": "1Q-vXqIv6BOpAlrHKCU4bTSyONe6X0C06",
+ "_kind": "actor"
+}
