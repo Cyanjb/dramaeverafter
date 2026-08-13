@@ -153,6 +153,24 @@ def main():
         for k, v in new_slugs.most_common(25):
             print("    %3d  %s" % (v, k))
 
+        # A NEW SLUG THAT IS NEARLY AN EXISTING ONE IS THE DANGEROUS CASE, because
+        # exact-slug matching above cannot see it and build.py cannot fold it: two
+        # slugs means two pages competing for one concept. The 13 Aug run produced
+        # 'vampires' beside an existing 'vampire' that carries 642 titles. Flag, do
+        # NOT auto-merge - 'mate'/'mates' are genuinely different in this genre.
+        import difflib
+        warn = []
+        for n in new_slugs:
+            for existing in canon:
+                a, b = slug(n).replace("-", ""), existing.replace("-", "")
+                if a == b or difflib.SequenceMatcher(None, a, b).ratio() >= 0.87:
+                    warn.append((n, canon[existing], freq[canon[existing]]))
+        if warn:
+            print()
+            print("!! NEAR-DUPLICATE OF AN EXISTING TROPE - rule these before rebuilding:")
+            for n, e, c in warn:
+                print("    new %-22s <-> existing %-22s (%d titles)" % (n, e, c))
+
     payload = {
         "source": SOURCE,
         "read_from": "schema.org ld+json @graph, TVSeries node, genre[]",
