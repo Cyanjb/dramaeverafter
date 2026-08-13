@@ -676,13 +676,17 @@
       "id": "1eCN3VH9-kLDIur9fcJ2wKcA_GVz48kFX",
       "title": "fan list Vertical Dramas - Favourite",
       "kind": "other",
-      "status": "todo"
+      "status": "done",
+      "credits": 53,
+      "note": "IMDb user list 'Vertical Dramas - Favourite' (15,500 visits). TITLES AND RANK ONLY - the list's synopses are IMDb's text and were not read into anything. 53 titles: 37 we hold, 16 we do not. An IMDb list names no platform, so none of the 16 can be created from this alone; they are a CHOSEN import queue waiting on platform evidence. Staged as generator/staging/fanlist_vertical_favourites_2026-08-13.json"
     },
     {
       "id": "1Xj6LFZxGgsfCzIjlgqv0qVNI8f54lUvT",
       "title": "Screenshot 2026-08-09 205001.png",
       "kind": "other",
-      "status": "todo"
+      "status": "done",
+      "credits": 0,
+      "note": "TikTok screenshot: 'Study Buddy - Noah Andre & Sophia Soto on Candy Jar'. CORROBORATES what we already hold from IMDb - study-buddy is on candyjar and Noah Andre is credited as Zeke Evans. SOPHIA SOTO IS NOT APPLIED: she is named only by a TikTok caption, and NEVER ATTACH A REAL PERSON'S NAME WITHOUT EVIDENCE does not have a social-media exception. Queued as a lead instead."
     }
   ],
   "filename_platform_rule": "Cyan encodes the PLATFORM in some Drive filenames. Where a filename carries it, that is authoritative - IMDb never states which app a title is on, so the filename is often the ONLY source for the one field that cannot be guessed. Read filenames at inventory time, not just file contents."
