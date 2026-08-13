@@ -12,147 +12,118 @@ We're continuing work on DramaEverAfter. Read these Craft docs first, in this or
 
 Then read, in the repo: `references/adapters.md` **sections 18–23**.
 
-## FIRST: NOTHING IS COMMITTED, AND THE PILE IS NOW BIGGER
+## FIRST: 23 COMMITS ARE UNPUSHED
 
-`main` and `origin/main` are both at `fa502cc3f`. The working tree carries the
-9–10 Aug session's work **and** the 12 Aug session's work, all unreviewed by Cyan.
-She was asked on 12 Aug and chose to review before committing. Do not commit
-without asking again.
+`main` is at `14f1e67e7`. The working tree is **CLEAN** — nothing is at risk. But the
+last thing that reached the live site was `e2751dcb2`, and **23 commits sit locally**.
 
-**A restore point exists outside the repo**: `C:\Users\cyanj\dea-restore-2026-08-12\`
-holds `tracked-changes.patch`, `untracked.zip` (55 files) and `status.txt`, captured
-at the START of the 12 Aug session. It restores the 9–10 Aug state, not the 12 Aug one.
+Almost all of them are staged transcription (no page impact). The exceptions that
+DO change pages are already committed and just need pushing. Ask Cyan before pushing;
+she has been happy to, but each push is a live deploy.
 
-## WHAT THE 12 AUG SESSION DID
+Deploy is proven and automatic: a push on 12 Aug went live in ~20 seconds.
 
-**The 543 staged Drive credits are APPLIED.** They sat inert across two sessions.
+    3,416 titles · 2,125 actors · 4,186 credits · 9,220 pages · 15 platforms
+    855 of 3,199 title-platform pairs complete (27%)
+    titles.csv has an imdb_id column, 314 filled
+    people.csv aka_names populated on 44
+    match_queue: 43 still pending
 
-    credits.csv       3,988 -> 4,184   (+196: 43 filmography, 153 title-page)
-    people.csv        2,029 -> 2,125   (+96)
-    castless titles   2,196 -> 2,152
-    CandyJar castless    39 -> 18
-    complete entries    835 -> 855     (26% -> 27% of title-platform pairs)
+## THE DRIVE BATCH — 67 of 93 FILES, 1,051 CREDITS STAGED, NONE APPLIED
 
-**CANDYJAR CLEARED THE 50-COMPLETE BREADTH BAR** — fourth platform over it, after
-ReelShort, Vigloo and My Drama. Also 36 blank character_names filled and 9
-aka/socials fields on people who had none while we held their nm id.
+Ledger: `generator/staging/drive_2026-08-09_ledger.json`.
+Run `_reconcile.py` to rebuild status from the staged files (they are ground truth).
 
-Route: `generator/staging/drive_2026-08-09/_to_filmography_batch.py` and
-`_to_cast_batch.py` convert the staged per-file JSON into the shapes the two audited
-appliers want. `apply_imdb_pdf_cast.py` gained a `--json` input and ASCII-folded
-slugs for NEWLY CREATED people only.
+**Remaining: 25 files — 18 filmographies, 5 title pages, 2 misc.**
 
-**Betrayal at the Altar's truncated synopsis is fixed** (now ends `justice.`).
+Everything transcribed since 12 Aug is staged only. The two appliers and their
+converters are proven and in the repo:
 
-### Three things that would have corrupted data if applied raw
-- **Mojibake in the transcription**: `CÃ©line Planata`, `Arne KÃ¼bler`, `SÃ©lynne Silver`
-  were UTF-8 read as latin-1. people.csv had zero corrupted names before and still does.
-- **An accent collision**: repaired `Céline Planata` no longer matches the
-  `Celine Planata` on file, so she would have arrived as a SECOND person. The stored
-  spelling was used; she was not renamed.
-- **The article and casing traps**: `Alpha's Doe` -> our `The Alpha's Doe`;
-  `Half of My Heart` -> our `Half Of My Heart`. Raw, these report as "not in
-  titles.csv", indistinguishable from genuinely absent.
+    _to_filmography_batch.py  ->  apply_imdb_filmography.py
+    _to_cast_batch.py         ->  apply_imdb_pdf_cast.py --json
 
-### Slug decision, made not asked (per Cyan's standing instruction)
-New people get ASCII-folded slugs: `Arne Kübler` -> `arne-kubler`, not `arne-k-bler`.
-The 12 EXISTING people with the older shape (`ch-na-verony`, `andr-s-de-la-mora`,
-`mari-a-camila-rueda`) were deliberately NOT rewritten — they are published URLs.
+## THE FINDING THAT MATTERS MOST
 
-## THE BIG UNRESOLVED FINDING: ~2,084 TRUNCATED DESCRIPTIONS
+Cyan asked whether we hold all of Armand Procacci's titles. **We hold 14 of 47.**
 
-Chasing one truncated synopsis turned up a systemic cut. TWO different caps, which
-means two different scraper paths:
+Measured across all 28 actors whose IMDb pages she has supplied:
 
-    cut at exactly 300 CHARACTERS   687 titles   GoodShort 525, vigloo 66, pinedrama 59
-    cut at exactly 300 BYTES         27 titles   CandyJar 22, my-drama 2
-    300/300, pure ASCII, fits either 1,370       GoodShort 1,138
+    810 IMDb credits · we hold 303 · 37% · 483 titles missing
 
-`completeness.py` scores every one of them as HAVING a description, so the 27%
-completeness figure is softer than it looks. The truncation is PROVEN ours only for
-the byte-cap case (My Drama serves 303 chars, we stored 300 bytes). The 687
-char-capped GoodShort rows need ONE fetch to settle whether GoodShort itself
-publishes a 300-char teaser — do not assume either way.
+**A comprehensive actor page is a TITLE-IMPORT problem, not a cast problem.** The
+filmography PDFs already give us the full credit list; the titles those credits point
+at do not exist.
 
-## THE SITE IS REBUILT AND THE TROPE TAGS MOVED
+- **165** of the 483 can get a platform from the already-parsed company catalogues.
+  Cyan APPROVED importing these. `generator/build_filmography_import_2026_08_13.py`
+  builds the queue and has NOT been run.
+- The other **318** need one saved IMDb page each.
 
-Cyan approved the rebuild once the restore point was in place. 9,124 -> **9,220 pages**
-(+96, exactly the new actors). Verified in a real browser, not just in the markup:
-`Arne Kübler` renders its umlaut, no page contains U+FFFD, both trope chips resolve 200,
-and `celine-planata.html` is a single page with 5 credits while `c-line-planata.html`
-404s — the accent collision did not create a duplicate.
+### I was wrong about the 318, and it matters
+I told Cyan those had "no platform available". That was a statement about what is
+parsed on disk, NOT about the world. **Every IMDb title page names the platform in
+its production-company field.** She disproved it in one move by handing over
+`Reelshort - You've Been Replaced, First Love (TV Mini Series 2026) - IMDb.pdf`,
+where the filename AND the production-company field both said ReelShort.
 
-**TROPE TAGS NOW SIT UNDER THE SYNOPSIS** on title pages (Cyan, 12 Aug). They used to
-sit between the views line and the watch card. Order is now h1 -> views -> watch card
--> "The story" -> trope chips, measured with getBoundingClientRect (story bottom 624,
-chips top 646, 22px gap). The chips div is now CONDITIONAL — a title with no tropes
-used to emit an empty `<div class="chips">`.
+So the 318 are a queue, not a wall.
 
-### A BUILD CRASHED MID-RUN ON 12 AUG. READ THIS.
-The first attempt died with `PermissionError [WinError 32]` on
-`actors/sophia-delucchi.html`: a background process of MINE was reading the tree while
-build.py was unlinking it. Windows locks open files; Linux does not. **Never leave a
-process reading the output tree while build.py runs.** Worse, the command was piped
-through `tail`, so `$?` reported the exit of `tail` and printed `BUILD EXIT=0` over a
-crash — the same masking trap as the `| head` one already on the list. **Capture the
-exit code before the pipe, or redirect to a file.** The partial tree was healed by
-re-running the build twice and confirming identical diff fingerprints.
+## HOW TO READ A SAVED IMDb PDF — the indentation is the data
 
-## TWO DECISIONS ASKED ON 12 AUG AND NOT ANSWERED
+This was solved on 13 Aug and it changes the yield completely.
 
-1. **8 near-matches queued** in match_queue.csv, all punctuation/article-only and all
-   almost certainly one production each:
-   `Feelin the Burn`/`Feelin' the Burn` · `I'm a Queen, Not a Mistress`/`...Queen Not a...` ·
-   `The CEO and the Country Girl`/`CEO and...` · `Love's U-Turn from a Mistake`/`Love's U-Turn，From a Mistake` ·
-   `Mancini's Forbidden Bride` (straight vs curly apostrophe) · `My Cold-Blooded Alpha King`/`My Coldblooded...` ·
-   `Billionaire's Baby`/`The Billionaire's Baby` · `Ex-Husband Step Aside: Lady Boss Returns`/`..., Lady Boss...`
-2. **Two aka_names appends.** Procacci: we hold `Armund`, IMDb says `Arman`. Tiller:
-   we hold `Jakson`, IMDb says `Jack` (billed that way on two titles). Both were left
-   alone because fill-blank-only skips non-blank fields. Unrecorded variants are
-   exactly what makes a future pass create duplicate people.
+1. **`pypdf` link annotations** carry the cast `nm` ids. IMDb's links have
+   `?ref_=tt_cst_t_N`, giving billing ORDER and the nm id for every slot.
+2. **`extract_text(extraction_mode='layout')`** preserves IMDb's TWO-COLUMN cast
+   grid: each row is `left actor | right actor` then `left character | right character`.
+3. **NEVER STRIP WHITESPACE.** A lone character is only assignable by its INDENT.
+   Stripping it took one title from 18 pairs down to 3.
 
-## SMALLER FINDINGS FROM 12 AUG
+Works on a Downloads PDF. **Drive is NOT required** — I told Cyan otherwise and
+withdrew it. `py -m pip install pypdf` works.
 
-- **Our title contains a full-width comma**: `Love's U-Turn，From a Mistake`. U+FF0C is
-  the character class that crashed build.py on 9 Aug.
-- **Two people.csv rows hold TWO names each**, joined by a full-width comma:
-  `Wang Yeonheum，Baek Seoryeo`, `Oh Hyeon-yeop，Son Chung-yang`, and two more.
-  Pre-existing, not from this session.
-- **Not imported, correctly**: `Forgive Me Father` and `The Billion Dollar Baby` have
-  title-page cast staged but neither title is in titles.csv. Titles are chosen, not swept.
-- `Céline Planata` is stored as `Celine Planata`. IMDb has the accent. Not renamed.
+The PDF Tools MCP cannot RENDER pages here (missing native canvas binding), so
+visual inspection is not a fallback. The annotation route is the fallback.
 
-## THE 9 AUG DRIVE BATCH — 47 of 93 FILES TRANSCRIBED, ALL 47 NOW APPLIED
+## TRAPS ADDED THIS SESSION
 
-Ledger: `generator/staging/drive_2026-08-09_ledger.json`. Run `_reconcile.py` to rebuild
-statuses from the staged files (they are ground truth; the ledger has drifted before).
-`_progress.log` now carries a 12 Aug entry recording exactly what was applied — the
-staged JSON is a RECORD, NOT A QUEUE, so do not re-apply it.
+- IMDb's **Upcoming/Previous pagination controls land INSIDE credit rows** on person
+  pages, splitting a title, character, year or episode count from its own line — and
+  can drop an UNRELATED credit into the gap. **Ten of fourteen** pages were hit.
+  Every safe repair depended on another field independently confirming the orphan.
+- **`aka_names` is not reliably "where the typos live".** Commit `930d17eab` filed 20
+  variants as typos on 18 July; at least one, `Lukas Charles Stafford`, is a real
+  billing name used in IMDb's own bio. Check before trusting that classification.
+- **`aka_names` has no consistent separator** — 37 single, 5 pipe, 2 semicolon.
 
-**Remaining: 46 files — 35 filmographies, 9 title pages, 2 misc.**
+## WHAT CYAN RULED THIS SESSION
 
-### THE PLATFORM IS IN THE FILENAME
-"Shortmax drama- ...", "Goodshort Titles from IMDB", "Candyjar Drama- ...". IMDb never
-says which app a title is on. adapters.md sec 23.
+- Blend the Popular Actors rail with reach, not fans alone (done, live)
+- Fix the truncated synopsis only, not the 7 upstream rewrites (done)
+- Import the **165** titles that can have a platform (NOT yet run)
+- "Do the checks when you suggest them" — act, don't park
 
-### Platform catalogues already parsed
-    dramabox   413 titles  co1028734       dramawave  194  co1124838
-    goodshort  190         co1045147       shortmax   186  co1065580
-    dramapops   50         co1084498       shortical   24  co1167893
+## STILL FOR CYAN
 
-**112 titles we ALREADY HOLD could gain a platform** without importing anything. That is
-the cheapest breadth work left and it is still untouched.
-
-### Platform URLs recovered (2 of 7 dead buttons)
-    shortical  https://www.shortical.com/   verified 200
-    shortmax   https://www.shorttv.live/    verified 200
+1. **Save IMDb pages for the missing filmography titles** — now the highest-value
+   thing only she can do. Platform prefix in the filename, Downloads is fine.
+2. **The PineDrama 73.** Evidence is gathered: 64 of 73 have an IDENTICAL episode
+   count to their twin, 8 blank on one side, **one** disagrees (*Big Bad Husband,
+   Please Wake Up*, 55 vs 104). She checks ONE page, not 73.
+3. **14 people.csv rows are two people fused into one** by a full-width comma
+   (`Wang Yeonheum，Baek Seoryeo`). ~28 real people held as 14 identities.
+4. **~2,084 truncated synopses**, counted as complete by `completeness.py`. Proven
+   ours only for the 300-BYTE cases; the 687 GoodShort 300-CHAR ones need one fetch.
+5. 43 pending match_queue rows.
 
 ## HOW CYAN WORKS
 
-Don't ask her to approve routine decisions like slugs — pick sensible ones and tell her.
-Do ask when something is one-way or a brand judgement. **Tell her before running anything
-that rewrites thousands of files**, including build.py. If you can't verify something, say
-so plainly rather than guessing. Generated output that looks correct is not evidence that
-it works — click the thing, measure the thing, request the URL.
+Don't ask her to approve routine decisions like slugs — pick sensible ones and tell
+her. Do ask when something is one-way or a brand judgement. **Do the checks you
+suggest, when you suggest them** — don't hand her a list you could have resolved.
+Tell her before running anything that rewrites thousands of files, including
+build.py. If you can't verify something, say so plainly rather than guessing.
+Generated output that looks correct is not evidence that it works — click the thing,
+measure the thing, request the URL.
 
 **Captions and synopses are written from scratch. Never reword a platform's or IMDb's.**
