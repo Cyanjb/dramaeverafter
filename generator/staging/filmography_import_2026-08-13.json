@@ -1,0 +1,3177 @@
+{
+ "generated": "2026-08-13",
+ "rule": "A title qualifies only if BOTH an actor we track is credited on it AND a parsed IMDb company catalogue names its platform. Chosen, not swept.",
+ "caption_rule": "No synopsis and no poster are invented. Both come from the platform and neither is available here, so those fields stay blank.",
+ "counts": {
+  "distinct missing titles": 481,
+  "candidates with a platform": 164,
+  "READY to import": 164,
+  "HELD as near-duplicates": 0
+ },
+ "skipped": {
+  "no platform in any catalogue": 316,
+  "slug already exists": 1
+ },
+ "near_duplicate_pairs": [],
+ "held_for_ruling": [],
+ "ready": [
+  {
+   "title_id": "how-to-divorce-a-billionaire",
+   "slug": "how-to-divorce-a-billionaire",
+   "primary_title": "How to Divorce a Billionaire",
+   "imdb_id": "tt34688091",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 154,
+   "credited_actors": 2,
+   "credits": [
+    {
+     "actor": "Kasey Esser",
+     "person_id": "kasey-esser",
+     "title": "How to Divorce a Billionaire",
+     "character": "William",
+     "year": 2024
+    },
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "How to Divorce a Billionaire",
+     "character": "Olivia Bennett",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "mute-but-deadly",
+   "slug": "mute-but-deadly",
+   "primary_title": "Mute But Deadly",
+   "imdb_id": "tt40062765",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 306,
+   "credited_actors": 2,
+   "credits": [
+    {
+     "actor": "Alex Pychtin",
+     "person_id": "alex-pychtin",
+     "title": "Mute But Deadly",
+     "character": "Nicholas Astor",
+     "year": 2026
+    },
+    {
+     "actor": "Kyle Fragnoli",
+     "person_id": "kyle-fragnoli",
+     "title": "Mute But Deadly",
+     "character": "",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "my-heart-dies-from-home",
+   "slug": "my-heart-dies-from-home",
+   "primary_title": "My Heart Dies from Home",
+   "imdb_id": "tt35844624",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 256,
+   "credited_actors": 2,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "My Heart Dies from Home",
+     "character": "Caleb",
+     "year": 2025
+    },
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "My Heart Dies from Home",
+     "character": "Greta White / Clara Walker",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "reborn-as-three-cowboys-ranch-princess",
+   "slug": "reborn-as-three-cowboys-ranch-princess",
+   "primary_title": "Reborn as Three Cowboys' Ranch Princess",
+   "imdb_id": "tt43483520",
+   "platform_id": "goodshort",
+   "year": 2026,
+   "imdb_popularity_rank": 22,
+   "credited_actors": 2,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "Reborn as Three Cowboys' Ranch Princess",
+     "character": "Boaz Hargrove",
+     "year": 2026
+    },
+    {
+     "actor": "Ryley Schroeder",
+     "person_id": "ryley-schroeder",
+     "title": "Reborn as Three Cowboys' Ranch Princess",
+     "character": "Finley Hargrove",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "the-lust-game-seduce-me-if-you-can",
+   "slug": "the-lust-game-seduce-me-if-you-can",
+   "primary_title": "The Lust Game: Seduce Me If You Can",
+   "imdb_id": "tt38203361",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 97,
+   "credited_actors": 2,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "The Lust Game: Seduce Me If You Can",
+     "character": "Hayden",
+     "year": 2025
+    },
+    {
+     "actor": "TJ Wilk",
+     "person_id": "tj-wilk",
+     "title": "The Lust Game: Seduce Me If You Can",
+     "character": "Zachary",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-lycan-princess-won-t-be-your-luna",
+   "slug": "the-lycan-princess-won-t-be-your-luna",
+   "primary_title": "The Lycan Princess Won't Be Your Luna",
+   "imdb_id": "tt36357312",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 10,
+   "credited_actors": 2,
+   "credits": [
+    {
+     "actor": "Myles Clohessy",
+     "person_id": "myles-clohessy",
+     "title": "The Lycan Princess Won't Be Your Luna",
+     "character": "Alaric",
+     "year": 2025
+    },
+    {
+     "actor": "Tim Stein",
+     "person_id": "tim-stein",
+     "title": "The Lycan Princess Won't Be Your Luna",
+     "character": "Lucian",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "100-destined-for-your-love",
+   "slug": "100-destined-for-your-love",
+   "primary_title": "100% Destined for Your Love",
+   "imdb_id": "tt34691753",
+   "platform_id": "goodshort",
+   "year": 2024,
+   "imdb_popularity_rank": 21,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Sam Myerson",
+     "person_id": "sam-myerson",
+     "title": "100% Destined for Your Love",
+     "character": "Adam",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "3-2-1-farewell-forever",
+   "slug": "3-2-1-farewell-forever",
+   "primary_title": "3, 2, 1, Farewell Forever",
+   "imdb_id": "tt39377772",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 224,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "3, 2, 1, Farewell Forever",
+     "character": "Wyatt",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "7-days-locked-with-a-call-boy",
+   "slug": "7-days-locked-with-a-call-boy",
+   "primary_title": "7 Days Locked with a Call Boy",
+   "imdb_id": "tt35727702",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 312,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Leif Erik Offerdahl",
+     "person_id": "leif-erik-offerdahl",
+     "title": "7 Days Locked with a Call Boy",
+     "character": "Philip Wesley",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "99-ways-to-kill-my-heart",
+   "slug": "99-ways-to-kill-my-heart",
+   "primary_title": "99 Ways to Kill My Heart",
+   "imdb_id": "tt42505858",
+   "platform_id": "shortmax",
+   "year": 2026,
+   "imdb_popularity_rank": 23,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "99 Ways to Kill My Heart",
+     "character": "Ethan Moretti",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "a-bird-in-the-cage",
+   "slug": "a-bird-in-the-cage",
+   "primary_title": "A Bird in the Cage",
+   "imdb_id": "tt34870414",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 93,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kasey Esser",
+     "person_id": "kasey-esser",
+     "title": "A Bird in the Cage",
+     "character": "Ryan",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "addicted-to-you-the-ceo-s-love",
+   "slug": "addicted-to-you-the-ceo-s-love",
+   "primary_title": "Addicted to You: The CEO's Love",
+   "imdb_id": "tt37018968",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 235,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Armand Procacci",
+     "person_id": "armand-procacci",
+     "title": "Addicted to You: The CEO's Love",
+     "character": "Leo",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "after-i-died-he-went-mad",
+   "slug": "after-i-died-he-went-mad",
+   "primary_title": "After I Died, He Went Mad",
+   "imdb_id": "tt39028663",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 294,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "After I Died, He Went Mad",
+     "character": "Lilian",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "all-i-want-for-christmas-is-a-husband",
+   "slug": "all-i-want-for-christmas-is-a-husband",
+   "primary_title": "All I Want for Christmas Is a Husband",
+   "imdb_id": "tt35442682",
+   "platform_id": "dramapops",
+   "year": 2024,
+   "imdb_popularity_rank": 37,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kasey Esser",
+     "person_id": "kasey-esser",
+     "title": "All I Want for Christmas Is a Husband",
+     "character": "Ashton Cunningham",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "alpha-s-fated-surrogate",
+   "slug": "alpha-s-fated-surrogate",
+   "primary_title": "Alpha's Fated Surrogate",
+   "imdb_id": "tt36576261",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 178,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "Alpha's Fated Surrogate",
+     "character": "Lucas",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "an-unreliable-guide-on-dating-your-ceo",
+   "slug": "an-unreliable-guide-on-dating-your-ceo",
+   "primary_title": "An Unreliable Guide on Dating Your CEO",
+   "imdb_id": "tt32869145",
+   "platform_id": "goodshort",
+   "year": 2024,
+   "imdb_popularity_rank": 126,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "An Unreliable Guide on Dating Your CEO",
+     "character": "Alex Brown",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "became-the-scumbag-s-aunt-at-wedding",
+   "slug": "became-the-scumbag-s-aunt-at-wedding",
+   "primary_title": "Became the Scumbag's Aunt at Wedding",
+   "imdb_id": "tt38064698",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 104,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jake Hobbs",
+     "person_id": "jake-hobbs",
+     "title": "Became the Scumbag's Aunt at Wedding",
+     "character": "Gabriel Morgan",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "billionaire-brothers-and-their-country-brides",
+   "slug": "billionaire-brothers-and-their-country-brides",
+   "primary_title": "Billionaire Brothers and Their Country Brides",
+   "imdb_id": "tt43688268",
+   "platform_id": "goodshort",
+   "year": 2026,
+   "imdb_popularity_rank": 4,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Luke Charles Stafford",
+     "person_id": "luke-charles-stafford",
+     "title": "Billionaire Brothers and Their Country Brides",
+     "character": "Jax",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "boss-u-almost-got-her",
+   "slug": "boss-u-almost-got-her",
+   "primary_title": "Boss\\! U Almost Got Her",
+   "imdb_id": "tt35749234",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 254,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Nick Puya",
+     "person_id": "nick-puya",
+     "title": "Boss! U Almost Got Her",
+     "character": "Clyde Croft",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "bossy-ceo-loves-a-menopausal-me",
+   "slug": "bossy-ceo-loves-a-menopausal-me",
+   "primary_title": "Bossy CEO Loves a Menopausal Me",
+   "imdb_id": "tt37797024",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 45,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tyler Scherer",
+     "person_id": "tyler-scherer",
+     "title": "Bossy CEO Loves a Menopausal Me",
+     "character": "Hans Norton",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "bound-by-my-ex-s-dad",
+   "slug": "bound-by-my-ex-s-dad",
+   "primary_title": "Bound by My Ex's Dad",
+   "imdb_id": "tt41319944",
+   "platform_id": "dramapops",
+   "year": 2026,
+   "imdb_popularity_rank": 18,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "Bound by My Ex's Dad",
+     "character": "Caleb",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "breaking-off-to-fall-in-love",
+   "slug": "breaking-off-to-fall-in-love",
+   "primary_title": "Breaking Off to Fall in Love",
+   "imdb_id": "tt36456231",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 156,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "Breaking Off to Fall in Love",
+     "character": "Edward",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "bucked-by-my-father-s-cowboy",
+   "slug": "bucked-by-my-father-s-cowboy",
+   "primary_title": "Bucked by My Father's Cowboy",
+   "imdb_id": "tt43444470",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 56,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Ryley Schroeder",
+     "person_id": "ryley-schroeder",
+     "title": "Bucked by My Father's Cowboy",
+     "character": "Hart Bronson",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "call-me-alpha",
+   "slug": "call-me-alpha",
+   "primary_title": "Call Me Alpha",
+   "imdb_id": "tt29382371",
+   "platform_id": "shortmax",
+   "year": 2023,
+   "imdb_popularity_rank": 51,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Seth Edeen",
+     "person_id": "seth-edeen",
+     "title": "Call Me Alpha",
+     "character": "Aiden",
+     "year": 2023
+    }
+   ]
+  },
+  {
+   "title_id": "call-me-stepmom-fxxkboy",
+   "slug": "call-me-stepmom-fxxkboy",
+   "primary_title": "Call Me Stepmom, Fxxkboy",
+   "imdb_id": "tt39386993",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 255,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Alex Pychtin",
+     "person_id": "alex-pychtin",
+     "title": "Call Me Stepmom, Fxxkboy",
+     "character": "Dante Reyes",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "cause-you-were-never-mine",
+   "slug": "cause-you-were-never-mine",
+   "primary_title": "Cause You Were Never Mine",
+   "imdb_id": "tt35380118",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 186,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jarred Harper",
+     "person_id": "jarred-harper",
+     "title": "Cause You Were Never Mine",
+     "character": "Bruce",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "chasing-his-rejected-alpha-wife",
+   "slug": "chasing-his-rejected-alpha-wife",
+   "primary_title": "Chasing His Rejected Alpha Wife",
+   "imdb_id": "tt37803044",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 157,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "Chasing His Rejected Alpha Wife",
+     "character": "Darian Blackveil",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "cherished-by-my-ex-husband-s-brother",
+   "slug": "cherished-by-my-ex-husband-s-brother",
+   "primary_title": "Cherished by My Ex-Husband's Brother",
+   "imdb_id": "tt33995778",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 232,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Myles Clohessy",
+     "person_id": "myles-clohessy",
+     "title": "Cherished by My Ex-Husband's Brother",
+     "character": "Philip Gray",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "claimed-by-my-mate-s-alpha-brother",
+   "slug": "claimed-by-my-mate-s-alpha-brother",
+   "primary_title": "Claimed by My Mate's Alpha Brother",
+   "imdb_id": "tt43617193",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 62,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "Claimed by My Mate's Alpha Brother",
+     "character": "Callie Stone",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "contractually-yours",
+   "slug": "contractually-yours",
+   "primary_title": "Contractually Yours",
+   "imdb_id": "tt35750114",
+   "platform_id": "dramapops",
+   "year": 2025,
+   "imdb_popularity_rank": 41,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kasey Esser",
+     "person_id": "kasey-esser",
+     "title": "Contractually Yours",
+     "character": "Jack Thorne",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "cryo-seduction",
+   "slug": "cryo-seduction",
+   "primary_title": "Cryo Seduction",
+   "imdb_id": "tt39062083",
+   "platform_id": "dramabox",
+   "year": "",
+   "imdb_popularity_rank": 376,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Ali Badalov",
+     "person_id": "ali-badalov",
+     "title": "Cryo Seduction",
+     "character": "Elliot James",
+     "year": null
+    }
+   ]
+  },
+  {
+   "title_id": "daddy-dominant-s-good-girl",
+   "slug": "daddy-dominant-s-good-girl",
+   "primary_title": "Daddy Dominant's Good Girl",
+   "imdb_id": "tt37710633",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 41,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tim Stein",
+     "person_id": "tim-stein",
+     "title": "Daddy Dominant's Good Girl",
+     "character": "Ellis",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "daddy-don-t-go-please-save-mommy",
+   "slug": "daddy-don-t-go-please-save-mommy",
+   "primary_title": "Daddy Don't Go, Please Save Mommy",
+   "imdb_id": "tt38968447",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 200,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tyler Scherer",
+     "person_id": "tyler-scherer",
+     "title": "Daddy Don't Go, Please Save Mommy",
+     "character": "Adrian Langford",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "daddy-mommy-don-t-divorce",
+   "slug": "daddy-mommy-don-t-divorce",
+   "primary_title": "Daddy Mommy Don't Divorce",
+   "imdb_id": "tt34756317",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 257,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "John Palmer",
+     "person_id": "john-palmer",
+     "title": "Daddy Mommy Don't Divorce",
+     "character": "Terry",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "dean-my-mafia-protector",
+   "slug": "dean-my-mafia-protector",
+   "primary_title": "Dean: My Mafia Protector",
+   "imdb_id": "tt37642099",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 103,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "Dean: My Mafia Protector",
+     "character": "Dean",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "desires-in-fire",
+   "slug": "desires-in-fire",
+   "primary_title": "Desires in Fire",
+   "imdb_id": "tt36746062",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 303,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "Desires in Fire",
+     "character": "Brandon",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "divorce-is-my-best-christmas-gift",
+   "slug": "divorce-is-my-best-christmas-gift",
+   "primary_title": "Divorce Is My Best Christmas Gift",
+   "imdb_id": "tt39239504",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 248,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "TJ Wilk",
+     "person_id": "tj-wilk",
+     "title": "Divorce Is My Best Christmas Gift",
+     "character": "Ethan",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "divorced-to-sell-beverly-hills",
+   "slug": "divorced-to-sell-beverly-hills",
+   "primary_title": "Divorced to Sell Beverly Hills",
+   "imdb_id": "tt38775146",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 180,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kyle Fragnoli",
+     "person_id": "kyle-fragnoli",
+     "title": "Divorced to Sell Beverly Hills",
+     "character": "Lucas Bradley",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "divorced-now-a-lycan-princess",
+   "slug": "divorced-now-a-lycan-princess",
+   "primary_title": "Divorced, Now a Lycan Princess",
+   "imdb_id": "tt38263108",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 38,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "Divorced, Now a Lycan Princess",
+     "character": "Julian Myers",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "doctor-my-baby-is-yours",
+   "slug": "doctor-my-baby-is-yours",
+   "primary_title": "Doctor, My Baby Is Yours\\!",
+   "imdb_id": "tt37719584",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 99,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "Doctor, My Baby Is Yours!",
+     "character": "Damon",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "doormat-no-more-toxic-ex-lick-my-feet",
+   "slug": "doormat-no-more-toxic-ex-lick-my-feet",
+   "primary_title": "Doormat No More: Toxic Ex Lick My Feet",
+   "imdb_id": "tt38109696",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 210,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "Doormat No More: Toxic Ex Lick My Feet",
+     "character": "Harper Lee",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "double-agent-in-passion",
+   "slug": "double-agent-in-passion",
+   "primary_title": "Double Agent in Passion",
+   "imdb_id": "tt34870422",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 112,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jarred Harper",
+     "person_id": "jarred-harper",
+     "title": "Double Agent in Passion",
+     "character": "Victor Valentino",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "dumped-my-fianc-for-his-mafia-uncle",
+   "slug": "dumped-my-fianc-for-his-mafia-uncle",
+   "primary_title": "Dumped My Fiancé for His Mafia Uncle",
+   "imdb_id": "tt41151452",
+   "platform_id": "goodshort",
+   "year": 2026,
+   "imdb_popularity_rank": 39,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "Dumped My Fiancé for His Mafia Uncle",
+     "character": "Alessandro",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "escape-to-italy-with-my-undercover-lover",
+   "slug": "escape-to-italy-with-my-undercover-lover",
+   "primary_title": "Escape to Italy: With My Undercover Lover",
+   "imdb_id": "tt37398248",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 204,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Armand Procacci",
+     "person_id": "armand-procacci",
+     "title": "Escape to Italy: With My Undercover Lover",
+     "character": "Alessandro",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "fake-married-to-my-baby-s-daddy",
+   "slug": "fake-married-to-my-baby-s-daddy",
+   "primary_title": "Fake Married to My Baby's Daddy",
+   "imdb_id": "tt36965999",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 304,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "Fake Married to My Baby's Daddy",
+     "character": "Jason Shald",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "falling-into-the-embrace",
+   "slug": "falling-into-the-embrace",
+   "primary_title": "Falling Into the Embrace",
+   "imdb_id": "tt35796592",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 172,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Myles Clohessy",
+     "person_id": "myles-clohessy",
+     "title": "Falling Into the Embrace",
+     "character": "Lucas",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "falling-for-the-billionaire-ceo",
+   "slug": "falling-for-the-billionaire-ceo",
+   "primary_title": "Falling for the Billionaire CEO",
+   "imdb_id": "tt35780056",
+   "platform_id": "dramapops",
+   "year": 2025,
+   "imdb_popularity_rank": 33,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jarred Harper",
+     "person_id": "jarred-harper",
+     "title": "Falling for the Billionaire CEO",
+     "character": "Sebastian Armstrong",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "falling-in-love-with-the-rascal-in-a-suit",
+   "slug": "falling-in-love-with-the-rascal-in-a-suit",
+   "primary_title": "Falling in Love with the Rascal in a Suit",
+   "imdb_id": "tt33507788",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 199,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "Falling in Love with the Rascal in a Suit",
+     "character": "James Gambino",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "fever-cage",
+   "slug": "fever-cage",
+   "primary_title": "Fever Cage",
+   "imdb_id": "tt40603387",
+   "platform_id": "dramapops",
+   "year": 2026,
+   "imdb_popularity_rank": 39,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "Fever Cage",
+     "character": "Erin White",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "fifty-shades-of-my-professor",
+   "slug": "fifty-shades-of-my-professor",
+   "primary_title": "Fifty Shades of My Professor",
+   "imdb_id": "tt36850485",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 153,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "Fifty Shades of My Professor",
+     "character": "Antonio Lawson",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "flash-marriage-with-my-mma-husband",
+   "slug": "flash-marriage-with-my-mma-husband",
+   "primary_title": "Flash Marriage with My MMA Husband",
+   "imdb_id": "tt35680329",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 101,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jarred Harper",
+     "person_id": "jarred-harper",
+     "title": "Flash Marriage with My MMA Husband",
+     "character": "Patrick",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "flash-marriage-with-the-secret-heiress",
+   "slug": "flash-marriage-with-the-secret-heiress",
+   "primary_title": "Flash Marriage with the Secret Heiress",
+   "imdb_id": "tt33253694",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 110,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "Flash Marriage with the Secret Heiress",
+     "character": "Jackson Lockwood",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "for-richer-for-poorer",
+   "slug": "for-richer-for-poorer",
+   "primary_title": "For Richer, for Poorer",
+   "imdb_id": "tt40650681",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 173,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "John Palmer",
+     "person_id": "john-palmer",
+     "title": "For Richer, for Poorer",
+     "character": "James",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "good-to-see-you-again-my-billionaire-baby-daddy",
+   "slug": "good-to-see-you-again-my-billionaire-baby-daddy",
+   "primary_title": "Good to See You Again, My Billionaire Baby Daddy",
+   "imdb_id": "tt39562267",
+   "platform_id": "goodshort",
+   "year": 2026,
+   "imdb_popularity_rank": 52,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Leif Erik Offerdahl",
+     "person_id": "leif-erik-offerdahl",
+     "title": "Good to See You Again, My Billionaire Baby Daddy",
+     "character": "Cole Harrington",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "goodbye-husband-don-t-regret-when-i-m-gone",
+   "slug": "goodbye-husband-don-t-regret-when-i-m-gone",
+   "primary_title": "Goodbye Husband, Don't Regret When I'm Gone",
+   "imdb_id": "tt39368207",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 154,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "Goodbye Husband, Don't Regret When I'm Gone",
+     "character": "Royce",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "hatefully-yours",
+   "slug": "hatefully-yours",
+   "primary_title": "Hatefully Yours",
+   "imdb_id": "tt37986907",
+   "platform_id": "dramapops",
+   "year": 2025,
+   "imdb_popularity_rank": 19,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Leif Erik Offerdahl",
+     "person_id": "leif-erik-offerdahl",
+     "title": "Hatefully Yours",
+     "character": "Ethan Cross",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "heiress-s-ballet-revenge",
+   "slug": "heiress-s-ballet-revenge",
+   "primary_title": "Heiress's Ballet Revenge",
+   "imdb_id": "tt39293187",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 2,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "Heiress's Ballet Revenge",
+     "character": "Adam Charles",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "her-beast",
+   "slug": "her-beast",
+   "primary_title": "Her Beast",
+   "imdb_id": "tt43706878",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 3,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "Her Beast",
+     "character": "Vito",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "her-cold-hearted-alpha",
+   "slug": "her-cold-hearted-alpha",
+   "primary_title": "Her Cold-Hearted Alpha",
+   "imdb_id": "tt33280185",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 333,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Seth Edeen",
+     "person_id": "seth-edeen",
+     "title": "Her Cold-Hearted Alpha",
+     "character": "Alpha King Alejandro",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "hidden-billionaire-s-spicy-marriage",
+   "slug": "hidden-billionaire-s-spicy-marriage",
+   "primary_title": "Hidden Billionaire's Spicy Marriage",
+   "imdb_id": "tt35124805",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 138,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "John Palmer",
+     "person_id": "john-palmer",
+     "title": "Hidden Billionaire's Spicy Marriage",
+     "character": "Spencer Brown",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "his-cure-his-wife",
+   "slug": "his-cure-his-wife",
+   "primary_title": "His Cure, His Wife",
+   "imdb_id": "tt43390961",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 4,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Myles Clohessy",
+     "person_id": "myles-clohessy",
+     "title": "His Cure, His Wife",
+     "character": "Sebastian Hartford",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "his-sweet-bella",
+   "slug": "his-sweet-bella",
+   "primary_title": "His Sweet Bella",
+   "imdb_id": "tt36164451",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 89,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "His Sweet Bella",
+     "character": "Killian Serrano",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "how-to-seduce-your-professor",
+   "slug": "how-to-seduce-your-professor",
+   "primary_title": "How to Seduce Your Professor",
+   "imdb_id": "tt41585550",
+   "platform_id": "dramapops",
+   "year": 2026,
+   "imdb_popularity_rank": 14,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "How to Seduce Your Professor",
+     "character": "Adrian Cole",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "i-gave-a-second-chance-to-cupid",
+   "slug": "i-gave-a-second-chance-to-cupid",
+   "primary_title": "I Gave a Second Chance to Cupid",
+   "imdb_id": "tt35305631",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 64,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "I Gave a Second Chance to Cupid",
+     "character": "Serena Vylina",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "i-kissed-a-ceo-and-he-liked-it",
+   "slug": "i-kissed-a-ceo-and-he-liked-it",
+   "primary_title": "I Kissed a CEO and He Liked It",
+   "imdb_id": "tt37626185",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 65,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tyler Scherer",
+     "person_id": "tyler-scherer",
+     "title": "I Kissed a CEO and He Liked It",
+     "character": "Kyle Wright",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "i-wish-it-were-you",
+   "slug": "i-wish-it-were-you",
+   "primary_title": "I Wish It Were You",
+   "imdb_id": "tt31976454",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 78,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "I Wish It Were You",
+     "character": "Lorenzo Bellini / Jared Foster",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "kidnapped-by-the-gangster",
+   "slug": "kidnapped-by-the-gangster",
+   "primary_title": "Kidnapped by the Gangster",
+   "imdb_id": "tt39551255",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 102,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "Kidnapped by the Gangster",
+     "character": "Chloe",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "kiss-me-before-i-die-my-soldier",
+   "slug": "kiss-me-before-i-die-my-soldier",
+   "primary_title": "Kiss Me Before I Die, My Soldier",
+   "imdb_id": "tt36109916",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 26,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "Kiss Me Before I Die, My Soldier",
+     "character": "Bryce",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "lady-alpha-s-undercover-romances",
+   "slug": "lady-alpha-s-undercover-romances",
+   "primary_title": "Lady Alpha's Undercover Romances",
+   "imdb_id": "tt37894455",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 173,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Alex Pychtin",
+     "person_id": "alex-pychtin",
+     "title": "Lady Alpha's Undercover Romances",
+     "character": "Dylan",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "laws-of-attraction",
+   "slug": "laws-of-attraction",
+   "primary_title": "Laws of Attraction",
+   "imdb_id": "tt43711830",
+   "platform_id": "dramapops",
+   "year": 2026,
+   "imdb_popularity_rank": 6,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kasey Esser",
+     "person_id": "kasey-esser",
+     "title": "Laws of Attraction",
+     "character": "Ezekiel",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "loathed-by-the-alpha",
+   "slug": "loathed-by-the-alpha",
+   "primary_title": "Loathed by the Alpha",
+   "imdb_id": "tt36159624",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 62,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "Loathed by the Alpha",
+     "character": "Cara",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "love-as-i-remember",
+   "slug": "love-as-i-remember",
+   "primary_title": "Love as I Remember",
+   "imdb_id": "tt33378984",
+   "platform_id": "goodshort",
+   "year": 2024,
+   "imdb_popularity_rank": 167,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tristan Rewald",
+     "person_id": "tristan-rewald",
+     "title": "Love as I Remember",
+     "character": "Joey",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "love-at-first-sight",
+   "slug": "love-at-first-sight",
+   "primary_title": "Love at First Sight",
+   "imdb_id": "tt33498978",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 25,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jarred Harper",
+     "person_id": "jarred-harper",
+     "title": "Love at First Sight",
+     "character": "William",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "love-the-way-you-lie",
+   "slug": "love-the-way-you-lie",
+   "primary_title": "Love the Way You Lie",
+   "imdb_id": "tt33337564",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 91,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Myles Clohessy",
+     "person_id": "myles-clohessy",
+     "title": "Love the Way You Lie",
+     "character": "Adrian Mancini",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "mafia-daddy-next-door",
+   "slug": "mafia-daddy-next-door",
+   "primary_title": "Mafia Daddy Next Door",
+   "imdb_id": "tt39333671",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 228,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "TJ Wilk",
+     "person_id": "tj-wilk",
+     "title": "Mafia Daddy Next Door",
+     "character": "Clive",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "mafia-s-caged-swan",
+   "slug": "mafia-s-caged-swan",
+   "primary_title": "Mafia's Caged Swan",
+   "imdb_id": "tt42757071",
+   "platform_id": "dramapops",
+   "year": 2026,
+   "imdb_popularity_rank": 17,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "Mafia's Caged Swan",
+     "character": "Dorian",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "mafia-s-forbidden-catch",
+   "slug": "mafia-s-forbidden-catch",
+   "primary_title": "Mafia's Forbidden Catch",
+   "imdb_id": "tt39232101",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 96,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "Mafia's Forbidden Catch",
+     "character": "Alex",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "mafia-s-good-girl",
+   "slug": "mafia-s-good-girl",
+   "primary_title": "Mafia's Good Girl",
+   "imdb_id": "tt32893019",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 51,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "Mafia's Good Girl",
+     "character": "Damon Van Zandt",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "majors-secret-baby",
+   "slug": "majors-secret-baby",
+   "primary_title": "Majors Secret Baby",
+   "imdb_id": "tt37522789",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 151,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tim Stein",
+     "person_id": "tim-stein",
+     "title": "Majors Secret Baby",
+     "character": "Nathan Mitchell",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "married-a-billionaire-at-my-45",
+   "slug": "married-a-billionaire-at-my-45",
+   "primary_title": "Married a Billionaire at My 45",
+   "imdb_id": "tt35191577",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 108,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "John Palmer",
+     "person_id": "john-palmer",
+     "title": "Married a Billionaire at My 45",
+     "character": "Alan",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "married-to-a-casino-king",
+   "slug": "married-to-a-casino-king",
+   "primary_title": "Married to a Casino King",
+   "imdb_id": "tt43720248",
+   "platform_id": "dramapops",
+   "year": 2026,
+   "imdb_popularity_rank": 1,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Seth Edeen",
+     "person_id": "seth-edeen",
+     "title": "Married to a Casino King",
+     "character": "Eli",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "marrying-my-ex-s-uncle",
+   "slug": "marrying-my-ex-s-uncle",
+   "primary_title": "Marrying My Ex's Uncle",
+   "imdb_id": "tt32560050",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 32,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tristan Rewald",
+     "person_id": "tristan-rewald",
+     "title": "Marrying My Ex's Uncle",
+     "character": "Simon",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "meet-my-mafia-king-on-christmas",
+   "slug": "meet-my-mafia-king-on-christmas",
+   "primary_title": "Meet My Mafia King on Christmas",
+   "imdb_id": "tt39205146",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 72,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tim Stein",
+     "person_id": "tim-stein",
+     "title": "Meet My Mafia King on Christmas",
+     "character": "Vittro",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "mistaken-seed-true-luna",
+   "slug": "mistaken-seed-true-luna",
+   "primary_title": "Mistaken Seed, True Luna",
+   "imdb_id": "tt41893609",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 92,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Richard Sharrah",
+     "person_id": "richard-sharrah",
+     "title": "Mistaken Seed, True Luna",
+     "character": "Silas",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "mistaken-surrogacy-christmas-destiny",
+   "slug": "mistaken-surrogacy-christmas-destiny",
+   "primary_title": "Mistaken Surrogacy Christmas Destiny",
+   "imdb_id": "tt39088911",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 50,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Myles Clohessy",
+     "person_id": "myles-clohessy",
+     "title": "Mistaken Surrogacy Christmas Destiny",
+     "character": "Bradly Carmichael",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "mr-blake-s-rules",
+   "slug": "mr-blake-s-rules",
+   "primary_title": "Mr. Blake's Rules",
+   "imdb_id": "tt39279038",
+   "platform_id": "dramapops",
+   "year": 2025,
+   "imdb_popularity_rank": 27,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "Mr. Blake's Rules",
+     "character": "",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "ms-doctor-and-her-hidden-billionaire-husband",
+   "slug": "ms-doctor-and-her-hidden-billionaire-husband",
+   "primary_title": "Ms. Doctor and Her Hidden Billionaire Husband",
+   "imdb_id": "tt37812680",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 166,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Alex Pychtin",
+     "person_id": "alex-pychtin",
+     "title": "Ms. Doctor and Her Hidden Billionaire Husband",
+     "character": "Kian Barney",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "my-big-fat-fake-wedding",
+   "slug": "my-big-fat-fake-wedding",
+   "primary_title": "My Big Fat Fake Wedding",
+   "imdb_id": "tt43631493",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 11,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Seth Edeen",
+     "person_id": "seth-edeen",
+     "title": "My Big Fat Fake Wedding",
+     "character": "Ross Andrews",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "my-domineering-prince",
+   "slug": "my-domineering-prince",
+   "primary_title": "My Domineering Prince",
+   "imdb_id": "tt38525171",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 329,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kyle Fragnoli",
+     "person_id": "kyle-fragnoli",
+     "title": "My Domineering Prince",
+     "character": "Prince Alex Winston",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "my-ex-s-billionaire-brother",
+   "slug": "my-ex-s-billionaire-brother",
+   "primary_title": "My Ex's Billionaire Brother",
+   "imdb_id": "tt37373358",
+   "platform_id": "dramapops",
+   "year": 2025,
+   "imdb_popularity_rank": 35,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jarred Harper",
+     "person_id": "jarred-harper",
+     "title": "My Ex's Billionaire Brother",
+     "character": "Nate Sinclair",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "my-husband-s-secret-crush",
+   "slug": "my-husband-s-secret-crush",
+   "primary_title": "My Husband's Secret Crush",
+   "imdb_id": "tt43504967",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 16,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "My Husband's Secret Crush",
+     "character": "Benedict",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "my-lovely-wife-is-a-big-shot",
+   "slug": "my-lovely-wife-is-a-big-shot",
+   "primary_title": "My Lovely Wife Is a Big Shot",
+   "imdb_id": "tt36337814",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 283,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "John Palmer",
+     "person_id": "john-palmer",
+     "title": "My Lovely Wife Is a Big Shot",
+     "character": "Tyrion",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "my-mafia-pilot-boyfriend",
+   "slug": "my-mafia-pilot-boyfriend",
+   "primary_title": "My Mafia Pilot Boyfriend",
+   "imdb_id": "tt36048589",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 37,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "My Mafia Pilot Boyfriend",
+     "character": "Ryan Rossi",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "my-mile-high-billionaire-obsession",
+   "slug": "my-mile-high-billionaire-obsession",
+   "primary_title": "My Mile High Billionaire Obsession",
+   "imdb_id": "tt37037752",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 174,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "My Mile High Billionaire Obsession",
+     "character": "Aaron Meyer",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "my-online-crush-is-my-contract-husband",
+   "slug": "my-online-crush-is-my-contract-husband",
+   "primary_title": "My Online Crush Is My Contract Husband",
+   "imdb_id": "tt37341721",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 106,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kasey Esser",
+     "person_id": "kasey-esser",
+     "title": "My Online Crush Is My Contract Husband",
+     "character": "Nathan",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "my-poor-ex-wife-is-a-heiress",
+   "slug": "my-poor-ex-wife-is-a-heiress",
+   "primary_title": "My Poor Ex-Wife Is a Heiress",
+   "imdb_id": "tt33083670",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 74,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "My Poor Ex-Wife Is a Heiress",
+     "character": "Charles",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "my-stepbrother-is-my-secret-rider",
+   "slug": "my-stepbrother-is-my-secret-rider",
+   "primary_title": "My Stepbrother Is My Secret Rider",
+   "imdb_id": "tt41707288",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 73,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Seth Edeen",
+     "person_id": "seth-edeen",
+     "title": "My Stepbrother Is My Secret Rider",
+     "character": "Jake Hart",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "my-taboo-crush-is-my-stepbrother",
+   "slug": "my-taboo-crush-is-my-stepbrother",
+   "primary_title": "My Taboo Crush Is My Stepbrother",
+   "imdb_id": "tt38785927",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 55,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Armand Procacci",
+     "person_id": "armand-procacci",
+     "title": "My Taboo Crush Is My Stepbrother",
+     "character": "Aiden Blake",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "nerdy-girl-s-hot-chemistry-with-biker-bad-boy",
+   "slug": "nerdy-girl-s-hot-chemistry-with-biker-bad-boy",
+   "primary_title": "Nerdy Girl's Hot Chemistry with Biker Bad Boy",
+   "imdb_id": "tt39328501",
+   "platform_id": "goodshort",
+   "year": 2026,
+   "imdb_popularity_rank": 42,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Armand Procacci",
+     "person_id": "armand-procacci",
+     "title": "Nerdy Girl's Hot Chemistry with Biker Bad Boy",
+     "character": "Beau Clement",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "never-let-you-go",
+   "slug": "never-let-you-go",
+   "primary_title": "Never Let You Go",
+   "imdb_id": "tt39140061",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 67,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jake Hobbs",
+     "person_id": "jake-hobbs",
+     "title": "Never Let You Go",
+     "character": "Dylan",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "no-escape-from-my-ruthless-alpha",
+   "slug": "no-escape-from-my-ruthless-alpha",
+   "primary_title": "No Escape from My Ruthless Alpha",
+   "imdb_id": "tt32606082",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 34,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jarred Harper",
+     "person_id": "jarred-harper",
+     "title": "No Escape from My Ruthless Alpha",
+     "character": "Alpha Logan",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "no-mercy-from-my-cowboy-daddy",
+   "slug": "no-mercy-from-my-cowboy-daddy",
+   "primary_title": "No Mercy from My Cowboy Daddy",
+   "imdb_id": "tt43627103",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 112,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "TJ Wilk",
+     "person_id": "tj-wilk",
+     "title": "No Mercy from My Cowboy Daddy",
+     "character": "Ryder",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "offside-my-fake-marriage-with-the-soccer-superstar",
+   "slug": "offside-my-fake-marriage-with-the-soccer-superstar",
+   "primary_title": "Offside My Fake Marriage with the Soccer Superstar",
+   "imdb_id": "tt43602001",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 29,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "John Palmer",
+     "person_id": "john-palmer",
+     "title": "Offside My Fake Marriage with the Soccer Superstar",
+     "character": "",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "one-night-stand-with-my-gynecologist",
+   "slug": "one-night-stand-with-my-gynecologist",
+   "primary_title": "One Night Stand with My Gynecologist",
+   "imdb_id": "tt43637976",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 46,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "One Night Stand with My Gynecologist",
+     "character": "Killian",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "pregnant-by-my-professor-chased-by-his-son",
+   "slug": "pregnant-by-my-professor-chased-by-his-son",
+   "primary_title": "Pregnant by My Professor, Chased by His Son",
+   "imdb_id": "tt43216822",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 93,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "Pregnant by My Professor, Chased by His Son",
+     "character": "Julian",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "pregnant-with-his-forbidden-secret-desires",
+   "slug": "pregnant-with-his-forbidden-secret-desires",
+   "primary_title": "Pregnant with His Forbidden Secret Desires",
+   "imdb_id": "tt37618103",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 21,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Armand Procacci",
+     "person_id": "armand-procacci",
+     "title": "Pregnant with His Forbidden Secret Desires",
+     "character": "Luccio",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "pregnant-with-the-hockey-star-s-baby",
+   "slug": "pregnant-with-the-hockey-star-s-baby",
+   "primary_title": "Pregnant with the Hockey Star's Baby",
+   "imdb_id": "tt43643019",
+   "platform_id": "dramapops",
+   "year": 2026,
+   "imdb_popularity_rank": 5,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tyler Scherer",
+     "person_id": "tyler-scherer",
+     "title": "Pregnant with the Hockey Star's Baby",
+     "character": "Brad Connor",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "prince-charming-x3",
+   "slug": "prince-charming-x3",
+   "primary_title": "Prince Charming x3",
+   "imdb_id": "tt40843010",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 33,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Armand Procacci",
+     "person_id": "armand-procacci",
+     "title": "Prince Charming x3",
+     "character": "Keyden Blackwood",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "quick-divorce-i-ve-got-billions-to-inherit",
+   "slug": "quick-divorce-i-ve-got-billions-to-inherit",
+   "primary_title": "Quick Divorce: I've Got Billions to Inherit",
+   "imdb_id": "tt37113923",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 164,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "Quick Divorce: I've Got Billions to Inherit",
+     "character": "Alex Hargrove",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "remember-me-my-dear-ex",
+   "slug": "remember-me-my-dear-ex",
+   "primary_title": "Remember Me, My Dear Ex",
+   "imdb_id": "tt36820861",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 144,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jake Hobbs",
+     "person_id": "jake-hobbs",
+     "title": "Remember Me, My Dear Ex",
+     "character": "Chris / Julian",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "return-of-the-gold-king",
+   "slug": "return-of-the-gold-king",
+   "primary_title": "Return of the Gold King",
+   "imdb_id": "tt42221875",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 130,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "Return of the Gold King",
+     "character": "Wyatt Stone",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "rise-of-the-divorced-combat-queen",
+   "slug": "rise-of-the-divorced-combat-queen",
+   "primary_title": "Rise of the Divorced Combat Queen",
+   "imdb_id": "tt42592167",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 36,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jarred Harper",
+     "person_id": "jarred-harper",
+     "title": "Rise of the Divorced Combat Queen",
+     "character": "Adam Hawkins",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "second-chance-with-mafia-lover",
+   "slug": "second-chance-with-mafia-lover",
+   "primary_title": "Second Chance with Mafia Lover",
+   "imdb_id": "tt37547276",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 170,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "Second Chance with Mafia Lover",
+     "character": "Nadia",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "secretly-pregnant-by-the-homeless-billionaire",
+   "slug": "secretly-pregnant-by-the-homeless-billionaire",
+   "primary_title": "Secretly Pregnant by the Homeless Billionaire",
+   "imdb_id": "tt42658249",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 140,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Alex Pychtin",
+     "person_id": "alex-pychtin",
+     "title": "Secretly Pregnant by the Homeless Billionaire",
+     "character": "Ethan Ashbourne",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "seducing-my-hockey-rival",
+   "slug": "seducing-my-hockey-rival",
+   "primary_title": "Seducing My Hockey Rival",
+   "imdb_id": "tt43606962",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 9,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "Seducing My Hockey Rival",
+     "character": "Hunter Strand",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "shotgun-wedding-with-my-boss",
+   "slug": "shotgun-wedding-with-my-boss",
+   "primary_title": "Shotgun Wedding with My Boss",
+   "imdb_id": "tt36132423",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 30,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tim Stein",
+     "person_id": "tim-stein",
+     "title": "Shotgun Wedding with My Boss",
+     "character": "Sean Hearst",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "showtime-ladies",
+   "slug": "showtime-ladies",
+   "primary_title": "Showtime Ladies\\!",
+   "imdb_id": "tt36192024",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 320,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Nick Puya",
+     "person_id": "nick-puya",
+     "title": "Showtime Ladies!",
+     "character": "Benjamin",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "single-dad-hunt",
+   "slug": "single-dad-hunt",
+   "primary_title": "Single Dad Hunt",
+   "imdb_id": "tt33675495",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 80,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "Single Dad Hunt",
+     "character": "Rachel Lane",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "sleeping-beauty-and-three-brothers",
+   "slug": "sleeping-beauty-and-three-brothers",
+   "primary_title": "Sleeping Beauty and Three Brothers",
+   "imdb_id": "tt37284394",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 146,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "Sleeping Beauty and Three Brothers",
+     "character": "Stella Newsom",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "small-town-girl-finds-her-mr-big-time",
+   "slug": "small-town-girl-finds-her-mr-big-time",
+   "primary_title": "Small Town Girl Finds Her Mr. Big Time",
+   "imdb_id": "tt35220673",
+   "platform_id": "goodshort",
+   "year": 2024,
+   "imdb_popularity_rank": 81,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "Small Town Girl Finds Her Mr. Big Time",
+     "character": "Alexander Cole",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "snowbound-with-a-homeless-prince",
+   "slug": "snowbound-with-a-homeless-prince",
+   "primary_title": "Snowbound with a Homeless Prince",
+   "imdb_id": "tt39278977",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 340,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kyle Fragnoli",
+     "person_id": "kyle-fragnoli",
+     "title": "Snowbound with a Homeless Prince",
+     "character": "Prince Luke Hale",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "sold-as-the-alpha-king-s-breeder",
+   "slug": "sold-as-the-alpha-king-s-breeder",
+   "primary_title": "Sold as the Alpha King's Breeder",
+   "imdb_id": "tt37539022",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 207,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "Sold as the Alpha King's Breeder",
+     "character": "Ethan",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "spoiled-by-four-billionaires",
+   "slug": "spoiled-by-four-billionaires",
+   "primary_title": "Spoiled by Four Billionaires",
+   "imdb_id": "tt33479844",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 206,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "Spoiled by Four Billionaires",
+     "character": "Yvonne Hoffman",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "still-you-always-you",
+   "slug": "still-you-always-you",
+   "primary_title": "Still You Always You",
+   "imdb_id": "tt43612257",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 83,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Richard Sharrah",
+     "person_id": "richard-sharrah",
+     "title": "Still You Always You",
+     "character": "Jason Bradshaw",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "surprise-baby-daddy-is-the-ceo",
+   "slug": "surprise-baby-daddy-is-the-ceo",
+   "primary_title": "Surprise Baby Daddy Is the CEO",
+   "imdb_id": "tt36552705",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 34,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jackson Tiller",
+     "person_id": "jackson-tiller",
+     "title": "Surprise Baby Daddy Is the CEO",
+     "character": "Leo",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "surrogate-for-the-broken-billionaire",
+   "slug": "surrogate-for-the-broken-billionaire",
+   "primary_title": "Surrogate for the Broken Billionaire",
+   "imdb_id": "tt39249589",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 80,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "Surrogate for the Broken Billionaire",
+     "character": "Owen",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "surrogate-for-the-president-alpha",
+   "slug": "surrogate-for-the-president-alpha",
+   "primary_title": "Surrogate for the President Alpha",
+   "imdb_id": "tt35280968",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 116,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kyle Fragnoli",
+     "person_id": "kyle-fragnoli",
+     "title": "Surrogate for the President Alpha",
+     "character": "Henry",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "taming-my-billionaire-s-ruthless-desire",
+   "slug": "taming-my-billionaire-s-ruthless-desire",
+   "primary_title": "Taming My Billionaire's Ruthless Desire",
+   "imdb_id": "tt36415456",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 20,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Myles Clohessy",
+     "person_id": "myles-clohessy",
+     "title": "Taming My Billionaire's Ruthless Desire",
+     "character": "Samuel Fisher",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "tempted-by-my-ex-s-professor-daddy",
+   "slug": "tempted-by-my-ex-s-professor-daddy",
+   "primary_title": "Tempted by My Ex's Professor Daddy",
+   "imdb_id": "tt38073947",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 115,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "Tempted by My Ex's Professor Daddy",
+     "character": "Nathaniel",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "that-missing-rockstar-is-my-husband",
+   "slug": "that-missing-rockstar-is-my-husband",
+   "primary_title": "That Missing Rockstar Is My Husband",
+   "imdb_id": "tt40791973",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 69,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "That Missing Rockstar Is My Husband",
+     "character": "Shane Redford",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "the-alpha-s-heiress-is-a-maid",
+   "slug": "the-alpha-s-heiress-is-a-maid",
+   "primary_title": "The Alpha's Heiress Is a Maid",
+   "imdb_id": "tt35124862",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 172,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Evan Bacic",
+     "person_id": "evan-bacic",
+     "title": "The Alpha's Heiress Is a Maid",
+     "character": "Beta Leo",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "the-back-of-the-unwanted-bride",
+   "slug": "the-back-of-the-unwanted-bride",
+   "primary_title": "The Back of the Unwanted Bride",
+   "imdb_id": "tt32765632",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 9,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kirby Ellwood",
+     "person_id": "kirby-ellwood",
+     "title": "The Back of the Unwanted Bride",
+     "character": "",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "the-best-mistake-ever",
+   "slug": "the-best-mistake-ever",
+   "primary_title": "The Best Mistake Ever",
+   "imdb_id": "tt34126174",
+   "platform_id": "dramabox",
+   "year": 2024,
+   "imdb_popularity_rank": 261,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jarred Harper",
+     "person_id": "jarred-harper",
+     "title": "The Best Mistake Ever",
+     "character": "James",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "the-billionaire-s-amnesiac-bride",
+   "slug": "the-billionaire-s-amnesiac-bride",
+   "primary_title": "The Billionaire's Amnesiac Bride",
+   "imdb_id": "tt35713717",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 104,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "The Billionaire's Amnesiac Bride",
+     "character": "Simon Smith / Noah Miller",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-billionaire-s-forgotten-heartbeat",
+   "slug": "the-billionaire-s-forgotten-heartbeat",
+   "primary_title": "The Billionaire's Forgotten Heartbeat",
+   "imdb_id": "tt34241464",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 151,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kyle Fragnoli",
+     "person_id": "kyle-fragnoli",
+     "title": "The Billionaire's Forgotten Heartbeat",
+     "character": "Alex Smith",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "the-ceo-s-baby-mama",
+   "slug": "the-ceo-s-baby-mama",
+   "primary_title": "The CEO's Baby Mama",
+   "imdb_id": "tt36107170",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 315,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Leif Erik Offerdahl",
+     "person_id": "leif-erik-offerdahl",
+     "title": "The CEO's Baby Mama",
+     "character": "Alex Anderson",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-ceo-s-mermaid-bride",
+   "slug": "the-ceo-s-mermaid-bride",
+   "primary_title": "The CEO's Mermaid Bride",
+   "imdb_id": "tt37543760",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 129,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kasey Esser",
+     "person_id": "kasey-esser",
+     "title": "The CEO's Mermaid Bride",
+     "character": "Sebastian",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-ceo-s-tempting-secretary",
+   "slug": "the-ceo-s-tempting-secretary",
+   "primary_title": "The CEO's Tempting Secretary",
+   "imdb_id": "tt33034568",
+   "platform_id": "shortmax",
+   "year": 2024,
+   "imdb_popularity_rank": 11,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tyler Scherer",
+     "person_id": "tyler-scherer",
+     "title": "The CEO's Tempting Secretary",
+     "character": "Talos",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "the-captain-s-baby-girl",
+   "slug": "the-captain-s-baby-girl",
+   "primary_title": "The Captain's Baby Girl",
+   "imdb_id": "tt37162170",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 190,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tyler Scherer",
+     "person_id": "tyler-scherer",
+     "title": "The Captain's Baby Girl",
+     "character": "Ethan",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-captain-s-redline",
+   "slug": "the-captain-s-redline",
+   "primary_title": "The Captain's Redline",
+   "imdb_id": "tt43338980",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 81,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Aaron Oberst",
+     "person_id": "aaron-oberst",
+     "title": "The Captain's Redline",
+     "character": "Mason Miller",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "the-champion-s-hidden-secret",
+   "slug": "the-champion-s-hidden-secret",
+   "primary_title": "The Champion's Hidden Secret",
+   "imdb_id": "tt34749028",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 117,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kasey Esser",
+     "person_id": "kasey-esser",
+     "title": "The Champion's Hidden Secret",
+     "character": "Nathan Phelps",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-cost-of-touch",
+   "slug": "the-cost-of-touch",
+   "primary_title": "The Cost of Touch",
+   "imdb_id": "tt38915656",
+   "platform_id": "dramapops",
+   "year": 2025,
+   "imdb_popularity_rank": 32,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "The Cost of Touch",
+     "character": "Nathaniel Sinclair",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-day-i-take-off-my-wedding-ring",
+   "slug": "the-day-i-take-off-my-wedding-ring",
+   "primary_title": "The Day I Take Off My Wedding Ring",
+   "imdb_id": "tt41779758",
+   "platform_id": "goodshort",
+   "year": "",
+   "imdb_popularity_rank": 34,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Armand Procacci",
+     "person_id": "armand-procacci",
+     "title": "The Day I Take Off My Wedding Ring",
+     "character": "Ken",
+     "year": null
+    }
+   ]
+  },
+  {
+   "title_id": "the-devil-fell-for-me",
+   "slug": "the-devil-fell-for-me",
+   "primary_title": "The Devil Fell for Me",
+   "imdb_id": "tt40423284",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 75,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tim Stein",
+     "person_id": "tim-stein",
+     "title": "The Devil Fell for Me",
+     "character": "Blair Cooper",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "the-homeless-fishmonger-is-my-billionaire-husband",
+   "slug": "the-homeless-fishmonger-is-my-billionaire-husband",
+   "primary_title": "The Homeless Fishmonger Is My Billionaire Husband",
+   "imdb_id": "tt38870397",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 103,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Alex Pychtin",
+     "person_id": "alex-pychtin",
+     "title": "The Homeless Fishmonger Is My Billionaire Husband",
+     "character": "Vincent",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-mafia-s-innocent-lover",
+   "slug": "the-mafia-s-innocent-lover",
+   "primary_title": "The Mafia's Innocent Lover",
+   "imdb_id": "tt37373371",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 119,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "TJ Wilk",
+     "person_id": "tj-wilk",
+     "title": "The Mafia's Innocent Lover",
+     "character": "Nolan",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-mafia-s-mistaken-lover",
+   "slug": "the-mafia-s-mistaken-lover",
+   "primary_title": "The Mafia's Mistaken Lover",
+   "imdb_id": "tt34895104",
+   "platform_id": "shortmax",
+   "year": 2025,
+   "imdb_popularity_rank": 88,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Leif Erik Offerdahl",
+     "person_id": "leif-erik-offerdahl",
+     "title": "The Mafia's Mistaken Lover",
+     "character": "Thomas Gravino",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-princess-returns",
+   "slug": "the-princess-returns",
+   "primary_title": "The Princess Returns",
+   "imdb_id": "tt37536428",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 107,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "The Princess Returns",
+     "character": "Alec",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "the-prison-queen-comes-for-blood",
+   "slug": "the-prison-queen-comes-for-blood",
+   "primary_title": "The Prison Queen Comes for Blood",
+   "imdb_id": "tt43634604",
+   "platform_id": "goodshort",
+   "year": 2026,
+   "imdb_popularity_rank": 11,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tristan Rewald",
+     "person_id": "tristan-rewald",
+     "title": "The Prison Queen Comes for Blood",
+     "character": "Lucas",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "the-rejected-luna-is-the-alpha",
+   "slug": "the-rejected-luna-is-the-alpha",
+   "primary_title": "The Rejected Luna Is the Alpha",
+   "imdb_id": "tt37263450",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 116,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Cayman Cardiff",
+     "person_id": "cayman-cardiff",
+     "title": "The Rejected Luna Is the Alpha",
+     "character": "Cassian",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "this-christmas-i-married-a-grease-stained-billionaire",
+   "slug": "this-christmas-i-married-a-grease-stained-billionaire",
+   "primary_title": "This Christmas I Married a Grease-Stained Billionaire",
+   "imdb_id": "tt39169725",
+   "platform_id": "dramapops",
+   "year": 2025,
+   "imdb_popularity_rank": 34,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Leif Erik Offerdahl",
+     "person_id": "leif-erik-offerdahl",
+     "title": "This Christmas I Married a Grease-Stained Billionaire",
+     "character": "Leo Carter",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "this-time-daddy-won-t-fail",
+   "slug": "this-time-daddy-won-t-fail",
+   "primary_title": "This Time Daddy Won't Fail",
+   "imdb_id": "tt43727091",
+   "platform_id": "goodshort",
+   "year": 2026,
+   "imdb_popularity_rank": 3,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Richard Sharrah",
+     "person_id": "richard-sharrah",
+     "title": "This Time Daddy Won't Fail",
+     "character": "Christian Summers",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "three-strikes-you-re-out",
+   "slug": "three-strikes-you-re-out",
+   "primary_title": "Three Strikes You're Out\\!",
+   "imdb_id": "tt40253661",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 38,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "Three Strikes You're Out!",
+     "character": "Liam Langford",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "till-divorce-do-us-part",
+   "slug": "till-divorce-do-us-part",
+   "primary_title": "Till Divorce Do Us Part",
+   "imdb_id": "tt39140468",
+   "platform_id": "dramapops",
+   "year": 2025,
+   "imdb_popularity_rank": 25,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Kasey Esser",
+     "person_id": "kasey-esser",
+     "title": "Till Divorce Do Us Part",
+     "character": "Jax",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "to-love-or-to-die-mr-alpha",
+   "slug": "to-love-or-to-die-mr-alpha",
+   "primary_title": "To Love or to Die Mr. Alpha",
+   "imdb_id": "tt38063804",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 95,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "To Love or to Die Mr. Alpha",
+     "character": "Nathan",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "too-late-to-love-me-mafia-king",
+   "slug": "too-late-to-love-me-mafia-king",
+   "primary_title": "Too Late to Love Me, Mafia King",
+   "imdb_id": "tt41064327",
+   "platform_id": "shortmax",
+   "year": 2026,
+   "imdb_popularity_rank": 29,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "Too Late to Love Me, Mafia King",
+     "character": "Enzo",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "traded-to-the-shadow-heir",
+   "slug": "traded-to-the-shadow-heir",
+   "primary_title": "Traded to the Shadow Heir",
+   "imdb_id": "tt41300366",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 63,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Griffin Blazi",
+     "person_id": "griffin-blazi",
+     "title": "Traded to the Shadow Heir",
+     "character": "Ethan",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "victory-is-in-hand",
+   "slug": "victory-is-in-hand",
+   "primary_title": "Victory Is in Hand",
+   "imdb_id": "tt37543166",
+   "platform_id": "goodshort",
+   "year": 2025,
+   "imdb_popularity_rank": 48,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Sam Myerson",
+     "person_id": "sam-myerson",
+     "title": "Victory Is in Hand",
+     "character": "Alan Mariano",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "will-you-be-my-love-again",
+   "slug": "will-you-be-my-love-again",
+   "primary_title": "Will You Be My Love Again?",
+   "imdb_id": "tt33454816",
+   "platform_id": "goodshort",
+   "year": 2024,
+   "imdb_popularity_rank": 108,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jake Hobbs",
+     "person_id": "jake-hobbs",
+     "title": "Will You Be My Love Again?",
+     "character": "George",
+     "year": 2024
+    }
+   ]
+  },
+  {
+   "title_id": "winner-s-payback-rise-from-the-dirt",
+   "slug": "winner-s-payback-rise-from-the-dirt",
+   "primary_title": "Winner's Payback, Rise from the Dirt",
+   "imdb_id": "tt42683516",
+   "platform_id": "dramabox",
+   "year": 2026,
+   "imdb_popularity_rank": 126,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Richard Sharrah",
+     "person_id": "richard-sharrah",
+     "title": "Winner's Payback, Rise from the Dirt",
+     "character": "Ethan Martinez",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "wrong-sister-in-his-bed",
+   "slug": "wrong-sister-in-his-bed",
+   "primary_title": "Wrong Sister in His Bed",
+   "imdb_id": "tt43437302",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 2,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Sam Myerson",
+     "person_id": "sam-myerson",
+     "title": "Wrong Sister in His Bed",
+     "character": "Gabriel Winters",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "title_id": "wrong-sperm-right-love",
+   "slug": "wrong-sperm-right-love",
+   "primary_title": "Wrong Sperm, Right Love",
+   "imdb_id": "tt37846748",
+   "platform_id": "dramawave",
+   "year": 2025,
+   "imdb_popularity_rank": 42,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tim Stein",
+     "person_id": "tim-stein",
+     "title": "Wrong Sperm, Right Love",
+     "character": "Axel Frost",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "you-are-still-the-one",
+   "slug": "you-are-still-the-one",
+   "primary_title": "You Are Still the One",
+   "imdb_id": "tt36163189",
+   "platform_id": "dramabox",
+   "year": 2025,
+   "imdb_popularity_rank": 244,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Jake Hobbs",
+     "person_id": "jake-hobbs",
+     "title": "You Are Still the One",
+     "character": "Zachary Carter",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "title_id": "zero-to-hero-super-vision-wealth-and-love",
+   "slug": "zero-to-hero-super-vision-wealth-and-love",
+   "primary_title": "Zero to Hero: Super Vision, Wealth and Love",
+   "imdb_id": "tt43190833",
+   "platform_id": "dramawave",
+   "year": 2026,
+   "imdb_popularity_rank": 39,
+   "credited_actors": 1,
+   "credits": [
+    {
+     "actor": "Tim Stein",
+     "person_id": "tim-stein",
+     "title": "Zero to Hero: Super Vision, Wealth and Love",
+     "character": "Preston Goldberg",
+     "year": 2026
+    }
+   ]
+  }
+ ]
+}
