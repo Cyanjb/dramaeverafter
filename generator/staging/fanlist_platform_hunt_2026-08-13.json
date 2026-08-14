@@ -1,0 +1,120 @@
+{
+  "source": "Platform hunt for the 16 'missing' rows of fanlist_vertical_favourites_2026-08-13.json",
+  "method": "Web search restricted to the platform domains themselves (allowed_domains), not to aggregators. Third-party databases that turned up in results - shortdramadb.com, dramaglance.com, shortdramacast.com - were NOT used as evidence: shortdramadb is the same refusal call already recorded for verticaldrama.tv.",
+  "caption_rule": "NO SYNOPSIS TEXT WAS TAKEN FROM ANY RESULT. Platform, watch link, episode count and cast names only. Every caption for these titles must still be written from scratch before the title can count as complete.",
+  "note_on_status": "confirmed = a watch/series page on the platform's OWN domain names the exact title. probable = the platform's own fandom blog carries dedicated articles about the exact title but no watch page was found. near_match = a DIFFERENT title that resembles this one; a human ruling, never an auto-merge.",
+
+  "corrections_to_the_fanlist": [
+    {
+      "rank": 18,
+      "fanlist_title": "How to Tame a Sliver Fox",
+      "finding": "NOT MISSING. The fan list has a typo: 'Sliver' for 'Silver'. We already hold title_id how-to-tame-a-silver-fox.",
+      "why_it_was_missed": "The held-vs-missing split was computed by exact letter matching, which cannot see a transposition. A difflib pass at cutoff 0.85 catches it.",
+      "action": "Drop from the import queue. The queue is 15, not 16."
+    }
+  ],
+
+  "confirmed": [
+    {
+      "rank": 16,
+      "title": "Carrying His Babies, Stealing His Heart",
+      "platform_id": "dramabox",
+      "direct_link": "https://www.dramabox.com/drama/41000111541/Carrying-His-Babies-Stealing-His-Heart",
+      "platform_series_id": "41000111541",
+      "episode_count": 57,
+      "imdb_id": "tt35593274",
+      "evidence": "dramabox.com and dramaboxdb.com both carry the exact title with the same series id."
+    },
+    {
+      "rank": 19,
+      "title": "Love Again, My Princess",
+      "platform_id": "shortmax",
+      "direct_link": "https://www.shorttv.live/drama/love-again-my-princess-4071",
+      "platform_series_id": "4071",
+      "episode_count": 71,
+      "evidence": "shorttv.live (ShortMax) carries a /drama/ page and an /episodes/ page; episode 71 exists as its own URL."
+    },
+    {
+      "rank": 30,
+      "title": "CEO Wants My Little Rascal",
+      "platform_id": "netshort",
+      "direct_link": "https://netshort.com/full-episodes/ceo-wants-my-little-rascal-1907745229471825922",
+      "platform_series_id": "1907745229471825922",
+      "episode_count": null,
+      "evidence": "netshort.com carries /full-episodes/, /hotseries/ and numbered /episode/ URLs for the exact title."
+    },
+    {
+      "rank": 31,
+      "title": "Escape from My Destined Husband",
+      "platform_id": "netshort",
+      "direct_link": null,
+      "platform_series_id": "1897584127135547393",
+      "episode_count": null,
+      "evidence": "Seven netshort.com/blog pages about the exact title, carrying a consistent series id. NO WATCH PAGE URL WAS CAPTURED - fetch the /full-episodes/ URL for this series id before creating the row."
+    }
+  ],
+
+  "probable_needs_watch_link": [
+    {
+      "rank": 25,
+      "title": "How to Train an Alpha",
+      "platform_id": "reelshort",
+      "evidence": "Two dedicated reelshort.com/fandom articles about the exact title (cast, and the Alexia character). The fandom blog is ReelShort's own property. No /movie/ or /full-episodes/ URL surfaced.",
+      "action": "Confirm with a reelshort.com/movie/ or /full-episodes/ URL before creating."
+    },
+    {
+      "rank": 26,
+      "title": "It's Meant to Be",
+      "platform_id": "reelshort",
+      "evidence": "Two dedicated reelshort.com/fandom articles about the exact title (cast breakdown, ending explained). No watch URL surfaced.",
+      "action": "Confirm with a watch URL before creating. NOTE the title is generic enough that a same-name production elsewhere is a real risk - match on tt, not on the title string."
+    },
+    {
+      "rank": 27,
+      "title": "Found by the Lycan King",
+      "platform_id": "goodshort",
+      "evidence": "WEAK. Only a goodshort.com/tag/ page, which is a keyword landing page and does not prove GoodShort carries a series of that name.",
+      "action": "Treat as unresolved until a /drama/ or /episodes/ URL is found."
+    }
+  ],
+
+  "near_matches_for_a_human_ruling": [
+    {
+      "rank": 24,
+      "fanlist_title": "Fallen for My Best Friend's Dad",
+      "resembles_held_title": "Falling for My Bestie's Dad",
+      "found_by": "difflib ratio >= 0.85 against titles.csv",
+      "question": "Same production under two names, or two different titles? NEVER auto-merge."
+    },
+    {
+      "rank": 28,
+      "fanlist_title": "Evil Stepmom Survival Guide",
+      "resembles_platform_title": "Survival Guide for the Hated Stepmom (DramaBox, https://www.dramabox.com/drama/41000119323/Survival-Guide-for-the-Hated-Stepmom)",
+      "question": "Plausible alt title for the same series, but the wording differs enough that it could be a different show. Needs a ruling."
+    },
+    {
+      "rank": 38,
+      "fanlist_title": "My Ex's Best Friends",
+      "resembles_platform_title": "Faking It With My Ex's Best Friend (ReelShort, fandom articles only)",
+      "question": "Singular vs plural 'Friend(s)' and an added 'Faking It With'. Could easily be a different show. Needs a ruling."
+    }
+  ],
+
+  "not_found": [
+    {"rank": 20, "title": "Time Out with You"},
+    {"rank": 21, "title": "My Very Royal Romance"},
+    {"rank": 22, "title": "Rush Into Love"},
+    {"rank": 49, "title": "When the Moon Hides Her Crown"},
+    {"rank": 50, "title": "Bound to the Fae King", "note": "'The Fae King Is My Shadow Daddy' (DramaBox) surfaced and is a DIFFERENT title - do not conflate."}
+  ],
+
+  "tally": {
+    "fanlist_missing_claimed": 16,
+    "already_held_typo": 1,
+    "real_import_queue": 15,
+    "platform_confirmed": 4,
+    "platform_probable": 3,
+    "near_match_rulings": 3,
+    "unresolved": 5
+  }
+}

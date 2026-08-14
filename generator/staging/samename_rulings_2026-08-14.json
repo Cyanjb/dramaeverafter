@@ -1,0 +1,39 @@
+{
+  "source": "Browser research on the five same-name questions, 14 Aug 2026, at Cyan's direction ('go look online in the browser')",
+  "method": "Settled by hard identifiers (tt ids, casts, platform's own pages), never by resemblance.",
+
+  "rulings": [
+    {
+      "question": "Fallen for My Best Friend's Dad (fan list) vs our falling-for-my-bestie-s-dad",
+      "answer": "DIFFERENT PRODUCTIONS",
+      "evidence": "Fan-list title is tt35230395 (2024, ReelShort; Sophia Delucchi, Edwin Modlin II, Prymrr, Toby S. Pruett). Ours already carries tt43634344 with Evah Doheny credited. Two tt ids.",
+      "action": "Fan-list title becomes a real import candidate: platform reelshort, imdb_id tt35230395."
+    },
+    {
+      "question": "My Ex's Best Friends (fan list) vs Faking It With My Ex's Best Friend (ReelShort)",
+      "answer": "DIFFERENT PRODUCTIONS",
+      "evidence": "My Ex's Best Friends is its own series, tt36433156 (2025; Natalie Collins, Jeff Lawless, Travis Long, Richmond Keeling; weekend-getaway premise). Faking It stars Maria Barseghian in a school setting.",
+      "action": "Import candidate, but NO PLATFORM NAMED anywhere found yet (only Dailymotion re-uploads surfaced). Waits under the production-house rule."
+    },
+    {
+      "question": "Evil Stepmom Survival Guide (fan list) vs Survival Guide for the Hated Stepmom (DramaBox)",
+      "answer": "DIFFERENT PRODUCTIONS",
+      "evidence": "Evil Stepmom Survival Guide is tt36129137 (2025), cast Sophia Delucchi, Jake Hobbs, Freddy Piazza, Dana Ruilova, streaming on KALOSTV (their own YouTube/Facebook branding). DramaBox's title is a different premise entirely.",
+      "action": "Import candidate: platform kalostv, imdb_id tt36129137. Would give KalosTV its first real entry, and Jake Hobbs is already a tracked actor."
+    },
+    {
+      "question": "Divorced at the Wedding Day: our title matched THREE DramaBox bookIds",
+      "answer": "ONE PRODUCTION, LISTED THREE TIMES BY DRAMABOX",
+      "evidence": "bookIds 42000013146, 42000012336, 42000010362 all serve chapterCount 51, ENGLISH, same title. Ours is tt37178859 with 51 episodes. DramaBox's own catalogue carries duplicate entries - the ambiguity was theirs, not two productions.",
+      "action": "APPLIED 14 Aug: the pinedrama row was re-pointed to dramabox with the 42000013146 link. One of the PineDrama 64 resolved."
+    },
+    {
+      "question": "Trope vocabulary: childhood sweetheart/s, contract lover/s, athlete/s",
+      "answer": "STILL CYAN'S CALL",
+      "evidence": "Semantic judgement about her vocabulary, not a fact a browser can settle. 30 tag assignments held back until ruled.",
+      "action": "None."
+    }
+  ],
+
+  "note": "DramaBox duplicate bookIds are a new trap: the same series can appear under several ids in their catalogue, so 'name maps to several bookIds' does not always mean same-name collision - compare chapterCount and language before assuming two productions."
+}

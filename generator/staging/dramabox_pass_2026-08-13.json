@@ -1,0 +1,2561 @@
+{
+ "generated": "2026-08-13 23:22",
+ "source": "cached dramaboxdb /genres/0 catalogue + parse_imdb_company_pdf.py",
+ "caption_rule": "NO SYNOPSIS TAKEN. links, episode counts, view counts and tags only.",
+ "APPLIES_NOTHING": true,
+ "trope_vocabulary_READ_THIS_FIRST": {
+  "distinct_tags": 102,
+  "dropped_as_ui_labels": [
+   "Modern"
+  ],
+  "near_miss_against_our_tropes_DO_NOT_AUTOMERGE": [
+   {
+    "platform_tag": "Childhood Sweetheart",
+    "slug": "childhood-sweetheart",
+    "near_our_slugs": [
+     "childhood-sweethearts"
+    ],
+    "titles": 9
+   },
+   {
+    "platform_tag": "Contract Lover",
+    "slug": "contract-lover",
+    "near_our_slugs": [
+     "contract-lovers"
+    ],
+    "titles": 20
+   },
+   {
+    "platform_tag": "Athlete",
+    "slug": "athlete",
+    "near_our_slugs": [
+     "athletes"
+    ],
+    "titles": 1
+   }
+  ],
+  "near_miss_within_dramabox_DO_NOT_AUTOMERGE": [
+   {
+    "pair": [
+     "Winning Her Back",
+     "Winning Him Back"
+    ],
+    "counts": [
+     9,
+     60
+    ]
+   }
+  ],
+  "top_50": [
+   [
+    "Strong Female Lead",
+    761
+   ],
+   [
+    "Revenge",
+    582
+   ],
+   [
+    "Family Bonds",
+    448
+   ],
+   [
+    "Billionaire",
+    350
+   ],
+   [
+    "Comeback Story",
+    331
+   ],
+   [
+    "Love After Marriage",
+    245
+   ],
+   [
+    "Modern",
+    224
+   ],
+   [
+    "Hidden Identity",
+    211
+   ],
+   [
+    "Second Chance",
+    198
+   ],
+   [
+    "Forbidden Love",
+    157
+   ],
+   [
+    "A Nobody",
+    142
+   ],
+   [
+    "Justice Served",
+    140
+   ],
+   [
+    "Gamified World",
+    113
+   ],
+   [
+    "Forced Love",
+    97
+   ],
+   [
+    "Rebirth",
+    92
+   ],
+   [
+    "Strong-Willed",
+    86
+   ],
+   [
+    "The Chosen One",
+    77
+   ],
+   [
+    "Family Intrigue",
+    73
+   ],
+   [
+    "Single Mom",
+    72
+   ],
+   [
+    "Redemption",
+    71
+   ],
+   [
+    "Divine Tycoon",
+    65
+   ],
+   [
+    "Transmigration",
+    65
+   ],
+   [
+    "Harem",
+    61
+   ],
+   [
+    "Winning Him Back",
+    60
+   ],
+   [
+    "Doctor",
+    59
+   ],
+   [
+    "Son-in-Law",
+    58
+   ],
+   [
+    "Love Triangle",
+    54
+   ],
+   [
+    "Werewolf",
+    53
+   ],
+   [
+    "War God",
+    51
+   ],
+   [
+    "Toxic Love",
+    41
+   ],
+   [
+    "Destined Love",
+    40
+   ],
+   [
+    "Time Travel",
+    37
+   ],
+   [
+    "Palace Intrigue",
+    36
+   ],
+   [
+    "Lost Child",
+    36
+   ],
+   [
+    "Tough Guy",
+    33
+   ],
+   [
+    "Sweet Love",
+    33
+   ],
+   [
+    "Love After Divorce",
+    33
+   ],
+   [
+    "Student",
+    30
+   ],
+   [
+    "One Night Stand",
+    29
+   ],
+   [
+    "Fantasy",
+    29
+   ],
+   [
+    "Military",
+    28
+   ],
+   [
+    "Researcher",
+    28
+   ],
+   [
+    "Counterattack",
+    27
+   ],
+   [
+    "Playing Dumb",
+    27
+   ],
+   [
+    "Romance",
+    25
+   ],
+   [
+    "All-Too-Late",
+    25
+   ],
+   [
+    "Apocalypse",
+    24
+   ],
+   [
+    "Step-Siblings",
+    24
+   ],
+   [
+    "Underdog Story",
+    21
+   ],
+   [
+    "Reverse Harem",
+    21
+   ]
+  ]
+ },
+ "links_for_rows_missing_one": [
+  {
+   "title_id": "faking-it-with-the-hockey-captain",
+   "our_title": "Faking It with the Hockey Captain",
+   "platform_title": "Faking It with the Hockey Captain",
+   "book_id": "42000010167",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000010167/faking-it-with-the-hockey-captain",
+   "episode_count": 61,
+   "views": "12.2K"
+  },
+  {
+   "title_id": "bound-by-a-devil",
+   "our_title": "Bound by a Devil",
+   "platform_title": "Bound by a Devil",
+   "book_id": "42000014568",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000014568/bound-by-a-devil",
+   "episode_count": 56,
+   "views": "12.7K"
+  },
+  {
+   "title_id": "torn-between-my-stepbrothers",
+   "our_title": "Torn Between My Stepbrothers",
+   "platform_title": "Torn Between My Stepbrothers",
+   "book_id": "42000012113",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000012113/torn-between-my-stepbrothers",
+   "episode_count": 71,
+   "views": "17.8K"
+  },
+  {
+   "title_id": "craving-my-brother-s-best-friend",
+   "our_title": "Craving My Brother's Best Friend",
+   "platform_title": "Craving My Brother's Best Friend",
+   "book_id": "42000008774",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000008774/craving-my-brothers-best-friend",
+   "episode_count": 56,
+   "views": "17.2K"
+  },
+  {
+   "title_id": "keeping-secrets-with-the-rowing-captain",
+   "our_title": "Keeping Secrets with the Rowing Captain",
+   "platform_title": "Keeping Secrets with the Rowing Captain",
+   "book_id": "42000019058",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000019058/keeping-secrets-with-the-rowing-captain",
+   "episode_count": 59,
+   "views": "16.3K"
+  },
+  {
+   "title_id": "revenge-puck",
+   "our_title": "Revenge Puck",
+   "platform_title": "Revenge Puck",
+   "book_id": "42000013483",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000013483/revenge-puck",
+   "episode_count": 56,
+   "views": "10.7K"
+  },
+  {
+   "title_id": "bucked-by-my-father-s-cowboy",
+   "our_title": "Bucked by My Father's Cowboy",
+   "platform_title": "Bucked by My Father's Cowboy",
+   "book_id": "42000014005",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000014005/bucked-by-my-fathers-cowboy",
+   "episode_count": 51,
+   "views": "10.0K"
+  },
+  {
+   "title_id": "cause-you-were-never-mine",
+   "our_title": "Cause You Were Never Mine",
+   "platform_title": "Cause You Were Never Mine",
+   "book_id": "42000012972",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000012972/cause-you-were-never-mine",
+   "episode_count": 53,
+   "views": "11.8K"
+  },
+  {
+   "title_id": "doormat-no-more-toxic-ex-lick-my-feet",
+   "our_title": "Doormat No More: Toxic Ex Lick My Feet",
+   "platform_title": "Doormat No More: Toxic Ex Lick My Feet",
+   "book_id": "42000010898",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000010898/doormat-no-more-toxic-ex-lick-my-feet",
+   "episode_count": 61,
+   "views": "10.5K"
+  },
+  {
+   "title_id": "i-wish-it-were-you",
+   "our_title": "I Wish It Were You",
+   "platform_title": "I Wish It Were You",
+   "book_id": "42000012214",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000012214/i-wish-it-were-you",
+   "episode_count": 77,
+   "views": "19.3K"
+  },
+  {
+   "title_id": "love-the-way-you-lie",
+   "our_title": "Love the Way You Lie",
+   "platform_title": "Love The Way You Lie",
+   "book_id": "42000010899",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000010899/love-the-way-you-lie",
+   "episode_count": 59,
+   "views": "18.5K"
+  },
+  {
+   "title_id": "no-mercy-from-my-cowboy-daddy",
+   "our_title": "No Mercy from My Cowboy Daddy",
+   "platform_title": "No Mercy From My Cowboy Daddy",
+   "book_id": "42000017124",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000017124/no-mercy-from-my-cowboy-daddy",
+   "episode_count": 55,
+   "views": "15.1K"
+  },
+  {
+   "title_id": "pregnant-by-my-professor-chased-by-his-son",
+   "our_title": "Pregnant by My Professor, Chased by His Son",
+   "platform_title": "Pregnant by My Professor, Chased by His Son",
+   "book_id": "42000011904",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000011904/pregnant-by-my-professor-chased-by-his-son",
+   "episode_count": 49,
+   "views": "11.8K"
+  },
+  {
+   "title_id": "return-of-the-gold-king",
+   "our_title": "Return of the Gold King",
+   "platform_title": "Return Of The Gold King",
+   "book_id": "42000009539",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000009539/return-of-the-gold-king",
+   "episode_count": 53,
+   "views": "19.7K"
+  },
+  {
+   "title_id": "still-you-always-you",
+   "our_title": "Still You Always You",
+   "platform_title": "Still You Always You",
+   "book_id": "42000017739",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000017739/still-you-always-you",
+   "episode_count": 67,
+   "views": "11.4K"
+  }
+ ],
+ "tropes_for_matched_titles": [
+  {
+   "title_id": "pregnant-with-my-infertile-alpha-king",
+   "our_title": "Pregnant with My Infertile Alpha King",
+   "platform_title": "Pregnant With My Infertile Alpha King",
+   "book_id": "42000009619",
+   "tropes": [
+    "Love After Marriage",
+    "Forced Love"
+   ],
+   "slugs": [
+    "love-after-marriage",
+    "forced-love"
+   ]
+  },
+  {
+   "title_id": "campaigning-for-love",
+   "our_title": "Campaigning For Love",
+   "platform_title": "Campaigning For Love",
+   "book_id": "42000011750",
+   "tropes": [
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "married-a-gardener-got-a-prince",
+   "our_title": "Married a Gardener, Got a Prince",
+   "platform_title": "Married a Gardener, Got a Prince",
+   "book_id": "42000011759",
+   "tropes": [
+    "Love After Marriage",
+    "Revenge"
+   ],
+   "slugs": [
+    "love-after-marriage",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "billionaire-completes-my-bucket-list",
+   "our_title": "Billionaire Completes My Bucket List",
+   "platform_title": "Billionaire Completes My Bucket List",
+   "book_id": "42000009740",
+   "tropes": [
+    "Strong Female Lead",
+    "Billionaire"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "billionaire"
+   ]
+  },
+  {
+   "title_id": "one-night-or-forever",
+   "our_title": "One Night or Forever",
+   "platform_title": "One Night or Forever",
+   "book_id": "42000020125",
+   "tropes": [
+    "Billionaire",
+    "Revenge"
+   ],
+   "slugs": [
+    "billionaire",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "in-love-with-my-bestie-s-son",
+   "our_title": "In Love With My Bestie's Son",
+   "platform_title": "In Love With My Bestie's Son",
+   "book_id": "42000005321",
+   "tropes": [
+    "Forbidden Love",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "golden-feather-temptation-game",
+   "our_title": "Golden Feather: Temptation Game",
+   "platform_title": "Golden Feather: Temptation Game",
+   "book_id": "42000011755",
+   "tropes": [
+    "Forbidden Love",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "too-late-for-love-15-days-after-miscarriage",
+   "our_title": "Too Late for Love: 15 Days After Miscarriage",
+   "platform_title": "Too Late for Love: 15 Days After Miscarriage",
+   "book_id": "42000012605",
+   "tropes": [
+    "Betrayal"
+   ],
+   "slugs": [
+    "betrayal"
+   ]
+  },
+  {
+   "title_id": "hold-me-in-the-dark",
+   "our_title": "Hold Me in the Dark",
+   "platform_title": "Hold Me In the Dark",
+   "book_id": "42000011580",
+   "tropes": [
+    "Forbidden Love",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "don-t-mess-with-supermom",
+   "our_title": "Don't Mess with Supermom",
+   "platform_title": "Don't Mess With Super Mom",
+   "book_id": "42000009594",
+   "tropes": [
+    "Strong Female Lead",
+    "Revenge"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "irresistible-love-with-my-brother-in-law",
+   "our_title": "Irresistible love with my brother in law",
+   "platform_title": "Irresistible love with my brother in law",
+   "book_id": "42000011754",
+   "tropes": [
+    "Second Chance",
+    "Family Bonds"
+   ],
+   "slugs": [
+    "second-chance",
+    "family-bonds"
+   ]
+  },
+  {
+   "title_id": "secret-love-with-my-billionaire-revenge-partner",
+   "our_title": "Secret Love With My Billionaire Revenge Partner",
+   "platform_title": "Secret Love With My Billionaire Revenge Partner",
+   "book_id": "42000011768",
+   "tropes": [
+    "Love After Marriage",
+    "Billionaire"
+   ],
+   "slugs": [
+    "love-after-marriage",
+    "billionaire"
+   ]
+  },
+  {
+   "title_id": "wildfire-between-us",
+   "our_title": "Wildfire Between Us",
+   "platform_title": "Wildfire Between Us",
+   "book_id": "42000011762",
+   "tropes": [
+    "Second Chance",
+    "Love After Marriage"
+   ],
+   "slugs": [
+    "second-chance",
+    "love-after-marriage"
+   ]
+  },
+  {
+   "title_id": "divorced-queen-returns-to-the-stage",
+   "our_title": "Divorced Queen Returns to The Stage",
+   "platform_title": "Divorced Queen Returns to The Stage",
+   "book_id": "42000011761",
+   "tropes": [
+    "Comeback Story",
+    "Strong Female Lead"
+   ],
+   "slugs": [
+    "comeback-story",
+    "strong-female-lead"
+   ]
+  },
+  {
+   "title_id": "the-mvp-s-plus-size-love",
+   "our_title": "The MVP's Plus Size Love",
+   "platform_title": "The MVP's Plus Size Love",
+   "book_id": "42000011760",
+   "tropes": [
+    "Comeback Story",
+    "Revenge"
+   ],
+   "slugs": [
+    "comeback-story",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "heiress-hidden-in-the-clouds",
+   "our_title": "Heiress Hidden In The Clouds",
+   "platform_title": "Heiress Hidden In The Clouds",
+   "book_id": "42000011748",
+   "tropes": [
+    "Love After Marriage",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "love-after-marriage",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "lady-ceo-s-fatal-contract",
+   "our_title": "Lady CEO's Fatal Contract",
+   "platform_title": "Lady CEO's Fatal Contract",
+   "book_id": "42000010158",
+   "tropes": [
+    "Revenge",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "revenge",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "enemies-with-benefits",
+   "our_title": "Enemies With Benefits",
+   "platform_title": "Enemies With Benefits",
+   "book_id": "42000022630",
+   "tropes": [
+    "Lost Child",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "lost-child",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "alpha-s-betrayal-my-revenge",
+   "our_title": "Alpha's Betrayal, My Revenge",
+   "platform_title": "Alpha's Betrayal,My Revenge",
+   "book_id": "42000023093",
+   "tropes": [
+    "Strong Female Lead",
+    "Revenge"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "bloodbath-on-the-cruise-ship",
+   "our_title": "Billionaires' Death Game: The Cruise Ship Arena",
+   "platform_title": "Billionaires' Death Game: The Cruise Ship Arena",
+   "book_id": "42000010447",
+   "tropes": [
+    "Strong Female Lead",
+    "Revenge"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "caught-in-the-devil-s-love-trap",
+   "our_title": "Caught in the Devil's Love Trap",
+   "platform_title": "Caught In The Devil's Love Trap",
+   "book_id": "42000010439",
+   "tropes": [
+    "Strong Female Lead",
+    "Revenge"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "claimed-by-the-tentacle-king",
+   "our_title": "Claimed by the Tentacle King",
+   "platform_title": "Claimed by the Tentacle King",
+   "book_id": "42000020111",
+   "tropes": [
+    "Billionaire",
+    "Forced Love"
+   ],
+   "slugs": [
+    "billionaire",
+    "forced-love"
+   ]
+  },
+  {
+   "title_id": "don-t-mess-with-her-the-thunder-goddess-returns",
+   "our_title": "Don't Mess with Her! The Thunder Goddess Returns!",
+   "platform_title": "Don’t Mess with Her! The Thunder Goddess Returns!",
+   "book_id": "42000019638",
+   "tropes": [
+    "Strong Female Lead",
+    "Revenge"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "falling-for-my-ex-s-general-dad",
+   "our_title": "Falling For My Ex's General Dad",
+   "platform_title": "Falling For My Ex's General Dad",
+   "book_id": "42000011579",
+   "tropes": [
+    "Military",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "military",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "grain-of-eternity",
+   "our_title": "Grain of Eternity",
+   "platform_title": "Grain of Eternity",
+   "book_id": "42000019629",
+   "tropes": [
+    "Strong Female Lead",
+    "Sci-Fi"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "sci-fi"
+   ]
+  },
+  {
+   "title_id": "gunverse-rulebreak-protocol",
+   "our_title": "GUNVERSE: Rulebreak Protocol",
+   "platform_title": "Gunverse: Rulebreak Protocol",
+   "book_id": "42000012173",
+   "tropes": [
+    "Gamified World",
+    "Apocalypse"
+   ],
+   "slugs": [
+    "gamified-world",
+    "apocalypse"
+   ]
+  },
+  {
+   "title_id": "love-at-divorce",
+   "our_title": "Love At Divorce",
+   "platform_title": "Love At Divorce",
+   "book_id": "42000023505",
+   "tropes": [
+    "Second Chance",
+    "Revenge"
+   ],
+   "slugs": [
+    "second-chance",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "luna-reborn-alpha-s-second-chance",
+   "our_title": "Luna Reborn: Alpha's Second Chance",
+   "platform_title": "Luna Reborn: Alpha's Second Chance",
+   "book_id": "42000010436",
+   "tropes": [
+    "Second Chance",
+    "Revenge"
+   ],
+   "slugs": [
+    "second-chance",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "mafia-heiress-s-forbidden-obsession",
+   "our_title": "Mafia Heiress's Forbidden Obsession",
+   "platform_title": "Mafia Heiress's Forbidden Obsession",
+   "book_id": "42000012209",
+   "tropes": [
+    "Forbidden Love",
+    "Mafia"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "mafia"
+   ]
+  },
+  {
+   "title_id": "marry-vampire-king-after-rebirth",
+   "our_title": "Marry Vampire King After Rebirth",
+   "platform_title": "Marry Vampire King After Rebirth",
+   "book_id": "42000013258",
+   "tropes": [
+    "Strong Female Lead",
+    "Revenge"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "my-fated-mate-is-the-bloodline-key",
+   "our_title": "My Fated Mate is the Bloodline Key",
+   "platform_title": "My Fated Mate is the Bloodline Key",
+   "book_id": "42000009950",
+   "tropes": [
+    "Strong Female Lead",
+    "Werewolf"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "werewolf"
+   ]
+  },
+  {
+   "title_id": "my-father-is-thor",
+   "our_title": "My Father is Thor",
+   "platform_title": "My father is Thor",
+   "book_id": "42000019326",
+   "tropes": [
+    "Family Bonds",
+    "The Chosen One"
+   ],
+   "slugs": [
+    "family-bonds",
+    "the-chosen-one"
+   ]
+  },
+  {
+   "title_id": "my-forced-alpha-mate",
+   "our_title": "My Forced Alpha Mate",
+   "platform_title": "My Forced Alpha Mate",
+   "book_id": "42000012381",
+   "tropes": [
+    "Forced Love",
+    "Werewolf"
+   ],
+   "slugs": [
+    "forced-love",
+    "werewolf"
+   ]
+  },
+  {
+   "title_id": "new-life-new-mate",
+   "our_title": "New Life, New Mate",
+   "platform_title": "New Life, New Mate",
+   "book_id": "42000013259",
+   "tropes": [
+    "Strong Female Lead",
+    "The Chosen One"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "the-chosen-one"
+   ]
+  },
+  {
+   "title_id": "obsession-with-my-quarterback-step-brother",
+   "our_title": "Obsession with My Quarterback Step-brother",
+   "platform_title": "Obsession with My Quarterback Step-brother",
+   "book_id": "42000018234",
+   "tropes": [
+    "Forced Love",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "forced-love",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "queen-and-the-beast",
+   "our_title": "Queen and the Beast",
+   "platform_title": "Queen and The Beast",
+   "book_id": "42000012549",
+   "tropes": [
+    "Strong Female Lead"
+   ],
+   "slugs": [
+    "strong-female-lead"
+   ]
+  },
+  {
+   "title_id": "the-alpha-king-s-slave-bride",
+   "our_title": "The Alpha King's Slave Bride",
+   "platform_title": "The Alpha King’s Slave Bride",
+   "book_id": "42000019636",
+   "tropes": [
+    "Forced Love",
+    "Revenge"
+   ],
+   "slugs": [
+    "forced-love",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "the-alpha-s-possession",
+   "our_title": "The Alpha's Possession",
+   "platform_title": "The Alpha's Possession",
+   "book_id": "42000010173",
+   "tropes": [
+    "Runaway Bride",
+    "Secret Baby"
+   ],
+   "slugs": [
+    "runaway-bride",
+    "secret-baby"
+   ]
+  },
+  {
+   "title_id": "the-beautiful-ceo-comes-calling-with-her-daughter",
+   "our_title": "The Beautiful CEO Comes Calling with Her Daughter",
+   "platform_title": "The Beautiful CEO Comes Calling with Her Daughter",
+   "book_id": "42000017191",
+   "tropes": [
+    "Tough Guy",
+    "One Night Stand"
+   ],
+   "slugs": [
+    "tough-guy",
+    "one-night-stand"
+   ]
+  },
+  {
+   "title_id": "the-devil-dragon-s-substitute-bride",
+   "our_title": "The Devil Dragon's Substitute Bride",
+   "platform_title": "The Devil Dragon's Substitute Bride",
+   "book_id": "42000012519",
+   "tropes": [
+    "Love After Marriage",
+    "Forced Love"
+   ],
+   "slugs": [
+    "love-after-marriage",
+    "forced-love"
+   ]
+  },
+  {
+   "title_id": "the-magicless-heir-ruler-of-the-realm",
+   "our_title": "The Magicless Heir: Ruler of the Realm",
+   "platform_title": "The Magicless Heir Ruler of the Realm",
+   "book_id": "42000020027",
+   "tropes": [
+    "The Chosen One",
+    "Fantasy"
+   ],
+   "slugs": [
+    "the-chosen-one",
+    "fantasy"
+   ]
+  },
+  {
+   "title_id": "the-phantom-of-iris",
+   "our_title": "The Phantom of IRIS",
+   "platform_title": "The Phantom of IRIS",
+   "book_id": "42000010322",
+   "tropes": [
+    "Forced Love",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "forced-love",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "the-supreme-billionaire-ex-wife-s-regret",
+   "our_title": "The Supreme Billionaire Ex-Wife's Regret",
+   "platform_title": "The Supreme Billionaire Ex-Wife's Regret",
+   "book_id": "42000021402",
+   "tropes": [
+    "Billionaire",
+    "Revenge"
+   ],
+   "slugs": [
+    "billionaire",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "the-veteran-s-promise",
+   "our_title": "The Veteran's Promise",
+   "platform_title": "The Veteran's Promise",
+   "book_id": "42000020971",
+   "tropes": [
+    "Military",
+    "Family Bonds"
+   ],
+   "slugs": [
+    "military",
+    "family-bonds"
+   ]
+  },
+  {
+   "title_id": "the-weakest-man-is-secretly-the-strongest",
+   "our_title": "The Weakest Man Is Secretly The Strongest",
+   "platform_title": "The Weakest Man Is Secretly The Strongest",
+   "book_id": "42000012867",
+   "tropes": [
+    "A Nobody",
+    "The Chosen One"
+   ],
+   "slugs": [
+    "a-nobody",
+    "the-chosen-one"
+   ]
+  },
+  {
+   "title_id": "too-late-to-miss-me",
+   "our_title": "Too Late to Miss Me",
+   "platform_title": "Too Late to Miss Me",
+   "book_id": "42000023514",
+   "tropes": [
+    "Comeback Story"
+   ],
+   "slugs": [
+    "comeback-story"
+   ]
+  },
+  {
+   "title_id": "toxic-love-with-my-vampire-fiance-s-father",
+   "our_title": "Toxic Love with My Vampire Fiance's Father",
+   "platform_title": "Toxic Love with My Vampire Fiance's Father",
+   "book_id": "42000014636",
+   "tropes": [
+    "Forced Love",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "forced-love",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "viking-dragon-queen",
+   "our_title": "Viking Dragon Queen",
+   "platform_title": "Viking Dragon Queen",
+   "book_id": "42000020140",
+   "tropes": [
+    "Strong Female Lead",
+    "Underdog Story"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "underdog-story"
+   ]
+  },
+  {
+   "title_id": "whoever-zeus-daughter-weds-shall-be-the-king-of-hades",
+   "our_title": "Whoever Zeus' daughter weds shall be the King of Hades",
+   "platform_title": "Whoever Zeus’ daughter weds shall be the King of Hades",
+   "book_id": "42000019325",
+   "tropes": [
+    "Forbidden Love",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "dr-k",
+   "our_title": "Dr.K",
+   "platform_title": "Dr.K",
+   "book_id": "42000009845",
+   "tropes": [
+    "Family Bonds",
+    "Doctor"
+   ],
+   "slugs": [
+    "family-bonds",
+    "doctor"
+   ]
+  },
+  {
+   "title_id": "my-wife-replaced-me-with-an-ai-lover",
+   "our_title": "My Wife Replaced Me With An AI Lover",
+   "platform_title": "My Wife Replaced Me With An AI Lover",
+   "book_id": "42000021438",
+   "tropes": [
+    "Billionaire",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "billionaire",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "my-wife-replaced-me-with-an-ai-lover-netshort",
+   "our_title": "My Wife Replaced Me With An AI Lover",
+   "platform_title": "My Wife Replaced Me With An AI Lover",
+   "book_id": "42000021438",
+   "tropes": [
+    "Billionaire",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "billionaire",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "seduced-by-my-boyfriend-s-uncle",
+   "our_title": "Seduced By My Boyfriend's Uncle",
+   "platform_title": "Seduced by my boyfriend's uncle",
+   "book_id": "42000021309",
+   "tropes": [
+    "Forbidden Love",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "the-boy-without-destiny",
+   "our_title": "The Boy Without Destiny",
+   "platform_title": "The Boy Without Destiny",
+   "book_id": "42000021308",
+   "tropes": [
+    "Redemption",
+    "The Chosen One"
+   ],
+   "slugs": [
+    "redemption",
+    "the-chosen-one"
+   ]
+  },
+  {
+   "title_id": "the-soccer-king-my-ai-powered-eye",
+   "our_title": "The Soccer King: My AI-Powered Eye",
+   "platform_title": "The Soccer King: My AI-Powered Eye",
+   "book_id": "42000021190",
+   "tropes": [
+    "Gamified World"
+   ],
+   "slugs": [
+    "gamified-world"
+   ]
+  },
+  {
+   "title_id": "claimed-by-fire-and-claw",
+   "our_title": "Claimed by Fire and Claw",
+   "platform_title": "Claimed by Fire and Claw",
+   "book_id": "42000021183",
+   "tropes": [
+    "Forced Love",
+    "Redemption"
+   ],
+   "slugs": [
+    "forced-love",
+    "redemption"
+   ]
+  },
+  {
+   "title_id": "chained-to-my-rival",
+   "our_title": "Chained to My Rival",
+   "platform_title": "Chained to My Rival",
+   "book_id": "42000020418",
+   "tropes": [
+    "Forbidden Love",
+    "Counterattack"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "counterattack"
+   ]
+  },
+  {
+   "title_id": "the-curse-of-the-midas-touch",
+   "our_title": "The Curse of the Midas Touch",
+   "platform_title": "The Curse of the Midas Touch",
+   "book_id": "42000020722",
+   "tropes": [
+    "Strong Female Lead",
+    "Revenge"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "return-of-the-king",
+   "our_title": "Return of the King",
+   "platform_title": "Return of the King",
+   "book_id": "42000020326",
+   "tropes": [
+    "A Nobody"
+   ],
+   "slugs": [
+    "a-nobody"
+   ]
+  },
+  {
+   "title_id": "the-supreme-billionaire-ex-wife-s-regret-netshort",
+   "our_title": "The Supreme Billionaire Ex-Wife's Regret",
+   "platform_title": "The Supreme Billionaire Ex-Wife's Regret",
+   "book_id": "42000021402",
+   "tropes": [
+    "Billionaire",
+    "Revenge"
+   ],
+   "slugs": [
+    "billionaire",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "after-the-divorce-the-mafia-boss-went-crazy",
+   "our_title": "After the Divorce, the Mafia Boss Went crazy",
+   "platform_title": "After the Divorce, the Mafia Boss Went crazy",
+   "book_id": "42000020985",
+   "tropes": [
+    "Second Chance",
+    "Single Mom"
+   ],
+   "slugs": [
+    "second-chance",
+    "single-mom"
+   ]
+  },
+  {
+   "title_id": "claimed-by-my-ex-s-alpha-father",
+   "our_title": "Claimed by My Ex's Alpha Father",
+   "platform_title": "Claimed by My Ex's Alpha Father",
+   "book_id": "42000021310",
+   "tropes": [
+    "Revenge",
+    "Werewolf"
+   ],
+   "slugs": [
+    "revenge",
+    "werewolf"
+   ]
+  },
+  {
+   "title_id": "go-ahead-my-bestie",
+   "our_title": "Go ahead, my bestie",
+   "platform_title": "Go ahead, my bestie",
+   "book_id": "42000021501",
+   "tropes": [
+    "Billionaire",
+    "Family Intrigue"
+   ],
+   "slugs": [
+    "billionaire",
+    "family-intrigue"
+   ]
+  },
+  {
+   "title_id": "my-three-brothers-chose-her",
+   "our_title": "My Three Brothers Chose Her",
+   "platform_title": "My Three Brothers Chose Her",
+   "book_id": "42000020881",
+   "tropes": [
+    "Strong Female Lead",
+    "Revenge"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "my-dead-uncle-left-me-500m-and-7-nights-to-live",
+   "our_title": "My Dead Uncle Left Me £500M and 7 Nights to Live",
+   "platform_title": "My Dead Uncle Left Me £500M and 7 Nights to Live",
+   "book_id": "42000023294",
+   "tropes": [
+    "Level-Up",
+    "A Nobody"
+   ],
+   "slugs": [
+    "level-up",
+    "a-nobody"
+   ]
+  },
+  {
+   "title_id": "after-a-one-night-stand-i-was-targeted-by-my-boss",
+   "our_title": "After a one-night stand, I was targeted by my boss",
+   "platform_title": "After a one-night stand, I was targeted by my boss",
+   "book_id": "42000012606",
+   "tropes": [
+    "Lawyer",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "lawyer",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "billionaire-completes-my-bucket-list-pinedrama",
+   "our_title": "Billionaire Completes My Bucket List",
+   "platform_title": "Billionaire Completes My Bucket List",
+   "book_id": "42000009740",
+   "tropes": [
+    "Strong Female Lead",
+    "Billionaire"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "billionaire"
+   ]
+  },
+  {
+   "title_id": "campaigning-for-love-pinedrama",
+   "our_title": "Campaigning For Love",
+   "platform_title": "Campaigning For Love",
+   "book_id": "42000011750",
+   "tropes": [
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "champion-she-is-not-the-one",
+   "our_title": "Champion, She is Not the One",
+   "platform_title": "Champion, She is Not the One",
+   "book_id": "42000011753",
+   "tropes": [
+    "Hidden Identity",
+    "Love Triangle"
+   ],
+   "slugs": [
+    "hidden-identity",
+    "love-triangle"
+   ]
+  },
+  {
+   "title_id": "cherished-by-my-sweet-zaddy",
+   "our_title": "Cherished by My Sweet Zaddy",
+   "platform_title": "Cherished by My Sweet Zaddy",
+   "book_id": "42000017130",
+   "tropes": [
+    "Billionaire",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "billionaire",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "claiming-his-angel-in-white",
+   "our_title": "Claiming His Angel in White",
+   "platform_title": "Claiming His Angel in White",
+   "book_id": "42000017035",
+   "tropes": [
+    "Forced Love",
+    "Mafia"
+   ],
+   "slugs": [
+    "forced-love",
+    "mafia"
+   ]
+  },
+  {
+   "title_id": "cohabitating-lover",
+   "our_title": "Cohabitating Lover",
+   "platform_title": "Cohabitating Lover",
+   "book_id": "42000012533",
+   "tropes": [
+    "Runaway Bride"
+   ],
+   "slugs": [
+    "runaway-bride"
+   ]
+  },
+  {
+   "title_id": "divorced-queen-returns-to-the-stage-pinedrama",
+   "our_title": "Divorced Queen Returns to The Stage",
+   "platform_title": "Divorced Queen Returns to The Stage",
+   "book_id": "42000011761",
+   "tropes": [
+    "Comeback Story",
+    "Strong Female Lead"
+   ],
+   "slugs": [
+    "comeback-story",
+    "strong-female-lead"
+   ]
+  },
+  {
+   "title_id": "don-t-mess-with-supermom-pinedrama",
+   "our_title": "Don't Mess with Supermom",
+   "platform_title": "Don't Mess With Super Mom",
+   "book_id": "42000009594",
+   "tropes": [
+    "Strong Female Lead",
+    "Revenge"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "escape-with-boss-s-baby",
+   "our_title": "Escape With Boss's Baby",
+   "platform_title": "Escape with Boss's Baby",
+   "book_id": "42000011265",
+   "tropes": [
+    "Love After Marriage",
+    "Billionaire"
+   ],
+   "slugs": [
+    "love-after-marriage",
+    "billionaire"
+   ]
+  },
+  {
+   "title_id": "falling-for-her-bodyguard",
+   "our_title": "Falling For Her Bodyguard",
+   "platform_title": "Falling For Her Bodyguard",
+   "book_id": "42000011746",
+   "tropes": [
+    "Second Chance",
+    "Revenge"
+   ],
+   "slugs": [
+    "second-chance",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "falling-for-my-ex-s-general-dad-pinedrama",
+   "our_title": "Falling For My Ex's General Dad",
+   "platform_title": "Falling For My Ex's General Dad",
+   "book_id": "42000011579",
+   "tropes": [
+    "Military",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "military",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "falling-for-a-superstar-2",
+   "our_title": "Falling for a Superstar 2",
+   "platform_title": "Falling for a SUPERSTAR 2",
+   "book_id": "42000018915",
+   "tropes": [
+    "Love After Marriage",
+    "Revenge"
+   ],
+   "slugs": [
+    "love-after-marriage",
+    "revenge"
+   ]
+  },
+  {
+   "title_id": "faking-it-with-the-hockey-captain",
+   "our_title": "Faking It with the Hockey Captain",
+   "platform_title": "Faking It with the Hockey Captain",
+   "book_id": "42000010167",
+   "tropes": [
+    "Student"
+   ],
+   "slugs": [
+    "student"
+   ]
+  },
+  {
+   "title_id": "bound-by-a-devil",
+   "our_title": "Bound by a Devil",
+   "platform_title": "Bound by a Devil",
+   "book_id": "42000014568",
+   "tropes": [
+    "Revenge",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "revenge",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "alpha-she-wasnt-the-one",
+   "our_title": "Alpha, She Wasn't the One",
+   "platform_title": "Alpha, She Wasn't the One",
+   "book_id": "42000012546",
+   "tropes": [
+    "Second Chance",
+    "Billionaire"
+   ],
+   "slugs": [
+    "second-chance",
+    "billionaire"
+   ]
+  },
+  {
+   "title_id": "surrender-to-my-dominant-doctor",
+   "our_title": "Surrender to My Dominant Doctor",
+   "platform_title": "Surrender to My Dominant Doctor",
+   "book_id": "42000012504",
+   "tropes": [
+    "Billionaire",
+    "Forced Love"
+   ],
+   "slugs": [
+    "billionaire",
+    "forced-love"
+   ]
+  },
+  {
+   "title_id": "my-secret-agent-husband",
+   "our_title": "My Secret Agent Husband",
+   "platform_title": "My Secret Agent Husband",
+   "book_id": "42000010536",
+   "tropes": [
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "7-days-to-erase-you-from-my-heart",
+   "our_title": "7 Days to Erase You from My Heart",
+   "platform_title": "7 Days to Erase You from My Heart",
+   "book_id": "42000011766",
+   "tropes": [
+    "Second Chance"
+   ],
+   "slugs": [
+    "second-chance"
+   ]
+  },
+  {
+   "title_id": "falling-for-my-bestie-s-dad",
+   "our_title": "Falling for My Bestie's Dad",
+   "platform_title": "Falling For My Bestie’s Dad",
+   "book_id": "42000017554",
+   "tropes": [
+    "Love After Marriage",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "love-after-marriage",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "7-steamy-days-with-a-gangster",
+   "our_title": "7 Steamy Days with a Gangster",
+   "platform_title": "7 Steamy Days with a Gangster",
+   "book_id": "42000011757",
+   "tropes": [
+    "Forbidden Love",
+    "Mafia"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "mafia"
+   ]
+  },
+  {
+   "title_id": "cinderella-s-royal-secret",
+   "our_title": "Cinderella's Royal Secret",
+   "platform_title": "Cinderella’s Royal Secret",
+   "book_id": "42000016925",
+   "tropes": [
+    "Romance"
+   ],
+   "slugs": [
+    "romance"
+   ]
+  },
+  {
+   "title_id": "kissing-the-ruthless-tycoon",
+   "our_title": "Kissing the Ruthless Tycoon",
+   "platform_title": "Kissing the Ruthless Tycoon",
+   "book_id": "42000010627",
+   "tropes": [
+    "Second Chance",
+    "Love After Marriage"
+   ],
+   "slugs": [
+    "second-chance",
+    "love-after-marriage"
+   ]
+  },
+  {
+   "title_id": "his-love-was-a-lie",
+   "our_title": "His Love Was A Lie",
+   "platform_title": "His Love Was A Lie",
+   "book_id": "42000017733",
+   "tropes": [
+    "Step-Siblings",
+    "Love After Marriage"
+   ],
+   "slugs": [
+    "step-siblings",
+    "love-after-marriage"
+   ]
+  },
+  {
+   "title_id": "torn-between-my-stepbrothers",
+   "our_title": "Torn Between My Stepbrothers",
+   "platform_title": "Torn Between My Stepbrothers",
+   "book_id": "42000012113",
+   "tropes": [
+    "Step-Siblings",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "step-siblings",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "the-equestrian-star-s-cinderella-bride",
+   "our_title": "The Equestrian Star's Cinderella Bride",
+   "platform_title": "The Equestrian Star's Cinderella Bride",
+   "book_id": "42000017183",
+   "tropes": [
+    "Family Bonds",
+    "Love After Marriage"
+   ],
+   "slugs": [
+    "family-bonds",
+    "love-after-marriage"
+   ]
+  },
+  {
+   "title_id": "the-taming-game",
+   "our_title": "The Taming Game",
+   "platform_title": "The Taming Game",
+   "book_id": "42000017075",
+   "tropes": [
+    "Family Bonds",
+    "Billionaire"
+   ],
+   "slugs": [
+    "family-bonds",
+    "billionaire"
+   ]
+  },
+  {
+   "title_id": "mafia-housewife",
+   "our_title": "Mafia Housewife",
+   "platform_title": "Mafia Housewife",
+   "book_id": "42000016414",
+   "tropes": [
+    "Comeback Story",
+    "Strong Female Lead"
+   ],
+   "slugs": [
+    "comeback-story",
+    "strong-female-lead"
+   ]
+  },
+  {
+   "title_id": "my-coldblooded-alpha-king",
+   "our_title": "My Coldblooded Alpha King",
+   "platform_title": "My Cold Blooded Alpha King",
+   "book_id": "42000012531",
+   "tropes": [
+    "Werewolf",
+    "Destined Love"
+   ],
+   "slugs": [
+    "werewolf",
+    "destined-love"
+   ]
+  },
+  {
+   "title_id": "wait-our-great-grandma-is-18-years-old",
+   "our_title": "Wait Our Great Grandma is 18 Years Old?",
+   "platform_title": "Wait! Our Great-Grandma is 18 Years Old?",
+   "book_id": "42000009996",
+   "tropes": [
+    "Family Bonds",
+    "Strong Female Lead"
+   ],
+   "slugs": [
+    "family-bonds",
+    "strong-female-lead"
+   ]
+  },
+  {
+   "title_id": "making-of-an-heiress",
+   "our_title": "Making of an Heiress",
+   "platform_title": "Making of An Heiress",
+   "book_id": "42000017043",
+   "tropes": [
+    "Billionaire",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "billionaire",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "craving-my-brother-s-best-friend",
+   "our_title": "Craving My Brother's Best Friend",
+   "platform_title": "Craving My Brother's Best Friend",
+   "book_id": "42000008774",
+   "tropes": [
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "keeping-secrets-with-the-rowing-captain",
+   "our_title": "Keeping Secrets with the Rowing Captain",
+   "platform_title": "Keeping Secrets with the Rowing Captain",
+   "book_id": "42000019058",
+   "tropes": [
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "revenge-puck",
+   "our_title": "Revenge Puck",
+   "platform_title": "Revenge Puck",
+   "book_id": "42000013483",
+   "tropes": [
+    "Revenge",
+    "Contract Lover"
+   ],
+   "slugs": [
+    "revenge",
+    "contract-lover"
+   ]
+  },
+  {
+   "title_id": "it-was-always-you",
+   "our_title": "It Was Always You",
+   "platform_title": "It Was Always You",
+   "book_id": "42000021162",
+   "tropes": [
+    "Second Chance",
+    "Family Bonds"
+   ],
+   "slugs": [
+    "second-chance",
+    "family-bonds"
+   ]
+  },
+  {
+   "title_id": "bucked-by-my-father-s-cowboy",
+   "our_title": "Bucked by My Father's Cowboy",
+   "platform_title": "Bucked by My Father's Cowboy",
+   "book_id": "42000014005",
+   "tropes": [
+    "Forbidden Love",
+    "Cowboy"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "cowboy"
+   ]
+  },
+  {
+   "title_id": "cause-you-were-never-mine",
+   "our_title": "Cause You Were Never Mine",
+   "platform_title": "Cause You Were Never Mine",
+   "book_id": "42000012972",
+   "tropes": [
+    "Second Chance",
+    "Comeback Story"
+   ],
+   "slugs": [
+    "second-chance",
+    "comeback-story"
+   ]
+  },
+  {
+   "title_id": "doormat-no-more-toxic-ex-lick-my-feet",
+   "our_title": "Doormat No More: Toxic Ex Lick My Feet",
+   "platform_title": "Doormat No More: Toxic Ex Lick My Feet",
+   "book_id": "42000010898",
+   "tropes": [
+    "Comeback Story",
+    "Strong Female Lead"
+   ],
+   "slugs": [
+    "comeback-story",
+    "strong-female-lead"
+   ]
+  },
+  {
+   "title_id": "i-wish-it-were-you",
+   "our_title": "I Wish It Were You",
+   "platform_title": "I Wish It Were You",
+   "book_id": "42000012214",
+   "tropes": [
+    "Destined Love"
+   ],
+   "slugs": [
+    "destined-love"
+   ]
+  },
+  {
+   "title_id": "love-the-way-you-lie",
+   "our_title": "Love the Way You Lie",
+   "platform_title": "Love The Way You Lie",
+   "book_id": "42000010899",
+   "tropes": [
+    "Strong Female Lead",
+    "Love After Marriage"
+   ],
+   "slugs": [
+    "strong-female-lead",
+    "love-after-marriage"
+   ]
+  },
+  {
+   "title_id": "no-mercy-from-my-cowboy-daddy",
+   "our_title": "No Mercy from My Cowboy Daddy",
+   "platform_title": "No Mercy From My Cowboy Daddy",
+   "book_id": "42000017124",
+   "tropes": [
+    "Forbidden Love",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "forbidden-love",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "pregnant-by-my-professor-chased-by-his-son",
+   "our_title": "Pregnant by My Professor, Chased by His Son",
+   "platform_title": "Pregnant by My Professor, Chased by His Son",
+   "book_id": "42000011904",
+   "tropes": [
+    "Love After Marriage",
+    "Forbidden Love"
+   ],
+   "slugs": [
+    "love-after-marriage",
+    "forbidden-love"
+   ]
+  },
+  {
+   "title_id": "return-of-the-gold-king",
+   "our_title": "Return of the Gold King",
+   "platform_title": "Return Of The Gold King",
+   "book_id": "42000009539",
+   "tropes": [
+    "Revenge",
+    "Hidden Identity"
+   ],
+   "slugs": [
+    "revenge",
+    "hidden-identity"
+   ]
+  },
+  {
+   "title_id": "still-you-always-you",
+   "our_title": "Still You Always You",
+   "platform_title": "Still You Always You",
+   "book_id": "42000017739",
+   "tropes": [
+    "Second Chance",
+    "Strong Female Lead"
+   ],
+   "slugs": [
+    "second-chance",
+    "strong-female-lead"
+   ]
+  }
+ ],
+ "ambiguous_needs_ruling": [
+  {
+   "title_id": "divorced-at-the-wedding-day",
+   "our_title": "Divorced at the Wedding Day",
+   "reason": "name maps to several bookIds",
+   "candidates": {
+    "42000013146": "Divorced at the Wedding Day",
+    "42000012336": "Divorced at the Wedding Day",
+    "42000010362": "Divorced At the Wedding Day"
+   }
+  }
+ ],
+ "bookids_claimed_by_two_of_our_titles": [
+  "42000011750",
+  "42000009740",
+  "42000009594",
+  "42000011761",
+  "42000011579",
+  "42000021402",
+  "42000021438"
+ ],
+ "catalogue_match_but_no_dramabox_row": [
+  {
+   "title_id": "pregnant-with-my-infertile-alpha-king",
+   "our_title": "Pregnant with My Infertile Alpha King",
+   "platform_title": "Pregnant With My Infertile Alpha King",
+   "book_id": "42000009619",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "campaigning-for-love",
+   "our_title": "Campaigning For Love",
+   "platform_title": "Campaigning For Love",
+   "book_id": "42000011750",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "married-a-gardener-got-a-prince",
+   "our_title": "Married a Gardener, Got a Prince",
+   "platform_title": "Married a Gardener, Got a Prince",
+   "book_id": "42000011759",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "billionaire-completes-my-bucket-list",
+   "our_title": "Billionaire Completes My Bucket List",
+   "platform_title": "Billionaire Completes My Bucket List",
+   "book_id": "42000009740",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "one-night-or-forever",
+   "our_title": "One Night or Forever",
+   "platform_title": "One Night or Forever",
+   "book_id": "42000020125",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "in-love-with-my-bestie-s-son",
+   "our_title": "In Love With My Bestie's Son",
+   "platform_title": "In Love With My Bestie's Son",
+   "book_id": "42000005321",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "golden-feather-temptation-game",
+   "our_title": "Golden Feather: Temptation Game",
+   "platform_title": "Golden Feather: Temptation Game",
+   "book_id": "42000011755",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "too-late-for-love-15-days-after-miscarriage",
+   "our_title": "Too Late for Love: 15 Days After Miscarriage",
+   "platform_title": "Too Late for Love: 15 Days After Miscarriage",
+   "book_id": "42000012605",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "hold-me-in-the-dark",
+   "our_title": "Hold Me in the Dark",
+   "platform_title": "Hold Me In the Dark",
+   "book_id": "42000011580",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "don-t-mess-with-supermom",
+   "our_title": "Don't Mess with Supermom",
+   "platform_title": "Don't Mess With Super Mom",
+   "book_id": "42000009594",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "irresistible-love-with-my-brother-in-law",
+   "our_title": "Irresistible love with my brother in law",
+   "platform_title": "Irresistible love with my brother in law",
+   "book_id": "42000011754",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "secret-love-with-my-billionaire-revenge-partner",
+   "our_title": "Secret Love With My Billionaire Revenge Partner",
+   "platform_title": "Secret Love With My Billionaire Revenge Partner",
+   "book_id": "42000011768",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "wildfire-between-us",
+   "our_title": "Wildfire Between Us",
+   "platform_title": "Wildfire Between Us",
+   "book_id": "42000011762",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "divorced-queen-returns-to-the-stage",
+   "our_title": "Divorced Queen Returns to The Stage",
+   "platform_title": "Divorced Queen Returns to The Stage",
+   "book_id": "42000011761",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-mvp-s-plus-size-love",
+   "our_title": "The MVP's Plus Size Love",
+   "platform_title": "The MVP's Plus Size Love",
+   "book_id": "42000011760",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "heiress-hidden-in-the-clouds",
+   "our_title": "Heiress Hidden In The Clouds",
+   "platform_title": "Heiress Hidden In The Clouds",
+   "book_id": "42000011748",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "lady-ceo-s-fatal-contract",
+   "our_title": "Lady CEO's Fatal Contract",
+   "platform_title": "Lady CEO's Fatal Contract",
+   "book_id": "42000010158",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "enemies-with-benefits",
+   "our_title": "Enemies With Benefits",
+   "platform_title": "Enemies With Benefits",
+   "book_id": "42000022630",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "alpha-s-betrayal-my-revenge",
+   "our_title": "Alpha's Betrayal, My Revenge",
+   "platform_title": "Alpha's Betrayal,My Revenge",
+   "book_id": "42000023093",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "bloodbath-on-the-cruise-ship",
+   "our_title": "Billionaires' Death Game: The Cruise Ship Arena",
+   "platform_title": "Billionaires' Death Game: The Cruise Ship Arena",
+   "book_id": "42000010447",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "caught-in-the-devil-s-love-trap",
+   "our_title": "Caught in the Devil's Love Trap",
+   "platform_title": "Caught In The Devil's Love Trap",
+   "book_id": "42000010439",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "claimed-by-the-tentacle-king",
+   "our_title": "Claimed by the Tentacle King",
+   "platform_title": "Claimed by the Tentacle King",
+   "book_id": "42000020111",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "don-t-mess-with-her-the-thunder-goddess-returns",
+   "our_title": "Don't Mess with Her! The Thunder Goddess Returns!",
+   "platform_title": "Don’t Mess with Her! The Thunder Goddess Returns!",
+   "book_id": "42000019638",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "falling-for-my-ex-s-general-dad",
+   "our_title": "Falling For My Ex's General Dad",
+   "platform_title": "Falling For My Ex's General Dad",
+   "book_id": "42000011579",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "grain-of-eternity",
+   "our_title": "Grain of Eternity",
+   "platform_title": "Grain of Eternity",
+   "book_id": "42000019629",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "gunverse-rulebreak-protocol",
+   "our_title": "GUNVERSE: Rulebreak Protocol",
+   "platform_title": "Gunverse: Rulebreak Protocol",
+   "book_id": "42000012173",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "love-at-divorce",
+   "our_title": "Love At Divorce",
+   "platform_title": "Love At Divorce",
+   "book_id": "42000023505",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "luna-reborn-alpha-s-second-chance",
+   "our_title": "Luna Reborn: Alpha's Second Chance",
+   "platform_title": "Luna Reborn: Alpha's Second Chance",
+   "book_id": "42000010436",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "mafia-heiress-s-forbidden-obsession",
+   "our_title": "Mafia Heiress's Forbidden Obsession",
+   "platform_title": "Mafia Heiress's Forbidden Obsession",
+   "book_id": "42000012209",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "marry-vampire-king-after-rebirth",
+   "our_title": "Marry Vampire King After Rebirth",
+   "platform_title": "Marry Vampire King After Rebirth",
+   "book_id": "42000013258",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "my-fated-mate-is-the-bloodline-key",
+   "our_title": "My Fated Mate is the Bloodline Key",
+   "platform_title": "My Fated Mate is the Bloodline Key",
+   "book_id": "42000009950",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "my-father-is-thor",
+   "our_title": "My Father is Thor",
+   "platform_title": "My father is Thor",
+   "book_id": "42000019326",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "my-forced-alpha-mate",
+   "our_title": "My Forced Alpha Mate",
+   "platform_title": "My Forced Alpha Mate",
+   "book_id": "42000012381",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "new-life-new-mate",
+   "our_title": "New Life, New Mate",
+   "platform_title": "New Life, New Mate",
+   "book_id": "42000013259",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "obsession-with-my-quarterback-step-brother",
+   "our_title": "Obsession with My Quarterback Step-brother",
+   "platform_title": "Obsession with My Quarterback Step-brother",
+   "book_id": "42000018234",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "queen-and-the-beast",
+   "our_title": "Queen and the Beast",
+   "platform_title": "Queen and The Beast",
+   "book_id": "42000012549",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-alpha-king-s-slave-bride",
+   "our_title": "The Alpha King's Slave Bride",
+   "platform_title": "The Alpha King’s Slave Bride",
+   "book_id": "42000019636",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-alpha-s-possession",
+   "our_title": "The Alpha's Possession",
+   "platform_title": "The Alpha's Possession",
+   "book_id": "42000010173",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-beautiful-ceo-comes-calling-with-her-daughter",
+   "our_title": "The Beautiful CEO Comes Calling with Her Daughter",
+   "platform_title": "The Beautiful CEO Comes Calling with Her Daughter",
+   "book_id": "42000017191",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-devil-dragon-s-substitute-bride",
+   "our_title": "The Devil Dragon's Substitute Bride",
+   "platform_title": "The Devil Dragon's Substitute Bride",
+   "book_id": "42000012519",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-magicless-heir-ruler-of-the-realm",
+   "our_title": "The Magicless Heir: Ruler of the Realm",
+   "platform_title": "The Magicless Heir Ruler of the Realm",
+   "book_id": "42000020027",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-phantom-of-iris",
+   "our_title": "The Phantom of IRIS",
+   "platform_title": "The Phantom of IRIS",
+   "book_id": "42000010322",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-supreme-billionaire-ex-wife-s-regret",
+   "our_title": "The Supreme Billionaire Ex-Wife's Regret",
+   "platform_title": "The Supreme Billionaire Ex-Wife's Regret",
+   "book_id": "42000021402",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-veteran-s-promise",
+   "our_title": "The Veteran's Promise",
+   "platform_title": "The Veteran's Promise",
+   "book_id": "42000020971",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-weakest-man-is-secretly-the-strongest",
+   "our_title": "The Weakest Man Is Secretly The Strongest",
+   "platform_title": "The Weakest Man Is Secretly The Strongest",
+   "book_id": "42000012867",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "too-late-to-miss-me",
+   "our_title": "Too Late to Miss Me",
+   "platform_title": "Too Late to Miss Me",
+   "book_id": "42000023514",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "toxic-love-with-my-vampire-fiance-s-father",
+   "our_title": "Toxic Love with My Vampire Fiance's Father",
+   "platform_title": "Toxic Love with My Vampire Fiance's Father",
+   "book_id": "42000014636",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "viking-dragon-queen",
+   "our_title": "Viking Dragon Queen",
+   "platform_title": "Viking Dragon Queen",
+   "book_id": "42000020140",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "whoever-zeus-daughter-weds-shall-be-the-king-of-hades",
+   "our_title": "Whoever Zeus' daughter weds shall be the King of Hades",
+   "platform_title": "Whoever Zeus’ daughter weds shall be the King of Hades",
+   "book_id": "42000019325",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "dr-k",
+   "our_title": "Dr.K",
+   "platform_title": "Dr.K",
+   "book_id": "42000009845",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "my-wife-replaced-me-with-an-ai-lover",
+   "our_title": "My Wife Replaced Me With An AI Lover",
+   "platform_title": "My Wife Replaced Me With An AI Lover",
+   "book_id": "42000021438",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "my-wife-replaced-me-with-an-ai-lover-netshort",
+   "our_title": "My Wife Replaced Me With An AI Lover",
+   "platform_title": "My Wife Replaced Me With An AI Lover",
+   "book_id": "42000021438",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "seduced-by-my-boyfriend-s-uncle",
+   "our_title": "Seduced By My Boyfriend's Uncle",
+   "platform_title": "Seduced by my boyfriend's uncle",
+   "book_id": "42000021309",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-boy-without-destiny",
+   "our_title": "The Boy Without Destiny",
+   "platform_title": "The Boy Without Destiny",
+   "book_id": "42000021308",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-soccer-king-my-ai-powered-eye",
+   "our_title": "The Soccer King: My AI-Powered Eye",
+   "platform_title": "The Soccer King: My AI-Powered Eye",
+   "book_id": "42000021190",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "claimed-by-fire-and-claw",
+   "our_title": "Claimed by Fire and Claw",
+   "platform_title": "Claimed by Fire and Claw",
+   "book_id": "42000021183",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "chained-to-my-rival",
+   "our_title": "Chained to My Rival",
+   "platform_title": "Chained to My Rival",
+   "book_id": "42000020418",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-curse-of-the-midas-touch",
+   "our_title": "The Curse of the Midas Touch",
+   "platform_title": "The Curse of the Midas Touch",
+   "book_id": "42000020722",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "return-of-the-king",
+   "our_title": "Return of the King",
+   "platform_title": "Return of the King",
+   "book_id": "42000020326",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-supreme-billionaire-ex-wife-s-regret-netshort",
+   "our_title": "The Supreme Billionaire Ex-Wife's Regret",
+   "platform_title": "The Supreme Billionaire Ex-Wife's Regret",
+   "book_id": "42000021402",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "after-the-divorce-the-mafia-boss-went-crazy",
+   "our_title": "After the Divorce, the Mafia Boss Went crazy",
+   "platform_title": "After the Divorce, the Mafia Boss Went crazy",
+   "book_id": "42000020985",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "claimed-by-my-ex-s-alpha-father",
+   "our_title": "Claimed by My Ex's Alpha Father",
+   "platform_title": "Claimed by My Ex's Alpha Father",
+   "book_id": "42000021310",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "go-ahead-my-bestie",
+   "our_title": "Go ahead, my bestie",
+   "platform_title": "Go ahead, my bestie",
+   "book_id": "42000021501",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "my-three-brothers-chose-her",
+   "our_title": "My Three Brothers Chose Her",
+   "platform_title": "My Three Brothers Chose Her",
+   "book_id": "42000020881",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "my-dead-uncle-left-me-500m-and-7-nights-to-live",
+   "our_title": "My Dead Uncle Left Me £500M and 7 Nights to Live",
+   "platform_title": "My Dead Uncle Left Me £500M and 7 Nights to Live",
+   "book_id": "42000023294",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "after-a-one-night-stand-i-was-targeted-by-my-boss",
+   "our_title": "After a one-night stand, I was targeted by my boss",
+   "platform_title": "After a one-night stand, I was targeted by my boss",
+   "book_id": "42000012606",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "billionaire-completes-my-bucket-list-pinedrama",
+   "our_title": "Billionaire Completes My Bucket List",
+   "platform_title": "Billionaire Completes My Bucket List",
+   "book_id": "42000009740",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "campaigning-for-love-pinedrama",
+   "our_title": "Campaigning For Love",
+   "platform_title": "Campaigning For Love",
+   "book_id": "42000011750",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "champion-she-is-not-the-one",
+   "our_title": "Champion, She is Not the One",
+   "platform_title": "Champion, She is Not the One",
+   "book_id": "42000011753",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "cherished-by-my-sweet-zaddy",
+   "our_title": "Cherished by My Sweet Zaddy",
+   "platform_title": "Cherished by My Sweet Zaddy",
+   "book_id": "42000017130",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "claiming-his-angel-in-white",
+   "our_title": "Claiming His Angel in White",
+   "platform_title": "Claiming His Angel in White",
+   "book_id": "42000017035",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "cohabitating-lover",
+   "our_title": "Cohabitating Lover",
+   "platform_title": "Cohabitating Lover",
+   "book_id": "42000012533",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "divorced-queen-returns-to-the-stage-pinedrama",
+   "our_title": "Divorced Queen Returns to The Stage",
+   "platform_title": "Divorced Queen Returns to The Stage",
+   "book_id": "42000011761",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "don-t-mess-with-supermom-pinedrama",
+   "our_title": "Don't Mess with Supermom",
+   "platform_title": "Don't Mess With Super Mom",
+   "book_id": "42000009594",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "escape-with-boss-s-baby",
+   "our_title": "Escape With Boss's Baby",
+   "platform_title": "Escape with Boss's Baby",
+   "book_id": "42000011265",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "falling-for-her-bodyguard",
+   "our_title": "Falling For Her Bodyguard",
+   "platform_title": "Falling For Her Bodyguard",
+   "book_id": "42000011746",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "falling-for-my-ex-s-general-dad-pinedrama",
+   "our_title": "Falling For My Ex's General Dad",
+   "platform_title": "Falling For My Ex's General Dad",
+   "book_id": "42000011579",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "falling-for-a-superstar-2",
+   "our_title": "Falling for a Superstar 2",
+   "platform_title": "Falling for a SUPERSTAR 2",
+   "book_id": "42000018915",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "alpha-she-wasnt-the-one",
+   "our_title": "Alpha, She Wasn't the One",
+   "platform_title": "Alpha, She Wasn't the One",
+   "book_id": "42000012546",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "surrender-to-my-dominant-doctor",
+   "our_title": "Surrender to My Dominant Doctor",
+   "platform_title": "Surrender to My Dominant Doctor",
+   "book_id": "42000012504",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "my-secret-agent-husband",
+   "our_title": "My Secret Agent Husband",
+   "platform_title": "My Secret Agent Husband",
+   "book_id": "42000010536",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "7-days-to-erase-you-from-my-heart",
+   "our_title": "7 Days to Erase You from My Heart",
+   "platform_title": "7 Days to Erase You from My Heart",
+   "book_id": "42000011766",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "falling-for-my-bestie-s-dad",
+   "our_title": "Falling for My Bestie's Dad",
+   "platform_title": "Falling For My Bestie’s Dad",
+   "book_id": "42000017554",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "7-steamy-days-with-a-gangster",
+   "our_title": "7 Steamy Days with a Gangster",
+   "platform_title": "7 Steamy Days with a Gangster",
+   "book_id": "42000011757",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "cinderella-s-royal-secret",
+   "our_title": "Cinderella's Royal Secret",
+   "platform_title": "Cinderella’s Royal Secret",
+   "book_id": "42000016925",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "kissing-the-ruthless-tycoon",
+   "our_title": "Kissing the Ruthless Tycoon",
+   "platform_title": "Kissing the Ruthless Tycoon",
+   "book_id": "42000010627",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "his-love-was-a-lie",
+   "our_title": "His Love Was A Lie",
+   "platform_title": "His Love Was A Lie",
+   "book_id": "42000017733",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-equestrian-star-s-cinderella-bride",
+   "our_title": "The Equestrian Star's Cinderella Bride",
+   "platform_title": "The Equestrian Star's Cinderella Bride",
+   "book_id": "42000017183",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "the-taming-game",
+   "our_title": "The Taming Game",
+   "platform_title": "The Taming Game",
+   "book_id": "42000017075",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "mafia-housewife",
+   "our_title": "Mafia Housewife",
+   "platform_title": "Mafia Housewife",
+   "book_id": "42000016414",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "my-coldblooded-alpha-king",
+   "our_title": "My Coldblooded Alpha King",
+   "platform_title": "My Cold Blooded Alpha King",
+   "book_id": "42000012531",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "wait-our-great-grandma-is-18-years-old",
+   "our_title": "Wait Our Great Grandma is 18 Years Old?",
+   "platform_title": "Wait! Our Great-Grandma is 18 Years Old?",
+   "book_id": "42000009996",
+   "note": "catalogue match but NO dramabox availability row"
+  },
+  {
+   "title_id": "making-of-an-heiress",
+   "our_title": "Making of an Heiress",
+   "platform_title": "Making of An Heiress",
+   "book_id": "42000017043",
+   "note": "catalogue match but NO dramabox availability row"
+  }
+ ]
+}

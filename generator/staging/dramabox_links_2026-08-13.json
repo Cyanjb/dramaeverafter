@@ -1,0 +1,375 @@
+{
+ "source": "dramaboxdb.com /genres catalogue, 2026-08-13",
+ "method": "title -> bookId from the __NEXT_DATA__ payload of each /genres/<id> page. Full normalised-title match only. NOT the robots-disallowed /search endpoint.",
+ "caption_rule": "NO SYNOPSIS TAKEN. direct_link and episode_count only.",
+ "catalogue_size": 2962,
+ "resolved": [
+  {
+   "title_id": "bound-by-a-devil",
+   "our_title": "Bound by a Devil",
+   "platform_title": "Bound by a Devil",
+   "book_id": "42000014568",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000014568/bound-by-a-devil",
+   "episode_count": 56
+  },
+  {
+   "title_id": "faking-it-with-the-hockey-captain",
+   "our_title": "Faking It with the Hockey Captain",
+   "platform_title": "Faking It with the Hockey Captain",
+   "book_id": "42000010167",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000010167/faking-it-with-the-hockey-captain",
+   "episode_count": 61
+  },
+  {
+   "title_id": "craving-my-brother-s-best-friend",
+   "our_title": "Craving My Brother's Best Friend",
+   "platform_title": "Craving My Brother's Best Friend",
+   "book_id": "42000008774",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000008774/craving-my-brother-s-best-friend",
+   "episode_count": 56
+  },
+  {
+   "title_id": "keeping-secrets-with-the-rowing-captain",
+   "our_title": "Keeping Secrets with the Rowing Captain",
+   "platform_title": "Keeping Secrets with the Rowing Captain",
+   "book_id": "42000019058",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000019058/keeping-secrets-with-the-rowing-captain",
+   "episode_count": 59
+  },
+  {
+   "title_id": "revenge-puck",
+   "our_title": "Revenge Puck",
+   "platform_title": "Revenge Puck",
+   "book_id": "42000013483",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000013483/revenge-puck",
+   "episode_count": 56
+  },
+  {
+   "title_id": "bucked-by-my-father-s-cowboy",
+   "our_title": "Bucked by My Father's Cowboy",
+   "platform_title": "Bucked by My Father's Cowboy",
+   "book_id": "42000014005",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000014005/bucked-by-my-father-s-cowboy",
+   "episode_count": 51
+  },
+  {
+   "title_id": "cause-you-were-never-mine",
+   "our_title": "Cause You Were Never Mine",
+   "platform_title": "Cause You Were Never Mine",
+   "book_id": "42000012972",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000012972/cause-you-were-never-mine",
+   "episode_count": 53
+  },
+  {
+   "title_id": "doormat-no-more-toxic-ex-lick-my-feet",
+   "our_title": "Doormat No More: Toxic Ex Lick My Feet",
+   "platform_title": "Doormat No More: Toxic Ex Lick My Feet",
+   "book_id": "42000010898",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000010898/doormat-no-more-toxic-ex-lick-my-feet",
+   "episode_count": 61
+  },
+  {
+   "title_id": "i-wish-it-were-you",
+   "our_title": "I Wish It Were You",
+   "platform_title": "I Wish It Were You",
+   "book_id": "42000012214",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000012214/i-wish-it-were-you",
+   "episode_count": 77
+  },
+  {
+   "title_id": "love-the-way-you-lie",
+   "our_title": "Love the Way You Lie",
+   "platform_title": "Love The Way You Lie",
+   "book_id": "42000010899",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000010899/love-the-way-you-lie",
+   "episode_count": 59
+  },
+  {
+   "title_id": "no-mercy-from-my-cowboy-daddy",
+   "our_title": "No Mercy from My Cowboy Daddy",
+   "platform_title": "No Mercy From My Cowboy Daddy",
+   "book_id": "42000017124",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000017124/no-mercy-from-my-cowboy-daddy",
+   "episode_count": 55
+  },
+  {
+   "title_id": "pregnant-by-my-professor-chased-by-his-son",
+   "our_title": "Pregnant by My Professor, Chased by His Son",
+   "platform_title": "Pregnant by My Professor, Chased by His Son",
+   "book_id": "42000011904",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000011904/pregnant-by-my-professor-chased-by-his-son",
+   "episode_count": 49
+  },
+  {
+   "title_id": "return-of-the-gold-king",
+   "our_title": "Return of the Gold King",
+   "platform_title": "Return Of The Gold King",
+   "book_id": "42000009539",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000009539/return-of-the-gold-king",
+   "episode_count": 53
+  },
+  {
+   "title_id": "still-you-always-you",
+   "our_title": "Still You Always You",
+   "platform_title": "Still You Always You",
+   "book_id": "42000017739",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000017739/still-you-always-you",
+   "episode_count": 67
+  },
+  {
+   "title_id": "torn-between-my-stepbrothers",
+   "our_title": "Torn Between My Stepbrothers",
+   "platform_title": "Torn Between My Stepbrothers",
+   "book_id": "42000012113",
+   "direct_link": "https://www.dramaboxdb.com/movie/42000012113/torn-between-my-stepbrothers",
+   "episode_count": 71
+  }
+ ],
+ "ambiguous_needs_ruling": [],
+ "not_in_catalogue": [
+  {
+   "title_id": "love-in-the-shadows",
+   "our_title": "Love in the Shadows"
+  },
+  {
+   "title_id": "hot-gardener-s-seduction",
+   "our_title": "Hot Gardener's Seduction"
+  },
+  {
+   "title_id": "no-escape-from-the-mafia-kings-embrace",
+   "our_title": "No Escape from the Mafia King's Embrace"
+  },
+  {
+   "title_id": "badass-heiress-returns",
+   "our_title": "Badass Heiress Returns"
+  },
+  {
+   "title_id": "my-secret-with-country-boys",
+   "our_title": "My Secret with Country Boys"
+  },
+  {
+   "title_id": "pucked-by-my-brother-s-rival",
+   "our_title": "Pucked by My Brother's Rival"
+  },
+  {
+   "title_id": "kissing-the-wrong-brother",
+   "our_title": "Kissing the Wrong Brother"
+  },
+  {
+   "title_id": "the-day-my-stepbrother-knows-my-dirty-secret",
+   "our_title": "The Day My Stepbrother Knows My Dirty Secret"
+  },
+  {
+   "title_id": "how-to-divorce-a-billionaire",
+   "our_title": "How to Divorce a Billionaire"
+  },
+  {
+   "title_id": "mute-but-deadly",
+   "our_title": "Mute But Deadly"
+  },
+  {
+   "title_id": "my-heart-dies-from-home",
+   "our_title": "My Heart Dies from Home"
+  },
+  {
+   "title_id": "the-lust-game-seduce-me-if-you-can",
+   "our_title": "The Lust Game: Seduce Me If You Can"
+  },
+  {
+   "title_id": "3-2-1-farewell-forever",
+   "our_title": "3, 2, 1, Farewell Forever"
+  },
+  {
+   "title_id": "7-days-locked-with-a-call-boy",
+   "our_title": "7 Days Locked with a Call Boy"
+  },
+  {
+   "title_id": "addicted-to-you-the-ceo-s-love",
+   "our_title": "Addicted to You: The CEO's Love"
+  },
+  {
+   "title_id": "after-i-died-he-went-mad",
+   "our_title": "After I Died, He Went Mad"
+  },
+  {
+   "title_id": "alpha-s-fated-surrogate",
+   "our_title": "Alpha's Fated Surrogate"
+  },
+  {
+   "title_id": "boss-u-almost-got-her",
+   "our_title": "Boss\\! U Almost Got Her"
+  },
+  {
+   "title_id": "breaking-off-to-fall-in-love",
+   "our_title": "Breaking Off to Fall in Love"
+  },
+  {
+   "title_id": "call-me-stepmom-fxxkboy",
+   "our_title": "Call Me Stepmom, Fxxkboy"
+  },
+  {
+   "title_id": "chasing-his-rejected-alpha-wife",
+   "our_title": "Chasing His Rejected Alpha Wife"
+  },
+  {
+   "title_id": "cherished-by-my-ex-husband-s-brother",
+   "our_title": "Cherished by My Ex-Husband's Brother"
+  },
+  {
+   "title_id": "cryo-seduction",
+   "our_title": "Cryo Seduction"
+  },
+  {
+   "title_id": "daddy-dominant-s-good-girl",
+   "our_title": "Daddy Dominant's Good Girl"
+  },
+  {
+   "title_id": "daddy-don-t-go-please-save-mommy",
+   "our_title": "Daddy Don't Go, Please Save Mommy"
+  },
+  {
+   "title_id": "daddy-mommy-don-t-divorce",
+   "our_title": "Daddy Mommy Don't Divorce"
+  },
+  {
+   "title_id": "dean-my-mafia-protector",
+   "our_title": "Dean: My Mafia Protector"
+  },
+  {
+   "title_id": "desires-in-fire",
+   "our_title": "Desires in Fire"
+  },
+  {
+   "title_id": "divorce-is-my-best-christmas-gift",
+   "our_title": "Divorce Is My Best Christmas Gift"
+  },
+  {
+   "title_id": "divorced-now-a-lycan-princess",
+   "our_title": "Divorced, Now a Lycan Princess"
+  },
+  {
+   "title_id": "escape-to-italy-with-my-undercover-lover",
+   "our_title": "Escape to Italy: With My Undercover Lover"
+  },
+  {
+   "title_id": "fake-married-to-my-baby-s-daddy",
+   "our_title": "Fake Married to My Baby's Daddy"
+  },
+  {
+   "title_id": "falling-into-the-embrace",
+   "our_title": "Falling Into the Embrace"
+  },
+  {
+   "title_id": "falling-in-love-with-the-rascal-in-a-suit",
+   "our_title": "Falling in Love with the Rascal in a Suit"
+  },
+  {
+   "title_id": "fifty-shades-of-my-professor",
+   "our_title": "Fifty Shades of My Professor"
+  },
+  {
+   "title_id": "for-richer-for-poorer",
+   "our_title": "For Richer, for Poorer"
+  },
+  {
+   "title_id": "her-cold-hearted-alpha",
+   "our_title": "Her Cold-Hearted Alpha"
+  },
+  {
+   "title_id": "his-sweet-bella",
+   "our_title": "His Sweet Bella"
+  },
+  {
+   "title_id": "i-kissed-a-ceo-and-he-liked-it",
+   "our_title": "I Kissed a CEO and He Liked It"
+  },
+  {
+   "title_id": "kidnapped-by-the-gangster",
+   "our_title": "Kidnapped by the Gangster"
+  },
+  {
+   "title_id": "mafia-daddy-next-door",
+   "our_title": "Mafia Daddy Next Door"
+  },
+  {
+   "title_id": "mafia-s-good-girl",
+   "our_title": "Mafia's Good Girl"
+  },
+  {
+   "title_id": "my-domineering-prince",
+   "our_title": "My Domineering Prince"
+  },
+  {
+   "title_id": "my-lovely-wife-is-a-big-shot",
+   "our_title": "My Lovely Wife Is a Big Shot"
+  },
+  {
+   "title_id": "my-mile-high-billionaire-obsession",
+   "our_title": "My Mile High Billionaire Obsession"
+  },
+  {
+   "title_id": "my-online-crush-is-my-contract-husband",
+   "our_title": "My Online Crush Is My Contract Husband"
+  },
+  {
+   "title_id": "remember-me-my-dear-ex",
+   "our_title": "Remember Me, My Dear Ex"
+  },
+  {
+   "title_id": "second-chance-with-mafia-lover",
+   "our_title": "Second Chance with Mafia Lover"
+  },
+  {
+   "title_id": "showtime-ladies",
+   "our_title": "Showtime Ladies\\!"
+  },
+  {
+   "title_id": "snowbound-with-a-homeless-prince",
+   "our_title": "Snowbound with a Homeless Prince"
+  },
+  {
+   "title_id": "sold-as-the-alpha-king-s-breeder",
+   "our_title": "Sold as the Alpha King's Breeder"
+  },
+  {
+   "title_id": "spoiled-by-four-billionaires",
+   "our_title": "Spoiled by Four Billionaires"
+  },
+  {
+   "title_id": "surprise-baby-daddy-is-the-ceo",
+   "our_title": "Surprise Baby Daddy Is the CEO"
+  },
+  {
+   "title_id": "the-best-mistake-ever",
+   "our_title": "The Best Mistake Ever"
+  },
+  {
+   "title_id": "the-ceo-s-baby-mama",
+   "our_title": "The CEO's Baby Mama"
+  },
+  {
+   "title_id": "the-captain-s-baby-girl",
+   "our_title": "The Captain's Baby Girl"
+  },
+  {
+   "title_id": "the-mafia-s-innocent-lover",
+   "our_title": "The Mafia's Innocent Lover"
+  },
+  {
+   "title_id": "the-rejected-luna-is-the-alpha",
+   "our_title": "The Rejected Luna Is the Alpha"
+  },
+  {
+   "title_id": "winner-s-payback-rise-from-the-dirt",
+   "our_title": "Winner's Payback, Rise from the Dirt"
+  },
+  {
+   "title_id": "you-are-still-the-one",
+   "our_title": "You Are Still the One"
+  },
+  {
+   "title_id": "can-t-get-enough-of-you",
+   "our_title": "Can't Get Enough of You"
+  }
+ ]
+}

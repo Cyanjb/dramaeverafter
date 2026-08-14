@@ -1,7 +1,7 @@
 platform_id,name,web_url,pricing_model,affiliate_program
 reelshort,ReelShort,https://www.reelshort.com/,coins + IAP,yes
-dramabox,DramaBox,,coins + IAP,tbc
-shortmax,ShortMax,,coins + IAP,tbc
+dramabox,DramaBox,https://www.dramaboxapp.com/,coins + IAP,tbc
+shortmax,ShortMax,https://www.shorttv.live/,coins + IAP,tbc
 my-drama,My Drama,https://my-drama.com/,coins + subscription,tbc
 netshort,NetShort,https://netshort.com/,coins + IAP,tbc
 goodshort,GoodShort,https://www.goodshort.com/,coins + IAP,tbc
@@ -19,9 +19,9 @@ veloria,Veloria,,coins + IAP,tbc
 starshort,StarShort,,coins + IAP,tbc
 dramapops,DramaPops,,coins + IAP,tbc
 candyjar,CandyJar,https://candyjar.com/,subscription (ad-free),tbc
-dramawave,DramaWave,,coins + IAP,tbc
+dramawave,DramaWave,https://dramawave.tv/,coins + IAP,tbc
 dramareels,DramaReels,,coins + IAP,tbc
-dreameshort,DreameShort,,tbc,tbc
+dreameshort,DreameShort,https://www.dreameshort.com/,tbc,tbc
 dramashorts,DramaShorts,,tbc,tbc
 sizzletv,Sizzle TV,,tbc,tbc
 freereels,FreeReels,,tbc,tbc
