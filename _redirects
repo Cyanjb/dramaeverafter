@@ -1,2 +1,30 @@
 /actors/hristine-oswald.html  /actors/christine-oswald.html  301
 /actors/nick-ritac-o.html  /actors/nick-ritacco.html  301
+
+# Trope vocabulary cleanup, 15 Aug 2026. Folded, moved to genres, or
+# deleted as platform noise. See TROPE-CLEANUP-PROPOSAL.md.
+/tropes/campus-bullying.html  /tropes/bullying.html  301
+/tropes/fake-heiress.html  /tropes/heiress.html  301
+/tropes/female-ceo.html  /tropes/ceo.html  301
+/tropes/hidden-identity.html  /tropes/secret-identity.html  301
+/tropes/secret-billionaire.html  /tropes/billionaire.html  301
+/tropes/secret-heiress.html  /tropes/heiress.html  301
+/tropes/romance.html  /browse.html  301
+/tropes/fantasy.html  /browse.html  301
+/tropes/thriller.html  /browse.html  301
+/tropes/animation.html  /browse.html  301
+/tropes/drama.html  /browse.html  301
+/tropes/comedy.html  /browse.html  301
+/tropes/sci-fi.html  /browse.html  301
+/tropes/sm.html  /tropes/index.html  301
+/tropes/gay.html  /tropes/index.html  301
+/tropes/anime.html  /tropes/index.html  301
+/tropes/regret.html  /tropes/index.html  301
+/tropes/marriage.html  /tropes/index.html  301
+/tropes/family.html  /tropes/index.html  301
+/tropes/chasing-love.html  /tropes/index.html  301
+/tropes/getting-back-at-ex.html  /tropes/index.html  301
+/tropes/dominant.html  /tropes/index.html  301
+/tropes/small-potato.html  /tropes/index.html  301
+/tropes/twisted.html  /tropes/index.html  301
+/tropes/hidden-identity/reelshort.html  /tropes/secret-identity.html  301
