@@ -491,3 +491,136 @@ CONSEQUENCE FOR PRIORITY. The per-platform title-list PDFs are worth MORE than t
 filmographies, because a filmography yields credits for titles we may not hold,
 while a platform list yields exactly the title-to-platform mapping that turns an
 unmatched filmography credit into an importable row.
+
+## 24. CandyJar tropes — the data exists, the legend is robots-disallowed (2026-08-13)
+
+CandyJar is the last platform sitting at ZERO tropes, which under the five-point bar
+pins it at 0 complete out of 96 despite 66 with cast, 90 with a link and 58 with a
+description. Sec 18 says suspect the parser before the source, so the page was
+re-probed rather than trusted. The answer is neither one.
+
+CANDYJAR DOES PUBLISH TAGS, AND WE NEVER READ THEM. A series page is a Next.js app
+whose streamed `self.__next_f.push([1,"..."])` payload carries the full series
+object, and every one of them ends with:
+
+    "castMembers":{"castMemberIds":[55,154]},
+    "tags":{"tagIds":[282,274,248,243,170,149,150,168]}
+
+The homepage payload alone carries 275 series objects and references 104 distinct
+tag ids. So the trope data is real, per-title, and already reachable.
+
+THE ID-TO-NAME DICTIONARY IS ON NO ALLOWED SURFACE. tagIds are integers and nothing
+resolves them. There is no /browse, /genres or /tags route (all 404). The rendered
+series page shows the viewer no tags at all — confirmed by reading the live DOM, not
+by grepping HTML. No client-side request fetches a tag vocabulary; the only network
+calls on a series load are session, tracking and analytics. The one place the legend
+could live is /api/, and:
+
+    https://candyjar.com/robots.txt
+    User-Agent: *
+    Disallow: /api/
+
+SO THIS IS A RULES STOP, NOT A TECHNICAL ONE. `/api/series/1` does return 200 and is
+trivially readable, which is exactly why this needs writing down: the block is that
+CandyJar disallows it, the same basis on which shortdramadb and verticaldrama.tv were
+refused. DO NOT HARVEST IT. A future session that rediscovers the endpoint should
+stop here rather than re-deciding.
+
+WHAT IS LEFT. IMDb keywords, which needs a saved page per title, so CandyJar tropes
+stay a Cyan-input job and are NOT the cheap unattended win the 13 Aug gap report
+called them. Note the tags ARE harvestable in the sense that matters if CandyJar ever
+publishes a legend, so re-check robots.txt before assuming this is permanent.
+
+DO NOT DECODE A NEXT.JS PAYLOAD WITH unicode_escape. Same trap as sec 19: reassemble
+by `json.loads()` on each pushed string literal and concatenate. The chunks are JSON
+string literals, so this is exact; `.encode().decode('unicode_escape')` reinterprets
+each UTF-8 byte as latin-1 and produces the invisible C1 mojibake already on the
+traps list.
+
+## 25. Platform hunting by restricted web search (2026-08-13)
+
+The 13 Aug handover's DuckDuckGo `site:dramaboxdb.com "<title>"` route generalises,
+and the generalisation is the useful part: run the search with the result set
+RESTRICTED TO THE PLATFORM DOMAINS THEMSELVES rather than restricted to one platform
+at a time. One query per title then names whichever platform holds it, instead of one
+query per platform per title.
+
+    domains: reelshort.com dramaboxdb.com dramabox.com my-drama.com candyjar.com
+             goodshort.com netshort.com vigloo.com shorttv.live shortical.com
+
+Run against the 16 fan-list titles this returned 4 platforms with a watch link and a
+series id in a single pass (staged in
+`generator/staging/fanlist_platform_hunt_2026-08-13.json`).
+
+AN UNRESTRICTED SEARCH RETURNS AGGREGATORS, NOT PLATFORMS. Searching the bare title
+surfaced shortdramadb.com, dramaglance.com and shortdramacast.com above every actual
+platform. Those are the sources this project has already refused on rights grounds,
+so an unrestricted search actively steers toward the one answer that must not be
+used. The domain restriction is what makes the route safe, not just faster.
+
+GRADE THE EVIDENCE, DO NOT FLATTEN IT. Three distinct strengths came back and they
+are not interchangeable:
+  - a watch page on the platform's own domain           -> confirmed
+  - only the platform's FANDOM BLOG naming the title    -> probable, get a watch URL
+  - only a /tag/ or /search? keyword landing page       -> proves nothing, it is a
+    keyword echo and will match titles the platform does not carry
+
+TAKE THE LINK, THE SERIES ID AND THE EPISODE COUNT. NEVER THE SYNOPSIS — search
+results hand you the platform's marketing copy, which the standing caption rule
+forbids copying or rewording.
+
+A FAN LIST'S TYPO READS AS A MISSING TITLE. 'How to Tame a Sliver Fox' was queued for
+import while we already held 'How to Tame a Silver Fox'. Exact-letter matching cannot
+see a transposition; a difflib pass at cutoff 0.85 catches it and also surfaced
+'Fallen for My Best Friend's Dad' against our 'Falling for My Bestie's Dad'. RUN THE
+FUZZY PASS BEFORE ANY IMPORT QUEUE IS BELIEVED — creating a duplicate under a
+misspelling is the one mistake that pollutes titles.csv permanently.
+
+## 26. AN IMDb COMPANY LIST IS ~30% EPISODES — TAKE THE POSTER LINK (Cyan, 2026-08-13)
+
+Cyan, reading the DramaBox company PDF: "there are some duplicates of the same show
+except its episode of the same show". She is right, and it is not a small edge case.
+An IMDb company search lists EPISODES as numbered results in their own right, mixed
+in with the series:
+
+    DramaBox   614 results  ->  196 episodes (31%)  ->  418 real series
+    GoodShort  540 results  ->  116 episodes (21%)  ->  424 real series
+    ShortMax   258 results  ->   72 episodes (27%)  ->  186 real series
+    DramaWave / DramaPops / Shortical  ->  0 episodes
+
+384 junk titles across three files. And text extraction FUSES the episode label onto
+the series name, so they do not even look like episodes once parsed:
+
+    Episode #1.1Forget Me Not: Omega's Return
+
+THE FIX: EVERY RESULT HAS A POSTER LINK, ref_=sr_i_<slot>, EXACTLY ONE PER RESULT,
+always pointing at that result's own tt. Pair it with the printed "<slot>. <name>"
+line and drop any name matching ^Episode #\d+\.\d+. On DramaBox: 614 slots, 614
+distinct poster ids, ZERO collisions. Implemented in parse_imdb_company_pdf.py.
+
+THREE WRONG ROUTES, ALL TRIED FIRST, ALL PLAUSIBLE:
+  - every /title/tt annotation -> 616 ids for 614 results, silently mixing in the
+    episode links nested under a series result;
+  - tt from extract_text() -> ZERO, the ids exist only in link annotations;
+  - "a slot with more than one tt is contaminated" -> flags 198 slots, but most are
+    just the poster AND the title text linking to the SAME series. It throws away
+    good rows and still keeps bad ones. This one looked the most rigorous and was
+    the most wrong.
+
+A CORRECTION THIS OVERTURNED. The 9 Aug staged parse holding 413 titles was accused
+in-session of having "silently truncated 413 of 611". It had not: there are 418 real
+series, it held 413 of them with ZERO episodes wrongly kept. The accusation came from
+comparing a raw tt count against the page header without asking what those ids were.
+COUNT THE THING THE HEADER IS COUNTING before calling a parse incomplete.
+
+TWO SAVES OF THE SAME PAGE CAN DIFFER, AND THE FILENAME NEVER SAYS WHICH IS FULLER.
+'DramaPops Titles.pdf' is 1-50 of 63; 'Dramapops Title list.pdf' is 1-63 of 63.
+'DramaWave Titles List From IMDB.pdf' is 198, 'Dramawave Title list from IMDB.pdf'
+is 194. READ THE '1-N of M' HEADER AND PREFER N==M — a scroll that stopped early
+saves as a perfectly valid PDF.
+
+WHAT THE SIX FILES ARE WORTH, measured against titles.csv on tt (never on the title
+string): 112 titles we ALREADY HOLD would gain a platform row, 72 of which have no
+platform at all today and are therefore excluded from completeness.py's denominator
+entirely. Plus an 878-title import queue. IMDb still gives no watch link, so a gained
+platform row starts without a direct_link - see sec 25 for where the link comes from.

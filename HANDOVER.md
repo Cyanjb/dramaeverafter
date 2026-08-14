@@ -6,181 +6,135 @@ Paste this as your first message.
 
 We're continuing work on DramaEverAfter. Read these Craft docs first, in this order:
 
-1. **7. DEA READ FIRST (Current State + Traps)**
-2. **7. DEA GAPS (what needs filling, ranked)** — new, the three worklists
-3. **7. DEA TASKS (what needs Cyan)** — my to-do list, not your work queue
+1. **7. DEA READ FIRST (Current State + Traps)** — the CURRENT STATE block and the
+   eight new traps at the end are from 14 Aug and describe exactly this tree.
+2. **7. DEA TASKS (what needs Cyan)** — her to-do list, not your work queue.
 
-Then read, in the repo: `references/adapters.md` **sections 18–23**.
+Then in the repo: `references/adapters.md` **sections 24–26** (all new), and
+`REWRITE-QUEUE.md`.
 
-## NOTHING IS UNPUSHED. Check before you believe otherwise.
+## THE ENTIRE 13–14 AUG CLEANUP IS UNCOMMITTED, ON PURPOSE
 
-`main` and `origin/main` are both at the same commit, working tree clean, everything
-live.
+Cyan said "we will commit last." The working tree holds ALL of it: the quarantine,
+the PineDrama unravel, 73 title deletions, 60 new captions, the hook renderer, the
+homepage fallback, seven new generator scripts, adapters sections 24–26. `git status`
+will look alarming. It is not drift — it is one session's work awaiting her commit
+call. **Committing is the first thing to settle with her.** Netlify publishing is
+also PAUSED by her (low credits), so nothing local is live regardless.
 
-The last handover claimed "23 commits unpushed" and it was **stale** — the previous
-session pushed after writing the note. A session then nearly re-did applied work on
-the strength of it. **Run `git rev-parse HEAD origin/main` before trusting any
-unpushed count.**
+    3,513 titles · 2,212 actors · 4,574 credits · 3,297 availability · 9,479 pages
+    504 of 3,297 title-platform pairs COMPLETE (15%) — only ReelShort clears 50
+    The drop from 19% is the CLEANUP: 2,389 copied synopses came off the site
 
-    3,586 titles · 2,212 actors · 4,621 credits · 3,370 availability · 9,620 pages
-    642 of 3,370 title-platform pairs COMPLETE (19%) under the FIVE-point bar
-    2 platforms clear the 50-complete breadth bar: ReelShort 467, My Drama 136
-    match_queue: 77 pending of 205
+## WHAT HAPPENED, SHORTEST VERSION
 
-Deploy is automatic and proven: new pages went 404 to 200 in about 12 seconds, and
-the live pages were checked for CONTENT, not just status.
+**pinedrama.com is not a platform.** It is a fan/affiliate site: its own payload
+says `"supplier":"reelshort"`, its watch buttons are affiliate redirects. We carried
+it as a platform since 20 Jul because its links returned 200 — a live link is not a
+legitimate link. All 73 of its same-name "twins" were proven the SAME productions
+(poster comparison: 16 byte-identical, 72 of 73 same pixel dimensions; same
+characters in the synopses) and merged into their real titles on Cyan's ruling.
+**63 titles remain attributed to pinedrama only** — each needs its official platform
+found (the restricted-domain search route, adapters sec 25, resolves them fast) and
+its poster re-sourced, since those 63 posters hotlink `v.pinedrama.com`.
+`/apps/pinedrama.html` dies when the last row is re-homed.
 
-## THE QUALITY BAR CHANGED — 19% IS NOT COMPARABLE TO THE OLD 26%
+**No copied copy, anywhere.** 2,389 scrape-sourced synopses were quarantined into
+`generator/staging/_quarantined_synopses.json` (gitignored; it is the FACT SOURCE
+for rewrites — never reuse its wording). 60 captions are rewritten so far.
 
-Cyan restated it on 13 Aug with **five** points, where the recorded rule had four:
+## THE CAPTION VOICE IS SETTLED — DO NOT GUESS IT
 
-    a title · a caption WE wrote · at least the leads · a link to the platform · 1+ trope
+Cyan chose it from four sample registers on 14 Aug: **warm + bestie, "fun but
+without the silly ditz."** The full spec is a standing rule in READ FIRST. The two
+hard rules: **NO DASHES OF ANY KIND** (hyphens included — rephrase compounds), and
+**the punchy line LEADS as a hook** on its own first line before a newline;
+build.py renders it as a subheading. A first draft in a dry/wry register was
+rejected — the spec exists so that never repeats. **Keep captions accurate to the
+story**: plot only from the fact file or the title; the one aside per caption
+evaluates the experience, never adds events; heavy material drops the playfulness.
 
-`generator/completeness.py` enforces all five. Two were added:
+**THE CORPUS IS THE VOICE, NOT THE SPEC.** Read ten of the 60 approved captions in
+`generator/captions_2026_08_14.py` / `_b2.py` before writing any. Then WRITE FIVE
+AND SHOW CYAN BEFORE BATCHING — mandatory, whoever you are. The spec alone was not
+enough for the model that wrote it, so assume it is not enough for you.
 
-- **at least one trope**, because an entry with no trope is invisible to every trope
-  page and every combo page, which is how this audience browses.
-- **the caption must be ours**. The old check measured LENGTH only, so a scraper
-  truncation counted as a description — the metric was certifying entries that break
-  the caption rule. It now rejects the two documented truncation shapes (exactly 300
-  characters, exactly 300 bytes). That is a floor, not a guarantee: verbatim copy of
-  an untruncated synopsis still passes, so provenance is enforced at WRITE time.
+## THE COMPLETE TASK LIST — every waiting item, nothing omitted
 
-Cyan's reason for the caption rule, confirmed 13 Aug: **copyright** (and a close
-paraphrase can still be derivative, which is why the rule says "from scratch" and
-not "reworded"), plus **duplicate content** — if our synopsis matches ReelShort's,
-Google has no reason to rank our page over theirs.
+The same list lives as checkboxes in Craft's **DEA TASKS** doc (updated 14 Aug).
+If the two ever disagree, ask Cyan which is current rather than picking one.
 
-## THE DRIVE BATCH IS FINISHED: 92 done, 1 no_data, 0 todo of 93
+### Claude's queue, in value order
 
-And it was closed by **parsing**, not transcribing. Hand-reading is what made it take
-four sessions. Two new scripts:
+1. **Commit** (three clean commits: data / code / docs) the moment Cyan says the
+   word — currently blocked ONLY on her say-so. Deploy is her button after.
+2. **Captions.** 2,374 quarantined titles are captionless (facts in the gitignored
+   quarantine file, ranked by reach via the `views()` helper), plus the 646
+   suspects in REWRITE-QUEUE.md. Batches of ~45 worked well. Voice spec is a
+   standing rule in READ FIRST; rewritten captions drop off the queue
+   automatically (the hook newline marks them ours). Keep them ACCURATE TO THE
+   STORY.
+3. **The PineDrama 63** — official platform + link + poster per title, one
+   restricted-domain search each (adapters sec 25). Their posters currently
+   hotlink v.pinedrama.com, and `/apps/pinedrama.html` (still in the sitemap)
+   dies when the last row is re-homed. One resolved already as proof of route:
+   Divorced at the Wedding Day → DramaBox.
+4. **112 platform rows from the company PDFs** (72 of those titles have NO
+   platform today, so they sit outside completeness.py's denominator). Matches on
+   tt; `parse_imdb_company_pdf.py` prints per-file numbers. Applier still to be
+   written — model it on apply_dramabox_pass.py.
+5. **Two confirmed imports** from `staging/samename_rulings_2026-08-14.json`:
+   Fallen for My Best Friend's Dad (reelshort, tt35230395) and Evil Stepmom
+   Survival Guide (kalostv, tt36129137 — KalosTV's first real entry, Jake Hobbs
+   in cast). Pick sensible slugs and tell her.
+6. **App Store fallbacks** for the 23 rows with no verified homepage (dramapops
+   16, shortical 4, shorts/playlet/kalostv 1 each). Cyan approved store links as
+   the third tier: title link → homepage → store page. Verify the developer name
+   on the store listing matches the platform before wiring it.
+7. **Actor pages**: fill the TOP actors' holes first (the rail actors), not raw
+   reach order — photos, blank character names, unread filmographies. Run all
+   lookups in the browser yourself; never hand Cyan one.
+8. **878-title import queue** from the six company PDFs — CHOSEN, NOT SWEPT:
+   newest / most popular / coming soon only, per the standing rule.
+9. Low housekeeping: a guard on raw `.title()` for genres (latent, currently
+   harmless). `_dramabox_cache/` (19MB) and `_quarantined_synopses.json` are
+   gitignored ON PURPOSE — never commit them.
 
-    generator/parse_imdb_person_pdf.py   filmography -> staged credits
-    generator/parse_imdb_title_pdf.py    title page -> cast grid AND platform
+### Cyan's list (mirrors DEA TASKS in Craft — hers to action, not a session's)
 
-**Both were controlled against three hand-transcribed pages before being trusted:**
-Griffin Blazi 38/38 exact, Kasey Esser 55/55 exact, Armand Procacci 46 of 47, and
-**zero false positives across 141 credits**. Use them for the next batch. They read a
-Downloads PDF; Drive is not required. pypdf is already installed.
+- **Commit + deploy the 14 Aug cleanup** (new, High): until both happen the live
+  site still carries everything the cleanup removed.
+- **Rule the singular/plural tropes**: childhood sweetheart/s, contract lover/s,
+  athlete/s — 30 DramaBox tag assignments held until ruled.
+- **Save IMDb pages** for ACTORS-FILMOGRAPHY.md (2,100 unread, ranked by reach) —
+  the standing highest-value Cyan-only item. Rail actors first.
+- **The 14 fused people.csv rows** (full-width comma, ~28 people in 14 identities).
+- **77 pending match_queue rows**, plus 13 blank/unruled.
+- **4 ReelShort AI poster checks** (AI-CHECK.md).
+- **Homepage URLs** for shorts / playlet / kalostv / dramapops / shortical if she
+  spots them — otherwise the App Store fallback covers those buttons.
+- **L.J. Shen adaptations official?** (Scandalous, Vicious) — no author credit
+  until verified.
+- **The two Drive lookup sheets** (DEA Lookups 1 and 2).
+- **My Ex's Best Friends platform** (tt36433156) if she spots which app carries
+  it — confirmed a real separate show, no platform found by search.
+- **Parked, hers**: GoodShort's ~1,800 castless (deliberately last), the
+  verticaldrama.tv data-swap approach, user ratings (spice level first), whether
+  upcoming titles get a homepage rail.
 
-The control caught three bugs that wrote **wrong** data rather than none — read the
-docstrings before changing either parser.
+## VERIFIED CLEAN, 14 Aug — do not re-audit without cause
 
-## WHAT ONLY CYAN CAN DO, highest value first
+Referential integrity zero-orphan across all six checks; zero duplicate ids or
+rows; all 5,946 content pages' internal links resolve (the 103 "broken"
+browse.html?trope= hits were a scanner artifact — strip query strings before
+os.path.exists); no `<` anywhere in data; `&` in 22 titles is legal HTML5 and
+renders fine; ld+json parses with quotes escaped; every page's meta date now
+derives from the build (was hardcoded "July 2026" for a month).
 
-1. **SAVE MORE IMDb PERSON PAGES.** `ACTORS-FILMOGRAPHY.md` ranks **2,100 unread
-   actors by REACH**, with the IMDb link pre-filled wherever we hold an nm id. Top of
-   the list: Jesse Morales 2.1B views, Samantha Drews 1.7B, Autumn Noel 1.4B. Save as
-   `<Name> - IMDb.pdf` to Downloads — the parser takes the name from the filename.
-   Measured: across the 28 actors read so far, IMDb credits them on 810 titles and we
-   hold 476 (59%, up from 37%). The gap is titles that do not exist, not cast.
-2. **The PineDrama 73** — one page to check, not 73. 64 of 73 have an identical
-   episode count to their twin, 8 blank on one side, and exactly ONE disagrees
-   (*Big Bad Husband, Please Wake Up*, 55 vs 104).
-3. **14 people.csv rows are two people fused** by a full-width comma. About 28 real
-   people held as 14 identities, with credits attached to the fusion.
-4. **77 pending match_queue rows**, including the Sophia Soto lead (named only on a
-   TikTok post as Study Buddy cast — not applied, a caption is not evidence).
-5. **16 fan-list titles we don't hold**, from an IMDb user list with 15,500 visits —
-   a *chosen* import queue, still needing platform evidence.
+## HOW CYAN WORKS — additions this session
 
-## THE THREE WORKLISTS (regenerated, never hand-edited)
-
-    py generator/make_gap_report.py
-
-    ACTORS-PHOTOS.md       2,013 credited actors with no photo
-    ACTORS-FILMOGRAPHY.md  2,100 actors whose IMDb page has never been read
-    TITLES-INCOMPLETE.md   2,684 failing the 5-point bar, 835 ONE FIELD SHORT
-
-Ranked by reach. **`view_count` is a display string** (`'218.1M'`) and `int()` on it
-silently yields zero — 2,340 of 2,374 populated rows are non-numeric. Use the
-`views()` helper; do not write a second one.
-
-## YOU CAN SEARCH THE WEB YOURSELF — USE IT FOR PLATFORM HUNTING
-
-Cyan had to google a platform on 13 Aug that the session could have looked up itself.
-Don't repeat that. The Browser pane tools drive a real browser.
-
-- **Google bot-blocks it** with an "unusual traffic" check. Do NOT try to solve it —
-  CAPTCHAs are off-limits. **DuckDuckGo works**, including `site:` queries.
-- The query that worked, and it is a ROUTE rather than a one-off:
-
-      site:dramaboxdb.com "<exact title>"
-
-  For `I Became Mrs Grayson by Bragging` that returned DramaBox's own database page in
-  one hit — giving the **platform, a direct_link, and the episode count (59)** where
-  the IMDb page had named only production houses. A plain title search had returned
-  only a Dailymotion re-upload, so the `site:` restriction is what made it work.
-- **Take the link and the episode count. NEVER take the synopsis** — it is the
-  platform's text and the caption rule forbids copying or rewording it.
-- Worth running at: the 16 fan-list titles we don't hold, and any title whose IMDb
-  page names only production houses.
-
-## READY TO PICK UP
-
-- **1,918 of 4,603 credits have a blank `character_name`**, and staged filmographies
-  can fill 19 right now. The applier skips them because it treats an existing credit
-  as "already complete" before looking at the empty field. Character names are one of
-  the two stated edges over VerticalVault.
-- **CandyJar: 96 titles, ZERO tropes** — and unlike My Drama this is NOT a parser gap.
-  A series page was probed: no `genre`, no `keywords`, nothing. It needs another
-  route (IMDb keywords the obvious candidate).
-- **0 thin trope pages**, down from 44; the 5+ rule is now enforced for plain trope
-  pages too. 43 withdrawn URLs will 404 for Google until it re-crawls.
-
-## TRAPS ADDED THIS SESSION
-
-- **A converter's output is not the transcription.** `_filmography_batch.json` and
-  `_cast_batch.json` are built FROM the per-actor files and were both stale, so 17 of
-  28 actors had never reached an applier while the other 11 were already applied.
-  Regenerate from the per-file JSONs and dry-run before believing either direction.
-- **`harvest_mydrama_descriptions.fetch()` returns `(html, error)`** and swallows the
-  exception. Called unchecked it yields a TUPLE, every parse fails silently, and the
-  run reports 0 recovered — indistinguishable from the platform publishing nothing.
-- **Matching a vocabulary by exact slug cannot see a near miss.** The My Drama harvest
-  produced `vampires` beside our existing `vampire` (642 titles). `build.py`'s
-  canonicalisation folds CASE and SPACING onto one slug and CANNOT fold two different
-  slugs. Flag near-slugs; do NOT auto-merge — `mate`/`mates` differ in this genre.
-- **A platform's `genre[]` mixes content with UI labels.** My Drama's carries
-  `trending` (22 titles) and `male lead`. `trending` cleared the 5+ bar and would have
-  published a page nothing on the site can ever keep true.
-- **Sec 5's My Drama field list is incomplete** and is now wrong in a checkable way
-  twice. It names no genre field; the ld+json TVSeries node carries `genre[]` and
-  `keywords`, in the same node the description pass read and walked past. Also
-  `"seriesData"` is GONE — they restructured. **Prefer the page over the field list.**
-- **IMDb appends the billing variant to the character** — "Kane Hudson (as Jesse
-  Morales)". Eight credits went live with it before it was caught.
-- **A commit message is not evidence that a write happened.** Commit `349201992` says
-  "it gains a platform"; that title's availability was empty until 13 Aug.
-- **Blank-line blocking is the wrong model for a PDF credit list.** Two credits render
-  with no blank between them, and a first-type/last-year reading fuses them — it gave
-  one title the episode count of the one below it.
-- **Never round-trip a UTF-8 file through `Get-Content` + `Set-Content`.** The default
-  read encoding is cp1252, so every em-dash comes back as mojibake and then gets
-  written back as "valid" UTF-8. This corrupted HANDOVER.md itself on 13 Aug. Edit
-  files with a real editor/writer, not PowerShell string replacement.
-
-## STANDING RULES ADDED THIS SESSION
-
-- **Production houses are not a platform** (Cyan, 13 Aug). If the production-company
-  field names only production companies, LEAVE THE TITLE OUT until its platform is
-  found. This is a wait, not a rejection: `I Became Mrs Grayson by Bragging` was held
-  back on this rule, then landed the same day once the platform was found by search.
-- **A name variant is settled by the nm id, not by resemblance** — and the id is often
-  already on disk. Where no nm exists, the second route is the same series under two
-  title names on two sites. Merge INTO the existing person_id; those slugs are
-  published URLs. Two merges landed this way: jesse-morales 23 to 30 credits,
-  robert-watkins 1 to 12.
-
-## HOW CYAN WORKS
-
-Don't ask her to approve routine decisions like slugs — pick sensible ones and tell
-her. Do ask when something is one-way or a brand judgement. **Do the checks you
-suggest, when you suggest them** — don't hand her a list you could have resolved, and
-don't hand her a lookup you could have run yourself. Tell her before running anything
-that rewrites thousands of files, including build.py. If you can't verify something,
-say so plainly rather than guessing. Generated output that looks correct is not
-evidence that it works — click the thing, measure the thing, request the URL.
-
-**Captions and synopses are written from scratch. Never reword a platform's or IMDb's.**
+Run lookups yourself in the browser; she should never be handed one you could run.
+Calibrate voice on a SMALL batch before scaling any writing. Fresh saves of the
+same IMDb page differ — read the "1-N of M" header and prefer N==M. And the
+standing rule that paid for itself twice today: generated output that looks correct
+is not evidence that it works — click the thing, measure the thing.
