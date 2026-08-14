@@ -6,7 +6,10 @@ from collections import defaultdict
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA, DIST = os.path.join(os.path.dirname(ROOT), "data"), os.path.dirname(ROOT)
 DOMAIN = "https://dramaeverafter.com"
-UPDATED = "July 2026"
+# Derived, not hardcoded: a literal here went stale for a month, telling Google
+# every page was last touched in July while the site changed daily. Month-level
+# granularity keeps the build deterministic within any given month.
+UPDATED = __import__("time").strftime("%B %Y")
 
 def rows(name):
     with open(os.path.join(DATA, name), encoding="utf-8") as f:
@@ -351,6 +354,21 @@ TROPE_ACRONYMS = {"ceo": "CEO", "bl": "BL", "gl": "GL", "dilf": "DILF", "milf": 
                   "fbi": "FBI", "cia": "CIA", "mma": "MMA", "nyc": "NYC", "vip": "VIP",
                   "ai": "AI", "cfo": "CFO", "pi": "PI"}
 
+def story_block(t):
+    """The story section. A caption may carry a HOOK on its first line (Cyan,
+    14 Aug: the punchy line leads as a subheading) - stored before a newline in
+    synopsis_short. Captions without a newline render exactly as before."""
+    s = (t.get("synopsis_short") or "").strip()
+    if not s:
+        return ""
+    hook, _, body = s.partition("\n")
+    if body.strip():
+        return (f'<div class="story"><h2>The story</h2>'
+                f'<p class="story-hook">{hook.strip()}</p>'
+                f'<p>{body.strip()}</p></div>')
+    return f'<div class="story"><h2>The story</h2><p>{s}</p></div>'
+
+
 def trope_text(name):
     """Trope as it should read inside a sentence or a chip."""
     return " ".join(TROPE_ACRONYMS.get(w.lower(), w) for w in name.split())
@@ -574,6 +592,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .story{margin-top:28px;max-width:60ch}
 .story h2{margin:0 0 8px;font-size:20px}
 .story p{margin:0;font-size:16px;line-height:1.65;color:#3E3238;text-wrap:pretty}
+.story .story-hook{font-size:17px;font-weight:600;font-style:italic;margin:0 0 8px;color:#2B2126}
 
 .stat-figures{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:20px}
 .stat-figures .stat{display:block}
@@ -759,8 +778,8 @@ def watch_buttons(title_id, pre=""):
             return '<span class="watch-pending">Not released yet</span>'
         return '<span class="watch-pending">Platform being verified</span>'
     a = avails[0]
-    name = platforms.get(a["platform_id"], {}).get("name", "?")
-    link = a["direct_link"] or "#AFFILIATE-LINK-PENDING"
+    plat = platforms.get(a["platform_id"], {})
+    name = plat.get("name", "?")
     # An upcoming title normally DOES have a known platform -- that is the whole point
     # of announcing it -- so it reaches here with an availability row and would other-
     # wise render "Watch on ReelShort" for something nobody can watch. Say "Coming to"
@@ -768,6 +787,16 @@ def watch_buttons(title_id, pre=""):
     t_up = t_by_id.get(title_id)
     if t_up is not None and is_upcoming(t_up):
         return f'<span class="watch-pending">Coming to {name}</span>'
+    # NO direct_link -> FALL BACK TO THE PLATFORM HOMEPAGE (Cyan, 13 Aug). Until now
+    # this wrote href="#AFFILIATE-LINK-PENDING", so 210 rows shipped a button that
+    # went nowhere and announced our monetisation plans in the markup. The homepage is
+    # honest: the platform does carry the title, we just do not hold its deep link.
+    # WHERE NO VERIFIED HOMEPAGE EXISTS, SAY SO RATHER THAN GUESS ONE - a wrong
+    # homepage is worse than none, and www.shorts.com is a domain-sale page, not the
+    # app. That leaves dramapops, shortical, shorts, playlet and kalostv unlinked.
+    link = (a["direct_link"] or "").strip() or (plat.get("web_url") or "").strip()
+    if not link:
+        return '<span class="watch-pending">Platform being verified</span>'
     out = f'<a class="watch-btn" href="{link}"><span>Watch on {name}</span><span class="arrow">&rarr;</span></a>'
     if len(avails) > 1:
         others = ", ".join(platforms.get(r["platform_id"], {}).get("name", "?") for r in avails[1:])
@@ -1182,7 +1211,7 @@ for t in titles:
     eyebrow_bits = [x for x in ["Vertical drama", t.get("year"), ep, status_label] if x]
     if t.get("data_confidence") == "needs_check": eyebrow_bits.append("community reported")
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
-          "description": t["synopsis_short"][:160]}
+          "description": t["synopsis_short"].replace("\n", " ")[:160]}
     body = f"""
 <nav class="crumb"><a href="{pre}index.html">Home</a><span>/</span>{f'<a href="{pre}index.html">{origin_of(t).title()}</a><span>/</span>' if d else ''}<span class="current">{t['primary_title']}</span></nav>
 <section class="split-hero">
@@ -1201,7 +1230,7 @@ for t in titles:
 <span aria-hidden="true">&#8599;</span><span class="act-label">Share</span></button>
 </div>
 {f'<p class="hint" style="margin-top:14px">Also known as: {t["alt_titles"].replace(";", ", ")}</p>' if t.get('alt_titles') else ''}
-{f'<div class="story"><h2>The story</h2><p>{t["synopsis_short"]}</p></div>' if (t.get("synopsis_short") or "").strip() else ''}
+{story_block(t)}
 {f'<div class="chips" style="margin-top:22px">{trope_html}</div>' if trope_html else ''}
 </div>
 </section>
