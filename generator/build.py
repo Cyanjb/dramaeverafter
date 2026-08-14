@@ -1026,7 +1026,17 @@ for p in people:
     plat_line = ", ".join(n for n, _ in top_plats) if top_plats else "platform verification in progress"
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "jobTitle": "Actor",
           "description": (real_bio or oneliner)[:160],
-          "performerIn": [{"@type": "TVSeries", "name": t["primary_title"]} for t in my_titles]}
+          "url": f"{DOMAIN}/actors/{pslug(p)}.html",
+          "performerIn": [{"@type": "TVSeries", "name": t["primary_title"],
+                           "url": f"{DOMAIN}/titles/{tslug(t)}.html"} for t in my_titles]}
+    # sameAs from the socials column - the IMDb nm URL is the identity anchor an
+    # AI engine can join on. Held data only; no socials, no sameAs.
+    same = [u.strip() for u in re.split(r"[;,\s]+", (p.get("socials") or ""))
+            if u.strip().startswith("http")]
+    if same:
+        ld["sameAs"] = same
+    if (p.get("photo_ref") or "").strip():
+        ld["image"] = p["photo_ref"].strip()
     body = f"""
 <nav class="crumb"><a href="../actors/index.html">Actors</a><span>/</span><span class="current">{p['name']}</span></nav>
 <section class="split-hero tight">
@@ -1210,8 +1220,68 @@ for t in titles:
     ep = f"{t['episode_count']} episodes" if t.get("episode_count") else ""
     eyebrow_bits = [x for x in ["Vertical drama", t.get("year"), ep, status_label] if x]
     if t.get("data_confidence") == "needs_check": eyebrow_bits.append("community reported")
+    # AI-search enrichment (Cyan, 14 Aug). The graph carries only HELD data - a
+    # blank field emits nothing, because a fabricated answer in schema is worse
+    # than none. characterName is deliberately prominent: character-to-actor is
+    # the field competitors do not index, so it is the answer AI engines can only
+    # get here.
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
-          "description": t["synopsis_short"].replace("\n", " ")[:160]}
+          "description": t["synopsis_short"].replace("\n", " ")[:160],
+          "url": f"{DOMAIN}/titles/{sl}.html"}
+    if (t.get("episode_count") or "").strip().isdigit():
+        ld["numberOfEpisodes"] = int(t["episode_count"])
+    if (t.get("imdb_id") or "").strip().startswith("tt"):
+        ld["sameAs"] = f"https://www.imdb.com/title/{t['imdb_id'].strip()}/"
+    if tropes_of(t):
+        # tropes_of() returns slugs; the graph should carry readable names
+        # ("Hidden Identity", "CEO"), so de-slug then apply the acronym map.
+        ld["genre"] = [trope_heading(tr.replace("-", " ")) for tr in tropes_of(t)]
+    ld_cast = []
+    for c in credits_by_title.get(t["title_id"], []):
+        pr = p_by_id.get(c["person_id"])
+        if not pr: continue
+        person = {"@type": "Person", "name": pr["name"],
+                  "url": f"{DOMAIN}/actors/{pslug(pr)}.html"}
+        if (c.get("character_name") or "").strip():
+            ld_cast.append({"@type": "PerformanceRole", "actor": person,
+                            "characterName": c["character_name"].strip()})
+        else:
+            ld_cast.append(person)
+    if ld_cast:
+        ld["actor"] = ld_cast
+    # WatchAction only for an OFFICIAL platform link. pinedrama rows are excluded
+    # until re-homed: pointing an AI engine's "where to watch" answer at a fan
+    # site would be worse than staying silent.
+    official = next((a for a in avail_by_title.get(t["title_id"], [])
+                     if a["direct_link"].strip() and a["platform_id"] != "pinedrama"), None)
+    if official is not None:
+        ld["potentialAction"] = {"@type": "WatchAction",
+                                 "target": official["direct_link"].strip()}
+    # FAQ node: the questions people actually ask an assistant, answered ONLY
+    # where the data exists. Skipped entirely when nothing is answerable.
+    faq_qs = []
+    if official is not None:
+        plat_name = platforms.get(official["platform_id"], {}).get("name", "")
+        if plat_name:
+            faq_qs.append({"@type": "Question",
+                           "name": f"Where can I watch {t['primary_title']}?",
+                           "acceptedAnswer": {"@type": "Answer",
+                               "text": f"{t['primary_title']} streams on {plat_name}: "
+                                       f"{official['direct_link'].strip()}"}})
+    if ld.get("numberOfEpisodes"):
+        faq_qs.append({"@type": "Question",
+                       "name": f"How many episodes does {t['primary_title']} have?",
+                       "acceptedAnswer": {"@type": "Answer",
+                           "text": f"{t['primary_title']} has {ld['numberOfEpisodes']} episodes."}})
+    named_cast = [c for c in ld_cast if c.get("@type") == "PerformanceRole"][:6]
+    if len(named_cast) >= 2:
+        pairs = ", ".join(f"{c['actor']['name']} as {c['characterName']}" for c in named_cast)
+        faq_qs.append({"@type": "Question",
+                       "name": f"Who stars in {t['primary_title']}?",
+                       "acceptedAnswer": {"@type": "Answer", "text": pairs + "."}})
+    if faq_qs:
+        ld = [ld, {"@context": "https://schema.org", "@type": "FAQPage",
+                   "mainEntity": faq_qs}]
     body = f"""
 <nav class="crumb"><a href="{pre}index.html">Home</a><span>/</span>{f'<a href="{pre}index.html">{origin_of(t).title()}</a><span>/</span>' if d else ''}<span class="current">{t['primary_title']}</span></nav>
 <section class="split-hero">
@@ -2162,6 +2232,64 @@ urls.append("/contact.html")
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sm += "".join(f"<url><loc>{DOMAIN}{u}</loc></url>\n" for u in urls) + "</urlset>"
 open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(sm)
-open(os.path.join(DIST, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n")
+# Cyan's stance (recorded in DEA TASKS, applied 14 Aug): SEARCH YES, AI-TRAINING
+# NO, USE AS REFERENCE. Search/citation crawlers are welcome - being the source an
+# assistant cites is the whole prize. Training-only crawlers are refused: they pay
+# nothing back. Content-Signal is the emerging convention carrying the same policy.
+open(os.path.join(DIST, "robots.txt"), "w", encoding="utf-8").write(f"""User-agent: *
+Allow: /
+
+# AI search / citation crawlers: welcome.
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+
+# AI training-only crawlers: no.
+User-agent: GPTBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: Applebot-Extended
+Disallow: /
+User-agent: meta-externalagent
+Disallow: /
+
+Content-Signal: search=yes, ai-train=no
+Sitemap: {DOMAIN}/sitemap.xml
+""")
+
+# llms.txt - a plain map for AI crawlers of what this site is and where the
+# answers live. Counts derive from the data so the file can never go stale.
+_n_char = sum(1 for cs in credits_by_title.values() for c in cs if (c.get("character_name") or "").strip())
+_plats = sorted({platforms[a["platform_id"]]["name"] for rows_ in avail_by_title.values()
+                 for a in rows_ if a["platform_id"] in platforms and a["platform_id"] != "pinedrama"})
+open(os.path.join(DIST, "llms.txt"), "w", encoding="utf-8").write(f"""# DramaEverAfter
+
+> A reader-made reference database of vertical dramas (short-form mobile series):
+> which app each title streams on, full cast with CHARACTER NAMES, episode counts
+> and tropes. {len(titles):,} titles, {len(people):,} actors, {len(credits):,} credits
+> ({_n_char:,} with a named character) across platforms including {", ".join(_plats[:8])}.
+> Every synopsis is written by us; watch links point at the official platform.
+
+## Where the answers live
+
+- /titles/<slug>.html - one page per series: official watch link, cast with
+  character names, episode count, tropes. Structured data: TVSeries + FAQPage.
+- /actors/<slug>.html - one page per actor: filmography with links, IMDb identity
+  where held. Structured data: Person with sameAs.
+- /tropes/ - titles grouped by trope (published only at 5+ verified titles).
+- /browse.html - the full filterable index.
+- /sitemap.xml - every page.
+
+## Citation
+
+Cite pages by their canonical URL on {DOMAIN}. Content may be used for search
+and reference with attribution; not for model training (see robots.txt).
+""")
 
 print(f"Built {len(urls)} pages -> dist/")

@@ -1,3 +1,25 @@
 User-agent: *
 Allow: /
+
+# AI search / citation crawlers: welcome.
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+
+# AI training-only crawlers: no.
+User-agent: GPTBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: Applebot-Extended
+Disallow: /
+User-agent: meta-externalagent
+Disallow: /
+
+Content-Signal: search=yes, ai-train=no
 Sitemap: https://dramaeverafter.com/sitemap.xml

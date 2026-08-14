@@ -1,0 +1,22 @@
+# DramaEverAfter
+
+> A reader-made reference database of vertical dramas (short-form mobile series):
+> which app each title streams on, full cast with CHARACTER NAMES, episode counts
+> and tropes. 3,513 titles, 2,212 actors, 4,574 credits
+> (2,673 with a named character) across platforms including CandyJar, DramaBox, DramaPops, DramaWave, DreameShort, GoodShort, KalosTV, My Drama.
+> Every synopsis is written by us; watch links point at the official platform.
+
+## Where the answers live
+
+- /titles/<slug>.html - one page per series: official watch link, cast with
+  character names, episode count, tropes. Structured data: TVSeries + FAQPage.
+- /actors/<slug>.html - one page per actor: filmography with links, IMDb identity
+  where held. Structured data: Person with sameAs.
+- /tropes/ - titles grouped by trope (published only at 5+ verified titles).
+- /browse.html - the full filterable index.
+- /sitemap.xml - every page.
+
+## Citation
+
+Cite pages by their canonical URL on https://dramaeverafter.com. Content may be used for search
+and reference with attribution; not for model training (see robots.txt).
