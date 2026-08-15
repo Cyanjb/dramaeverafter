@@ -31,7 +31,7 @@ CAPTIONS = {
         "She married him when he had nothing.\n"
         "Humiliated by her fiance, Victoria marries Simon, a homeless man she had "
         "been quietly helping. She has no idea who he really is. Then she takes him "
-        "home to Texas.\n"
+        "home to Texas and starts taking back everything she lost.\n"
         "A billionaire is the best kind of gift.",
 
     # 460.0M   True Heiress vs. Fake Queen Bee
@@ -73,8 +73,8 @@ CAPTIONS = {
     'ms-ceo-s-baby-daddy-is-the-merchant-of-death':
         "He was undercover. She had no idea.\n"
         "Connor Reed is the most powerful arms dealer in the world, and he is deep "
-        "undercover when he saves Charlotte Hayes. One night together is all it "
-        "takes.\n"
+        "undercover when he saves Charlotte Hayes. They spend one night together, and "
+        "she has no idea what he does or who he is.\n"
         "One night, a secret baby, and a genuinely dangerous man.",
 
     # 358.6M   Breaking the Ice
@@ -82,18 +82,19 @@ CAPTIONS = {
     # FACTS: et rid of the baby; love wins and the couple reunites.
     'breaking-the-ice':
         "The scholarship arrives at the worst possible moment.\n"
-        "Easton is a hockey hopeful who finally wins his place. Caroline is pregnant. "
-        "His mother has very firm ideas about what should happen next.\n"
+        "Easton is a hockey hopeful who finally wins his scholarship. His girlfriend "
+        "Caroline is pregnant. His mother has very firm ideas about what should "
+        "happen next.\n"
         "Sports romance with a lot of heart.",
 
     # 316.3M   Move Aside! I'm the Final Boss
     # FACTS: Kingsley, secret King of King's Corps and the richest man on Earth, returns from war to 
     # FACTS: be dumped as a nobody. Regret follows.
     'move-aside-i-m-the-final-boss':
-        "They dumped him for being a nobody.\n"
-        "Kingsley comes home from war and is written off as a man worth discarding. "
-        "What nobody around him knows is that he runs King's Corps, and there is no "
-        "richer man on Earth.\n"
+        "The nobody they threw away owns everything.\n"
+        "Kingsley comes back from war and is dumped for being a nobody. What none of "
+        "them know is that he runs King's Corps, and there is no richer man on "
+        "Earth.\n"
         "They are all about to eat their words.",
 
     # 277.2M   Money, Guns, and a Merry Christmas
@@ -119,10 +120,13 @@ CAPTIONS = {
     # 234.4M   Married at First Sight
     # FACTS: Summer has been the ideal girlfriend for her ex-boyfriend, Vincent.
     'married-at-first-sight':
-        "She was the perfect girlfriend, right up until she wasn't.\n"
-        "Summer gave Vincent everything the ideal girlfriend is supposed to give. He "
-        "is her ex now, and what comes next is a wedding to a man she has never met.\n"
-        "Strangers to lovers, starting at the altar.",
+        "She sold her own blood to put him through medical school.\n"
+        "Summer gave Vincent everything. She sold her blood to help pay his way "
+        "through medical school and carried him to the finish line, and he cheated on "
+        "her anyway. Done with him, she signs a contract marriage to save a "
+        "billionaire she has only just met. Then she finds out who he actually is.\n"
+        "A contract marriage to a total stranger, and an ex about to understand what "
+        "he lost.",
 
     # 230.8M   Married The Mafioso I Saved
     # FACTS: Betrayed and abandoned, Hannah flash-marries Alex, the street thug she saved with a sing
@@ -151,7 +155,7 @@ CAPTIONS = {
     # FACTS: ong daughter; Sienna is alive, reborn as ruthless alter-ego Scarlett, hunting vengeance 
     # FACTS: in her daughter's name.
     'mommy-don-t-cry-daddy-is-sorry':
-        "He buried the wrong story entirely.\n"
+        "The wife he buried is very much alive.\n"
         "Wayne loses his wife Sienna in a mental hospital, then is tricked into "
         "bringing home the wrong daughter. Sienna is alive. She comes back as "
         "Scarlett, and she is not here to forgive anyone.\n"
@@ -161,98 +165,162 @@ CAPTIONS = {
     # FACTS: A legendary sharpshooter hiding as a shooting range handyman steps up when the range fac
     # FACTS: es a hostile takeover.
     'american-sniper-the-last-round':
-        "The handyman at the range is not a handyman.\n"
-        "A legendary sharpshooter has spent years hiding in plain sight, fixing up a "
-        "shooting range. Then the range comes under threat, and hiding stops being an "
-        "option.\n"
-        "Hidden identity, and a quiet man nobody should have pushed.",
+        "The maintenance guy holds a world record nobody knows about.\n"
+        "Carl Oliver was the sharpshooter they called the King of Guns, and he broke "
+        "the world record for the longest confirmed kill before disappearing "
+        "completely. These days he does maintenance at a shooting range, where the "
+        "club captain Albert looks straight through him. Then the range comes under "
+        "threat, and protecting its owner Jane and her daughter Rebecca matters more "
+        "than staying hidden.\n"
+        "A quiet man with a past, pushed one time too many. Hidden identity at its "
+        "most satisfying.",
 
     # 218.8M   Carrying His Triplets, Becoming His Wifey
     # FACTS: Daisy works in a warehouse to pay for her tuition, but her father steals her money.
     'carrying-his-triplets-becoming-his-wifey':
-        "",
+        "One night with a stranger, and then three heartbeats.\n"
+        "Daisy is working warehouse shifts to put herself through college, and her "
+        "father keeps taking the money she earns. Desperate enough to take a second "
+        "job at a strip club, she meets Marcus there, a billionaire she spends a "
+        "single night with. Not long after, she finds out she is pregnant with "
+        "triplets.\n"
+        "A one night stand, a billionaire, and three babies. This is exactly the kind "
+        "of chaos we love.",
 
     # 218.1M   Fated to My Forbidden Alpha
     # FACTS: Kasey Esser's breakout title and one of the best known werewolf verticals.
     'fated-to-my-forbidden-alpha':
-        "",
+        "Her mate turns out to be the one person she cannot stand.\n"
+        "On her eighteenth birthday Selene learns that her mate is Alpha Jackson, her "
+        "own nemesis, and that he means to reject her. What he does not know is that "
+        "she is a Luna, taken as a child and mistaken ever since for an ordinary "
+        "wolf. Then she starts planning her escape.\n"
+        "A rejected mate and a hidden Luna. Werewolf romance at full volume.",
 
     # 214.1M   Taming My Bullies
     # FACTS: Emma Parker is a new transfer to Maple Elite Academy - and she's picked a fight with The
     # FACTS:  Big Four, on her very first day!
     'taming-my-bullies':
-        "",
+        "New school, new enemies, all in one afternoon.\n"
+        "Emma Parker transfers into Maple Elite Academy and picks a fight with The Big "
+        "Four before her first day is out.\n"
+        "One girl against the entire pecking order. Sign us up.",
 
     # 213.1M   My Stepbrother's Dirty Secret
     # FACTS: Alice transfers to St.
     'my-stepbrother-s-dirty-secret':
-        "",
+        "The boy she cannot stand has just moved in.\n"
+        "Alice starts at St Mary's High after her mum remarries a millionaire. She "
+        "clashes with James, a classmate she wants nothing to do with, right up until "
+        "she finds out he is her new stepbrother.\n"
+        "Forbidden stepbrother romance, and we are not sorry about it.",
 
     # 200.6M   How to Break a DILF
     # FACTS: Uncle Jesse's smokin' hot tattoo and great technique on bed awakens Sophie Holland's fan
     # FACTS: tasy in How To Break A DILF Trailer!
     'how-to-break-a-dilf':
-        "",
+        "He is her best friend's dad, and she does not care.\n"
+        "Sophie Holland has fallen for Uncle Jesse, who happens to be her best "
+        "friend's father. His advice is that she should be dating someone her own "
+        "age. She is not taking it.\n"
+        "Forbidden age gap, and a man trying very hard to do the right thing.",
 
     # 198.4M   Snatched a Billionaire to be My Husband
     # FACTS: She falls in love with her ex's uncle.
     'snatched-a-billionaire-to-be-my-husband':
-        "",
+        "Of all the men in the world, it had to be him.\n"
+        "She falls in love with her ex's uncle.\n"
+        "Age gap with a family complication attached. Awkward does not begin to cover "
+        "it.",
 
     # 197.9M   The Virgin and The Billionaire
     # FACTS: Demoted to maid and substitute bride in her father's house, Cindy finds unexpected love 
     # FACTS: when billionaire Charles Kane falls for her.
     'the-virgin-and-the-billionaire':
-        "",
+        "Her own father turned her into the help.\n"
+        "Cindy is pushed down to maid in her father's house and lined up as a "
+        "substitute bride. Then the billionaire Charles Kane notices her.\n"
+        "Cinderella energy with a substitute bride twist.",
 
     # 197.6M   Tell Me Not to Love You
     # FACTS: Brie, a servant's daughter raised alongside young master Teddy, fights her feelings as h
     # FACTS: e pursues her across the class divide.
     'tell-me-not-to-love-you':
-        "",
+        "She grew up in his house, never as his equal.\n"
+        "Brie is a servant's daughter, raised alongside the young master Teddy. He "
+        "wants her. She is doing everything she can not to want him back.\n"
+        "Forbidden love across a class divide. Angst, and plenty of it.",
 
     # 197.0M   Don't Miss Me When I'm Gone
     # FACTS: Orphaned and raised with the Miller brothers, she expects to end up with one of them unt
     # FACTS: il the maid's daughter moves in and her heart is broken; after she leaves, they lose the
     # FACTS: ir minds trying to find her.
     'don-t-miss-me-when-i-m-gone':
-        "",
+        "She left, and every one of them fell apart.\n"
+        "Orphaned and raised alongside the Miller brothers, she always assumed she "
+        "would end up with one of them. Then the maid's daughter moves in, and the "
+        "future she had always assumed was hers quietly disappears. So she goes.\n"
+        "Nothing hits like a heroine who walks away and lets them feel it.",
 
     # 192.3M   The Alpha King and His Virgin Bride
     # FACTS: The Alpha King Killian Storm is cursed to not live past age thirty.
     'the-alpha-king-and-his-virgin-bride':
-        "",
+        "He is not meant to see thirty.\n"
+        "Killian Storm is the Alpha King, and a curse says he will not live past the "
+        "age of thirty. There's only one way he can survive. He has to find his true "
+        "fated mate. But what nobody counted on is that his mate is just a human.\n"
+        "A cursed king and a human mate. Some delicious angst for the fated mate fans.",
 
     # 190.2M   Doctor Boss Is My Baby Daddy
     # FACTS: : When med intern Molly has a one-night stand with a stranger, she thinks it’s a one-and
     # FACTS: -done kind of deal.
     'doctor-boss-is-my-baby-daddy':
-        "",
+        "One night with a stranger. Then she meets her new boss.\n"
+        "Molly is a medical intern who spends a night with a stranger and files it "
+        "away as a one off. A month later she finds out two things. She is pregnant, "
+        "and the stranger is Dr Graham Weston, her new boss.\n"
+        "A one night stand and a secret pregnancy. The angst practically writes "
+        "itself.",
 
     # 181.9M   Falling for My Ex's Mafia Dad
     # FACTS: After catching her boyfriend cheating, Fay is pulled into a mob alliance marriage and fa
     # FACTS: lls for his father, the Mafia King.
     'falling-for-my-ex-s-mafia-dad':
-        "",
+        "She caught him cheating. What came next was a wedding.\n"
+        "After catching her boyfriend cheating, Fay is pulled into a marriage arranged "
+        "to seal an alliance between mob families. The man at the head of it is his "
+        "father.\n"
+        "Age gap, mafia, and an ex who is about to regret everything.",
 
     # 176.8M   The Double Life of a Billionaire Heiress
     # FACTS: After three years of marriage, CEO Wes Sterling is convinced that his wife Kira is a che
     # FACTS: ating gold digger.
     'the-double-life-of-a-billionaire-heiress':
-        "",
+        "He is certain he knows exactly who he married.\n"
+        "Three years into the marriage, CEO Wes Sterling has convinced himself that "
+        "his wife Kira is a cheating gold digger.\n"
+        "A husband who has it completely wrong. We cannot wait for him to find out.",
 
     # 172.5M   I Had a Baby without You
     # FACTS: Five years ago curvy waitress Scarlett saved Brandon's life and spent one night with him
     # FACTS:  before vanishing. Now she's back, unrecognizable, and he's a recluse.
     'i-had-a-baby-without-you':
-        "",
+        "Five years on, he does not recognise her.\n"
+        "Scarlett saved Brandon's life five years ago, spent one night with him, then "
+        "disappeared. She is back now, and in the years between he has shut himself "
+        "away from the world.\n"
+        "A secret baby and a second chance. This one aches.",
 
     # 171.8M   Miss You After Goodbye
     # FACTS: To repay a debt of kindness, Neil signs a secret contract with Keira's father stating th
     # FACTS: at he will marry Keira for five years and help her recover from a painful breakup with h
     # FACTS: er first love, Simon.
     'miss-you-after-goodbye':
-        "",
+        "He signed up for five years. She has no idea.\n"
+        "Neil owes Keira's father a debt, so he signs a secret contract: five years of "
+        "marriage, and help getting her over Simon, her first love. Keira never learns "
+        "the contract exists.\n"
+        "A contract marriage with a secret sitting at the centre of it. Pure angst.",
 
     # 170.3M   The Call Boy I Met in Paris
     # FACTS: Sophie fake-marries a man she mistakes for a callboy. He's a billionaire she met seven y
@@ -360,5 +428,81 @@ FACTS = {  # paste fetched text here for any FETCH REQUIRED row
         "Sebastian couldn't resist growing a soft spot for Natalie. With her family "
         "planning her downfall and her estranged husband cooking up a deadly plan, "
         "what should Natalie expect?",
+
+    # Stored text was "Kasey Esser's breakout title and one of the best known werewolf
+    # verticals" - a note about the ACTOR, not a synopsis. Fetched 15 Aug 2026 from
+    # https://www.reelshort.com/movie/fated-to-my-forbidden-alpha-647ffff5be685964fe120217
+    # 60 episodes. Cast: Autumn Noel, Kasey Esser, John Williams Dicario, Antheia.
+    'fated-to-my-forbidden-alpha':
+        "On her 18th birthday, Selene found out that her mate was her nemesis, Alpha "
+        "Jackson. He plans on rejecting her. Selene never planned on accepting him as "
+        "her mate. He didn't know she wasn't any wolf but a Luna, kidnapped and "
+        "mistaken for a regular wolf. As Selene plans on escaping her pack, she meets "
+        "Alexander, her fated mate.",
+
+    # Stored text was truncated to "Alice transfers to St." - unusable. Fetched 15 Aug
+    # https://www.reelshort.com/movie/my-stepbrother-s-dirty-secret-6807565447c113d594077ca8
+    # 62 episodes. Cast: Jenna Gilmer, Cameron Porras, August Williams, Greta Hicks.
+    'my-stepbrother-s-dirty-secret':
+        "Alice transfers to St. Mary's High School after her mom remarries a "
+        "millionaire, only to butt heads with James, a hot classmate who turns out to "
+        "be her new stepbrother.",
+
+    # Stored text was trailer marketing copy. Fetched 15 Aug 2026 from
+    # https://www.reelshort.com/movie/how-to-break-a-dilf-68ec6024a7344dc50f009aff
+    # 68 episodes. Characters named: Sophie Holland, Uncle Jesse.
+    'how-to-break-a-dilf':
+        "She becomes attracted to her best friend's father, Uncle Jesse, despite his "
+        "advice to date age appropriate partners. Sophie Holland.",
+
+    # REFETCHED 15 Aug. The stored line was the FIRST SENTENCE ONLY, so the caption
+    # written from it had no male lead, no pregnancy and no romance in it at all.
+    # 69 episodes. Cast: Autumn Noel, Mark H. McClafferty.
+    'carrying-his-triplets-becoming-his-wifey':
+        "Daisy works in a warehouse to pay for her tuition, but her father steals her "
+        "money. Financially desperate, gets another job at a strip club to make ends "
+        "meet. There, she has a one-night stand with Marcus, a billionaire. Soon "
+        "after, Daisy discovers that she is pregnant with triplets.",
+
+    # REFETCHED 15 Aug. Stored line stopped before the two reveals. 63 episodes.
+    # Cast: Marc Herrmann, Kirby Ellwood.
+    'doctor-boss-is-my-baby-daddy':
+        "When med intern Molly has a one-night stand with a stranger, she thinks it's "
+        "a one-and-done kind of deal. But a month later, she discovers two shocking "
+        "truths: she's pregnant with his baby, and the stranger is her new boss, Dr. "
+        "Graham Weston.",
+
+    # REFETCHED 15 Aug. Stored line was one sentence of a much longer synopsis.
+    # 89 episodes. Cast: Autumn Noel, Lorenzo Brunetti, Chase Lawless, Ariel Yasmine.
+    'married-at-first-sight':
+        "Summer has been the ideal girlfriend for her ex-boyfriend, Vincent. From "
+        "selling her blood to helping him finish medical school, Summer has been the "
+        "best girlfriend. Yet, Vincent cheated on her. Frustrated by their actions, "
+        "Summer enters into a contract marriage to save a billionaire she just met. "
+        "She was shocked to find out about his identity.",
+
+    # REFETCHED 15 Aug. Stored line omitted the curse's condition and the mate.
+    # 80 episodes. Cast includes Mark H. McClafferty.
+    'the-alpha-king-and-his-virgin-bride':
+        "The Alpha King Killian Storm is cursed to not live past age thirty. Only "
+        "finding his true fated mate can break the curse, but what happens when his "
+        "fated mate is a human?",
+
+    # REFETCHED 15 Aug. 63 episodes. Cast: Addison Bowman, Marc Sylwestrzak, Piper
+    # Jean Jones, Jesse Morales, Mark H. McClafferty, Cameron Somers, Aaron Russell.
+    'american-sniper-the-last-round':
+        "Carl Oliver, the legendary sharpshooter known as the King of Guns, broke the "
+        "world record for longest confirmed kill then vanished from the public eye. He "
+        "hid his identity, working as maintenance at a shooting range. He endures "
+        "humiliation from the dismissive shooting club captain, Albert, unaware of his "
+        "true identity. The shooting range is facing a hostile takeover. In order to "
+        "protect Jane, the owner, and her daughter Rebecca, Carl steps up and shows "
+        "his legendary shooting skills.",
+
+    # REFETCHED 15 Aug. The platform publishes ONE LINE for this title and no more,
+    # so a short caption here is honest rather than lazy. 63 episodes.
+    # Cast: Grace Swanson, Jarred Harper, Dante Belardinelli, Courtney Green.
+    'snatched-a-billionaire-to-be-my-husband':
+        "What happens when you fall in love with your ex's uncle?",
 }
 
