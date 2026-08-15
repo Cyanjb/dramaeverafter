@@ -354,19 +354,42 @@ TROPE_ACRONYMS = {"ceo": "CEO", "bl": "BL", "gl": "GL", "dilf": "DILF", "milf": 
                   "fbi": "FBI", "cia": "CIA", "mma": "MMA", "nyc": "NYC", "vip": "VIP",
                   "ai": "AI", "cfo": "CFO", "pi": "PI"}
 
-def story_block(t):
-    """The story section. A caption may carry a HOOK on its first line (Cyan,
-    14 Aug: the punchy line leads as a subheading) - stored before a newline in
-    synopsis_short. Captions without a newline render exactly as before."""
+def caption_parts(t):
+    """synopsis_short splits on newlines into up to three parts:
+
+        HOOK    line 1, the punchy line, renders as a subheading (Cyan, 14 Aug)
+        BODY    line 2, the synopsis itself
+        ASIDE   line 3, US TALKING TO THE READER (Cyan, 15 Aug)
+
+    The aside is the fan reaction, deliberately NOT part of the synopsis, so it
+    is stored separately rather than tacked onto the body. That is what lets it
+    render in wine and stay out of the meta description and the schema, where a
+    line like 'We love us some protective hero energy' would read as a claim
+    about the plot. Captions with fewer parts render exactly as they did."""
     s = (t.get("synopsis_short") or "").strip()
     if not s:
+        return "", "", ""
+    parts = [p.strip() for p in s.split("\n")]
+    parts += [""] * (3 - len(parts))
+    return parts[0], parts[1], parts[2]
+
+
+def synopsis_text(t):
+    """Hook plus body, no aside. For meta descriptions and schema."""
+    hook, body, _ = caption_parts(t)
+    return (hook + " " + body).strip() if body else hook
+
+
+def story_block(t):
+    hook, body, aside = caption_parts(t)
+    if not hook:
         return ""
-    hook, _, body = s.partition("\n")
-    if body.strip():
-        return (f'<div class="story"><h2>The story</h2>'
-                f'<p class="story-hook">{hook.strip()}</p>'
-                f'<p>{body.strip()}</p></div>')
-    return f'<div class="story"><h2>The story</h2><p>{s}</p></div>'
+    if not body:
+        return f'<div class="story"><h2>The story</h2><p>{hook}</p></div>'
+    tail = f'<p class="story-aside">{aside}</p>' if aside else ""
+    return (f'<div class="story"><h2>The story</h2>'
+            f'<p class="story-hook">{hook}</p>'
+            f'<p>{body}</p>{tail}</div>')
 
 
 def trope_text(name):
@@ -593,6 +616,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .story h2{margin:0 0 8px;font-size:20px}
 .story p{margin:0;font-size:16px;line-height:1.65;color:#3E3238;text-wrap:pretty}
 .story .story-hook{font-size:17px;font-weight:600;font-style:italic;margin:0 0 8px;color:#2B2126}
+.story .story-aside{margin-top:15px;color:var(--wine)}
 
 .stat-figures{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:20px}
 .stat-figures .stat{display:block}
@@ -1226,7 +1250,7 @@ for t in titles:
     # the field competitors do not index, so it is the answer AI engines can only
     # get here.
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
-          "description": t["synopsis_short"].replace("\n", " ")[:160],
+          "description": synopsis_text(t)[:160],
           "url": f"{DOMAIN}/titles/{sl}.html"}
     if (t.get("episode_count") or "").strip().isdigit():
         ld["numberOfEpisodes"] = int(t["episode_count"])
