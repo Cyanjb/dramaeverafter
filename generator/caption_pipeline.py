@@ -71,7 +71,20 @@ REJECTED = [
     (r"\blove me some\b", "singular speaker, the site speaks as us"),
 ]
 # An aside must stand alone: cover the hook and body and it still has to make sense.
-BACKREF = [(r"^(it|that|this|they|the difference)\b", "aside points backwards")]
+# CALIBRATED AGAINST CYAN'S OWN WORDING, 15 Aug. The real fault was a bare pronoun
+# standing in for the show with nothing to point at - "It knows exactly what it is"
+# reads as nonsense once lifted out of its paragraph. What is NOT a fault:
+#   "This one is served with an extra helping of angst"  - "this one" is idiomatic
+#       for "this show" and is always available to a reader, it points at nothing
+#   "They are all about to eat their words"              - a fan may refer to the
+#       people just read about; that is the aside commenting on the series
+# Both of those are her wording, so the rule narrows to bare It/That, and to This
+# only when it is not "this one".
+BACKREF = [
+    (r"^(it|that)\b", "aside opens on a bare pronoun with nothing to point at"),
+    (r"^this\b(?!\s+one\b)", "aside opens on a bare This"),
+    (r"\bthe difference\b", "aside leans on something defined in the hook"),
+]
 
 
 def rows(name):

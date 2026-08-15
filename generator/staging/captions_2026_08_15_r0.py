@@ -32,7 +32,7 @@ CAPTIONS = {
         "Humiliated by her fiance, Victoria marries Simon, a homeless man she had "
         "been quietly helping. She has no idea who he really is. Then she takes him "
         "home to Texas.\n"
-        "A hidden billionaire at Christmas is unbeatable.",
+        "A billionaire is the best kind of gift.",
 
     # 460.0M   True Heiress vs. Fake Queen Bee
     # FACTS: Wealthy teen Hailey hides her identity at a public school while the maid's daughter Cand
@@ -44,7 +44,7 @@ CAPTIONS = {
         "school. Meanwhile the maid's daughter Candice is passing herself off as the "
         "Kaplan heiress and climbing straight to the top, while Hailey takes the "
         "bullying at the bottom.\n"
-        "A hidden identity and a fake heiress in one show. We will never turn that down.",
+        "We would never turn that down.",
 
     # 416.6M   How to Tame a Silver Fox
     # FACTS: Yale senior Harper Reeves plots Operation Seduction to drive out her dad's overprotectiv
@@ -54,7 +54,7 @@ CAPTIONS = {
         "The plan was to get rid of him.\n"
         "Harper Reeves is a Yale senior with an overprotective problem: her dad's best "
         "friend and business partner Chris Collins. So she launches Operation "
-        "Seduction to drive him out. It doesn't go the way she drew it up.\n"
+        "Seduction to drive him out. Nothing goes to plan.\n"
         "Nobody is immune to a silver fox.",
 
     # 413.9M   My Sister Is the Warlord Queen
@@ -75,7 +75,7 @@ CAPTIONS = {
         "Connor Reed is the most powerful arms dealer in the world, and he is deep "
         "undercover when he saves Charlotte Hayes. One night together is all it "
         "takes.\n"
-        "One night, a secret baby, and a genuinely dangerous man. We know what we like.",
+        "One night, a secret baby, and a genuinely dangerous man.",
 
     # 358.6M   Breaking the Ice
     # FACTS: Hockey hopeful Easton wins a scholarship and his mother pressures pregnant Caroline to g
@@ -83,9 +83,8 @@ CAPTIONS = {
     'breaking-the-ice':
         "The scholarship arrives at the worst possible moment.\n"
         "Easton is a hockey hopeful who finally wins his place. Caroline is pregnant. "
-        "His mother has very firm ideas about what should happen next, and she is not "
-        "gentle about them.\n"
-        "Sports romance with real weight behind it.",
+        "His mother has very firm ideas about what should happen next.\n"
+        "Sports romance with a lot of heart.",
 
     # 316.3M   Move Aside! I'm the Final Boss
     # FACTS: Kingsley, secret King of King's Corps and the richest man on Earth, returns from war to 
@@ -95,7 +94,7 @@ CAPTIONS = {
         "Kingsley comes home from war and is written off as a man worth discarding. "
         "What nobody around him knows is that he runs King's Corps, and there is no "
         "richer man on Earth.\n"
-        "Nothing beats watching people work out exactly who they threw away.",
+        "They are all about to eat their words.",
 
     # 277.2M   Money, Guns, and a Merry Christmas
     # FACTS: A defense-industry CEO mistaken for a broke salesman contract-marries Iris and turns the
@@ -113,8 +112,9 @@ CAPTIONS = {
     'in-love-with-a-single-farmer-daddy':
         "Her family married her off and washed their hands of her.\n"
         "Natalie is married off to Rhett, a rural farmer raising a daughter who does "
-        "not speak. She is shunned when she arrives, and wins people round slowly.\n"
-        "A single dad, a child who needs her, and a proper slow burn. This one is warm.",
+        "not speak. When she first arrives she is shunned. Will she be able to turn "
+        "things around?\n"
+        "A single dad, a child who needs her, and a fierce slow burn romance.",
 
     # 234.4M   Married at First Sight
     # FACTS: Summer has been the ideal girlfriend for her ex-boyfriend, Vincent.
@@ -122,7 +122,7 @@ CAPTIONS = {
         "She was the perfect girlfriend, right up until she wasn't.\n"
         "Summer gave Vincent everything the ideal girlfriend is supposed to give. He "
         "is her ex now, and what comes next is a wedding to a man she has never met.\n"
-        "Marriage first, feelings later. We are always here for that.",
+        "Strangers to lovers, starting at the altar.",
 
     # 230.8M   Married The Mafioso I Saved
     # FACTS: Betrayed and abandoned, Hannah flash-marries Alex, the street thug she saved with a sing
@@ -131,7 +131,7 @@ CAPTIONS = {
         "She saved a street thug with one kiss.\n"
         "Betrayed and abandoned, Hannah marries Alex on the spot, the man she saved "
         "with a single kiss. She has no idea what he really is.\n"
-        "Flash marriage to a dangerous man. Say less.",
+        "Flash marriage to a dangerous man. Need we say more?",
 
     # 229.1M   Ex-Convict Nanny and Billionaire Single Dad
     # FACTS: Fresh out of prison, Grace landed a job as a nanny. Her boss, the ruthless billionaire A
@@ -144,7 +144,7 @@ CAPTIONS = {
         "billionaire who cares about exactly one thing: his daughter. Grace passes "
         "every test he sets her. She is also carrying a secret that could take the "
         "whole thing down.\n"
-        "A cold single dad and a woman with a past. Angst 101.",
+        "This one is served with an extra helping of angst.",
 
     # 226.8M   Mommy Don't Cry, Daddy is Sorry
     # FACTS: After his wife Sienna dies in a mental hospital, Wayne is fooled into taking home the wr
