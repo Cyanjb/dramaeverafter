@@ -202,7 +202,21 @@ def validate(tid, cap, fact, title):
         if re.search(pat, aside, re.I):
             errs.append(why)
     haystack = ((fact or "") + " " + title).lower()
-    invented = sorted({n for n in proper_nouns(hook + " " + body) if n.lower() not in haystack})
+
+    def known(n):
+        """A name counts as sourced if it appears, or if its singular does.
+        'the Pattersons' from a source that says 'the Patterson family' is a
+        plural, not an invention, and failing it teaches you to ignore the
+        checker. Same for a possessive."""
+        n = n.lower()
+        if n in haystack:
+            return True
+        for stripped in (n.rstrip("s"), n[:-2] if n.endswith("es") else n):
+            if len(stripped) > 2 and stripped in haystack:
+                return True
+        return False
+
+    invented = sorted({n for n in proper_nouns(hook + " " + body) if not known(n)})
     if invented:
         errs.append("INVENTED PROPER NOUN %s - not in the fact source" % invented)
     return errs

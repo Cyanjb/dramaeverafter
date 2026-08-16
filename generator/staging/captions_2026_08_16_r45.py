@@ -17,31 +17,61 @@ CAPTIONS = {
     # FACTS: Arianna dies a tragic death on the day of her graduation, while Derek, the driver's son,
     # FACTS:  takes all the spotlight on stage.
     'reborn-to-love-mr-right':
-        "",
+        "She gave him everything, right down to her father's "
+        "company.\nArianna gave Derek all of it. Her car, her credit card, "
+        "the company itself. "
+        "Derek is the driver's son, and he took the lot while spoiling "
+        "Ivy like a princess and treating Arianna like a servant. She "
+        "dies on the day of her graduation, and only then does she "
+        "understand that Hayden, the billionaire's heir, had been waiting "
+        "for her the whole time. Then fate hands her a second chance at "
+        "all of it.",
 
     # 132.3M   Love at Dangerous Speeds
     # FACTS: When Violet flees her abusive fiancé on their wedding day, she hides with Marcus, a noto
     # FACTS: rious street racer.
     'love-at-dangerous-speeds':
-        "",
+        "She runs on her wedding day and hides with a stranger.\nViolet "
+        "gets away from an abusive fiance on the day she is meant to "
+        "marry him, and hides with Marcus, a street racer with a name "
+        "people know. What starts as protection in exchange for a kiss "
+        "turns into something neither of them planned. Then Marcus tells "
+        "her the truth about the hit and run he has never got past: the "
+        "man it killed was her father.",
 
     # 132.1M   Mr Hills' Adorable Wife
     # FACTS: Overlooked by her family for a birthmark, Valerie finds unexpected love with billionaire
     # FACTS:  Andrew Hills.
     'mr-hills-adorable-wife':
-        "",
+        "Her own family tried to swap her out.\nValerie Patterson was "
+        "born with a birthmark her mother decided was ugly, and her "
+        "family have ignored her ever since. When a billionaire takes an "
+        "interest, the Pattersons very nearly succeed in putting her "
+        "sister Daphne in her place instead. What none of them account "
+        "for is Andrew Hills falling for Valerie herself.",
 
     # 130.8M   We Will Love Again
     # FACTS: Noah Preston returns as a billionaire after six years of being away, and his fiance brea
     # FACTS: king up with him because he was poor in We Will Love Again Movie.
     'we-will-love-again':
-        "",
+        "She left him for being poor. That is not the whole story.\nNoah "
+        "Preston comes back after six years away, and this time he is a "
+        "billionaire. The woman who left him did it because he had "
+        "nothing, or that is what he has believed ever since. He comes "
+        "home wanting revenge. What nobody has told him is that his own "
+        "mother made her end it, and that she never wanted to at all.",
 
     # 130.6M   The Billionaire's Baby Bargain
     # FACTS: To save her dying sister, Amelia agrees to billionaire Nathan's contract marriage of no 
     # FACTS: sex, no love, and a baby by insemination; unexpected feelings complicate the deal.
     'the-billionaire-s-baby-bargain':
-        "",
+        "No sex, no love, and a baby by contract.\nAmelia's sister Abby "
+        "is dying, and signing a contract marriage is the only way Amelia "
+        "can pay for what she needs. The terms are exact: no sex, no "
+        "love, and a baby by insemination. Nathan set it up because he is "
+        "fighting to get his position as CEO back and his father's wish "
+        "is the price of it. Neither of them writes feelings into the "
+        "agreement.",
 
     # 129.9M   Claimed by the Alpha I Hate
     # FACTS: Daisy Storm cannot shift and is hated by her pack; her Alpha mate cheats and breaks thei
@@ -49,43 +79,83 @@ CAPTIONS = {
     # FACTS: a Nolan Fenrir, the man she blames, and a forbidden second mate bond pulls them together
     # FACTS: .
     'claimed-by-the-alpha-i-hate':
-        "",
+        "She blames him for her mother's death.\nDaisy Storm has never "
+        "known what is wrong with her. She cannot shift and she has no "
+        "wolf, and on her eighteenth birthday her pack and her own mate "
+        "reject her for it. The one person she finds herself pulled "
+        "towards is Nolan Fenrir, the Alpha she holds responsible for her "
+        "mother's death. Neither of them can explain the pull, and "
+        "neither of them wants it.",
 
     # 129.7M   Do Not Disturb: Lady Boss in Disguise!
     # FACTS: To become heiress of her family hotel chain, Violet Trenton goes undercover as a cleanin
     # FACTS: g lady and takes out the troublemakers one by one, while sexy new COO Kasey Johnson may 
     # FACTS: be more than an ally.
     'do-not-disturb-lady-boss-in-disguise':
-        "",
+        "Nobody at the hotel knows whose daughter she is.\nViolet Trenton "
+        "wants the family "
+        "hotel chain, and the only way to it is to prove she can run one. "
+        "So she takes a job in her own hotels as a cleaning lady, where "
+        "nobody knows her face, and works through the people causing "
+        "trouble one at a time.",
 
     # 127.8M   Claimed by My Ex's Alpha Brother
     # FACTS: Wolfless Ella catches her Beta mate cheating and falls into the arms of his brother, the
     # FACTS:  newly returned Alpha who has loved her since childhood.
     'claimed-by-my-ex-s-alpha-brother':
-        "",
+        "Her mate cheats. His brother has waited years.\nElla has no wolf "
+        "of her own, but she has a mate in Beta Noah Gravens, right up "
+        "until she catches him with her rival Ava. She ends up with "
+        "Noah's brother instead. Liam Gravens has just come back as Alpha "
+        "of the Crescent Pack, he has loved her since they were children, "
+        "and he knows she is his fated mate. Jealous rivals and bitter "
+        "exes are already pulling at the pair of them.",
 
     # 125.3M   Dear Husband, Delete My Number!
     # FACTS: Emma got into a car accident and when she tried to reach her husband, Elijah, he ignored
     # FACTS:  her to be with his wanna-be girlfriend, Stella.
     'dear-husband-delete-my-number':
-        "",
+        "She called him from the crash. He did not pick up.\nEmma is in a "
+        "car accident, and when she tries to reach her husband Elijah he "
+        "ignores her because he is with Stella. Then she finds out Stella "
+        "may be carrying his child. Emma files for divorce and refuses to "
+        "take a penny from him, which is the part Elijah cannot make "
+        "sense of, because he always assumed the money was why she "
+        "stayed.",
 
     # 124.8M   Pregnant by My Ex's Professor Dad
     # FACTS: After catching her boyfriend cheating, Emily has a one-night stand with a stranger who t
     # FACTS: urns out to be her new professor, then discovers she is pregnant.
     'pregnant-by-my-ex-s-professor-dad':
-        "",
+        "The stranger from last night is at the front of the "
+        "class.\nEmily catches her boyfriend cheating on the first day of "
+        "the semester. That night she goes home with a stranger called "
+        "Charles. The next morning she walks into a lecture and finds him "
+        "standing at the front of it, because Charles is her new "
+        "professor. They keep it professional. Then Emily finds out she "
+        "is pregnant.",
 
     # 123.3M   The Reckoning Takes Flight
     # FACTS: Eve takes a flight to Hawaii to attend her big brother's wedding, booking an extra-wide 
     # FACTS: seat because of her broken leg in a cast.
     'the-reckoning-takes-flight':
-        "",
+        "One seat on one flight, and a wedding does not survive it.\nEve "
+        "books an extra wide seat to Hawaii for her brother's wedding, "
+        "because her leg is in a cast. A woman and her son demand she "
+        "move. When the boy trips in turbulence, his mother turns on the "
+        "pilots and forces an emergency landing. Her sister Clara arrives "
+        "to back her up and accuses Eve of being her fiance's mistress, "
+        "without realising that Eve is her fiance's little sister.",
 
     # 122.8M   You Belong With Me
     # FACTS: Eric Taylor Guilmette lead.
     'you-belong-with-me':
-        "",
+        "Revenge first. Feelings were not part of the plan.\nKristine's "
+        "boyfriend has been cheating with her best friend, and coasting "
+        "on her brains the whole time. So she goes to his rich uncle "
+        "Henry and evens the score. Henry knows exactly what he is being "
+        "used for, because Kristine tells him outright. What neither of "
+        "them arranges for is any of it turning real.",
 
     # 119.1M   My Secret Lover Is His Brother
     # FACTS: To forgive Piper's family debt, she's promised to marry one of the Bellfort brothers.
@@ -96,17 +166,32 @@ CAPTIONS = {
     # FACTS: Jasper needed a wife urgently, Chloe needed money urgently; their contract marriage beco
     # FACTS: mes the real thing.
     'the-ceo-s-contract-wife':
-        "",
+        "He needed a wife. She needed money.\nJasper Tate needs a wife "
+        "and has no time to go looking for one. Chloe Adams needs money "
+        "and has run out of other ideas. They both go to the same person "
+        "for help, and Madam G puts the two of them in front of each "
+        "other. What they sign is a contract and nothing else, and it "
+        "does not stay that way for long.",
 
     # 116.7M   Kiss Me One Last Time
     # FACTS: In Kiss Me One Last Time full movie, Adeline has cancer.
     'kiss-me-one-last-time':
-        "",
+        "She has a few months left, and he has never once looked at "
+        "her.\nAdeline is dying. She has a few months, and the only thing "
+        "she wants in them is for her husband to love her. Blake has "
+        "never treated her as his wife. To him she has always been a "
+        "blood bank, kept close for her step sister's sake.",
 
     # 115.6M   We Are Never Ever Getting Back Together
     # FACTS: Lisa's contract marriage ends without notice. Then her ex-husband becomes her boss.
     'we-are-never-ever-getting-back-together':
-        "",
+        "The contract ended without a word. Then he turned up as her "
+        "boss.\nLisa's contract marriage to Aidan ends without warning "
+        "and without explanation. What stayed with her is that she always "
+        "valued him more than he ever valued her. When they cross paths "
+        "again she takes her moment and leaves him a note he will not "
+        "enjoy reading. Then she starts a new job, and Aidan is the man "
+        "she reports to.",
 
     # 115.3M   Big Bad Husband, Please Wake Up!
     # FACTS: Ciara marries comatose billionaire Adrian to save her sick family. Then he wakes up.
