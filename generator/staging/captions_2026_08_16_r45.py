@@ -159,7 +159,12 @@ CAPTIONS = {
     # 119.1M   My Secret Lover Is His Brother
     # FACTS: To forgive Piper's family debt, she's promised to marry one of the Bellfort brothers.
     'my-secret-lover-is-his-brother':
-        "",
+        "Her family's debt comes with a choice of brother."
+        "\nPiper is promised to one of the Bellfort brothers to clear her "
+        "family's debt, and the choice of which one is hers to make. Drew is "
+        "the star of the lacrosse team. Noah is the handsome loner nobody "
+        "gets close to. She has a real connection with both of them but "
+        "picking one means letting the other go.",
 
     # 118.2M   The CEO's Contract Wife
     # FACTS: Jasper needed a wife urgently, Chloe needed money urgently; their contract marriage beco
@@ -195,178 +200,348 @@ CAPTIONS = {
     # 115.3M   Big Bad Husband, Please Wake Up!
     # FACTS: Ciara marries comatose billionaire Adrian to save her sick family. Then he wakes up.
     'big-bad-husband-please-wake-up':
-        "",
+        "Her groom is in a coma on the wedding day."
+        "\nCiara agrees to marry Adrian Lewis while he is lying unconscious, "
+        "because her family are sick and the money is the only thing that "
+        "saves them. Everyone around her treats the arrangement as something "
+        "to be ashamed of, and she carries that humiliation through the "
+        "ceremony and well past it. Then Adrian opens his eyes.",
 
     # 115.2M   The Return of the Lost Heiress
     # FACTS: Mute since her father's death, lost heiress Lana is adopted by a loving stranger while h
     # FACTS: er birth family unknowingly mistreats the daughter they keep searching for.
     'the-return-of-the-lost-heiress':
-        "",
+        "She stopped speaking the day her father died."
+        "\nLana watches her father die and never says another word after it. "
+        "Escaping the guard who tries to sell her, she is lost, and it is Ron "
+        "who finds her and raises her with every bit of the love a father "
+        "has. Her birth family never stop searching for her in all the years "
+        "that follow. When she finally stands in front of them they do not "
+        "know who she is, and they treat her accordingly.",
 
     # 114.4M   Secret Surrogate to the Mafia King
     # FACTS: Selling her eggs to pay her boyfriend's debt, Vanessa ends up pregnant by clinical error
     # FACTS: ; the father is ruthless Mafia King Marcello Lavigne, who moves her into his mansion and
     # FACTS:  proves his devotion as she decides whether to become queen of his empire.
     'secret-surrogate-to-the-mafia-king':
-        "",
+        "She goes in to sell her eggs and leaves pregnant."
+        "\nVanessa Peters sells her eggs to clear her boyfriend's debt, and a "
+        "mistake at the clinic leaves her carrying a child instead. She finds "
+        "out he has been cheating on her, decides to keep the baby anyway, "
+        "and only then learns whose it is. Marcello Lavigne is a ruthless "
+        "mafia king with bodies behind him, and his answer is to move her "
+        "into his mansion where he can keep her safe.",
 
     # 111.8M   Escorting the Ruthless Billionaire Doctor
     # FACTS: Desperate to fund her father's surgery, Violet meets Dax, a billionaire doctor determine
     # FACTS: d to pull her back from the edge.
     'escorting-the-ruthless-billionaire-doctor':
-        "",
+        "Her father needs surgery and she has nothing left to sell."
+        "\nViolet cannot pay for her father's operation and decides to sell "
+        "her virginity to cover it. The doctor who answers spends the night "
+        "trying to talk her back from the edge of that decision instead. They "
+        "end up together anyway, and afterwards Dax cannot get her out of his "
+        "head even while he is sure she is just another gold digger. Neither "
+        "of them has told the truth about themselves yet.",
 
     # 111.0M   Open Your Eyes, My Billionaire Husband
     # FACTS: Desperate for her mother's medical bills, Hailey marries comatose billionaire Samuel Tre
     # FACTS: nt, who soon wakes to find himself engaged to a stranger.
     'open-your-eyes-my-billionaire-husband':
-        "",
+        "Her mother's care comes at the price of a husband who cannot object."
+        "\nHailey has no way to cover her mother's medical bills, and her "
+        "family will only step in on one condition. She has to marry Samuel "
+        "Trent, a billionaire who has been unconscious since a car accident "
+        "nearly killed him. She takes the deal, because there is no other way "
+        "to keep her mother alive. Then Samuel wakes up and finds out he is "
+        "engaged to a woman he has never met.",
 
     # 109.9M   The Hidden Billionaire in First Class
     # FACTS: They all thought Jett Hawkings was a lowly baggage handler and threatened to throw him o
     # FACTS: ff the flight.
     'the-hidden-billionaire-in-first-class':
-        "",
+        "They want the baggage handler thrown off the plane."
+        "\nEveryone in the cabin has Jett Hawkings pegged as a lowly baggage "
+        "handler who does not belong up there with them, and they push to "
+        "have him removed from the flight. Then a storm hits and the plane "
+        "starts going down. The passenger they spent the whole journey "
+        "looking down on is not a baggage handler at all.",
 
     # 109.3M   The Tutor Trap
     # FACTS: School hockey star Brady asks brainy wallflower Harper to be his chemistry tutor.
     'the-tutor-trap':
-        "",
+        "Chemistry lessons, paid for in fake boyfriend hours."
+        "\nBrady is the school hockey star and he is sinking in chemistry, so "
+        "he asks Harper to tutor him. Harper is the brainy wallflower nobody "
+        "notices, and what she wants is the boy she has a crush on. So the "
+        "deal they strike is that Brady plays her fake boyfriend, teaches her "
+        "how to flirt, and helps her land him. The contract covers everything "
+        "but the chemistry is not staying on paper.",
 
     # 109.2M   Resisting Mr. Lloyd: An Age Gap Romance
     # FACTS: Pressured to quit college and marry, Clarisse meets Lloyd Group CEO Austin, who offers m
     # FACTS: oney for a fake marriage to fulfill his grandmother's wish while hiding his true identit
     # FACTS: y.
     'resisting-mr-lloyd-an-age-gap-romance':
-        "",
+        "Her family want her out of college and married off."
+        "\nClarisse is under pressure at home to drop her degree and find a "
+        "husband. Then she helps an older woman who has been scammed, and the "
+        "woman's grandson comes to thank her. Austin runs the Lloyd Group, "
+        "and what he offers is money for a fake marriage that gives his "
+        "grandmother the wedding she keeps asking for. Clarisse takes the "
+        "arrangement but Austin never tells her who he actually is.",
 
     # 107.6M   The Quarterback Next Door
     # FACTS: Invisible Skylar is paired with her crush and childhood best friend Jamie on a project, 
     # FACTS: then forced to live with him when his house burns down, while his crazy ex plots against
     # FACTS:  them.
     'the-quarterback-next-door':
-        "",
+        "She asks out her best friend and the whole school watches it go "
+        "wrong."
+        "\nSkylar Heron has spent her life being invisible, and senior year "
+        "opens with her asking Jamie Donner out in front of everybody and "
+        "being humiliated for it. Jamie has been her best friend and the boy "
+        "next door since they were children. They get paired for a class "
+        "project, and then his house burns down and he moves into her room. "
+        "His ex girlfriend makes life difficult for the pair of them, so the "
+        "two of them set about turning Skylar into the most popular girl in "
+        "school.",
 
     # 107.0M   Once Upon A Breakup
     # FACTS: After being abandoned on her birthday by her college boyfriend, Mia impulsively proposes
     # FACTS:  to Carson, the charming but dangerous leader of the Moretti crime family.
     'once-upon-a-breakup':
-        "",
+        "Dumped on her birthday, engaged to a crime boss."
+        "\nMia's college boyfriend walks out on her on her birthday, and she "
+        "answers it by proposing to the first man in front of her. Carson is "
+        "charming, and he runs the Moretti crime family, which makes the "
+        "whole thing a spectacularly bad escape plan. It becomes something "
+        "real anyway. Her ex is not letting go though, and he is jealous "
+        "enough to come after the life she is building.",
 
     # 106.8M   Accidental Triplets with the Billionaire
     # FACTS: Needing an heir, Oscar turns to surrogacy but his sperm is accidentally given to Phoebe 
     # FACTS: during a gynecological exam; a contract marriage follows to keep the baby.
     'accidental-triplets-with-the-billionaire':
-        "",
+        "She goes in for a routine exam and leaves pregnant."
+        "\nOscar needs an heir quickly to hold on to his position at the "
+        "company, so he arranges a surrogacy. A mistake at the clinic puts "
+        "his sperm into Phoebe instead, who is only there for a "
+        "gynaecological exam. He wants the baby kept, and the way he proposes "
+        "to guarantee that is a contract marriage. Neither of them is ready "
+        "for what the arrangement asks of them.",
 
     # 106.3M   You Fired A Tech Genius
     # FACTS: Fired by his CEO's son, Silicon Valley genius Erik joins the rival company and bankrupts
     # FACTS:  his old employer.
     'you-fired-a-tech-genius':
-        "",
+        "Firing him was the most expensive decision in the building."
+        "\nErik is the biggest name in tech in the whole of Silicon Valley, "
+        "right up until his boss's son sacks him. William makes that call. "
+        "What Erik does next is walk straight across to the competition, "
+        "where Evelyn runs the company that has spent years trying to beat "
+        "his old one.",
 
     # 106.2M   Submitting to My Ex's Dad
     # FACTS: After catching her fiancé cheating with her best friend just before their wedding, Flora
     # FACTS:  runs away and has a wild one-night stand with a handsome stranger.
     'submitting-to-my-ex-s-dad':
-        "",
+        "She catches her fiance with her best friend days before the wedding."
+        "\nFlora finds the two of them together with the wedding almost on "
+        "top of her, so she runs. The night she spends with a handsome "
+        "stranger afterwards is meant to be the end of it and nothing more. "
+        "It is not, because of who he turns out to be to the man she nearly "
+        "married, and because of what he is keeping quiet.",
 
     # 106.0M   The Billionaire's Virgin Surrogate
     # FACTS: What happens when a student surrogate proposes to her client that they should conceive t
     # FACTS: he baby the natural way?
     'the-billionaire-s-virgin-surrogate':
-        "",
+        "Saving her father costs her nine months and rather more besides."
+        "\nHarper agrees to carry a baby for Will Trenton because her father "
+        "needs saving and this is what pays for it. Will is a single "
+        "billionaire and the arrangement is meant to be purely clinical. "
+        "Harper is a student, and the proposal she puts to her own client is "
+        "that the two of them conceive the baby naturally rather than "
+        "artificially. She is falling for him but she has no way of knowing "
+        "whether any of it goes the other way.",
 
     # 105.1M   Obsessed with His Silent Bride
     # FACTS: Nonverbal Eva endures a marriage of duty to her childhood protector Declan while his mis
     # FACTS: tress schemes to drive her out.
     'obsessed-with-his-silent-bride':
-        "",
+        "She has loved him since he was the boy protecting her."
+        "\nEva grew up a ward of the Calvert family, and Declan Calvert was "
+        "the one who looked after her. She has loved him ever since. "
+        "Nonverbal since birth, she has no easy way of telling him so, and "
+        "the marriage they end up in is built on duty and nothing warmer. "
+        "Declan married her only to honour his grandfather's dying wish, and "
+        "he is cruel to her with it. His mistress Selene works relentlessly "
+        "at driving her out of the house.",
 
     # 104.4M   The Billionaire Married a Homeless Girl
     # FACTS: After a one-night stand Adele Moore becomes pregnant; her father kicks her out and with 
     # FACTS: nowhere to go her life takes a billionaire turn.
     'the-billionaire-married-a-homeless-girl':
-        "",
+        "Her father put her out for keeping the baby."
+        "\nAdele Moore gets pregnant after one night with a stranger, and "
+        "when she says she is keeping the child her father throws her out of "
+        "the house. She raises her son Brad on the street, with nothing to do "
+        "it on, and she does it well. Years later Brad runs into a "
+        "billionaire called Heston Deleon by pure chance, and Heston works "
+        "out that the boy is his. He loses their trail before he can reach "
+        "them but the three of them keep landing back in each other's way.",
 
     # 104.0M   Swapped My Ex for His Billionaire Uncle
     # FACTS: Divorced and done with love, Nina is relentlessly pursued by Damon, her ex-husband's you
     # FACTS: ngest uncle.
     'swapped-my-ex-for-his-billionaire-uncle':
-        "",
+        "She is finished with love and finished with that family."
+        "\nNina once believed the best day of her life would be the one she "
+        "walked down the aisle towards Evan, her college sweetheart. He "
+        "betrayed her, they divorced, and she decided she was never doing any "
+        "of it again. Damon is Evan's youngest uncle, and he keeps appearing. "
+        "Nina wants nothing more to do with the Evans of this world but Damon "
+        "is not taking the hint.",
 
     # 102.9M   CEO's Twins Want Mommy Back
     # FACTS: Cassandra's flash marriage with a loving husband and cute stepkids seems too good to be 
     # FACTS: true; her troubled past closes in and the kids seem strangely familiar.
     'ceo-s-twins-want-mommy-back':
-        "",
+        "A husband, two stepkids, and a marriage she barely stopped to think "
+        "about."
+        "\nCassandra marries fast and lands a man who adores her and two "
+        "stepchildren who are lovely with it. It is a better life than she "
+        "was expecting to get. Her past has not finished with her though, and "
+        "there is something about those children she cannot quite place.",
 
     # 102.9M   Trapped in the Boss's Embrace
     # FACTS: Secretly married to college sweetheart Desmond for ten years, Beatrice discovers his aff
     # FACTS: air with a wealthy socialite and everything changes.
     'trapped-in-the-boss-s-embrace':
-        "",
+        "Ten years of a marriage nobody knew about."
+        "\nBeatrice Lawson eloped with Desmond Belmont in college and has "
+        "been quietly married to him ever since. Then she finds out about the "
+        "wealthy socialite he has been seeing, and she files for divorce. "
+        "What she wants after that is her own name back rather than another "
+        "year lived in his shadow, so she gets a new apartment and a career "
+        "of her own going. Then Damian Crowley walks into it.",
 
     # 99.8M    The Billionaire's Masquerade
     # FACTS: To claim her late father's inheritance Shelby must marry, so she weds poor stranger Grif
     # FACTS: fin, unaware he is a billionaire who has admired her since a chance meeting three years 
     # FACTS: ago.
     'the-billionaire-s-masquerade':
-        "",
+        "The inheritance is hers on one condition. She has to be married."
+        "\nShelby's father leaves her everything and attaches terms she never "
+        "asked for, the main one being a wedding before she can claim any of "
+        "it. So she marries a stranger with nothing to his name, which is the "
+        "cheapest way of satisfying the paperwork. Griffin is not poor. He is "
+        "a billionaire, and he has had Shelby in mind since the last time the "
+        "two of them met three years ago.",
 
     # 99.8M    Never Divorce a Secret Billionaire Heiress
     # FACTS: Joyce served as a walking blood bank for her sister Selena as the price of forcing Trist
     # FACTS: an to marry her; after losing her baby with no support, the secret heiress demands a div
     # FACTS: orce.
     'never-divorce-a-secret-billionaire-heiress':
-        "",
+        "The marriage has cost her more blood than she can spare."
+        "\nJoyce forced Tristan into marrying her, and the price of that has "
+        "been years of giving her blood to her sister Selena whenever it is "
+        "asked for. Then she loses her baby, and her husband is not there for "
+        "a moment of it. That is when she stops and files for divorce.",
 
     # 98.7M    Runaway Single Mom, Safe in His Arms
     # FACTS: Single mom Maria escapes abuse and fights to protect her daughter through factory strugg
     # FACTS: les, family betrayal and unexpected love when billionaire Levi enters her life.
     'runaway-single-mom-safe-in-his-arms':
-        "",
+        "She gets herself and her daughter out."
+        "\nMaria leaves an abusive situation with her daughter Judy and "
+        "starts again from nothing at all. The work is factory work to begin "
+        "with, and later it is elite schools she has no business affording. "
+        "She makes enemies, and her own family are among the people who let "
+        "her down. Then Levi comes into her life and none of it looks the "
+        "same afterwards.",
 
     # 98.0M    Escorting the Heiress
     # FACTS: Serena catches her boyfriend cheating with her half-sister, gets drunk, and lands in the
     # FACTS:  bed of Jesse, a man who has loved her for years and is not the escort she assumed.
     'escorting-the-heiress':
-        "",
+        "He said he was waiting until marriage. Not with her, as it happens."
+        "\nSerena finds her boyfriend Ken in bed with Carol, her half sister, "
+        "after years of him telling her he was saving himself for the "
+        "wedding. She gets furious, gets drunk, and ends up with Jesse "
+        "instead. She is under the impression she has hired him for the night "
+        "but Jesse has been in love with her for years.",
 
     # 97.6M    The Billionaire's Accidental Bride
     # FACTS: Stood up and cheated on by her fiance, Claire marries stranger Christian Cross on the sp
     # FACTS: ot while both are stranded.
     'the-billionaire-s-accidental-bride':
-        "",
+        "Stood up by her fiance, married by the end of the night."
+        "\nClaire Duval is happily engaged to Dylan Maxwell right up until he "
+        "leaves her waiting and she learns he has been seeing her friend Ava. "
+        "Stranded that evening with nothing much left to lose, she quietly "
+        "marries Christian Cross instead. He is stranded too. Neither of them "
+        "planned a single word of it.",
 
     # 97.2M    Dominated by My Dad's Boss
     # FACTS: Jayne's secret arrangement with a stranger turns risky when he proves to be the man over
     # FACTS: seeing her father's exit from the family company.
     'dominated-by-my-dad-s-boss':
-        "",
+        "She asks a stranger at a party to teach her how to dominate."
+        "\nJayne Turner wants to learn to be a dominatrix, so she puts the "
+        "question to a man at a bondage party. He is the one handling her "
+        "father's exit from the family company. They keep the relationship "
+        "quiet, which gets harder with a morality clause hanging over it and "
+        "threatening messages arriving about Jayne's late mother.",
 
     # 96.3M    The Senator's Son
     # FACTS: Class president Emma hides that she is a poor girl at a wealthy school; rival Zach Walke
     # FACTS: r hires her as his personal maid. Interactive vertical.
     'the-senator-s-son':
-        "",
+        "All she wants is a quiet degree."
+        "\nEmma Andrews arrives at college planning to keep her head down, "
+        "and Zach Walker makes that impossible. He is a famous senator's son "
+        "and the most wanted boy on campus, and he singles her out for "
+        "relentless bullying. Then the two of them get trapped in a boathouse "
+        "together with nowhere to go but a conversation, and Emma starts "
+        "seeing what is underneath the act.",
 
     # 95.8M    Mic Drop Diva
     # FACTS: High-school sophomore Ivy, a secretly wealthy heiress with an angelic voice, is used as 
     # FACTS: a voice double by fake bestie Vanessa; after catching her boyfriend cheating with Vaness
     # FACTS: a she reclaims her spotlight with quarterback Blake.
     'mic-drop-diva':
-        "",
+        "She hides the money so she can find out who her real friends are."
+        "\nIvy is a sophomore with a voice people stop for, and an heiress "
+        "fortune she keeps to herself because she wants friends who like her "
+        "rather than it. Vanessa looks like proof that it worked. She is in "
+        "fact treating Ivy as a tool, and guilt tripping her into singing as "
+        "her voice double. Then Ivy catches her boyfriend with that same best "
+        "friend, and the person she goes to is Blake, her childhood best "
+        "friend and the school's star quarterback.",
 
     # 95.5M    Djinn Under Contract
     # FACTS: Eli Baran is a genie in a magic lamp who can grant three wishes.
     'djinn-under-contract':
-        "",
+        "His freedom comes with five years of marriage attached."
+        "\nEli Baran has spent thousands of years inside a lamp granting "
+        "wishes in threes. A billionaire spends his last one setting Eli "
+        "free, and puts a condition on it: five years married to his "
+        "granddaughter Christine Parrish. Eli takes human form and quietly "
+        "builds Christine into a successful CEO without ever telling her he "
+        "is doing it. She spends the whole marriage looking down on him.",
 
     # 95.1M    True Luna
     # FACTS: Grace Swanson credit.
     'true-luna':
-        "",
+        "Getting her wolf came with a warning attached."
+        "\nEmma is a true Luna, which is a rare thing to be and a powerful "
+        "one. Her wolf arrives with a warning alongside it, because the rogue "
+        "king is coming for her. She finds her mate in the same stretch of "
+        "days and it should be the best thing that has ever happened to her, "
+        "but he rejects her instead.",
 }
 
 FACTS = {
@@ -652,3 +827,53 @@ FACTS = {
         "torn when her mate rejects her. 61 episodes.",
 }
 
+# WHERE EACH FACT SOURCE CAME FROM. Cyan, 16 Aug 2026: be clear whether the
+# text came from a third party website or the PDFs she supplied.
+# kind -> caption_pipeline.SOURCE_KINDS.
+SOURCES = {
+    'accidental-triplets-with-the-billionaire': ('platform', 'reelshort.com own page'),
+    'big-bad-husband-please-wake-up': ('platform', 'reelshort.com own page'),
+    'ceo-s-twins-want-mommy-back': ('platform', 'reelshort.com own page'),
+    'claimed-by-my-ex-s-alpha-brother': ('platform', 'reelshort.com own page'),
+    'claimed-by-the-alpha-i-hate': ('platform', 'reelshort.com own page'),
+    'dear-husband-delete-my-number': ('platform', 'reelshort.com own page'),
+    'djinn-under-contract': ('platform', 'reelshort.com own page'),
+    'do-not-disturb-lady-boss-in-disguise': ('platform', 'reelshort.com own page'),
+    'dominated-by-my-dad-s-boss': ('platform', 'reelshort.com own page'),
+    'escorting-the-heiress': ('platform', 'reelshort.com own page'),
+    'escorting-the-ruthless-billionaire-doctor': ('platform', 'reelshort.com own page'),
+    'kiss-me-one-last-time': ('platform', 'reelshort.com own page'),
+    'love-at-dangerous-speeds': ('platform', 'reelshort.com own page'),
+    'mic-drop-diva': ('platform', 'reelshort.com own page'),
+    'mr-hills-adorable-wife': ('platform', 'reelshort.com own page'),
+    'my-secret-lover-is-his-brother': ('platform', 'reelshort.com own page'),
+    'never-divorce-a-secret-billionaire-heiress': ('platform', 'reelshort.com own page'),
+    'obsessed-with-his-silent-bride': ('platform', 'reelshort.com own page'),
+    'once-upon-a-breakup': ('platform', 'reelshort.com own page'),
+    'open-your-eyes-my-billionaire-husband': ('platform', 'reelshort.com own page'),
+    'pregnant-by-my-ex-s-professor-dad': ('platform', 'reelshort.com own page'),
+    'reborn-to-love-mr-right': ('platform', 'reelshort.com own page'),
+    'resisting-mr-lloyd-an-age-gap-romance': ('platform', 'reelshort.com own page'),
+    'runaway-single-mom-safe-in-his-arms': ('platform', 'reelshort.com own page'),
+    'secret-surrogate-to-the-mafia-king': ('platform', 'reelshort.com own page'),
+    'submitting-to-my-ex-s-dad': ('platform', 'reelshort.com own page'),
+    'swapped-my-ex-for-his-billionaire-uncle': ('platform', 'reelshort.com own page'),
+    'the-billionaire-married-a-homeless-girl': ('platform', 'reelshort.com own page'),
+    'the-billionaire-s-accidental-bride': ('platform', 'reelshort.com own page'),
+    'the-billionaire-s-baby-bargain': ('platform', 'reelshort.com own page'),
+    'the-billionaire-s-masquerade': ('platform', 'reelshort.com own page'),
+    'the-billionaire-s-virgin-surrogate': ('platform', 'reelshort.com own page'),
+    'the-ceo-s-contract-wife': ('platform', 'reelshort.com own page'),
+    'the-hidden-billionaire-in-first-class': ('platform', 'reelshort.com own page'),
+    'the-quarterback-next-door': ('platform', 'reelshort.com own page'),
+    'the-reckoning-takes-flight': ('platform', 'reelshort.com own page'),
+    'the-return-of-the-lost-heiress': ('platform', 'reelshort.com own page'),
+    'the-senator-s-son': ('platform', 'reelshort.com own page'),
+    'the-tutor-trap': ('platform', 'reelshort.com own page'),
+    'trapped-in-the-boss-s-embrace': ('platform', 'reelshort.com own page'),
+    'true-luna': ('platform', 'reelshort.com own page'),
+    'we-are-never-ever-getting-back-together': ('platform', 'reelshort.com own page'),
+    'we-will-love-again': ('platform', 'reelshort.com own page'),
+    'you-belong-with-me': ('platform', 'reelshort.com own page'),
+    'you-fired-a-tech-genius': ('platform', 'reelshort.com own page'),
+}

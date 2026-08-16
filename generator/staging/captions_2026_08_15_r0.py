@@ -505,7 +505,56 @@ CAPTIONS = {
         "are already circling the family the three of them have made.",
 }
 
-FACTS = {  # paste fetched text here for any FETCH REQUIRED row
+FACTS = {
+    # ---- RECOVERED FROM GIT 16 Aug 2026. These eight captions were written from
+    # the live platform text sitting in titles.csv, so they never needed a fetch and
+    # never got a FACTS entry. Applying our caption then OVERWROTE that text, and
+    # their provenance vanished from disk: check reported NO FACT SOURCE and the
+    # audit could not verify them. Pulled back out of 4509205f8^, the commit before
+    # batch one was applied. Lesson: a caption written from the LIVE synopsis must
+    # have that synopsis copied into FACTS before apply destroys it.
+    'true-heiress-vs-fake-queen-bee':
+        "Wealthy teen Hailey hides her identity at a public school while "
+        "the maid's daughter Candice poses as the Kaplan heiress, rising "
+        "to the top of the social hierarchy as Hailey is bullied at the "
+        "bottom.",
+    'how-to-tame-a-silver-fox':
+        "Yale senior Harper Reeves plots Operation Seduction to drive out "
+        "her dad's overprotective best friend and business partner Chris "
+        "Collins, until his rescues make her fall for the silver fox "
+        "herself.",
+    'ex-convict-nanny-and-billionaire-single-dad':
+        "Fresh out of prison, Grace landed a job as a nanny. Her boss, "
+        "the ruthless billionaire Alex Hill, cares only about his "
+        "precious daughter. Grace passed Alex's rigorous test and "
+        "gradually won over his cold heart, but Grace holds a dark "
+        "secret, one that could destroy everything good.",
+    'mommy-don-t-cry-daddy-is-sorry':
+        "After his wife Sienna dies in a mental hospital, Wayne is fooled "
+        "into taking home the wrong daughter; Sienna is alive, reborn as "
+        "ruthless alter-ego Scarlett, hunting vengeance in her daughter's "
+        "name.",
+    'the-lost-quarterback-returns':
+        "When Asher Bradshaw, the son of hall-of-famer NFL quarterback "
+        "Trent Bradshaw and former beauty queen Krista, goes missing in a "
+        "devastating fire, psychotic fan Donny Lewis takes it as an "
+        "opportunity to swap Asher with his own son, Wyatt.",
+    'maid-for-my-nemesis':
+        "Class president Emma hides that she is the poorest girl at her "
+        "wealthy private school. Rival rich bad boy Lucas Bennett gets "
+        "her fired then hires her as his personal maid, keeping the "
+        "arrangement secret as long as she caters to his every need.",
+    'if-loving-you-is-a-sin-then-i-ll-go-to-hell':
+        "Good girl Ellie Jones falls for bad boy Asher King and gets "
+        "pregnant. Her pastor father and his gang family, the Red Snakes, "
+        "want to keep them apart and take the baby; Asher vows to protect "
+        "her at any cost.",
+    'fated-to-find-you':
+        "A school janitor who saves a child from kidnapping flash-marries "
+        "the girl's secret-billionaire father as betrayals and a vengeful "
+        "ex circle their new family.",
+
+    # ---- fetched text follows
     # Tier B, but the text on disk was a STAT not a synopsis ("ReelShort's breakout
     # megahit, 500M+ views on platform"), so it is useless as a fact source and the
     # accuracy guard correctly rejected a caption written against it.
@@ -789,3 +838,53 @@ FACTS = {  # paste fetched text here for any FETCH REQUIRED row
         "find their happy ending. 93 episodes.",
 }
 
+# WHERE EACH FACT SOURCE CAME FROM. Cyan, 16 Aug 2026: be clear whether the
+# text came from a third party website or the PDFs she supplied.
+# kind -> caption_pipeline.SOURCE_KINDS.
+SOURCES = {
+    'accidental-surrogate-for-alpha': ('platform', 'reelshort.com own page'),
+    'american-sniper-the-last-round': ('platform', 'reelshort.com own page'),
+    'baby-just-say-yes': ('platform', 'reelshort.com own page'),
+    'breaking-the-ice': ('platform', 'reelshort.com own page'),
+    'carrying-his-triplets-becoming-his-wifey': ('platform', 'reelshort.com own page'),
+    'doctor-boss-is-my-baby-daddy': ('platform', 'reelshort.com own page'),
+    'don-t-miss-me-when-i-m-gone': ('platform', 'reelshort.com own page'),
+    'ex-convict-nanny-and-billionaire-single-dad': ('platform', 'reelshort.com own page'),
+    'falling-for-my-ex-s-mafia-dad': ('platform', 'reelshort.com own page'),
+    'fated-to-find-you': ('platform', 'reelshort.com own page'),
+    'fated-to-my-forbidden-alpha': ('platform', 'reelshort.com own page'),
+    'fated-to-the-alpha': ('platform', 'reelshort.com own page'),
+    'found-a-homeless-billionaire-husband-for-christmas': ('platform', 'reelshort.com own page'),
+    'heiress-crash-lands-on-her-husband': ('platform', 'reelshort.com own page'),
+    'how-to-break-a-dilf': ('platform', 'reelshort.com own page'),
+    'how-to-dump-a-hockey-star': ('platform', 'reelshort.com own page'),
+    'how-to-tame-a-silver-fox': ('platform', 'reelshort.com own page'),
+    'i-had-a-baby-without-you': ('platform', 'reelshort.com own page'),
+    'if-loving-you-is-a-sin-then-i-ll-go-to-hell': ('platform', 'reelshort.com own page'),
+    'in-love-with-a-single-farmer-daddy': ('platform', 'reelshort.com own page'),
+    'in-the-palm-of-his-hand': ('platform', 'reelshort.com own page'),
+    'maid-for-my-nemesis': ('platform', 'reelshort.com own page'),
+    'married-at-first-sight': ('platform', 'reelshort.com own page'),
+    'married-in-a-heartbeat': ('platform', 'reelshort.com own page'),
+    'married-the-mafioso-i-saved': ('platform', 'reelshort.com own page'),
+    'miss-you-after-goodbye': ('platform', 'reelshort.com own page'),
+    'mommy-don-t-cry-daddy-is-sorry': ('platform', 'reelshort.com own page'),
+    'money-guns-and-a-merry-christmas': ('platform', 'reelshort.com own page'),
+    'move-aside-i-m-the-final-boss': ('platform', 'reelshort.com own page'),
+    'ms-ceo-s-baby-daddy-is-the-merchant-of-death': ('platform', 'reelshort.com own page'),
+    'my-sister-is-the-warlord-queen': ('platform', 'reelshort.com own page'),
+    'my-stepbrother-s-dirty-secret': ('platform', 'reelshort.com own page'),
+    'snatched-a-billionaire-to-be-my-husband': ('platform', 'reelshort.com own page'),
+    'step-aside-i-m-the-king-of-capital': ('platform', 'reelshort.com own page'),
+    'surrender-to-my-professor': ('platform', 'reelshort.com own page'),
+    'taming-my-bullies': ('platform', 'reelshort.com own page'),
+    'tell-me-not-to-love-you': ('platform', 'reelshort.com own page'),
+    'the-alpha-king-and-his-virgin-bride': ('platform', 'reelshort.com own page'),
+    'the-call-boy-i-met-in-paris': ('platform', 'reelshort.com own page'),
+    'the-double-life-of-a-billionaire-heiress': ('platform', 'reelshort.com own page'),
+    'the-double-life-of-my-billionaire-husband': ('platform', 'reelshort.com own page'),
+    'the-lost-quarterback-returns': ('platform', 'reelshort.com own page'),
+    'the-virgin-and-the-billionaire': ('platform', 'reelshort.com own page'),
+    'true-heiress-vs-fake-queen-bee': ('platform', 'reelshort.com own page'),
+    'undercover-prison-king': ('platform', 'reelshort.com own page'),
+}

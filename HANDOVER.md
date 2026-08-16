@@ -100,9 +100,12 @@ guess.
 default protects approved work but blocked a correction to the live number-one page
 for hours. If a fix won't land, that is why.
 
-**Edits made only in the approved file get eaten.** `promote.py` rebuilds it *from
-the draft*, so Cyan's "stay that way" edit was discarded because the draft still
-said "stay that simple". Apply her wording to **both** files.
+**Edits made only in the approved file get eaten.** `generator/promote_captions.py`
+rebuilds it *from the draft*, so Cyan's "stay that way" edit was discarded because
+the draft still said "stay that simple". Apply her wording to **both** files.
+(Until 16 Aug this script lived only in a scratchpad and the handover pointed at a
+file that was not in the repo — found by a session checking the doc against disk,
+which is the right instinct. It is committed now.)
 
 **Almost every stored synopsis is a truncated first sentence**, not a short one. Of
 45 titles in batch two, all 45 held less than the platform publishes. This produced
