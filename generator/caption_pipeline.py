@@ -151,9 +151,12 @@ def validate(tid, cap, fact, title):
     # owning things. She is not one." What it may not be is long, so cap the length
     # rather than the sentence count.
     # 100, and deliberately generous. Cyan, 15 Aug: "make the cap a comfortable 100,
-    # I want the cap to be flexible." This checker flagged her own wording FOUR times
-    # by being tighter than her taste, so the cap is a guard against a runaway
-    # paragraph in the hook slot, not a house style.
+    # I want the cap to be flexible", then "you don't have to have a 100 but if you
+    # reach a 100 it's fine." So 100 is a CEILING, NOT A TARGET. Short hooks remain
+    # the norm - most sit around 40 to 50 characters and should - and nothing here
+    # should be padded toward the limit. This checker flagged her own wording FOUR
+    # times by being tighter than her taste, which is why the guard now only catches
+    # a runaway paragraph in the hook slot rather than enforcing a house style.
     if len(hook) > 100:
         errs.append("hook is %d chars, too long to read as a subheading" % len(hook))
     if len(re.findall(r"[.!?]", hook)) > 2:
