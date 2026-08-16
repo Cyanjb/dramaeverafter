@@ -57,7 +57,7 @@ CAPTIONS = {
     'pucked-in-the-friend-zone':
         "He broke her heart four years ago. Now he needs a favour.\n"
         "Reese has not seen Grayson since he broke her heart four years ago, and he "
-        "was her best friend long before he was her first love. When the two of them "
+        "was her best friend as well as her first love. When the two of them "
         "end up in the same room again, he asks her to pose as his girlfriend for his "
         "sister's wedding. She says yes.",
 
@@ -92,7 +92,7 @@ CAPTIONS = {
         "the right one, because she has been standing next to him the whole time.",
 
     'backstage-romance-with-the-popstar':
-        "He fired the woman who built his entire career.\n"
+        "He got rid of the woman who built his entire career.\n"
         "Rockstar Dexter Hayes drops his assistant Casey the moment rising star "
         "Scarlett Hart comes along. What Dexter has never worked out is that Casey is "
         "Echo, the producer nobody can put a face to, the one who built his career "
@@ -129,7 +129,7 @@ CAPTIONS = {
         "step ahead of her own husband.",
 
     'finally-got-romanced':
-        "One day she wakes up looking like somebody else.\n"
+        "A stranger changes the way the world sees her.\n"
         "Taehui has spent her whole life being looked down on for the way she looks. "
         "Then a mysterious woman steps in and changes that entirely, and Taehui finds "
         "herself beautiful for the first time. What follows is a romance, but it is "
@@ -186,6 +186,37 @@ CAPTIONS = {
         "just saved turns out to run a syndicate. That one act of mercy is all it "
         "takes to draw her into his world, and into a romance with a very dark edge "
         "to it.",
+}
+
+# WHERE EACH FACT SOURCE CAME FROM, per Cyan 16 Aug: "You need to be clear on
+# what the original source is as well, whether it's from a 3rd party website or
+# the PDFs I gave you." kind -> see caption_pipeline.SOURCE_KINDS.
+SOURCES = {
+    'mic-drop-diva': ("platform", "reelshort.com own page"),
+    'kissed-by-claw-and-fang': ("platform", "reelshort.com own page"),
+    'cancel-the-wedding-queen-moves-on': ("platform", "reelshort.com own page"),
+    'the-cooking-queen-a-recipe-for-divorce': ("platform", "reelshort.com own page"),
+    'pucked-in-the-friend-zone': ("platform", "reelshort.com own page"),
+    'my-double-proxy-marriage-to-a-billionaire': ("platform", "reelshort.com own page"),
+    'meet-my-brothers': ("platform", "reelshort.com own page"),
+    'when-forever-fell-apart': ("platform", "reelshort.com own page"),
+    'find-your-way-back-to-me-my-childhood-sweetheart': ("platform", "reelshort.com own page"),
+    'backstage-romance-with-the-popstar': ("platform", "reelshort.com own page"),
+    'the-billionaire-and-the-baby-trap': ("platform", "reelshort.com own page"),
+    'my-roommate-is-a-secret-superstar': ("platform", "netshort.com own page"),
+    'alpha-kings-hated-princess': ("platform", "my-drama.com own page"),
+    'a-match-made-in-hell': ("platform", "my-drama.com own page"),
+    'finally-got-romanced': ("platform", "vigloo.com own page"),
+    'beautiful-mistake': ("platform", "candyjar.com own page"),
+    'gideon': ("platform", "candyjar.com own page"),
+    'divorced-at-the-wedding-day': ("platform", "dramaboxdb.com own page"),
+    'grace-s-return-the-reversal-of-fate': ("platform", "netshort.com own page"),
+    'timeleap-joseon': ("platform", "vigloo.com own page"),
+    # THE ONE THAT IS NOT AUTHORITATIVE. PineDrama is a fan/affiliate site, and
+    # this text reached us through the quarantine file rather than any platform.
+    # Its character names could not be confirmed on any real platform, which is
+    # why the caption names nobody.
+    '7-steamy-days-with-a-ganster': ("fansite", "pinedrama.com via the quarantine file"),
 }
 
 FACTS = {  # each title's own platform page, fetched 16 Aug 2026 unless noted

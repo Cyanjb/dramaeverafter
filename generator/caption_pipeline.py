@@ -293,6 +293,22 @@ def cmd_next(n, offset):
     print("tiers: %s   (D = must fetch first)" % tiers)
 
 
+# WHERE A FACT SOURCE CAME FROM. Cyan, 16 Aug 2026: "You need to be clear on what
+# the original source is as well, whether it's from a 3rd party website or the
+# PDFs I gave you." The distinction matters because the sources are not equally
+# trustworthy: a platform's own page is authoritative about its own show, an IMDb
+# PDF she saved is authoritative about cast and production, the quarantine file is
+# platform prose we removed and may be TRUNCATED, and a fan site is not
+# authoritative about anything - it is where the unverifiable 'Mattia' came from.
+SOURCE_KINDS = {
+    "platform": "the title's own page on the platform that carries it",
+    "pdf": "a PDF Cyan saved, IMDb title or person page",
+    "quarantine": "the removed-copy file: platform prose, often truncated mid sentence",
+    "fansite": "a fan or affiliate site. NOT authoritative. Names need verifying",
+    "imdb": "an IMDb page read directly",
+}
+
+
 def load_batch(path):
     src = io.open(path, encoding="utf-8").read()
     ns = {}
@@ -300,9 +316,30 @@ def load_batch(path):
     return ns.get("CAPTIONS", {}), ns.get("FACTS", {})
 
 
+def load_sources(path):
+    """SOURCES maps title_id -> (kind, where). Kind must be in SOURCE_KINDS."""
+    src = io.open(path, encoding="utf-8").read()
+    ns = {}
+    exec(compile(src, path, "exec"), ns)
+    return ns.get("SOURCES", {})
+
+
 def cmd_check(path):
     caps, extra = load_batch(path)
+    sources = load_sources(path)
     q = {r["tid"]: r for r in build_queue()}
+    # Cyan's rule: be clear what the original source IS. A caption whose source
+    # kind is unrecorded cannot be audited later, and 'fansite' is a standing
+    # warning that its names are unverified until a real platform page confirms
+    # them.
+    for tid in [t for t, c in caps.items() if c.strip()]:
+        kind = (sources.get(tid) or ("", ""))[0]
+        if not kind:
+            print("  NOTE %-44s source kind not recorded" % tid[:42])
+        elif kind not in SOURCE_KINDS:
+            print("  NOTE %-44s unknown source kind %r" % (tid[:42], kind))
+        elif kind == "fansite":
+            print("  WARN %-44s FAN SITE source, names unverified" % tid[:42])
     todo = [t for t, c in caps.items() if not c.strip()]
     done = {t: c for t, c in caps.items() if c.strip()}
     print("batch %s: %d filled, %d still blank" % (os.path.basename(path), len(done), len(todo)))
