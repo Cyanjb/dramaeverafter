@@ -324,6 +324,14 @@ CAPTIONS = {
         "the man who once got her out of trouble. Neither of them expects "
         "the arrangement to turn into anything real. It does anyway.",
 
+    # 163.3M   The Lost Quarterback Returns
+    'the-lost-quarterback-returns':
+        "A fire, a missing boy, and a swap nobody notices.\nAsher "
+        "Bradshaw is the son of hall of fame quarterback Trent Bradshaw "
+        "and former beauty queen Krista. When Asher goes missing in a "
+        "devastating fire, an obsessive fan named Donny Lewis sees his "
+        "chance and puts his own son Wyatt in Asher's place.",
+
     # 161.7M   In the Palm of His Hand
     'in-the-palm-of-his-hand':
         "She saves his life without meaning to.\nShelby Yates is a "
@@ -331,6 +339,15 @@ CAPTIONS = {
         "Franconi, a billionaire CEO with a mafia past. He falls for her "
         "immediately. Then he starts pressing her to marry him, and he "
         "does not let it go.",
+
+    # 161.3M   Maid for My Nemesis
+    'maid-for-my-nemesis':
+        "He gets her fired, then puts her on his payroll.\nEmma is class "
+        "president at a wealthy private school, and nobody there knows "
+        "she is the poorest girl in it. Her rival, rich bad boy Lucas "
+        "Bennett, has her fired from her job and then hires her as his "
+        "personal maid, on the condition that nobody finds out and she "
+        "caters to his every need.",
 
     # 155.4M   Accidental Surrogate for Alpha
     'accidental-surrogate-for-alpha':
@@ -370,6 +387,14 @@ CAPTIONS = {
         "turns out to be her fated wolf and the one man willing to stand "
         "in front of her.",
 
+    # 142.4M   If Loving You is a Sin, then I'll Go to Hell
+    'if-loving-you-is-a-sin-then-i-ll-go-to-hell':
+        "Her father is a pastor. His family run a gang.\nEllie Jones is a "
+        "good girl who falls for Asher King, and ends up pregnant. Her "
+        "pastor father and Asher's family, the Red Snakes, both want the "
+        "pair of them apart and the baby taken. Asher swears he will "
+        "protect her whatever it costs him.",
+
     # 141.0M   How to Dump a Hockey Star
     'how-to-dump-a-hockey-star':
         "She gives up an empire to sit at his bedside.\nRenee walks away "
@@ -386,6 +411,15 @@ CAPTIONS = {
         "with no idea that he is a billionaire keeping it quiet. Together "
         "they take on the family that turned on her, with her mother's "
         "company still to win back before any of it is finished.",
+
+    # 138.3M   Fated to Find You
+    'fated-to-find-you':
+        "She was only ever meant to be the school janitor.\nShe cleans a "
+        "school for a living, and one day she stops a little girl being "
+        "taken. The child's father marries her almost on the spot. What "
+        "she does not know is that the man she has just tied herself to "
+        "is a billionaire keeping it very quiet. Betrayals and a vengeful "
+        "ex are already circling the family the three of them have made.",
 }
 
 FACTS = {  # provenance: the published synopsis each caption was written from
@@ -613,10 +647,20 @@ FACTS = {  # provenance: the published synopsis each caption was written from
         "claim her inheritance. Who better to ask than her one time "
         "saviour, Teddy? As Teddy and Victoria enter into a contract "
         "marriage, genuine feelings arise. 83 episodes.",
+    'the-lost-quarterback-returns':
+        "When Asher Bradshaw, the son of hall-of-famer NFL quarterback "
+        "Trent Bradshaw and former beauty queen Krista, goes missing in a "
+        "devastating fire, psychotic fan Donny Lewis takes it as an "
+        "opportunity to swap Asher with his own son, Wyatt.",
     'in-the-palm-of-his-hand':
         "College senior Shelby Yates accidentally saves the life of "
         "billionaire ex mafia CEO Matteo Franconi. He immediately falls "
         "in love with her and pressures her to marry him. 73 episodes.",
+    'maid-for-my-nemesis':
+        "Class president Emma hides that she is the poorest girl at her "
+        "wealthy private school. Rival rich bad boy Lucas Bennett gets "
+        "her fired then hires her as his personal maid, keeping the "
+        "arrangement secret as long as she caters to his every need.",
     'accidental-surrogate-for-alpha':
         "Ella is a Luna werewolf kept hidden by her parents from everyone "
         "including herself. Without knowing this, Ella has always hated "
@@ -643,6 +687,11 @@ FACTS = {  # provenance: the published synopsis each caption was written from
         "pack's Alpha's daughter. To escape the threats that come with "
         "her title, Katya flees to the Black Creek pack. There, she met "
         "Alpha Ezra, her fated wolf and protector. 70 episodes.",
+    'if-loving-you-is-a-sin-then-i-ll-go-to-hell':
+        "Good girl Ellie Jones falls for bad boy Asher King and gets "
+        "pregnant. Her pastor father and his gang family, the Red Snakes, "
+        "want to keep them apart and take the baby; Asher vows to protect "
+        "her at any cost.",
     'how-to-dump-a-hockey-star':
         "After leaving behind her life as a billionaire heiress, Renee "
         "dedicates herself to helping her husband recover from a "
@@ -656,4 +705,8 @@ FACTS = {  # provenance: the published synopsis each caption was written from
         "Together, they have to stand up against Esther's evil family, "
         "take back her mother's company and find their happy ending. 93 "
         "episodes.",
+    'fated-to-find-you':
+        "A school janitor who saves a child from kidnapping flash-marries "
+        "the girl's secret-billionaire father as betrayals and a vengeful "
+        "ex circle their new family.",
 }

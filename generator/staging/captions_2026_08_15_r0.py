@@ -497,10 +497,12 @@ CAPTIONS = {
     # FACTS: A school janitor who saves a child from kidnapping flash-marries the girl's secret-billi
     # FACTS: onaire father as betrayals and a vengeful ex circle their new family.
     'fated-to-find-you':
-        "She saves a stranger's child and gains a husband.\nA school "
-        "janitor stops a little girl being taken, and flash marries the "
-        "child's father, a billionaire keeping his money quiet. Betrayals "
-        "and a vengeful ex start circling the family they have just made.",
+        "She was only ever meant to be the school janitor.\nShe cleans a "
+        "school for a living, and one day she stops a little girl being "
+        "taken. The child's father marries her almost on the spot. What "
+        "she does not know is that the man she has just tied herself to is "
+        "a billionaire keeping it very quiet. Betrayals and a vengeful ex "
+        "are already circling the family the three of them have made.",
 }
 
 FACTS = {  # paste fetched text here for any FETCH REQUIRED row
