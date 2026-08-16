@@ -148,14 +148,28 @@ def validate(tid, cap, fact, title):
         errs.append("no hook")
     if not body:
         errs.append("no body")
-    # BODY LENGTH, Cyan 15 Aug 2026: "make it a flexible 400, with minimum 200",
-    # then "over is fine". So 200 is a REAL FLOOR and there is NO upper limit -
-    # 400 is a rough sense of the right size, not a rule. She set the floor after
-    # removing the aside left captions stopping mid thought on the page.
-    # The floor is a prompt to GO AND FETCH MORE SYNOPSIS, never to pad.
-    elif len(body) < 200 and tid not in SOURCE_LIMITED:
-        errs.append("body is %d chars, under the 200 minimum - go and get more of "
-                    "the synopsis rather than padding it" % len(body))
+    # BODY LENGTH. Cyan moved this three times in one evening, 200 -> 400 -> here,
+    # and then settled the conflict it created: "first rule is to be accurate, if
+    # you can't find enough substance DROP THE COUNT."
+    #
+    # SO ACCURACY OUTRANKS LENGTH, ALWAYS. The floor is a prompt to go and fetch
+    # more synopsis. It is never a licence to pad and never a reason to infer.
+    # Measured 15 Aug: of 45 titles, only 6 have a PUBLISHED synopsis of 400+
+    # characters, 15 have 300-399, 16 have 200-299 and 8 have under 200. A 400
+    # floor would therefore have forced invention on 39 of them.
+    #
+    # THE CHECK IS THEREFORE RELATIVE, NOT ABSOLUTE. An absolute floor punishes a
+    # caption for its platform publishing a short synopsis, which the writer cannot
+    # fix and must not fix by inventing. What IS worth catching is a caption that
+    # leaves material on the table: a 200 character body under a 600 character
+    # source means the story is there and was not used.
+    #
+    # So: aim for 300+, but only FAIL when the source could clearly support it.
+    elif len(body) < 300 and tid not in SOURCE_LIMITED and len(fact or "") >= 350:
+        errs.append("body is %d chars from a %d char source - the substance is "
+                    "there, use more of it" % (len(body), len(fact or "")))
+    elif len(body) > 700:
+        errs.append("body is %d chars, over the 700 maximum" % len(body))
     # THE ASIDE IS OPTIONAL as of 15 Aug 2026. Cyan: "We have to remove the last
     # sentence, it is causing the biggest problems." Captions are HOOK + BODY, the
     # same shape as the 60 already live. build.py still renders a third part if one
