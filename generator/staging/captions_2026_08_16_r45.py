@@ -390,5 +390,77 @@ FACTS = {
         "again, she took her chance with him leaving an ill note on his chest. Lisa "
         "didn't know she would be seeing Aidan again, this time, as her boss. "
         "103 episodes.",
+    'big-bad-husband-please-wake-up':
+        "Ciara is slated to get married to Adrian Lewis, who is in a coma. Ciara is "
+        "desperate to do so because she needs the money to save her sick family, and "
+        "she is humiliated by her choice until Adrian wakes up to the surprise of "
+        "everyone and falls in love with Ciara. 104 episodes.",
+    'the-return-of-the-lost-heiress':
+        "Lana experienced her father's death. This made her never speak again. She "
+        "became a mute. A few days later, she was lost while escaping being sold by "
+        "her guard. Lana was found and adopted by Ron who showered her with fatherly "
+        "love. Years passed and her birth family kept searching for her. Unaware of "
+        "Lana's identity, they mistreated her. 90 episodes.",
+    'secret-surrogate-to-the-mafia-king':
+        "Vanessa Peters is in for a surprise when she goes to sell her eggs to pay "
+        "off her boyfriend's debt and ends up pregnant due to a clinical error. She "
+        "decides to keep the child after finding out her boyfriend is cheating on "
+        "her, but begins to fear her decision when she finds out that the father is "
+        "no other than Marcello Lavigne, a ruthless, murderous Mafia King. Marcello "
+        "protects Vanessa and moves her to his mansion. 63 episodes.",
+    'escorting-the-ruthless-billionaire-doctor':
+        "Violet, desperate to pay for her father's surgery, decides to sell her "
+        "virginity, but the good doctor she calls is determined to pull her back from "
+        "the edge. However, as the two share a heated, unforgettable night, Dax finds "
+        "himself hooked on Violet, despite thinking she's just another gold digger. "
+        "When their darkest secrets are laid bare, will their fragile connection "
+        "survive? 68 episodes.",
+    'open-your-eyes-my-billionaire-husband':
+        "Hailey is cash strapped and desperate for a way to pay her mother's hefty "
+        "medical bills. Her family agrees to help her, on the condition she marries "
+        "the billionaire Samuel Trent, who is in a coma after a near fatal car "
+        "accident. Samuel awakens from his coma and discovers he has been engaged to "
+        "a complete stranger. 72 episodes.",
+    'the-hidden-billionaire-in-first-class':
+        "They all thought Jett Hawkings was a lowly baggage handler and threatened to "
+        "throw him off the flight. But when their plane is about to crash due to a "
+        "storm, he's actually the secret billionaire that can save them. 83 episodes.",
+    'the-tutor-trap':
+        "School hockey star Brady asks brainy wallflower Harper to be his chemistry "
+        "tutor. In exchange, he promises to be her fake boyfriend, teach her how to "
+        "flirt, and help her land her crush. But what will happen when their contract "
+        "backfires, and the chemistry becomes more than just on paper? 78 episodes.",
+    'resisting-mr-lloyd-an-age-gap-romance':
+        "Facing family pressure to quit college and marry, Clarisse's world changes "
+        "when she meets Austin, the CEO of Lloyd Group, after helping his grandmother "
+        "following a scam. Austin offers her money for a fake marriage to fulfil his "
+        "grandmother's wish, forming an unexpected alliance while keeping his true "
+        "identity secret from her. 70 episodes.",
+    'the-quarterback-next-door':
+        "Forever invisible Skylar Heron hasn't started her senior year so hot. First, "
+        "she's embarrassed in front of the whole school when trying to ask out her "
+        "crush Jamie Donner, her childhood best friend and next door neighbour. "
+        "Skylar and Jamie are paired for a class project, then Jamie moves into her "
+        "room after his house burns down. His ex girlfriend creates conflict, "
+        "prompting them to transform Skylar into the school's most popular girl. "
+        "87 episodes.",
+    'once-upon-a-breakup':
+        "After being abandoned on her birthday by her college boyfriend, Mia "
+        "impulsively proposes to Carson, the charming but dangerous leader of the "
+        "Moretti crime family. Though their relationship begins as a rash escape, it "
+        "quickly turns into something real. But Mia's ex refuses to let go. Obsessed, "
+        "jealous, and spiraling out of control, he'll stop at nothing to win her "
+        "back, even if it means destroying the new life Mia's trying to build with "
+        "Carson. 60 episodes.",
+    'accidental-triplets-with-the-billionaire':
+        "Urgently needing an heir to secure his position in the company, Oscar turns "
+        "to surrogacy. But unexpectedly, his sperm is accidentally injected into "
+        "Phoebe, who comes in for a gynecological exam. To ensure Phoebe keeps the "
+        "baby, Oscar proposes a contract marriage, and the two embark on a journey "
+        "filled with tests. 91 episodes.",
+    'you-fired-a-tech-genius':
+        "After Erik, the biggest tech hotshot in all of Silicon Valley, gets sacked "
+        "by his CEO's son William, he joins forces with Evelyn, the beautiful CEO of "
+        "his old company's competitor. 59 episodes.",
 }
 
