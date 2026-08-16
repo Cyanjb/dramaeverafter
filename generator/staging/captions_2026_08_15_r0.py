@@ -200,10 +200,11 @@ CAPTIONS = {
     # FACTS: Uncle Jesse's smokin' hot tattoo and great technique on bed awakens Sophie Holland's fan
     # FACTS: tasy in How To Break A DILF Trailer!
     'how-to-break-a-dilf':
-        "He is her best friend's dad, and she does not care.\nSophie "
-        "Holland has fallen for Uncle Jesse, who happens to be her best "
-        "friend's father. His advice is that she should be dating someone "
-        "her own age. She is not taking it.",
+        "He is her best friend's dad, and she does not care.\nSophie Holland has "
+        "fallen for Uncle Jesse, who happens to be her best friend's father. His "
+        "advice is that she should be dating someone her own age. She disagrees. "
+        "Something about Jesse pulls at her and will not let go, and the fact that "
+        "he is the one man she is not supposed to want is exactly the problem.",
 
     # 198.4M   Snatched a Billionaire to be My Husband
     # FACTS: She falls in love with her ex's uncle.
@@ -215,27 +216,35 @@ CAPTIONS = {
     # FACTS: Demoted to maid and substitute bride in her father's house, Cindy finds unexpected love 
     # FACTS: when billionaire Charles Kane falls for her.
     'the-virgin-and-the-billionaire':
-        "Her own father turned her into the help.\nCindy is pushed down "
-        "to maid in her father's house and lined up as a substitute "
-        "bride. Then the billionaire Charles Kane notices her.",
+        "Her own father turned her into the help.\nCindy has never been treated as a "
+        "daughter in her father's house, where the circumstances of her birth are "
+        "held against her. She is demoted to maid, then lined up as a substitute "
+        "bride for a marriage that was never meant to be hers. Then billionaire "
+        "Charles Kane falls for her, and love turns up from a direction she had "
+        "stopped expecting it from.",
 
     # 197.6M   Tell Me Not to Love You
     # FACTS: Brie, a servant's daughter raised alongside young master Teddy, fights her feelings as h
     # FACTS: e pursues her across the class divide.
     'tell-me-not-to-love-you':
-        "She grew up in his house, never as his equal.\nBrie is a "
-        "servant's daughter, raised alongside the young master Teddy. He "
-        "wants her. She is doing everything she can not to want him back.",
+        "She grew up in his house, never as his equal.\nBrie is a servant's daughter, "
+        "raised in the same household as the young master Teddy while her mother "
+        "worked for his family. The feelings between them were always mutual. Once "
+        "they are old enough, Teddy comes after her openly and makes no secret of "
+        "what he wants. Brie holds back, because everything about where she came "
+        "from tells her she does not belong anywhere near him.",
 
     # 197.0M   Don't Miss Me When I'm Gone
     # FACTS: Orphaned and raised with the Miller brothers, she expects to end up with one of them unt
     # FACTS: il the maid's daughter moves in and her heart is broken; after she leaves, they lose the
     # FACTS: ir minds trying to find her.
     'don-t-miss-me-when-i-m-gone':
-        "She left, and every one of them fell apart.\nOrphaned and raised "
-        "alongside the Miller brothers, she has always assumed she would "
-        "end up with one of them. Then the maid's daughter moves in, and "
-        "the future she counted on quietly disappears. So she goes.",
+        "She left, and every one of them fell apart.\nAfter losing her parents she is "
+        "taken in by her godmother Sandra, and grows up under the same roof as "
+        "Sandra's two sons, the Miller brothers. She has always assumed she would end "
+        "up with one of them. Then the maid's daughter moves in, and the future she "
+        "counted on quietly disappears. So she does too, and the brothers only work "
+        "out what they had once there is nobody left to ask.",
 
     # 192.3M   The Alpha King and His Virgin Bride
     # FACTS: The Alpha King Killian Storm is cursed to not live past age thirty.
@@ -243,8 +252,9 @@ CAPTIONS = {
         "He is not meant to see thirty.\nKillian Storm is the Alpha King, "
         "and a curse says he will not live past the age of thirty. "
         "There's only one way he can survive. He has to find his true "
-        "fated mate. But what nobody counted on is that his mate is just "
-        "a human.",
+        "fated mate. But what nobody counted on is that his mate is just a human, "
+        "which makes the one road out of this curse far harder than it was ever "
+        "supposed to be.",
 
     # 190.2M   Doctor Boss Is My Baby Daddy
     # FACTS: : When med intern Molly has a one-night stand with a stranger, she thinks it’s a one-and
@@ -252,61 +262,75 @@ CAPTIONS = {
     'doctor-boss-is-my-baby-daddy':
         "One night with a stranger. Then she meets her new boss.\nMolly "
         "is a medical intern who spends a night with a stranger and files "
-        "it away as a one off. A month later she finds out two things. "
-        "She is pregnant, and the stranger is Dr Graham Weston, her new "
-        "boss.",
+        "it away as a one off. A month later she finds out two things. She is "
+        "pregnant, and the stranger is Dr Graham Weston, her new boss. Between "
+        "jealous rivals, his family and people from his past, almost nobody around "
+        "them wants this to work.",
 
     # 181.9M   Falling for My Ex's Mafia Dad
     # FACTS: After catching her boyfriend cheating, Fay is pulled into a mob alliance marriage and fa
     # FACTS: lls for his father, the Mafia King.
     'falling-for-my-ex-s-mafia-dad':
-        "She caught him cheating. What came next was a wedding.\nAfter "
-        "catching her boyfriend cheating, Fay is pulled into a marriage "
-        "arranged to seal an alliance between mob families. The man at "
-        "the head of it is his father.",
+        "She caught him cheating. What came next was a wedding.\nFay Alden catches "
+        "her boyfriend Daniel cheating and ends it on the spot. Not long after, she "
+        "meets Daniel's father, Kent Lippert, who happens to be the Mafia King. A "
+        "fake marriage pulls her properly into the mob world, and what began as an "
+        "arrangement turns into something she has to keep hidden from everyone. Then "
+        "the betrayals start, and not one of them comes from where she is watching.",
 
     # 176.8M   The Double Life of a Billionaire Heiress
     # FACTS: After three years of marriage, CEO Wes Sterling is convinced that his wife Kira is a che
     # FACTS: ating gold digger.
     'the-double-life-of-a-billionaire-heiress':
-        "He is certain he knows exactly who he married.\nThree years into "
-        "the marriage, CEO Wes Sterling has convinced himself that his "
-        "wife Kira is a cheating gold digger.",
+        "He is certain he knows exactly who he married.\nThree years into the "
+        "marriage, CEO Wes Sterling has convinced himself that his wife Kira is a "
+        "cheating gold digger. He accuses her of it, and he treats her accordingly. "
+        "Eventually Kira has taken as much of it as she is willing to take and files "
+        "for divorce. What Wes never once worked out is that she is a billionaire "
+        "heiress, and the moment she is free of him she stops hiding it.",
 
     # 172.5M   I Had a Baby without You
     # FACTS: Five years ago curvy waitress Scarlett saved Brandon's life and spent one night with him
     # FACTS:  before vanishing. Now she's back, unrecognizable, and he's a recluse.
     'i-had-a-baby-without-you':
-        "Five years on, he does not recognise her.\nScarlett saved "
-        "Brandon's life five years ago, spent one night with him, then "
-        "disappeared. She is back now, and in the years between he has "
-        "shut himself away from the world.",
+        "Five years on, he does not recognise her.\nScarlett saved Brandon's life "
+        "five years ago, spent one night with him, then vanished without a word. She "
+        "is back now, and she looks nothing like the woman he remembers. In the years "
+        "between, Brandon has become a reclusive CEO who lets almost nobody near him. "
+        "What he does not know is that Scarlett has a daughter, and that the girl is "
+        "his.",
 
     # 171.8M   Miss You After Goodbye
     # FACTS: To repay a debt of kindness, Neil signs a secret contract with Keira's father stating th
     # FACTS: at he will marry Keira for five years and help her recover from a painful breakup with h
     # FACTS: er first love, Simon.
     'miss-you-after-goodbye':
-        "He signed up for five years. She has no idea.\nNeil owes Keira's "
-        "father a debt, so he signs a secret contract: five years of "
-        "marriage, and help getting her over Simon, her first love. Keira "
-        "never learns the contract exists.",
+        "He signed up for five years. She has no idea.\nNeil owes Keira's father a "
+        "debt, so he signs a secret contract: five years of marriage, and help "
+        "getting her over Simon, her first love. Keira never learns the contract "
+        "exists. For five years he looks after her, and she treats him as a stand in "
+        "for the man she actually wants. Then the marriage ends, and she finally "
+        "understands what she had.",
 
     # 170.3M   The Call Boy I Met in Paris
     # FACTS: Sophie fake-marries a man she mistakes for a callboy. He's a billionaire she met seven y
     # FACTS: ears ago.
     'the-call-boy-i-met-in-paris':
-        "She thinks she is hiring him. She is not.\nSophie fake marries a "
-        "man she has taken for a call boy. He is a billionaire, and the "
-        "two of them met seven years ago in Paris.",
+        "She thinks she is hiring him. She is not.\nSophie met Justin seven years ago "
+        "and has no memory of it at all. They end up in the same place again after a "
+        "one night stand, and she still does not place his face. She takes him for a "
+        "call boy and asks him to fake marry her. He is a billionaire, and she has no "
+        "idea.",
 
     # 168.4M   Surrender to My Professor
     # FACTS: Struggling student Sylvia falls into a forbidden romance with her cold, harsh professor 
     # FACTS: Lawrence Calhoun.
     'surrender-to-my-professor':
-        "He is the last person she should want.\nSylvia is struggling "
-        "through her studies when she falls into a forbidden romance with "
-        "Lawrence Calhoun, the coldest and harshest professor she has.",
+        "He is the last person she should want.\nSylvia Parker is fighting her way "
+        "through a cutthroat campus and a family that gives her nothing. The one "
+        "person who steadies her is Lawrence Calhoun, who is cold, strict and the "
+        "last man she should want. He is also her professor. Whatever is growing "
+        "between them would destroy both of them if anyone found out.",
 
     # 168.0M   Step Aside, I'm the King of Capital
     # FACTS: Evan Adams lead vertical.
@@ -316,8 +340,9 @@ CAPTIONS = {
         "empire under the name Mr S. He comes home to propose to "
         "Isabella, and she drops him for someone richer, insisting only "
         "the mysterious Mr S would ever be good enough for her. Then a "
-        "favour lands Cassius in a sudden marriage to Freya, who runs "
-        "Mirror Media.",
+        "favour lands Cassius in a sudden marriage to Freya, who runs Mirror Media. "
+        "At Isabella's inauguration party she tries to have him thrown out, over and "
+        "over, never once guessing who she is talking to.",
 
     # 167.6M   Baby, Just Say Yes!
     # FACTS: Betrayed by her fiance and stepsister, Victoria needs a husband to claim her inheritance
@@ -327,8 +352,8 @@ CAPTIONS = {
         "She needs a husband by the end of the week.\nBetrayed by her "
         "fiance and her own stepsister, Victoria cannot claim her "
         "inheritance without a husband. So she contract marries Teddy, "
-        "the man who once got her out of trouble. Then real feelings "
-        "start getting in the way of the agreement.",
+        "the man who once got her out of trouble. Neither of them expects the "
+        "arrangement to turn into anything real. It does anyway.",
 
     # 163.3M   The Lost Quarterback Returns
     # FACTS: When Asher Bradshaw, the son of hall-of-famer NFL quarterback Trent Bradshaw and former 
@@ -538,5 +563,88 @@ FACTS = {  # paste fetched text here for any FETCH REQUIRED row
         "inauguration party, she tries to kick Cassius out again and again, never "
         "guessing who he really is, until Cassius finally decides to reclaim "
         "everything he once gave her.",
+
+    # ---- REFETCHED 15 Aug 2026, second pass. Cyan: the captions read unfinished
+    # once the last line was removed, "if there is a problem with information go
+    # find it." Every one of these held a TRUNCATED first sentence.
+    'the-virgin-and-the-billionaire':
+        "Cindy found love under uncanny circumstances where she never thought it "
+        "existed. Cindy, who was a child born through rape, was demoted to being a "
+        "maid and a substitute bride in her father's house until fortune smiled on "
+        "her and billionaire Charles Kane fell in love with her. 76 episodes.",
+    'tell-me-not-to-love-you':
+        "Brie is the daughter of a servant who works for Teddy's family. She grew up "
+        "living in the household with her mother and developed mutual feelings for "
+        "the young master, Teddy. Teddy pursues Brie passionately after they come of "
+        "age, while Brie struggles with insecurity due to her lower social status. "
+        "Through their back and forth dynamic, she eventually reveals her true "
+        "feelings. 73 episodes.",
+    'the-double-life-of-a-billionaire-heiress':
+        "After three years of marriage, CEO Wes Sterling is convinced that his wife "
+        "Kira is a cheating gold digger. Fed up with Wes's accusations and "
+        "mistreatments, Kira finally divorces him and re-embraces her true identity: "
+        "a billionaire heiress. 70 episodes.",
+    'i-had-a-baby-without-you':
+        "Five years ago, curvy waitress Scarlett saved Brandon's life and spent one "
+        "unforgettable night of passion with him before vanishing. Now she's back, "
+        "slimmed down and unrecognizable, and he's the reclusive CEO who unknowingly "
+        "fathered her daughter. 59 episodes.",
+    'miss-you-after-goodbye':
+        "To repay a debt of kindness, Neil signs a secret contract with Keira's "
+        "father stating that he will marry Keira for five years and help her recover "
+        "from a painful breakup with her first love, Simon. Neil gives devoted care "
+        "during their contract marriage, which Keira never reciprocates beyond using "
+        "him as a substitute for Simon. Upon divorce, Keira realizes her mistake. "
+        "75 episodes.",
+    'the-call-boy-i-met-in-paris':
+        "Sophie met Justin seven years ago, but she doesn't remember who he is. As "
+        "fate would have it, they reunite seven years later after a one night stand. "
+        "She mistakens him for a callboy and asks him to fake marry her, but little "
+        "does she know, he's a billionaire. 78 episodes.",
+    'surrender-to-my-professor':
+        "College student Sylvia Parker finds herself in a dangerous love affair with "
+        "Lawrence Calhoun, the last man she should want. He's hot, he's harsh, he's "
+        "her professor. Sylvia navigates a cutthroat campus and toxic family "
+        "situation, discovering her hero in the cold, strict and attractive Professor "
+        "Calhoun. Their deepening connection develops into a forbidden romance that "
+        "risks destroying everything if discovered. 69 episodes.",
+    'don-t-miss-me-when-i-m-gone':
+        "After losing my parents, I move in with my godmother, Aunt Sandra. I live "
+        "under her roof with her two sons, the Miller brothers, surrounded by love "
+        "and care. The maid's daughter arrives, creating romantic conflict. After "
+        "heartbreak, she departs, and the Miller brothers subsequently search for "
+        "her. 63 episodes.",
+    'falling-for-my-ex-s-mafia-dad':
+        "Fay Alden catches her boyfriend Daniel cheating and breaks up with him. But "
+        "soon after, Fay meets Daniel's father Kent Lippert, the Mafia King. Fay "
+        "enters the mob world through a fake marriage arrangement and develops a "
+        "secret romance with Kent, then navigates betrayal from her biological father "
+        "and an undercover cop. 94 episodes.",
+    'baby-just-say-yes':
+        "Victoria was betrayed when she found out about her fiance's relationship "
+        "with her stepsister. Still, she needed a husband to claim her inheritance. "
+        "Who better to ask than her one time saviour, Teddy? As Teddy and Victoria "
+        "enter into a contract marriage, genuine feelings arise. 83 episodes.",
+    'how-to-break-a-dilf':
+        "The series centres on a forbidden attraction between Sophie Holland and her "
+        "best friend's father, Uncle Jesse. Despite Jesse's prior advice that Sophie "
+        "should date people her own age, she finds herself drawn to him. Something "
+        "about Jesse lures Sophie. Age gap romance, forbidden love, taboo "
+        "relationship. 68 episodes.",
+    'doctor-boss-is-my-baby-daddy':
+        "When med intern Molly has a one-night stand with a stranger, she thinks it's "
+        "a one-and-done kind of deal. But a month later, she discovers two shocking "
+        "truths: she's pregnant with his baby, and the stranger is her new boss, Dr. "
+        "Graham Weston. Molly and Graham navigate their unexpected connection while "
+        "facing opposition from jealous rivals, family members, and figures from "
+        "Graham's past. 63 episodes.",
+
+    # CHECKED TWICE AND GENUINELY ONE LINE. The platform publishes no extended
+    # synopsis, no chapter titles and no character descriptions for this title, only
+    # the single premise sentence below. Its short body is the honest ceiling unless
+    # a source outside ReelShort is found. FOR CYAN'S LIST.
+    'snatched-a-billionaire-to-be-my-husband':
+        "What happens when you fall in love with your ex's uncle? 63 episodes. Cast: "
+        "Grace Swanson, Jarred Harper, Dante Belardinelli, Courtney Green.",
 }
 
