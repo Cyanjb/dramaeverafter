@@ -616,7 +616,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .story h2{margin:0 0 8px;font-size:20px}
 .story p{margin:0;font-size:16px;line-height:1.65;color:#3E3238;text-wrap:pretty}
 .story .story-hook{font-size:17px;font-weight:600;font-style:italic;margin:0 0 8px;color:#2B2126}
-.story .story-aside{margin-top:15px;color:var(--wine)}
+.story .story-aside{margin-top:15px;color:var(--wine);font-style:italic}
 
 .stat-figures{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:20px}
 .stat-figures .stat{display:block}

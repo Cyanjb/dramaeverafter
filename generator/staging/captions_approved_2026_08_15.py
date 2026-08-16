@@ -13,6 +13,19 @@ Apply with:
 then rebuild.
 """
 
+# ---------------------------------------------------------------------------
+# TODO AT THE NEXT REBUILD, Cyan 15 Aug 2026: "we will fix the live one when we
+# do an update, just make a note."
+#
+# 'the-double-life-of-my-billionaire-husband' is LIVE on the site right now and
+# still shows its ASIDE ("We love a marriage of convenience that refuses to stay
+# convenient."), because it was applied and built BEFORE she decided to drop the
+# last line from every caption. Its entry below no longer has one, so the next
+# build removes it from the page automatically. Nothing to do by hand - just do
+# not be surprised to see an aside in production until then. It is the only page
+# on the site with one.
+# ---------------------------------------------------------------------------
+
 CAPTIONS = {
 
     # APPROVED by Cyan 15 Aug 2026, after four rounds on the middle sentence.
@@ -20,22 +33,20 @@ CAPTIONS = {
     # this: "ReelShort's breakout megahit, 500M+ views on platform." - a stat, not a
     # synopsis, on the most visited page on the site.
     'the-double-life-of-my-billionaire-husband':
-        "The marriage was supposed to be paperwork.\n"
-        "Natalie and Sebastian marry on paper only, strictly business with no "
-        "feelings involved. But the arrangement doesn't stay that way. Her family "
-        "is quietly plotting her downfall, and the man she married is living a life "
-        "she knows nothing about.\n"
-        "We love a marriage of convenience that refuses to stay convenient.",
+        "The marriage was supposed to be paperwork.\nNatalie and "
+        "Sebastian marry on paper only, strictly business with no "
+        "feelings involved. But the arrangement doesn't stay that way. "
+        "Her family is quietly plotting her downfall, and the man she "
+        "married is living a life she knows nothing about.",
 
     # APPROVED by Cyan 15 Aug 2026 with her edits: tense corrected to "has been",
     # the Texas sentence cut entirely, and her own aside. She wrote "Billionaire"
     # capitalised mid sentence; set lowercase here so it does not read as a typo on
     # the page. Say the word and it goes back.
     'found-a-homeless-billionaire-husband-for-christmas':
-        "She married him when he had nothing.\n"
-        "Humiliated by her fiance, Victoria marries Simon, a homeless man she has "
-        "been quietly helping. She has no idea who he really is.\n"
-        "A Christmas story for the billionaire romance fans.",
+        "She married him when he had nothing.\nHumiliated by her fiance, "
+        "Victoria marries Simon, a homeless man she has been quietly "
+        "helping. She has no idea who he really is.",
 }
 
 FACTS = {

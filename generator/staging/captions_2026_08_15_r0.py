@@ -16,126 +16,113 @@ CAPTIONS = {
     # 522.7M   The Double Life of My Billionaire Husband
     # FACTS: ReelShort's breakout megahit, 500M+ views on platform.
     'the-double-life-of-my-billionaire-husband':
-        "The marriage was supposed to be paperwork.\n"
-        "Natalie and Sebastian marry on paper only, strictly business with no "
-        "feelings involved. But the arrangement doesn't stay that simple. Her family "
-        "is quietly plotting her downfall, and the man she married is living a life "
-        "she knows nothing about.\n"
-        "We love a marriage of convenience that refuses to stay convenient.",
+        "The marriage was supposed to be paperwork.\nNatalie and "
+        "Sebastian marry on paper only, strictly business with no "
+        "feelings involved. But the arrangement doesn't stay that simple. "
+        "Her family is quietly plotting her downfall, and the man she "
+        "married is living a life she knows nothing about.",
 
     # 462.8M   Found A Homeless Billionaire Husband for Christmas
     # FACTS: Humiliated by her fiance, Victoria marries Simon, a homeless man she had been helping, u
     # FACTS: naware he is the billionaire CEO of the country's top Savage Group, then reclaims her di
     # FACTS: gnity back home in Texas.
     'found-a-homeless-billionaire-husband-for-christmas':
-        "She married him when he had nothing.\n"
-        "Humiliated by her fiance, Victoria marries Simon, a homeless man she had "
-        "been quietly helping. She has no idea who he really is. Then she takes him "
-        "home to Texas and starts taking back everything she lost.\n"
-        "A billionaire is the best kind of gift.",
+        "She married him when he had nothing.\nHumiliated by her fiance, "
+        "Victoria marries Simon, a homeless man she has been quietly "
+        "helping. She has no idea who he really is.",
 
     # 460.0M   True Heiress vs. Fake Queen Bee
     # FACTS: Wealthy teen Hailey hides her identity at a public school while the maid's daughter Cand
     # FACTS: ice poses as the Kaplan heiress, rising to the top of the social hierarchy as Hailey is 
     # FACTS: bullied at the bottom.
     'true-heiress-vs-fake-queen-bee':
-        "One of them is lying about who she is.\n"
-        "Hailey is a wealthy teenager who keeps that very quiet at her new public "
-        "school. Meanwhile the maid's daughter Candice is passing herself off as the "
-        "Kaplan heiress and climbing straight to the top, while Hailey takes the "
-        "bullying at the bottom.\n"
-        "A hidden identity and a fake heiress. We would never turn that down.",
+        "One of them is lying about who she is.\nHailey is a wealthy "
+        "teenager who keeps that very quiet at her new public school. "
+        "Meanwhile the maid's daughter Candice is passing herself off as "
+        "the Kaplan heiress and climbing straight to the top, while "
+        "Hailey takes the bullying at the bottom.",
 
     # 416.6M   How to Tame a Silver Fox
     # FACTS: Yale senior Harper Reeves plots Operation Seduction to drive out her dad's overprotectiv
     # FACTS: e best friend and business partner Chris Collins, until his rescues make her fall for th
     # FACTS: e silver fox herself.
     'how-to-tame-a-silver-fox':
-        "The plan was to get rid of him.\n"
-        "Harper Reeves is a Yale senior with an overprotective problem: her dad's best "
-        "friend and business partner Chris Collins. So she launches Operation "
-        "Seduction to drive him out. Nothing goes to plan.\n"
-        "Nobody is immune to a silver fox.",
+        "The plan was to get rid of him.\nHarper Reeves is a Yale senior "
+        "with an overprotective man sized problem: her dad's best friend "
+        "and business partner Chris Collins. So she launches Operation "
+        "Seduction to drive him out. Nothing goes to plan.",
 
     # 413.9M   My Sister Is the Warlord Queen
     # FACTS: At her sister's engagement party, undercover agent Catherine is ridiculed as a janitor u
     # FACTS: ntil her sister is betrayed, and Catherine reveals herself as the Warlord Queen.
     'my-sister-is-the-warlord-queen':
-        "They think she cleans floors for a living.\n"
-        "Catherine turns up at her sister's engagement party and gets treated like "
-        "the hired help. She lets them think it. Then her sister is betrayed, and "
-        "Catherine stops pretending.\n"
-        "We live for the moment they realise who they just insulted.",
+        "They think she cleans floors for a living.\nCatherine turns up "
+        "at her sister's engagement party and gets treated like the hired "
+        "help. She lets them think it. Then her sister is betrayed, and "
+        "Catherine stops pretending.",
 
     # 397.9M   Ms. CEO's Baby Daddy Is the Merchant of Death
     # FACTS: Connor Reed, the most powerful arms dealer in the world, saves a Charlotte Hayes and spe
     # FACTS: nds the night with her while he is undercover.
     'ms-ceo-s-baby-daddy-is-the-merchant-of-death':
-        "He was undercover. She had no idea.\n"
-        "Connor Reed is the most powerful arms dealer in the world, and he is deep "
-        "undercover when he saves Charlotte Hayes. They spend one night together, and "
-        "she has no idea what he does or who he is.\n"
-        "One night, a secret baby, and a genuinely dangerous man.",
+        "He was undercover. She had no idea.\nConnor Reed is the most "
+        "powerful arms dealer in the world, and he is deep undercover "
+        "when he saves Charlotte Hayes. They spend one night together, "
+        "and she has no idea what he does or who he is.",
 
     # 358.6M   Breaking the Ice
     # FACTS: Hockey hopeful Easton wins a scholarship and his mother pressures pregnant Caroline to g
     # FACTS: et rid of the baby; love wins and the couple reunites.
     'breaking-the-ice':
-        "The scholarship arrives at the worst possible moment.\n"
-        "Easton is a hockey hopeful who finally wins his scholarship. His girlfriend "
-        "Caroline is pregnant. His mother has very firm ideas about what should "
-        "happen next.\n"
-        "Sports romance with a lot of heart.",
+        "The scholarship arrives at the worst possible moment.\nEaston is "
+        "a hockey hopeful who finally wins his scholarship. His "
+        "girlfriend Caroline is pregnant. His mother has very firm ideas "
+        "about what should happen next.",
 
     # 316.3M   Move Aside! I'm the Final Boss
     # FACTS: Kingsley, secret King of King's Corps and the richest man on Earth, returns from war to 
     # FACTS: be dumped as a nobody. Regret follows.
     'move-aside-i-m-the-final-boss':
-        "The nobody they threw away owns everything.\n"
-        "Kingsley comes back from war and is dumped for being a nobody. What none of "
-        "them know is that he runs King's Corps, and there is no richer man on "
-        "Earth.\n"
-        "They are all about to eat their words.",
+        "The nobody they threw away owns everything.\nKingsley comes back "
+        "from war and is dumped for being a nobody. What none of them "
+        "know is that he runs King's Corps, and there is no richer man on "
+        "Earth.",
 
     # 277.2M   Money, Guns, and a Merry Christmas
     # FACTS: A defense-industry CEO mistaken for a broke salesman contract-marries Iris and turns the
     # FACTS:  tables on her sneering relatives at Christmas dinner.
     'money-guns-and-a-merry-christmas':
-        "Everyone at that table has him completely wrong.\n"
-        "A defence industry CEO gets mistaken for a broke salesman, and contract "
-        "marries Iris. Her relatives spend Christmas dinner sneering at him, with no "
-        "idea who is sitting across from them.\n"
-        "Contract marriage plus a family about to be humbled. Delicious.",
+        "Everyone at that table has him completely wrong.\nA defence "
+        "industry CEO gets mistaken for a broke salesman, and contract "
+        "marries Iris. Her relatives spend Christmas dinner sneering at "
+        "him, with no idea who is sitting across from them.",
 
     # 274.3M   In Love with a Single Farmer-Daddy
     # FACTS: Natalie is married off by her conniving family to rural farmer Rhett, single father to a
     # FACTS:  mute daughter, and finds herself shunned yet slowly winning hearts.
     'in-love-with-a-single-farmer-daddy':
-        "Her family married her off and washed their hands of her.\n"
-        "Natalie is married off to Rhett, a rural farmer raising a daughter who does "
-        "not speak. When she first arrives she is shunned. Will she be able to turn "
-        "things around?\n"
-        "A single dad, a child who needs her, and a fierce slow burn romance.",
+        "Her family married her off and washed their hands of "
+        "her.\nNatalie is married off to Rhett, a rural farmer raising a "
+        "daughter who does not speak. When she first arrives she is "
+        "shunned. Will she be able to turn things around?",
 
     # 234.4M   Married at First Sight
     # FACTS: Summer has been the ideal girlfriend for her ex-boyfriend, Vincent.
     'married-at-first-sight':
-        "She sold her own blood to put him through medical school.\n"
-        "Summer gives Vincent everything. She sells her blood to help pay his way "
-        "through medical school and carries him to the finish line, and he cheats on "
-        "her anyway. Done with him, she signs a contract marriage to save a "
-        "billionaire she has only just met. Then she finds out who he actually is.\n"
-        "A contract marriage to a total stranger, and an ex about to understand what "
-        "he lost.",
+        "She sold her own blood to put him through medical "
+        "school.\nSummer gives Vincent everything. She sells her blood to "
+        "help pay his way through medical school and carries him to the "
+        "finish line, and he cheats on her anyway. Done with him, she "
+        "signs a contract marriage to save a man she has only just met. "
+        "Then she finds out who he actually is.",
 
     # 230.8M   Married The Mafioso I Saved
     # FACTS: Betrayed and abandoned, Hannah flash-marries Alex, the street thug she saved with a sing
     # FACTS: le kiss, not knowing what he really is.
     'married-the-mafioso-i-saved':
-        "She saved a street thug with one kiss.\n"
-        "Betrayed and abandoned, Hannah marries Alex on the spot, the man she saved "
-        "with a single kiss. She has no idea what he really is.\n"
-        "Flash marriage to a dangerous man. Need we say more?",
+        "She saved a street thug with one kiss.\nBetrayed and abandoned, "
+        "Hannah marries Alex on the spot, the man she saved with a single "
+        "kiss. She has no idea what he really is.",
 
     # 229.1M   Ex-Convict Nanny and Billionaire Single Dad
     # FACTS: Fresh out of prison, Grace landed a job as a nanny. Her boss, the ruthless billionaire A
@@ -143,348 +130,309 @@ CAPTIONS = {
     # FACTS: gradually won over his cold heart, but Grace holds a dark secret, one that could destroy
     # FACTS:  everything good.
     'ex-convict-nanny-and-billionaire-single-dad':
-        "She walks out of prison and straight into his house.\n"
-        "Fresh out of prison, Grace lands a job as a nanny for Alex Hill, a ruthless "
-        "billionaire who cares about exactly one thing: his daughter. Grace passes "
-        "every test he sets her. She is also carrying a secret that could take the "
-        "whole thing down.\n"
-        "This one is served with an extra helping of angst.",
+        "She walks out of prison and straight into his house.\nFresh out "
+        "of prison, Grace lands a job as a nanny for Alex Hill, a "
+        "ruthless billionaire who cares about exactly one thing: his "
+        "daughter. Grace passes every test he sets her. She is also "
+        "carrying a secret that could destroy everything good she has "
+        "found there.",
 
     # 226.8M   Mommy Don't Cry, Daddy is Sorry
     # FACTS: After his wife Sienna dies in a mental hospital, Wayne is fooled into taking home the wr
     # FACTS: ong daughter; Sienna is alive, reborn as ruthless alter-ego Scarlett, hunting vengeance 
     # FACTS: in her daughter's name.
     'mommy-don-t-cry-daddy-is-sorry':
-        "The wife he buried is very much alive.\n"
-        "Wayne loses his wife Sienna in a mental hospital, then is tricked into "
-        "bringing home the wrong daughter. Sienna is alive. She comes back as "
-        "Scarlett, and she is not here to forgive anyone.\n"
-        "Revenge, a reborn heroine, and a husband with a lot to answer for.",
+        "The wife he buried is very much alive.\nWayne loses his wife "
+        "Sienna in a mental hospital, then is tricked into bringing home "
+        "the wrong daughter. But Sienna is alive and now she's back with "
+        "a new identity, and a list of sins those who wronged her need to "
+        "pay for.",
 
     # 219.4M   American Sniper: The Last Round
     # FACTS: A legendary sharpshooter hiding as a shooting range handyman steps up when the range fac
     # FACTS: es a hostile takeover.
     'american-sniper-the-last-round':
-        "The maintenance guy holds a world record nobody knows about.\n"
-        "Carl Oliver was the sharpshooter they called the King of Guns, and he broke "
-        "the world record for the longest confirmed kill before disappearing "
-        "completely. These days he does maintenance at a shooting range, where the "
-        "club captain Albert looks straight through him. Then the range comes under "
-        "threat, and protecting its owner Jane and her daughter Rebecca matters more "
-        "than staying hidden.\n"
-        "A quiet man with a past, pushed one time too many. Hidden identity at its "
-        "most satisfying.",
+        "The maintenance guy holds a deadly world record nobody knows "
+        "about.\nCarl Oliver was the sharpshooter they called the King of "
+        "Guns, and he broke the world record for the longest confirmed "
+        "kill before disappearing completely. These days he does "
+        "maintenance at a shooting range, where he is regularly looked "
+        "down on. Then the range comes under threat, and protecting its "
+        "owner Jane and her daughter Rebecca matters more than staying "
+        "hidden.",
 
     # 218.8M   Carrying His Triplets, Becoming His Wifey
     # FACTS: Daisy works in a warehouse to pay for her tuition, but her father steals her money.
     'carrying-his-triplets-becoming-his-wifey':
-        "One night with a stranger, and then three heartbeats.\n"
-        "Daisy is working warehouse shifts to put herself through college, and her "
-        "father keeps taking the money she earns. Desperate enough to take a second "
-        "job at a strip club, she meets Marcus there, a billionaire she spends a "
-        "single night with. Not long after, she finds out she is pregnant with "
-        "triplets.\n"
-        "A one night stand, a billionaire, and three babies. This is exactly the kind "
-        "of chaos we love.",
+        "One night with a stranger, and then three heartbeats.\nDaisy is "
+        "working warehouse shifts to put herself through college, and her "
+        "father keeps taking the money she earns. Desperate enough to "
+        "take a second job at a strip club, she meets Marcus there, a "
+        "billionaire she spends a single night with. Not long after, she "
+        "finds out she is pregnant with triplets.",
 
     # 218.1M   Fated to My Forbidden Alpha
     # FACTS: Kasey Esser's breakout title and one of the best known werewolf verticals.
     'fated-to-my-forbidden-alpha':
-        "Her mate turns out to be the one person she cannot stand.\n"
-        "On her eighteenth birthday Selene learns that her mate is Alpha Jackson, her "
-        "own nemesis, and that he means to reject her. What he does not know is that "
-        "she is a Luna, taken as a child and mistaken ever since for an ordinary "
-        "wolf. Then she starts planning her escape.\n"
-        "A rejected mate and a hidden Luna. Werewolf romance at full volume.",
+        "Her mate turns out to be the one person she cannot stand.\nOn "
+        "her eighteenth birthday Selene learns that her mate is Alpha "
+        "Jackson, her own nemesis, and that he means to reject her. What "
+        "he does not know is that she is a Luna, taken as a child and "
+        "mistaken ever since for an ordinary wolf.",
 
     # 214.1M   Taming My Bullies
     # FACTS: Emma Parker is a new transfer to Maple Elite Academy - and she's picked a fight with The
     # FACTS:  Big Four, on her very first day!
     'taming-my-bullies':
-        "New school, new enemies, all in one afternoon.\n"
-        "Emma Parker transfers into Maple Elite Academy and picks a fight with The Big "
-        "Four before her first day is out.\n"
-        "One girl against the entire pecking order. Sign us up.",
+        "New school, new enemies, all in one afternoon.\nEmma Parker "
+        "transfers into Maple Elite Academy and picks a fight with The "
+        "Big Four before her first day is out.",
 
     # 213.1M   My Stepbrother's Dirty Secret
     # FACTS: Alice transfers to St.
     'my-stepbrother-s-dirty-secret':
-        "The boy she cannot stand has just moved in.\n"
-        "Alice starts at St Mary's High after her mum remarries a millionaire. She "
-        "clashes with James, a classmate she wants nothing to do with, right up until "
-        "she finds out he is her new stepbrother.\n"
-        "Forbidden stepbrother romance, and we are not sorry about it.",
+        "The boy she cannot stand has just moved in.\nAlice starts at St "
+        "Mary's High after her mum remarries a millionaire. She clashes "
+        "with James, a classmate she wants nothing to do with, right up "
+        "until she finds out he is her new stepbrother.",
 
     # 200.6M   How to Break a DILF
     # FACTS: Uncle Jesse's smokin' hot tattoo and great technique on bed awakens Sophie Holland's fan
     # FACTS: tasy in How To Break A DILF Trailer!
     'how-to-break-a-dilf':
-        "He is her best friend's dad, and she does not care.\n"
-        "Sophie Holland has fallen for Uncle Jesse, who happens to be her best "
-        "friend's father. His advice is that she should be dating someone her own "
-        "age. She is not taking it.\n"
-        "Forbidden age gap, and a man trying very hard to do the right thing.",
+        "He is her best friend's dad, and she does not care.\nSophie "
+        "Holland has fallen for Uncle Jesse, who happens to be her best "
+        "friend's father. His advice is that she should be dating someone "
+        "her own age. She is not taking it.",
 
     # 198.4M   Snatched a Billionaire to be My Husband
     # FACTS: She falls in love with her ex's uncle.
     'snatched-a-billionaire-to-be-my-husband':
-        "Of all the men in the world, it had to be him.\n"
-        "She falls in love with her ex's uncle.\n"
-        "Age gap with a family complication attached. Awkward does not begin to cover "
-        "it.",
+        "Of all the men in the world, it had to be him.\nShe falls in "
+        "love with her ex's uncle.",
 
     # 197.9M   The Virgin and The Billionaire
     # FACTS: Demoted to maid and substitute bride in her father's house, Cindy finds unexpected love 
     # FACTS: when billionaire Charles Kane falls for her.
     'the-virgin-and-the-billionaire':
-        "Her own father turned her into the help.\n"
-        "Cindy is pushed down to maid in her father's house and lined up as a "
-        "substitute bride. Then the billionaire Charles Kane notices her.\n"
-        "Cinderella energy with a substitute bride twist.",
+        "Her own father turned her into the help.\nCindy is pushed down "
+        "to maid in her father's house and lined up as a substitute "
+        "bride. Then the billionaire Charles Kane notices her.",
 
     # 197.6M   Tell Me Not to Love You
     # FACTS: Brie, a servant's daughter raised alongside young master Teddy, fights her feelings as h
     # FACTS: e pursues her across the class divide.
     'tell-me-not-to-love-you':
-        "She grew up in his house, never as his equal.\n"
-        "Brie is a servant's daughter, raised alongside the young master Teddy. He "
-        "wants her. She is doing everything she can not to want him back.\n"
-        "Forbidden love across a class divide. Angst, and plenty of it.",
+        "She grew up in his house, never as his equal.\nBrie is a "
+        "servant's daughter, raised alongside the young master Teddy. He "
+        "wants her. She is doing everything she can not to want him back.",
 
     # 197.0M   Don't Miss Me When I'm Gone
     # FACTS: Orphaned and raised with the Miller brothers, she expects to end up with one of them unt
     # FACTS: il the maid's daughter moves in and her heart is broken; after she leaves, they lose the
     # FACTS: ir minds trying to find her.
     'don-t-miss-me-when-i-m-gone':
-        "She left, and every one of them fell apart.\n"
-        "Orphaned and raised alongside the Miller brothers, she has always assumed "
-        "she would end up with one of them. Then the maid's daughter moves in, and "
-        "the future she counted on quietly disappears. So she goes.\n"
-        "Nothing hits like a heroine who walks away and lets them feel it.",
+        "She left, and every one of them fell apart.\nOrphaned and raised "
+        "alongside the Miller brothers, she has always assumed she would "
+        "end up with one of them. Then the maid's daughter moves in, and "
+        "the future she counted on quietly disappears. So she goes.",
 
     # 192.3M   The Alpha King and His Virgin Bride
     # FACTS: The Alpha King Killian Storm is cursed to not live past age thirty.
     'the-alpha-king-and-his-virgin-bride':
-        "He is not meant to see thirty.\n"
-        "Killian Storm is the Alpha King, and a curse says he will not live past the "
-        "age of thirty. There's only one way he can survive. He has to find his true "
-        "fated mate. But what nobody counted on is that his mate is just a human.\n"
-        "A cursed king and a human mate. Some delicious angst for the fated mate fans.",
+        "He is not meant to see thirty.\nKillian Storm is the Alpha King, "
+        "and a curse says he will not live past the age of thirty. "
+        "There's only one way he can survive. He has to find his true "
+        "fated mate. But what nobody counted on is that his mate is just "
+        "a human.",
 
     # 190.2M   Doctor Boss Is My Baby Daddy
     # FACTS: : When med intern Molly has a one-night stand with a stranger, she thinks it’s a one-and
     # FACTS: -done kind of deal.
     'doctor-boss-is-my-baby-daddy':
-        "One night with a stranger. Then she meets her new boss.\n"
-        "Molly is a medical intern who spends a night with a stranger and files it "
-        "away as a one off. A month later she finds out two things. She is pregnant, "
-        "and the stranger is Dr Graham Weston, her new boss.\n"
-        "A one night stand and a secret pregnancy. The angst practically writes "
-        "itself.",
+        "One night with a stranger. Then she meets her new boss.\nMolly "
+        "is a medical intern who spends a night with a stranger and files "
+        "it away as a one off. A month later she finds out two things. "
+        "She is pregnant, and the stranger is Dr Graham Weston, her new "
+        "boss.",
 
     # 181.9M   Falling for My Ex's Mafia Dad
     # FACTS: After catching her boyfriend cheating, Fay is pulled into a mob alliance marriage and fa
     # FACTS: lls for his father, the Mafia King.
     'falling-for-my-ex-s-mafia-dad':
-        "She caught him cheating. What came next was a wedding.\n"
-        "After catching her boyfriend cheating, Fay is pulled into a marriage arranged "
-        "to seal an alliance between mob families. The man at the head of it is his "
-        "father.\n"
-        "Age gap, mafia, and an ex who is about to regret everything.",
+        "She caught him cheating. What came next was a wedding.\nAfter "
+        "catching her boyfriend cheating, Fay is pulled into a marriage "
+        "arranged to seal an alliance between mob families. The man at "
+        "the head of it is his father.",
 
     # 176.8M   The Double Life of a Billionaire Heiress
     # FACTS: After three years of marriage, CEO Wes Sterling is convinced that his wife Kira is a che
     # FACTS: ating gold digger.
     'the-double-life-of-a-billionaire-heiress':
-        "He is certain he knows exactly who he married.\n"
-        "Three years into the marriage, CEO Wes Sterling has convinced himself that "
-        "his wife Kira is a cheating gold digger.\n"
-        "A husband who has it completely wrong. We cannot wait for him to find out.",
+        "He is certain he knows exactly who he married.\nThree years into "
+        "the marriage, CEO Wes Sterling has convinced himself that his "
+        "wife Kira is a cheating gold digger.",
 
     # 172.5M   I Had a Baby without You
     # FACTS: Five years ago curvy waitress Scarlett saved Brandon's life and spent one night with him
     # FACTS:  before vanishing. Now she's back, unrecognizable, and he's a recluse.
     'i-had-a-baby-without-you':
-        "Five years on, he does not recognise her.\n"
-        "Scarlett saved Brandon's life five years ago, spent one night with him, then "
-        "disappeared. She is back now, and in the years between he has shut himself "
-        "away from the world.\n"
-        "A secret baby and a second chance. This one aches.",
+        "Five years on, he does not recognise her.\nScarlett saved "
+        "Brandon's life five years ago, spent one night with him, then "
+        "disappeared. She is back now, and in the years between he has "
+        "shut himself away from the world.",
 
     # 171.8M   Miss You After Goodbye
     # FACTS: To repay a debt of kindness, Neil signs a secret contract with Keira's father stating th
     # FACTS: at he will marry Keira for five years and help her recover from a painful breakup with h
     # FACTS: er first love, Simon.
     'miss-you-after-goodbye':
-        "He signed up for five years. She has no idea.\n"
-        "Neil owes Keira's father a debt, so he signs a secret contract: five years of "
-        "marriage, and help getting her over Simon, her first love. Keira never learns "
-        "the contract exists.\n"
-        "A contract marriage with a secret sitting at the centre of it. Pure angst.",
+        "He signed up for five years. She has no idea.\nNeil owes Keira's "
+        "father a debt, so he signs a secret contract: five years of "
+        "marriage, and help getting her over Simon, her first love. Keira "
+        "never learns the contract exists.",
 
     # 170.3M   The Call Boy I Met in Paris
     # FACTS: Sophie fake-marries a man she mistakes for a callboy. He's a billionaire she met seven y
     # FACTS: ears ago.
     'the-call-boy-i-met-in-paris':
-        "She thinks she is hiring him. She is not.\n"
-        "Sophie fake marries a man she has taken for a call boy. He is a billionaire, "
-        "and the two of them met seven years ago in Paris.\n"
-        "A fake marriage built on a total misunderstanding. We are already invested.",
+        "She thinks she is hiring him. She is not.\nSophie fake marries a "
+        "man she has taken for a call boy. He is a billionaire, and the "
+        "two of them met seven years ago in Paris.",
 
     # 168.4M   Surrender to My Professor
     # FACTS: Struggling student Sylvia falls into a forbidden romance with her cold, harsh professor 
     # FACTS: Lawrence Calhoun.
     'surrender-to-my-professor':
-        "He is the last person she should want.\n"
-        "Sylvia is struggling through her studies when she falls into a forbidden "
-        "romance with Lawrence Calhoun, the coldest and harshest professor she has.\n"
-        "A cold professor and a student who cannot help herself. We love a forbidden "
-        "one.",
+        "He is the last person she should want.\nSylvia is struggling "
+        "through her studies when she falls into a forbidden romance with "
+        "Lawrence Calhoun, the coldest and harshest professor she has.",
 
     # 168.0M   Step Aside, I'm the King of Capital
     # FACTS: Evan Adams lead vertical.
     'step-aside-i-m-the-king-of-capital':
-        "She dumps him for a man who is standing right there.\n"
-        "Cassius spends six years abroad building the world's biggest financial "
-        "empire under the name Mr S. He comes home to propose to Isabella, and she "
-        "drops him for someone richer, insisting only the mysterious Mr S would ever "
-        "be good enough for her. Then a favour lands Cassius in a sudden marriage to "
-        "Freya, who runs Mirror Media.\n"
-        "A hidden identity and an ex with catastrophic timing. We cannot wait for the "
-        "moment she works it out.",
+        "She dumps him for a man who is standing right there.\nCassius "
+        "spends six years abroad building the world's biggest financial "
+        "empire under the name Mr S. He comes home to propose to "
+        "Isabella, and she drops him for someone richer, insisting only "
+        "the mysterious Mr S would ever be good enough for her. Then a "
+        "favour lands Cassius in a sudden marriage to Freya, who runs "
+        "Mirror Media.",
 
     # 167.6M   Baby, Just Say Yes!
     # FACTS: Betrayed by her fiance and stepsister, Victoria needs a husband to claim her inheritance
     # FACTS:  and contract-marries her one-time saviour Teddy; genuine feelings complicate the agreem
     # FACTS: ent.
     'baby-just-say-yes':
-        "She needs a husband by the end of the week.\n"
-        "Betrayed by her fiance and her own stepsister, Victoria cannot claim her "
-        "inheritance without a husband. So she contract marries Teddy, the man who "
-        "once got her out of trouble. Then real feelings start getting in the way of "
-        "the agreement.\n"
-        "A contract marriage where nobody stays professional. We love to see it.",
+        "She needs a husband by the end of the week.\nBetrayed by her "
+        "fiance and her own stepsister, Victoria cannot claim her "
+        "inheritance without a husband. So she contract marries Teddy, "
+        "the man who once got her out of trouble. Then real feelings "
+        "start getting in the way of the agreement.",
 
     # 163.3M   The Lost Quarterback Returns
     # FACTS: When Asher Bradshaw, the son of hall-of-famer NFL quarterback Trent Bradshaw and former 
     # FACTS: beauty queen Krista, goes missing in a devastating fire, psychotic fan Donny Lewis takes
     # FACTS:  it as an opportunity to swap Asher with his own son, Wyatt.
     'the-lost-quarterback-returns':
-        "A fire, a missing boy, and a swap nobody notices.\n"
-        "Asher Bradshaw is the son of hall of fame quarterback Trent Bradshaw and "
-        "former beauty queen Krista. When Asher goes missing in a devastating fire, "
-        "an obsessive fan named Donny Lewis sees his chance and puts his own son "
-        "Wyatt in Asher's place.\n"
-        "Swapped identities and a family who have no idea. We cannot look away.",
+        "A fire, a missing boy, and a swap nobody notices.\nAsher "
+        "Bradshaw is the son of hall of fame quarterback Trent Bradshaw "
+        "and former beauty queen Krista. When Asher goes missing in a "
+        "devastating fire, an obsessive fan named Donny Lewis sees his "
+        "chance and puts his own son Wyatt in Asher's place.",
 
     # 161.7M   In the Palm of His Hand
     # FACTS: College senior Shelby Yates accidentally saves the life of billionaire ex-mafia CEO Matt
     # FACTS: eo Franconi.
     'in-the-palm-of-his-hand':
-        "She saves his life without meaning to.\n"
-        "Shelby Yates is a college senior who accidentally saves the life of Matteo "
-        "Franconi, a billionaire CEO with a mafia past.\n"
-        "A dangerous man who owes her everything. We know exactly where this is "
-        "going.",
+        "She saves his life without meaning to.\nShelby Yates is a "
+        "college senior who accidentally saves the life of Matteo "
+        "Franconi, a billionaire CEO with a mafia past.",
 
     # 161.3M   Maid for My Nemesis
     # FACTS: Class president Emma hides that she is the poorest girl at her wealthy private school. R
     # FACTS: ival rich bad boy Lucas Bennett gets her fired then hires her as his personal maid, keep
     # FACTS: ing the arrangement secret as long as she caters to his every need.
     'maid-for-my-nemesis':
-        "He gets her fired, then puts her on his payroll.\n"
-        "Emma is class president at a wealthy private school, and nobody there knows "
-        "she is the poorest girl in it. Her rival, rich bad boy Lucas Bennett, has "
-        "her fired from her job and then hires her as his personal maid, on the "
-        "condition that nobody finds out and she caters to his every need.\n"
-        "Enemies to lovers with a power imbalance we should not enjoy this much.",
+        "He gets her fired, then puts her on his payroll.\nEmma is class "
+        "president at a wealthy private school, and nobody there knows "
+        "she is the poorest girl in it. Her rival, rich bad boy Lucas "
+        "Bennett, has her fired from her job and then hires her as his "
+        "personal maid, on the condition that nobody finds out and she "
+        "caters to his every need.",
 
     # 155.4M   Accidental Surrogate for Alpha
     # FACTS: Ella, a Luna werewolf hidden from herself, seeks motherhood through insemination and is 
     # FACTS: accidentally given the sperm of an Alpha wolf.
     'accidental-surrogate-for-alpha':
-        "The clinic makes a mistake she cannot undo.\n"
-        "Ella is a Luna werewolf who has been kept from knowing what she is. Wanting "
-        "a child of her own, she goes for insemination, and the sperm she is given "
-        "belongs to an Alpha wolf.\n"
-        "An accidental pregnancy and a hidden Luna. We are here for every second of "
-        "it.",
+        "The clinic makes a mistake she cannot undo.\nElla is a Luna "
+        "werewolf who has been kept from knowing what she is. Wanting a "
+        "child of her own, she goes for insemination, and the sperm she "
+        "is given belongs to an Alpha wolf.",
 
     # 153.0M   Heiress Crash Lands on Her Husband
     # FACTS: Lily out-trumps her cheating ex, his mistress, a royal suitor and a dominant mother-in-l
     # FACTS: aw in a marathon of revealed identities.
     'heiress-crash-lands-on-her-husband':
-        "Everyone underestimates her, one after another.\n"
-        "Lily takes on a cheating ex, his mistress, a suitor with a royal title and a "
-        "mother in law who rules the house. One by one the truths come out, and she "
-        "ends up on top of every one of them.\n"
-        "Every single person here is about to be humbled. We are so ready.",
+        "Everyone underestimates her, one after another.\nLily takes on a "
+        "cheating ex, his mistress, a suitor with a royal title and a "
+        "mother in law who rules the house. One by one the truths come "
+        "out, and she ends up on top of every one of them.",
 
     # 149.0M   Undercover Prison King
     # FACTS: Ex-soldier Troy inherits a corrupt private prison and goes in undercover as an inmate to
     # FACTS:  expose the crime ring running it.
     'undercover-prison-king':
-        "He inherits a prison and books himself in.\n"
-        "Troy is an ex soldier who inherits a private prison and finds it rotten "
-        "through. So he goes inside as an inmate to expose the crime ring running "
-        "the place from within.\n"
-        "An undercover hero and a prison full of people who should be worried.",
+        "He inherits a prison and books himself in.\nTroy is an ex "
+        "soldier who inherits a private prison and finds it rotten "
+        "through. So he goes inside as an inmate to expose the crime ring "
+        "running the place from within.",
 
     # 145.2M   Fated to the Alpha
     # FACTS: Katya, a rare Luna healer without her wolf, flees her pack's threats to Black Creek, whe
     # FACTS: re she meets Alpha Ezra, her fated wolf and protector.
     'fated-to-the-alpha':
-        "She runs from her own pack and finds him.\n"
-        "Katya is a rare Luna healer with no wolf of her own. Threatened by her pack, "
-        "she runs to Black Creek, and there she meets Alpha Ezra, the wolf fated to "
-        "her and the one man set on protecting her.\n"
-        "A fated mate who arrives exactly when she needs one. Werewolf comfort "
-        "watching at its best.",
+        "She runs from her own pack and finds him.\nKatya is a rare Luna "
+        "healer with no wolf of her own. Threatened by her pack, she runs "
+        "to Black Creek, and there she meets Alpha Ezra, the wolf fated "
+        "to her and the one man set on protecting her.",
 
     # 142.4M   If Loving You is a Sin, then I'll Go to Hell
     # FACTS: Good girl Ellie Jones falls for bad boy Asher King and gets pregnant. Her pastor father 
     # FACTS: and his gang family, the Red Snakes, want to keep them apart and take the baby; Asher vo
     # FACTS: ws to protect her at any cost.
     'if-loving-you-is-a-sin-then-i-ll-go-to-hell':
-        "Her father is a pastor. His family run a gang.\n"
-        "Ellie Jones is a good girl who falls for Asher King, and ends up pregnant. "
-        "Her pastor father and Asher's family, the Red Snakes, both want the pair of "
-        "them apart and the baby taken. Asher swears he will protect her whatever it "
-        "costs him.\n"
-        "Forbidden love with both families against them. We are keeping the tissues "
-        "close.",
+        "Her father is a pastor. His family run a gang.\nEllie Jones is a "
+        "good girl who falls for Asher King, and ends up pregnant. Her "
+        "pastor father and Asher's family, the Red Snakes, both want the "
+        "pair of them apart and the baby taken. Asher swears he will "
+        "protect her whatever it costs him.",
 
     # 141.0M   How to Dump a Hockey Star
     # FACTS: : After leaving behind her life as a billionaire heiress, Renee dedicates herself to hel
     # FACTS: ping her husband recover from a vegetative state and pursue his NHL dreams.
     'how-to-dump-a-hockey-star':
-        "She gives up an empire to sit at his bedside.\n"
-        "Renee walks away from life as a billionaire heiress and gives everything she "
-        "has to her husband, nursing him back from a vegetative state and helping him "
-        "chase the NHL career he lost.\n"
-        "A heroine who gives up everything for him. We need to know if he deserves "
-        "it.",
+        "She gives up an empire to sit at his bedside.\nRenee walks away "
+        "from life as a billionaire heiress and gives everything she has "
+        "to her husband, nursing him back from a vegetative state and "
+        "helping him chase the NHL career he lost.",
 
     # 139.4M   Married In A Heartbeat
     # FACTS: Betrayed by her fiance and her own sister, Esther marries Ricky without knowing his real
     # FACTS:  identity – a secret billionaire.
     'married-in-a-heartbeat':
-        "Her fiance and her sister, in one go.\n"
-        "Betrayed by her fiance and her own sister, Esther marries Ricky almost on "
-        "the spot, with no idea that he is a billionaire keeping it quiet.\n"
-        "A secret billionaire husband and two people about to regret themselves. We "
-        "love it here.",
+        "Her fiance and her sister, in one go.\nBetrayed by her fiance "
+        "and her own sister, Esther marries Ricky almost on the spot, "
+        "with no idea that he is a billionaire keeping it quiet.",
 
     # 138.3M   Fated to Find You
     # FACTS: A school janitor who saves a child from kidnapping flash-marries the girl's secret-billi
     # FACTS: onaire father as betrayals and a vengeful ex circle their new family.
     'fated-to-find-you':
-        "She saves a stranger's child and gains a husband.\n"
-        "A school janitor stops a little girl being taken, and flash marries the "
-        "child's father, a billionaire keeping his money quiet. Betrayals and a "
-        "vengeful ex start circling the family they have just made.\n"
-        "A found family with everyone against it. We are rooting for all three of "
-        "them.",
+        "She saves a stranger's child and gains a husband.\nA school "
+        "janitor stops a little girl being taken, and flash marries the "
+        "child's father, a billionaire keeping his money quiet. Betrayals "
+        "and a vengeful ex start circling the family they have just made.",
 }
 
 FACTS = {  # paste fetched text here for any FETCH REQUIRED row

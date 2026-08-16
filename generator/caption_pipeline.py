@@ -136,8 +136,10 @@ def validate(tid, cap, fact, title):
         errs.append("no hook")
     if not body:
         errs.append("no body")
-    if not aside:
-        errs.append("no aside")
+    # THE ASIDE IS OPTIONAL as of 15 Aug 2026. Cyan: "We have to remove the last
+    # sentence, it is causing the biggest problems." Captions are HOOK + BODY, the
+    # same shape as the 60 already live. build.py still renders a third part if one
+    # is ever present, so nothing has to be undone if she wants them back.
     bad = sorted({c for c in cap if c in DASHES})
     if bad:
         errs.append("DASH %s" % bad)
@@ -148,7 +150,11 @@ def validate(tid, cap, fact, title):
     # The hook may be TWO short sentences: the approved corpus has "He is used to
     # owning things. She is not one." What it may not be is long, so cap the length
     # rather than the sentence count.
-    if len(hook) > 62:
+    # 100, and deliberately generous. Cyan, 15 Aug: "make the cap a comfortable 100,
+    # I want the cap to be flexible." This checker flagged her own wording FOUR times
+    # by being tighter than her taste, so the cap is a guard against a runaway
+    # paragraph in the hook slot, not a house style.
+    if len(hook) > 100:
         errs.append("hook is %d chars, too long to read as a subheading" % len(hook))
     if len(re.findall(r"[.!?]", hook)) > 2:
         errs.append("hook is more than two sentences")
