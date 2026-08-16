@@ -87,6 +87,18 @@ BACKREF = [
 ]
 
 
+# Titles whose PUBLISHED synopsis is genuinely too short to reach the 200 floor.
+# A title only belongs here after the platform page has been read and confirmed to
+# publish nothing more - never as a way round the minimum. Cyan's standing rule is
+# that a title with no findable synopsis goes on a list for her, not into invention.
+SOURCE_LIMITED = {
+    # ReelShort publishes ONE sentence for this and nothing else: no extended
+    # synopsis, no chapter titles, no character descriptions. Checked twice,
+    # 15 Aug 2026. Its theme tags are tags, not plot, and are not usable as facts.
+    "snatched-a-billionaire-to-be-my-husband",
+}
+
+
 def rows(name):
     with io.open(os.path.join(DATA, name), encoding="utf-8-sig", newline="") as f:
         return list(csv.DictReader(f))
@@ -136,6 +148,14 @@ def validate(tid, cap, fact, title):
         errs.append("no hook")
     if not body:
         errs.append("no body")
+    # BODY LENGTH, Cyan 15 Aug 2026: "make it a flexible 400, with minimum 200",
+    # then "over is fine". So 200 is a REAL FLOOR and there is NO upper limit -
+    # 400 is a rough sense of the right size, not a rule. She set the floor after
+    # removing the aside left captions stopping mid thought on the page.
+    # The floor is a prompt to GO AND FETCH MORE SYNOPSIS, never to pad.
+    elif len(body) < 200 and tid not in SOURCE_LIMITED:
+        errs.append("body is %d chars, under the 200 minimum - go and get more of "
+                    "the synopsis rather than padding it" % len(body))
     # THE ASIDE IS OPTIONAL as of 15 Aug 2026. Cyan: "We have to remove the last
     # sentence, it is causing the biggest problems." Captions are HOOK + BODY, the
     # same shape as the 60 already live. build.py still renders a third part if one

@@ -27,9 +27,12 @@ CAPTIONS = {
     # FACTS: naware he is the billionaire CEO of the country's top Savage Group, then reclaims her di
     # FACTS: gnity back home in Texas.
     'found-a-homeless-billionaire-husband-for-christmas':
-        "She married him when he had nothing.\nHumiliated by her fiance, "
-        "Victoria marries Simon, a homeless man she has been quietly "
-        "helping. She has no idea who he really is.",
+        "She married him when he had nothing.\nVictoria is heading home "
+        "to Texas with her fiance Carl to plan their wedding when he "
+        "humiliates and betrays her. To save face in front of her family "
+        "she asks Simon to marry her instead, a homeless man she has been "
+        "quietly helping. She has no idea who he really is. Simon runs "
+        "the Savage Group, the biggest company in the country.",
 
     # 460.0M   True Heiress vs. Fake Queen Bee
     # FACTS: Wealthy teen Hailey hides her identity at a public school while the maid's daughter Cand
@@ -56,10 +59,13 @@ CAPTIONS = {
     # FACTS: At her sister's engagement party, undercover agent Catherine is ridiculed as a janitor u
     # FACTS: ntil her sister is betrayed, and Catherine reveals herself as the Warlord Queen.
     'my-sister-is-the-warlord-queen':
-        "They think she cleans floors for a living.\nCatherine turns up "
-        "at her sister's engagement party and gets treated like the hired "
-        "help. She lets them think it. Then her sister is betrayed, and "
-        "Catherine stops pretending.",
+        "They think she cleans floors for a living.\nAbandoned by their "
+        "parents, Catherine and Grace Blackwood grew up with nobody but "
+        "each other. Catherine turns up to Grace's engagement party "
+        "straight from an undercover job, still dressed as a janitor, and "
+        "Grace's new in laws treat her accordingly. She lets them. Then "
+        "Grace is betrayed by her own fiance, and Catherine stops "
+        "pretending to be anything less than the Warlord Queen.",
 
     # 397.9M   Ms. CEO's Baby Daddy Is the Merchant of Death
     # FACTS: Connor Reed, the most powerful arms dealer in the world, saves a Charlotte Hayes and spe
@@ -67,35 +73,45 @@ CAPTIONS = {
     'ms-ceo-s-baby-daddy-is-the-merchant-of-death':
         "He was undercover. She had no idea.\nConnor Reed is the most "
         "powerful arms dealer in the world, and he is deep undercover "
-        "when he saves Charlotte Hayes. They spend one night together, "
-        "and she has no idea what he does or who he is.",
+        "when he saves Charlotte Hayes. They spend one night together and "
+        "she has no idea who he is. Four years later, with Connor still "
+        "hiding, Charlotte turns up again, and this time she has their "
+        "child with her. He has to keep them both safe without anyone "
+        "learning who he really is.",
 
     # 358.6M   Breaking the Ice
     # FACTS: Hockey hopeful Easton wins a scholarship and his mother pressures pregnant Caroline to g
     # FACTS: et rid of the baby; love wins and the couple reunites.
     'breaking-the-ice':
-        "The scholarship arrives at the worst possible moment.\nEaston is "
-        "a hockey hopeful who finally wins his scholarship. His "
-        "girlfriend Caroline is pregnant. His mother has very firm ideas "
-        "about what should happen next.",
+        "The scholarship arrives at the worst possible moment.\nCaroline "
+        "Mills and Easton Black are together and happy. Then the hockey "
+        "scholarship Easton has worked his whole life for finally comes "
+        "through, and his mother decides a pregnant girlfriend has no "
+        "place in that plan. She tells Caroline to get rid of the baby, "
+        "and everything the two of them had starts coming apart.",
 
     # 316.3M   Move Aside! I'm the Final Boss
     # FACTS: Kingsley, secret King of King's Corps and the richest man on Earth, returns from war to 
     # FACTS: be dumped as a nobody. Regret follows.
     'move-aside-i-m-the-final-boss':
         "The nobody they threw away owns everything.\nKingsley comes back "
-        "from war and is dumped for being a nobody. What none of them "
-        "know is that he runs King's Corps, and there is no richer man on "
-        "Earth.",
+        "from the battlefield to a childhood sweetheart who wants nothing "
+        "more to do with him. She dumps him without ceremony, convinced "
+        "he is a joke. What she does not know, and what nobody around "
+        "them knows, is that Kingsley is the secret King of King's Corps "
+        "and there is no richer man on Earth.",
 
     # 277.2M   Money, Guns, and a Merry Christmas
     # FACTS: A defense-industry CEO mistaken for a broke salesman contract-marries Iris and turns the
     # FACTS:  tables on her sneering relatives at Christmas dinner.
     'money-guns-and-a-merry-christmas':
-        "Everyone at that table has him completely wrong.\nA defence "
-        "industry CEO gets mistaken for a broke salesman, and contract "
-        "marries Iris. Her relatives spend Christmas dinner sneering at "
-        "him, with no idea who is sitting across from them.",
+        "Everyone at that table has him completely wrong.\nDamian runs "
+        "the most powerful military industrial group in the world, and "
+        "everyone has him pegged as a salesman scraping three thousand a "
+        "month. He and Iris enter a quick contract marriage, then he goes "
+        "home with her for Christmas dinner. Her relatives belittle him "
+        "all evening and a rival suitor joins in. Damian turns it round "
+        "on every one of them.",
 
     # 274.3M   In Love with a Single Farmer-Daddy
     # FACTS: Natalie is married off by her conniving family to rural farmer Rhett, single father to a
@@ -104,7 +120,9 @@ CAPTIONS = {
         "Her family married her off and washed their hands of "
         "her.\nNatalie is married off to Rhett, a rural farmer raising a "
         "daughter who does not speak. When she first arrives she is "
-        "shunned. Will she be able to turn things around?",
+        "shunned. Will she be able to turn things around? Ellie has been "
+        "badly let down by the people around her, and the bond those two "
+        "build becomes the thing Natalie will protect at any cost.",
 
     # 234.4M   Married at First Sight
     # FACTS: Summer has been the ideal girlfriend for her ex-boyfriend, Vincent.
@@ -120,9 +138,12 @@ CAPTIONS = {
     # FACTS: Betrayed and abandoned, Hannah flash-marries Alex, the street thug she saved with a sing
     # FACTS: le kiss, not knowing what he really is.
     'married-the-mafioso-i-saved':
-        "She saved a street thug with one kiss.\nBetrayed and abandoned, "
-        "Hannah marries Alex on the spot, the man she saved with a single "
-        "kiss. She has no idea what he really is.",
+        "She saved a street thug with one kiss.\nHannah gave up "
+        "everything for her fiance and was betrayed and abandoned in a "
+        "country she barely knows. Desperate for a way to stay, she flash "
+        "marries Alex, the street thug she accidentally saved with a "
+        "single kiss while he was making an escape. He turns out to be "
+        "far more than that, and her ex is not finished with her yet.",
 
     # 229.1M   Ex-Convict Nanny and Billionaire Single Dad
     # FACTS: Fresh out of prison, Grace landed a job as a nanny. Her boss, the ruthless billionaire A
@@ -186,15 +207,21 @@ CAPTIONS = {
     'taming-my-bullies':
         "New school, new enemies, all in one afternoon.\nEmma Parker "
         "transfers into Maple Elite Academy and picks a fight with The "
-        "Big Four before her first day is out.",
+        "Big Four before her first day is out. Four rich heirs decide she "
+        "is public enemy number one. Rowan Calloway behaves like a "
+        "tyrant, though there may be more to him than that. August "
+        "Langford keeps quietly helping her, and she cannot work out "
+        "whether they have met before.",
 
     # 213.1M   My Stepbrother's Dirty Secret
     # FACTS: Alice transfers to St.
     'my-stepbrother-s-dirty-secret':
         "The boy she cannot stand has just moved in.\nAlice starts at St "
-        "Mary's High after her mum remarries a millionaire. She clashes "
-        "with James, a classmate she wants nothing to do with, right up "
-        "until she finds out he is her new stepbrother.",
+        "Mary's High after her mother remarries a millionaire, and lands "
+        "in a world she has no map for. She clashes with James straight "
+        "away, a classmate she wants nothing to do with. Then she finds "
+        "out he is her new stepbrother, and the two of them are going to "
+        "be under the same roof.",
 
     # 200.6M   How to Break a DILF
     # FACTS: Uncle Jesse's smokin' hot tattoo and great technique on bed awakens Sophie Holland's fan
@@ -372,7 +399,9 @@ CAPTIONS = {
     'in-the-palm-of-his-hand':
         "She saves his life without meaning to.\nShelby Yates is a "
         "college senior who accidentally saves the life of Matteo "
-        "Franconi, a billionaire CEO with a mafia past.",
+        "Franconi, a billionaire CEO with a mafia past. He falls for her "
+        "immediately. Then he starts pressing her to marry him, and he "
+        "does not let it go.",
 
     # 161.3M   Maid for My Nemesis
     # FACTS: Class president Emma hides that she is the poorest girl at her wealthy private school. R
@@ -391,36 +420,46 @@ CAPTIONS = {
     # FACTS: accidentally given the sperm of an Alpha wolf.
     'accidental-surrogate-for-alpha':
         "The clinic makes a mistake she cannot undo.\nElla is a Luna "
-        "werewolf who has been kept from knowing what she is. Wanting a "
-        "child of her own, she goes for insemination, and the sperm she "
-        "is given belongs to an Alpha wolf.",
+        "werewolf, though her parents have kept that from everyone "
+        "including her. Not knowing what she is, she has spent her whole "
+        "life hating wolves. All she has ever wanted is to be a mother, "
+        "and her boyfriend has been quietly making sure that cannot "
+        "happen. When she finds out, she goes for insemination alone. The "
+        "clinic gives her the sperm of an Alpha wolf.",
 
     # 153.0M   Heiress Crash Lands on Her Husband
     # FACTS: Lily out-trumps her cheating ex, his mistress, a royal suitor and a dominant mother-in-l
     # FACTS: aw in a marathon of revealed identities.
     'heiress-crash-lands-on-her-husband':
-        "Everyone underestimates her, one after another.\nLily takes on a "
-        "cheating ex, his mistress, a suitor with a royal title and a "
-        "mother in law who rules the house. One by one the truths come "
-        "out, and she ends up on top of every one of them.",
+        "Everyone underestimates her, one after another.\nLily has a long "
+        "list of people to get through. Her cheating ex and his mistress, "
+        "both of their mothers, a royal suitor she never asked for, the "
+        "women circling the man she actually wants, and a mother in law "
+        "who runs the house like a kingdom. One identity at a time, she "
+        "takes every one of them on.",
 
     # 149.0M   Undercover Prison King
     # FACTS: Ex-soldier Troy inherits a corrupt private prison and goes in undercover as an inmate to
     # FACTS:  expose the crime ring running it.
     'undercover-prison-king':
-        "He inherits a prison and books himself in.\nTroy is an ex "
-        "soldier who inherits a private prison and finds it rotten "
-        "through. So he goes inside as an inmate to expose the crime ring "
-        "running the place from within.",
+        "He inherits a prison and books himself in.\nTroy Poe is an ex "
+        "soldier who inherits a private prison and finds it rotten the "
+        "whole way through. So he goes inside as an inmate to find out "
+        "who is running it. The head guard, a man he trusted, turns out "
+        "to be at the centre of the whole thing, and by then nobody in "
+        "authority believes Troy is who he says he is.",
 
     # 145.2M   Fated to the Alpha
     # FACTS: Katya, a rare Luna healer without her wolf, flees her pack's threats to Black Creek, whe
     # FACTS: re she meets Alpha Ezra, her fated wolf and protector.
     'fated-to-the-alpha':
-        "She runs from her own pack and finds him.\nKatya is a rare Luna "
-        "healer with no wolf of her own. Threatened by her pack, she runs "
-        "to Black Creek, and there she meets Alpha Ezra, the wolf fated "
-        "to her and the one man set on protecting her.",
+        "She runs from her own pack and finds him.\nKatya has not come "
+        "into her wolf yet, but she is a Luna healer, and the only one "
+        "who can heal the girl who has spent years bullying her: her own "
+        "Alpha's daughter. The title brings threats with it, so Katya "
+        "runs for the Black Creek pack. There she meets Alpha Ezra, who "
+        "turns out to be her fated wolf and the one man willing to stand "
+        "in front of her.",
 
     # 142.4M   If Loving You is a Sin, then I'll Go to Hell
     # FACTS: Good girl Ellie Jones falls for bad boy Asher King and gets pregnant. Her pastor father 
@@ -440,7 +479,9 @@ CAPTIONS = {
         "She gives up an empire to sit at his bedside.\nRenee walks away "
         "from life as a billionaire heiress and gives everything she has "
         "to her husband, nursing him back from a vegetative state and "
-        "helping him chase the NHL career he lost.",
+        "helping him chase the NHL career he lost. Then she loses a "
+        "pregnancy, and in the middle of that comes the harder truth: the "
+        "man she gave up everything for may have chosen someone else.",
 
     # 139.4M   Married In A Heartbeat
     # FACTS: Betrayed by her fiance and her own sister, Esther marries Ricky without knowing his real
@@ -448,7 +489,9 @@ CAPTIONS = {
     'married-in-a-heartbeat':
         "Her fiance and her sister, in one go.\nBetrayed by her fiance "
         "and her own sister, Esther marries Ricky almost on the spot, "
-        "with no idea that he is a billionaire keeping it quiet.",
+        "with no idea that he is a billionaire keeping it quiet. Together "
+        "they take on the family that turned on her, with her mother's "
+        "company still to win back before any of it is finished.",
 
     # 138.3M   Fated to Find You
     # FACTS: A school janitor who saves a child from kidnapping flash-marries the girl's secret-billi
@@ -646,5 +689,101 @@ FACTS = {  # paste fetched text here for any FETCH REQUIRED row
     'snatched-a-billionaire-to-be-my-husband':
         "What happens when you fall in love with your ex's uncle? 63 episodes. Cast: "
         "Grace Swanson, Jarred Harper, Dante Belardinelli, Courtney Green.",
+
+    # ---- REFETCHED 15 Aug 2026, third pass, after Cyan set a 200 character floor
+    # on the body. Every one of these was ALSO a truncated first sentence.
+    'found-a-homeless-billionaire-husband-for-christmas':
+        "Victoria was set to return to Texas with her fiance Carl to plan their "
+        "wedding, but she was horrifically humiliated and betrayed by him. To save "
+        "face with her family, Victoria reluctantly agrees to marry Simon, a homeless "
+        "man she had been helping. Little did she know, Simon is not just any "
+        "homeless man, he's a handsome and charming billionaire, the CEO of the "
+        "prestigious Savage Group, ranked number one in the country. 71 episodes.",
+    'my-sister-is-the-warlord-queen':
+        "Abandoned by their parents, the Blackwood sisters, Catherine and Grace, grew "
+        "up with only each other to rely on. Catherine arrives at Grace's engagement "
+        "party dressed as a janitor from an undercover mission. She is ridiculed by "
+        "Grace's in-laws, but when Grace is betrayed by her fiance, Catherine reveals "
+        "herself as the Warlord Queen and seeks retribution. 68 episodes.",
+    'ms-ceo-s-baby-daddy-is-the-merchant-of-death':
+        "Connor Reed, the most powerful arms dealer in the world, saves Charlotte "
+        "Hayes and spends the night with her while he is undercover. Four years "
+        "later, while still hiding, Charlotte shows up with their child. Now Connor "
+        "must keep both of them safe without revealing his true identity. 74 episodes.",
+    'breaking-the-ice':
+        "Caroline Mills and Easton Black are in a wave of love. After it was certain "
+        "that Easton Black was going out on a scholarship to continue his hockey "
+        "dream, his mother warned pregnant Caroline to get rid of Easton's baby, "
+        "causing problems for the couple. 70 episodes.",
+    'move-aside-i-m-the-final-boss':
+        "Kingsley is the secret King of King's Corps and the richest man on Earth, "
+        "but when he returns from the battlefield, his childhood sweetheart brutally "
+        "dumps him, thinking he's a clown. How will the King of all men make her "
+        "regret it? 74 episodes.",
+    'money-guns-and-a-merry-christmas':
+        "Damian, the CEO of the world's most powerful military industrial group, is "
+        "mistaken for a poor salesman earning only $3,000 a month. Unexpectedly, he "
+        "enters into a quick contract marriage with Iris, a company's boss. Damian "
+        "accompanies Iris to her hometown for a Christmas dinner, where he faces "
+        "constant belittlement from her relatives and ridicule from Iris's suitor. "
+        "Damian continually turns the tables on the antagonists. 70 episodes.",
+    'in-love-with-a-single-farmer-daddy':
+        "Natalie's conniving grandmother and sister marry her off to a rural farmer, "
+        "Rhett. He's a single father, looking after a mute daughter, Ellie. Natalie "
+        "has a difficult adjustment to rural life, discovers the neighbour is abusing "
+        "Ellie, and develops a bond with Ellie. She faces school bullying and family "
+        "conflicts while working to protect her newly built family. 83 episodes.",
+    'married-the-mafioso-i-saved':
+        "Hannah gave up everything for her fiance, only to be brutally betrayed and "
+        "abandoned in the States. Desperate to stay, she flash married Alex, the "
+        "street thug she accidentally saved with a single kiss during his escape. "
+        "Alex protects Hannah from her vengeful ex. Hannah discovers Alex is far more "
+        "significant than the street criminal she believed him to be. 54 episodes.",
+    'taming-my-bullies':
+        "Emma Parker is a new transfer to Maple Elite Academy, and she's picked a "
+        "fight with The Big Four on her very first day. These four rich heirs "
+        "initially treat her as public enemy number one. Rowan Calloway acts like a "
+        "tyrant, but is he really a ruthless bully? August Langford keeps helping her "
+        "out, raising the question of whether they have met before. 81 episodes.",
+    'my-stepbrother-s-dirty-secret':
+        "Alice transfers to St. Mary's High School after her mom remarries a "
+        "millionaire, only to butt heads with James, a hot classmate who turns out to "
+        "be her new stepbrother. 62 episodes.",
+    'in-the-palm-of-his-hand':
+        "College senior Shelby Yates accidentally saves the life of billionaire ex "
+        "mafia CEO Matteo Franconi. He immediately falls in love with her and "
+        "pressures her to marry him. 73 episodes.",
+    'accidental-surrogate-for-alpha':
+        "Ella is a Luna werewolf kept hidden by her parents from everyone including "
+        "herself. Without knowing this, Ella has always hated wolves. What she "
+        "desired was motherhood. Her boyfriend has prevented that by drugging her. "
+        "When Ella found out, she went for insemination but accidentally the sperm of "
+        "an alpha wolf was placed in her. 76 episodes.",
+    'heiress-crash-lands-on-her-husband':
+        "In a marathon of trumping identities, Lily must own her cheating ex, his "
+        "mistress, their moms, her new royal suitor, the women after her true love, "
+        "and finally, the dominant mother in law. 67 episodes.",
+    'undercover-prison-king':
+        "When ex soldier Troy Poe inherits a corrupt private prison, he decides to go "
+        "in undercover as an inmate to expose those responsible. The head guard, "
+        "someone Troy trusted, reveals himself as the crime ring leader. Troy must "
+        "prove his true identity as prison owner to officials, while protecting "
+        "vulnerable inmates and a doctor caught in the conflict. 80 episodes.",
+    'fated-to-the-alpha':
+        "Katya was yet to get her wolf. She's a unique wolf known as the Luna healer, "
+        "the only wolf capable of healing her bully, her pack's Alpha's daughter. To "
+        "escape the threats that come with her title, Katya flees to the Black Creek "
+        "pack. There, she met Alpha Ezra, her fated wolf and protector. 70 episodes.",
+    'how-to-dump-a-hockey-star':
+        "After leaving behind her life as a billionaire heiress, Renee dedicates "
+        "herself to helping her husband recover from a vegetative state and pursue "
+        "his NHL dreams. However, after suffering a devastating miscarriage, she is "
+        "faced with a brutal truth: the man she sacrificed everything for might have "
+        "chosen someone else. 61 episodes.",
+    'married-in-a-heartbeat':
+        "Betrayed by her fiance and her own sister, Esther marries Ricky without "
+        "knowing his real identity, a secret billionaire. Together, they have to "
+        "stand up against Esther's evil family, take back her mother's company and "
+        "find their happy ending. 93 episodes.",
 }
 
