@@ -285,6 +285,110 @@ CAPTIONS = {
         "",
 }
 
-FACTS = {  # paste fetched text here for any FETCH REQUIRED row
+FACTS = {
+    # Fetched from each title's own ReelShort page, 16 Aug 2026. EVERY ONE of these
+    # held a truncated fragment on disk - 27 to 197 characters - against a full
+    # published synopsis. Episode counts recorded for the parked later pass.
+    'reborn-to-love-mr-right':
+        "Arianna dies a tragic death on the day of her graduation, while Derek, the "
+        "driver's son, takes all the spotlight on stage. She gave him everything, her "
+        "car, her credit card, even her father's company, only to be used and "
+        "discarded. While he spoiled Ivy like a princess, he treated Arianna like a "
+        "servant. Only in death does she realize that Hayden, the billionaire's heir, "
+        "had been waiting for her all along. Now, fate gives her a second chance to "
+        "make things right. 91 episodes.",
+    'love-at-dangerous-speeds':
+        "When Violet flees her abusive fiance on their wedding day, she hides with "
+        "Marcus, a notorious street racer. Their protection for a kiss deal ignites "
+        "into passion, giving her the freedom she craves. Then Marcus confesses a "
+        "dark secret: the hit and run accident that haunts him killed Violet's "
+        "father. 71 episodes.",
+    'mr-hills-adorable-wife':
+        "Valerie Patterson almost lost out a luxurious life with a billionaire lover "
+        "after the Patterson family nearly succeeded in exchanging her with her "
+        "sister, Daphne. Born with a birthmark which her mother considered ugly, "
+        "Valerie was ignored by her family until Andrew Hills fell in love with her. "
+        "85 episodes.",
+    'we-will-love-again':
+        "Noah Preston returns as a billionaire after six years of being away, and his "
+        "fiancee breaking up with him because he was poor. His fiancee did not "
+        "genuinely want to end their relationship, his mother forced her to do so. "
+        "Noah initially seeks revenge but ultimately discovers the truth behind the "
+        "breakup. 53 episodes.",
+    'the-billionaire-s-baby-bargain':
+        "To save her dying sister, Abby, Amelia agrees to a contract marriage that "
+        "will involve no sex, no love, and a baby by insemination. The arrangement "
+        "was instigated by Nathan, a billionaire struggling to regain his position as "
+        "CEO by fulfilling his father's wish. As they navigate their false marriage, "
+        "unexpected feelings develop. 76 episodes.",
+    'claimed-by-the-alpha-i-hate':
+        "All her life, Daisy Storm never knew what was wrong with her. Why couldn't "
+        "she shift? Why didn't she have a wolf? Despite being rejected by her pack "
+        "and her original mate on her eighteenth birthday, Daisy finds herself drawn "
+        "to Nolan Fenrir, the Alpha she blames for her mother's mysterious death. An "
+        "unnatural pull develops between them despite their conflicted history. "
+        "73 episodes.",
+    'do-not-disturb-lady-boss-in-disguise':
+        "To become the heiress of her family hotel chain, Violet Trenton goes "
+        "undercover as a cleaning lady and takes out the troublemakers one by one. "
+        "Kasey Johnson is the COO. 81 episodes.",
+    'claimed-by-my-ex-s-alpha-brother':
+        "Ella is wolfless amongst the wolves, but at least she has her mate, Beta "
+        "Noah Gravens, until she catches him cheating with her rival Ava. Shattered, "
+        "Ella falls straight into the arms of Noah's brother, Liam Gravens, the newly "
+        "returned Alpha of the Crescent Pack, who has loved her since childhood and "
+        "knows she's his fated mate. But with jealous rivals, bitter exes, and two "
+        "worlds pulling them apart, can Ella and Liam embrace the love they are "
+        "destined for? 64 episodes.",
+    'dear-husband-delete-my-number':
+        "Emma got into a car accident and when she tried to reach her husband, "
+        "Elijah, he ignored her to be with his wanna-be girlfriend, Stella. Emma "
+        "decides to divorce Elijah after discovering Stella might be pregnant with "
+        "his child. Emma refused any financial settlement, which confused Elijah who "
+        "had assumed she was motivated by money. 88 episodes.",
+    'pregnant-by-my-ex-s-professor-dad':
+        "On her first day of the semester, Emily catches her boyfriend cheating on "
+        "her. That night, she has a wild one night stand with a stranger named "
+        "Charles. The next day, they are mutually shocked to find out that Charles is "
+        "Emily's new professor. They maintain a professional student teacher "
+        "relationship, but there's an undeniable tension between them. Just when "
+        "Emily thinks everything will get back on track, she unexpectedly finds out "
+        "she's pregnant. 63 episodes.",
+    'the-reckoning-takes-flight':
+        "Eve takes a flight to Hawaii to attend her big brother's wedding, booking an "
+        "extra wide seat because of her broken leg in a cast. A nasty woman and her "
+        "bratty son demand Eve switch seats with them. The kid trips because of "
+        "turbulence, his mom demands the flight turn back and fights the pilots, "
+        "forcing an emergency landing. The mom's sister, Clara, shows up to back her "
+        "up. Clara accuses Eve of being her fiancee's mistress, not realizing that "
+        "she's her fiancee's little sister. The wedding is canceled, and Clara is "
+        "sent to jail. 41 episodes.",
+    'you-belong-with-me':
+        "Kristine was betrayed by her boyfriend and best friend. She knew about him "
+        "cheating on her while riding on her intelligence. Kristine decided to get "
+        "back at him by sleeping with his rich uncle, Henry. Henry was aware he was "
+        "being used as Kristine made it clear to him. But what started as revenge "
+        "changed into genuine feelings. 79 episodes.",
+    'my-secret-lover-is-his-brother':
+        "To forgive Piper's family debt, she's promised to marry one of the Bellfort "
+        "brothers. Will she choose the star lacrosse player Drew? Or the handsome "
+        "loner Noah? How can she decide when she has a connection with both? "
+        "74 episodes.",
+    'the-ceo-s-contract-wife':
+        "Jasper Tate needed a wife urgently, while Chloe Adams needed money urgently. "
+        "Seeking help from the same source leads the two needy people together, and "
+        "they get married after Madam G recommended them to each other. What was "
+        "supposed to be a contract agreement morphed into a full blown love affair "
+        "that they never expected. 93 episodes.",
+    'kiss-me-one-last-time':
+        "Adeline has cancer. A few months to live and she'll be dead. The one thing "
+        "she needed was her husband, Blake's love. She couldn't get it as he never "
+        "saw her as his wife rather as a blood bank for her step sister. 90 episodes.",
+    'we-are-never-ever-getting-back-together':
+        "Lisa's contract marriage with Aidan ended without notice. She was agitated "
+        "that he never valued her as much as she valued him. When they crossed paths "
+        "again, she took her chance with him leaving an ill note on his chest. Lisa "
+        "didn't know she would be seeing Aidan again, this time, as her boss. "
+        "103 episodes.",
 }
 
