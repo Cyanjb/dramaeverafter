@@ -93,11 +93,10 @@ CAPTIONS = {
     # FACTS: be more than an ally.
     'do-not-disturb-lady-boss-in-disguise':
         "Nobody at the hotel knows whose daughter she is.\nViolet Trenton "
-        "wants the family "
-        "hotel chain, and the only way to it is to prove she can run one. "
-        "So she takes a job in her own hotels as a cleaning lady, where "
-        "nobody knows her face, and works through the people causing "
-        "trouble one at a time.",
+        "is set on becoming the heiress to her family's hotel chain. So "
+        "she goes undercover in her own hotels as a cleaning lady, where "
+        "not one person knows her face, and works through the people "
+        "causing trouble one at a time.",
 
     # 127.8M   Claimed by My Ex's Alpha Brother
     # FACTS: Wolfless Ella catches her Beta mate cheating and falls into the arms of his brother, the
@@ -132,7 +131,7 @@ CAPTIONS = {
         "the semester. That night she goes home with a stranger called "
         "Charles. The next morning she walks into a lecture and finds him "
         "standing at the front of it, because Charles is her new "
-        "professor. They keep it professional. Then Emily finds out she "
+        "professor. They keep it professional but then Emily finds out she "
         "is pregnant.",
 
     # 123.3M   The Reckoning Takes Flight
@@ -170,8 +169,8 @@ CAPTIONS = {
         "and has no time to go looking for one. Chloe Adams needs money "
         "and has run out of other ideas. They both go to the same person "
         "for help, and Madam G puts the two of them in front of each "
-        "other. What they sign is a contract and nothing else, and it "
-        "does not stay that way for long.",
+        "other. What they sign is a contract and nothing else but it does "
+        "not stay that way for long.",
 
     # 116.7M   Kiss Me One Last Time
     # FACTS: In Kiss Me One Last Time full movie, Adeline has cancer.
@@ -179,7 +178,7 @@ CAPTIONS = {
         "She has a few months left, and he has never once looked at "
         "her.\nAdeline is dying. She has a few months, and the only thing "
         "she wants in them is for her husband to love her. Blake has "
-        "never treated her as his wife. To him she has always been a "
+        "never treated her as his wife but to him she has always been a "
         "blood bank, kept close for her step sister's sake.",
 
     # 115.6M   We Are Never Ever Getting Back Together
@@ -190,8 +189,8 @@ CAPTIONS = {
         "and without explanation. What stayed with her is that she always "
         "valued him more than he ever valued her. When they cross paths "
         "again she takes her moment and leaves him a note he will not "
-        "enjoy reading. Then she starts a new job, and Aidan is the man "
-        "she reports to.",
+        "enjoy reading but then she starts at her new job, and now Aidan "
+        "is the man she is reporting to.",
 
     # 115.3M   Big Bad Husband, Please Wake Up!
     # FACTS: Ciara marries comatose billionaire Adrian to save her sick family. Then he wakes up.
