@@ -40,10 +40,10 @@ CAPTIONS = {
 
     'cancel-the-wedding-queen-moves-on':
         "The wedding is off. Everything after that is hers.\n"
-        "Maria's life looks perfect right up to the moment she finds out her fiance "
-        "has been having an affair. She calls the wedding off and takes back control "
-        "of everything he had a hand in. Then Alec walks back into it, the ex she "
-        "lost years ago, who is now a billionaire.",
+        "Maria's life is perfect right up to the moment she finds out her fiance has "
+        "been having an affair. She calls the wedding off and takes back control of "
+        "everything she gave him. Then Alec walks back into her life, the ex she lost "
+        "years ago.",
 
     'the-cooking-queen-a-recipe-for-divorce':
         "She was the Queen of Cuisine before she gave it up for him.\n"
@@ -175,10 +175,17 @@ CAPTIONS = {
         "pulled back into the past.",
 
     '7-steamy-days-with-a-ganster':
+        # NAMES REMOVED PENDING VERIFICATION. Cyan asked me to check 'Mattia'. The
+        # only source for it is the PineDrama fan site, and a search restricted to
+        # the real platform domains could not confirm the title, the character or
+        # the drama on any of them. 'Violet' comes from the same unverified place.
+        # Written without either name until the title is re-homed and a platform
+        # page confirms them.
         "She saves a man the world would rather she let go.\n"
-        "Violet is a nurse, and the patient she pulls back from the edge turns out to "
-        "be Mattia, who runs a syndicate. One act of mercy is all it takes to draw "
-        "her into his world, and into a romance with a very dark edge to it.",
+        "A nurse pulls a patient back from the edge, and the man whose life she has "
+        "just saved turns out to run a syndicate. That one act of mercy is all it "
+        "takes to draw her into his world, and into a romance with a very dark edge "
+        "to it.",
 }
 
 FACTS = {  # each title's own platform page, fetched 16 Aug 2026 unless noted
