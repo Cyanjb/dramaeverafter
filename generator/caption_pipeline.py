@@ -339,8 +339,16 @@ def cmd_apply(path, dry):
         if not cap:
             continue
         cur = (t.get("synopsis_short") or "").strip()
-        if cur and "\n" in cur:
-            skipped += 1          # already ours, never overwrite our own work silently
+        if cur and "\n" in cur and cur != cap and "--update-ours" not in sys.argv:
+            # Already ours. Never overwrite our own approved work SILENTLY - but this
+            # is not always a mistake. On 16 Aug the number one title was live with an
+            # ASIDE and an old wording, because it had been applied and built before
+            # Cyan dropped the last line from every caption. The approved file held
+            # the corrected version and apply kept skipping it. So the skip is still
+            # the default, and --update-ours is the explicit way to say "yes, replace
+            # our earlier text with the newer approved text".
+            skipped += 1
+            print("   SKIP (already ours, differs from approved): %s" % t["title_id"])
             continue
         t["synopsis_short"] = cap
         wrote += 1

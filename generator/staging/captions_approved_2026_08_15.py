@@ -17,7 +17,7 @@ CAPTIONS = {
     'the-double-life-of-my-billionaire-husband':
         "The marriage was supposed to be paperwork.\nNatalie and "
         "Sebastian marry on paper only, strictly business with no "
-        "feelings involved. But the arrangement doesn't stay that simple. "
+        "feelings involved. But the arrangement doesn't stay that way. "
         "Her family is quietly plotting her downfall, and the man she "
         "married is living a life she knows nothing about.",
 
