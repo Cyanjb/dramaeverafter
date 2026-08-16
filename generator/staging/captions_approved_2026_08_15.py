@@ -22,10 +22,20 @@ CAPTIONS = {
     'the-double-life-of-my-billionaire-husband':
         "The marriage was supposed to be paperwork.\n"
         "Natalie and Sebastian marry on paper only, strictly business with no "
-        "feelings involved. But the arrangement doesn't stay that simple. Her family "
+        "feelings involved. But the arrangement doesn't stay that way. Her family "
         "is quietly plotting her downfall, and the man she married is living a life "
         "she knows nothing about.\n"
         "We love a marriage of convenience that refuses to stay convenient.",
+
+    # APPROVED by Cyan 15 Aug 2026 with her edits: tense corrected to "has been",
+    # the Texas sentence cut entirely, and her own aside. She wrote "Billionaire"
+    # capitalised mid sentence; set lowercase here so it does not read as a typo on
+    # the page. Say the word and it goes back.
+    'found-a-homeless-billionaire-husband-for-christmas':
+        "She married him when he had nothing.\n"
+        "Humiliated by her fiance, Victoria marries Simon, a homeless man she has "
+        "been quietly helping. She has no idea who he really is.\n"
+        "A Christmas story for the billionaire romance fans.",
 }
 
 FACTS = {
@@ -43,4 +53,9 @@ FACTS = {
         "Sebastian couldn't resist growing a soft spot for Natalie. With her family "
         "planning her downfall and her estranged husband cooking up a deadly plan, "
         "what should Natalie expect?",
+
+    'found-a-homeless-billionaire-husband-for-christmas':
+        "Humiliated by her fiance, Victoria marries Simon, a homeless man she had "
+        "been helping, unaware he is the billionaire CEO of the country's top Savage "
+        "Group, then reclaims her dignity back home in Texas.",
 }

@@ -44,7 +44,7 @@ CAPTIONS = {
         "school. Meanwhile the maid's daughter Candice is passing herself off as the "
         "Kaplan heiress and climbing straight to the top, while Hailey takes the "
         "bullying at the bottom.\n"
-        "We would never turn that down.",
+        "A hidden identity and a fake heiress. We would never turn that down.",
 
     # 416.6M   How to Tame a Silver Fox
     # FACTS: Yale senior Harper Reeves plots Operation Seduction to drive out her dad's overprotectiv
@@ -121,8 +121,8 @@ CAPTIONS = {
     # FACTS: Summer has been the ideal girlfriend for her ex-boyfriend, Vincent.
     'married-at-first-sight':
         "She sold her own blood to put him through medical school.\n"
-        "Summer gave Vincent everything. She sold her blood to help pay his way "
-        "through medical school and carried him to the finish line, and he cheated on "
+        "Summer gives Vincent everything. She sells her blood to help pay his way "
+        "through medical school and carries him to the finish line, and he cheats on "
         "her anyway. Done with him, she signs a contract marriage to save a "
         "billionaire she has only just met. Then she finds out who he actually is.\n"
         "A contract marriage to a total stranger, and an ex about to understand what "
@@ -257,9 +257,9 @@ CAPTIONS = {
     # FACTS: ir minds trying to find her.
     'don-t-miss-me-when-i-m-gone':
         "She left, and every one of them fell apart.\n"
-        "Orphaned and raised alongside the Miller brothers, she always assumed she "
-        "would end up with one of them. Then the maid's daughter moves in, and the "
-        "future she had always assumed was hers quietly disappears. So she goes.\n"
+        "Orphaned and raised alongside the Miller brothers, she has always assumed "
+        "she would end up with one of them. Then the maid's daughter moves in, and "
+        "the future she counted on quietly disappears. So she goes.\n"
         "Nothing hits like a heroine who walks away and lets them feel it.",
 
     # 192.3M   The Alpha King and His Virgin Bride
@@ -326,94 +326,165 @@ CAPTIONS = {
     # FACTS: Sophie fake-marries a man she mistakes for a callboy. He's a billionaire she met seven y
     # FACTS: ears ago.
     'the-call-boy-i-met-in-paris':
-        "",
+        "She thinks she is hiring him. She is not.\n"
+        "Sophie fake marries a man she has taken for a call boy. He is a billionaire, "
+        "and the two of them met seven years ago in Paris.\n"
+        "A fake marriage built on a total misunderstanding. We are already invested.",
 
     # 168.4M   Surrender to My Professor
     # FACTS: Struggling student Sylvia falls into a forbidden romance with her cold, harsh professor 
     # FACTS: Lawrence Calhoun.
     'surrender-to-my-professor':
-        "",
+        "He is the last person she should want.\n"
+        "Sylvia is struggling through her studies when she falls into a forbidden "
+        "romance with Lawrence Calhoun, the coldest and harshest professor she has.\n"
+        "A cold professor and a student who cannot help herself. We love a forbidden "
+        "one.",
 
     # 168.0M   Step Aside, I'm the King of Capital
     # FACTS: Evan Adams lead vertical.
     'step-aside-i-m-the-king-of-capital':
-        "",
+        "She dumps him for a man who is standing right there.\n"
+        "Cassius spends six years abroad building the world's biggest financial "
+        "empire under the name Mr S. He comes home to propose to Isabella, and she "
+        "drops him for someone richer, insisting only the mysterious Mr S would ever "
+        "be good enough for her. Then a favour lands Cassius in a sudden marriage to "
+        "Freya, who runs Mirror Media.\n"
+        "A hidden identity and an ex with catastrophic timing. We cannot wait for the "
+        "moment she works it out.",
 
     # 167.6M   Baby, Just Say Yes!
     # FACTS: Betrayed by her fiance and stepsister, Victoria needs a husband to claim her inheritance
     # FACTS:  and contract-marries her one-time saviour Teddy; genuine feelings complicate the agreem
     # FACTS: ent.
     'baby-just-say-yes':
-        "",
+        "She needs a husband by the end of the week.\n"
+        "Betrayed by her fiance and her own stepsister, Victoria cannot claim her "
+        "inheritance without a husband. So she contract marries Teddy, the man who "
+        "once got her out of trouble. Then real feelings start getting in the way of "
+        "the agreement.\n"
+        "A contract marriage where nobody stays professional. We love to see it.",
 
     # 163.3M   The Lost Quarterback Returns
     # FACTS: When Asher Bradshaw, the son of hall-of-famer NFL quarterback Trent Bradshaw and former 
     # FACTS: beauty queen Krista, goes missing in a devastating fire, psychotic fan Donny Lewis takes
     # FACTS:  it as an opportunity to swap Asher with his own son, Wyatt.
     'the-lost-quarterback-returns':
-        "",
+        "A fire, a missing boy, and a swap nobody notices.\n"
+        "Asher Bradshaw is the son of hall of fame quarterback Trent Bradshaw and "
+        "former beauty queen Krista. When Asher goes missing in a devastating fire, "
+        "an obsessive fan named Donny Lewis sees his chance and puts his own son "
+        "Wyatt in Asher's place.\n"
+        "Swapped identities and a family who have no idea. We cannot look away.",
 
     # 161.7M   In the Palm of His Hand
     # FACTS: College senior Shelby Yates accidentally saves the life of billionaire ex-mafia CEO Matt
     # FACTS: eo Franconi.
     'in-the-palm-of-his-hand':
-        "",
+        "She saves his life without meaning to.\n"
+        "Shelby Yates is a college senior who accidentally saves the life of Matteo "
+        "Franconi, a billionaire CEO with a mafia past.\n"
+        "A dangerous man who owes her everything. We know exactly where this is "
+        "going.",
 
     # 161.3M   Maid for My Nemesis
     # FACTS: Class president Emma hides that she is the poorest girl at her wealthy private school. R
     # FACTS: ival rich bad boy Lucas Bennett gets her fired then hires her as his personal maid, keep
     # FACTS: ing the arrangement secret as long as she caters to his every need.
     'maid-for-my-nemesis':
-        "",
+        "He gets her fired, then puts her on his payroll.\n"
+        "Emma is class president at a wealthy private school, and nobody there knows "
+        "she is the poorest girl in it. Her rival, rich bad boy Lucas Bennett, has "
+        "her fired from her job and then hires her as his personal maid, on the "
+        "condition that nobody finds out and she caters to his every need.\n"
+        "Enemies to lovers with a power imbalance we should not enjoy this much.",
 
     # 155.4M   Accidental Surrogate for Alpha
     # FACTS: Ella, a Luna werewolf hidden from herself, seeks motherhood through insemination and is 
     # FACTS: accidentally given the sperm of an Alpha wolf.
     'accidental-surrogate-for-alpha':
-        "",
+        "The clinic makes a mistake she cannot undo.\n"
+        "Ella is a Luna werewolf who has been kept from knowing what she is. Wanting "
+        "a child of her own, she goes for insemination, and the sperm she is given "
+        "belongs to an Alpha wolf.\n"
+        "An accidental pregnancy and a hidden Luna. We are here for every second of "
+        "it.",
 
     # 153.0M   Heiress Crash Lands on Her Husband
     # FACTS: Lily out-trumps her cheating ex, his mistress, a royal suitor and a dominant mother-in-l
     # FACTS: aw in a marathon of revealed identities.
     'heiress-crash-lands-on-her-husband':
-        "",
+        "Everyone underestimates her, one after another.\n"
+        "Lily takes on a cheating ex, his mistress, a suitor with a royal title and a "
+        "mother in law who rules the house. One by one the truths come out, and she "
+        "ends up on top of every one of them.\n"
+        "Every single person here is about to be humbled. We are so ready.",
 
     # 149.0M   Undercover Prison King
     # FACTS: Ex-soldier Troy inherits a corrupt private prison and goes in undercover as an inmate to
     # FACTS:  expose the crime ring running it.
     'undercover-prison-king':
-        "",
+        "He inherits a prison and books himself in.\n"
+        "Troy is an ex soldier who inherits a private prison and finds it rotten "
+        "through. So he goes inside as an inmate to expose the crime ring running "
+        "the place from within.\n"
+        "An undercover hero and a prison full of people who should be worried.",
 
     # 145.2M   Fated to the Alpha
     # FACTS: Katya, a rare Luna healer without her wolf, flees her pack's threats to Black Creek, whe
     # FACTS: re she meets Alpha Ezra, her fated wolf and protector.
     'fated-to-the-alpha':
-        "",
+        "She runs from her own pack and finds him.\n"
+        "Katya is a rare Luna healer with no wolf of her own. Threatened by her pack, "
+        "she runs to Black Creek, and there she meets Alpha Ezra, the wolf fated to "
+        "her and the one man set on protecting her.\n"
+        "A fated mate who arrives exactly when she needs one. Werewolf comfort "
+        "watching at its best.",
 
     # 142.4M   If Loving You is a Sin, then I'll Go to Hell
     # FACTS: Good girl Ellie Jones falls for bad boy Asher King and gets pregnant. Her pastor father 
     # FACTS: and his gang family, the Red Snakes, want to keep them apart and take the baby; Asher vo
     # FACTS: ws to protect her at any cost.
     'if-loving-you-is-a-sin-then-i-ll-go-to-hell':
-        "",
+        "Her father is a pastor. His family run a gang.\n"
+        "Ellie Jones is a good girl who falls for Asher King, and ends up pregnant. "
+        "Her pastor father and Asher's family, the Red Snakes, both want the pair of "
+        "them apart and the baby taken. Asher swears he will protect her whatever it "
+        "costs him.\n"
+        "Forbidden love with both families against them. We are keeping the tissues "
+        "close.",
 
     # 141.0M   How to Dump a Hockey Star
     # FACTS: : After leaving behind her life as a billionaire heiress, Renee dedicates herself to hel
     # FACTS: ping her husband recover from a vegetative state and pursue his NHL dreams.
     'how-to-dump-a-hockey-star':
-        "",
+        "She gives up an empire to sit at his bedside.\n"
+        "Renee walks away from life as a billionaire heiress and gives everything she "
+        "has to her husband, nursing him back from a vegetative state and helping him "
+        "chase the NHL career he lost.\n"
+        "A heroine who gives up everything for him. We need to know if he deserves "
+        "it.",
 
     # 139.4M   Married In A Heartbeat
     # FACTS: Betrayed by her fiance and her own sister, Esther marries Ricky without knowing his real
     # FACTS:  identity – a secret billionaire.
     'married-in-a-heartbeat':
-        "",
+        "Her fiance and her sister, in one go.\n"
+        "Betrayed by her fiance and her own sister, Esther marries Ricky almost on "
+        "the spot, with no idea that he is a billionaire keeping it quiet.\n"
+        "A secret billionaire husband and two people about to regret themselves. We "
+        "love it here.",
 
     # 138.3M   Fated to Find You
     # FACTS: A school janitor who saves a child from kidnapping flash-marries the girl's secret-billi
     # FACTS: onaire father as betrayals and a vengeful ex circle their new family.
     'fated-to-find-you':
-        "",
+        "She saves a stranger's child and gains a husband.\n"
+        "A school janitor stops a little girl being taken, and flash marries the "
+        "child's father, a billionaire keeping his money quiet. Betrayals and a "
+        "vengeful ex start circling the family they have just made.\n"
+        "A found family with everyone against it. We are rooting for all three of "
+        "them.",
 }
 
 FACTS = {  # paste fetched text here for any FETCH REQUIRED row
@@ -504,5 +575,20 @@ FACTS = {  # paste fetched text here for any FETCH REQUIRED row
     # Cast: Grace Swanson, Jarred Harper, Dante Belardinelli, Courtney Green.
     'snatched-a-billionaire-to-be-my-husband':
         "What happens when you fall in love with your ex's uncle?",
+
+    # Stored text was "Evan Adams lead vertical" - an actor note, not a synopsis.
+    # Fetched 15 Aug 2026. 72 episodes.
+    # https://www.reelshort.com/movie/step-aside-i-m-the-king-of-capital-690306d7afd90472c800cf3a
+    # Cast: Nikki Leigh, Evan Faunce, Faith Falconer, Robbie Silverman.
+    'step-aside-i-m-the-king-of-capital':
+        "For six years abroad, Cassius builds the world's top financial empire, the "
+        "Enros Group, under the name 'Mr. S', even helping the current president rise "
+        "to power. When he quietly returns home to propose to his girlfriend "
+        "Isabella, she dumps him, chasing wealth and claiming only the mysterious Mr. "
+        "S is good enough for her. Meanwhile, a small favor lands Cassius in a sudden "
+        "marriage to Freya, the beautiful CEO of Mirror Media. At Isabella's "
+        "inauguration party, she tries to kick Cassius out again and again, never "
+        "guessing who he really is, until Cassius finally decides to reclaim "
+        "everything he once gave her.",
 }
 
