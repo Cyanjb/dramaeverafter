@@ -95,7 +95,7 @@ CAPTIONS = {
         "Nobody at the hotel knows whose daughter she is.\nViolet Trenton "
         "is set on becoming the heiress to her family's hotel chain. So "
         "she goes undercover in her own hotels as a cleaning lady, where "
-        "not one person knows her face, and works through the people "
+        "not one person knows her face, and deals with all the people "
         "causing trouble one at a time.",
 
     # 127.8M   Claimed by My Ex's Alpha Brother
