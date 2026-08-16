@@ -2,71 +2,658 @@
 """APPROVED captions only. Cyan has signed off on every line in this file.
 
 WHY THIS FILE IS SEPARATE FROM THE DRAFT BATCH. captions_2026_08_15_r0.py holds
-work in progress that she has not ruled on, and applying it wholesale would put
-unreviewed copy on the site. Approved captions move HERE, and only this file is
-ever applied. The draft file is a workspace; this one is the record of what she
-said yes to.
+work in progress. Applying it wholesale would put unreviewed copy on the site.
+Approved captions move HERE, and only this file is ever applied.
 
-Apply with:
-    py generator/caption_pipeline.py check generator/staging/captions_approved_2026_08_15.py
-    py generator/caption_pipeline.py apply generator/staging/captions_approved_2026_08_15.py
-then rebuild.
+TODO AT THE NEXT REBUILD: the number one title is LIVE and still shows an ASIDE,
+because it was applied and built before Cyan dropped the last line from every
+caption. Its entry below has none, so the next build removes it automatically.
+It is the only page in production with one.
 """
-
-# ---------------------------------------------------------------------------
-# TODO AT THE NEXT REBUILD, Cyan 15 Aug 2026: "we will fix the live one when we
-# do an update, just make a note."
-#
-# 'the-double-life-of-my-billionaire-husband' is LIVE on the site right now and
-# still shows its ASIDE ("We love a marriage of convenience that refuses to stay
-# convenient."), because it was applied and built BEFORE she decided to drop the
-# last line from every caption. Its entry below no longer has one, so the next
-# build removes it from the page automatically. Nothing to do by hand - just do
-# not be surprised to see an aside in production until then. It is the only page
-# on the site with one.
-# ---------------------------------------------------------------------------
 
 CAPTIONS = {
 
-    # APPROVED by Cyan 15 Aug 2026, after four rounds on the middle sentence.
-    # THE SITE'S HIGHEST TRAFFIC TITLE, 522.7M views. What it was publishing before
-    # this: "ReelShort's breakout megahit, 500M+ views on platform." - a stat, not a
-    # synopsis, on the most visited page on the site.
+    # 522.7M   The Double Life of My Billionaire Husband
     'the-double-life-of-my-billionaire-husband':
         "The marriage was supposed to be paperwork.\nNatalie and "
         "Sebastian marry on paper only, strictly business with no "
-        "feelings involved. But the arrangement doesn't stay that way. "
+        "feelings involved. But the arrangement doesn't stay that simple. "
         "Her family is quietly plotting her downfall, and the man she "
         "married is living a life she knows nothing about.",
 
-    # APPROVED by Cyan 15 Aug 2026 with her edits: tense corrected to "has been",
-    # the Texas sentence cut entirely, and her own aside. She wrote "Billionaire"
-    # capitalised mid sentence; set lowercase here so it does not read as a typo on
-    # the page. Say the word and it goes back.
+    # 462.8M   Found A Homeless Billionaire Husband for Christmas
     'found-a-homeless-billionaire-husband-for-christmas':
-        "She married him when he had nothing.\nHumiliated by her fiance, "
-        "Victoria marries Simon, a homeless man she has been quietly "
-        "helping. She has no idea who he really is.",
+        "She married him when he had nothing.\nVictoria is heading home "
+        "to Texas with her fiance Carl to plan their wedding when he "
+        "humiliates and betrays her. To save face in front of her family "
+        "she asks Simon to marry her instead, a homeless man she has been "
+        "quietly helping. She has no idea who he really is. Simon runs "
+        "the Savage Group, the biggest company in the country.",
+
+    # 460.0M   True Heiress vs. Fake Queen Bee
+    'true-heiress-vs-fake-queen-bee':
+        "One of them is lying about who she is.\nHailey is a wealthy "
+        "teenager who keeps that very quiet at her new public school. "
+        "Meanwhile the maid's daughter Candice is passing herself off as "
+        "the Kaplan heiress and climbing straight to the top, while "
+        "Hailey takes the bullying at the bottom.",
+
+    # 416.6M   How to Tame a Silver Fox
+    'how-to-tame-a-silver-fox':
+        "The plan was to get rid of him.\nHarper Reeves is a Yale senior "
+        "with an overprotective man sized problem: her dad's best friend "
+        "and business partner Chris Collins. So she launches Operation "
+        "Seduction to drive him out. Nothing goes to plan.",
+
+    # 413.9M   My Sister Is the Warlord Queen
+    'my-sister-is-the-warlord-queen':
+        "They think she cleans floors for a living.\nAbandoned by their "
+        "parents, Catherine and Grace Blackwood grew up with nobody but "
+        "each other. Catherine turns up to Grace's engagement party "
+        "straight from an undercover job, still dressed as a janitor, and "
+        "Grace's new in laws treat her accordingly. She lets them. Then "
+        "Grace is betrayed by her own fiance, and Catherine stops "
+        "pretending to be anything less than the Warlord Queen.",
+
+    # 397.9M   Ms. CEO's Baby Daddy Is the Merchant of Death
+    'ms-ceo-s-baby-daddy-is-the-merchant-of-death':
+        "He was undercover. She had no idea.\nConnor Reed is the most "
+        "powerful arms dealer in the world, and he is deep undercover "
+        "when he saves Charlotte Hayes. They spend one night together and "
+        "she has no idea who he is. Four years later, with Connor still "
+        "hiding, Charlotte turns up again, and this time she has their "
+        "child with her. He has to keep them both safe without anyone "
+        "learning who he really is.",
+
+    # 358.6M   Breaking the Ice
+    'breaking-the-ice':
+        "The scholarship arrives at the worst possible moment.\nCaroline "
+        "Mills and Easton Black are together and happy. Then the hockey "
+        "scholarship Easton has worked his whole life for finally comes "
+        "through, and his mother decides a pregnant girlfriend has no "
+        "place in that plan. She tells Caroline to get rid of the baby, "
+        "and everything the two of them had starts coming apart.",
+
+    # 316.3M   Move Aside! I'm the Final Boss
+    'move-aside-i-m-the-final-boss':
+        "The nobody they threw away owns everything.\nKingsley comes back "
+        "from the battlefield to a childhood sweetheart who wants nothing "
+        "more to do with him. She dumps him without ceremony, convinced "
+        "he is a joke. What she does not know, and what nobody around "
+        "them knows, is that Kingsley is the secret King of King's Corps "
+        "and there is no richer man on Earth.",
+
+    # 277.2M   Money, Guns, and a Merry Christmas
+    'money-guns-and-a-merry-christmas':
+        "Everyone at that table has him completely wrong.\nDamian runs "
+        "the most powerful military industrial group in the world, and "
+        "everyone has him pegged as a salesman scraping three thousand a "
+        "month. He and Iris enter a quick contract marriage, then he goes "
+        "home with her for Christmas dinner. Her relatives belittle him "
+        "all evening and a rival suitor joins in. Damian turns it round "
+        "on every one of them.",
+
+    # 274.3M   In Love with a Single Farmer-Daddy
+    'in-love-with-a-single-farmer-daddy':
+        "Her family married her off and washed their hands of "
+        "her.\nNatalie is married off to Rhett, a rural farmer raising a "
+        "daughter who does not speak. When she first arrives she is "
+        "shunned. Will she be able to turn things around? Ellie has been "
+        "badly let down by the people around her, and the bond those two "
+        "build becomes the thing Natalie will protect at any cost.",
+
+    # 234.4M   Married at First Sight
+    'married-at-first-sight':
+        "She sold her own blood to put him through medical "
+        "school.\nSummer gives Vincent everything. She sells her blood to "
+        "help pay his way through medical school and carries him to the "
+        "finish line, and he cheats on her anyway. Done with him, she "
+        "signs a contract marriage to save a man she has only just met. "
+        "Then she finds out who he actually is.",
+
+    # 230.8M   Married The Mafioso I Saved
+    'married-the-mafioso-i-saved':
+        "She saved a street thug with one kiss.\nHannah gave up "
+        "everything for her fiance and was betrayed and abandoned in a "
+        "country she barely knows. Desperate for a way to stay, she flash "
+        "marries Alex, the street thug she accidentally saved with a "
+        "single kiss while he was making an escape. He turns out to be "
+        "far more than that, and her ex is not finished with her yet.",
+
+    # 229.1M   Ex-Convict Nanny and Billionaire Single Dad
+    'ex-convict-nanny-and-billionaire-single-dad':
+        "She walks out of prison and straight into his house.\nFresh out "
+        "of prison, Grace lands a job as a nanny for Alex Hill, a "
+        "ruthless billionaire who cares about exactly one thing: his "
+        "daughter. Grace passes every test he sets her. She is also "
+        "carrying a secret that could destroy everything good she has "
+        "found there.",
+
+    # 226.8M   Mommy Don't Cry, Daddy is Sorry
+    'mommy-don-t-cry-daddy-is-sorry':
+        "The wife he buried is very much alive.\nWayne loses his wife "
+        "Sienna in a mental hospital, then is tricked into bringing home "
+        "the wrong daughter. But Sienna is alive and now she's back with "
+        "a new identity, and a list of sins those who wronged her need to "
+        "pay for.",
+
+    # 219.4M   American Sniper: The Last Round
+    'american-sniper-the-last-round':
+        "The maintenance guy holds a deadly world record nobody knows "
+        "about.\nCarl Oliver was the sharpshooter they called the King of "
+        "Guns, and he broke the world record for the longest confirmed "
+        "kill before disappearing completely. These days he does "
+        "maintenance at a shooting range, where he is regularly looked "
+        "down on. Then the range comes under threat, and protecting its "
+        "owner Jane and her daughter Rebecca matters more than staying "
+        "hidden.",
+
+    # 218.8M   Carrying His Triplets, Becoming His Wifey
+    'carrying-his-triplets-becoming-his-wifey':
+        "One night with a stranger, and then three heartbeats.\nDaisy is "
+        "working warehouse shifts to put herself through college, and her "
+        "father keeps taking the money she earns. Desperate enough to "
+        "take a second job at a strip club, she meets Marcus there, a "
+        "billionaire she spends a single night with. Not long after, she "
+        "finds out she is pregnant with triplets.",
+
+    # 218.1M   Fated to My Forbidden Alpha
+    'fated-to-my-forbidden-alpha':
+        "Her mate turns out to be the one person she cannot stand.\nOn "
+        "her eighteenth birthday Selene learns that her mate is Alpha "
+        "Jackson, her own nemesis, and that he means to reject her. What "
+        "he does not know is that she is a Luna, taken as a child and "
+        "mistaken ever since for an ordinary wolf.",
+
+    # 214.1M   Taming My Bullies
+    'taming-my-bullies':
+        "New school, new enemies, all in one afternoon.\nEmma Parker "
+        "transfers into Maple Elite Academy and picks a fight with The "
+        "Big Four before her first day is out. Four rich heirs decide she "
+        "is public enemy number one. Rowan Calloway behaves like a "
+        "tyrant, though there may be more to him than that. August "
+        "Langford keeps quietly helping her, and she cannot work out "
+        "whether they have met before.",
+
+    # 213.1M   My Stepbrother's Dirty Secret
+    'my-stepbrother-s-dirty-secret':
+        "The boy she cannot stand has just moved in.\nAlice starts at St "
+        "Mary's High after her mother remarries a millionaire, and lands "
+        "in a world she has no map for. She clashes with James straight "
+        "away, a classmate she wants nothing to do with. Then she finds "
+        "out he is her new stepbrother, and the two of them are going to "
+        "be under the same roof.",
+
+    # 200.6M   How to Break a DILF
+    'how-to-break-a-dilf':
+        "He is her best friend's dad, and she does not care.\nSophie "
+        "Holland has fallen for Uncle Jesse, who happens to be her best "
+        "friend's father. His advice is that she should be dating someone "
+        "her own age. She disagrees. Something about Jesse pulls at her "
+        "and will not let go, and the fact that he is the one man she is "
+        "not supposed to want is exactly the problem.",
+
+    # 198.4M   Snatched a Billionaire to be My Husband
+    'snatched-a-billionaire-to-be-my-husband':
+        "Of all the men in the world, it had to be him.\nShe falls in "
+        "love with her ex's uncle.",
+
+    # 197.9M   The Virgin and The Billionaire
+    'the-virgin-and-the-billionaire':
+        "Her own father turned her into the help.\nCindy has never been "
+        "treated as a daughter in her father's house, where the "
+        "circumstances of her birth are held against her. She is demoted "
+        "to maid, then lined up as a substitute bride for a marriage that "
+        "was never meant to be hers. Then billionaire Charles Kane falls "
+        "for her, and love turns up from a direction she had stopped "
+        "expecting it from.",
+
+    # 197.6M   Tell Me Not to Love You
+    'tell-me-not-to-love-you':
+        "She grew up in his house, never as his equal.\nBrie is a "
+        "servant's daughter, raised in the same household as the young "
+        "master Teddy while her mother worked for his family. The "
+        "feelings between them were always mutual. Once they are old "
+        "enough, Teddy comes after her openly and makes no secret of what "
+        "he wants. Brie holds back, because everything about where she "
+        "came from tells her she does not belong anywhere near him.",
+
+    # 197.0M   Don't Miss Me When I'm Gone
+    'don-t-miss-me-when-i-m-gone':
+        "She left, and every one of them fell apart.\nAfter losing her "
+        "parents she is taken in by her godmother Sandra, and grows up "
+        "under the same roof as Sandra's two sons, the Miller brothers. "
+        "She has always assumed she would end up with one of them. Then "
+        "the maid's daughter moves in, and the future she counted on "
+        "quietly disappears. So she does too, and the brothers only work "
+        "out what they had once there is nobody left to ask.",
+
+    # 192.3M   The Alpha King and His Virgin Bride
+    'the-alpha-king-and-his-virgin-bride':
+        "He is not meant to see thirty.\nKillian Storm is the Alpha King, "
+        "and a curse says he will not live past the age of thirty. "
+        "There's only one way he can survive. He has to find his true "
+        "fated mate. But what nobody counted on is that his mate is just "
+        "a human, which makes the one road out of this curse far harder "
+        "than it was ever supposed to be.",
+
+    # 190.2M   Doctor Boss Is My Baby Daddy
+    'doctor-boss-is-my-baby-daddy':
+        "One night with a stranger. Then she meets her new boss.\nMolly "
+        "is a medical intern who spends a night with a stranger and files "
+        "it away as a one off. A month later she finds out two things. "
+        "She is pregnant, and the stranger is Dr Graham Weston, her new "
+        "boss. Between jealous rivals, his family and people from his "
+        "past, almost nobody around them wants this to work.",
+
+    # 181.9M   Falling for My Ex's Mafia Dad
+    'falling-for-my-ex-s-mafia-dad':
+        "She caught him cheating. What came next was a wedding.\nFay "
+        "Alden catches her boyfriend Daniel cheating and ends it on the "
+        "spot. Not long after, she meets Daniel's father, Kent Lippert, "
+        "who happens to be the Mafia King. A fake marriage pulls her "
+        "properly into the mob world, and what began as an arrangement "
+        "turns into something she has to keep hidden from everyone. Then "
+        "the betrayals start, and not one of them comes from where she is "
+        "watching.",
+
+    # 176.8M   The Double Life of a Billionaire Heiress
+    'the-double-life-of-a-billionaire-heiress':
+        "He is certain he knows exactly who he married.\nThree years into "
+        "the marriage, CEO Wes Sterling has convinced himself that his "
+        "wife Kira is a cheating gold digger. He accuses her of it, and "
+        "he treats her accordingly. Eventually Kira has taken as much of "
+        "it as she is willing to take and files for divorce. What Wes "
+        "never once worked out is that she is a billionaire heiress, and "
+        "the moment she is free of him she stops hiding it.",
+
+    # 172.5M   I Had a Baby without You
+    'i-had-a-baby-without-you':
+        "Five years on, he does not recognise her.\nScarlett saved "
+        "Brandon's life five years ago, spent one night with him, then "
+        "vanished without a word. She is back now, and she looks nothing "
+        "like the woman he remembers. In the years between, Brandon has "
+        "become a reclusive CEO who lets almost nobody near him. What he "
+        "does not know is that Scarlett has a daughter, and that the girl "
+        "is his.",
+
+    # 171.8M   Miss You After Goodbye
+    'miss-you-after-goodbye':
+        "He signed up for five years. She has no idea.\nNeil owes Keira's "
+        "father a debt, so he signs a secret contract: five years of "
+        "marriage, and help getting her over Simon, her first love. Keira "
+        "never learns the contract exists. For five years he looks after "
+        "her, and she treats him as a stand in for the man she actually "
+        "wants. Then the marriage ends, and she finally understands what "
+        "she had.",
+
+    # 170.3M   The Call Boy I Met in Paris
+    'the-call-boy-i-met-in-paris':
+        "She thinks she is hiring him. She is not.\nSophie met Justin "
+        "seven years ago and has no memory of it at all. They end up in "
+        "the same place again after a one night stand, and she still does "
+        "not place his face. She takes him for a call boy and asks him to "
+        "fake marry her. He is a billionaire, and she has no idea.",
+
+    # 168.4M   Surrender to My Professor
+    'surrender-to-my-professor':
+        "He is the last person she should want.\nSylvia Parker is "
+        "fighting her way through a cutthroat campus and a family that "
+        "gives her nothing. The one person who steadies her is Lawrence "
+        "Calhoun, who is cold, strict and the last man she should want. "
+        "He is also her professor. Whatever is growing between them would "
+        "destroy both of them if anyone found out.",
+
+    # 168.0M   Step Aside, I'm the King of Capital
+    'step-aside-i-m-the-king-of-capital':
+        "She dumps him for a man who is standing right there.\nCassius "
+        "spends six years abroad building the world's biggest financial "
+        "empire under the name Mr S. He comes home to propose to "
+        "Isabella, and she drops him for someone richer, insisting only "
+        "the mysterious Mr S would ever be good enough for her. Then a "
+        "favour lands Cassius in a sudden marriage to Freya, who runs "
+        "Mirror Media. At Isabella's inauguration party she tries to have "
+        "him thrown out, over and over, never once guessing who she is "
+        "talking to.",
+
+    # 167.6M   Baby, Just Say Yes!
+    'baby-just-say-yes':
+        "She needs a husband by the end of the week.\nBetrayed by her "
+        "fiance and her own stepsister, Victoria cannot claim her "
+        "inheritance without a husband. So she contract marries Teddy, "
+        "the man who once got her out of trouble. Neither of them expects "
+        "the arrangement to turn into anything real. It does anyway.",
+
+    # 161.7M   In the Palm of His Hand
+    'in-the-palm-of-his-hand':
+        "She saves his life without meaning to.\nShelby Yates is a "
+        "college senior who accidentally saves the life of Matteo "
+        "Franconi, a billionaire CEO with a mafia past. He falls for her "
+        "immediately. Then he starts pressing her to marry him, and he "
+        "does not let it go.",
+
+    # 155.4M   Accidental Surrogate for Alpha
+    'accidental-surrogate-for-alpha':
+        "The clinic makes a mistake she cannot undo.\nElla is a Luna "
+        "werewolf, though her parents have kept that from everyone "
+        "including her. Not knowing what she is, she has spent her whole "
+        "life hating wolves. All she has ever wanted is to be a mother, "
+        "and her boyfriend has been quietly making sure that cannot "
+        "happen. When she finds out, she goes for insemination alone. The "
+        "clinic gives her the sperm of an Alpha wolf.",
+
+    # 153.0M   Heiress Crash Lands on Her Husband
+    'heiress-crash-lands-on-her-husband':
+        "Everyone underestimates her, one after another.\nLily has a long "
+        "list of people to get through. Her cheating ex and his mistress, "
+        "both of their mothers, a royal suitor she never asked for, the "
+        "women circling the man she actually wants, and a mother in law "
+        "who runs the house like a kingdom. One identity at a time, she "
+        "takes every one of them on.",
+
+    # 149.0M   Undercover Prison King
+    'undercover-prison-king':
+        "He inherits a prison and books himself in.\nTroy Poe is an ex "
+        "soldier who inherits a private prison and finds it rotten the "
+        "whole way through. So he goes inside as an inmate to find out "
+        "who is running it. The head guard, a man he trusted, turns out "
+        "to be at the centre of the whole thing, and by then nobody in "
+        "authority believes Troy is who he says he is.",
+
+    # 145.2M   Fated to the Alpha
+    'fated-to-the-alpha':
+        "She runs from her own pack and finds him.\nKatya has not come "
+        "into her wolf yet, but she is a Luna healer, and the only one "
+        "who can heal the girl who has spent years bullying her: her own "
+        "Alpha's daughter. The title brings threats with it, so Katya "
+        "runs for the Black Creek pack. There she meets Alpha Ezra, who "
+        "turns out to be her fated wolf and the one man willing to stand "
+        "in front of her.",
+
+    # 141.0M   How to Dump a Hockey Star
+    'how-to-dump-a-hockey-star':
+        "She gives up an empire to sit at his bedside.\nRenee walks away "
+        "from life as a billionaire heiress and gives everything she has "
+        "to her husband, nursing him back from a vegetative state and "
+        "helping him chase the NHL career he lost. Then she loses a "
+        "pregnancy, and in the middle of that comes the harder truth: the "
+        "man she gave up everything for may have chosen someone else.",
+
+    # 139.4M   Married In A Heartbeat
+    'married-in-a-heartbeat':
+        "Her fiance and her sister, in one go.\nBetrayed by her fiance "
+        "and her own sister, Esther marries Ricky almost on the spot, "
+        "with no idea that he is a billionaire keeping it quiet. Together "
+        "they take on the family that turned on her, with her mother's "
+        "company still to win back before any of it is finished.",
 }
 
-FACTS = {
-    # Fetched 15 Aug 2026 from the platform's own page, because the text on disk was
-    # a stat line and the accuracy guard correctly refused a caption written against
-    # it. 60 episodes. Cast listed: Avery Lynch, Jarred Harper, Molly Anderson.
-    # https://www.reelshort.com/movie/the-double-life-of-my-billionaire-husband-65a8cec883959aedd8001107
-    #
-    # NOTE ON ONE DELIBERATE VAGUENESS: the source says "her estranged husband" plots
-    # something deadly but never states whether that is Sebastian or another man. The
-    # caption says "the man she married is living a life she knows nothing about",
-    # which is true either way and is supported by the title itself.
+FACTS = {  # provenance: the published synopsis each caption was written from
     'the-double-life-of-my-billionaire-husband':
-        "It was supposed to be an emotionless contract marriage and nothing more. But "
-        "Sebastian couldn't resist growing a soft spot for Natalie. With her family "
-        "planning her downfall and her estranged husband cooking up a deadly plan, "
-        "what should Natalie expect?",
-
+        "It was supposed to be an emotionless contract marriage and "
+        "nothing more. But Sebastian couldn't resist growing a soft spot "
+        "for Natalie. With her family planning her downfall and her "
+        "estranged husband cooking up a deadly plan, what should Natalie "
+        "expect?",
     'found-a-homeless-billionaire-husband-for-christmas':
-        "Humiliated by her fiance, Victoria marries Simon, a homeless man she had "
-        "been helping, unaware he is the billionaire CEO of the country's top Savage "
-        "Group, then reclaims her dignity back home in Texas.",
+        "Victoria was set to return to Texas with her fiance Carl to plan "
+        "their wedding, but she was horrifically humiliated and betrayed "
+        "by him. To save face with her family, Victoria reluctantly "
+        "agrees to marry Simon, a homeless man she had been helping. "
+        "Little did she know, Simon is not just any homeless man, he's a "
+        "handsome and charming billionaire, the CEO of the prestigious "
+        "Savage Group, ranked number one in the country. 71 episodes.",
+    'true-heiress-vs-fake-queen-bee':
+        "Wealthy teen Hailey hides her identity at a public school while "
+        "the maid's daughter Candice poses as the Kaplan heiress, rising "
+        "to the top of the social hierarchy as Hailey is bullied at the "
+        "bottom.",
+    'how-to-tame-a-silver-fox':
+        "Yale senior Harper Reeves plots Operation Seduction to drive out "
+        "her dad's overprotective best friend and business partner Chris "
+        "Collins, until his rescues make her fall for the silver fox "
+        "herself.",
+    'my-sister-is-the-warlord-queen':
+        "Abandoned by their parents, the Blackwood sisters, Catherine and "
+        "Grace, grew up with only each other to rely on. Catherine "
+        "arrives at Grace's engagement party dressed as a janitor from an "
+        "undercover mission. She is ridiculed by Grace's in-laws, but "
+        "when Grace is betrayed by her fiance, Catherine reveals herself "
+        "as the Warlord Queen and seeks retribution. 68 episodes.",
+    'ms-ceo-s-baby-daddy-is-the-merchant-of-death':
+        "Connor Reed, the most powerful arms dealer in the world, saves "
+        "Charlotte Hayes and spends the night with her while he is "
+        "undercover. Four years later, while still hiding, Charlotte "
+        "shows up with their child. Now Connor must keep both of them "
+        "safe without revealing his true identity. 74 episodes.",
+    'breaking-the-ice':
+        "Caroline Mills and Easton Black are in a wave of love. After it "
+        "was certain that Easton Black was going out on a scholarship to "
+        "continue his hockey dream, his mother warned pregnant Caroline "
+        "to get rid of Easton's baby, causing problems for the couple. 70 "
+        "episodes.",
+    'move-aside-i-m-the-final-boss':
+        "Kingsley is the secret King of King's Corps and the richest man "
+        "on Earth, but when he returns from the battlefield, his "
+        "childhood sweetheart brutally dumps him, thinking he's a clown. "
+        "How will the King of all men make her regret it? 74 episodes.",
+    'money-guns-and-a-merry-christmas':
+        "Damian, the CEO of the world's most powerful military industrial "
+        "group, is mistaken for a poor salesman earning only $3,000 a "
+        "month. Unexpectedly, he enters into a quick contract marriage "
+        "with Iris, a company's boss. Damian accompanies Iris to her "
+        "hometown for a Christmas dinner, where he faces constant "
+        "belittlement from her relatives and ridicule from Iris's suitor. "
+        "Damian continually turns the tables on the antagonists. 70 "
+        "episodes.",
+    'in-love-with-a-single-farmer-daddy':
+        "Natalie's conniving grandmother and sister marry her off to a "
+        "rural farmer, Rhett. He's a single father, looking after a mute "
+        "daughter, Ellie. Natalie has a difficult adjustment to rural "
+        "life, discovers the neighbour is abusing Ellie, and develops a "
+        "bond with Ellie. She faces school bullying and family conflicts "
+        "while working to protect her newly built family. 83 episodes.",
+    'married-at-first-sight':
+        "Summer has been the ideal girlfriend for her ex-boyfriend, "
+        "Vincent. From selling her blood to helping him finish medical "
+        "school, Summer has been the best girlfriend. Yet, Vincent "
+        "cheated on her. Frustrated by their actions, Summer enters into "
+        "a contract marriage to save a billionaire she just met. She was "
+        "shocked to find out about his identity.",
+    'married-the-mafioso-i-saved':
+        "Hannah gave up everything for her fiance, only to be brutally "
+        "betrayed and abandoned in the States. Desperate to stay, she "
+        "flash married Alex, the street thug she accidentally saved with "
+        "a single kiss during his escape. Alex protects Hannah from her "
+        "vengeful ex. Hannah discovers Alex is far more significant than "
+        "the street criminal she believed him to be. 54 episodes.",
+    'ex-convict-nanny-and-billionaire-single-dad':
+        "Fresh out of prison, Grace landed a job as a nanny. Her boss, "
+        "the ruthless billionaire Alex Hill, cares only about his "
+        "precious daughter. Grace passed Alex's rigorous test and "
+        "gradually won over his cold heart, but Grace holds a dark "
+        "secret, one that could destroy everything good.",
+    'mommy-don-t-cry-daddy-is-sorry':
+        "After his wife Sienna dies in a mental hospital, Wayne is fooled "
+        "into taking home the wrong daughter; Sienna is alive, reborn as "
+        "ruthless alter-ego Scarlett, hunting vengeance in her daughter's "
+        "name.",
+    'american-sniper-the-last-round':
+        "Carl Oliver, the legendary sharpshooter known as the King of "
+        "Guns, broke the world record for longest confirmed kill then "
+        "vanished from the public eye. He hid his identity, working as "
+        "maintenance at a shooting range. He endures humiliation from the "
+        "dismissive shooting club captain, Albert, unaware of his true "
+        "identity. The shooting range is facing a hostile takeover. In "
+        "order to protect Jane, the owner, and her daughter Rebecca, Carl "
+        "steps up and shows his legendary shooting skills.",
+    'carrying-his-triplets-becoming-his-wifey':
+        "Daisy works in a warehouse to pay for her tuition, but her "
+        "father steals her money. Financially desperate, gets another job "
+        "at a strip club to make ends meet. There, she has a one-night "
+        "stand with Marcus, a billionaire. Soon after, Daisy discovers "
+        "that she is pregnant with triplets.",
+    'fated-to-my-forbidden-alpha':
+        "On her 18th birthday, Selene found out that her mate was her "
+        "nemesis, Alpha Jackson. He plans on rejecting her. Selene never "
+        "planned on accepting him as her mate. He didn't know she wasn't "
+        "any wolf but a Luna, kidnapped and mistaken for a regular wolf. "
+        "As Selene plans on escaping her pack, she meets Alexander, her "
+        "fated mate.",
+    'taming-my-bullies':
+        "Emma Parker is a new transfer to Maple Elite Academy, and she's "
+        "picked a fight with The Big Four on her very first day. These "
+        "four rich heirs initially treat her as public enemy number one. "
+        "Rowan Calloway acts like a tyrant, but is he really a ruthless "
+        "bully? August Langford keeps helping her out, raising the "
+        "question of whether they have met before. 81 episodes.",
+    'my-stepbrother-s-dirty-secret':
+        "Alice transfers to St. Mary's High School after her mom "
+        "remarries a millionaire, only to butt heads with James, a hot "
+        "classmate who turns out to be her new stepbrother. 62 episodes.",
+    'how-to-break-a-dilf':
+        "The series centres on a forbidden attraction between Sophie "
+        "Holland and her best friend's father, Uncle Jesse. Despite "
+        "Jesse's prior advice that Sophie should date people her own age, "
+        "she finds herself drawn to him. Something about Jesse lures "
+        "Sophie. Age gap romance, forbidden love, taboo relationship. 68 "
+        "episodes.",
+    'snatched-a-billionaire-to-be-my-husband':
+        "What happens when you fall in love with your ex's uncle? 63 "
+        "episodes. Cast: Grace Swanson, Jarred Harper, Dante "
+        "Belardinelli, Courtney Green.",
+    'the-virgin-and-the-billionaire':
+        "Cindy found love under uncanny circumstances where she never "
+        "thought it existed. Cindy, who was a child born through rape, "
+        "was demoted to being a maid and a substitute bride in her "
+        "father's house until fortune smiled on her and billionaire "
+        "Charles Kane fell in love with her. 76 episodes.",
+    'tell-me-not-to-love-you':
+        "Brie is the daughter of a servant who works for Teddy's family. "
+        "She grew up living in the household with her mother and "
+        "developed mutual feelings for the young master, Teddy. Teddy "
+        "pursues Brie passionately after they come of age, while Brie "
+        "struggles with insecurity due to her lower social status. "
+        "Through their back and forth dynamic, she eventually reveals her "
+        "true feelings. 73 episodes.",
+    'don-t-miss-me-when-i-m-gone':
+        "After losing my parents, I move in with my godmother, Aunt "
+        "Sandra. I live under her roof with her two sons, the Miller "
+        "brothers, surrounded by love and care. The maid's daughter "
+        "arrives, creating romantic conflict. After heartbreak, she "
+        "departs, and the Miller brothers subsequently search for her. 63 "
+        "episodes.",
+    'the-alpha-king-and-his-virgin-bride':
+        "The Alpha King Killian Storm is cursed to not live past age "
+        "thirty. Only finding his true fated mate can break the curse, "
+        "but what happens when his fated mate is a human?",
+    'doctor-boss-is-my-baby-daddy':
+        "When med intern Molly has a one-night stand with a stranger, she "
+        "thinks it's a one-and-done kind of deal. But a month later, she "
+        "discovers two shocking truths: she's pregnant with his baby, and "
+        "the stranger is her new boss, Dr. Graham Weston. Molly and "
+        "Graham navigate their unexpected connection while facing "
+        "opposition from jealous rivals, family members, and figures from "
+        "Graham's past. 63 episodes.",
+    'falling-for-my-ex-s-mafia-dad':
+        "Fay Alden catches her boyfriend Daniel cheating and breaks up "
+        "with him. But soon after, Fay meets Daniel's father Kent "
+        "Lippert, the Mafia King. Fay enters the mob world through a fake "
+        "marriage arrangement and develops a secret romance with Kent, "
+        "then navigates betrayal from her biological father and an "
+        "undercover cop. 94 episodes.",
+    'the-double-life-of-a-billionaire-heiress':
+        "After three years of marriage, CEO Wes Sterling is convinced "
+        "that his wife Kira is a cheating gold digger. Fed up with Wes's "
+        "accusations and mistreatments, Kira finally divorces him and "
+        "re-embraces her true identity: a billionaire heiress. 70 "
+        "episodes.",
+    'i-had-a-baby-without-you':
+        "Five years ago, curvy waitress Scarlett saved Brandon's life and "
+        "spent one unforgettable night of passion with him before "
+        "vanishing. Now she's back, slimmed down and unrecognizable, and "
+        "he's the reclusive CEO who unknowingly fathered her daughter. 59 "
+        "episodes.",
+    'miss-you-after-goodbye':
+        "To repay a debt of kindness, Neil signs a secret contract with "
+        "Keira's father stating that he will marry Keira for five years "
+        "and help her recover from a painful breakup with her first love, "
+        "Simon. Neil gives devoted care during their contract marriage, "
+        "which Keira never reciprocates beyond using him as a substitute "
+        "for Simon. Upon divorce, Keira realizes her mistake. 75 "
+        "episodes.",
+    'the-call-boy-i-met-in-paris':
+        "Sophie met Justin seven years ago, but she doesn't remember who "
+        "he is. As fate would have it, they reunite seven years later "
+        "after a one night stand. She mistakens him for a callboy and "
+        "asks him to fake marry her, but little does she know, he's a "
+        "billionaire. 78 episodes.",
+    'surrender-to-my-professor':
+        "College student Sylvia Parker finds herself in a dangerous love "
+        "affair with Lawrence Calhoun, the last man she should want. He's "
+        "hot, he's harsh, he's her professor. Sylvia navigates a "
+        "cutthroat campus and toxic family situation, discovering her "
+        "hero in the cold, strict and attractive Professor Calhoun. Their "
+        "deepening connection develops into a forbidden romance that "
+        "risks destroying everything if discovered. 69 episodes.",
+    'step-aside-i-m-the-king-of-capital':
+        "For six years abroad, Cassius builds the world's top financial "
+        "empire, the Enros Group, under the name 'Mr. S', even helping "
+        "the current president rise to power. When he quietly returns "
+        "home to propose to his girlfriend Isabella, she dumps him, "
+        "chasing wealth and claiming only the mysterious Mr. S is good "
+        "enough for her. Meanwhile, a small favor lands Cassius in a "
+        "sudden marriage to Freya, the beautiful CEO of Mirror Media. At "
+        "Isabella's inauguration party, she tries to kick Cassius out "
+        "again and again, never guessing who he really is, until Cassius "
+        "finally decides to reclaim everything he once gave her.",
+    'baby-just-say-yes':
+        "Victoria was betrayed when she found out about her fiance's "
+        "relationship with her stepsister. Still, she needed a husband to "
+        "claim her inheritance. Who better to ask than her one time "
+        "saviour, Teddy? As Teddy and Victoria enter into a contract "
+        "marriage, genuine feelings arise. 83 episodes.",
+    'in-the-palm-of-his-hand':
+        "College senior Shelby Yates accidentally saves the life of "
+        "billionaire ex mafia CEO Matteo Franconi. He immediately falls "
+        "in love with her and pressures her to marry him. 73 episodes.",
+    'accidental-surrogate-for-alpha':
+        "Ella is a Luna werewolf kept hidden by her parents from everyone "
+        "including herself. Without knowing this, Ella has always hated "
+        "wolves. What she desired was motherhood. Her boyfriend has "
+        "prevented that by drugging her. When Ella found out, she went "
+        "for insemination but accidentally the sperm of an alpha wolf was "
+        "placed in her. 76 episodes.",
+    'heiress-crash-lands-on-her-husband':
+        "In a marathon of trumping identities, Lily must own her cheating "
+        "ex, his mistress, their moms, her new royal suitor, the women "
+        "after her true love, and finally, the dominant mother in law. 67 "
+        "episodes.",
+    'undercover-prison-king':
+        "When ex soldier Troy Poe inherits a corrupt private prison, he "
+        "decides to go in undercover as an inmate to expose those "
+        "responsible. The head guard, someone Troy trusted, reveals "
+        "himself as the crime ring leader. Troy must prove his true "
+        "identity as prison owner to officials, while protecting "
+        "vulnerable inmates and a doctor caught in the conflict. 80 "
+        "episodes.",
+    'fated-to-the-alpha':
+        "Katya was yet to get her wolf. She's a unique wolf known as the "
+        "Luna healer, the only wolf capable of healing her bully, her "
+        "pack's Alpha's daughter. To escape the threats that come with "
+        "her title, Katya flees to the Black Creek pack. There, she met "
+        "Alpha Ezra, her fated wolf and protector. 70 episodes.",
+    'how-to-dump-a-hockey-star':
+        "After leaving behind her life as a billionaire heiress, Renee "
+        "dedicates herself to helping her husband recover from a "
+        "vegetative state and pursue his NHL dreams. However, after "
+        "suffering a devastating miscarriage, she is faced with a brutal "
+        "truth: the man she sacrificed everything for might have chosen "
+        "someone else. 61 episodes.",
+    'married-in-a-heartbeat':
+        "Betrayed by her fiance and her own sister, Esther marries Ricky "
+        "without knowing his real identity, a secret billionaire. "
+        "Together, they have to stand up against Esther's evil family, "
+        "take back her mother's company and find their happy ending. 93 "
+        "episodes.",
 }
