@@ -462,5 +462,109 @@ FACTS = {
         "After Erik, the biggest tech hotshot in all of Silicon Valley, gets sacked "
         "by his CEO's son William, he joins forces with Evelyn, the beautiful CEO of "
         "his old company's competitor. 59 episodes.",
+    'submitting-to-my-ex-s-dad':
+        "After catching her fiance cheating with her best friend just before their "
+        "wedding, Flora runs away and has a wild one night stand with a handsome "
+        "stranger. Little does she know he's her ex fiance's father, and he has a "
+        "dark secret. 56 episodes.",
+    'the-billionaire-s-virgin-surrogate':
+        "Desperate to save her father, Harper agrees to carry a baby for Will "
+        "Trenton, a single billionaire. As their worlds collide and the boundaries "
+        "blur, Harper finds herself irresistibly drawn to Will. But beneath the "
+        "surface, a question remains: is Will feeling the same? The student surrogate "
+        "proposes to her client that they conceive the baby naturally instead of "
+        "through artificial means. 64 episodes.",
+    'obsessed-with-his-silent-bride':
+        "Taken in as a ward of the Calvert family, Eva has always loved Declan "
+        "Calvert, the boy who grew up as her protector. Nonverbal since birth, she "
+        "struggles to express her feelings in a marriage built on duty. Declan only "
+        "married her to honour his grandfather's dying wish. Trapped in a toxic "
+        "union, Eva endures Declan's cruelty and his mistress Selene's relentless "
+        "schemes to drive her out. 85 episodes.",
+    'the-billionaire-married-a-homeless-girl':
+        "After a one night stand, Adele Moore becomes pregnant. She wants to keep the "
+        "child, but her father kicks her out of the house. With nowhere else to go, "
+        "Adele becomes homeless. She tries her best to raise her son despite her "
+        "challenging circumstances. One day, Adele's son, Brad Moore, runs into "
+        "billionaire Heston Deleon. By chance, Heston discovers that Brad is his son. "
+        "He tries to track down Brad, but loses their trail. Through a series of "
+        "misunderstandings, Adele and Heston become entangled again. 58 episodes.",
+    'swapped-my-ex-for-his-billionaire-uncle':
+        "There was a time when Nina believed her happiest moment would be walking "
+        "down the aisle with Evan, her college sweetheart. But betrayal shattered "
+        "that dream. After divorcing Evan, Nina refuses to love again, until Damon, "
+        "Evan's youngest uncle, persistently enters her life despite her resistance "
+        "to maintaining family connections. 80 episodes.",
+    'ceo-s-twins-want-mommy-back':
+        "With a loving hubby and cute stepkids, Cassandra's flash marriage seems too "
+        "good to be true. But will her troubled past catch up to her? And why do the "
+        "kids seem so familiar? 105 episodes.",
+    'trapped-in-the-boss-s-embrace':
+        "Lovestruck, Beatrice Lawson eloped with her college sweetheart Desmond "
+        "Belmont and has been secretly married to him for ten years. However, when "
+        "she discovers his affair with a wealthy socialite, Beatrice decides to "
+        "divorce him and finally stop living in his shadow. As she begins to make a "
+        "name for herself with a new apartment and new career, she meets the "
+        "mysterious and attractive Damian Crowley. 87 episodes.",
+    'the-billionaire-s-masquerade':
+        "After Shelby's father died, he passed on his inheritance to her with "
+        "unfavourable conditions. She must get married to claim her inheritance. To "
+        "claim it, she marries a poor stranger, Griffin. She didn't know that Griffin "
+        "wasn't a poor man as she had thought. He's a billionaire who had admired "
+        "Shelby from their last encounter, three years ago. 79 episodes.",
+    'never-divorce-a-secret-billionaire-heiress':
+        "Joyce has been a walking blood bank for her sister, Selena. It was the price "
+        "she had to pay for forcing Tristan into marrying her. Joyce realises her "
+        "situation when she loses her baby without receiving support from her "
+        "husband, and subsequently seeks a divorce. 55 episodes.",
+    'runaway-single-mom-safe-in-his-arms':
+        "Single mom Maria escapes abuse and fights to protect her daughter, Judy. "
+        "From factory struggles to elite schools, she faces enemies, family betrayal, "
+        "and unexpected love. When billionaire Levi enters her life, everything "
+        "changes. 57 episodes.",
+    'escorting-the-heiress':
+        "Serena caught her boyfriend, Ken, cheating on her with her half sister, "
+        "Carol. He had always lied about holding it all in till marriage. Furious by "
+        "their actions, Serena gets drunk and ends up in the bed of Jesse. She "
+        "thought he was her escort but he was a man who has been in love with her for "
+        "years. 74 episodes.",
+    'the-billionaire-s-accidental-bride':
+        "Claire Duval and Christian Cross get married by chance. Claire was glad to "
+        "have gotten engaged with Dylan Maxwell until he stood her up and she found "
+        "out that he was cheating on her with her friend, Ava. Claire secretly got "
+        "married to Christian on the spot as they were both stranded. 82 episodes.",
+    'dominated-by-my-dad-s-boss':
+        "When Jayne Turner asks a stranger at a bondage party to teach her how to be "
+        "a dominatrix, she has no idea he'll turn out to be the man overseeing her "
+        "father's exit from the family company. Their secret relationship is "
+        "complicated by a morality clause and threatening messages connected to "
+        "Jayne's deceased mother. 73 episodes.",
+    'the-senator-s-son':
+        "Emma Andrews wants to lead a quiet life in college, but that's impossible "
+        "when Zach Walker, son of a famous senator and the hottest guy on campus, "
+        "targets her for relentless bullying. An enemies to lovers arc where the two "
+        "are unexpectedly trapped together in a boathouse, leading Emma to discover "
+        "hidden depths beneath Zach's bully facade.",
+    'mic-drop-diva':
+        "Ivy is a high school sophomore with the voice of an angel. She's also a "
+        "super wealthy heiress, but she hides her identity in the hopes of making "
+        "real friends at school. After becoming besties with Vanessa, she thinks "
+        "she's made the right choice. But Vanessa actually treats Ivy like a total "
+        "tool, and even guilt trips Ivy into being her voice double. Things start to "
+        "fall apart after Ivy catches her boyfriend cheating on her with her bestie. "
+        "Heartbroken and betrayed, Ivy seeks help from her childhood best friend and "
+        "star quarterback, Blake. 52 episodes.",
+    'djinn-under-contract':
+        "Eli Baran is a genie in a magic lamp who can grant three wishes. After "
+        "thousands of years, a billionaire uses his last wish to grant Eli freedom, "
+        "but on one condition: Eli must marry his granddaughter, Christine Parrish, "
+        "for five years. Eli transforms into human form and secretly helps Christine "
+        "become a successful CEO. However, Christine belittles him throughout their "
+        "marriage. 67 episodes.",
+    'true-luna':
+        "Emma is a powerful wolf known as the true Luna. Her kind is rare. When she "
+        "got her wolf, a warning came along with it. Emma will be in danger soon as "
+        "the rogue king is after her. Her joy of getting a wolf and finding a mate is "
+        "torn when her mate rejects her. 61 episodes.",
 }
 
