@@ -70,6 +70,22 @@ REJECTED = [
     (r"exactly as promised\b", "appraises the execution"),
     (r"\blove me some\b", "singular speaker, the site speaks as us"),
 ]
+# GENRE VOCABULARY IS KEPT, NEVER PARAPHRASED. Cyan, 20 Aug 2026: "There are
+# phrases like 'contract marriage' and 'flash marriage' that should also not be
+# changed as those are specific terms in these dramas." These are the words the
+# audience searches and browses by - the site has trope pages named after them -
+# so writing 'marries in a hurry' where the platform says 'flash marriage' is a
+# loss, not a rewrite. Stems, so 'flash marries' matches 'flash marr'.
+# 'one night stand' is deliberately NOT on this list: Cyan's own 20 Aug rewrites
+# turned it into 'one night with a stranger' and 'a fling' twice, so it is
+# ordinary wording to her, not protected vocabulary like the marriage terms.
+GENRE_TERMS = [
+    "flash marr", "contract marr", "marriage contract", "fake marr",
+    "fated mate", "mate bond", "second chance",
+    "age gap", "love triangle", "silver fox", "contract bride",
+    "substitute bride", "contract engagement",
+]
+
 # An aside must stand alone: cover the hook and body and it still has to make sense.
 # CALIBRATED AGAINST CYAN'S OWN WORDING, 15 Aug. The real fault was a bare pronoun
 # standing in for the show with nothing to point at - "It knows exactly what it is"
@@ -91,6 +107,14 @@ BACKREF = [
 # A title only belongs here after the platform page has been read and confirmed to
 # publish nothing more - never as a way round the minimum. Cyan's standing rule is
 # that a title with no findable synopsis goes on a list for her, not into invention.
+# Captions Cyan herself cut below the relative floor. Her editorial cut beats
+# the length prompt; the floor exists to catch lazy writing, not her rulings.
+APPROVED_SHORT = {
+    # Cyan's 20 Aug 2026 edit removed the last two sentences deliberately.
+    'shhh-professor-please-don-t-tell',
+}
+
+
 SOURCE_LIMITED = {
     # ReelShort publishes ONE sentence for this and nothing else: no extended
     # synopsis, no chapter titles, no character descriptions. Checked twice,
@@ -126,9 +150,15 @@ def load_facts():
 
 
 def proper_nouns(text):
-    """Capitalised words that are NOT sentence initial."""
+    """Capitalised words that are NOT sentence initial.
+
+    A newline counts as a sentence boundary: the hook renders as a subheading,
+    and Cyan writes some hooks without a terminal full stop ('A stranger stole
+    her identity'), which otherwise fuses hook and body into one sentence and
+    flagged her body's first word as an invented name on 20 Aug.
+    """
     out = []
-    for sent in re.split(r"(?<=[.!?])\s+", text):
+    for sent in re.split(r"(?<=[.!?])\s+|\n+", text):
         for w in re.findall(r"[A-Za-z][A-Za-z']*", sent)[1:]:
             if re.match(r"^[A-Z][a-z]{2,}$", w):
                 out.append(w)
@@ -165,11 +195,16 @@ def validate(tid, cap, fact, title):
     # source means the story is there and was not used.
     #
     # So: aim for 300+, but only FAIL when the source could clearly support it.
-    elif len(body) < 300 and tid not in SOURCE_LIMITED and len(fact or "") >= 350:
-        errs.append("body is %d chars from a %d char source - the substance is "
-                    "there, use more of it" % (len(body), len(fact or "")))
-    elif len(body) > 700:
-        errs.append("body is %d chars, over the 700 maximum" % len(body))
+    #
+    # ALL COUNT CAPS REMOVED. First suspended 21 Aug 2026 ("remove all count
+    # caps for a moment and rewrite these"), made permanent by Cyan 24 Aug:
+    # "just remove these word caps". The floor was making captions cram every
+    # source clause in and the caps were being written to, not for the reader.
+    # Length is the writer's judgement, full stop. What was removed:
+    #   body under 300 with a 350+ source  -> was a FAIL
+    #   body over 700                      -> was a FAIL
+    #   hook over 100 chars                -> was a FAIL
+    #   hook over two sentences            -> was a FAIL
     # THE ASIDE IS OPTIONAL as of 15 Aug 2026. Cyan: "We have to remove the last
     # sentence, it is causing the biggest problems." Captions are HOOK + BODY, the
     # same shape as the 60 already live. build.py still renders a third part if one
@@ -191,10 +226,7 @@ def validate(tid, cap, fact, title):
     # should be padded toward the limit. This checker flagged her own wording FOUR
     # times by being tighter than her taste, which is why the guard now only catches
     # a runaway paragraph in the hook slot rather than enforcing a house style.
-    if len(hook) > 100:
-        errs.append("hook is %d chars, too long to read as a subheading" % len(hook))
-    if len(re.findall(r"[.!?]", hook)) > 2:
-        errs.append("hook is more than two sentences")
+    # (hook length and sentence caps suspended with the body caps, 21 Aug 2026)
     for pat, why in REJECTED:
         if re.search(pat, cap, re.I):
             errs.append("%s (%s)" % (why, pat))
@@ -216,9 +248,16 @@ def validate(tid, cap, fact, title):
                 return True
         return False
 
-    invented = sorted({n for n in proper_nouns(hook + " " + body) if not known(n)})
+    invented = sorted({n for n in proper_nouns(hook + "\n" + body) if not known(n)})
     if invented:
         errs.append("INVENTED PROPER NOUN %s - not in the fact source" % invented)
+    # Genre terms the source uses must survive into the caption (or already be in
+    # the title). A paraphrase here is a real fault, so it FAILS, not warns.
+    capside = (cap + " " + title).lower()
+    lost = [t for t in GENRE_TERMS
+            if t in (fact or "").lower() and t not in capside]
+    if lost:
+        errs.append("GENRE TERM paraphrased away %s - keep the platform's term" % lost)
     return errs
 
 
