@@ -4,139 +4,122 @@ Paste this as your first message.
 
 ---
 
-We're continuing work on DramaEverAfter. Read these Craft docs first, in this order:
+We're continuing work on DramaEverAfter. **This file is the current truth, dated
+24 Aug 2026.** The Craft doc '7. DEA READ FIRST' still shows the 16 Aug state —
+the Craft connector was down when this session closed, so it was NOT updated.
+Its standing rules and traps remain valid; its CURRENT STATE block is stale.
+Update Craft from this file when the connector is back.
 
-1. **7. DEA READ FIRST (Current State + Traps)** — the top CURRENT STATE block is
-   dated 16 August and describes exactly this tree. Everything below it is history.
-2. **7. DEA TASKS (what needs Cyan)** — her list, not your work queue.
-
-Then in the repo: `generator/caption_pipeline.py`'s docstring, and
-`references/adapters.md` sections 24–26.
+Then in the repo: `generator/caption_pipeline.py`'s docstring (it changed a lot
+this week), and `references/adapters.md` sections 24–26.
 
 ## STATE: pushed, clean, and live.
 
-`main = origin/main = 859a24ded`, working tree clean. Run
-`git rev-list --left-right --count origin/main...HEAD` before trusting that.
+`main = origin/main = 6d934d704` (plus possibly a handover commit after it),
+working tree clean. Run `git rev-list --left-right --count origin/main...HEAD`
+before trusting that. Netlify auto-deploys on push, verified again 24 Aug —
+push is publish.
 
-**Netlify auto-deploys on push.** This is a change from older notes that say
-publishing is paused and needs Cyan's button. It isn't. A push goes live in about
-a minute, verified many times on 15–16 Aug. So *push is publish* — no separate
-deploy step, and no unpushed work sitting safe.
+    3,513 titles · 215 captions ours (was 126) · top 300: 171 covered
+    ALL of these have Cyan's review: 68 hold her line edits verbatim,
+    the rest are read-approved. Her rule: READ MEANS DONE.
 
-Save point outside the repo:
-`C:\Users\cyanj\DramaEverAfter-backups\dea-savepoint-2026-08-16.zip`
-(21 entries, integrity tested: the data CSVs, all four caption batch files, the
-three pipeline scripts, and the gitignored quarantine file). **Cyan still needs to
-copy it off this machine** — the quarantine file exists nowhere else.
+**What shipped 24 Aug (commit 6d934d704):** batch two (44) and batch three (45)
+went from platform text to our captions; the original 60 thin captions from
+14 Aug were replaced wholesale, rewritten from freshly fetched platform pages.
+The front page is fully rewritten. Live-verified by curl after deploy:
+blood-and-bones, country-gal, ceo-s-twins, kidnapped-by-the-devil all serve the
+new text.
 
-    3,513 titles · 126 captions written by us (was 60 on 15 Aug)
-    All 34 homepage titles now carry a caption we wrote
+## THE CALIBRATION THAT COST A WEEK — read this before writing ANY caption
 
-## THE JOB RIGHT NOW: captions, to the top 300.
+The session memory (dea-caption-voice.md) has the full detail. The four rulings
+Cyan spent 20–24 Aug hammering in, each after finding the fault herself:
 
-**The target is not 3,513.** Measured: top 100 titles carry **49.6%** of all
-views, top 300 carry **82.8%**, top 600 carry **98.4%**. Cyan, 16 Aug: *"Let's
-complete the 300 manually, the rest you can just do without manual checking."*
-So the top 300 get her eye; past that the audit is the only gate.
+1. **Restructure, never synonym-swap.** Writing each source sentence as a
+   "changed enough" copy is reworded platform text with extra steps. Facts are
+   the constraint, structure is free. An occasional verbatim source sentence is
+   FINE ("a sentence here and there left the same is fine rather than a
+   sentence that makes no sense"). Measure it: difflib word-ratio of body vs
+   source; shadowing shows at 0.55+, honest restructures sit 0.15–0.35.
+2. **Genre vocabulary is kept verbatim** — flash marriage, contract marriage,
+   fated mates, age gap, silver fox, CEO. Enforced in check() (GENRE_TERMS)
+   except CEO, which is judgement (her own janitor edit avoids it).
+3. **Count caps are REMOVED, permanently.** Her words: "just remove these word
+   caps". The floor was making captions cram source clauses in. Length is
+   writer's judgement. The suspended checks are documented in validate().
+4. **Contractions are the default fan register** — the observed failure was
+   under-use, not over-use. Full forms only where a line wants weight.
+   Endings must LAND: a but-turn, a question, a tease, or a punch.
 
-**Where it stands.** Batch one (45) and the homepage 21 are done, approved and
-live. Batch two is `generator/staging/captions_2026_08_16_r45.py`: **15 written,
-30 blank, and all 45 synopses already fetched into its FACTS block** — the slow
-half is done. Roughly **130 more captions** to reach 300.
+**The pipeline gates all still apply**: check → readback (mandatory, catches
+what the noun-guard cannot) → apply from an approved file only → build → push.
+`audit_captions.py` every 100. The hook/body boundary now counts as a sentence
+break in the noun guard (hooks may lack a full stop — hers do).
 
-## THE PIPELINE — four commands, in this order, every batch
+## THE JOB NEXT: 129 captions to finish the top 300
 
-```
-py generator/caption_pipeline.py next 45 --offset N   # batch ranked by reach
-py generator/caption_pipeline.py check <file>         # every rule
-py generator/readback.py <file>                       # MANDATORY, see below
-py generator/caption_pipeline.py apply <file>         # writes to data
-py generator/build.py                                 # then commit and push
-```
+171 of 300 covered. Next unwritten title sits at 67.4M reach. The fetch-first
+routine is proven: `next` emits the batch, fetch every synopsis from the
+platform's own page (WebFetch; reelshort.com blocked in Browser pane but fine
+via WebFetch), write, check, readback, review page for Cyan, apply, build, push.
 
-**`readback.py` is not optional.** Cyan, 16 Aug: *"The last thing you do before
-you move on from a caption is read your result, then read its source, to make sure
-the information is accurate."* The automated guard only compares proper nouns; it
-cannot tell whether a claim is TRUE. Its first run caught three of mine that had
-passed every check: "he **fired** the woman" when the source said *dumps*, "she
-**wakes up** looking like someone else" when no overnight change is described, and
-"her best friend **long before** he was her first love" inventing an order of
-events.
+**Review pages** (claude.ai artifacts, hers, private): the 89-batch page and the
+rewrite-60 page both have per-caption edit boxes with a "Collect my edits"
+button that outputs paste-ready blocks. This is the review format that finally
+worked — whole batch on one page, editable in place. Rebuild the generators
+from scratchpad if needed; they're session-local, the staging files in
+generator/staging/ are the record.
 
-**`py generator/audit_captions.py` every 100 captions.** It measures the corpus
-against *itself* — repeated phrases, hook openings, near-duplicate bodies, crutch
-constructions — because the failure mode of unsupervised writing is sameness, not
-one bad caption. It already found drift in my own work: *turns out to be* ×4,
-*she has no idea* ×4, *what he/she does not know* ×4, five hooks opening *He is*.
+## OPEN ITEMS, verified this session
 
-**Approved is separate from draft.** Only `captions_approved_*.py` is ever
-applied. This exists because Cyan's sign-off on the number-one title sat unapplied
-for hours, stranded behind unreviewed drafts in the same file.
+- **GoodShort trope soup — the second half of Cyan's original complaint, not
+  started.** Measured 21 Aug: GoodShort titles average 17.4 tropes vs 3.2 for
+  every other platform; 1,491 titles carry 15+, all GoodShort. Wrong tropes
+  leak onto browse pages (blood-and-bones sits on /tropes/vampire, /luna,
+  /devil with none of those in the show). The 14 Aug cleanup halved it and
+  stopped; it needs a second, GoodShort-scoped cut to ~3–5 per title. Cyan
+  has seen the numbers and said "first the captions" — captions are done, so
+  this is next when she says go.
+- **Mic Drop Diva has two approved captions.** The earlier live one was kept
+  (apply's skip default); the batch-two draft sits unapplied in the approved b2
+  file. Cyan was shown both, has not chosen. Do not "fix" without her.
+- **ReelShort 1-episode anomaly, now FOUR titles**: the-senator-s-son,
+  shhh-professor-please-don-t-tell, summer-situationship, outplayed. Pattern,
+  not page errors. On her list.
+- **Scandalous / Vicious carry no author credit** on their ReelShort pages
+  (both "ReelShort original production") — evidence for her open L.J. Shen
+  question, not an answer. Note ReelShort DOES credit authors where a book
+  exists (Gemma James, Cricket Colson — both credits are live in our captions).
+- **Save-point zip still needs copying off this machine**:
+  `C:\Users\cyanj\DramaEverAfter-backups\dea-savepoint-2026-08-16.zip` — the
+  gitignored quarantine file exists nowhere else. Standing reminder to Cyan.
+- Older Cyan-only items unchanged: 638 no-trope titles, DramaBox
+  singular/plural ruling, 14 fused people.csv rows, IMDb pages for the
+  filmography queue, the two Drive lookup sheets.
 
-**SOURCES sits beside FACTS** in every batch: `title_id -> (kind, where)`, kind
-being `platform` / `pdf` / `quarantine` / `fansite` / `imdb`. They are not equally
-trustworthy and `check` warns on fan-site ones.
+## TRAPS ADDED THIS WEEK (append to Craft when it's back)
 
-## THE CAPTION VOICE — settled, do not re-derive it
+- Another session pushed to main mid-session on 16 Aug and swept up uncommitted
+  work. fetch + rev-list before trusting any state claim, and before build/push.
+- `caption_pipeline.py next` names output by date+offset: running it twice the
+  same day with a matching offset SILENTLY OVERWRITES the earlier batch file.
+  Generate to an explicit filename instead.
+- This Bash tool mangles backslashes in heredocs (a `\\n` became a real newline
+  inside a Python source file; regexes lose escapes). Write scripts to a file
+  with the Write tool and run the file. This bit three separate times.
+- Editing a caption in only one of generator-script/staging-file loses the edit
+  when the other regenerates. One file is the record (staging); retire spent
+  generators with a SPENT header immediately.
+- Cyan's collect-box resends entries whose stored edit differs from the applied
+  text by mechanical fixes. The repeats are not re-assertions of the typos.
 
-Full spec is a standing rule in READ FIRST. The shape is **HOOK newline BODY**.
-The hook renders as a subheading. **There is no third line** — the aside was
-removed on 15 Aug because it caused more problems than it solved, though
-`build.py` still renders one if a third part ever appears.
+## HOW CYAN WORKS (unchanged, plus this week's additions)
 
-Hard rules: **no dashes of any kind, hyphens included.** Bodies are **third
-person, present tense**, past only for events before the story opens. **Use "but"
-to land an ending** — Cyan rewrote four of mine and every one replaced a full stop
-with a "but". Heavy material drops the playfulness entirely. Never state the turn;
-set up the situation and stop.
-
-**Accuracy outranks everything, including length.** If the substance isn't there,
-drop the count. A title with no findable synopsis goes on a list for her — never a
-guess.
-
-## TRAPS THAT COST TIME TODAY
-
-**`apply` silently skips captions already ours** unless given `--update-ours`. That
-default protects approved work but blocked a correction to the live number-one page
-for hours. If a fix won't land, that is why.
-
-**Edits made only in the approved file get eaten.** `generator/promote_captions.py`
-rebuilds it *from the draft*, so Cyan's "stay that way" edit was discarded because
-the draft still said "stay that simple". Apply her wording to **both** files.
-(Until 16 Aug this script lived only in a scratchpad and the handover pointed at a
-file that was not in the repo — found by a session checking the doc against disk,
-which is the right instinct. It is committed now.)
-
-**Almost every stored synopsis is a truncated first sentence**, not a short one. Of
-45 titles in batch two, all 45 held less than the platform publishes. This produced
-a caption for *Carrying His Triplets* containing no male lead, no pregnancy and no
-romance. **Treat thin facts as no facts and go and read the page.**
-
-**The fetch route works on every platform**, not just ReelShort — proven on
-my-drama.com, vigloo.com, candyjar.com, dramaboxdb.com and netshort.com.
-reelshort.com is blocked in the Browser pane but fine via WebFetch.
-
-**Do not trust a regex over reading the text.** Two of my own measurements were
-wrong that way: a `\w+ed` tense test reported 8 of 30 bodies drifting when the real
-number was 2, and a page-existence test reported 37 redirects were needed when the
-answer was zero.
-
-## WAITING ON CYAN
-
-- **One caption line.** *Cancel the Wedding, Queen Moves On* is live with her
-  wording, "takes back control of everything **she gave him**". The source says
-  only that she confronts betrayal and is determined to take control. Flagged, not
-  changed.
-- **Copy the save-point zip off this machine.**
-- **638 titles have no trope** — '7. DEA TROPES WANTED', top 60 tickable.
-- The older items: the DramaBox singular/plural ruling, the 14 fused people.csv
-  rows, IMDb pages for ACTORS-FILMOGRAPHY.md, the two Drive lookup sheets.
-
-## HOW CYAN WORKS
-
-Run lookups yourself; never hand her one you could run. Show a whole batch on one
-page, never in dribs — feeding her six at a time was a real failure and she said
-so. Read every caption back cold, as someone who knows nothing about the show,
-before she sees it. Tell her before anything rewrites thousands of files. And
-generated output that looks correct is not evidence that it works: click the thing,
-measure the thing, request the URL.
+Whole batch on one page, editable in place. Read means done. Her wording goes
+in verbatim; mechanical typo fixes are applied but LISTED individually for
+veto. When she asks "what is causing it", she wants the mechanism named
+honestly, not reassurance — and the fix encoded so she never repeats the
+correction. Run lookups yourself. Tell her before anything rewrites thousands
+of files. Generated output that looks correct is not evidence: curl the live
+page.
