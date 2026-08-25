@@ -31,6 +31,20 @@ The front page is fully rewritten. Live-verified by curl after deploy:
 blood-and-bones, country-gal, ceo-s-twins, kidnapped-by-the-devil all serve the
 new text.
 
+## THERE IS NOW A SKILL FOR ALL OF THIS
+
+`/dea-captions` — a user-level skill at
+`C:\Users\cyanj\.claude\skills\dea-captions\SKILL.md`, created 24 Aug at Cyan's
+request. It carries the whole workflow (select, fetch-first, write, check,
+readback, shadow audit, her review page, apply, build, push, verify live), the
+condensed voice rules, and the environment traps. Invoke it for ANY caption
+work rather than re-deriving the process from this file. The calibration
+section below stays as the deeper record; the memory dea-caption-voice.md has
+the full detail with her quotes. NOTE: the skill file lives OUTSIDE the repo
+(user level) because .claude/ is gitignored here — the repo root is the Netlify
+publish dir. It is on this machine only; if it matters, it belongs in the same
+off-machine backup as the save-point zip.
+
 ## THE CALIBRATION THAT COST A WEEK — read this before writing ANY caption
 
 The session memory (dea-caption-voice.md) has the full detail. The four rulings
@@ -81,9 +95,9 @@ generator/staging/ are the record.
   stopped; it needs a second, GoodShort-scoped cut to ~3–5 per title. Cyan
   has seen the numbers and said "first the captions" — captions are done, so
   this is next when she says go.
-- **Mic Drop Diva has two approved captions.** The earlier live one was kept
-  (apply's skip default); the batch-two draft sits unapplied in the approved b2
-  file. Cyan was shown both, has not chosen. Do not "fix" without her.
+- ~~Mic Drop Diva~~ **RESOLVED 24 Aug: Cyan ruled the live caption stays.**
+  The superseded batch-two duplicate is annotated in the approved b2 file with
+  a warning never to apply that file with --update-ours.
 - **ReelShort 1-episode anomaly, now FOUR titles**: the-senator-s-son,
   shhh-professor-please-don-t-tell, summer-situationship, outplayed. Pattern,
   not page errors. On her list.
