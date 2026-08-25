@@ -31,6 +31,16 @@ The front page is fully rewritten. Live-verified by curl after deploy:
 blood-and-bones, country-gal, ceo-s-twins, kidnapped-by-the-devil all serve the
 new text.
 
+## THE STANDING GOAL: WRITE THESE WITHOUT HER
+
+Cyan, 24 Aug: "consider corrections and my updates to text as training." Her
+edits are mined into `generator/CAPTION-TRAINING.md` — verbatim before/after
+pairs in seven lesson classes, plus an edit-rate table per batch (70% → 42% →
+55% so far; target under 10%). Read it before writing, diff her edits after
+every review, log new lessons, update the table. An edit that repeats a known
+class means the training failed to land — own that out loud. She reviews to
+converge, not forever.
+
 ## THERE IS NOW A SKILL FOR ALL OF THIS
 
 `/dea-captions` — a user-level skill at
