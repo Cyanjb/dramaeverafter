@@ -4,21 +4,23 @@ Paste this as your first message.
 
 ---
 
-We're continuing work on DramaEverAfter. **This file is the current truth, dated
-24 Aug 2026.** The Craft doc '7. DEA READ FIRST' still shows the 16 Aug state —
-the Craft connector was down when this session closed, so it was NOT updated.
-Its standing rules and traps remain valid; its CURRENT STATE block is stale.
-Update Craft from this file when the connector is back.
+We're continuing work on DramaEverAfter. Read the Craft doc '7. DEA READ FIRST'
+first — its CURRENT STATE block is dated 24 Aug and matches this file (synced
+after the connector came back; the week's five new traps are appended to its
+traps list). This file is the fuller handover; '7. DEA TASKS' is Cyan's list,
+not your work queue.
 
 Then in the repo: `generator/caption_pipeline.py`'s docstring (it changed a lot
 this week), and `references/adapters.md` sections 24–26.
 
 ## STATE: pushed, clean, and live.
 
-`main = origin/main = 6d934d704` (plus possibly a handover commit after it),
-working tree clean. Run `git rev-list --left-right --count origin/main...HEAD`
-before trusting that. Netlify auto-deploys on push, verified again 24 Aug —
-push is publish.
+`main = origin/main = afc1dc6dc` plus one handover commit after it. Run
+`git rev-list --left-right --count origin/main...HEAD` before trusting that.
+Netlify auto-deploys on push, verified again 24 Aug — push is publish.
+NOT OURS, LEFT ALONE: the working tree may show `.design-sync/`,
+`design-system/` and a `.gitignore` change belonging to another session's
+frontend-design branch. Do not commit or clean them.
 
     3,513 titles · 215 captions ours (was 126) · top 300: 171 covered
     ALL of these have Cyan's review: 68 hold her line edits verbatim,
@@ -50,10 +52,11 @@ readback, shadow audit, her review page, apply, build, push, verify live), the
 condensed voice rules, and the environment traps. Invoke it for ANY caption
 work rather than re-deriving the process from this file. The calibration
 section below stays as the deeper record; the memory dea-caption-voice.md has
-the full detail with her quotes. NOTE: the skill file lives OUTSIDE the repo
-(user level) because .claude/ is gitignored here — the repo root is the Netlify
-publish dir. It is on this machine only; if it matters, it belongs in the same
-off-machine backup as the save-point zip.
+the full detail with her quotes. The LIVE skill sits outside the repo (user
+level — .claude/ is gitignored because the repo root is the Netlify publish
+dir), and a git-tracked backup lives at `generator/skills/dea-captions.SKILL.md`;
+a session that edits the live skill refreshes the backup in the same commit.
+Restore live from backup on a new machine.
 
 ## THE CALIBRATION THAT COST A WEEK — read this before writing ANY caption
 
