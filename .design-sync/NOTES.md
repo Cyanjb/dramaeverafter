@@ -7,6 +7,8 @@
 - Poster images: previews deliberately use the blush `poster--empty` fallback (a designed state on the site) instead of remote CDN poster URLs — deterministic renders, no external fetches.
 - **Site quirk found during preview grading**: `.actor-tile`/`.person-row` name + sub are inline spans with no whitespace between them; they only look stacked on the live site because narrow tiles force a line wrap. Short names (e.g. "Meg Bush" + "21 titles") likely run together on the live site. The DS components set `display:block` on `.name`/`.sub` inline to make the intended stacking explicit — surfaced to Cyan 25 Aug 2026.
 
+- **Contrast fixes applied 27 Aug 2026 (site + kit, Cyan-approved)**: `--tert` #8A7A70 → #7D6C64 (4.69:1 on paper); chip counts, trope-index counts, and watch disclosure moved from `--ph` to `--tert`; `.fav-btn` got a 44px touch target via `::after{inset:-6px}`. `--ph` is now placeholder-only — keep informational text off it.
+
 ## Known render warns
 - (none recorded yet)
 

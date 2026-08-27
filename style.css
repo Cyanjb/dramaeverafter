@@ -1,7 +1,7 @@
 
 :root{
 --paper:#FBF7F2;--ink:#2A2226;--plum:#2B1B2E;--wine:#7A2B4A;--gold:#C9962E;--gold-deep:#A87B1F;--blush:#EFD9DE;--line:#E4D8CE;
---muted:#5A4A50;--sec:#6B5A60;--tert:#8A7A70;--ph:#9B8C90;--chip-off-fg:#C2B4AC;--chip-off-bg:#F4EDE6;--chip-off-bd:#EBE0D6;
+--muted:#5A4A50;--sec:#6B5A60;--tert:#7D6C64;--ph:#9B8C90;--chip-off-fg:#C2B4AC;--chip-off-bg:#F4EDE6;--chip-off-bd:#EBE0D6;
 --warm:#F8F1EA;--hero-a:#FDF9F5;--hero-b:#F8F1EA;--blush-bd:#DFBFC8;--input-bd:#D8C7BA;--chip-bd:#E0CFC2;--wine-hover:#5C1E37;
 }
 *{box-sizing:border-box}
@@ -83,6 +83,8 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 border-radius:50%;background:rgba(43,27,46,.55);color:rgba(255,255,255,.85);font-size:16px;line-height:1;
 display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
 .fav-btn:hover{background:rgba(43,27,46,.8);color:#fff}
+/* 44px touch target without growing the 32px visual: the tap area extends 6px past the circle */
+.fav-btn::after{content:"";position:absolute;inset:-6px}
 .fav-btn[aria-pressed="true"]{background:var(--gold);color:#241A12}
 .fav-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .title-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
@@ -150,7 +152,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 
 /* ---------- chips (feed the existing filter JS: data-g / data-v) ---------- */
 .chip{display:inline-flex;align-items:baseline;gap:7px;padding:8px 14px;border:1px solid var(--chip-bd);background:var(--paper);border-radius:999px;font-size:15px;font-family:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
-.chip .c{font-size:12.5px;color:var(--ph)}
+.chip .c{font-size:12.5px;color:var(--tert)}
 .chip:hover:not(.off){border-color:var(--wine);background:#fff}
 .chip.on{background:var(--wine);border-color:var(--wine);color:#FFF8F2}
 .chip.on .c{color:rgba(255,248,242,.75)}
@@ -192,7 +194,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .watch-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--gold);color:#241A12;padding:17px 22px;font-size:18px;font-weight:700;border-radius:2px;text-decoration:none}
 .watch-btn:hover{background:var(--gold-deep);color:#fff}
 .watch-more{display:block;margin-top:12px;font-size:14px;color:var(--wine)}
-.watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--ph);line-height:1.5}
+.watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--tert);line-height:1.5}
 .watch-pending{display:inline-block;padding:13px 20px;border:1.5px dashed var(--line);border-radius:999px;color:var(--tert);font-size:14px}
 
 /* ---------- title / actor / app hero (two-column, gradient) ---------- */
@@ -258,7 +260,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .trope-idx-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:11px 13px;border-bottom:1px solid #EFE5DC;font-size:15.5px;color:var(--ink);min-width:0;text-decoration:none}
 .trope-idx-row:hover{background:var(--warm);color:var(--wine)}
 .trope-idx-row .n{min-width:0;text-wrap:pretty}
-.trope-idx-row .c{flex:0 0 auto;font-size:13px;color:var(--ph)}
+.trope-idx-row .c{flex:0 0 auto;font-size:13px;color:var(--tert)}
 
 /* ---------- blog ---------- */
 .blog-featured{display:flex;flex-wrap:wrap;gap:26px;align-items:stretch;border:1px solid var(--line);background:#fff;overflow:hidden;text-decoration:none;color:inherit}
