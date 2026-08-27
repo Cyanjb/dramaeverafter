@@ -4,3 +4,12 @@ __pycache__/
 generator/staging/.fandom_cache/
 generator/staging/_dramabox_cache/
 generator/staging/_quarantined_synopses.json
+
+# design-sync (claude.ai/design) — regenerated build output and machine state
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
+design-system/node_modules/
+design-system/dist/
