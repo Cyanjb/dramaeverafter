@@ -1,0 +1,32 @@
+{
+  "projectId": "40b0b7dd-6b35-43d6-b503-df4d2465399d",
+  "shape": "package",
+  "pkg": "dramaeverafter-ds",
+  "globalName": "DEA",
+  "buildCmd": "npm run build (run inside design-system/)",
+  "cssEntry": "dist/styles.css",
+  "docsDir": "docs",
+  "readmeHeader": ".design-sync/conventions.md",
+  "guidelinesGlob": [],
+  "overrides": {
+    "Chips": {"cardMode": "column"},
+    "AppTile": {"cardMode": "column"},
+    "EmptyState": {"cardMode": "column"},
+    "PosterCard": {"cardMode": "column"},
+    "WatchCard": {"cardMode": "column"},
+    "BlogFeatured": {"cardMode": "column"},
+    "Grid": {"cardMode": "column"},
+    "Hero": {"cardMode": "column"},
+    "Rail": {"cardMode": "column"},
+    "SectionHead": {"cardMode": "column"},
+    "SplitHero": {"cardMode": "column"},
+    "AzLetters": {"cardMode": "column"},
+    "Crumb": {"cardMode": "column"},
+    "Pagination": {"cardMode": "column"},
+    "SiteFooter": {"cardMode": "column"},
+    "SiteHeader": {"cardMode": "column"},
+    "ActorTile": {"cardMode": "column"},
+    "PersonRow": {"cardMode": "column"},
+    "Ring": {"cardMode": "column"}
+  }
+}
