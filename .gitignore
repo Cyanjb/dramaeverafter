@@ -1,6 +1,8 @@
 __pycache__/
 *.pyc
-.claude/
+.claude/*
+!.claude/skills/
+.claude/settings.local.json
 generator/staging/.fandom_cache/
 generator/staging/_dramabox_cache/
 generator/staging/_quarantined_synopses.json
