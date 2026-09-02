@@ -1,0 +1,6 @@
+# Hand-maintained, like _redirects. build.py never touches this file.
+# Audit, 2 Sep 2026: the site shipped with no header rules at all.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin

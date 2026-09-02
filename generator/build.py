@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """DramaEverAfter static site generator. Reads data/*.csv, writes dist/."""
-import csv, os, re, json, shutil
+import csv, os, re, json, shutil, datetime
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -380,6 +380,49 @@ def synopsis_text(t):
     return (hook + " " + body).strip() if body else hook
 
 
+def cut_words(s, n=155):
+    """Cut at a word boundary, never mid-word. The ld+json description was being
+    sliced at 160 characters ("But the arrangement doesn't s"), and Google shows
+    that text verbatim. No trailing ellipsis: search engines add their own."""
+    s = " ".join((s or "").split())
+    if len(s) <= n:
+        return s
+    cut = s[:n].rsplit(" ", 1)[0].rstrip(",;:")
+    return cut or s[:n]
+
+
+def month_label(iso):
+    """'2026-07-04' -> 'July 2026'. Display dates come from the DATA, never the
+    build clock. Audit, 2 Sep 2026: every where-to-watch page said 'Checked
+    August 2026' from UPDATED while 94% of availability rows were last checked
+    in July. A rebuild must not manufacture freshness."""
+    iso = (iso or "").strip()[:10]
+    try:
+        return datetime.date.fromisoformat(iso).strftime("%B %Y")
+    except ValueError:
+        return ""
+
+
+def title_checked(t):
+    """Newest date we actually touched this title: last_checked across its
+    availability rows, falling back to last_verified. ISO string or ''."""
+    dates = [a.get("last_checked") or "" for a in avail_by_title.get(t["title_id"], [])]
+    dates.append(t.get("last_verified") or "")
+    dates = [x.strip() for x in dates if x.strip()]
+    return max(dates) if dates else ""
+
+
+def title_desc(t):
+    """Meta description: the caption we wrote when there is one (825 titles had a
+    synopsis and every one of them was shipping the generic template), else an
+    honest template dated from the data."""
+    s = synopsis_text(t)
+    if s:
+        return cut_words(s, 155)
+    when = month_label(title_checked(t))
+    return f"{t['primary_title']}: where to watch, cast and tropes." + (f" Checked {when}." if when else "")
+
+
 def story_block(t):
     hook, body, aside = caption_parts(t)
     if not hook:
@@ -743,9 +786,23 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--plum);color
 .footer-col a:hover{color:#fff}
 """
 
-def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val=""):
+def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", og_image="", og_type="website"):
     pre = "../" * depth
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
+    # Social preview. The audience shares links in Reddit and Facebook threads and
+    # until 2 Sep 2026 every one rendered as a bare URL: no og tags, no favicon.
+    # Title pages pass their poster, actor pages their photo; everything else gets
+    # the site card (share.png, a hand-maintained root file like _redirects).
+    og_url = f'<meta property="og:url" content="{canonical}">\n' if canonical else ""
+    og = (f'<meta property="og:site_name" content="DramaEverAfter">\n'
+          f'<meta property="og:type" content="{og_type}">\n'
+          f'<meta property="og:title" content="{esc_attr(title)}">\n'
+          f'<meta property="og:description" content="{esc_attr(desc)}">\n'
+          f'{og_url}'
+          f'<meta property="og:image" content="{esc_attr(og_image or DOMAIN + "/share.png")}">\n'
+          f'<meta name="twitter:card" content="summary_large_image">\n'
+          f'<link rel="icon" href="{pre}favicon.svg" type="image/svg+xml">\n'
+          f'<link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">')
     app_links = "".join(
         f'<a href="{pre}apps/{slug(pl["name"])}.html">{pl["name"]}</a>'
         for pl in APPS_WITH_DATA[:3])
@@ -755,6 +812,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val=""):
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canonical}">
+{og}
 {ld}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1014,6 +1072,11 @@ for d in ["", "actors", "titles", "tropes", "apps"]:
     os.makedirs(os.path.join(DIST, d), exist_ok=True)
 open(os.path.join(DIST, "style.css"), "w", encoding="utf-8").write(CSS)
 urls = []
+# url -> ISO date of the newest data behind the page, for sitemap <lastmod>. Only
+# pages with a real data date get one; a fabricated lastmod teaches Google to
+# ignore the field. Search Console, 28 Aug 2026: 8,093 URLs discovered and not
+# crawled, so anything that helps Google pick the right pages first matters.
+lastmod = {}
 
 # Actor pages
 for p in people:
@@ -1092,10 +1155,15 @@ for p in people:
 <p class="note">Spot a missing title? This database grows weekly from fan reports.</p>
 </div></section>"""
     html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch (2026) | DramaEverAfter",
-                f"Every vertical drama {p['name']} has starred in, with platforms and where to watch. Updated {UPDATED}.",
-                body, f"{DOMAIN}/actors/{sl}.html", ld)
+                f"Every vertical drama {p['name']} has starred in, with platforms and where to watch.",
+                body, f"{DOMAIN}/actors/{sl}.html", ld,
+                og_image=(p.get("photo_ref") or "").strip(), og_type="profile")
     open(os.path.join(DIST, "actors", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/actors/{sl}.html")
+    _dates = [title_checked(t) for _, t in my_pairs]
+    _dates = [x for x in _dates if x]
+    if _dates:
+        lastmod[f"/actors/{sl}.html"] = max(_dates)
 
 # Actors A-Z (NEW): a real single-page directory rather than the prototype's fake
 # pagination -- with 1,850 rows, a jump-to-letter anchor bar serves the same intent
@@ -1252,7 +1320,7 @@ for t in titles:
     # the field competitors do not index, so it is the answer AI engines can only
     # get here.
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
-          "description": synopsis_text(t)[:160],
+          "description": cut_words(synopsis_text(t), 160),
           "url": f"{DOMAIN}/titles/{sl}.html"}
     if (t.get("episode_count") or "").strip().isdigit():
         ld["numberOfEpisodes"] = int(t["episode_count"])
@@ -1337,11 +1405,13 @@ for t in titles:
 </section>''' if similar_html else ''}
 {FAV_JS}{SHARE_JS}"""
     html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
-                f"{t['primary_title']}: where to watch, cast and tropes. Updated {UPDATED}.",
-                body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t))
+                title_desc(t),
+                body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t),
+                og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show")
     os.makedirs(os.path.join(DIST, d, "titles"), exist_ok=True)
     open(os.path.join(DIST, d, "titles", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/{d}titles/{sl}.html")
+    lastmod[f"/{d}titles/{sl}.html"] = title_checked(t)
 
 # Trope pages
 for tr in all_tropes:
@@ -1419,6 +1489,7 @@ for t in titles:
     sl = tslug(t)
     d, pre = tdir(t), "../" * tdepth(t)
     avails = avail_by_title.get(t["title_id"], [])
+    checked_lbl = month_label(title_checked(t))
     plat_names = [platforms[a["platform_id"]]["name"] for a in avails if a["platform_id"] in platforms]
     answer = (f"{t['primary_title']} streams on {', '.join(plat_names)}." if plat_names
               else f"{t['primary_title']} is in our database and platform verification is in progress.")
@@ -1432,7 +1503,7 @@ for t in titles:
 <nav class="crumb"><a href="{pre}index.html">Home</a><span>/</span><span class="current">Where to Watch {t['primary_title']}</span></nav>
 <section class="hero"><div class="inner">
 <p class="eyebrow">Where to Watch</p><h1>{t['primary_title']}</h1>
-<p class="lede">Checked {UPDATED}</p></div></section>
+{f'<p class="lede">Checked {checked_lbl}</p>' if checked_lbl else ''}</div></section>
 <section class="pad" style="padding:26px 22px 40px">
 <p style="font-size:16px;line-height:1.6;max-width:60ch">{answer}</p>{free_line}
 <div class="watch-card" style="margin-top:16px"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
@@ -1442,11 +1513,13 @@ for t in titles:
 <section class="faq"><div class="wrap"><h2>Quick answers</h2>{faq_items}
 <p class="note">Spotted it on another app? Report it and help the database grow.</p></div></section>"""
     html = page(f"Where to Watch {t['primary_title']}: All Platforms (2026) | DramaEverAfter",
-                f"Where to watch {t['primary_title']}: every platform it streams on, checked {UPDATED}.",
-                body, f"{DOMAIN}/{d}where-to-watch/{sl}.html", depth=tdepth(t))
+                f"Where to watch {t['primary_title']}: every platform it streams on" + (f", checked {checked_lbl}." if checked_lbl else "."),
+                body, f"{DOMAIN}/{d}where-to-watch/{sl}.html", depth=tdepth(t),
+                og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show")
     os.makedirs(os.path.join(DIST, d, "where-to-watch"), exist_ok=True)
     open(os.path.join(DIST, d, "where-to-watch", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/{d}where-to-watch/{sl}.html")
+    lastmod[f"/{d}where-to-watch/{sl}.html"] = title_checked(t)
 
 # Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
 #
@@ -2102,7 +2175,7 @@ body = f"""
 </div></section>
 
 <section style="padding:40px 0 8px">
-<div class="section-head pad"><h2>Most watched right now</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
+<div class="section-head pad"><h2>Most watched</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
 <div class="rail">{"".join(poster_card(t, "", rail_item=True) for t in featured)}</div>
 </section>
 
@@ -2279,7 +2352,9 @@ open(os.path.join(DIST, "404.html"), "w", encoding="utf-8").write(html)
 
 # sitemap + robots
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-sm += "".join(f"<url><loc>{DOMAIN}{u}</loc></url>\n" for u in urls) + "</urlset>"
+sm += "".join(
+    f"<url><loc>{DOMAIN}{u}</loc>" + (f"<lastmod>{lastmod[u]}</lastmod>" if lastmod.get(u) else "") + "</url>\n"
+    for u in urls) + "</urlset>"
 open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(sm)
 # Cyan's stance (recorded in DEA TASKS, applied 14 Aug): SEARCH YES, AI-TRAINING
 # NO, USE AS REFERENCE. Search/citation crawlers are welcome - being the source an
