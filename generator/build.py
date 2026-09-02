@@ -493,6 +493,8 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 border-radius:50%;background:rgba(43,27,46,.55);color:rgba(255,255,255,.85);font-size:16px;line-height:1;
 display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
 .fav-btn:hover{background:rgba(43,27,46,.8);color:#fff}
+/* 44px touch target without growing the 32px visual: the tap area extends 6px past the circle */
+.fav-btn::after{content:"";position:absolute;inset:-6px}
 .fav-btn[aria-pressed="true"]{background:var(--gold);color:#241A12}
 .fav-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .title-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
@@ -560,7 +562,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 
 /* ---------- chips (feed the existing filter JS: data-g / data-v) ---------- */
 .chip{display:inline-flex;align-items:baseline;gap:7px;padding:8px 14px;border:1px solid var(--chip-bd);background:var(--paper);border-radius:999px;font-size:15px;font-family:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
-.chip .c{font-size:12.5px;color:var(--ph)}
+.chip .c{font-size:12.5px;color:var(--tert)}
 .chip:hover:not(.off){border-color:var(--wine);background:#fff}
 .chip.on{background:var(--wine);border-color:var(--wine);color:#FFF8F2}
 .chip.on .c{color:rgba(255,248,242,.75)}
@@ -602,7 +604,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .watch-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--gold);color:#241A12;padding:17px 22px;font-size:18px;font-weight:700;border-radius:2px;text-decoration:none}
 .watch-btn:hover{background:var(--gold-deep);color:#fff}
 .watch-more{display:block;margin-top:12px;font-size:14px;color:var(--wine)}
-.watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--ph);line-height:1.5}
+.watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--tert);line-height:1.5}
 .watch-pending{display:inline-block;padding:13px 20px;border:1.5px dashed var(--line);border-radius:999px;color:var(--tert);font-size:14px}
 
 /* ---------- title / actor / app hero (two-column, gradient) ---------- */
@@ -668,7 +670,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .trope-idx-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:11px 13px;border-bottom:1px solid #EFE5DC;font-size:15.5px;color:var(--ink);min-width:0;text-decoration:none}
 .trope-idx-row:hover{background:var(--warm);color:var(--wine)}
 .trope-idx-row .n{min-width:0;text-wrap:pretty}
-.trope-idx-row .c{flex:0 0 auto;font-size:13px;color:var(--ph)}
+.trope-idx-row .c{flex:0 0 auto;font-size:13px;color:var(--tert)}
 
 /* ---------- blog ---------- */
 .blog-featured{display:flex;flex-wrap:wrap;gap:26px;align-items:stretch;border:1px solid var(--line);background:#fff;overflow:hidden;text-decoration:none;color:inherit}
@@ -1005,7 +1007,7 @@ def actor_summary(p, pairs):
 for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + origins_other:
     p = os.path.join(DIST, d)
     if os.path.exists(p): shutil.rmtree(p)
-for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "my-list.html", "robots.txt", "sitemap.xml", "style.css"]:
+for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "my-list.html", "404.html", "robots.txt", "sitemap.xml", "style.css"]:
     p = os.path.join(DIST, f)
     if os.path.exists(p): os.remove(p)
 for d in ["", "actors", "titles", "tropes", "apps"]:
@@ -2251,6 +2253,29 @@ html = page("Contact DramaEverAfter: Report a Correction or Missing Title",
             body, f"{DOMAIN}/contact.html", depth=0)
 open(os.path.join(DIST, "contact.html"), "w", encoding="utf-8").write(html)
 urls.append("/contact.html")
+
+# 404 page. Netlify serves /404.html for every missing path, at any depth, so every
+# link in it must resolve from the root: a <base> tag does that without a second
+# template. Not in the sitemap, noindex, and no canonical (a 404 has no canonical
+# URL). Before this the 73 deleted PineDrama twins and every typo got Netlify's
+# default page with no way back into the site.
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Page not found</p>
+<h1>That page isn't here.</h1>
+<p class="lede">The title may have been merged into its twin on another app, or the link has a typo. Search for it, or browse from the top.</p>
+<form class="hero-search-form" action="browse.html" method="get">
+<input type="search" name="q" placeholder="Search a title or actor" aria-label="Search actors or titles">
+<button class="btn btn-gold" type="submit">Search</button>
+</form>
+<p class="lede" style="margin-top:18px"><a href="browse.html">All titles</a> &middot; <a href="actors/index.html">Actors</a> &middot; <a href="tropes/index.html">Tropes</a> &middot; <a href="platforms.html">Apps</a></p>
+</div></section>"""
+html = page("Page Not Found | DramaEverAfter",
+            "That page isn't on DramaEverAfter. Search the vertical drama database instead.",
+            body, "", depth=0)
+html = html.replace('<link rel="canonical" href="">\n',
+                    f'<base href="{DOMAIN}/">\n<meta name="robots" content="noindex">\n')
+open(os.path.join(DIST, "404.html"), "w", encoding="utf-8").write(html)
 
 # sitemap + robots
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
