@@ -48,9 +48,13 @@ jobs:
             echo "nothing new to commit"
           else
             git commit -m "Captions: synopses fetched for the next ${{ github.event.inputs.count }} titles (offset ${{ github.event.inputs.offset }})"
+            # The branch may have moved while the fetch ran; rebase the one
+            # commit onto it rather than failing the push.
+            git pull --rebase origin "${{ github.ref_name }}"
             git push origin "HEAD:${{ github.ref_name }}"
           fi
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: facts
           path: ${{ steps.fetch.outputs.out }}
