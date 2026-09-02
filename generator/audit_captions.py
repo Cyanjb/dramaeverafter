@@ -43,6 +43,11 @@ CRUTCHES = [
     r"\bhas no idea\b", r"\bright up until\b", r"\bends up\b",
     r"\bon the spot\b", r"\bnobody knows\b", r"\bkeeping it quiet\b",
     r"\bthe moment\b", r"\bnever once\b", r"\bwalks? (?:back )?into\b",
+    # Cyan's own deflations, measured on the batch-two diff (2 Sep 2026): she
+    # turned every one of these into plain speech. 61 of 215 live captions
+    # lean on a sentence-initial "Then".
+    r"\bthe two of them\b", r"\bthe pair\b", r"\bof this world\b",
+    r"\bwith it\.", r"(?<=[.?!] )Then\b",
 ]
 
 

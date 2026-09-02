@@ -261,6 +261,29 @@ def validate(tid, cap, fact, title):
     return errs
 
 
+# HER EDIT PATTERNS, AS WARNINGS. Measured on the batch-two diff, 2 Sep 2026:
+# the most frequent thing Cyan does to a draft is deflate a writerly phrase
+# into plain fan-speak ("the two of them" -> "they", three times in one batch;
+# "a conversation" -> "talk"; "the Evans of this world" -> "that whole
+# family"). These are not banned, some are hers, so they WARN rather than fail.
+# A draft that trips several is over-written; rewrite it plainer before she
+# sees it. Kept separate from validate() so apply is never blocked by taste.
+DEFLATE = [
+    (r"\bthe two of them\b", "'the two of them' -> they / both"),
+    (r"\bthe pair\b", "'the pair' -> they"),
+    (r"\bof this world\b", "'the Xs of this world' -> that whole family"),
+    (r"\bwith it\.", "trailing 'with it' -> cut"),
+    (r"\ba conversation\b", "'a conversation' -> talk"),
+    (r"\bin the name of\b", "constructed phrase -> plain verb"),
+    (r"(?<=[.?!] )Then\b.*(?<=[.?!] )Then\b", "two 'Then' sentences in one caption"),
+]
+
+
+def lint(cap):
+    """Soft findings only. Returns a list of strings, never blocks."""
+    return [why for pat, why in DEFLATE if re.search(pat, cap)]
+
+
 def build_queue():
     titles = rows("titles.csv")
     facts = load_facts()
@@ -394,6 +417,8 @@ def cmd_check(path):
         if errs:
             print("  FAIL %-46s %s" % (tid[:44], "; ".join(errs)))
             fails += 1
+        for why in lint(cap):
+            print("  WARN %-46s %s" % (tid[:44], why))
     print("\n%d of %d pass" % (len(done) - fails, len(done)))
     return 1 if fails else 0
 
