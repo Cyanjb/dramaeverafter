@@ -1,0 +1,60 @@
+# Fetch the full platform synopses for the next N titles in the caption queue,
+# on a GitHub runner (which can reach the platforms; the Claude cloud sandbox
+# cannot), and commit the dated staging JSON back to the branch it ran on.
+# Nothing here touches data/. See generator/fetch_synopses.py.
+name: Fetch synopses
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: How many titles, from the top of the caption queue
+        default: "129"
+      offset:
+        description: Skip this many first
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-synopses-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch
+        id: fetch
+        run: |
+          OUT="generator/staging/facts_$(date -u +%F).json"
+          echo "out=$OUT" >> "$GITHUB_OUTPUT"
+          python3 generator/fetch_synopses.py \
+            --count "${{ github.event.inputs.count }}" \
+            --offset "${{ github.event.inputs.offset }}" \
+            --out "$OUT"
+      - name: Commit the staging file
+        run: |
+          git config user.name "fetch-synopses workflow"
+          git config user.email "actions@users.noreply.github.com"
+          git add "${{ steps.fetch.outputs.out }}"
+          if git diff --cached --quiet; then
+            echo "nothing new to commit"
+          else
+            git commit -m "Captions: synopses fetched for the next ${{ github.event.inputs.count }} titles (offset ${{ github.event.inputs.offset }})"
+            # The branch may have moved while the fetch ran; rebase the one
+            # commit onto it rather than failing the push.
+            git pull --rebase origin "${{ github.ref_name }}"
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: facts
+          path: ${{ steps.fetch.outputs.out }}

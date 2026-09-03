@@ -3,9 +3,10 @@
 The cross-platform vertical drama database. This repo is the single source of truth: the data, the generator, and the published site all live here.
 
 ## Layout
-- **/data/** — the database. Eight CSVs (titles, people, platforms, availability, credits, tropes, match_queue, snapshots). Schema documented in Craft doc "3. Data Schema" plus v2 deltas in doc "7. Technical Architecture".
+- **/data/** — the database. Ten CSVs (titles, people, platforms, availability, credits, tropes, match_queue, snapshots, harvest_queue, popular_actors). Schema documented in Craft doc "3. Data Schema" plus v2 deltas in doc "7. Technical Architecture".
 - **/generator/** — build.py reads /data and writes the generated site to the repo root. Run: `cd generator && python3 build.py`
-- **Repo root** — the generated site (actors/, titles/, tropes/, where-to-watch/, index.html, sitemap.xml, style.css, robots.txt, platforms.html). Netlify publishes the repo root. Never edit these by hand; the generator overwrites them on every build. Only data/ and generator/ are hand-editable.
+- **Repo root** — the generated site (actors/, titles/, tropes/, where-to-watch/, apps/, index.html, 404.html, sitemap.xml, style.css, robots.txt, platforms.html). Netlify publishes the repo root. Never edit these by hand; the generator overwrites them on every build (style.css included: its source is the CSS block inside build.py). Only data/ and generator/ are hand-editable.
+- **Hand-maintained root files the build never touches**: `_redirects`, `_headers`, `favicon.svg`, `apple-touch-icon.png`, `share.png` (the default social preview card; replace it with a designed one any time, same filename and 1200x630).
 
 ## Update runbook (for Claude sessions)
 1. PULL this repo's current state from GitHub (raw files, public repo)
@@ -15,7 +16,7 @@ The cross-platform vertical drama database. This repo is the single source of tr
 5. HANDOFF: give Cyan the changed files plus a change report
 
 ## Update workflow (for Cyan)
-Drag the files Claude hands over into the matching folders on github.com, commit. Netlify deploys automatically.
+Sessions with the repo attached commit and push to main directly; push is publish (Netlify auto-deploys in about 15 seconds). The older route still works: drag the files Claude hands over into the matching folders on github.com and commit.
 
 ## Rules
 - Slugs never change once published (URLs are permanent)

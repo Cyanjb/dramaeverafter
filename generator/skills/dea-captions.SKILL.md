@@ -7,13 +7,26 @@ description: Write, review, and ship DramaEverAfter captions end to end - batch 
 
 **THE GOAL IS AUTONOMY.** Cyan, 24 Aug 2026: "I need you to get to the point
 where you can write these captions on your own so consider corrections and my
-updates to text as training." Her edits are a training corpus, mined into
-`generator/CAPTION-TRAINING.md` — read it BEFORE writing (it holds verbatim
-before/after pairs grouped by lesson), and after every review diff her edits,
-classify them against its lesson classes, append anything new, and update its
-edit-rate table. An edit that fits an existing class means the training did
-not land — say so plainly. The success metric is her edit rate falling toward
-spot-checks.
+updates to text as training." Cyan, 2 Sep 2026: "I need to get to a point
+where I can trust you to do the captions on your own."
+
+**WRITE TO HER EXEMPLARS, NOT TO THE RULEBOOK** (settled 2 Sep 2026 after
+measuring her batch-two edits word by word). The model for every caption is
+the "Write like these" block at the end of `generator/CAPTION-TRAINING.md`:
+her final wording, verbatim. Read it before writing. Match its register:
+plain, warm, present tense, short sentences, contractions where they fall
+naturally, one landing line. The rules further down are for the CHECKER; a
+writer following forty rules produces exactly the stiff, over-written prose
+she keeps deflating ("the two of them" became "they" three times in one
+batch). If a sentence sounds clever, make it plainer.
+
+**THE METRIC IS WORDS CHANGED, NOT CAPTIONS TOUCHED.** She edits by instinct,
+so "touched or not" can never reach 10% and reported failure for a month
+while the real number was already close. After every review report two
+numbers: the share of words she changed across the batch (batch two: 11%,
+target under 10%), and her minutes on the page. Then diff her edits, classify
+them against the lesson classes, and add a lesson only when the same pattern
+shows in TWO separate edits.
 
 Repo: `C:\Users\cyanj\DramaEverAfter`. The deep sources, in order: this file for
 the workflow, `generator/CAPTION-TRAINING.md` for her training pairs,
@@ -38,19 +51,32 @@ subheading. No third line. Hooks may skip the terminal full stop (hers do).
    truncated first sentences. Read each title's OWN platform page (WebFetch;
    reelshort.com is blocked in the Browser pane but fine via WebFetch; the
    route works on goodshort, my-drama, vigloo, candyjar, dramaboxdb, netshort).
-   Store the fetched text in the batch's FACTS dict with episode counts, and
-   record SOURCES as `tid -> ('platform', url)`. A title with no findable
-   synopsis goes on a list for Cyan — NEVER a guess.
-3. **Write** (voice rules below). Close the source before writing.
+   FROM A CLOUD SESSION, which cannot reach any platform, run the
+   `fetch-synopses` GitHub Actions workflow instead (Actions tab, or the
+   GitHub MCP `actions_run_trigger` with the branch as ref); it commits
+   `generator/staging/facts_<date>.json` to the branch, one entry per title
+   with text, route, url and episode count. Store the text in the batch's
+   FACTS dict with episode counts, and record SOURCES as
+   `tid -> ('platform', url)`. A title with no findable synopsis goes on a
+   list for Cyan — NEVER a guess.
+3. **Write** to the exemplars (see the top of this file). Close the source
+   before writing. Then read each draft once as her: anything she would
+   deflate, deflate first.
 4. **Gate:** `py generator/caption_pipeline.py check <file>` must pass 100%.
+   It also prints WARN lines for her known deflation patterns; a caption with
+   two or more warnings is over-written and gets rewritten plainer before she
+   sees it.
 5. **Read back, mandatory:** `py generator/readback.py <file>` — read each
    caption cold against its source. The noun guard cannot tell whether a claim
    is TRUE; this step is what catches "he fired her" when the source says
    "dumps her". Expect to find several; that is the step working.
 6. **Drift audit:** repeated 4-word phrases across the batch (nothing 3+), hook
-   openings, crutch phrases, AND the shadow metric — difflib word-ratio of each
-   body vs its source. 0.55+ means synonym-swapping; honest restructures sit
-   0.15–0.35. `py generator/audit_captions.py` every 100 applied.
+   openings, crutch phrases. The shadow metric (difflib word-ratio of body vs
+   source) is now a COPY DETECTOR ONLY: 0.6 and above means the source was
+   copied and the caption is rewritten. Below that, resemblance is not a
+   fault. Plain blurb register is what she wants, and forcing distance from
+   the source is where the syntax knots came from ("the woman's grandson is
+   how she meets Austin"). `py generator/audit_captions.py` every 100 applied.
 7. **Review page for Cyan:** ONE artifact page, whole batch, ranked by reach,
    each entry showing hook+body as it will render, the source one tap away, an
    edit box (textarea prefilled, saved to localStorage, "Collect my edits"
@@ -79,11 +105,19 @@ subheading. No third line. Hooks may skip the terminal full stop (hers do).
 Warm + bestie, fun but never ditzy. Third person, present tense; past only for
 events before the story opens. The site speaks as "us", never "I".
 
-- **Facts are the constraint, structure is free.** Never walk the source
-  sentence-by-sentence swapping words — that is reworded platform text. Tell
-  the story in your own order. An occasional genuinely good source sentence
-  kept verbatim is FINE. Never invent events, names, motives, or "how" when
-  the source only gives "that".
+- **Facts are the constraint.** Tell the story plainly in your own words and
+  your own order; do not copy the source, and do not contort a sentence to
+  get away from it either. An occasional genuinely good source sentence kept
+  verbatim is FINE. Never invent events, names, motives, or "how" when the
+  source only gives "that": "bodies behind him" for "murderous" and "the work
+  is factory work" for "a job" were both cut by her.
+- **Plain beats clever.** Her most frequent edit. "They" not "the two of
+  them"; "talk" not "a conversation"; "that whole family" not "the Evans of
+  this world"; "just around the corner" not "almost on top of her". The extra
+  word that adds information usually subtracts punch.
+- **Her landing lines**: "Wait until they find out." / "Little does she know
+  that…" / "But why?" / a plain "But…" turn. Tease the story, never narrate
+  the audience ("deeply satisfying" and "Which would you choose?" were cut).
 - **Genre vocabulary verbatim**: flash marriage, contract marriage, fated
   mates, age gap, silver fox, second chance, CEO. check() enforces most; CEO
   is judgement but the default is keep.

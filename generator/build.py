@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """DramaEverAfter static site generator. Reads data/*.csv, writes dist/."""
-import csv, os, re, json, shutil
+import csv, os, re, json, shutil, datetime
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -380,6 +380,49 @@ def synopsis_text(t):
     return (hook + " " + body).strip() if body else hook
 
 
+def cut_words(s, n=155):
+    """Cut at a word boundary, never mid-word. The ld+json description was being
+    sliced at 160 characters ("But the arrangement doesn't s"), and Google shows
+    that text verbatim. No trailing ellipsis: search engines add their own."""
+    s = " ".join((s or "").split())
+    if len(s) <= n:
+        return s
+    cut = s[:n].rsplit(" ", 1)[0].rstrip(",;:")
+    return cut or s[:n]
+
+
+def month_label(iso):
+    """'2026-07-04' -> 'July 2026'. Display dates come from the DATA, never the
+    build clock. Audit, 2 Sep 2026: every where-to-watch page said 'Checked
+    August 2026' from UPDATED while 94% of availability rows were last checked
+    in July. A rebuild must not manufacture freshness."""
+    iso = (iso or "").strip()[:10]
+    try:
+        return datetime.date.fromisoformat(iso).strftime("%B %Y")
+    except ValueError:
+        return ""
+
+
+def title_checked(t):
+    """Newest date we actually touched this title: last_checked across its
+    availability rows, falling back to last_verified. ISO string or ''."""
+    dates = [a.get("last_checked") or "" for a in avail_by_title.get(t["title_id"], [])]
+    dates.append(t.get("last_verified") or "")
+    dates = [x.strip() for x in dates if x.strip()]
+    return max(dates) if dates else ""
+
+
+def title_desc(t):
+    """Meta description: the caption we wrote when there is one (825 titles had a
+    synopsis and every one of them was shipping the generic template), else an
+    honest template dated from the data."""
+    s = synopsis_text(t)
+    if s:
+        return cut_words(s, 155)
+    when = month_label(title_checked(t))
+    return f"{t['primary_title']}: where to watch, cast and tropes." + (f" Checked {when}." if when else "")
+
+
 def story_block(t):
     hook, body, aside = caption_parts(t)
     if not hook:
@@ -411,7 +454,7 @@ def trope_chip(tr, pre, count=None):
 CSS = """
 :root{
 --paper:#FBF7F2;--ink:#2A2226;--plum:#2B1B2E;--wine:#7A2B4A;--gold:#C9962E;--gold-deep:#A87B1F;--blush:#EFD9DE;--line:#E4D8CE;
---muted:#5A4A50;--sec:#6B5A60;--tert:#8A7A70;--ph:#9B8C90;--chip-off-fg:#C2B4AC;--chip-off-bg:#F4EDE6;--chip-off-bd:#EBE0D6;
+--muted:#5A4A50;--sec:#6B5A60;--tert:#7D6C64;--ph:#9B8C90;--chip-off-fg:#C2B4AC;--chip-off-bg:#F4EDE6;--chip-off-bd:#EBE0D6;
 --warm:#F8F1EA;--hero-a:#FDF9F5;--hero-b:#F8F1EA;--blush-bd:#DFBFC8;--input-bd:#D8C7BA;--chip-bd:#E0CFC2;--wine-hover:#5C1E37;
 }
 *{box-sizing:border-box}
@@ -493,6 +536,8 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 border-radius:50%;background:rgba(43,27,46,.55);color:rgba(255,255,255,.85);font-size:16px;line-height:1;
 display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
 .fav-btn:hover{background:rgba(43,27,46,.8);color:#fff}
+/* 44px touch target without growing the 32px visual: the tap area extends 6px past the circle */
+.fav-btn::after{content:"";position:absolute;inset:-6px}
 .fav-btn[aria-pressed="true"]{background:var(--gold);color:#241A12}
 .fav-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .title-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
@@ -560,7 +605,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 
 /* ---------- chips (feed the existing filter JS: data-g / data-v) ---------- */
 .chip{display:inline-flex;align-items:baseline;gap:7px;padding:8px 14px;border:1px solid var(--chip-bd);background:var(--paper);border-radius:999px;font-size:15px;font-family:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
-.chip .c{font-size:12.5px;color:var(--ph)}
+.chip .c{font-size:12.5px;color:var(--tert)}
 .chip:hover:not(.off){border-color:var(--wine);background:#fff}
 .chip.on{background:var(--wine);border-color:var(--wine);color:#FFF8F2}
 .chip.on .c{color:rgba(255,248,242,.75)}
@@ -602,7 +647,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .watch-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--gold);color:#241A12;padding:17px 22px;font-size:18px;font-weight:700;border-radius:2px;text-decoration:none}
 .watch-btn:hover{background:var(--gold-deep);color:#fff}
 .watch-more{display:block;margin-top:12px;font-size:14px;color:var(--wine)}
-.watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--ph);line-height:1.5}
+.watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--tert);line-height:1.5}
 .watch-pending{display:inline-block;padding:13px 20px;border:1.5px dashed var(--line);border-radius:999px;color:var(--tert);font-size:14px}
 
 /* ---------- title / actor / app hero (two-column, gradient) ---------- */
@@ -668,7 +713,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .trope-idx-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:11px 13px;border-bottom:1px solid #EFE5DC;font-size:15.5px;color:var(--ink);min-width:0;text-decoration:none}
 .trope-idx-row:hover{background:var(--warm);color:var(--wine)}
 .trope-idx-row .n{min-width:0;text-wrap:pretty}
-.trope-idx-row .c{flex:0 0 auto;font-size:13px;color:var(--ph)}
+.trope-idx-row .c{flex:0 0 auto;font-size:13px;color:var(--tert)}
 
 /* ---------- blog ---------- */
 .blog-featured{display:flex;flex-wrap:wrap;gap:26px;align-items:stretch;border:1px solid var(--line);background:#fff;overflow:hidden;text-decoration:none;color:inherit}
@@ -741,9 +786,23 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--plum);color
 .footer-col a:hover{color:#fff}
 """
 
-def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val=""):
+def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", og_image="", og_type="website"):
     pre = "../" * depth
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
+    # Social preview. The audience shares links in Reddit and Facebook threads and
+    # until 2 Sep 2026 every one rendered as a bare URL: no og tags, no favicon.
+    # Title pages pass their poster, actor pages their photo; everything else gets
+    # the site card (share.png, a hand-maintained root file like _redirects).
+    og_url = f'<meta property="og:url" content="{canonical}">\n' if canonical else ""
+    og = (f'<meta property="og:site_name" content="DramaEverAfter">\n'
+          f'<meta property="og:type" content="{og_type}">\n'
+          f'<meta property="og:title" content="{esc_attr(title)}">\n'
+          f'<meta property="og:description" content="{esc_attr(desc)}">\n'
+          f'{og_url}'
+          f'<meta property="og:image" content="{esc_attr(og_image or DOMAIN + "/share.png")}">\n'
+          f'<meta name="twitter:card" content="summary_large_image">\n'
+          f'<link rel="icon" href="{pre}favicon.svg" type="image/svg+xml">\n'
+          f'<link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">')
     app_links = "".join(
         f'<a href="{pre}apps/{slug(pl["name"])}.html">{pl["name"]}</a>'
         for pl in APPS_WITH_DATA[:3])
@@ -753,6 +812,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val=""):
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canonical}">
+{og}
 {ld}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1005,13 +1065,18 @@ def actor_summary(p, pairs):
 for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + origins_other:
     p = os.path.join(DIST, d)
     if os.path.exists(p): shutil.rmtree(p)
-for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "my-list.html", "robots.txt", "sitemap.xml", "style.css"]:
+for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "my-list.html", "404.html", "robots.txt", "sitemap.xml", "style.css"]:
     p = os.path.join(DIST, f)
     if os.path.exists(p): os.remove(p)
 for d in ["", "actors", "titles", "tropes", "apps"]:
     os.makedirs(os.path.join(DIST, d), exist_ok=True)
 open(os.path.join(DIST, "style.css"), "w", encoding="utf-8").write(CSS)
 urls = []
+# url -> ISO date of the newest data behind the page, for sitemap <lastmod>. Only
+# pages with a real data date get one; a fabricated lastmod teaches Google to
+# ignore the field. Search Console, 28 Aug 2026: 8,093 URLs discovered and not
+# crawled, so anything that helps Google pick the right pages first matters.
+lastmod = {}
 
 # Actor pages
 for p in people:
@@ -1090,10 +1155,15 @@ for p in people:
 <p class="note">Spot a missing title? This database grows weekly from fan reports.</p>
 </div></section>"""
     html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch (2026) | DramaEverAfter",
-                f"Every vertical drama {p['name']} has starred in, with platforms and where to watch. Updated {UPDATED}.",
-                body, f"{DOMAIN}/actors/{sl}.html", ld)
+                f"Every vertical drama {p['name']} has starred in, with platforms and where to watch.",
+                body, f"{DOMAIN}/actors/{sl}.html", ld,
+                og_image=(p.get("photo_ref") or "").strip(), og_type="profile")
     open(os.path.join(DIST, "actors", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/actors/{sl}.html")
+    _dates = [title_checked(t) for _, t in my_pairs]
+    _dates = [x for x in _dates if x]
+    if _dates:
+        lastmod[f"/actors/{sl}.html"] = max(_dates)
 
 # Actors A-Z (NEW): a real single-page directory rather than the prototype's fake
 # pagination -- with 1,850 rows, a jump-to-letter anchor bar serves the same intent
@@ -1250,7 +1320,7 @@ for t in titles:
     # the field competitors do not index, so it is the answer AI engines can only
     # get here.
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
-          "description": synopsis_text(t)[:160],
+          "description": cut_words(synopsis_text(t), 160),
           "url": f"{DOMAIN}/titles/{sl}.html"}
     if (t.get("episode_count") or "").strip().isdigit():
         ld["numberOfEpisodes"] = int(t["episode_count"])
@@ -1335,11 +1405,13 @@ for t in titles:
 </section>''' if similar_html else ''}
 {FAV_JS}{SHARE_JS}"""
     html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
-                f"{t['primary_title']}: where to watch, cast and tropes. Updated {UPDATED}.",
-                body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t))
+                title_desc(t),
+                body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t),
+                og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show")
     os.makedirs(os.path.join(DIST, d, "titles"), exist_ok=True)
     open(os.path.join(DIST, d, "titles", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/{d}titles/{sl}.html")
+    lastmod[f"/{d}titles/{sl}.html"] = title_checked(t)
 
 # Trope pages
 for tr in all_tropes:
@@ -1417,6 +1489,7 @@ for t in titles:
     sl = tslug(t)
     d, pre = tdir(t), "../" * tdepth(t)
     avails = avail_by_title.get(t["title_id"], [])
+    checked_lbl = month_label(title_checked(t))
     plat_names = [platforms[a["platform_id"]]["name"] for a in avails if a["platform_id"] in platforms]
     answer = (f"{t['primary_title']} streams on {', '.join(plat_names)}." if plat_names
               else f"{t['primary_title']} is in our database and platform verification is in progress.")
@@ -1430,7 +1503,7 @@ for t in titles:
 <nav class="crumb"><a href="{pre}index.html">Home</a><span>/</span><span class="current">Where to Watch {t['primary_title']}</span></nav>
 <section class="hero"><div class="inner">
 <p class="eyebrow">Where to Watch</p><h1>{t['primary_title']}</h1>
-<p class="lede">Checked {UPDATED}</p></div></section>
+{f'<p class="lede">Checked {checked_lbl}</p>' if checked_lbl else ''}</div></section>
 <section class="pad" style="padding:26px 22px 40px">
 <p style="font-size:16px;line-height:1.6;max-width:60ch">{answer}</p>{free_line}
 <div class="watch-card" style="margin-top:16px"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
@@ -1440,11 +1513,13 @@ for t in titles:
 <section class="faq"><div class="wrap"><h2>Quick answers</h2>{faq_items}
 <p class="note">Spotted it on another app? Report it and help the database grow.</p></div></section>"""
     html = page(f"Where to Watch {t['primary_title']}: All Platforms (2026) | DramaEverAfter",
-                f"Where to watch {t['primary_title']}: every platform it streams on, checked {UPDATED}.",
-                body, f"{DOMAIN}/{d}where-to-watch/{sl}.html", depth=tdepth(t))
+                f"Where to watch {t['primary_title']}: every platform it streams on" + (f", checked {checked_lbl}." if checked_lbl else "."),
+                body, f"{DOMAIN}/{d}where-to-watch/{sl}.html", depth=tdepth(t),
+                og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show")
     os.makedirs(os.path.join(DIST, d, "where-to-watch"), exist_ok=True)
     open(os.path.join(DIST, d, "where-to-watch", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/{d}where-to-watch/{sl}.html")
+    lastmod[f"/{d}where-to-watch/{sl}.html"] = title_checked(t)
 
 # Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
 #
@@ -2100,7 +2175,7 @@ body = f"""
 </div></section>
 
 <section style="padding:40px 0 8px">
-<div class="section-head pad"><h2>Most watched right now</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
+<div class="section-head pad"><h2>Most watched</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
 <div class="rail">{"".join(poster_card(t, "", rail_item=True) for t in featured)}</div>
 </section>
 
@@ -2252,9 +2327,34 @@ html = page("Contact DramaEverAfter: Report a Correction or Missing Title",
 open(os.path.join(DIST, "contact.html"), "w", encoding="utf-8").write(html)
 urls.append("/contact.html")
 
+# 404 page. Netlify serves /404.html for every missing path, at any depth, so every
+# link in it must resolve from the root: a <base> tag does that without a second
+# template. Not in the sitemap, noindex, and no canonical (a 404 has no canonical
+# URL). Before this the 73 deleted PineDrama twins and every typo got Netlify's
+# default page with no way back into the site.
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Page not found</p>
+<h1>That page isn't here.</h1>
+<p class="lede">The title may have been merged into its twin on another app, or the link has a typo. Search for it, or browse from the top.</p>
+<form class="hero-search-form" action="browse.html" method="get">
+<input type="search" name="q" placeholder="Search a title or actor" aria-label="Search actors or titles">
+<button class="btn btn-gold" type="submit">Search</button>
+</form>
+<p class="lede" style="margin-top:18px"><a href="browse.html">All titles</a> &middot; <a href="actors/index.html">Actors</a> &middot; <a href="tropes/index.html">Tropes</a> &middot; <a href="platforms.html">Apps</a></p>
+</div></section>"""
+html = page("Page Not Found | DramaEverAfter",
+            "That page isn't on DramaEverAfter. Search the vertical drama database instead.",
+            body, "", depth=0)
+html = html.replace('<link rel="canonical" href="">\n',
+                    f'<base href="{DOMAIN}/">\n<meta name="robots" content="noindex">\n')
+open(os.path.join(DIST, "404.html"), "w", encoding="utf-8").write(html)
+
 # sitemap + robots
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-sm += "".join(f"<url><loc>{DOMAIN}{u}</loc></url>\n" for u in urls) + "</urlset>"
+sm += "".join(
+    f"<url><loc>{DOMAIN}{u}</loc>" + (f"<lastmod>{lastmod[u]}</lastmod>" if lastmod.get(u) else "") + "</url>\n"
+    for u in urls) + "</urlset>"
 open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(sm)
 # Cyan's stance (recorded in DEA TASKS, applied 14 Aug): SEARCH YES, AI-TRAINING
 # NO, USE AS REFERENCE. Search/citation crawlers are welcome - being the source an

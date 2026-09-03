@@ -28,3 +28,29 @@
 /tropes/small-potato.html  /tropes/index.html  301
 /tropes/twisted.html  /tropes/index.html  301
 /tropes/hidden-identity/reelshort.html  /tropes/secret-identity.html  301
+
+# The repo root is the publish directory, so everything below would otherwise be
+# served on the domain: the database CSVs, the generator, the staging files
+# (which hold verbatim platform synopses), the design kit and the worklists.
+# Audit, 2 Sep 2026. The repo stays public; the site stops mirroring it.
+/data/*           /404.html  404
+/generator/*      /404.html  404
+/references/*     /404.html  404
+/design-system/*  /404.html  404
+/.claude/*        /404.html  404
+/.design-sync/*   /404.html  404
+/.gitignore       /404.html  404
+/README.md        /404.html  404
+/HANDOVER.md      /404.html  404
+/AUDIT-2026-09-02.md  /404.html  404
+/ACTORS-FILMOGRAPHY.md  /404.html  404
+/ACTORS-PHOTOS.md  /404.html  404
+/AI-CHECK.md      /404.html  404
+/CAST-WANTED.md   /404.html  404
+/LOOKUPS.md       /404.html  404
+/POPULAR-ACTORS-LOOKUP.md  /404.html  404
+/REWRITE-QUEUE.md /404.html  404
+/TITLES-INCOMPLETE.md  /404.html  404
+/TROPE-CLEANUP-PROPOSAL.md  /404.html  404
+/TROPES-WANTED.md /404.html  404
+/.github/*        /404.html  404
