@@ -54,6 +54,15 @@ CREATE_ROUTES = {"tags", "home", "fandom", "wanted"}
 # into the company it would keep. Below that it is counted, not imported.
 POPULAR_MIN = 10_000_000
 
+# ReelShort's own tag names -> our vocabulary, where Cyan has ruled the two are
+# one thing. Anything else must match tropes.csv exactly or it is reported,
+# never invented (the trope vocabulary is hers).
+TAG_ALIASES = {"lgbtq+": "bl", "lgbtq": "bl", "rom com": "rom-com", "romcom": "rom-com"}
+# UMBRELLAS. Cyan, 3 Sep 2026: "High Fantasy should definitely be a trope that
+# is linked a fair amount to, for example, the werewolves, dragons, elves, and
+# mermaids, magic, all of that." A title carrying any member gets the umbrella.
+UMBRELLAS = {"high fantasy": {"werewolf", "dragon", "elf", "elves", "mermaid", "magic", "high fantasy"}}
+
 
 def views_num(s):
     s = (s or "").strip().upper().replace(",", "")
@@ -135,6 +144,7 @@ def main():
     mq, mf = load("match_queue.csv")
     credits, cf = load("credits.csv")
     people, _ = load("people.csv")
+    trope_rows, trf = load("tropes.csv")
 
     by_id = {t["title_id"]: t for t in titles}
     by_bare, by_nohyphen = {}, {}
@@ -293,10 +303,64 @@ def main():
     # Applied after creation so a title she names lands with its ruling.
     rulings_applied, tropes_unknown, rulings_unmatched = [], [], []
     vocab = {}
-    for tr in load("tropes.csv")[0]:
+    for tr in trope_rows:
         for key in (tr.get("name", ""), tr.get("slug", ""), tr.get("trope_id", "")):
             if key:
                 vocab[re.sub(r"[^a-z0-9]", "", key.lower())] = tr.get("name") or tr.get("trope_id")
+
+    def add_trope(t, name):
+        have = [x.strip() for x in (t.get("tropes") or "").split(";") if x.strip()]
+        if name not in have:
+            t["tropes"] = ";".join(have + [name])
+            return True
+        return False
+
+    # TAGS FROM THE PLATFORM'S OWN TAG PAGES -> tropes, vocabulary only.
+    tag_unknown, tags_applied = Counter(), 0
+    for bid, b in books.items():
+        row = link_rows.get(bid)
+        t = by_id.get(row["title_id"]) if row else None
+        if t is None:
+            continue
+        for tag in b.get("tags") or []:
+            key = TAG_ALIASES.get(tag.lower(), tag.lower())
+            name = vocab.get(re.sub(r"[^a-z0-9]", "", key))
+            if not name:
+                tag_unknown[tag] += 1
+            elif add_trope(t, name):
+                tags_applied += 1
+
+    # AI EVIDENCE: the platform page says AI-generated and Cyan has not ruled.
+    ai_evidence = sorted({link_rows[bid]["title_id"] for bid, b in books.items()
+                          if b.get("platform_says_ai") and bid in link_rows
+                          and not (by_id.get(link_rows[bid]["title_id"]) or {}).get("ai")})
+
+    # CYAN'S "SAME" RULINGS ON WEEKLY-SCRAPE MATCH_QUEUE ROWS: link the held
+    # title to the ReelShort page named in the evidence, fill-blank, and take
+    # this run's counts when the book is in it.
+    linked_same = []
+    for r in mq:
+        if "weekly scrape" not in r.get("candidate_b", "") or not r.get("status", "").startswith("confirmed_same"):
+            continue
+        m = MOVIE_RE.search(r.get("evidence", ""))
+        tid = r["candidate_a"].split()[0]
+        if not m or tid not in by_id or m.group(2) in link_rows:
+            continue
+        row = plat_rows.get(tid)
+        if row is None:
+            row = {k: "" for k in af}
+            row.update({"title_id": tid, "platform_id": PLATFORM,
+                        "title_as_listed_on_platform": by_id[tid]["primary_title"]})
+            avail.append(row)
+            plat_rows[tid] = row
+        row["direct_link"] = "%s" % ("https://www.reelshort.com" + m.group(0)) if not m.group(0).startswith("http") else m.group(0)
+        link_rows[m.group(2)] = row
+        b = books.get(m.group(2))
+        if b and b.get("status") != 404 and (b.get("title") or b.get("views")):
+            touch(by_id[tid], row, b)
+        else:
+            row["last_checked"] = row.get("last_checked") or today
+        linked_same.append((tid, row["direct_link"]))
     wanted_path = os.path.join(HERE, "staging", "%s_wanted.txt" % PLATFORM)
     if os.path.exists(wanted_path):
         for raw in io.open(wanted_path, encoding="utf-8"):
@@ -326,15 +390,34 @@ def main():
                 t["ai"] = flags["ai"]
                 rulings_applied.append((tid, "ai=" + flags["ai"]))
             for want in [x for x in re.split(r"[;,]", flags.get("tropes", "")) if x.strip()]:
-                name = vocab.get(re.sub(r"[^a-z0-9]", "", want.lower()))
+                key = TAG_ALIASES.get(want.lower().replace("-", " "), want.lower())
+                name = vocab.get(re.sub(r"[^a-z0-9]", "", key))
                 if not name:
                     tropes_unknown.append((tid, want))
                     continue
-                have = [x.strip() for x in (t.get("tropes") or "").split(";") if x.strip()]
-                if name not in have:
-                    t["tropes"] = ";".join(have + [name])
+                if add_trope(t, name):
                     rulings_applied.append((tid, "trope +" + name))
     n["rulings_unmatched"] = len(rulings_unmatched)
+
+    # UMBRELLA TROPES, every title, idempotent. The umbrella row must exist in
+    # tropes.csv (it is vocabulary), else nothing is added and it is reported.
+    umbrella_added = Counter()
+    for umb, members in UMBRELLAS.items():
+        if re.sub(r"[^a-z0-9]", "", umb) not in vocab:
+            tropes_unknown.append(("(umbrella)", umb))
+            continue
+        for t in titles:
+            have = {x.strip().lower() for x in (t.get("tropes") or "").split(";") if x.strip()}
+            if have & members and umb not in have and add_trope(t, vocab[re.sub(r"[^a-z0-9]", "", umb)]):
+                umbrella_added[umb] += 1
+
+    # tropes.csv title_count, recomputed from the titles every run.
+    tcount = Counter()
+    for t in titles:
+        for x in {x.strip().lower() for x in (t.get("tropes") or "").split(";") if x.strip()}:
+            tcount[x] += 1
+    for tr in trope_rows:
+        tr["title_count"] = str(tcount.get((tr.get("name") or "").lower(), 0))
 
     for d in doc.get("delisted") or []:
         tid = d.get("title_id") or (link_rows.get(d.get("book_id"), {}) or {}).get("title_id", "")
@@ -372,6 +455,11 @@ def main():
     lines.append("| ReelShort rows still older than %d days | %d |" % (STALE_DAYS, stale))
     lines.append("| Rulings applied from the wanted file / lines still unmatched | %d / %d |"
                  % (len(rulings_applied), n["rulings_unmatched"]))
+    lines.append("| Tropes from ReelShort's tag pages (vocabulary only) / tag names unknown | %d / %d |"
+                 % (tags_applied, len(tag_unknown)))
+    lines.append("| Umbrella tropes added | %s |" % (", ".join("%s %d" % kv for kv in umbrella_added.items()) or "0"))
+    lines.append("| Linked on Cyan's confirmed_same rulings | %d |" % len(linked_same))
+    lines.append("| Platform page says AI-generated, no ruling yet | %d |" % len(ai_evidence))
     lines.append("| Scrape errors | %d |" % len(doc.get("errors") or []))
     lines.append("")
     lines.append("Routes: " + ", ".join("%s %s" % (k, json.dumps(v)) for k, v in routes.items()))
@@ -397,6 +485,18 @@ def main():
     if tropes_unknown:
         lines += ["", "### Tropes not in the vocabulary (tropes.csv), not applied", ""]
         lines += ["- `%s`: %s" % x for x in tropes_unknown]
+    if tag_unknown:
+        lines += ["", "### ReelShort tag names not in our vocabulary (Cyan decides; count of books)", ""]
+        lines += ["- %s (%d)" % kv for kv in tag_unknown.most_common(40)]
+    if linked_same:
+        lines += ["", "### Linked to ReelShort on Cyan's confirmed_same rulings", ""]
+        lines += ["- `%s` %s" % x for x in linked_same]
+    if ai_evidence:
+        lines += ["", "### ReelShort's own page says AI-generated, awaiting Cyan's ruling", ""]
+        lines += ["- `%s`" % x for x in ai_evidence[:60]]
+    disc = doc.get("discovered_tags") or []
+    if disc:
+        lines += ["", "%d ReelShort tag listing pages discovered (add to reelshort_tags.txt to sweep them)." % len(disc)]
     if credits_added:
         lines += ["", "### Credits added (exact name, one person)", ""]
         lines += ["- %s: %s" % c for c in credits_added[:60]]
@@ -419,6 +519,7 @@ def main():
     save("snapshots.csv", sf, snaps)
     save("match_queue.csv", mf, mq)
     save("credits.csv", cf, credits)
+    save("tropes.csv", trf, trope_rows)
     print("written")
     return 0
 

@@ -299,6 +299,22 @@ def books_in(data, id_to_slug):
 
 # --- the run ------------------------------------------------------------------
 
+def tag_title(html):
+    """'Zombie Movie List | ReelShort' -> 'zombie'; 'Enemies to Lovers Movie
+    Collection | ReelShort' -> 'enemies to lovers'. The tag's own name, in
+    English, from the page title; the URL slug may be localised."""
+    m = re.search(r"<title>(.*?)</title>", html, re.S | re.I)
+    if not m:
+        return ""
+    t = clean(m.group(1))
+    t = re.sub(r"\s*\|\s*ReelShort.*$", "", t, flags=re.I)
+    t = re.sub(r"\s+(Movie|Movies|Drama|Dramas)\s+(List|Collection)s?$", "", t, flags=re.I)
+    return t.strip().lower()
+
+
+AI_SAYS_RE = re.compile(r"AI[- ]generated", re.I)
+
+
 class Run:
     def __init__(self, fetch):
         self.fetch = fetch
@@ -306,19 +322,33 @@ class Run:
         self.delisted = []
         self.errors = []
         self.routes = {}
+        self.discovered_tags = set()
 
-    def note(self, book, via, url=""):
+    def note(self, book, via, url="", fresh=True):
+        """fresh=True: this run read the platform, so views and counts are the
+        newest and REPLACE what is held. fresh=False: preloading an earlier run's
+        record from the same day, fill only."""
         cur = self.books.get(book["book_id"])
         if cur is None:
-            cur = dict(book, seen_via=[], actors=list(book["actors"]), status=200)
+            cur = dict(book, seen_via=[], actors=list(book.get("actors") or []), status=book.get("status", 200))
+            cur.setdefault("tags", [])
             self.books[book["book_id"]] = cur
         else:
             for k in ("title", "views", "views_raw", "episodes", "synopsis", "poster", "slug", "year"):
-                if book.get(k) and (not cur.get(k) or (k == "synopsis" and len(book[k]) > len(cur[k]))):
+                if not book.get(k):
+                    continue
+                if fresh and k in ("views", "views_raw", "episodes"):
                     cur[k] = book[k]
-            for a in book["actors"]:
+                elif not cur.get(k) or (k == "synopsis" and len(book[k]) > len(cur.get(k) or "")):
+                    cur[k] = book[k]
+            for a in book.get("actors") or []:
                 if a not in cur["actors"]:
                     cur["actors"].append(a)
+        for tg in book.get("tags") or []:
+            if tg not in cur.setdefault("tags", []):
+                cur["tags"].append(tg)
+        if book.get("platform_says_ai"):
+            cur["platform_says_ai"] = True
         if via not in cur["seen_via"]:
             cur["seen_via"].append(via)
         if url and not cur.get("url"):
@@ -346,12 +376,18 @@ class Run:
                     self.errors.append({"route": "tags", "url": url, "page": page, "status": "no __NEXT_DATA__"})
                     break
                 id_to_slug = hrefs_of(html)
+                if page == 1:
+                    for t_url in set(re.findall(r'href="(/tags/[a-z-]+/[^"/]+-[0-9a-f]{24})', html)):
+                        self.discovered_tags.add(BASE + t_url)
+                tag_name = "" if row.get("actor") else tag_title(html)
                 found = 0
                 for b in books_in(data, id_to_slug):
                     if row.get("actor"):
                         b["actors"] = [row["actor"]] + [a for a in b["actors"] if a != row["actor"]]
                     else:
                         b["actors"] = []   # a genre page asserts no credit; actor_info there is noise
+                        if tag_name:
+                            b["tags"] = [tag_name]   # ReelShort's own tag for this book
                     self.note(b, via)
                     seen_ids.add(b["book_id"])
                     found += 1
@@ -532,6 +568,11 @@ class Run:
                     got["poster"] = og_image(html)
                 if not got.get("year"):
                     got["year"] = year_from_ldjson(html)
+                if AI_SAYS_RE.search(html):
+                    # The page itself says AI-generated (ReelShort's AI animated
+                    # originals carry this in their description). Evidence for
+                    # Cyan's ruling, never the ruling: merge_scrape reports it.
+                    got["platform_says_ai"] = True
                 true_slug =canonical_slug(html, bid) or got["slug"] or id_to_slug.get(bid, "")
                 cur = self.note(got, "detail", url=url)
                 if true_slug:
@@ -565,6 +606,32 @@ def main():
     fetch = Fetcher(a.pause)
     run = Run(fetch)
     started = datetime.datetime.now(datetime.timezone.utc)
+    out_path = a.out or os.path.join(STAGING, "reelshort_%s.json" % started.date().isoformat())
+
+    # A SECOND RUN ON THE SAME DAY MERGES INTO THE DAY'S FILE, never overwrites
+    # it (the handover trap of 24 Aug, and it bit again on 3 Sep: run 4 replaced
+    # run 3's record of 753 books). Earlier books are kept as a base; anything
+    # this run reads replaces their counts.
+    earlier_runs = []
+    if os.path.exists(out_path):
+        try:
+            prev = json.load(io.open(out_path, encoding="utf-8"))
+        except ValueError:
+            prev = {}
+        for bid, b in (prev.get("books") or {}).items():
+            b = dict(b)
+            vias = b.pop("seen_via", []) or []
+            run.note(b, vias[0] if vias else "earlier", fresh=False)
+            for v in vias:
+                if v not in run.books[bid]["seen_via"]:
+                    run.books[bid]["seen_via"].append(v)
+        run.delisted = list(prev.get("delisted") or [])
+        earlier_runs = list(prev.get("runs") or [])
+        if prev.get("scraped_at") and not any(r.get("scraped_at") == prev["scraped_at"] for r in earlier_runs):
+            earlier_runs.append({"scraped_at": prev.get("scraped_at"), "finished_at": prev.get("finished_at"),
+                                 "requests": prev.get("requests"), "routes": prev.get("routes")})
+        run.discovered_tags.update(prev.get("discovered_tags") or [])
+        print("preloaded %d books from %s" % (len(run.books), os.path.basename(out_path)))
 
     known = {}   # book_id -> (url, title_id) for every ReelShort link we hold
     for r in rows("availability.csv"):
@@ -632,11 +699,12 @@ def main():
         "finished_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
         "requests": fetch.requests,
         "routes": run.routes,
+        "runs": earlier_runs,
+        "discovered_tags": sorted(run.discovered_tags),
         "books": dict(sorted(run.books.items())),
         "delisted": run.delisted,
         "errors": run.errors,
     }
-    out_path = a.out or os.path.join(STAGING, "reelshort_%s.json" % started.date().isoformat())
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     io.open(out_path, "w", encoding="utf-8", newline="\n").write(
         json.dumps(out, ensure_ascii=False, indent=1, sort_keys=True) + "\n")

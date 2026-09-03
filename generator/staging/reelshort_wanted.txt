@@ -49,7 +49,7 @@ Pregnant by His Alpha Brother  ai=yes
 She Bows for No One  ai=yes
 The Stone Cursed King's Blood Bride  ai=yes
 The Raven Wolf King: Wolfless  ai=yes
-A Cinderella for the Wolf King  ai=yes
+A Cinderella for Wolf King  ai=yes   # ReelShort spells it without "the"; run 3 found it at 12.1M
 Outgrowing My Old Magic Love  ai=yes
 His Partner, Her Revenge  ai=yes
 The Furless One  ai=yes
@@ -145,3 +145,62 @@ Offered to the Triplet Alpha
 Little Miss Fortune   # dictated "Little Misfortune"; run 3 found it at 21.8M
 Bound by Beauty
 The New CEO Turns Out to Be My Gynecologist
+
+# ---- ReelShort hot list, read out by Cyan 3 Sep 2026 -----------------------
+# Her AI/human calls are rulings; her trope notes are applied where the name is
+# in tropes.csv (ReelShort's LGBTQ+ tag is our bl, her ruling). Tag names she
+# saw that are NOT in our vocabulary, for her to decide on: music, high society,
+# royalty, toxic romance, country, new adult, strong heroine, bully romance,
+# regret, zero to hero, reverse harem, action, fated lovers, upgrade from ex.
+# "High fantasy" IS added (umbrella over werewolf, dragon, elf, mermaid, magic).
+Late Bloomer   # Cyan: could be a Chinese one
+Scandalous  tropes=age-gap
+Breathe  tropes=age-gap
+Rent a Mom for the Billionaire Twins  tropes=age-gap
+CEO's Irresistible Wet Nurse
+My Step-Brother Is My Ex
+Sugar Daddy: Sweet Pursuit  tropes=age-gap;friends-to-lovers   # Cyan: could be Chinese
+Love Has a Deadline  tropes=high-fantasy
+Pucked in the Friend Zone  ai=no
+Keeping the Cowboy's Baby  ai=no tropes=cowboy;forbidden-love
+Unconditionally Loved by the Billionaire  ai=no tropes=playing-dumb;billionaire   # Cyan: looks human
+The Alpha and His Nanny Luna  tropes=werewolf;luna   # Cyan: looks AI, double-check; the page-says-AI report settles it
+The Ugly Girl Turned Pretty  ai=yes tropes=playing-dumb
+The Mongrel Husband Bought for $5,000  ai=yes tropes=playing-dumb
+Hate to Love You  ai=no
+Make My Cheating Husband Pay the Price  ai=yes tropes=billionaire
+100-Day Contract: Mafia's Dangerous Desire  ai=yes tropes=mafia;revenge
+My Boss Is My Secret Online Dom  ai=yes tropes=playing-dumb
+How to Land a Movie Star  ai=no tropes=workplace;rom-com
+The Fake Dating Spell  ai=yes tropes=young-adult;fake-dating   # Cyan: check whether high fantasy
+My Fireplace Ships to Dragon Realm  tropes=dragon;high-fantasy   # dictated; probably misheard, will show as waiting
+Nanny to My Hot Bully  ai=no tropes=young-adult
+The Tutor Trap  ai=no
+Once Upon a Breakup  ai=no tropes=young-adult
+Taming the Lion  ai=no tropes=billionaire;rom-com   # dictated "Taming the Lion: Billionaire on Box"
+The Seduction Game  ai=no tropes=young-adult
+The Rabbit Bride Who Rejected Her Alpha King  ai=yes tropes=playing-dumb
+Offside with the Hockey Star  ai=yes tropes=young-adult;love-triangle
+My Two Dangerous Roommates Crave Me  ai=yes tropes=bl;love-triangle
+Blitzed by My Rival's Obsession  tropes=bl;enemies-to-lovers   # Cyan thinks AI, no tag seen; page-says-AI report settles it
+Waking Up Pregnant   # Cyan: poster says this, title page says Spoiled by the Daddy CEO During Pregnancy; which is right?
+Daddy We're Done  ai=yes
+Your Husband Is Mine  ai=no tropes=billionaire;revenge
+He Paid for One Night, Then Wanted Forever  ai=yes tropes=billionaire
+The Dragons Return: Reclaiming My Throne  tropes=dragon;high-fantasy
+Chained by Hades, the Underworld King  tropes=high-fantasy
+Reborn to Love Mr. Right  ai=no
+Hating and Loving My Adopted Brother  ai=no
+The Mafia Boss Has a Gun  ai=no
+Darling Don't Run  ai=no
+The Virgin's Bucket List  ai=no
+Legally Bound  ai=no
+Legally Bound to Love  ai=no
+Unexpected  ai=no
+Married to a Billionaire Nurse  ai=no   # dictated "Not: Married to a Billionaire Nurse"
+Faked My Death, Destroyed the Billionaire  ai=yes tropes=billionaire;revenge
+Caught the Ruthless Alpha's Runaway Luna  ai=yes tropes=werewolf
+Fake Husband, Hidden King  ai=yes tropes=billionaire;secret-identity
+Two Snakes, One Mate  ai=yes
+A Cinderella for Wolf King  tropes=werewolf;fated-mates   # ai=yes is on its earlier line
+The Alpha King Sold Me to the War God  tropes=werewolf
