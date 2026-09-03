@@ -1,0 +1,17 @@
+# ReelShort tag listing pages the weekly scrape sweeps (route "genres").
+# One URL per line, no page suffix (the scraper paginates /2, /3 ... itself).
+# Same __NEXT_DATA__ shape as the actor tag pages in harvest_queue.csv.
+# Found 3 Sep 2026 by restricted web search (adapters.md sec 25 method).
+# A genre page asserts no credit; it gives title, views, episodes, synopsis.
+# merge_scrape.py creates from these only above POPULAR_MIN views.
+#
+# The drama style tag runs 160+ pages, near the whole catalogue.
+https://www.reelshort.com/tags/movie-styles/drammatico-movies-676d210c4582b53a140819c2
+# Moods and themes that matter to this audience and to the new AI animated titles.
+https://www.reelshort.com/tags/movie-moods/k%C4%B1yamet-movies-676d210d4582b53a14081a1e
+https://www.reelshort.com/tags/movie-moods/%E6%AE%AD%E5%B1%8D-movies-676d210d4582b53a14081a0e
+https://www.reelshort.com/tags/movie-themes/survival-movies-676d210d4582b53a140819ca
+https://www.reelshort.com/tags/movie-moods/cult-movies-676d210d4582b53a140819e1
+# Story beats.
+https://www.reelshort.com/tags/story-beats/rebirth-movies-676d210f4582b53a14081b06
+https://www.reelshort.com/tags/story-beats/enemies-to-lovers-movies-676d210f4582b53a14081afb

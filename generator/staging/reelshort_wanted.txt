@@ -1,0 +1,11 @@
+# Titles Cyan wants in the database, one ReelShort /movie/ URL per line.
+# The weekly scrape fetches each one every run (route "wanted"), so a title
+# named here is created on the next run and refreshed on every run after.
+# Lines starting with # are ignored. A URL that is already held costs one
+# request and refreshes it; harmless to leave in place.
+#
+# 3 Sep 2026, Cyan: "a new apocalypse one doing well". ReelShort's own page
+# calls it an AI-generated animated original, so it has no human cast and no
+# actor tag page could ever surface it. Note for the ai column: that label is
+# set by hand only; this is the evidence, not the ruling.
+https://www.reelshort.com/movie/a-zombie-girl-s-journey-home-6a8d2d531616ebd404056b3e

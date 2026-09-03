@@ -27,8 +27,8 @@ on:
         description: Cap actor tag pages and detail fetches (0 = no cap). For a quick probe.
         default: "0"
       routes:
-        description: Scrape routes, comma separated (tags,home,fandom,sitemap,detail)
-        default: "tags,home,fandom,detail"
+        description: Scrape routes, comma separated (tags,genres,home,fandom,wanted,sitemap,detail)
+        default: "tags,genres,home,fandom,wanted,detail"
 
 permissions:
   contents: write
@@ -55,7 +55,7 @@ jobs:
           python3 generator/scrape_reelshort.py \
             --out "$OUT" \
             --limit "${{ github.event.inputs.limit || '0' }}" \
-            --routes "${{ github.event.inputs.routes || 'tags,home,fandom,detail' }}"
+            --routes "${{ github.event.inputs.routes || 'tags,genres,home,fandom,wanted,detail' }}"
 
       - name: Merge into data/
         id: merge

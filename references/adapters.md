@@ -672,3 +672,16 @@ publish. Cyan chose ReelShort first, direct to main, Sunday afternoon (3 Sep).
   leads with titles whose source is a weekly run within 90 days, newest
   first, then the year ordering. The scraper also takes a year from any
   dated field in the book dict or the page's ld+json, fill-blank-only.
+- 3 Sep 2026, later: two more routes. WANTED, `generator/staging/
+  reelshort_wanted.txt`, one /movie/ URL per line for a title Cyan names;
+  fetched every run, created on the next. GENRES, `generator/staging/
+  reelshort_tags.txt`: ReelShort's own tag listing pages exist for moods,
+  themes, styles and story beats (/tags/movie-moods/..., /tags/story-beats/...,
+  /tags/movie-styles/drammatico-movies-... runs 160+ pages), same
+  __NEXT_DATA__ tagBooks shape as the actor tags, paginated /2, /3. This is
+  the near-whole catalogue with view counts and the only route to a title
+  with no human cast (ReelShort's AI animated originals, e.g. A Zombie Girl's
+  Journey Home, 6a8d2d531616ebd404056b3e). A genre page asserts no credit.
+  merge_scrape.py creates from a sweep only above POPULAR_MIN (10M views;
+  the held catalogue's median is 37.8M, 506 of 566 rows above 10M); the rest
+  is counted in the summary as catalogue only.

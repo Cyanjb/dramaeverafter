@@ -46,7 +46,24 @@ DATA = os.environ.get("DEA_DATA") or os.path.join(os.path.dirname(HERE), "data")
 PLATFORM = "reelshort"
 STALE_DAYS = 45
 MOVIE_RE = re.compile(r"/movie/([a-z0-9]+(?:-[a-z0-9]+)*)-([0-9a-f]{24})\b")
-CREATE_ROUTES = {"tags", "home", "fandom"}
+CREATE_ROUTES = {"tags", "home", "fandom", "wanted"}
+# A book seen ONLY on a catalogue sweep (genre tag pages, a sitemap) is created
+# when it is genuinely popular. Cyan's rule is newest, most popular, or credited
+# to someone we track. The held ReelShort catalogue's median is 37.8M views and
+# 506 of 566 rows sit above 10M (measured 3 Sep 2026), so 10M admits a title
+# into the company it would keep. Below that it is counted, not imported.
+POPULAR_MIN = 10_000_000
+
+
+def views_num(s):
+    s = (s or "").strip().upper().replace(",", "")
+    if not s:
+        return 0
+    mult = {"B": 1e9, "M": 1e6, "K": 1e3}.get(s[-1], 1)
+    try:
+        return float(s[:-1] if s[-1] in "BMK" else s) * mult
+    except ValueError:
+        return 0
 # CONVENTIONS.md: ReelTalk episodes, The Next ReelStar and other unscripted or
 # interview content are excluded from titles.csv. The first live probe (3 Sep
 # 2026) would have created seven ReelTalk episodes from actor tag pages.
@@ -217,7 +234,7 @@ def main():
             n["unconfirmed_url"] += 1
             continue
         slug, name, url = b["slug"], b["title"], b.get("url") or ""
-        if not (set(b.get("seen_via") or []) & CREATE_ROUTES):
+        if not (set(b.get("seen_via") or []) & CREATE_ROUTES) and views_num(b.get("views")) < POPULAR_MIN:
             catalogue_only += 1
             continue
         existing = by_id.get(slug)
@@ -299,7 +316,8 @@ def main():
     lines.append("| Episode counts / posters / links / years filled | %d / %d / %d / %d |"
                  % (n["episodes_filled"], n["posters_filled"], n["links_filled"], n["years_filled"]))
     lines.append("| Delisted (404, not deleted) | %d |" % len(delisted_report))
-    lines.append("| Seen only in a sitemap, not imported | %d |" % catalogue_only)
+    lines.append("| Catalogue only (genre sweep or sitemap, under %dM views), not imported | %d |"
+                 % (POPULAR_MIN // 1_000_000, catalogue_only))
     lines.append("| Excluded as unscripted (ReelTalk and kin) | %d |" % n["excluded"])
     lines.append("| Skipped: no title or slug / URL unconfirmed | %d / %d |" % (n["no_data"], n["unconfirmed_url"]))
     lines.append("| ReelShort rows still older than %d days | %d |" % (STALE_DAYS, stale))

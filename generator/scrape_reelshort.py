@@ -20,6 +20,18 @@ ROUTES, in order:
            actor credit attached.
   home     The homepage: every /movie/ href and every book dict in its
            __NEXT_DATA__ (new releases and trending rails).
+  wanted   generator/staging/reelshort_wanted.txt: /movie/ URLs Cyan names,
+           one per line. "A Zombie Girl's Journey Home" (3 Sep 2026) has no
+           human cast, so no actor tag page can surface it; a named title is
+           the purest form of "chosen, not swept". Fetched every run.
+  genres   generator/staging/reelshort_tags.txt: ReelShort's own genre, mood,
+           theme, style and story-beat tag pages (/tags/movie-moods/...,
+           /tags/story-beats/..., found 3 Sep 2026), same __NEXT_DATA__ shape
+           as actor tags, paginated with /2, /3. The drama style tag alone runs
+           160+ pages, so this is close to the whole catalogue with view counts,
+           and it is how a title with NO human cast (an AI animated original)
+           can be found at all. It asserts no credits. merge_scrape.py creates
+           from it only above a view threshold: most popular, not swept.
   fandom   The newest 100 posts on the ReelShort fandom blog (adapters.md
            sec 3, open WordPress REST). Every /movie/ link in them is a title
            ReelShort is currently writing about. This is the route the 24 July
@@ -293,11 +305,11 @@ class Run:
             cur["url"] = "%s/movie/%s-%s" % (BASE, cur["slug"], cur["book_id"])
         return cur
 
-    # route: actor tag pages
-    def tags(self, queue, max_pages, limit):
+    # route: tag pages (actor tags credit the actor; genre tags do not)
+    def tags(self, queue, max_pages, limit, via="tags"):
         seen_ids, pages, failed = set(), 0, 0
         for i, row in enumerate(queue[:limit] if limit else queue):
-            url = row["url"].rstrip("/")
+            url = re.sub(r"/\d+$", "", row["url"].rstrip("/"))
             page = 1
             while page <= max_pages:
                 status, html = self.fetch.get(url if page == 1 else "%s/%d" % (url, page))
@@ -314,8 +326,11 @@ class Run:
                 id_to_slug = hrefs_of(html)
                 found = 0
                 for b in books_in(data, id_to_slug):
-                    b["actors"] = [row["actor"]] + [a for a in b["actors"] if a != row["actor"]]
-                    self.note(b, "tags")
+                    if row.get("actor"):
+                        b["actors"] = [row["actor"]] + [a for a in b["actors"] if a != row["actor"]]
+                    else:
+                        b["actors"] = []   # a genre page asserts no credit; actor_info there is noise
+                    self.note(b, via)
                     seen_ids.add(b["book_id"])
                     found += 1
                 total, size = None, 10
@@ -327,10 +342,11 @@ class Run:
                 if found == 0 or total is None or page * size >= total:
                     break
                 page += 1
-            print("tags %4d/%d %-32s books so far %d" % (i + 1, len(queue), row["actor"][:32], len(self.books)))
+            print("%s %4d/%d %-32s pages %d books so far %d"
+                  % (via, i + 1, len(queue), (row.get("actor") or url.rsplit("/", 1)[-1])[:32], pages, len(self.books)))
             sys.stdout.flush()
-        self.routes["tags"] = {"actors": min(len(queue), limit or len(queue)), "pages": pages,
-                               "failed": failed, "books": len(seen_ids)}
+        self.routes[via] = {"pages_listed": min(len(queue), limit or len(queue)), "pages": pages,
+                            "failed": failed, "books": len(seen_ids)}
 
     # route: homepage rails
     def home(self):
@@ -351,6 +367,23 @@ class Run:
         else:
             self.errors.append({"route": "home", "url": BASE + "/", "status": status})
         self.routes["home"] = info
+
+    # route: titles Cyan named by URL
+    def wanted(self, path):
+        info = {"file": os.path.basename(path), "urls": 0}
+        if os.path.exists(path):
+            for line in io.open(path, encoding="utf-8"):
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                m = MOVIE_RE.search(line)
+                if not m:
+                    self.errors.append({"route": "wanted", "url": line, "status": "not a /movie/ URL"})
+                    continue
+                info["urls"] += 1
+                self.note({"book_id": m.group(2), "slug": m.group(1), "title": "", "views": "", "views_raw": "",
+                           "episodes": "", "synopsis": "", "poster": "", "actors": [], "year": ""}, "wanted")
+        self.routes["wanted"] = info
 
     # route: fandom blog, newest posts
     def fandom(self, per_page=100):
@@ -458,10 +491,11 @@ def rows(name):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="")
-    ap.add_argument("--routes", default="tags,home,fandom,detail",
-                    help="comma list from tags,home,fandom,sitemap,detail")
+    ap.add_argument("--routes", default="tags,genres,home,fandom,wanted,detail",
+                    help="comma list from tags,genres,home,fandom,wanted,sitemap,detail")
     ap.add_argument("--limit", type=int, default=0, help="cap actor tag pages and detail targets (probe runs)")
-    ap.add_argument("--tag-pages-max", type=int, default=8)
+    ap.add_argument("--tag-pages-max", type=int, default=8, help="pages per actor tag")
+    ap.add_argument("--genre-pages-max", type=int, default=250, help="pages per genre tag")
     ap.add_argument("--pause", type=float, default=PAUSE)
     a = ap.parse_args()
     routes = [r.strip() for r in a.routes.split(",") if r.strip()]
@@ -482,10 +516,17 @@ def main():
         queue = [h for h in rows("harvest_queue.csv")
                  if "reelshort.com/tags/" in h["url"] and h["status"] != "dead_404"]
         run.tags(queue, a.tag_pages_max, a.limit)
+    if "genres" in routes:
+        path = os.path.join(STAGING, "reelshort_tags.txt")
+        queue = [{"url": ln.strip(), "actor": ""} for ln in io.open(path, encoding="utf-8")
+                 if ln.strip() and not ln.startswith("#")] if os.path.exists(path) else []
+        run.tags(queue, a.genre_pages_max, 0, via="genres")
     if "home" in routes:
         run.home()
     if "fandom" in routes:
         run.fandom()
+    if "wanted" in routes:
+        run.wanted(os.path.join(STAGING, "reelshort_wanted.txt"))
     if "sitemap" in routes:
         run.sitemap()
     # A book with a title but no href gets a slug in ReelShort's own style; the
