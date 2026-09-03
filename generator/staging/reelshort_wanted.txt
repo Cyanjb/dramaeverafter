@@ -64,7 +64,7 @@ When the Wolf Fell in Love  ai=yes   # held as a GoodShort title
 Date with the Zombie King  ai=yes
 Forbidden Bonds: Fated to the Ocean God  ai=yes
 Revenge of the Black Swan  ai=yes
-The Larkin's Savage Luna  ai=yes
+The Lycan's Savage Luna  ai=yes   # dictated "Larkin's Savage Lunar"; run 3 found it at 67M
 Locked by the Mafia Boss  ai=yes
 Wrong Heir, Right Her  ai=yes   # dictated "wrong air right her"
 Tempted by My Stepson  ai=yes
@@ -142,6 +142,6 @@ I Rule the Wasteland Harem
 Wasteland Sovereign
 Thirsty for the Wet Nurse
 Offered to the Triplet Alpha
-Little Misfortune
+Little Miss Fortune   # dictated "Little Misfortune"; run 3 found it at 21.8M
 Bound by Beauty
 The New CEO Turns Out to Be My Gynecologist
