@@ -461,8 +461,14 @@ def main():
             b = run.books.get(bid)
             if b is None or not b.get("views"):
                 targets.append((bid, url, tid))
+        # Unknown books: fetch when there is no title yet, when the slug was
+        # guessed, or when the rail gave no view count (probe 2, 3 Sep: several
+        # homepage books arrived with a title and no read_count; a new title
+        # with no views ranks nowhere and its page would show no episodes).
         for bid, b in run.books.items():
-            if bid not in known and (not b.get("title") or b.get("slug_guessed")) and b.get("slug"):
+            if bid in known or not b.get("slug"):
+                continue
+            if not b.get("title") or b.get("slug_guessed") or not b.get("views"):
                 targets.append((bid, b.get("url") or "%s/movie/%s-%s" % (BASE, b["slug"], bid), None))
         if a.limit:
             targets = targets[:a.limit]
