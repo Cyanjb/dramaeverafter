@@ -59,7 +59,7 @@ Output:
    "delisted": [{"title_id", "url", "status"}], "errors": [...]}
 """
 import argparse, csv, datetime, io, json, os, re, sys, time, unicodedata
-import urllib.error, urllib.request
+import urllib.error, urllib.parse, urllib.request
 from html import unescape
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -220,6 +220,28 @@ def year_from_ldjson(html):
     return ""
 
 
+def bare(s):
+    """Leading article off first, then letters and digits only (the matching
+    key merge_scrape.py uses; the order matters, see READ FIRST)."""
+    s = re.sub(r"^(the|a|an)\s+", "", (s or "").strip().lower())
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+def parse_wanted_line(raw):
+    """'<head> [k=v ...]  # comment' -> (head, {k: v}). Trailing tokens that
+    contain '=' are flags; everything before them is the head, which may hold
+    spaces (a title as Cyan says it)."""
+    line = raw.split("#", 1)[0].strip()
+    if not line:
+        return "", {}
+    toks = line.split()
+    flags = {}
+    while toks and "=" in toks[-1]:
+        k, v = toks.pop().split("=", 1)
+        flags[k.strip().lower()] = v.strip()
+    return " ".join(toks), flags
+
+
 def og_image(html):
     for pat in (r'<meta[^>]+(?:property|name)="og:image"[^>]+content="([^"]+)"',
                 r'<meta[^>]+content="([^"]+)"[^>]+(?:property|name)="og:image"'):
@@ -368,25 +390,62 @@ class Run:
             self.errors.append({"route": "home", "url": BASE + "/", "status": status})
         self.routes["home"] = info
 
-    # route: titles Cyan named by URL
-    def wanted(self, path):
-        info = {"file": os.path.basename(path), "urls": 0}
+    # route: titles Cyan named, by URL or by name
+    def wanted(self, path, held):
+        """held: set of bare() forms of every title and alt title we hold.
+        A line is `<URL or name or slug> [ai=yes|no] [tropes=a;b]`. A URL is
+        fetched. A name we already hold is a ruling only (merge_scrape applies
+        the flags). A name we do not hold is resolved through ReelShort's own
+        search page, accepted only on an exact title match, then fetched."""
+        info = {"file": os.path.basename(path), "urls": 0, "held": 0, "searched": 0,
+                "resolved": 0, "unresolved": 0}
         if os.path.exists(path):
-            for line in io.open(path, encoding="utf-8"):
-                line = line.split("#", 1)[0].strip()
-                if not line:
+            for raw in io.open(path, encoding="utf-8"):
+                head, flags = parse_wanted_line(raw)
+                if not head:
                     continue
-                m = MOVIE_RE.search(line)
-                if not m:
-                    # A bare slug with flags (ai=yes) is a ruling for merge_scrape,
-                    # not a fetch; only a line with no URL and no flags is an error.
-                    if "=" not in line:
-                        self.errors.append({"route": "wanted", "url": line, "status": "not a /movie/ URL"})
+                m = MOVIE_RE.search(head)
+                if m:
+                    info["urls"] += 1
+                    self.note({"book_id": m.group(2), "slug": m.group(1), "title": "", "views": "",
+                               "views_raw": "", "episodes": "", "synopsis": "", "poster": "",
+                               "actors": [], "year": ""}, "wanted")
                     continue
-                info["urls"] += 1
-                self.note({"book_id": m.group(2), "slug": m.group(1), "title": "", "views": "", "views_raw": "",
-                           "episodes": "", "synopsis": "", "poster": "", "actors": [], "year": ""}, "wanted")
+                name = head.replace("-", " ") if re.fullmatch(r"[a-z0-9-]+", head) else head
+                if bare(name) in held:
+                    info["held"] += 1
+                    continue
+                info["searched"] += 1
+                found = self.search(name)
+                if found:
+                    info["resolved"] += 1
+                    self.note(found, "wanted")
+                else:
+                    info["unresolved"] += 1
         self.routes["wanted"] = info
+
+    def search(self, name):
+        """ReelShort's /search?keywords= page, __NEXT_DATA__ books, exact title
+        match on the bare form only. Anything looser would attach a stranger's
+        show to Cyan's name for it."""
+        url = "%s/search?keywords=%s" % (BASE, urllib.parse.quote_plus(name))
+        status, html = self.fetch.get(url)
+        if status != 200:
+            self.errors.append({"route": "wanted", "query": name, "status": status})
+            return None
+        data = next_data(html)
+        id_to_slug = hrefs_of(html)
+        cands = [b for b in books_in(data, id_to_slug)] if data is not None else []
+        exact = [b for b in cands if bare(b["title"]) == bare(name)]
+        if len(exact) != 1:
+            self.errors.append({"route": "wanted", "query": name,
+                                "status": "search: %d exact of %d results" % (len(exact), len(cands))})
+            return None
+        b = exact[0]
+        if not b["slug"]:
+            b["slug"] = slugify(b["title"])
+            b["slug_guessed"] = True
+        return b
 
     # route: fandom blog, newest posts
     def fandom(self, per_page=100):
@@ -529,7 +588,13 @@ def main():
     if "fandom" in routes:
         run.fandom()
     if "wanted" in routes:
-        run.wanted(os.path.join(STAGING, "reelshort_wanted.txt"))
+        held = set()
+        for t in rows("titles.csv"):
+            held.add(bare(t["primary_title"]))
+            for alt in re.split(r"[|;]", t.get("alt_titles") or ""):
+                if alt.strip():
+                    held.add(bare(alt))
+        run.wanted(os.path.join(STAGING, "reelshort_wanted.txt"), held)
     if "sitemap" in routes:
         run.sitemap()
     # A book with a title but no href gets a slug in ReelShort's own style; the

@@ -1,27 +1,147 @@
-# Titles Cyan wants in the database, and her AI rulings. One entry per line.
+# Titles Cyan wants in the database, and her rulings. One entry per line.
 #
-#   <ReelShort /movie/ URL>              fetched every run, created on the next
-#   <URL or slug> ai=yes                 Cyan's ruling: the ai column is set by
-#                                        hand only, and this file is the hand.
-#                                        Put her name and date in the comment.
-#   <URL or slug> ai=no                  checked, not AI
+#   <ReelShort /movie/ URL> [flags]      fetched every run, created on the next
+#   <title as Cyan says it> [flags]      held already: flags applied, nothing
+#                                        fetched. Not held: resolved through
+#                                        ReelShort's own search, accepted only
+#                                        on an exact title match, then fetched
+#   flags:  ai=yes | ai=no               the ai column is set by hand only, and
+#                                        this file is the hand: name and date
+#           tropes=age-gap;mafia         vocabulary in data/tropes.csv only
 #
-# Lines starting with # are ignored, as is anything after # on a line. A URL
-# already held costs one request and refreshes it; harmless to leave in place.
+# Anything after # is a comment. A line that matches nothing yet is listed in
+# the run summary as still waiting; fix the spelling or leave it to wait.
 #
-# Cyan, 3 Sep 2026: "we definitely are going to have to start using
-# AI-generated titles." Her rulings below are her word; ReelShort's own page
-# text is quoted where it agrees.
+# Cyan, 3 Sep 2026, dictated: "we definitely are going to have to start using
+# AI-generated titles". Dictation slips corrected where obvious (Brad and broad
+# for Bride, Puk for Puck, Lunar for Luna); a name that never resolves is
+# probably one I heard wrong.
 
-# 3 Sep 2026, Cyan: "a new apocalypse one doing well". ReelShort: "AI-generated
-# animated ReelShort original", 40 episodes. Not held before this date.
-https://www.reelshort.com/movie/a-zombie-girl-s-journey-home-6a8d2d531616ebd404056b3e  ai=yes   # Cyan, 3 Sep 2026
+# ---- AI-generated, Cyan 3 Sep 2026 ------------------------------------------
+https://www.reelshort.com/movie/a-zombie-girl-s-journey-home-6a8d2d531616ebd404056b3e  ai=yes
+https://www.reelshort.com/movie/reborn-to-rule-the-sky-with-my-dragon-6a86c823feaf9677a7003453  ai=yes
+the-mafias-stolen-bride-twin-switch  ai=yes   # held since July as a My Drama title
+Seducing the God of Olympus  ai=yes tropes=age-gap;forbidden-romance
+My Safe Word Was Revenge  ai=yes tropes=revenge;mafia
+The Alpha King's Half-Blood Twins  ai=yes
+The Alpha King Sold Me to the War God  ai=yes
+I Married My Cheating Ex's Uncle  ai=yes
+The Don's Bloody Bride  ai=yes
+The Fate of the Dragon's Bride  ai=yes
+A Hundred Years of You  ai=yes
+The Dragon Lord's Regret  ai=yes
+The Mermaid Queen's Revenge  ai=yes
+The Silver Serpent's Bride  ai=yes
+Private Lessons with My Vampire Boss  ai=yes
+Light and Roses: Tears of a Vampire  ai=yes
+Don't Say I Do  ai=yes
+Secretly Pregnant with the Billionaire's Daughter  ai=yes
+Caught in His Current  ai=yes tropes=bl
+His Caged Love  ai=yes
+First Daughter: Forbidden Duty  ai=yes   # held, no platform row yet
+The Last Ace  ai=yes
+Fleeing the Future I Saw with Him  ai=yes
+I Married the Groom's Uncle  ai=yes
+Puck Perfect: My Sex Education Tutor  ai=yes
+My Protective Mafia Lover  ai=yes
+In Bed with My Brother-in-Law  ai=yes
+Pregnant by His Alpha Brother  ai=yes
+She Bows for No One  ai=yes
+The Stone Cursed King's Blood Bride  ai=yes
+The Raven Wolf King: Wolfless  ai=yes
+A Cinderella for the Wolf King  ai=yes
+Outgrowing My Old Magic Love  ai=yes
+His Partner, Her Revenge  ai=yes
+The Furless One  ai=yes
+My Immortal Love  ai=yes
+The Wolfless Alpha Queen  ai=yes
+The Virgin Sacrifice the Dragon King Claims  ai=yes
+I Rejected My Alpha After 12 Years  ai=yes
+The Alpha Princess Is Gone for Good  ai=yes
+Billionaire Luna: Taming My Alpha Mate  ai=yes
+Crowned in Silver Blood  ai=yes
+When the Wolf Fell in Love  ai=yes   # held as a GoodShort title
+Date with the Zombie King  ai=yes
+Forbidden Bonds: Fated to the Ocean God  ai=yes
+Revenge of the Black Swan  ai=yes
+The Larkin's Savage Luna  ai=yes
+Locked by the Mafia Boss  ai=yes
+Wrong Heir, Right Her  ai=yes   # dictated "wrong air right her"
+Tempted by My Stepson  ai=yes
+Alpha at My Wedding  ai=yes
+The Summer the Sea Broke  ai=yes
+Uncle, I Don't Want You Anymore  ai=yes
+Hades' Mafia Princess  ai=yes
+I Was My Vampire Husband's Dead Wife  ai=yes
+Our Love Built on Lies  ai=yes
+Scorched Heart  ai=yes
+The Glass Cage  ai=yes
+Two Mafia Bosses Begging Me for Love  ai=yes
+The Alpha Commander's Long-Awaited Omega  ai=yes tropes=bl
+The Road Not Taken  ai=yes
 
-# 3 Sep 2026, Cyan: AI-generated, "an older one". ReelShort: "AI-generated
-# animated ReelShort original", motion comic, 53 episodes.
-https://www.reelshort.com/movie/reborn-to-rule-the-sky-with-my-dragon-6a86c823feaf9677a7003453  ai=yes   # Cyan, 3 Sep 2026
+# ---- Human cast, Cyan 3 Sep 2026 --------------------------------------------
+Honey Trapped, My Fiance's Billionaire Rival  ai=no
+Faking It with My Ex's Best Friend  ai=no
+God of Pain  ai=no
+Puck Me Baby One More Time  ai=no
+A Country Gal to CEO's Bride  ai=no
+The Encore of Us  ai=no
+Kissed by Claw and Fang  ai=no   # Cyan: did well, may need better ranking
 
-# 3 Sep 2026, Cyan: AI-generated, a new release. Held since July as a My Drama
-# title (The Mafia's Stolen Bride: Twin Switch, 63 episodes); My Drama publishes
-# no AI badge, so her ruling is the evidence. Slug only: nothing to fetch on ReelShort.
-the-mafias-stolen-bride-twin-switch  ai=yes   # Cyan, 3 Sep 2026
+# ---- Named by Cyan, no ruling: fetch or refresh so the views are current ----
+A Straight A Pregnancy
+Swallow Me Whole   # Cyan: might be popular, check
+
+# ---- ReelShort yearly top, read out by Cyan 3 Sep 2026 ----------------------
+Bound by Honor
+Miss CEO's Baby Daddy
+The Merchant of Death
+My Sister Is the Warlord Queen
+In Love with a Single Farmer Daddy
+Married the Mafioso I Saved
+Taming My Bullies
+Carrying His Triplets
+Becoming His Wife   # dictated "Becoming His Wali"
+American Sniper
+The Last Round
+The Great and Powerful Genie
+The Luna's Second Choice
+I Accidentally Sexted My Enemy
+Tell Me Not to Love You
+Step Aside, I'm the King
+How to Break a DILF
+My X-Ray Vision Sees Right Through You
+In the Palm of His Hand
+My Secret Lover Is His Brother
+Found a Homeless Billionaire Husband for Christmas
+Love Is a Dangerous Dance
+I Had a Baby Without You
+Claimed by My Ex's Alpha Brother
+Fated to Find You
+You've Been Replaced, First Love
+Ex-Convict Nanny and Billionaire Single Dad
+Djinn   # dictated "Gin, as in DJ"; unsure
+Love Under Contract
+Not the Bride He Wanted
+The Billionaire Married a Homeless Girl
+Runaway Single Mom
+Safe in His Arms
+Mic Drop Diva
+
+# ---- ReelShort new releases chart, read out by Cyan 3 Sep 2026 --------------
+Sold to the Warlord, Born for the Sky
+Abandoned by the Dragon King
+Shattered Vows
+My Homeless Bride Is a Culinary Legend
+My Billionaire Boss Won't Let Me Quit
+Marry Me Twice, Mr. Grant
+Once Love Is Lost, It Never Returns
+Take Me Back to the Night We Met
+I Rule the Wasteland Harem
+Wasteland Sovereign
+Thirsty for the Wet Nurse
+Offered to the Triplet Alpha
+Little Misfortune
+Bound by Beauty
+The New CEO Turns Out to Be My Gynecologist

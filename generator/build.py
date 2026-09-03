@@ -1771,7 +1771,10 @@ BROWSE_JS = f"""
   var onlyBookEl=document.getElementById('only-book');
   var hideAiEl=document.getElementById('hide-ai');
   var hideSoonEl=document.getElementById('hide-upcoming');
-  // Default is to HIDE AI titles; the choice is remembered between visits.
+  // AI titles SHOW by default (Cyan, 3 Sep 2026: "AI titles should not be hidden
+  // by default but there should be a button to hide them"). The toggle sits in
+  // the results head, not at the foot of the filter panel, and the choice is
+  // remembered between visits. Before 3 Sep the default was hide.
   try{{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }}catch(e){{}}
   // Same for unreleased titles: a search here means "what can I watch", so they
   // are out by default and opting in is one click.
@@ -1921,10 +1924,6 @@ browse_body = f"""
 <input type="checkbox" id="only-book">
 <span>Only titles based on a book</span>
 </label>
-<label class="ai-toggle" for="hide-ai">
-<input type="checkbox" id="hide-ai" checked>
-<span>Hide AI-generated titles</span>
-</label>
 <label class="ai-toggle" for="hide-upcoming">
 <input type="checkbox" id="hide-upcoming" checked>
 <span>Hide titles not out yet</span>
@@ -1933,6 +1932,10 @@ browse_body = f"""
 <section class="results-panel">
 <div class="results-head">
 <p class="count" id="result-count">Loading&hellip;</p>
+<label class="ai-toggle" for="hide-ai" title="AI-generated titles are in by default (Cyan, 3 Sep 2026); tick to hide them">
+<input type="checkbox" id="hide-ai">
+<span>Hide AI titles</span>
+</label>
 <label class="sort-label">Sort<select id="f-sort" aria-label="Sort titles">
 <option value="views">Most watched</option>
 <option value="az">A&ndash;Z</option>
