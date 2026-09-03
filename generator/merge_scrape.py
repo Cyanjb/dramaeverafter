@@ -287,6 +287,34 @@ def main():
         new_titles.append((name, slug, b.get("views") or "", ", ".join(sorted(b.get("seen_via") or []))))
         add_credits(slug, name, b)
 
+    # CYAN'S RULINGS IN THE WANTED FILE. A line may carry flags after the URL or
+    # slug: `ai=yes` or `ai=no`. The ai column is set by hand only (READ FIRST,
+    # 1 Aug 2026); this file IS the hand, with her name and date in the comment.
+    # Applied after creation so a title she names lands with its ruling.
+    rulings_applied = []
+    wanted_path = os.path.join(HERE, "staging", "%s_wanted.txt" % PLATFORM)
+    if os.path.exists(wanted_path):
+        for raw in io.open(wanted_path, encoding="utf-8"):
+            line = raw.split("#", 1)[0].strip()
+            if not line or "=" not in line:
+                continue
+            head, *flags = line.split()
+            flags = dict(f.split("=", 1) for f in flags if "=" in f)
+            if flags.get("ai") not in ("yes", "no"):
+                continue
+            m = MOVIE_RE.search(head)
+            tid = None
+            if m:
+                row = link_rows.get(m.group(2))
+                tid = row["title_id"] if row else (m.group(1) if m.group(1) in by_id else None)
+            else:
+                tid = head if head in by_id else by_nohyphen.get(nohyphen(head))
+            if tid and by_id[tid].get("ai") != flags["ai"]:
+                by_id[tid]["ai"] = flags["ai"]
+                rulings_applied.append((tid, flags["ai"]))
+            elif not tid:
+                n["rulings_unmatched"] += 1
+
     for d in doc.get("delisted") or []:
         tid = d.get("title_id") or (link_rows.get(d.get("book_id"), {}) or {}).get("title_id", "")
         delisted_report.append((tid or "(not held)", d.get("url", "")))
@@ -321,6 +349,8 @@ def main():
     lines.append("| Excluded as unscripted (ReelTalk and kin) | %d |" % n["excluded"])
     lines.append("| Skipped: no title or slug / URL unconfirmed | %d / %d |" % (n["no_data"], n["unconfirmed_url"]))
     lines.append("| ReelShort rows still older than %d days | %d |" % (STALE_DAYS, stale))
+    lines.append("| AI rulings applied from the wanted file / unmatched | %d / %d |"
+                 % (len(rulings_applied), n["rulings_unmatched"]))
     lines.append("| Scrape errors | %d |" % len(doc.get("errors") or []))
     lines.append("")
     lines.append("Routes: " + ", ".join("%s %s" % (k, json.dumps(v)) for k, v in routes.items()))
@@ -337,6 +367,9 @@ def main():
     if delisted_report:
         lines += ["", "### Delisted on ReelShort (404), left in place", ""]
         lines += ["- `%s` %s" % d for d in delisted_report[:50]]
+    if rulings_applied:
+        lines += ["", "### AI rulings applied (Cyan, via the wanted file)", ""]
+        lines += ["- `%s` ai=%s" % r for r in rulings_applied]
     if credits_added:
         lines += ["", "### Credits added (exact name, one person)", ""]
         lines += ["- %s: %s" % c for c in credits_added[:60]]

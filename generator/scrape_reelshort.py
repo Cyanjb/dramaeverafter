@@ -373,12 +373,15 @@ class Run:
         info = {"file": os.path.basename(path), "urls": 0}
         if os.path.exists(path):
             for line in io.open(path, encoding="utf-8"):
-                line = line.strip()
-                if not line or line.startswith("#"):
+                line = line.split("#", 1)[0].strip()
+                if not line:
                     continue
                 m = MOVIE_RE.search(line)
                 if not m:
-                    self.errors.append({"route": "wanted", "url": line, "status": "not a /movie/ URL"})
+                    # A bare slug with flags (ai=yes) is a ruling for merge_scrape,
+                    # not a fetch; only a line with no URL and no flags is an error.
+                    if "=" not in line:
+                        self.errors.append({"route": "wanted", "url": line, "status": "not a /movie/ URL"})
                     continue
                 info["urls"] += 1
                 self.note({"book_id": m.group(2), "slug": m.group(1), "title": "", "views": "", "views_raw": "",

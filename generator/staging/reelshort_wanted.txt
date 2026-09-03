@@ -1,11 +1,27 @@
-# Titles Cyan wants in the database, one ReelShort /movie/ URL per line.
-# The weekly scrape fetches each one every run (route "wanted"), so a title
-# named here is created on the next run and refreshed on every run after.
-# Lines starting with # are ignored. A URL that is already held costs one
-# request and refreshes it; harmless to leave in place.
+# Titles Cyan wants in the database, and her AI rulings. One entry per line.
 #
-# 3 Sep 2026, Cyan: "a new apocalypse one doing well". ReelShort's own page
-# calls it an AI-generated animated original, so it has no human cast and no
-# actor tag page could ever surface it. Note for the ai column: that label is
-# set by hand only; this is the evidence, not the ruling.
-https://www.reelshort.com/movie/a-zombie-girl-s-journey-home-6a8d2d531616ebd404056b3e
+#   <ReelShort /movie/ URL>              fetched every run, created on the next
+#   <URL or slug> ai=yes                 Cyan's ruling: the ai column is set by
+#                                        hand only, and this file is the hand.
+#                                        Put her name and date in the comment.
+#   <URL or slug> ai=no                  checked, not AI
+#
+# Lines starting with # are ignored, as is anything after # on a line. A URL
+# already held costs one request and refreshes it; harmless to leave in place.
+#
+# Cyan, 3 Sep 2026: "we definitely are going to have to start using
+# AI-generated titles." Her rulings below are her word; ReelShort's own page
+# text is quoted where it agrees.
+
+# 3 Sep 2026, Cyan: "a new apocalypse one doing well". ReelShort: "AI-generated
+# animated ReelShort original", 40 episodes. Not held before this date.
+https://www.reelshort.com/movie/a-zombie-girl-s-journey-home-6a8d2d531616ebd404056b3e  ai=yes   # Cyan, 3 Sep 2026
+
+# 3 Sep 2026, Cyan: AI-generated, "an older one". ReelShort: "AI-generated
+# animated ReelShort original", motion comic, 53 episodes.
+https://www.reelshort.com/movie/reborn-to-rule-the-sky-with-my-dragon-6a86c823feaf9677a7003453  ai=yes   # Cyan, 3 Sep 2026
+
+# 3 Sep 2026, Cyan: AI-generated, a new release. Held since July as a My Drama
+# title (The Mafia's Stolen Bride: Twin Switch, 63 episodes); My Drama publishes
+# no AI badge, so her ruling is the evidence. Slug only: nothing to fetch on ReelShort.
+the-mafias-stolen-bride-twin-switch  ai=yes   # Cyan, 3 Sep 2026
