@@ -32,7 +32,6 @@ pieces: `generator/scrape_reelshort.py` (routes: actor tag pages, genre tag
 pages, homepage rails, fandom blog, the wanted list, title pages),
 `generator/merge_scrape.py` (the database rules, enforced not remembered),
 and the workflow. The run summary on the Actions page is the change report.
->>>>>>> origin/main
 
 RUNS ON 3 SEP: run 3 (full, 1,139 requests) refreshed 666 ReelShort rows and
 created 102 titles; run 4 (genre sweep + wanted list) refreshed 665, created
