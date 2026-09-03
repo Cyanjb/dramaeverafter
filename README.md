@@ -12,11 +12,15 @@ The cross-platform vertical drama database. This repo is the single source of tr
 
 ## The weekly update runs itself
 Every Sunday at 12:00 UTC (14:00 Johannesburg) the `Weekly scrape` workflow runs on a GitHub runner, because the cloud Claude sandbox cannot reach any platform and GitHub's runners can:
-1. SCRAPE — `generator/scrape_reelshort.py` reads ReelShort (actor tag pages, homepage rails, the fandom blog, title pages) into `generator/staging/reelshort_<date>.json`
-2. MERGE — `generator/merge_scrape.py` applies the database rules: exact matches refresh view counts, dates and snapshots; new titles enter as needs_check only when ReelShort is featuring them or an actor we track is in them; near-matches go to match_queue.csv for Cyan, never auto-merged; delisted titles are reported, never deleted
-3. GENERATE — `build.py`
+1. SCRAPE: `generator/scrape_reelshort.py` reads ReelShort (actor tag pages, homepage rails, the fandom blog, title pages) into `generator/staging/reelshort_<date>.json`
+2. MERGE: `generator/merge_scrape.py` applies the database rules: exact matches refresh view counts, dates and snapshots; new titles enter as needs_check only when ReelShort is featuring them or an actor we track is in them; near-matches go to match_queue.csv for Cyan, never auto-merged; delisted titles are reported, never deleted
+3. GENERATE: `build.py`
 4. PUSH to main. Push is publish: Netlify deploys in about 20 seconds
 5. The change report (refreshed, new, held, delisted, credits) is on the run page under Actions
+
+Two things the run cannot do by itself, and Cyan wants remembered (3 Sep 2026):
+- **New titles need captions.** They go live as needs_check with no synopsis, because platform text is never copied. The synopsis each page published is banked in the staging JSON and `caption_pipeline.py` reads it as the fact source, so `next` picks the new titles up by reach. Write them with the dea-captions skill and put them through Cyan's review.
+- **New releases update from the scrape.** The homepage rail leads with titles first seen by a weekly run in the last 90 days (the `source` column carries the run date), newest first, then falls back to the year ordering.
 
 Run it by hand from Actions any time (`dry_run` to test without committing, `limit` for a quick probe). Other platforms are added by writing a `scrape_<platform>.py` that emits the same staging shape; see `references/adapters.md` section 27.
 

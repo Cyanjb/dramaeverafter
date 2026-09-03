@@ -664,3 +664,11 @@ publish. Cyan chose ReelShort first, direct to main, Sunday afternoon (3 Sep).
   slashes ("\/movie\/"), so links are matched on the unescaped text. Actor
   tag pages surface ReelTalk episodes with real view counts; merge_scrape
   excludes them by title (CONVENTIONS.md).
+- Cyan, 3 Sep 2026, two standing consequences of the weekly run: (1) NEW
+  TITLES NEED CAPTIONS. They land with no synopsis; the platform text is
+  banked in the staging JSON and caption_pipeline.load_facts() reads every
+  reelshort_*.json, so they are tier C (facts on disk) and `next` ranks
+  them by reach. (2) THE NEW RELEASES RAIL KEYS ON FIRST-SEEN. build.py
+  leads with titles whose source is a weekly run within 90 days, newest
+  first, then the year ordering. The scraper also takes a year from any
+  dated field in the book dict or the page's ld+json, fill-blank-only.

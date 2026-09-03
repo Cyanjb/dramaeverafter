@@ -2143,8 +2143,25 @@ def _release_year(t):
     return int(y) if y.isdigit() else 0
 _with_art_dated = [t for t in titles_root
                    if (t.get("poster_ref") or "").strip() and _release_year(t) >= _year_now - 1]
-new_releases = sorted(_with_art_dated,
-                      key=lambda t: (-_release_year(t), -title_views(t)))[:12]
+# SINCE 3 SEP 2026 THE WEEKLY SCRAPE GIVES A REAL FIRST-SEEN DATE. A title whose
+# source is a weekly run (reelshort_weekly_2026-09-06 and kin) was first seen on
+# that date, on a platform's own new or trending rail, which is the release
+# signal this rail always wanted (Cyan, 3 Sep: "the new releases page must
+# update"). Those lead, newest run first, then by views; the year-based list
+# fills the rest so the rail never goes empty when scrapes lapse. Only titles
+# first seen within the last 90 days count as new; older weekly finds fall back
+# to the year ordering like everything else. Artwork is still required.
+_SOURCE_DATE = re.compile(r"weekly[_-](20\d\d-\d\d-\d\d)")
+def _first_seen(t):
+    m = _SOURCE_DATE.search(t.get("source") or "")
+    return m.group(1) if m else ""
+_recent_cutoff = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
+_recent = [t for t in titles_root
+           if (t.get("poster_ref") or "").strip() and _first_seen(t) >= _recent_cutoff]
+_recent.sort(key=lambda t: (_first_seen(t), title_views(t)), reverse=True)
+_recent_ids = {t["title_id"] for t in _recent}
+new_releases = (_recent + sorted((t for t in _with_art_dated if t["title_id"] not in _recent_ids),
+                                 key=lambda t: (-_release_year(t), -title_views(t))))[:12]
 
 home_apps = "".join(
     f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} title{"s" if n != 1 else ""}</span></a>'

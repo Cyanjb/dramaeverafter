@@ -172,6 +172,9 @@ def main():
         if not t.get("poster_ref") and b.get("poster"):
             t["poster_ref"] = b["poster"]
             n["posters_filled"] += 1
+        if not t.get("year") and b.get("year"):
+            t["year"] = b["year"]
+            n["years_filled"] += 1
         if not t.get("source_urls") and b.get("url"):
             t["source_urls"] = b["url"]
         n["refreshed"] += 1
@@ -245,7 +248,7 @@ def main():
 
         # Genuinely new, and chosen by a route Cyan's rule allows.
         t = {k: "" for k in tf}
-        t.update({"title_id": slug, "slug": slug, "primary_title": name,
+        t.update({"title_id": slug, "slug": slug, "primary_title": name, "year": b.get("year") or "",
                   "episode_count": b.get("episodes") or "", "poster_ref": b.get("poster") or "",
                   "source_urls": url, "last_verified": today, "data_confidence": "needs_check",
                   "source": source, "origin": "english"})
@@ -293,8 +296,8 @@ def main():
     lines.append("| New titles created | %d |" % len(new_titles))
     lines.append("| Held for a ruling (match_queue) | %d |" % len(held))
     lines.append("| Credits added | %d |" % len(credits_added))
-    lines.append("| Episode counts / posters / links filled | %d / %d / %d |"
-                 % (n["episodes_filled"], n["posters_filled"], n["links_filled"]))
+    lines.append("| Episode counts / posters / links / years filled | %d / %d / %d / %d |"
+                 % (n["episodes_filled"], n["posters_filled"], n["links_filled"], n["years_filled"]))
     lines.append("| Delisted (404, not deleted) | %d |" % len(delisted_report))
     lines.append("| Seen only in a sitemap, not imported | %d |" % catalogue_only)
     lines.append("| Excluded as unscripted (ReelTalk and kin) | %d |" % n["excluded"])
@@ -304,7 +307,11 @@ def main():
     lines.append("")
     lines.append("Routes: " + ", ".join("%s %s" % (k, json.dumps(v)) for k, v in routes.items()))
     if new_titles:
-        lines += ["", "### New titles (needs_check)", ""]
+        lines += ["", "### New titles (needs_check): each one needs a caption", "",
+                  "These are live with no synopsis of ours. Platform text is never copied "
+                  "(Cyan, 14 Aug). The synopsis each page published is banked in the staging "
+                  "JSON as the fact source; `caption_pipeline.py next` picks them up by reach "
+                  "and the /dea-captions skill writes them for Cyan's review.", ""]
         lines += ["- %s (`%s`) %s via %s" % (nm, sl, vw, via) for nm, sl, vw, via in new_titles]
     if held:
         lines += ["", "### Held for Cyan's ruling", ""]

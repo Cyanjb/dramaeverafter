@@ -171,6 +171,43 @@ def canonical_slug(html, bid):
     return ""
 
 
+def year_hint(d):
+    """A release year from a book dict, if it carries one. The July scrape left
+    year blank on 439 of 575 ReelShort titles, and the New releases rail keys
+    on year, so any dated field is worth taking: an epoch (seconds or ms) or an
+    ISO date under a key that mentions time, date, publish, online or release.
+    Returns '' rather than guess."""
+    for k, v in d.items():
+        kl = k.lower()
+        if not any(w in kl for w in ("time", "date", "publish", "online", "release", "year")):
+            continue
+        if kl in ("year",) and str(v).isdigit() and 2000 <= int(v) <= 2100:
+            return str(v)
+        if isinstance(v, (int, float)) and v > 0:
+            secs = v / 1000.0 if v > 1e11 else v
+            if 1.3e9 < secs < 2.2e9:
+                return str(datetime.datetime.fromtimestamp(secs, datetime.timezone.utc).year)
+        if isinstance(v, str):
+            m = re.match(r"\s*(20\d\d)-\d\d-\d\d", v)
+            if m:
+                return m.group(1)
+    return ""
+
+
+def year_from_ldjson(html):
+    for m in re.finditer(r'<script type="application/ld\+json"[^>]*>(.*?)</script>', html, re.S):
+        try:
+            data = json.loads(m.group(1))
+        except ValueError:
+            continue
+        for d in walk(data, []):
+            for key in ("datePublished", "dateCreated", "startDate", "uploadDate"):
+                v = d.get(key)
+                if isinstance(v, str) and re.match(r"20\d\d", v):
+                    return v[:4]
+    return ""
+
+
 def og_image(html):
     for pat in (r'<meta[^>]+(?:property|name)="og:image"[^>]+content="([^"]+)"',
                 r'<meta[^>]+content="([^"]+)"[^>]+(?:property|name)="og:image"'):
@@ -204,6 +241,7 @@ def books_in(data, id_to_slug):
             for a in ai.get("actors") or []:
                 if isinstance(a, dict) and a.get("actor_name"):
                     actors.append(clean(a["actor_name"]))
+        year = year_hint(d)
         slug = id_to_slug.get(bid, "")
         if not slug:
             # The homepage rails carry books with no href in the HTML (probe,
@@ -221,6 +259,7 @@ def books_in(data, id_to_slug):
             "synopsis": clean(d.get("special_desc") or d.get("specialDesc") or d.get("description") or ""),
             "poster": pic if isinstance(pic, str) else "",
             "actors": actors,
+            "year": year,
         }
 
 
@@ -240,7 +279,7 @@ class Run:
             cur = dict(book, seen_via=[], actors=list(book["actors"]), status=200)
             self.books[book["book_id"]] = cur
         else:
-            for k in ("title", "views", "views_raw", "episodes", "synopsis", "poster", "slug"):
+            for k in ("title", "views", "views_raw", "episodes", "synopsis", "poster", "slug", "year"):
                 if book.get(k) and (not cur.get(k) or (k == "synopsis" and len(book[k]) > len(cur[k]))):
                     cur[k] = book[k]
             for a in book["actors"]:
@@ -396,7 +435,9 @@ class Run:
                     continue
                 if not got["poster"]:
                     got["poster"] = og_image(html)
-                true_slug = canonical_slug(html, bid) or got["slug"] or id_to_slug.get(bid, "")
+                if not got.get("year"):
+                    got["year"] = year_from_ldjson(html)
+                true_slug =canonical_slug(html, bid) or got["slug"] or id_to_slug.get(bid, "")
                 cur = self.note(got, "detail", url=url)
                 if true_slug:
                     cur["slug"] = true_slug
