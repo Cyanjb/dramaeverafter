@@ -624,3 +624,64 @@ string): 112 titles we ALREADY HOLD would gain a platform row, 72 of which have 
 platform at all today and are therefore excluded from completeness.py's denominator
 entirely. Plus an 878-title import queue. IMDb still gives no watch link, so a gained
 platform row starts without a direct_link - see sec 25 for where the link comes from.
+
+## 27. THE WEEKLY SCRAPE RUNS ITSELF NOW (2026-09-03)
+
+The five-stage pipeline was designed weekly (Craft doc 7, sec 3) and had not
+run since 24 July, because it only ever existed as a Claude session doing
+fetches by hand and the cloud sandbox cannot reach a platform (sec 14).
+`.github/workflows/weekly-scrape.yml` runs it unattended on a GitHub runner
+every Sunday 12:00 UTC (14:00 Johannesburg), straight to main, push is
+publish. Cyan chose ReelShort first, direct to main, Sunday afternoon (3 Sep).
+
+- `generator/scrape_reelshort.py` writes `generator/staging/reelshort_<date>.json`
+  (committed: it is the record, and it holds each title's synopsis as a fact
+  source for captions). Routes: the 940 actor tag pages in harvest_queue.csv
+  (sec 1, paginated), the homepage rails, the newest 100 fandom posts (sec 3),
+  and /movie/ detail pages (sec 2) for anything not already refreshed. The
+  sitemap route exists but is off: a sitemap is a sweep, and new titles are
+  CHOSEN, not swept (Cyan, 8 Aug).
+- `generator/merge_scrape.py` applies Stage 3 exactly: exact book-id match
+  refreshes view_count, view_count_date, last_checked, last_verified and
+  writes a DATED snapshots row; everything else fill-blank-only; a new title
+  is created only when seen via tags, home or fandom; same slug, hyphenless
+  slug match or same title after the leading article goes to match_queue and
+  is never created; a 404 is reported, never deleted; credits only for an
+  exact single-person name match; synopsis_short is never written.
+- The run summary (counts, new titles, held, delisted, credits) is on the
+  workflow run page under Actions. Dispatch by hand with `dry_run` to test a
+  change, or `limit` for a quick probe.
+- To add a platform: write `scrape_<platform>.py` emitting the same books
+  shape, generalise PLATFORM in merge_scrape.py, add a step. GoodShort (sec 9)
+  and NetShort trending rails (sec 9, second) are the obvious next two.
+- Monthly full re-crawl on rotation and a 45-day staleness report were part
+  of the original design; the summary already counts rows older than 45 days.
+- Live probe, 3 Sep 2026 (57 requests, dry run): ReelShort publishes NO
+  sitemap (four paths, all 404). The homepage __NEXT_DATA__ carries ~128
+  books with NO /movie/ hrefs, so a home-only book gets a slug in
+  ReelShort's style from its title and the detail route confirms the URL
+  (canonical) before the merge may create it. The fandom REST JSON escapes
+  slashes ("\/movie\/"), so links are matched on the unescaped text. Actor
+  tag pages surface ReelTalk episodes with real view counts; merge_scrape
+  excludes them by title (CONVENTIONS.md).
+- Cyan, 3 Sep 2026, two standing consequences of the weekly run: (1) NEW
+  TITLES NEED CAPTIONS. They land with no synopsis; the platform text is
+  banked in the staging JSON and caption_pipeline.load_facts() reads every
+  reelshort_*.json, so they are tier C (facts on disk) and `next` ranks
+  them by reach. (2) THE NEW RELEASES RAIL KEYS ON FIRST-SEEN. build.py
+  leads with titles whose source is a weekly run within 90 days, newest
+  first, then the year ordering. The scraper also takes a year from any
+  dated field in the book dict or the page's ld+json, fill-blank-only.
+- 3 Sep 2026, later: two more routes. WANTED, `generator/staging/
+  reelshort_wanted.txt`, one /movie/ URL per line for a title Cyan names;
+  fetched every run, created on the next. GENRES, `generator/staging/
+  reelshort_tags.txt`: ReelShort's own tag listing pages exist for moods,
+  themes, styles and story beats (/tags/movie-moods/..., /tags/story-beats/...,
+  /tags/movie-styles/drammatico-movies-... runs 160+ pages), same
+  __NEXT_DATA__ tagBooks shape as the actor tags, paginated /2, /3. This is
+  the near-whole catalogue with view counts and the only route to a title
+  with no human cast (ReelShort's AI animated originals, e.g. A Zombie Girl's
+  Journey Home, 6a8d2d531616ebd404056b3e). A genre page asserts no credit.
+  merge_scrape.py creates from a sweep only above POPULAR_MIN (10M views;
+  the held catalogue's median is 37.8M, 506 of 566 rows above 10M); the rest
+  is counted in the summary as catalogue only.

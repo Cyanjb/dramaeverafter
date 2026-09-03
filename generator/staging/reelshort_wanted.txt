@@ -1,0 +1,206 @@
+# Titles Cyan wants in the database, and her rulings. One entry per line.
+#
+#   <ReelShort /movie/ URL> [flags]      fetched every run, created on the next
+#   <title as Cyan says it> [flags]      held already: flags applied, nothing
+#                                        fetched. Not held: resolved through
+#                                        ReelShort's own search, accepted only
+#                                        on an exact title match, then fetched
+#   flags:  ai=yes | ai=no               the ai column is set by hand only, and
+#                                        this file is the hand: name and date
+#           tropes=age-gap;mafia         vocabulary in data/tropes.csv only
+#
+# Anything after # is a comment. A line that matches nothing yet is listed in
+# the run summary as still waiting; fix the spelling or leave it to wait.
+#
+# Cyan, 3 Sep 2026, dictated: "we definitely are going to have to start using
+# AI-generated titles". Dictation slips corrected where obvious (Brad and broad
+# for Bride, Puk for Puck, Lunar for Luna); a name that never resolves is
+# probably one I heard wrong.
+
+# ---- AI-generated, Cyan 3 Sep 2026 ------------------------------------------
+https://www.reelshort.com/movie/a-zombie-girl-s-journey-home-6a8d2d531616ebd404056b3e  ai=yes
+https://www.reelshort.com/movie/reborn-to-rule-the-sky-with-my-dragon-6a86c823feaf9677a7003453  ai=yes
+the-mafias-stolen-bride-twin-switch  ai=yes   # held since July as a My Drama title
+Seducing the God of Olympus  ai=yes tropes=age-gap;forbidden-romance
+My Safe Word Was Revenge  ai=yes tropes=revenge;mafia
+The Alpha King's Half-Blood Twins  ai=yes
+The Alpha King Sold Me to the War God  ai=yes
+I Married My Cheating Ex's Uncle  ai=yes
+The Don's Bloody Bride  ai=yes
+The Fate of the Dragon's Bride  ai=yes
+A Hundred Years of You  ai=yes
+The Dragon Lord's Regret  ai=yes
+The Mermaid Queen's Revenge  ai=yes
+The Silver Serpent's Bride  ai=yes
+Private Lessons with My Vampire Boss  ai=yes
+Light and Roses: Tears of a Vampire  ai=yes
+Don't Say I Do  ai=yes
+Secretly Pregnant with the Billionaire's Daughter  ai=yes
+Caught in His Current  ai=yes tropes=bl
+His Caged Love  ai=yes
+First Daughter: Forbidden Duty  ai=yes   # held, no platform row yet
+The Last Ace  ai=yes
+Fleeing the Future I Saw with Him  ai=yes
+I Married the Groom's Uncle  ai=yes
+Puck Perfect: My Sex Education Tutor  ai=yes
+My Protective Mafia Lover  ai=yes
+In Bed with My Brother-in-Law  ai=yes
+Pregnant by His Alpha Brother  ai=yes
+She Bows for No One  ai=yes
+The Stone Cursed King's Blood Bride  ai=yes
+The Raven Wolf King: Wolfless  ai=yes
+A Cinderella for Wolf King  ai=yes   # ReelShort spells it without "the"; run 3 found it at 12.1M
+Outgrowing My Old Magic Love  ai=yes
+His Partner, Her Revenge  ai=yes
+The Furless One  ai=yes
+My Immortal Love  ai=yes
+The Wolfless Alpha Queen  ai=yes
+The Virgin Sacrifice the Dragon King Claims  ai=yes
+I Rejected My Alpha After 12 Years  ai=yes
+The Alpha Princess Is Gone for Good  ai=yes
+Billionaire Luna: Taming My Alpha Mate  ai=yes
+Crowned in Silver Blood  ai=yes
+When the Wolf Fell in Love  ai=yes   # held as a GoodShort title
+Date with the Zombie King  ai=yes
+Forbidden Bonds: Fated to the Ocean God  ai=yes
+Revenge of the Black Swan  ai=yes
+The Lycan's Savage Luna  ai=yes   # dictated "Larkin's Savage Lunar"; run 3 found it at 67M
+Locked by the Mafia Boss  ai=yes
+Wrong Heir, Right Her  ai=yes   # dictated "wrong air right her"
+Tempted by My Stepson  ai=yes
+Alpha at My Wedding  ai=yes
+The Summer the Sea Broke  ai=yes
+Uncle, I Don't Want You Anymore  ai=yes
+Hades' Mafia Princess  ai=yes
+I Was My Vampire Husband's Dead Wife  ai=yes
+Our Love Built on Lies  ai=yes
+Scorched Heart  ai=yes
+The Glass Cage  ai=yes
+Two Mafia Bosses Begging Me for Love  ai=yes
+The Alpha Commander's Long-Awaited Omega  ai=yes tropes=bl
+The Road Not Taken  ai=yes
+
+# ---- Human cast, Cyan 3 Sep 2026 --------------------------------------------
+Honey Trapped, My Fiance's Billionaire Rival  ai=no
+Faking It with My Ex's Best Friend  ai=no
+God of Pain  ai=no
+Puck Me Baby One More Time  ai=no
+A Country Gal to CEO's Bride  ai=no
+The Encore of Us  ai=no
+Kissed by Claw and Fang  ai=no   # Cyan: did well, may need better ranking
+
+# ---- Named by Cyan, no ruling: fetch or refresh so the views are current ----
+A Straight A Pregnancy
+Swallow Me Whole   # Cyan: might be popular, check
+
+# ---- ReelShort yearly top, read out by Cyan 3 Sep 2026 ----------------------
+Bound by Honor
+Miss CEO's Baby Daddy
+The Merchant of Death
+My Sister Is the Warlord Queen
+In Love with a Single Farmer Daddy
+Married the Mafioso I Saved
+Taming My Bullies
+Carrying His Triplets
+Becoming His Wife   # dictated "Becoming His Wali"
+American Sniper
+The Last Round
+The Great and Powerful Genie
+The Luna's Second Choice
+I Accidentally Sexted My Enemy
+Tell Me Not to Love You
+Step Aside, I'm the King
+How to Break a DILF
+My X-Ray Vision Sees Right Through You
+In the Palm of His Hand
+My Secret Lover Is His Brother
+Found a Homeless Billionaire Husband for Christmas
+Love Is a Dangerous Dance
+I Had a Baby Without You
+Claimed by My Ex's Alpha Brother
+Fated to Find You
+You've Been Replaced, First Love
+Ex-Convict Nanny and Billionaire Single Dad
+Djinn   # dictated "Gin, as in DJ"; unsure
+Love Under Contract
+Not the Bride He Wanted
+The Billionaire Married a Homeless Girl
+Runaway Single Mom
+Safe in His Arms
+Mic Drop Diva
+
+# ---- ReelShort new releases chart, read out by Cyan 3 Sep 2026 --------------
+Sold to the Warlord, Born for the Sky
+Abandoned by the Dragon King
+Shattered Vows
+My Homeless Bride Is a Culinary Legend
+My Billionaire Boss Won't Let Me Quit
+Marry Me Twice, Mr. Grant
+Once Love Is Lost, It Never Returns
+Take Me Back to the Night We Met
+I Rule the Wasteland Harem
+Wasteland Sovereign
+Thirsty for the Wet Nurse
+Offered to the Triplet Alpha
+Little Miss Fortune   # dictated "Little Misfortune"; run 3 found it at 21.8M
+Bound by Beauty
+The New CEO Turns Out to Be My Gynecologist
+
+# ---- ReelShort hot list, read out by Cyan 3 Sep 2026 -----------------------
+# Her AI/human calls are rulings; her trope notes are applied where the name is
+# in tropes.csv (ReelShort's LGBTQ+ tag is our bl, her ruling). Tag names she
+# saw that are NOT in our vocabulary, for her to decide on: music, high society,
+# royalty, toxic romance, country, new adult, strong heroine, bully romance,
+# regret, zero to hero, reverse harem, action, fated lovers, upgrade from ex.
+# "High fantasy" IS added (umbrella over werewolf, dragon, elf, mermaid, magic).
+Late Bloomer   # Cyan: could be a Chinese one
+Scandalous  tropes=age-gap
+Breathe  tropes=age-gap
+Rent a Mom for the Billionaire Twins  tropes=age-gap
+CEO's Irresistible Wet Nurse
+My Step-Brother Is My Ex
+Sugar Daddy: Sweet Pursuit  tropes=age-gap;friends-to-lovers   # Cyan: could be Chinese
+Love Has a Deadline  tropes=high-fantasy
+Pucked in the Friend Zone  ai=no
+Keeping the Cowboy's Baby  ai=no tropes=cowboy;forbidden-love
+Unconditionally Loved by the Billionaire  ai=no tropes=playing-dumb;billionaire   # Cyan: looks human
+The Alpha and His Nanny Luna  tropes=werewolf;luna   # Cyan: looks AI, double-check; the page-says-AI report settles it
+The Ugly Girl Turned Pretty  ai=yes tropes=playing-dumb
+The Mongrel Husband Bought for $5,000  ai=yes tropes=playing-dumb
+Hate to Love You  ai=no
+Make My Cheating Husband Pay the Price  ai=yes tropes=billionaire
+100-Day Contract: Mafia's Dangerous Desire  ai=yes tropes=mafia;revenge
+My Boss Is My Secret Online Dom  ai=yes tropes=playing-dumb
+How to Land a Movie Star  ai=no tropes=workplace;rom-com
+The Fake Dating Spell  ai=yes tropes=young-adult;fake-dating   # Cyan: check whether high fantasy
+My Fireplace Ships to Dragon Realm  tropes=dragon;high-fantasy   # dictated; probably misheard, will show as waiting
+Nanny to My Hot Bully  ai=no tropes=young-adult
+The Tutor Trap  ai=no
+Once Upon a Breakup  ai=no tropes=young-adult
+Taming the Lion  ai=no tropes=billionaire;rom-com   # dictated "Taming the Lion: Billionaire on Box"
+The Seduction Game  ai=no tropes=young-adult
+The Rabbit Bride Who Rejected Her Alpha King  ai=yes tropes=playing-dumb
+Offside with the Hockey Star  ai=yes tropes=young-adult;love-triangle
+My Two Dangerous Roommates Crave Me  ai=yes tropes=bl;love-triangle
+Blitzed by My Rival's Obsession  tropes=bl;enemies-to-lovers   # Cyan thinks AI, no tag seen; page-says-AI report settles it
+Waking Up Pregnant   # Cyan: poster says this, title page says Spoiled by the Daddy CEO During Pregnancy; which is right?
+Daddy We're Done  ai=yes
+Your Husband Is Mine  ai=no tropes=billionaire;revenge
+He Paid for One Night, Then Wanted Forever  ai=yes tropes=billionaire
+The Dragons Return: Reclaiming My Throne  tropes=dragon;high-fantasy
+Chained by Hades, the Underworld King  tropes=high-fantasy
+Reborn to Love Mr. Right  ai=no
+Hating and Loving My Adopted Brother  ai=no
+The Mafia Boss Has a Gun  ai=no
+Darling Don't Run  ai=no
+The Virgin's Bucket List  ai=no
+Legally Bound  ai=no
+Legally Bound to Love  ai=no
+Unexpected  ai=no
+Married to a Billionaire Nurse  ai=no   # dictated "Not: Married to a Billionaire Nurse"
+Faked My Death, Destroyed the Billionaire  ai=yes tropes=billionaire;revenge
+Caught the Ruthless Alpha's Runaway Luna  ai=yes tropes=werewolf
+Fake Husband, Hidden King  ai=yes tropes=billionaire;secret-identity
+Two Snakes, One Mate  ai=yes
+A Cinderella for Wolf King  tropes=werewolf;fated-mates   # ai=yes is on its earlier line
+The Alpha King Sold Me to the War God  tropes=werewolf

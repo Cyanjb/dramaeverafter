@@ -1771,7 +1771,10 @@ BROWSE_JS = f"""
   var onlyBookEl=document.getElementById('only-book');
   var hideAiEl=document.getElementById('hide-ai');
   var hideSoonEl=document.getElementById('hide-upcoming');
-  // Default is to HIDE AI titles; the choice is remembered between visits.
+  // AI titles SHOW by default (Cyan, 3 Sep 2026: "AI titles should not be hidden
+  // by default but there should be a button to hide them"). The toggle sits in
+  // the results head, not at the foot of the filter panel, and the choice is
+  // remembered between visits. Before 3 Sep the default was hide.
   try{{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }}catch(e){{}}
   // Same for unreleased titles: a search here means "what can I watch", so they
   // are out by default and opting in is one click.
@@ -1921,10 +1924,6 @@ browse_body = f"""
 <input type="checkbox" id="only-book">
 <span>Only titles based on a book</span>
 </label>
-<label class="ai-toggle" for="hide-ai">
-<input type="checkbox" id="hide-ai" checked>
-<span>Hide AI-generated titles</span>
-</label>
 <label class="ai-toggle" for="hide-upcoming">
 <input type="checkbox" id="hide-upcoming" checked>
 <span>Hide titles not out yet</span>
@@ -1933,6 +1932,10 @@ browse_body = f"""
 <section class="results-panel">
 <div class="results-head">
 <p class="count" id="result-count">Loading&hellip;</p>
+<label class="ai-toggle" for="hide-ai" title="AI-generated titles are in by default (Cyan, 3 Sep 2026); tick to hide them">
+<input type="checkbox" id="hide-ai">
+<span>Hide AI titles</span>
+</label>
 <label class="sort-label">Sort<select id="f-sort" aria-label="Sort titles">
 <option value="views">Most watched</option>
 <option value="az">A&ndash;Z</option>
@@ -2143,8 +2146,25 @@ def _release_year(t):
     return int(y) if y.isdigit() else 0
 _with_art_dated = [t for t in titles_root
                    if (t.get("poster_ref") or "").strip() and _release_year(t) >= _year_now - 1]
-new_releases = sorted(_with_art_dated,
-                      key=lambda t: (-_release_year(t), -title_views(t)))[:12]
+# SINCE 3 SEP 2026 THE WEEKLY SCRAPE GIVES A REAL FIRST-SEEN DATE. A title whose
+# source is a weekly run (reelshort_weekly_2026-09-06 and kin) was first seen on
+# that date, on a platform's own new or trending rail, which is the release
+# signal this rail always wanted (Cyan, 3 Sep: "the new releases page must
+# update"). Those lead, newest run first, then by views; the year-based list
+# fills the rest so the rail never goes empty when scrapes lapse. Only titles
+# first seen within the last 90 days count as new; older weekly finds fall back
+# to the year ordering like everything else. Artwork is still required.
+_SOURCE_DATE = re.compile(r"weekly[_-](20\d\d-\d\d-\d\d)")
+def _first_seen(t):
+    m = _SOURCE_DATE.search(t.get("source") or "")
+    return m.group(1) if m else ""
+_recent_cutoff = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
+_recent = [t for t in titles_root
+           if (t.get("poster_ref") or "").strip() and _first_seen(t) >= _recent_cutoff]
+_recent.sort(key=lambda t: (_first_seen(t), title_views(t)), reverse=True)
+_recent_ids = {t["title_id"] for t in _recent}
+new_releases = (_recent + sorted((t for t in _with_art_dated if t["title_id"] not in _recent_ids),
+                                 key=lambda t: (-_release_year(t), -title_views(t))))[:12]
 
 home_apps = "".join(
     f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} title{"s" if n != 1 else ""}</span></a>'
@@ -2201,7 +2221,7 @@ body = f"""
 </section>
 
 <section class="section-warm pad" style="padding:30px 22px 44px">
-<div class="section-head"><h2>New releases</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
+<div class="section-head"><h2>New and trending</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
 <div class="rail" style="padding:0">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in new_releases)}</div>
 </section>
 {section_links}

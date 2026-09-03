@@ -50,7 +50,7 @@ Usage:
     py generator/caption_pipeline.py check <file>
     py generator/caption_pipeline.py apply <file> [--dry-run]
 """
-import csv, io, json, os, re, sys, unicodedata, datetime
+import csv, glob, io, json, os, re, sys, unicodedata, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.environ.get("DEA_DATA") or os.path.join(os.path.dirname(HERE), "data")
@@ -144,9 +144,26 @@ def views_label(n):
 
 
 def load_facts():
+    """The quarantine file (gitignored, Cyan's machine only) plus every weekly
+    scrape's staging JSON, which holds each title's synopsis as read from the
+    platform's own page. So a title the Sunday run created is tier C the moment
+    it exists, not tier D: its facts are on disk, in the repo, with the URL.
+    The quarantine wins where both hold a title; newer scrapes win over older."""
+    facts = {}
+    for path in sorted(glob.glob(os.path.join(STAGING, "reelshort_*.json"))):
+        try:
+            doc = json.load(io.open(path, encoding="utf-8"))
+        except ValueError:
+            continue
+        for b in (doc.get("books") or {}).values():
+            tid = b.get("known_title_id") or b.get("slug")
+            text = (b.get("synopsis") or "").strip()
+            if tid and text and b.get("status") == 200:
+                facts[tid] = {"copied_text": text, "kind": "platform", "url": b.get("url", ""),
+                              "from": os.path.basename(path)}
     if os.path.exists(FACTFILE):
-        return json.load(io.open(FACTFILE, encoding="utf-8"))
-    return {}
+        facts.update(json.load(io.open(FACTFILE, encoding="utf-8")))
+    return facts
 
 
 def proper_nouns(text):
