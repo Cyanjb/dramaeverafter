@@ -624,3 +624,35 @@ string): 112 titles we ALREADY HOLD would gain a platform row, 72 of which have 
 platform at all today and are therefore excluded from completeness.py's denominator
 entirely. Plus an 878-title import queue. IMDb still gives no watch link, so a gained
 platform row starts without a direct_link - see sec 25 for where the link comes from.
+
+## 27. THE WEEKLY SCRAPE RUNS ITSELF NOW (2026-09-03)
+
+The five-stage pipeline was designed weekly (Craft doc 7, sec 3) and had not
+run since 24 July, because it only ever existed as a Claude session doing
+fetches by hand and the cloud sandbox cannot reach a platform (sec 14).
+`.github/workflows/weekly-scrape.yml` runs it unattended on a GitHub runner
+every Sunday 12:00 UTC (14:00 Johannesburg), straight to main, push is
+publish. Cyan chose ReelShort first, direct to main, Sunday afternoon (3 Sep).
+
+- `generator/scrape_reelshort.py` writes `generator/staging/reelshort_<date>.json`
+  (committed: it is the record, and it holds each title's synopsis as a fact
+  source for captions). Routes: the 940 actor tag pages in harvest_queue.csv
+  (sec 1, paginated), the homepage rails, the newest 100 fandom posts (sec 3),
+  and /movie/ detail pages (sec 2) for anything not already refreshed. The
+  sitemap route exists but is off: a sitemap is a sweep, and new titles are
+  CHOSEN, not swept (Cyan, 8 Aug).
+- `generator/merge_scrape.py` applies Stage 3 exactly: exact book-id match
+  refreshes view_count, view_count_date, last_checked, last_verified and
+  writes a DATED snapshots row; everything else fill-blank-only; a new title
+  is created only when seen via tags, home or fandom; same slug, hyphenless
+  slug match or same title after the leading article goes to match_queue and
+  is never created; a 404 is reported, never deleted; credits only for an
+  exact single-person name match; synopsis_short is never written.
+- The run summary (counts, new titles, held, delisted, credits) is on the
+  workflow run page under Actions. Dispatch by hand with `dry_run` to test a
+  change, or `limit` for a quick probe.
+- To add a platform: write `scrape_<platform>.py` emitting the same books
+  shape, generalise PLATFORM in merge_scrape.py, add a step. GoodShort (sec 9)
+  and NetShort trending rails (sec 9, second) are the obvious next two.
+- Monthly full re-crawl on rotation and a 45-day staleness report were part
+  of the original design; the summary already counts rows older than 45 days.
