@@ -1,152 +1,105 @@
 # DramaEverAfter — handover for the next session
 
-Paste this as your first message.
+Paste this as your first message. Written 3 Sep 2026, 02:40 UTC, at the end of
+the session that built the weekly scrape. Nothing from that session lives only
+in chat: every ruling is in `generator/staging/reelshort_wanted.txt`, every
+scrape record in `generator/staging/reelshort_<date>.json`, the design in
+README.md and `references/adapters.md` sec 27, and the code comments say why.
 
 ---
 
-We're continuing work on DramaEverAfter. Read the Craft doc '7. DEA READ FIRST'
-first — its CURRENT STATE block is dated 24 Aug and matches this file (synced
-after the connector came back; the week's five new traps are appended to its
-traps list). This file is the fuller handover; '7. DEA TASKS' is Cyan's list,
-not your work queue.
+We're continuing work on DramaEverAfter. Read README.md ("The weekly update
+runs itself"), `references/adapters.md` section 27, and the header of
+`generator/staging/reelshort_wanted.txt`. Then `git fetch` and run
+`git rev-list --left-right --count origin/main...HEAD` before trusting any
+state claim below.
 
-Then in the repo: `generator/caption_pipeline.py`'s docstring (it changed a lot
-this week), and `references/adapters.md` sections 24–26.
+## STATE: pushed, clean, live. main = a3098913 plus whatever run 5 commits.
 
-## STATE: pushed, clean, and live.
+THE WEEKLY SCRAPE EXISTS AND RUNS ITSELF. `.github/workflows/weekly-scrape.yml`
+runs every Sunday 12:00 UTC (14:00 Johannesburg) on a GitHub runner (the cloud
+sandbox cannot reach any platform; GitHub can), straight to main, push is
+publish. Cyan chose ReelShort first, direct to main, Sunday afternoon. Three
+pieces: `generator/scrape_reelshort.py` (routes: actor tag pages, genre tag
+pages, homepage rails, fandom blog, the wanted list, title pages),
+`generator/merge_scrape.py` (the database rules, enforced not remembered),
+and the workflow. The run summary on the Actions page is the change report.
 
-`main = origin/main = afc1dc6dc` plus one handover commit after it. Run
-`git rev-list --left-right --count origin/main...HEAD` before trusting that.
-Netlify auto-deploys on push, verified again 24 Aug — push is publish.
-NOT OURS, LEFT ALONE: the working tree may show `.design-sync/`,
-`design-system/` and a `.gitignore` change belonging to another session's
-frontend-design branch. Do not commit or clean them.
+RUNS ON 3 SEP: run 3 (full, 1,139 requests) refreshed 666 ReelShort rows and
+created 102 titles; run 4 (genre sweep + wanted list) refreshed 665, created
+65, applied Cyan's AI rulings (A Zombie Girl's Journey Home is ai=yes). Run 5
+was dispatched at 02:40 UTC with routes genres,wanted,detail to apply the hot
+list rulings, the high fantasy umbrella, the tag-to-trope mapping and the four
+"same" links. CHECK ITS SUMMARY FIRST: Actions > Weekly scrape > latest run.
+The "still waiting" list there is dictation slips for Cyan to correct.
 
-    3,513 titles · 215 captions ours (was 126) · top 300: 171 covered
-    ALL of these have Cyan's review: 68 hold her line edits verbatim,
-    the rest are read-approved. Her rule: READ MEANS DONE.
+    3,680 titles (was 3,513) · ReelShort rows checked today 666 of 677
+    snapshots now carry dates (audit H2 closed) · New and trending rail keys
+    on first-seen · AI titles show by default, hide toggle in the Browse
+    results head
 
-**What shipped 24 Aug (commit 6d934d704):** batch two (44) and batch three (45)
-went from platform text to our captions; the original 60 thin captions from
-14 Aug were replaced wholesale, rewritten from freshly fetched platform pages.
-The front page is fully rewritten. Live-verified by curl after deploy:
-blood-and-bones, country-gal, ceo-s-twins, kidnapped-by-the-devil all serve the
-new text.
+## CYAN'S RULINGS TONIGHT (all recorded in the wanted file or data)
 
-## THE STANDING GOAL: WRITE THESE WITHOUT HER
+- "We definitely are going to have to start using AI-generated titles."
+  About 80 AI titles named, ~20 human. `ai=yes|no` lines in the wanted file;
+  the merge applies them. The ai column stays hand-set; the file is the hand.
+- AI titles NOT hidden by default; a visible hide button. Done: Browse
+  results head, beside sort.
+- "Same" on the four weekly-scrape match_queue rows (status set; the merge
+  links them to ReelShort on run 5).
+- Djinn is the correct title (dictated "Gin, as in DJ").
+- HIGH FANTASY is a trope, umbrella over werewolf, dragon, elf, mermaid,
+  magic (185 titles). In tropes.csv and UMBRELLAS in merge_scrape.py.
+- ReelShort's LGBTQ+ tag = our bl. TAG_ALIASES in merge_scrape.py.
+- "New releases" renamed "New and trending" (releases land daily).
+- New titles need captions: the platform synopsis is banked in the staging
+  JSON, caption_pipeline.load_facts() reads it, so `next` ranks them by
+  reach. The dea-captions skill writes them for her review. 167 new titles
+  since 3 Sep have no caption.
+- Trope names ReelShort uses that are NOT in our vocabulary, HER DECISION:
+  music, high society, royalty, toxic romance, country, new adult, strong
+  heroine, bully romance, regret, zero to hero, reverse harem, action, fated
+  lovers, upgrade from ex, superhero, academy/school (she asked; we have
+  campus 410 and college romance 12). Run 5's summary lists ReelShort tag
+  names with counts.
+- "When we finish we also need to clean up the trope tabs" (her words,
+  3 Sep). The GoodShort trope soup from the 24 Aug handover is still open.
 
-Cyan, 24 Aug: "consider corrections and my updates to text as training." Her
-edits are mined into `generator/CAPTION-TRAINING.md` — verbatim before/after
-pairs in seven lesson classes, plus an edit-rate table per batch (70% → 42% →
-55% so far; target under 10%). Read it before writing, diff her edits after
-every review, log new lessons, update the table. An edit that repeats a known
-class means the training failed to land — own that out loud. She reviews to
-converge, not forever.
+## OPEN QUESTIONS SHE RAISED, NOT YET ANSWERED
 
-## THERE IS NOW A SKILL FOR ALL OF THIS
+- Which ReelShort number is views? Their pages show collect (bookmark),
+  likes, and a flame count. Our view_count is ReelShort's `read_count`
+  field from its page data (plays), the same field the July scrape used, so
+  rankings are consistent with July. The Great and Powerful Genie came in
+  at 254.8M and leads the new titles; it should be in Most Watched. She
+  says its tropes are high fantasy and superhero (superhero not in vocab).
+- Waking Up Pregnant vs Spoiled by the Daddy CEO During Pregnancy: poster
+  says one, page says the other. In the wanted file; check what search
+  returns.
+- The Alpha and His Nanny Luna and Blitzed by My Rival's Obsession: she
+  thinks AI. The scraper now records when a title page says "AI-generated";
+  the summary lists those without a ruling.
 
-`/dea-captions` — a user-level skill at
-`C:\Users\cyanj\.claude\skills\dea-captions\SKILL.md`, created 24 Aug at Cyan's
-request. It carries the whole workflow (select, fetch-first, write, check,
-readback, shadow audit, her review page, apply, build, push, verify live), the
-condensed voice rules, and the environment traps. Invoke it for ANY caption
-work rather than re-deriving the process from this file. The calibration
-section below stays as the deeper record; the memory dea-caption-voice.md has
-the full detail with her quotes. The LIVE skill sits outside the repo (user
-level — .claude/ is gitignored because the repo root is the Netlify publish
-dir), and a git-tracked backup lives at `generator/skills/dea-captions.SKILL.md`;
-a session that edits the live skill refreshes the backup in the same commit.
-Restore live from backup on a new machine.
+## TRAPS ADDED 3 SEP (append to Craft READ FIRST)
 
-## THE CALIBRATION THAT COST A WEEK — read this before writing ANY caption
+- GitHub refuses to dispatch a workflow that is not on the default branch
+  (404). Test on main or not at all.
+- A second workflow run on the same day used to OVERWRITE that day's
+  staging JSON (run 4 replaced run 3's 753-book record). Fixed: the scraper
+  merges into an existing same-day file. Verify on the next same-day run.
+- The homepage rails carry books with no /movie/ href; the fandom REST
+  JSON escapes slashes; actor tag pages list ReelTalk episodes with real
+  view counts. All handled; see adapters.md sec 27.
+- The sandbox cannot curl the live site (000 on every host). Verify via
+  the GitHub commit and ask Cyan to look.
+- A dictated title that never resolves is a mishearing, not a missing
+  show: the wanted file's "still waiting" list is where to look.
 
-The session memory (dea-caption-voice.md) has the full detail. The four rulings
-Cyan spent 20–24 Aug hammering in, each after finding the fault herself:
+## NEXT, IN ORDER
 
-1. **Restructure, never synonym-swap.** Writing each source sentence as a
-   "changed enough" copy is reworded platform text with extra steps. Facts are
-   the constraint, structure is free. An occasional verbatim source sentence is
-   FINE ("a sentence here and there left the same is fine rather than a
-   sentence that makes no sense"). Measure it: difflib word-ratio of body vs
-   source; shadowing shows at 0.55+, honest restructures sit 0.15–0.35.
-2. **Genre vocabulary is kept verbatim** — flash marriage, contract marriage,
-   fated mates, age gap, silver fox, CEO. Enforced in check() (GENRE_TERMS)
-   except CEO, which is judgement (her own janitor edit avoids it).
-3. **Count caps are REMOVED, permanently.** Her words: "just remove these word
-   caps". The floor was making captions cram source clauses in. Length is
-   writer's judgement. The suspended checks are documented in validate().
-4. **Contractions are the default fan register** — the observed failure was
-   under-use, not over-use. Full forms only where a line wants weight.
-   Endings must LAND: a but-turn, a question, a tease, or a punch.
-
-**The pipeline gates all still apply**: check → readback (mandatory, catches
-what the noun-guard cannot) → apply from an approved file only → build → push.
-`audit_captions.py` every 100. The hook/body boundary now counts as a sentence
-break in the noun guard (hooks may lack a full stop — hers do).
-
-## THE JOB NEXT: 129 captions to finish the top 300
-
-171 of 300 covered. Next unwritten title sits at 67.4M reach. The fetch-first
-routine is proven: `next` emits the batch, fetch every synopsis from the
-platform's own page (WebFetch; reelshort.com blocked in Browser pane but fine
-via WebFetch), write, check, readback, review page for Cyan, apply, build, push.
-
-**Review pages** (claude.ai artifacts, hers, private): the 89-batch page and the
-rewrite-60 page both have per-caption edit boxes with a "Collect my edits"
-button that outputs paste-ready blocks. This is the review format that finally
-worked — whole batch on one page, editable in place. Rebuild the generators
-from scratchpad if needed; they're session-local, the staging files in
-generator/staging/ are the record.
-
-## OPEN ITEMS, verified this session
-
-- **GoodShort trope soup — the second half of Cyan's original complaint, not
-  started.** Measured 21 Aug: GoodShort titles average 17.4 tropes vs 3.2 for
-  every other platform; 1,491 titles carry 15+, all GoodShort. Wrong tropes
-  leak onto browse pages (blood-and-bones sits on /tropes/vampire, /luna,
-  /devil with none of those in the show). The 14 Aug cleanup halved it and
-  stopped; it needs a second, GoodShort-scoped cut to ~3–5 per title. Cyan
-  has seen the numbers and said "first the captions" — captions are done, so
-  this is next when she says go.
-- ~~Mic Drop Diva~~ **RESOLVED 24 Aug: Cyan ruled the live caption stays.**
-  The superseded batch-two duplicate is annotated in the approved b2 file with
-  a warning never to apply that file with --update-ours.
-- **ReelShort 1-episode anomaly, now FOUR titles**: the-senator-s-son,
-  shhh-professor-please-don-t-tell, summer-situationship, outplayed. Pattern,
-  not page errors. On her list.
-- **Scandalous / Vicious carry no author credit** on their ReelShort pages
-  (both "ReelShort original production") — evidence for her open L.J. Shen
-  question, not an answer. Note ReelShort DOES credit authors where a book
-  exists (Gemma James, Cricket Colson — both credits are live in our captions).
-- **Save-point zip still needs copying off this machine**:
-  `C:\Users\cyanj\DramaEverAfter-backups\dea-savepoint-2026-08-16.zip` — the
-  gitignored quarantine file exists nowhere else. Standing reminder to Cyan.
-- Older Cyan-only items unchanged: 638 no-trope titles, DramaBox
-  singular/plural ruling, 14 fused people.csv rows, IMDb pages for the
-  filmography queue, the two Drive lookup sheets.
-
-## TRAPS ADDED THIS WEEK (append to Craft when it's back)
-
-- Another session pushed to main mid-session on 16 Aug and swept up uncommitted
-  work. fetch + rev-list before trusting any state claim, and before build/push.
-- `caption_pipeline.py next` names output by date+offset: running it twice the
-  same day with a matching offset SILENTLY OVERWRITES the earlier batch file.
-  Generate to an explicit filename instead.
-- This Bash tool mangles backslashes in heredocs (a `\\n` became a real newline
-  inside a Python source file; regexes lose escapes). Write scripts to a file
-  with the Write tool and run the file. This bit three separate times.
-- Editing a caption in only one of generator-script/staging-file loses the edit
-  when the other regenerates. One file is the record (staging); retire spent
-  generators with a SPENT header immediately.
-- Cyan's collect-box resends entries whose stored edit differs from the applied
-  text by mechanical fixes. The repeats are not re-assertions of the typos.
-
-## HOW CYAN WORKS (unchanged, plus this week's additions)
-
-Whole batch on one page, editable in place. Read means done. Her wording goes
-in verbatim; mechanical typo fixes are applied but LISTED individually for
-veto. When she asks "what is causing it", she wants the mechanism named
-honestly, not reassurance — and the fix encoded so she never repeats the
-correction. Run lookups yourself. Tell her before anything rewrites thousands
-of files. Generated output that looks correct is not evidence: curl the live
-page.
+1. Read run 5's summary; fix any "still waiting" spellings with Cyan.
+2. Captions for the 167 new titles, top by reach first (dea-captions).
+3. Her trope vocabulary decisions above, then the trope cleanup.
+4. GoodShort and NetShort scrapers, same staging shape (adapters sec 27).
+5. The year capture: check "years filled" in a summary; if zero, the field
+   names in year_hint() are wrong for ReelShort's page data.
