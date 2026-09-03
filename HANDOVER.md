@@ -13,6 +13,14 @@ not your work queue.
 Then in the repo: `generator/caption_pipeline.py`'s docstring (it changed a lot
 this week), and `references/adapters.md` sections 24–26.
 
+## STANDING RULE: EMAIL (Cyan, 2 Sep)
+
+Claude can send email via the Gmail connector as cyan@dramaeverafter.com
+(default send-as alias on aiandcyan@gmail.com). NEVER send an email until
+Cyan has seen the exact final text and explicitly said to send it. Feedback
+on a draft, "yes", "sounds good", or tone notes are NOT a send instruction.
+This was violated once (2 Sep, ReelShort outreach sent early); do not repeat.
+
 ## STATE: pushed, clean, and live.
 
 `main = origin/main = afc1dc6dc` plus one handover commit after it. Run
