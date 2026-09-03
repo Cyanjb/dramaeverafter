@@ -47,6 +47,10 @@ PLATFORM = "reelshort"
 STALE_DAYS = 45
 MOVIE_RE = re.compile(r"/movie/([a-z0-9]+(?:-[a-z0-9]+)*)-([0-9a-f]{24})\b")
 CREATE_ROUTES = {"tags", "home", "fandom"}
+# CONVENTIONS.md: ReelTalk episodes, The Next ReelStar and other unscripted or
+# interview content are excluded from titles.csv. The first live probe (3 Sep
+# 2026) would have created seven ReelTalk episodes from actor tag pages.
+EXCLUDE_RE = re.compile(r"^\s*(reel\s*talk|the next reelstar|reelstar|goodchat|reelshort (podcast|live))\b", re.I)
 
 
 # --- CSV I/O, line endings preserved per file ---------------------------------
@@ -201,6 +205,14 @@ def main():
         if not b.get("title") or not b.get("slug"):
             n["no_data"] += 1
             continue
+        if EXCLUDE_RE.match(b["title"]):
+            n["excluded"] += 1
+            continue
+        if b.get("slug_guessed"):
+            # The URL was inferred from the title and never confirmed by a
+            # fetch; a wrong slug would become a permanent wrong URL.
+            n["unconfirmed_url"] += 1
+            continue
         slug, name, url = b["slug"], b["title"], b.get("url") or ""
         if not (set(b.get("seen_via") or []) & CREATE_ROUTES):
             catalogue_only += 1
@@ -285,6 +297,8 @@ def main():
                  % (n["episodes_filled"], n["posters_filled"], n["links_filled"]))
     lines.append("| Delisted (404, not deleted) | %d |" % len(delisted_report))
     lines.append("| Seen only in a sitemap, not imported | %d |" % catalogue_only)
+    lines.append("| Excluded as unscripted (ReelTalk and kin) | %d |" % n["excluded"])
+    lines.append("| Skipped: no title or slug / URL unconfirmed | %d / %d |" % (n["no_data"], n["unconfirmed_url"]))
     lines.append("| ReelShort rows still older than %d days | %d |" % (STALE_DAYS, stale))
     lines.append("| Scrape errors | %d |" % len(doc.get("errors") or []))
     lines.append("")

@@ -656,3 +656,11 @@ publish. Cyan chose ReelShort first, direct to main, Sunday afternoon (3 Sep).
   and NetShort trending rails (sec 9, second) are the obvious next two.
 - Monthly full re-crawl on rotation and a 45-day staleness report were part
   of the original design; the summary already counts rows older than 45 days.
+- Live probe, 3 Sep 2026 (57 requests, dry run): ReelShort publishes NO
+  sitemap (four paths, all 404). The homepage __NEXT_DATA__ carries ~128
+  books with NO /movie/ hrefs, so a home-only book gets a slug in
+  ReelShort's style from its title and the detail route confirms the URL
+  (canonical) before the merge may create it. The fandom REST JSON escapes
+  slashes ("\/movie\/"), so links are matched on the unescaped text. Actor
+  tag pages surface ReelTalk episodes with real view counts; merge_scrape
+  excludes them by title (CONVENTIONS.md).

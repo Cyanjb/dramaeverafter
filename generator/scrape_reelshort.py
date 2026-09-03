@@ -46,7 +46,7 @@ Output:
       "synopsis", "poster", "actors": [...], "seen_via": [...], "status"}},
    "delisted": [{"title_id", "url", "status"}], "errors": [...]}
 """
-import argparse, csv, datetime, io, json, math, os, re, sys, time
+import argparse, csv, datetime, io, json, os, re, sys, time, unicodedata
 import urllib.error, urllib.request
 from html import unescape
 
@@ -150,6 +150,27 @@ def views_of(raw):
     return ""
 
 
+def slugify(title):
+    """ReelShort's own slug style, which is also the house style: lower case,
+    every run of non-alphanumerics becomes one hyphen ("The Alpha's Daughter"
+    -> the-alpha-s-daughter). Used only when a page gave us a book with no
+    href; the detail route then fetches that URL to confirm it resolves."""
+    s = unicodedata.normalize("NFKD", title or "").encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+
+
+def canonical_slug(html, bid):
+    """The page's own /movie/ URL for this book id, from canonical or og:url."""
+    for pat in (r'<link[^>]+rel="canonical"[^>]+href="([^"]+)"',
+                r'<meta[^>]+(?:property|name)="og:url"[^>]+content="([^"]+)"'):
+        m = re.search(pat, html, re.I)
+        if m:
+            mm = MOVIE_RE.search(unescape(m.group(1)))
+            if mm and mm.group(2) == bid:
+                return mm.group(1)
+    return ""
+
+
 def og_image(html):
     for pat in (r'<meta[^>]+(?:property|name)="og:image"[^>]+content="([^"]+)"',
                 r'<meta[^>]+content="([^"]+)"[^>]+(?:property|name)="og:image"'):
@@ -183,9 +204,16 @@ def books_in(data, id_to_slug):
             for a in ai.get("actors") or []:
                 if isinstance(a, dict) and a.get("actor_name"):
                     actors.append(clean(a["actor_name"]))
+        slug = id_to_slug.get(bid, "")
+        if not slug:
+            # The homepage rails carry books with no href in the HTML (probe,
+            # 3 Sep 2026: 128 books, 0 hrefs). The dict itself may hold the URL.
+            m = MOVIE_RE.search(json.dumps(d).replace("\\/", "/"))
+            if m and m.group(2) == bid:
+                slug = m.group(1)
         yield {
             "book_id": bid,
-            "slug": id_to_slug.get(bid, ""),
+            "slug": slug,
             "title": clean(title),
             "views_raw": raw if isinstance(raw, (int, float, str)) else "",
             "views": views_of(raw),
@@ -297,7 +325,9 @@ class Run:
             except ValueError:
                 posts = []
             info["posts"] = len(posts) if isinstance(posts, list) else 0
-            for bid, slug in hrefs_of(body).items():
+            # WordPress JSON escapes slashes ("\/movie\/"), so match on the
+            # unescaped text (probe, 3 Sep 2026: 100 posts, 0 hrefs before this).
+            for bid, slug in hrefs_of(body.replace("\\/", "/")).items():
                 info["hrefs"] += 1
                 self.note({"book_id": bid, "slug": slug, "title": "", "views": "", "views_raw": "",
                            "episodes": "", "synopsis": "", "poster": "", "actors": []}, "fandom")
@@ -366,7 +396,12 @@ class Run:
                     continue
                 if not got["poster"]:
                     got["poster"] = og_image(html)
+                true_slug = canonical_slug(html, bid) or got["slug"] or id_to_slug.get(bid, "")
                 cur = self.note(got, "detail", url=url)
+                if true_slug:
+                    cur["slug"] = true_slug
+                    cur["url"] = "%s/movie/%s-%s" % (BASE, true_slug, bid)
+                cur["slug_guessed"] = False
                 cur["status"] = 200
                 ok += 1
             print("detail %4d/%d %s %s" % (i + 1, len(targets), status, url[-60:]))
@@ -412,6 +447,14 @@ def main():
         run.fandom()
     if "sitemap" in routes:
         run.sitemap()
+    # A book with a title but no href gets a slug in ReelShort's own style; the
+    # detail route then has to confirm the URL resolves before the merge may
+    # trust it, so those books are always detail targets.
+    for bid, b in run.books.items():
+        if bid not in known and not b.get("slug") and b.get("title"):
+            b["slug"] = slugify(b["title"])
+            b["slug_guessed"] = True
+            b["url"] = "%s/movie/%s-%s" % (BASE, b["slug"], bid)
     if "detail" in routes:
         targets = []
         for bid, (url, tid) in known.items():
@@ -419,7 +462,7 @@ def main():
             if b is None or not b.get("views"):
                 targets.append((bid, url, tid))
         for bid, b in run.books.items():
-            if bid not in known and not b.get("title"):
+            if bid not in known and (not b.get("title") or b.get("slug_guessed")) and b.get("slug"):
                 targets.append((bid, b.get("url") or "%s/movie/%s-%s" % (BASE, b["slug"], bid), None))
         if a.limit:
             targets = targets[:a.limit]
