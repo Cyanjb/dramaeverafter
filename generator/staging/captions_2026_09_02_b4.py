@@ -57,7 +57,7 @@ CAPTIONS = {
     # FACTS: him an offer: pass his tests, and Cain will succeed him as the new Godfather of Bourne
     # FACTS: Syndicate.
     'super-godfather-my-ex-begs-me-on-her-knees':
-        "",
+        "His wife took everything. A godfather offers him the throne.\nCain Hunter is a broken man. His wife betrayed him and ruined him financially, and there is nothing left of the life he had. Then he is brought before the mysterious Don Ludwig, who makes him an offer: pass his tests and succeed him as the new Godfather of the Bourne Syndicate. Wait until his ex finds out.",
 
     # 65.5M    Stop Crying, I Married Someone Better
     # FACTS: Scarlett Winters is devastated when her fiancé, Carlton Simmons, abandons her at the
@@ -69,7 +69,7 @@ CAPTIONS = {
     # FACTS: betrayed and considers leaving. Now Leo must decide: confess his feelings or risk losing
     # FACTS: her forever.
     'stop-crying-i-married-someone-better':
-        "",
+        "Dumped at the altar, she marries a stranger instead.\nScarlett Winters is abandoned at the altar by her fiance Carlton, and she runs. As she flees she is nearly hit by a car, and the near miss is no accident, because Leo Forester arranged it. He is a legendary CEO, he knows exactly who the runaway bride is, and what he offers her is a contract marriage to help her get her dignity back. While she heals he supports her quietly and never tells her who he really is. Then old enemies resurface, the secrets come out, and Scarlett feels betrayed enough to leave. Now Leo has to confess his feelings or lose her for good.",
 
     # 65.2M    The Nurse's Secret Marriage
     # FACTS: In The Nurse's Secret Marriage Full Movie, Nurse Aria Browne gets married to billionaire
@@ -81,7 +81,7 @@ CAPTIONS = {
     # FACTS: decides to divorce his wife who, unbeknownst to him, is the very woman he's falling in
     # FACTS: love with.
     'the-nurse-s-secret-marriage':
-        "",
+        "He's divorcing his wife for the woman he married.\nAria Browne is a nurse, and she marries billionaire CEO Mason Adams to pay for her dying mother's operation. It is purely contractual, and they never actually see each other during the courthouse ceremony. Three years later they meet again. Mason owns the hospital where Aria works, and she is the nurse who saved his grandpa's life. Neither recognizes the other, and their feelings grow the more time they spend together. So Mason decides to divorce his wife, with no idea that she is the woman he is falling for.",
 
     # 65.2M    When Love Walked Away
     # FACTS: Adrian leaves his own daughter Esther in a car while he hangs out with his childhood
@@ -94,7 +94,7 @@ CAPTIONS = {
     # FACTS: Will Claire be able to successfully find and save her daughter before the unthinkable
     # FACTS: happens?
     'when-love-walked-away':
-        "",
+        "Her father left her in the car.\nAdrian leaves his daughter Esther in the car while he spends the day with his childhood sweetheart Stacy and her son. The car overheats and shuts down, the air conditioning stops, and Esther is overheating and close to fainting. She calls her father for help and he hangs up without listening. With the last of her tablet's battery she reaches her mother, but it dies before she can say where she is. Now Claire is searching desperately for her daughter. Will she reach Esther before the unthinkable happens?",
 
     # 64.8M    The Words
     # FACTS: In The Words movie, based on the novel by Ashley Jade. 4 years ago, rocker bad-boy
@@ -103,7 +103,7 @@ CAPTIONS = {
     # FACTS: keep him sober for 8 weeks on tour. Can Lennon and Phoenix heal old wounds, or will
     # FACTS: their past stand in the way of their second chance at love?
     'the-words':
-        "",
+        "He stole her song. Now she's hired to keep him sober.\nFour years ago the rocker bad boy Phoenix broke nerdy good girl Lennon's heart and stole her song, and it bought his escape from an abusive father. Now he is a famous rockstar spiraling into drugs and alcohol, and Lennon is the one hired to keep him sober for eight weeks on tour. Can they heal the old wounds, or will the past stand in the way of their second chance at love? Based on the novel by Ashley Jade.",
 
     # 64.4M    Puck Me Baby One More Time
     # FACTS: Lila Cobb once saved Alexander Vaughn, the hottest hockey player. One night of passion
