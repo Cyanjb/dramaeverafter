@@ -16,6 +16,37 @@ state claim below.
 
 ## STATE: pushed, clean, live. main = a3098913 plus whatever run 5 commits.
 
+## GOOGLE DEMOTION, 1 SEP (diagnosed 5 Sep) — THE RECOVERY IS THE PRIORITY
+
+Search traffic died overnight 31 Aug -> 1 Sep: 58 clicks/1,939 impressions on
+31 Aug, 0 clicks/44 impressions on 1 Sep. Diagnosis (GSC exports + live
+probes, 5 Sep): ALGORITHMIC site-level quality demotion. Manual actions:
+none. Security: n/a. Crawl: healthy throughout. Indexed count: stable
+through 28 Aug, but the top page (eng-dub-apocalypse-romance-system, 76
+clicks in Aug) has since been EJECTED from the index ("Crawled - currently
+not indexed"). Brand queries still rank; content queries return nothing.
+Likely trigger: scaled-content profile (646 verbatim platform synopses,
+~2,000 castless/synopsis-less title pages, 1,600 one-credit actor stubs,
++167 new thin pages that week). Expect weeks-to-months recovery, tied to
+content quality, not tricks.
+
+RECOVERY STATE (5 Sep):
+- Batch four captions (129, into the 35M reach tier) WRITTEN, all gates
+  passed, staged UNAPPROVED in generator/staging/captions_2026_09_02_b4.py.
+  Cyan is reviewing on the artifact page. Apply + build + push when she
+  finishes. Then keep batching: 646 scraped synopses is the number to zero.
+- Extensionless duplicate URLs now 301 to the .html canonical (_redirects,
+  5 Sep). VERIFY the rules actually fire on Netlify: if pretty URLs shadow
+  non-forced rules the extensionless paths still return 200 and the rules
+  need a rethink (forced 301! would loop; do NOT use it).
+- Sitemap: Google last read it 2 Aug; "Temporary processing error" on
+  inspections. Cyan is resubmitting in GSC.
+- AWAITING CYAN'S RULING (proposed, not applied): (a) noindex thin pages
+  (~2,051 titles with no synopsis AND no cast; ~1,233 actor pages with <=1
+  credit and no bio); (b) gate: new scraped titles ship noindexed until
+  captioned. Do not implement either without her yes.
+- Do NOT mass-"Request indexing"; it does nothing for a demotion.
+
 ## STANDING RULE: EMAIL (Cyan, 2 Sep)
 
 Claude can send email via the Gmail connector as cyan@dramaeverafter.com
