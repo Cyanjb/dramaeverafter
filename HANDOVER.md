@@ -35,10 +35,13 @@ RECOVERY STATE (5 Sep):
   passed, staged UNAPPROVED in generator/staging/captions_2026_09_02_b4.py.
   Cyan is reviewing on the artifact page. Apply + build + push when she
   finishes. Then keep batching: 646 scraped synopses is the number to zero.
-- Extensionless duplicate URLs now 301 to the .html canonical (_redirects,
-  5 Sep). VERIFY the rules actually fire on Netlify: if pretty URLs shadow
-  non-forced rules the extensionless paths still return 200 and the rules
-  need a rethink (forced 301! would loop; do NOT use it).
+- Extensionless-to-.html 301 rules are IN _redirects but DORMANT, verified
+  5 Sep: Netlify's Pretty URLs post-processing answers /titles/foo itself,
+  so non-forced rules never fire (and forced 301! would LOOP - never use
+  it). The fix is Cyan's toggle: Netlify site settings > Build & deploy >
+  Post processing > disable Pretty URLs. The moment it is off, the rules
+  take over and extensionless 301s to canonical. Until then canonical tags
+  carry the load, as before.
 - Sitemap: Google last read it 2 Aug; "Temporary processing error" on
   inspections. Cyan is resubmitting in GSC.
 - AWAITING CYAN'S RULING (proposed, not applied): (a) noindex thin pages
