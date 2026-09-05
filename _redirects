@@ -54,3 +54,19 @@
 /TROPE-CLEANUP-PROPOSAL.md  /404.html  404
 /TROPES-WANTED.md /404.html  404
 /.github/*        /404.html  404
+
+# Canonical URL form is .html; Netlify also answers extensionless paths with
+# the same content (no redirect), so Google indexed a duplicate of nearly
+# every page. Recovery hygiene, 5 Sep 2026: extensionless now 301s to the
+# canonical. Non-forced rules, so existing files always win.
+/titles/:slug          /titles/:slug.html          301
+/actors/:slug          /actors/:slug.html          301
+/where-to-watch/:slug  /where-to-watch/:slug.html  301
+/apps/:slug            /apps/:slug.html            301
+/tropes/:slug          /tropes/:slug.html          301
+/browse     /browse.html     301
+/blog       /blog.html       301
+/contact    /contact.html    301
+/platforms  /platforms.html  301
+/my-list    /my-list.html    301
+/search     /browse.html     301
