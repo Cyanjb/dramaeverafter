@@ -30,6 +30,20 @@ Likely trigger: scaled-content profile (646 verbatim platform synopses,
 +167 new thin pages that week). Expect weeks-to-months recovery, tied to
 content quality, not tricks.
 
+THE APOCALYPSE WAVE SHIPPED 5 Sep (Cyan: trending, bring them in, make
+them look good): 29 new ReelShort titles from the survival-movies theme
+tag via the wanted file (tropes=apocalypse), 68 captions written and
+applied for the whole cluster under her 16 Aug below-top-300 ruling,
+/tropes/apocalypse.html live with 69 titles, the eng-dub Apocalypse
+Romance System pages (top Google earners, wrongly noindexed on
+platform-views grounds) captioned and back in the sitemap. Live
+verified. love-in-my-hands has no findable synopsis, waits for Cyan.
+TRAP FOR SUNDAY: scrape_reelshort's wanted/detail route fetched 30
+movie pages (status 200) and parsed EMPTY - the movie-page __NEXT_DATA__
+shape changed and books_in() finds nothing; this session enriched the
+staging JSON by hand. Fix the parser or the detail route silently
+collects nothing.
+
 RECOVERY STATE (5 Sep):
 - Batch four captions (129, into the 35M reach tier) WRITTEN, all gates
   passed, staged UNAPPROVED in generator/staging/captions_2026_09_02_b4.py.
