@@ -44,10 +44,19 @@ RECOVERY STATE (5 Sep):
   carry the load, as before.
 - Sitemap: Google last read it 2 Aug; "Temporary processing error" on
   inspections. Cyan is resubmitting in GSC.
-- AWAITING CYAN'S RULING (proposed, not applied): (a) noindex thin pages
-  (~2,051 titles with no synopsis AND no cast; ~1,233 actor pages with <=1
-  credit and no bio); (b) gate: new scraped titles ship noindexed until
-  captioned. Do not implement either without her yes.
+- RULED AND APPLIED 5 Sep, Cyan: "hide the thin pages unless they are
+  popular, new or a main actor" plus "if the thin page is popular, new, or
+  a main actor then I need to flesh it out." Shipped: 1,888 thin title
+  pages + their where-to-watch twins + 1,178 thin actor pages carry
+  noindex and left sitemap.xml (9,825 -> 4,871 URLs). Carve-outs: top-600
+  views (8.7M floor), first seen by a weekly scrape within 90 days, or a
+  lead credit. Logic lives in build.py's NOINDEX block; the kept-but-thin
+  survivors are FLESHOUT-QUEUE.md (163 titles, 55 lead actors), generated
+  by generator/make_fleshout_queue.py, criteria kept in sync BY HAND. The
+  earlier "gate new titles noindexed until captioned" proposal is DEAD:
+  her carve-out keeps new titles visible; they surface on the flesh-out
+  list and the caption queue instead. A noindexed page un-hides itself on
+  the next build once it gains a synopsis or cast.
 - Do NOT mass-"Request indexing"; it does nothing for a demotion.
 
 ## STANDING RULE: EMAIL (Cyan, 2 Sep)
