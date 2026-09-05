@@ -786,8 +786,9 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--plum);color
 .footer-col a:hover{color:#fff}
 """
 
-def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", og_image="", og_type="website"):
+def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", og_image="", og_type="website", noindex=False):
     pre = "../" * depth
+    robots_meta = '\n<meta name="robots" content="noindex">' if noindex else ""
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
     # Social preview. The audience shares links in Reddit and Facebook threads and
     # until 2 Sep 2026 every one rendered as a bare URL: no og tags, no favicon.
@@ -810,7 +811,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
-<meta name="description" content="{desc}">
+<meta name="description" content="{desc}">{robots_meta}
 <link rel="canonical" href="{canonical}">
 {og}
 {ld}
@@ -1078,6 +1079,33 @@ urls = []
 # crawled, so anything that helps Google pick the right pages first matters.
 lastmod = {}
 
+# Thin-page noindex, Cyan's ruling 5 Sep 2026 after the 1 Sep Google demotion:
+# "hide the thin pages unless they are popular, new or a main actor." A thin
+# title has no synopsis and no cast; a thin actor page has at most one credit
+# and no bio. The carve-outs that keep a thin page indexable: popular (views in
+# the top 600, the tier carrying 98.4% of all reach), new (first seen by a
+# weekly scrape within 90 days, the New-and-trending window), or a lead credit.
+# Noindexed pages stay on the site for readers and leave sitemap.xml; the
+# where-to-watch page follows its title.
+_SEEN_DATE = re.compile(r"weekly[_-](20\d\d-\d\d-\d\d)")
+_NEW_CUTOFF = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
+_TOP600_FLOOR = max(1, sorted((title_views(t) for t in titles), reverse=True)[:600][-1])
+def _thin_title(t):
+    if (t.get("synopsis_short") or "").strip(): return False
+    if credits_by_title.get(t["title_id"]): return False
+    if title_views(t) >= _TOP600_FLOOR: return False
+    m = _SEEN_DATE.search(t.get("source") or "")
+    if m and m.group(1) >= _NEW_CUTOFF: return False
+    return True
+NOINDEX_TITLES = {t["title_id"] for t in titles if _thin_title(t)}
+def _thin_person(p):
+    cs = credits_by_person.get(p["person_id"], [])
+    if len(cs) > 1: return False
+    if (p.get("bio_short") or "").strip(): return False
+    if any((c.get("role") or "").strip().lower() == "lead" for c in cs): return False
+    return True
+NOINDEX_PEOPLE = {p["person_id"] for p in people if _thin_person(p)}
+
 # Actor pages
 for p in people:
     sl = pslug(p)
@@ -1157,9 +1185,11 @@ for p in people:
     html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch (2026) | DramaEverAfter",
                 f"Every vertical drama {p['name']} has starred in, with platforms and where to watch.",
                 body, f"{DOMAIN}/actors/{sl}.html", ld,
-                og_image=(p.get("photo_ref") or "").strip(), og_type="profile")
+                og_image=(p.get("photo_ref") or "").strip(), og_type="profile",
+                noindex=p["person_id"] in NOINDEX_PEOPLE)
     open(os.path.join(DIST, "actors", f"{sl}.html"), "w", encoding="utf-8").write(html)
-    urls.append(f"/actors/{sl}.html")
+    if p["person_id"] not in NOINDEX_PEOPLE:
+        urls.append(f"/actors/{sl}.html")
     _dates = [title_checked(t) for _, t in my_pairs]
     _dates = [x for x in _dates if x]
     if _dates:
@@ -1407,11 +1437,13 @@ for t in titles:
     html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
                 title_desc(t),
                 body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t),
-                og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show")
+                og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show",
+                noindex=t["title_id"] in NOINDEX_TITLES)
     os.makedirs(os.path.join(DIST, d, "titles"), exist_ok=True)
     open(os.path.join(DIST, d, "titles", f"{sl}.html"), "w", encoding="utf-8").write(html)
-    urls.append(f"/{d}titles/{sl}.html")
-    lastmod[f"/{d}titles/{sl}.html"] = title_checked(t)
+    if t["title_id"] not in NOINDEX_TITLES:
+        urls.append(f"/{d}titles/{sl}.html")
+        lastmod[f"/{d}titles/{sl}.html"] = title_checked(t)
 
 # Trope pages
 for tr in all_tropes:
@@ -1515,11 +1547,13 @@ for t in titles:
     html = page(f"Where to Watch {t['primary_title']}: All Platforms (2026) | DramaEverAfter",
                 f"Where to watch {t['primary_title']}: every platform it streams on" + (f", checked {checked_lbl}." if checked_lbl else "."),
                 body, f"{DOMAIN}/{d}where-to-watch/{sl}.html", depth=tdepth(t),
-                og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show")
+                og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show",
+                noindex=t["title_id"] in NOINDEX_TITLES)
     os.makedirs(os.path.join(DIST, d, "where-to-watch"), exist_ok=True)
     open(os.path.join(DIST, d, "where-to-watch", f"{sl}.html"), "w", encoding="utf-8").write(html)
-    urls.append(f"/{d}where-to-watch/{sl}.html")
-    lastmod[f"/{d}where-to-watch/{sl}.html"] = title_checked(t)
+    if t["title_id"] not in NOINDEX_TITLES:
+        urls.append(f"/{d}where-to-watch/{sl}.html")
+        lastmod[f"/{d}where-to-watch/{sl}.html"] = title_checked(t)
 
 # Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
 #
