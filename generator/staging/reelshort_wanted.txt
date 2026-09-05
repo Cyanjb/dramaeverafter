@@ -204,3 +204,36 @@ Fake Husband, Hidden King  ai=yes tropes=billionaire;secret-identity
 Two Snakes, One Mate  ai=yes
 A Cinderella for Wolf King  tropes=werewolf;fated-mates   # ai=yes is on its earlier line
 The Alpha King Sold Me to the War God  tropes=werewolf
+
+# ---- Apocalypse wave, Cyan 5 Sep 2026: 'bring in any apocalypse romances we
+# can find, make sure they look good.' Found on ReelShort's survival-movies
+# theme tag; every entry below carries the apocalypse trope. ------------------
+https://www.reelshort.com/movie/the-alpha-lost-his-ugly-luna-6a70478f9dbba6268204e166  tropes=apocalypse
+Reborn in Flames  tropes=apocalypse   # no href on tag page, resolve by search
+https://www.reelshort.com/movie/countdown-to-doomsday-66b8ad92909ea2f1bf0486ab  tropes=apocalypse
+https://www.reelshort.com/movie/chariot-695e42b65394a9a4140357bd  tropes=apocalypse
+https://www.reelshort.com/movie/love-in-my-hands-68d3962c02ce0593d106f1a9  tropes=apocalypse
+https://www.reelshort.com/movie/reborn-leading-goddesses-against-the-apocalypse-699d6310beec5d276e049e26  tropes=apocalypse
+https://www.reelshort.com/movie/the-pigsty-ark-reborn-before-the-rain-69dde3dca493a40dc809541d  tropes=apocalypse
+https://www.reelshort.com/movie/iron-ark-rebirth-69dde3e0a493a40dc8095423  tropes=apocalypse
+https://www.reelshort.com/movie/glacial-swarm-69ccb20fa27eff94a50716bb  tropes=apocalypse
+https://www.reelshort.com/movie/saving-my-country-as-the-blind-swordsman-69c4ca564db287da4b035e4a  tropes=apocalypse
+https://www.reelshort.com/movie/hell-s-kitchen-apocalypse-edition-69bc00393a0c04cc7d07a647  tropes=apocalypse
+https://www.reelshort.com/movie/flood-lady-boss-s-teammate-is-a-janitor-69dde3d7a493a40dc8095415  tropes=apocalypse
+https://www.reelshort.com/movie/the-architect-of-the-apocalypse-69dde3d9a493a40dc8095417  tropes=apocalypse
+https://www.reelshort.com/movie/raise-kids-in-the-apocalypse-69dde3daa493a40dc8095419  tropes=apocalypse
+https://www.reelshort.com/movie/thirty-years-of-protection-and-betrayal-69e727fd9dd5a1fb0106a4e6  tropes=apocalypse
+https://www.reelshort.com/movie/my-demon-harem-runs-this-endgame-6a01ab308d0d811f4e0eeac5  tropes=apocalypse
+https://www.reelshort.com/movie/rent-or-rot-i-m-the-landlord-of-the-apocalypse-69d7089ecbf23c60e409d039  tropes=apocalypse
+https://www.reelshort.com/movie/date-to-survive-69ba43471e473b1b39059190  tropes=apocalypse
+https://www.reelshort.com/movie/survival-game-who-s-the-lucky-one-69dc6a6fb9f7e62ddc0df4ef  tropes=apocalypse
+https://www.reelshort.com/movie/my-wives-are-she-demons-69abb4fced2b28680c070938  tropes=apocalypse
+https://www.reelshort.com/movie/the-shrinkocalypse-6a028e182a7c88e6fa0ae0eb  tropes=apocalypse
+https://www.reelshort.com/movie/anomart-rules-of-the-wasteland-69c5e8db74fdaf823e045405  tropes=apocalypse
+https://www.reelshort.com/movie/last-three-hours-fortress-of-rage-69a10b8cf8cf90cc4607943a  tropes=apocalypse
+https://www.reelshort.com/movie/doomsday-game-unlimited-shelter-upgrades-6991fdca4641e509290a004f  tropes=apocalypse
+https://www.reelshort.com/movie/fox-queen-my-apocalypse-payback-69e8933d22d3ca290d09ca02  tropes=apocalypse
+https://www.reelshort.com/movie/pay-to-win-apocalypse-reset-6982bd61ba37326b560f2747  tropes=apocalypse
+https://www.reelshort.com/movie/doomsday-smuggler-trading-snacks-for-power-6982c0bf734764dc370435a5  tropes=apocalypse
+https://www.reelshort.com/movie/owning-the-specter-realm-start-with-a-five-finger-discount-6982c1d252591c5394091518  tropes=apocalypse
+https://www.reelshort.com/movie/i-swallowed-the-zerg-overmind-s-egg-6a94f45a2e175c3d910e7135  tropes=apocalypse
