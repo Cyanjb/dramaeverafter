@@ -364,3 +364,35 @@ regret." Write the consequence, not the summary.
 RULE GOING FORWARD: no length target, ever, in either direction. Tell the
 whole story, explain the specifics you keep, and end on what it costs
 somebody. If a caption feels long, that is not a reason to cut it.
+
+## WHAT lift_check FOUND WHEN IT WAS FIRST RUN ON EVERYTHING, 6 Sep 2026
+
+The numbers are the argument for the tool, and they split cleanly by when
+the caption was written.
+
+| Batch | Captions | Carrying a 6+ word run from source |
+|---|---|---|
+| Flesh-out (written 6 Sep, after the lesson) | 174 | **0** (and 0 at 5 words) |
+| Widget (written 6 Sep) | 15 | 4, all fixed before publishing |
+| Batch four (written 2-3 Sep, LIVE) | 129 | **96** |
+
+Batch four is the warning. Every one of those 129 passed check, readback
+and the copy detector, and 96 of them still carry a phrase lifted whole off
+the platform page. The worst is a 17 word run. Whole-body ratio scoring
+cannot see this: one borrowed clause in a rewritten paragraph barely moves
+the number, and 0.13 looks spotless.
+
+Split by author, 55 of the 74 Cyan ticked and 41 of the 55 she rewrote. Her
+share is not her fault: she was editing a draft, so any phrase the draft
+had lifted survives unless she happened to rewrite that clause.
+
+This matters beyond tidiness. Lifted phrasing is exactly what a search
+engine reads as duplicated content, and duplicated content on 646 pages is
+the diagnosed cause of the 1 Sep collapse. A de-lift pass over batch four
+is real recovery work, not polish.
+
+THE LESSON THAT GENERALISES: a caption written by rewriting a source
+sentence keeps the source's bones no matter how many words change. A
+caption written by reading the source, looking away, and telling someone
+what happens does not. The 174 to 0 result is what the second method looks
+like when it is measured.
