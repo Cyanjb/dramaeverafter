@@ -267,7 +267,12 @@ def books_in(data, id_to_slug):
         if not title or not isinstance(bid, str) or not re.fullmatch(r"[0-9a-f]{24}", bid):
             continue
         raw = d.get("read_count", d.get("readCount", d.get("play_count", d.get("playCount"))))
-        ep = d.get("chapter_count") or d.get("chapterCount") or ""
+        # Episode count. A movie page calls it "total"; tag pages still say
+        # chapter_count. Probed live 6 Sep 2026: every detail fetch was
+        # silently landing episodes="" because only the tag-page names were
+        # read here. "total" is checked last so a tag page's own count wins.
+        ep = (d.get("chapter_count") or d.get("chapterCount")
+              or d.get("total") or "")
         pic = d.get("book_pic") or d.get("bookPic") or d.get("cover") or d.get("thumb") or ""
         actors = []
         ai = d.get("actor_info") or {}

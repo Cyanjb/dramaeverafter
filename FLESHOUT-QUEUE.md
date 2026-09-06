@@ -8,170 +8,23 @@ offered to Google with almost nothing on them, so they are the next
 content priority after the caption queue. A title leaves this list when it
 gains a synopsis or cast; an actor leaves it with a bio or second credit.
 
-## Titles kept indexed while thin: 160
+## Titles kept indexed while thin: 13
 
 | # | Views | Why kept | Title | title_id |
 |---|-------|----------|-------|----------|
-| 1 | 254.9M | popular+new | The Great and Powerful Genie | the-great-and-powerful-genie |
-| 2 | 76.7M | popular+new | Zero to Alpha: Return of the Wolf King | zero-to-alpha-return-of-the-wolf-king |
-| 3 | 74.5M | popular+new | Sold to the Warlord, Born for the Sky | sold-to-the-warlord-born-for-the-sky |
-| 4 | 73.3M | popular+new | Brides in Smoke | brides-in-smoke |
-| 5 | 67.1M | popular+new | The Lycan's Savage Luna | the-lycan-s-savage-luna |
-| 6 | 64.8M | popular+new | Abandoned Pawn, Unrivaled Dragon King | abandoned-pawn-unrivaled-dragon-king |
-| 7 | 41.5M | popular+new | Shattered Vows | shattered-vows |
-| 8 | 40.3M | popular+new | The Valkyrie Divorces the God of War | the-valkyrie-divorces-the-god-of-war |
-| 9 | 39.3M | popular+new | The Real Heiress Reclaims Her Place | the-real-heiress-reclaims-her-place |
-| 10 | 39.0M | popular+new | My Homeless Bride Is a Culinary Legend | my-homeless-bride-is-a-culinary-legend |
-| 11 | 38.4M | popular+new | Slimming Revolution | slimming-revolution |
-| 12 | 37.2M | popular+new | Mated to the Alpha and His Beta | mated-to-the-alpha-and-his-beta |
-| 13 | 37.1M | popular+new | My Billionaire Boss Won't Let Me Quit | my-billionaire-boss-won-t-let-me-quit |
-| 14 | 36.6M | popular+new | Return to Reckon with His Hateful Village | return-to-reckon-with-his-hateful-village |
-| 15 | 35.4M | popular+new | After the Reformatory, My Family Begs Me Home | after-the-reformatory-my-family-begs-me-home |
-| 16 | 31.5M | popular+new | In Bed with My Brother-in-Law | in-bed-with-my-brother-in-law |
-| 17 | 30.2M | popular+new | Do Me Over | do-me-over |
-| 18 | 25.9M | popular+new | The Lady Boss CEO is My Daughter | the-lady-boss-ceo-is-my-daughter |
-| 19 | 24.4M | popular+new | The Alpha Princess Is Gone for Good | the-alpha-princess-is-gone-for-good |
-| 20 | 23.9M | popular+new | Torn Between the Mafia Twins | torn-between-the-mafia-twins |
-| 21 | 23.2M | popular+new | Once Love Is Lost, It Never Returns | once-love-is-lost-it-never-returns |
-| 22 | 22.8M | popular+new | The Art of Letting Go | the-art-of-letting-go |
-| 23 | 21.8M | popular+new | Little Miss Fortune | little-miss-fortune |
-| 24 | 19.7M | popular+new | Thirsty for the Wet Nurse | thirsty-for-the-wet-nurse |
-| 25 | 19.2M | popular+new | Crowned in Silver Blood | crowned-in-silver-blood |
-| 26 | 19.2M | popular+new | Divorced and Desired! My Trio of Elite Suitors | divorced-and-desired-my-trio-of-elite-suitors |
-| 27 | 18.8M | popular+new | I Gave My wife A Red Tasseled Spear | i-gave-my-wife-a-red-tasseled-spear |
-| 28 | 18.8M | popular+new | Alpha's Regret After His Pregnant Luna's Death | alpha-s-regret-after-his-pregnant-luna-s-death |
-| 29 | 18.4M | popular+new | The Billionaire Groom Exchange | the-billionaire-groom-exchange |
-| 30 | 17.7M | popular+new | Blitzed by My Rival's Obsession | blitzed-by-my-rival-s-obsession |
-| 31 | 16.5M | popular+new | I Became the CEO's Most Beloved | i-became-the-ceo-s-most-beloved |
-| 32 | 16.3M | popular+new | This Child Is a Legendary Sorcerer | this-child-is-a-legendary-sorcerer |
-| 33 | 15.9M | popular+new | Legally Bound To Love | legally-bound-to-love |
-| 34 | 15.5M | popular+new | The Fake Dating Spell | the-fake-dating-spell |
-| 35 | 15.0M | popular+new | Son in Law's Revenge | son-in-law-s-revenge |
-| 36 | 14.9M | popular+new | Caught in His Current | caught-in-his-current |
-| 37 | 14.5M | popular+new | The Hobo Goddess and Her Billion-Dollar Contract | the-hobo-goddess-and-her-billion-dollar-contract |
-| 38 | 14.1M | popular+new | CEO, That Intern is Actually Your Wife | ceo-that-intern-is-actually-your-wife |
-| 39 | 13.9M | popular+new | Alpha Revenge: Wolf King and His Human Luna | alpha-revenge-wolf-king-and-his-human-luna |
-| 40 | 13.8M | popular+new | He's Done Being Nice | he-s-done-being-nice |
-| 41 | 13.4M | popular+new | My Sister Stole My Mate, So I Married a King | my-sister-stole-my-mate-so-i-married-a-king |
-| 42 | 13.4M | popular+new | The New CEO Turns Out to Be My Gynecologist | the-new-ceo-turns-out-to-be-my-gynecologist |
-| 43 | 13.2M | popular+new | The Heat After the AC Died | the-heat-after-the-ac-died |
-| 44 | 12.9M | popular+new | The Alpha and His Nanny Luna | the-alpha-and-his-nanny-luna |
-| 45 | 12.3M | popular+new | My Househusband Is Gamble King | my-househusband-is-gamble-king |
-| 46 | 12.0M | popular+new | A Cinderella for Wolf King | a-cinderella-for-wolf-king |
-| 47 | 10.7M | popular+new | The Extraordinary Mother of a Billionaire | the-extraordinary-mother-of-a-billionaire |
-| 48 | 10.5M | popular+new | The Royals | the-royals |
-| 49 | 10.4M | popular+new | He Chose My Sister, So I Chose the Serpent King | he-chose-my-sister-so-i-chose-the-serpent-king |
-| 50 | 9.6M | popular+new | Reborn to Rule the Sky with My Dragon | reborn-to-rule-the-sky-with-my-dragon |
-| 51 | 9.1M | popular+new | The Rockstar's Secret | the-rockstar-s-secret |
-| 52 | 9.1M | popular+new | The Silver Serpent's Bride | the-silver-serpent-s-bride |
-| 53 | 8.6M | new | Offered to the triplet Alpha | offered-to-the-triplet-alpha |
-| 54 | 8.0M | new | Traded My Wolves for a Snake | traded-my-wolves-for-a-snake |
-| 55 | 7.5M | new | The Alpha King's True Heiress | the-alpha-king-s-true-heiress |
-| 56 | 7.5M | new | A Farm Girl's Reckoning | a-farm-girl-s-reckoning |
-| 57 | 7.3M | new | The Professor’s Forbidden Dragon Prey | the-professor-s-forbidden-dragon-prey |
-| 58 | 6.8M | new | I’m Pregnant, It’s Not Yours | i-m-pregnant-it-s-not-yours |
-| 59 | 6.6M | new | Full Court Legend | full-court-legend |
-| 60 | 6.5M | new | Offside with the Hockey Star | offside-with-the-hockey-star |
-| 61 | 6.2M | new | My Fireplace Ships to Dragon Realm | my-fireplace-ships-to-dragon-realm |
-| 62 | 6.1M | new | Fated to His Brother's Alpha | fated-to-his-brother-s-alpha |
-| 63 | 5.8M | new | The Son Rises Alone | the-son-rises-alone |
-| 64 | 5.1M | new | I Married the Groom's Uncle | i-married-the-groom-s-uncle |
-| 65 | 5.0M | new | Tempted by My Step Son | tempted-by-my-step-son |
-| 66 | 5.0M | new | His Partner, Her Revenge | his-partner-her-revenge |
-| 67 | 4.9M | new | The Ugly Girl Turned Pretty | the-ugly-girl-turned-pretty |
-| 68 | 4.6M | new | Art of Falling in Love | art-of-falling-in-love |
-| 69 | 4.6M | new | The Auctioned Mate | the-auctioned-mate |
-| 70 | 4.4M | new | T-Boning my F1 Rival | t-boning-my-f1-rival |
-| 71 | 4.3M | new | Daddy We're Done | daddy-we-re-done |
-| 72 | 4.1M | new | SSS-Rank: The Slum-Born Thunder God | sss-rank-the-slum-born-thunder-god |
-| 73 | 4.1M | new | Forbidden Bonds: Fated to the Ocean God | forbidden-bonds-fated-to-the-ocean-god |
-| 74 | 3.7M | new | The Alpha and Beta's Shared Mate | the-alpha-and-beta-s-shared-mate |
-| 75 | 3.6M | new | The Atlantic Bride | the-atlantic-bride |
-| 76 | 3.5M | new | Don't say I do | don-t-say-i-do |
-| 77 | 3.4M | new | Summer with a Superstar | summer-with-a-superstar |
-| 78 | 3.3M | new | My Two Dangerous Roommates Crave Me | my-two-dangerous-roommates-crave-me |
-| 79 | 3.1M | new | The Eight-Year-Old Captain | the-eight-year-old-captain |
-| 80 | 3.0M | new | Dirty Work | dirty-work |
-| 81 | 3.0M | new | The Prank That Broke Us | the-prank-that-broke-us |
-| 82 | 3.0M | new | My Protective Mafia Lover | my-protective-mafia-lover |
-| 83 | 2.9M | new | I Chose The Playboy Eel To Abandon My Shark Lover | i-chose-the-playboy-eel-to-abandon-my-shark-lover |
-| 84 | 2.8M | new | Chained by Hades, the Underworld King | chained-by-hades-the-underworld-king |
-| 85 | 2.8M | new | The Godfather's Guardian Angel | the-godfather-s-guardian-angel |
-| 86 | 2.8M | new | My Immortal Love | my-immortal-love |
-| 87 | 2.7M | new | My First Love Pays to Watch Me Strip | my-first-love-pays-to-watch-me-strip |
-| 88 | 2.7M | new | King of Gold | king-of-gold |
-| 89 | 2.7M | new | The God of Tides | the-god-of-tides |
-| 90 | 2.7M | new | The road not taken | the-road-not-taken |
-| 91 | 2.7M | new | Caught! The Ruthless Alpha's Runaway Luna | caught-the-ruthless-alpha-s-runaway-luna |
-| 92 | 2.5M | new | Fake Husband, Hidden King | fake-husband-hidden-king |
-| 93 | 2.4M | new | My Marriage with the God of Death | my-marriage-with-the-god-of-death |
-| 94 | 2.2M | new | Late Bloomer | late-bloomer |
-| 95 | 2.2M | new | The Rabbit Bride Who Rejected Her Alpha King | the-rabbit-bride-who-rejected-her-alpha-king |
-| 96 | 2.1M | new | Rent-A-Mom for the Billionaire Twins | rent-a-mom-for-the-billionaire-twins |
-| 97 | 2.1M | new | I Married My Cheating Ex's Uncle | i-married-my-cheating-ex-s-uncle |
-| 98 | 2.0M | new | The Virgin Sacrifice the Dragon King Claims | the-virgin-sacrifice-the-dragon-king-claims |
-| 99 | 2.0M | new | 100-Day Contract：Mafia’s Dangerous Desire | 100-day-contract-mafia-s-dangerous-desire |
-| 100 | 1.9M | new | Forced to Marry My Ruined Ex: The Duke's Revenge | forced-to-marry-my-ruined-ex-the-duke-s-revenge |
-| 101 | 1.9M | new | Fate of the Dragon’s Bride | fate-of-the-dragon-s-bride |
-| 102 | 1.9M | new | She Bows for No One | she-bows-for-no-one |
-| 103 | 1.9M | new | The Wolfless Alpha Queen | the-wolfless-alpha-queen |
-| 104 | 1.8M | new | Pregnant with the Dragon Lord's Last Heir | pregnant-with-the-dragon-lord-s-last-heir |
-| 105 | 1.8M | new | Puck Perfect: My Sex Education Tutor | puck-perfect-my-sex-education-tutor |
-| 106 | 1.8M | new | Pregnant by His Alpha Brother | pregnant-by-his-alpha-brother |
-| 107 | 1.7M | new | Secretly Pregnant with the Billionaire's Daughter | secretly-pregnant-with-the-billionaire-s-daughter |
-| 108 | 1.7M | new | A Hundred Years of You | a-hundred-years-of-you |
-| 109 | 1.6M | new | Crowned in His Claws | crowned-in-his-claws |
-| 110 | 1.6M | new | His Caged Love | his-caged-love |
-| 111 | 1.5M | new | After the Sacred Whale Betrayed Me, I Contracted Poseidon | after-the-sacred-whale-betrayed-me-i-contracted-poseidon |
-| 112 | 1.5M | new | The Raven Wolf King: Wolfless | the-raven-wolf-king-wolfless |
-| 113 | 1.5M | new | Uncle, I don't want you anymore | uncle-i-don-t-want-you-anymore |
-| 114 | 1.5M | new | The Glass Cage | the-glass-cage |
-| 115 | 1.5M | new | Locked by the Mafia Boss | locked-by-the-mafia-boss |
-| 116 | 1.5M | new | The Mermaid Queen’s Revenge | the-mermaid-queen-s-revenge |
-| 117 | 1.4M | new | The Alpha King Sold Me to the War God | the-alpha-king-sold-me-to-the-war-god |
-| 118 | 1.4M | new | Revenge of the Black Swan | revenge-of-the-black-swan |
-| 119 | 1.3M | new | The Alpha King's Half-Blood Twins | the-alpha-king-s-half-blood-twins |
-| 120 | 1.2M | new | Wrong Heir, Right Her | wrong-heir-right-her |
-| 121 | 1.2M | new | Outgrowing My Old Magic Love | outgrowing-my-old-magic-love |
-| 122 | 1.2M | new | Private Lessons with My Vampire Boss | private-lessons-with-my-vampire-boss |
-| 123 | 1.1M | new | The Encore of Us | the-encore-of-us |
-| 124 | 1.1M | new | Two Mafia Bosses Begging Me For Love | two-mafia-bosses-begging-me-for-love |
-| 125 | 1.1M | new | The Don's Bloody Bride | the-don-s-bloody-bride |
-| 126 | 1.0M | new | He Paid for One Night, Then Wanted Forever | he-paid-for-one-night-then-wanted-forever |
-| 127 | 984K | new | Our Love, Built on Lies | our-love-built-on-lies |
-| 128 | 966K | new | The Alpha Commander’s Long-Awaited Omega | the-alpha-commander-s-long-awaited-omega |
-| 129 | 897K | new | My Safe Word Was Revenge | my-safe-word-was-revenge |
-| 130 | 878K | new | Faked My Death, Destroyed The Billionaire | faked-my-death-destroyed-the-billionaire |
-| 131 | 874K | new | A Spicy Text to My Nemesis | a-spicy-text-to-my-nemesis |
-| 132 | 840K | new | CEO's Irresistible Wet Nurse | ceo-s-irresistible-wet-nurse |
-| 133 | 792K | new | My Boss Is My Secret Online Dom | my-boss-is-my-secret-online-dom |
-| 134 | 779K | new | Mommy's Little Savior | mommy-s-little-savior |
-| 135 | 775K | new | The Dragon's Return: Reclaiming My Throne | the-dragon-s-return-reclaiming-my-throne |
-| 136 | 749K | new | Hades' Mafia Princess | hades-mafia-princess |
-| 137 | 738K | new | The Furless One | the-furless-one |
-| 138 | 722K | new | The Stone-Cursed King’s Blood Bride | the-stone-cursed-king-s-blood-bride |
-| 139 | 594K | new | Second Chance: The Tech Billionaire’s Secret Family | second-chance-the-tech-billionaire-s-secret-family |
-| 140 | 575K | new | Make my cheating husband pay the price | make-my-cheating-husband-pay-the-price |
-| 141 | 565K | new | The Last Ace | the-last-ace |
-| 142 | 549K | new | Scorched Heart | scorched-heart |
-| 143 | 524K | new | Fleeing The Future I Saw With Him | fleeing-the-future-i-saw-with-him |
-| 144 | 489K | new | I Was My Vampire Husband's Dead Wife | i-was-my-vampire-husband-s-dead-wife |
-| 145 | 408K | new | My Sex Robot Has My Enemy's Face | my-sex-robot-has-my-enemy-s-face |
-| 146 | 403K | new | The Billionaire Parents' Final Test | the-billionaire-parents-final-test |
-| 147 | 396K | new | Vindication: Blood of the Archmage | vindication-blood-of-the-archmage |
-| 148 | 374K | new | Love Has A Deadline | love-has-a-deadline |
-| 149 | 353K | new | Knocked Up by the Wolf Duke | knocked-up-by-the-wolf-duke |
-| 150 | 353K | new | Secret Dragon | secret-dragon |
-| 151 | 331K | new | Blood Rose Crushing the Cartel | blood-rose-crushing-the-cartel |
-| 152 | 320K | new | The Duchess They Cast Away | the-duchess-they-cast-away |
-| 153 | 318K | new | Below the Red Line | below-the-red-line |
-| 154 | 315K | new | I Gave My Flame Up | i-gave-my-flame-up |
-| 155 | 298K | new | Cursed Alpha’s Fated Luna | cursed-alpha-s-fated-luna |
-| 156 | 277K | new | The Quarterback’s Secret Darling | the-quarterback-s-secret-darling |
-| 157 | 265K | new | The Inferno Warlord's Secret Healer Bride | the-inferno-warlord-s-secret-healer-bride |
-| 158 | 263K | new | Clumsy Cupid | clumsy-cupid |
-| 159 | 248K | new | The Wingless God | the-wingless-god |
-| 160 | 0 | new | Love in My Hands | love-in-my-hands |
+| 1 | 271.3M | popular+new | The Great and Powerful Genie | the-great-and-powerful-genie |
+| 2 | 78.0M | popular+new | Zero to Alpha: Return of the Wolf King | zero-to-alpha-return-of-the-wolf-king |
+| 3 | 76.2M | popular+new | Sold to the Warlord, Born for the Sky | sold-to-the-warlord-born-for-the-sky |
+| 4 | 74.6M | popular+new | Brides in Smoke | brides-in-smoke |
+| 5 | 68.7M | popular+new | Abandoned Pawn, Unrivaled Dragon King | abandoned-pawn-unrivaled-dragon-king |
+| 6 | 67.7M | popular+new | The Lycan's Savage Luna | the-lycan-s-savage-luna |
+| 7 | 44.2M | popular+new | In Bed with My Brother-in-Law | in-bed-with-my-brother-in-law |
+| 8 | 43.4M | popular+new | Shattered Vows | shattered-vows |
+| 9 | 43.2M | popular+new | My Billionaire Boss Won't Let Me Quit | my-billionaire-boss-won-t-let-me-quit |
+| 10 | 41.0M | popular+new | The Valkyrie Divorces the God of War | the-valkyrie-divorces-the-god-of-war |
+| 11 | 40.6M | popular+new | My Homeless Bride Is a Culinary Legend | my-homeless-bride-is-a-culinary-legend |
+| 12 | 39.7M | popular+new | The Alpha Princess Is Gone for Good | the-alpha-princess-is-gone-for-good |
+| 13 | 3.0M | new | Dirty Work | dirty-work |
 
 ## Actors kept indexed while thin (lead credit, no bio): 55
 

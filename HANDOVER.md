@@ -38,11 +38,17 @@ applied for the whole cluster under her 16 Aug below-top-300 ruling,
 Romance System pages (top Google earners, wrongly noindexed on
 platform-views grounds) captioned and back in the sitemap. Live
 verified. love-in-my-hands has no findable synopsis, waits for Cyan.
-TRAP FOR SUNDAY: scrape_reelshort's wanted/detail route fetched 30
-movie pages (status 200) and parsed EMPTY - the movie-page __NEXT_DATA__
-shape changed and books_in() finds nothing; this session enriched the
-staging JSON by hand. Fix the parser or the detail route silently
-collects nothing.
+CORRECTED 6 Sep: THAT TRAP WAS A MISREADING. Probed live today, the
+movie-page __NEXT_DATA__ is intact and books_in() parses it fine
+(Fated to My Forbidden Alpha: 219.1M views, 61 episodes, cast, all
+present). What had actually changed was the SANDBOX: it can now reach
+reelshort.com and goodshort.com directly, where on 3 Sep it got 000 on
+every host. The 5 Sep hand-enrichment was working around a network
+block, not a parser bug. One REAL bug was found and fixed today: the
+movie page calls the episode count "total" while tag pages still say
+chapter_count, so every detail fetch was silently banking episodes="".
+love-in-my-hands DOES have a synopsis on its page; it never needed
+Cyan, it needed a reachable network.
 
 RECOVERY STATE (5 Sep):
 - Batch four captions (129, into the 35M reach tier) WRITTEN, all gates
@@ -72,6 +78,30 @@ RECOVERY STATE (5 Sep):
   list and the caption queue instead. A noindexed page un-hides itself on
   the next build once it gains a synopsis or cast.
 - Do NOT mass-"Request indexing"; it does nothing for a demotion.
+
+## FLESH-OUT BATCH SHIPPED 6 Sep: 160 THIN PAGES -> 13
+
+Cyan, 6 Sep: "can we do fixes while I finish the captions?" So, without
+needing a ruling from her:
+
+- 187 platform synopses fetched live for every title on FLESHOUT-QUEUE.md
+  (the thin pages her carve-outs keep visible to Google), 187 of 187, no
+  misses, banked in generator/staging/facts_fleshout_2026-09-06.json with
+  a URL each. Possible only because the sandbox can reach the platforms
+  again.
+- 174 captions written and APPLIED under her 16 Aug below-top-300 ruling
+  (top-300 floor is 39.4M views; 12 of the 187 sit above it and are hers
+  to see, not written yet). Gates: check 174/174, readback read, copy
+  detector top ratio 0.598 against source, mean 0.132.
+- FLESHOUT-QUEUE.md: 160 thin titles -> 13. Those pages now carry real
+  content instead of being offered to Google empty.
+- NOT written, on purpose: 'dirty-work' (its platform text is a marketing
+  blurb with no story, and inventing one is the thing the rules forbid).
+- FLAGGED FOR CYAN: 'he-paid-for-one-night-then-wanted-forever' and
+  'my-boss-is-my-secret-online-dom' carry BYTE-IDENTICAL platform
+  synopses. One show, two ReelShort listings. Merge or alias is her call;
+  both kept as separate rows for now because that is what ReelShort
+  publishes. This is exactly the alt_titles case the GSC work found.
 
 ## THE REAL SHAPE OF THE COLLAPSE (6 Sep exports, data ends 4 Sep)
 
@@ -239,8 +269,11 @@ The "still waiting" list there is dictation slips for Cyan to correct.
 - The homepage rails carry books with no /movie/ href; the fandom REST
   JSON escapes slashes; actor tag pages list ReelTalk episodes with real
   view counts. All handled; see adapters.md sec 27.
-- The sandbox cannot curl the live site (000 on every host). Verify via
-  the GitHub commit and ask Cyan to look.
+- The sandbox CAN now reach the live site, reelshort.com and
+  goodshort.com (verified 6 Sep 2026; it could not on 3 Sep). Live
+  verification and synopsis fetching both work from here again. Netlify's
+  edge can serve a stale copy for a minute or two after a push, so check
+  the deploy permalink before believing "still old".
 - A dictated title that never resolves is a mishearing, not a missing
   show: the wanted file's "still waiting" list is where to look.
 
