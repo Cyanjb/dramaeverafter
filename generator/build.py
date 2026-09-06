@@ -1,7 +1,30 @@
 #!/usr/bin/env python3
 """DramaEverAfter static site generator. Reads data/*.csv, writes dist/."""
-import csv, os, re, json, shutil, datetime
+import csv, os, re, json, shutil, datetime, unicodedata
 from collections import defaultdict
+
+
+def norm_search(s):
+    """Search-key form of a name: lowercase, no accents, apostrophes DELETED
+    (so "Girl's"/"Girl’s" and "Girls" are the same word), every other
+    punctuation run a single space. Must stay identical to norm() in
+    SEARCH_NORM_JS below - both sides of every match go through one of them."""
+    s = unicodedata.normalize("NFKD", s or "")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = s.lower().replace("\u2019", "").replace("'", "").replace("`", "")
+    s = re.sub(r"[^a-z0-9]+", " ", s)
+    return " ".join(s.split())
+
+
+# The JS twin of norm_search(), plus qmatch(): a query matches when every typed
+# word appears somewhere in the key, so word order and dropped words forgive too.
+SEARCH_NORM_JS = (
+    "function norm(s){s=String(s==null?'':s).toLowerCase();"
+    "try{s=s.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}catch(e){}"
+    "return s.replace(/['\\u2019`]/g,'').replace(/[^a-z0-9]+/g,' ')"
+    ".replace(/^ +| +$/g,'').replace(/ {2,}/g,' ');}"
+    "function qmatch(k,toks){for(var i=0;i<toks.length;i++){"
+    "if(k.indexOf(toks[i])===-1)return false;}return true;}")
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA, DIST = os.path.join(os.path.dirname(ROOT), "data"), os.path.dirname(ROOT)
@@ -1216,18 +1239,19 @@ for p in directory:
     app = title_app(t_by_id[credits_by_person[p["person_id"]][0]["title_id"]]) if credits_by_person.get(p["person_id"]) and credits_by_person[p["person_id"]][0]["title_id"] in t_by_id else ""
     sub = f"{n} title{'s' if n != 1 else ''}" + (f" &middot; {app}" if app else "")
     rows_html.append(
-        f'<a class="person-row sm" href="{pslug(p)}.html" data-n="{esc_attr(p["name"].lower())}">'
+        f'<a class="person-row sm" href="{pslug(p)}.html" data-n="{esc_attr(norm_search(p["name"]))}">'
         f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), "sm")}'
         f'<span class="stack"><span class="name">{p["name"]}</span><span class="sub">{sub}</span></span></a>')
 AZ_JS = """
 <script>
 (function(){
+  """ + SEARCH_NORM_JS + """
   var input=document.getElementById('actor-search');
   var rows=[].slice.call(document.querySelectorAll('#az-index [data-n]'));
   var headers=[].slice.call(document.querySelectorAll('#az-index .idx-letter'));
   input.addEventListener('input', function(){
-    var q=input.value.trim().toLowerCase();
-    rows.forEach(function(r){ r.style.display = (!q || r.dataset.n.indexOf(q)!==-1) ? '' : 'none'; });
+    var toks=norm(input.value).split(' ').filter(Boolean);
+    rows.forEach(function(r){ r.style.display = (!toks.length || qmatch(r.dataset.n,toks)) ? '' : 'none'; });
     headers.forEach(function(h){
       var next=h.nextElementSibling, show=false;
       while(next && !next.classList.contains('idx-letter')){ if(next.style.display!=='none') show=true; next=next.nextElementSibling; }
@@ -1704,6 +1728,10 @@ for t in titles_root:
     for s in tr_slugs: trope_counts[s] += 1
     for s in pl_slugs: platform_counts[s] += 1
     entry = {"n": t["primary_title"], "s": tslug(t)}
+    # Alt titles ride along pre-normalized so a search for the other app's name
+    # for the same show still lands here.
+    if (t.get("alt_titles") or "").strip():
+        entry["a"] = norm_search(t["alt_titles"])
     if t.get("year"): entry["y"] = t["year"]
     if tr_slugs: entry["tr"] = tr_slugs
     if pl_slugs: entry["pl"] = pl_slugs
@@ -1763,6 +1791,7 @@ BROWSE_JS = f"""
   chips.forEach(function(c){{ if(!active[c.dataset.g]) active[c.dataset.g]=new Set(); }});
 
   function esc(s){{return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}}
+  {SEARCH_NORM_JS}
   function has(arr,v){{return arr && arr.indexOf(v)!==-1;}}
   function vlabel(n){{
     if(!n) return '';
@@ -1814,11 +1843,11 @@ BROWSE_JS = f"""
   // are out by default and opting in is one click.
   try{{ var su=localStorage.getItem('dea_hide_upcoming'); if(su!==null) hideSoonEl.checked=(su==='1'); }}catch(e){{}}
 
-  function matches(t,q){{
+  function matches(t,toks){{
     if(hideAiEl.checked && t.ai) return false;
     if(hideSoonEl.checked && t.up) return false;
     if(onlyBookEl.checked && !t.bk) return false;
-    if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
+    if(toks.length && !qmatch(t.k,toks)) return false;
     for(var g in active){{
       var f=t[FIELD[g]], it=active[g].values(), x;
       while(!(x=it.next()).done){{ if(!has(f,x.value)) return false; }}
@@ -1836,8 +1865,9 @@ BROWSE_JS = f"""
   function run(){{
     if(!D) return;
     visibleCount=STEP;
-    var q=qEl.value.trim().toLowerCase();
-    var titles=D.titles.filter(function(t){{return matches(t,q);}});
+    var q=qEl.value.trim();
+    var toks=norm(q).split(' ').filter(Boolean);
+    var titles=D.titles.filter(function(t){{return matches(t,toks);}});
 
     // Single pass over the current result set tallies every chip at once, so each
     // chip's number is "results you'd get if you also picked this".
@@ -1864,7 +1894,7 @@ BROWSE_JS = f"""
     else if(sort==='year') titles.sort(function(a,b){{return String(b.y||'').localeCompare(String(a.y||''));}});
     lastTitles=titles;
 
-    var actors=D.actors.filter(function(a){{return !q || a.n.toLowerCase().indexOf(q)!==-1;}});
+    var actors=D.actors.filter(function(a){{return !toks.length || qmatch(a.k,toks);}});
     actors.sort(function(a,b){{return b.c-a.c;}});
 
     var nf=0; for(var g3 in active) nf+=active[g3].size;
@@ -1918,6 +1948,10 @@ BROWSE_JS = f"""
 
   fetch('search-index.json').then(function(r){{return r.json();}}).then(function(d){{
     D=d;
+    // Search keys, built once: the display name normalized, plus any
+    // pre-normalized alt titles the index carries.
+    D.titles.forEach(function(t){{ t.k=norm(t.n)+(t.a?' '+t.a:''); }});
+    D.actors.forEach(function(a){{ a.k=norm(a.n); }});
     var p=new URLSearchParams(window.location.search);
     if(p.get('q')) qEl.value=p.get('q');
     ['trope','platform','origin'].forEach(function(g){{

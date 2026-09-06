@@ -143,6 +143,7 @@
   chips.forEach(function(c){ if(!active[c.dataset.g]) active[c.dataset.g]=new Set(); });
 
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+  function norm(s){s=String(s==null?'':s).toLowerCase();try{s=s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}catch(e){}return s.replace(/['\u2019`]/g,'').replace(/[^a-z0-9]+/g,' ').replace(/^ +| +$/g,'').replace(/ {2,}/g,' ');}function qmatch(k,toks){for(var i=0;i<toks.length;i++){if(k.indexOf(toks[i])===-1)return false;}return true;}
   function has(arr,v){return arr && arr.indexOf(v)!==-1;}
   function vlabel(n){
     if(!n) return '';
@@ -194,11 +195,11 @@
   // are out by default and opting in is one click.
   try{ var su=localStorage.getItem('dea_hide_upcoming'); if(su!==null) hideSoonEl.checked=(su==='1'); }catch(e){}
 
-  function matches(t,q){
+  function matches(t,toks){
     if(hideAiEl.checked && t.ai) return false;
     if(hideSoonEl.checked && t.up) return false;
     if(onlyBookEl.checked && !t.bk) return false;
-    if(q && t.n.toLowerCase().indexOf(q)===-1) return false;
+    if(toks.length && !qmatch(t.k,toks)) return false;
     for(var g in active){
       var f=t[FIELD[g]], it=active[g].values(), x;
       while(!(x=it.next()).done){ if(!has(f,x.value)) return false; }
@@ -216,8 +217,9 @@
   function run(){
     if(!D) return;
     visibleCount=STEP;
-    var q=qEl.value.trim().toLowerCase();
-    var titles=D.titles.filter(function(t){return matches(t,q);});
+    var q=qEl.value.trim();
+    var toks=norm(q).split(' ').filter(Boolean);
+    var titles=D.titles.filter(function(t){return matches(t,toks);});
 
     // Single pass over the current result set tallies every chip at once, so each
     // chip's number is "results you'd get if you also picked this".
@@ -244,7 +246,7 @@
     else if(sort==='year') titles.sort(function(a,b){return String(b.y||'').localeCompare(String(a.y||''));});
     lastTitles=titles;
 
-    var actors=D.actors.filter(function(a){return !q || a.n.toLowerCase().indexOf(q)!==-1;});
+    var actors=D.actors.filter(function(a){return !toks.length || qmatch(a.k,toks);});
     actors.sort(function(a,b){return b.c-a.c;});
 
     var nf=0; for(var g3 in active) nf+=active[g3].size;
@@ -298,6 +300,10 @@
 
   fetch('search-index.json').then(function(r){return r.json();}).then(function(d){
     D=d;
+    // Search keys, built once: the display name normalized, plus any
+    // pre-normalized alt titles the index carries.
+    D.titles.forEach(function(t){ t.k=norm(t.n)+(t.a?' '+t.a:''); });
+    D.actors.forEach(function(a){ a.k=norm(a.n); });
     var p=new URLSearchParams(window.location.search);
     if(p.get('q')) qEl.value=p.get('q');
     ['trope','platform','origin'].forEach(function(g){
