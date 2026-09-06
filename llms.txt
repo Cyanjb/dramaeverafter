@@ -2,7 +2,7 @@
 
 > A reader-made reference database of vertical dramas (short-form mobile series):
 > which app each title streams on, full cast with CHARACTER NAMES, episode counts
-> and tropes. 3,725 titles, 2,212 actors, 4,627 credits
+> and tropes. 3,752 titles, 2,212 actors, 4,629 credits
 > (2,673 with a named character) across platforms including CandyJar, DramaBox, DramaPops, DramaWave, DreameShort, GoodShort, KalosTV, My Drama.
 > Every synopsis is written by us; watch links point at the official platform.
 
