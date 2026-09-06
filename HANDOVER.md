@@ -73,6 +73,34 @@ RECOVERY STATE (5 Sep):
   the next build once it gains a synopsis or cast.
 - Do NOT mass-"Request indexing"; it does nothing for a demotion.
 
+## THE REAL SHAPE OF THE COLLAPSE (6 Sep exports, data ends 4 Sep)
+
+CORRECTS the earlier "traffic died overnight" reading. The 28-day chart
+shows three phases, not one event:
+
+  8-18 Aug   0 to 13 clicks a day. The site was barely in search.
+  19 Aug     JUMPS to 71 clicks / 1,894 impressions, peaks 21 Aug at
+             102 clicks / 3,515 impressions. Nothing was deployed on
+             18-19 Aug: this is Google's own indexing of the 14-16 Aug
+             work (AI-search schema, llms.txt, trope cleanup, the first
+             captions) plus the usual new-content trial boost.
+  20-31 Aug  STEADY DECAY, 102 down to 58 clicks (-43%), impressions
+             -45%. Twelve straight days of Google losing confidence.
+  1 Sep      Cliff. 0 clicks, and impressions 1,939 -> 44 -> 21 -> 7 -> 4.
+
+That impression collapse is not a ranking demotion, it is removal from
+content results: only brand queries still serve. Nothing shipped between
+27 Aug and 2 Sep, so the cliff is entirely Google-side. Read together,
+the site was given a trial in mid-August, was measured over twelve days,
+and failed it. That is exactly what a scaled-content profile does, and it
+is why the thin-page noindex plus real captions is the right answer
+rather than a trick.
+
+TIMING: the recovery work shipped 5 Sep and GSC lags 2-3 days, so this
+export CANNOT show it. Earliest signal is ~8 Sep, and the honest
+expectation stays weeks to months. Do not read 1-4 Sep zeros as the fix
+failing.
+
 ## WHY THE TOP PAGE WON, AND THE THREE PLAYS (6 Sep)
 
 Cyan asked why /titles/eng-dub-apocalypse-romance-system.html did so well
