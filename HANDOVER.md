@@ -188,6 +188,25 @@ Queries.csv export folder; it prints UNSERVED, BLIND SPOTS (top-10
 position, 15+ impressions, zero clicks) and the INTENT table. It only
 prints: every fix is a human ruling about what is really the same show.
 
+## THE dea-captions SKILL EXISTS NOW (6 Sep, Cyan: "we need a skill for this")
+
+.claude/skills/dea-captions/SKILL.md, in the repo so it is version
+controlled and any session working here gets it. It exists because the
+caption rules were spread across CAPTION-TRAINING.md, comments inside
+caption_pipeline.py and this handover, and had to be REMEMBERED - which is
+how the 6 Sep length regression happened. The skill holds the process and
+the failures that repeat; CAPTION-TRAINING.md still holds the craft, and
+the skill says to read it in full before every batch.
+
+It also bundles scripts/lift_check.py, a NEW gate that closes a real hole.
+The copy detector compares whole bodies and fails at 0.6, so a caption can
+score 0.13 and still carry "three Masters beyond Sacred Rank" lifted word
+for word - one phrase barely moves a whole-body ratio. lift_check reports
+every 5+ word run shared with the source. Run it on every batch and read
+each hit: keep names and genre terms, rewrite the rest. It immediately
+found four real lifts in captions that had already passed every other
+gate, including an 8-word run.
+
 ## SITE-CHECKS EXISTS (6 Sep, Cyan asked for a checklist)
 
 SITE-CHECKS.md is the plain-words list of what must always work (search,
