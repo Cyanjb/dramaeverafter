@@ -328,3 +328,39 @@ hard-ban list, so it reads "The most important one,". Flagged to her.
 GATE FALSE POSITIVE FOUND AND FIXED: her "Mr Nice Guy" was reported as two
 invented proper nouns. IDIOMS in caption_pipeline.py now carries the known
 capitalised phrases. Add to that tuple, never loosen the name rule.
+
+## THE 6 Sep REGRESSION: I REINTRODUCED A LENGTH CAP NOBODY ASKED FOR
+
+Cyan on the widget batch: "these captions are terrible they seem to be cut
+off and just be changing words which are two things I told you not to do,
+forget about limiting caption length." Her example was "three Masters
+beyond Sacred Rank."
+
+SHE WAS RIGHT ON ALL THREE, AND THEY ARE ONE FAULT, NOT THREE. The count
+caps were REMOVED on 24 Aug ("just remove these word caps") and the code
+says so in validate(): "Length is the writer's judgement, full stop." I
+started writing to an invisible target anyway. Everything else followed:
+
+- COMPRESSION IS WHAT MAKES A CAPTION READ CUT OFF. My body stopped at the
+  setup and dropped the connective tissue, so a real detail landed as a
+  cryptic fragment: "he spent two decades under three Masters beyond
+  Sacred Rank." Her fix does not delete the detail, it EXPLAINS it: "In a
+  twist of fate he is taken in by three Masters beyond Sacred Rank who
+  spend two decades training him to be the best of the best."
+- COMPRESSION IS ALSO WHAT CAUSES COPYING. With no room to retell the
+  story you end up swapping words inside the source's own sentence, which
+  is the one thing the whole caption project exists to avoid. The copy
+  detector does not catch it, because a reworded sentence scores low while
+  still being the platform's sentence.
+- HER LENGTHS, as the reference: 61, 75, 79, 99, 103 word bodies. Not a
+  target either, but nothing under about 60 read finished to her.
+
+WHAT HER REWRITES ADD, EVERY TIME: the closing beat. Mine stop at the last
+plot fact. Hers land the feeling that makes someone press play. The genie
+caption is the clearest: mine ended "decides on a divorce", hers adds
+"While she comes to realize losing her husband may be her greatest
+regret." Write the consequence, not the summary.
+
+RULE GOING FORWARD: no length target, ever, in either direction. Tell the
+whole story, explain the specifics you keep, and end on what it costs
+somebody. If a caption feels long, that is not a reason to cut it.
