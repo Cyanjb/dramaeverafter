@@ -73,6 +73,44 @@ RECOVERY STATE (5 Sep):
   the next build once it gains a synopsis or cast.
 - Do NOT mass-"Request indexing"; it does nothing for a demotion.
 
+## WHY THE TOP PAGE WON, AND THE THREE PLAYS (6 Sep)
+
+Cyan asked why /titles/eng-dub-apocalypse-romance-system.html did so well
+(76 clicks, 13.57% CTR at position 7.5, five times the site average) and
+whether we can repeat it. Answered from the GSC exports, not from theory:
+
+IT WON A SEARCH FOR A SHOW WE DID NOT LIST. Its clicked queries are
+"romance system made me the king of the apocalypse full / full movie /
+free" - a SEPARATE GoodShort listing (id 31001702445, 29 eps, mercenary
+Ethan and Emily the SSS rank zombie) that was in no row of our database.
+Google had the demand, our page was the closest text, the clicks landed by
+accident. ADDED 6 Sep as its own title with a written caption; it is NOT
+merged with the Oliver Burton show, different lead, separate listing.
+
+THE THREE PLAYS, in value order:
+1. UNSERVED DEMAND. 361 queries, 4,257 impressions, 123 clicks are for
+   subjects in no title or actor row. Each is a title to add or an alt
+   name to record. alt_titles is filled on 8 of 3,752 rows: that column
+   is the lever, because the same show carries a different name on every
+   app and every relisting.
+2. INTENT DECIDES CTR, NOT RANK. Watch intent ("full", "free", "watch",
+   "online") converts at 14.2%. Cast intent converts at 1.5% across 3,324
+   impressions, actor-age intent at 461 impressions for 2 clicks. We rank
+   for cast and age questions and cannot answer them: 61% of titles hold
+   no cast, 68% of actors no bio. Serve those or stop chasing them.
+3. CHARACTER NAMES ARE SEARCHED, ACTOR NAMES ARE NOT. "elijah baran
+   actor" and "elijah baran genie actor": 421 impressions, 14 clicks, and
+   Elijah Baran is a ROLE played by Eric Guilmette (whose page is already
+   our top AI-Overviews earner). We hold the fact inside his bio text
+   where nothing can search it. A character index is Cyan's design call:
+   do NOT stuff role names into aka_names, that column means the actor's
+   other names and would render a lie on the page.
+
+generator/gsc_opportunities.py makes this repeatable. Point it at a GSC
+Queries.csv export folder; it prints UNSERVED, BLIND SPOTS (top-10
+position, 15+ impressions, zero clicks) and the INTENT table. It only
+prints: every fix is a human ruling about what is really the same show.
+
 ## SITE-CHECKS EXISTS (6 Sep, Cyan asked for a checklist)
 
 SITE-CHECKS.md is the plain-words list of what must always work (search,
