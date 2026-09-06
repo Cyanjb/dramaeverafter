@@ -2229,10 +2229,49 @@ def _first_seen(t):
 _recent_cutoff = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
 _recent = [t for t in titles_root
            if (t.get("poster_ref") or "").strip() and _first_seen(t) >= _recent_cutoff]
-_recent.sort(key=lambda t: (_first_seen(t), title_views(t)), reverse=True)
-_recent_ids = {t["title_id"] for t in _recent}
-new_releases = (_recent + sorted((t for t in _with_art_dated if t["title_id"] not in _recent_ids),
-                                 key=lambda t: (-_release_year(t), -title_views(t))))[:12]
+
+# TRENDING MEANS GROWING (Cyan, 6 Sep: "you have the watch numbers so you
+# should know what's popular"). The weekly snapshots give each title a view
+# count per date, so growth is measurable: views gained per day between the
+# two most recent snapshots, times the daily percentage gain. Absolute gain
+# alone hands every slot to giants that were already huge; percentage alone
+# floods the rail with 100K titles doubling overnight; the product surfaces
+# shows that are both big and accelerating. Titles seen for the first time
+# this week have no second snapshot yet, so they follow the scored ones,
+# newest first - next Sunday's run gives them a growth number.
+_snap_hist = defaultdict(list)
+for r in rows("snapshots.csv"):
+    _v = view_num(r.get("view_count"))
+    if _v and (r.get("date") or "").strip():
+        _snap_hist[r["title_id"]].append((r["date"], _v))
+
+def _trend_score(t):
+    ss = sorted(set(_snap_hist.get(t["title_id"], [])))
+    if len(ss) < 2: return 0.0
+    (d0, v0), (d1, v1) = ss[-2], ss[-1]
+    try:
+        days = max(1, (datetime.date.fromisoformat(d1) - datetime.date.fromisoformat(d0)).days)
+    except ValueError:
+        return 0.0
+    if v1 <= v0 or not v0: return 0.0
+    return ((v1 - v0) / days) * (((v1 - v0) / v0) / days)
+
+_recent.sort(key=lambda t: (_trend_score(t), _first_seen(t), title_views(t)), reverse=True)
+
+# CYAN'S PINS lead the rail whatever the numbers say. data/pinned.csv is the
+# hand: a title_id with rail=trending goes first, in file order, as long as
+# the title exists and has artwork. Everything below re-ranks itself weekly;
+# a pin stays until she removes the row.
+_pin_rows = [r for r in rows("pinned.csv") if (r.get("rail") or "").strip() == "trending"]
+_root_by_id = {t["title_id"]: t for t in titles_root}
+pinned_trending = [_root_by_id[r["title_id"]] for r in _pin_rows
+                   if r["title_id"] in _root_by_id and (_root_by_id[r["title_id"]].get("poster_ref") or "").strip()]
+_pin_ids = {t["title_id"] for t in pinned_trending}
+_recent_ids = {t["title_id"] for t in _recent} | _pin_ids
+new_releases = (pinned_trending
+                + [t for t in _recent if t["title_id"] not in _pin_ids]
+                + sorted((t for t in _with_art_dated if t["title_id"] not in _recent_ids),
+                         key=lambda t: (-_release_year(t), -title_views(t))))[:12]
 
 home_apps = "".join(
     f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} title{"s" if n != 1 else ""}</span></a>'
@@ -2267,6 +2306,11 @@ body = f"""
 <div class="rail">{"".join(poster_card(t, "", rail_item=True) for t in featured)}</div>
 </section>
 
+<section class="section-warm pad" style="padding:30px 22px 44px">
+<div class="section-head"><h2>New and trending</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
+<div class="rail" style="padding:0">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in new_releases)}</div>
+</section>
+
 <section style="padding:8px 0 8px">
 <div class="section-head pad"><h2>Across every app</h2><a class="all" href="platforms.html">All {len(APPS_WITH_DATA)} apps &rarr;</a></div>
 <div class="rail">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in across_apps)}</div>
@@ -2288,10 +2332,6 @@ body = f"""
 <div class="grid circles">{"".join(actor_tile(p, "") for p in top_actors)}</div>
 </section>
 
-<section class="section-warm pad" style="padding:30px 22px 44px">
-<div class="section-head"><h2>New and trending</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
-<div class="rail" style="padding:0">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in new_releases)}</div>
-</section>
 {section_links}
 {FAV_JS}"""
 html = page("DramaEverAfter: Every Vertical Drama, Every Platform, One Place",

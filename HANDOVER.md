@@ -117,6 +117,15 @@ The "still waiting" list there is dictation slips for Cyan to correct.
   magic (185 titles). In tropes.csv and UMBRELLAS in merge_scrape.py.
 - ReelShort's LGBTQ+ tag = our bl. TAG_ALIASES in merge_scrape.py.
 - "New releases" renamed "New and trending" (releases land daily).
+- 6 Sep: New and trending sits directly under Most watched on the homepage
+  and now RANKS BY GROWTH, not first-seen date: views gained per day between
+  the two most recent snapshots times the daily percentage gain (both, so
+  neither giants nor 100K-doublers own the rail). data/pinned.csv is Cyan's
+  hand: a title_id with rail=trending leads the rail regardless of score
+  (first pin: a-zombie-girl-s-journey-home, her call). Remove the row to
+  unpin. Also 6 Sep: every search on the site forgives apostrophes, accents,
+  punctuation and word order ("girls" finds "Girl's"); norm_search() in
+  build.py and its JS twin SEARCH_NORM_JS must stay identical.
 - New titles need captions: the platform synopsis is banked in the staging
   JSON, caption_pipeline.load_facts() reads it, so `next` ranks them by
   reach. The dea-captions skill writes them for her review. 167 new titles
