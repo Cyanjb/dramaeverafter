@@ -133,11 +133,19 @@ everything else is an edit, that is a lie on her site.
   her manual check. Record the approval basis in the approved file's header.
 - **READ MEANS DONE**: a caption she ticked without editing is approved. Do not
   re-litigate it.
-- **Her edits are verbatim.** Her wording wins over yours everywhere they
-  differ, including spellings and phrasings you would have chosen differently.
-  Apply them by surgical string replacement into the existing staging file, not
-  by regenerating it, because regenerating reorders keys and breaks the FACTS
-  comment pairing that the gate reads.
+- **Her edits are verbatim, with one exception she granted on 6 Sep 2026:**
+  fix obvious spelling and grammar slips, never word choice, and list every
+  change back to her. Her phrasing, rhythm and vocabulary are hers even where
+  you would have written it differently; "tutns" and a doubled "but" are not.
+  Apply edits by surgical string replacement into the existing staging file,
+  not by regenerating it: regenerating reorders keys and breaks the FACTS
+  comment pairing. Replace the WHOLE literal with `repr(new_value)` rather than
+  patching inside it, or an apostrophe you insert will break a single-quoted
+  string, and re-parse the file with `ast.parse` before moving on.
+- **`apply` will not overwrite an existing caption** unless you pass
+  `--update-ours`. That guard is deliberate, so a rewrite of already-live text
+  needs the flag or it silently does nothing and reports "skipping N already
+  ours".
 
 ## The workflow
 

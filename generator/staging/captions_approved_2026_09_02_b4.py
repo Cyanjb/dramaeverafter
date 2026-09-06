@@ -1,16 +1,19 @@
 # -*- coding: utf-8 -*-
-"""Batch four, APPROVED 6 Sep 2026 by Cyan.
+"""Batch four, APPROVED 6 Sep 2026 by Cyan, DE-LIFTED same day.
 
-She reviewed all 129 on the artifact page: 55 came back rewritten and are
-applied here VERBATIM, her wording wins over mine everywhere they differ.
-The rest she ticked as read, which under READ MEANS DONE is approval
-(55 edited + 76 ticked covers the 129).
+She reviewed all 129: 55 rewritten and applied verbatim, 74 ticked.
 
-ONE mechanical change to her text, flagged to her rather than done quietly:
-in playing-by-the-billionaire-s-rules she wrote 'The most important.. don\'t
-fall in love.' A two-dot ellipsis is on her own hard-ban list, so it reads
-'The most important one,'. Nothing else of hers was touched, including
-spellings and phrasings I would have written differently.
+TYPO RULING, 6 Sep: she asked for obvious slips to be fixed and listed. Six
+in this batch were, spelling and grammar only, never word choice.
+
+DE-LIFT PASS, 6 Sep, her instruction: lift_check found 96 of 129 carrying a
+phrase taken word for word off the platform page, worst a 17 word run, all
+of them having passed check, readback and the copy detector. The 55 that
+were entirely mine are REWRITTEN from the source here. The 41 inside
+captions she wrote are untouched: the lifted phrase came from my draft and
+survived because she edited a different clause, and her text is hers.
+Result 96 -> 58. The 17 of mine that remain are author credits, character
+names, places and genre terms, which the rules require keeping.
 """
 
 CAPTIONS = {
@@ -64,7 +67,7 @@ CAPTIONS = {
     # FACTS: him an offer: pass his tests, and Cain will succeed him as the new Godfather of Bourne
     # FACTS: Syndicate.
     'super-godfather-my-ex-begs-me-on-her-knees':
-        'His wife took everything. A godfather offers him the throne.\nCain Hunter is a broken man. His wife betrayed him and left him for ruin, there is nothing left of the happy life he once had. Then he is brought before the mysterious Don Ludwig, who makes him an offer: pass his tests and succeed him as the new Godfather of the Bourne Syndicate. Now the only thing Cain can think is; wait until his ex finds out.',
+        'His wife took everything. A godfather offers him the throne.\nCain Hunter is a broken man. His wife betrayed him and left him for ruin, there is nothing left of the happy life he once had. Then he is brought before the mysterious Don Ludwig, who makes him an offer: pass his tests and succeed him as the new Godfather of the Bourne Syndicate. Now the only thing Cain can think is, wait until his ex finds out.',
 
     # 65.5M    Stop Crying, I Married Someone Better
     # FACTS: Scarlett Winters is devastated when her fiancé, Carlton Simmons, abandons her at the
@@ -76,7 +79,7 @@ CAPTIONS = {
     # FACTS: betrayed and considers leaving. Now Leo must decide: confess his feelings or risk losing
     # FACTS: her forever.
     'stop-crying-i-married-someone-better':
-        "Dumped at the altar, she marries a stranger instead.\nScarlett Winters is abandoned at the altar by her fiance Carlton, and she runs. As she flees she is nearly hit by a car, and the near miss is no accident, because Leo Forester arranged it. He is a legendary CEO, he knows exactly who the runaway bride is, and what he offers her is a contract marriage to help her get her dignity back. While she heals he supports her quietly and never tells her who he really is. Then old enemies resurface, the secrets come out, and Scarlett feels betrayed enough to leave. Now Leo has to confess his feelings or lose her for good.",
+        'Left at the altar, nearly run over, offered a contract.\nCarlton Simmons abandons Scarlett Winters on the day, and she runs from the humiliation straight into the path of a car. The near miss was arranged by Leo Forester, a genius and a legendary chief executive who recognises the runaway bride, and what he offers her is a contract marriage to get her dignity back. Scarlett heals. Leo quietly holds it all up without telling her who he is or what he wants, and old enemies are already on their way.',
 
     # 65.2M    The Nurse's Secret Marriage
     # FACTS: In The Nurse's Secret Marriage Full Movie, Nurse Aria Browne gets married to billionaire
@@ -101,7 +104,7 @@ CAPTIONS = {
     # FACTS: Will Claire be able to successfully find and save her daughter before the unthinkable
     # FACTS: happens?
     'when-love-walked-away':
-        "Her father left her in the car.\nAdrian leaves his daughter Esther in the car while he spends the day with his childhood sweetheart Stacy and her son. The car overheats and shuts down, the air conditioning stops, and Esther is overheating and close to fainting. She calls her father for help and he hangs up without listening. With the last of her tablet's battery she reaches her mother, but it dies before she can say where she is. Now Claire is searching desperately for her daughter. Will she reach Esther before the unthinkable happens?",
+        'He left his daughter in the car and hung up on her.\nAdrian has taken Stacy, the girl he grew up loving, and her boy Lucas out for the day when the car he left Esther in overheats and cuts out. The cooling stops. The child starts overheating, close to fainting, and calls her father, who does not listen long enough to hear any of it before ending the call. With her tablet nearly dead she reaches her mother instead and begs to be found, and the battery goes before she can say where she is. Claire has nothing to go on and a daughter somewhere.',
 
     # 64.8M    The Words
     # FACTS: In The Words movie, based on the novel by Ashley Jade. 4 years ago, rocker bad-boy
@@ -110,7 +113,7 @@ CAPTIONS = {
     # FACTS: keep him sober for 8 weeks on tour. Can Lennon and Phoenix heal old wounds, or will
     # FACTS: their past stand in the way of their second chance at love?
     'the-words':
-        "He stole her song. Now she's hired to keep him sober.\nFour years ago the rocker bad boy Phoenix broke nerdy good girl Lennon's heart and stole her song, and it bought his escape from an abusive father. Now he is a famous rockstar spiraling into drugs and alcohol, and Lennon is the one hired to keep him sober for eight weeks on tour. Can they heal the old wounds, or will the past stand in the way of their second chance at love? Based on the novel by Ashley Jade.",
+        "He stole her song to escape his father. Now she keeps him sober.\nFour years ago Phoenix broke Lennon's heart and took the one thing she had written, and used it to get out from under an abusive home. It worked. He is a rockstar now, and he is drinking and using his way through it. Lennon is the one hired to keep him clean for eight weeks on the road, which puts her beside him every day with everything unsaid still sitting there. They can either mend what happened and take the second chance, or let it finish them. Based on the novel by Ashley Jade.",
 
     # 64.4M    Puck Me Baby One More Time
     # FACTS: Lila Cobb once saved Alexander Vaughn, the hottest hockey player. One night of passion
@@ -185,7 +188,7 @@ CAPTIONS = {
     # FACTS: worth and the price of dedicating herself to the wrong person. With her confidence
     # FACTS: restored, Audrey eventually chooses divorce and fight to reclaim her place as the CEO.
     'my-husband-regrets-divorcing-me':
-        "She hid being a CEO to protect his pride.\nAudrey hides the fact that she is a CEO so her husband Cornell's pride stays intact, and works behind the scenes to help him win a major hotel project and climb to the top. Then his first love Cecilia comes back, and the pressure on Audrey, from everyone including Cornell, keeps building. After one humiliation too many she finally recognizes her own worth and the price of giving herself to the wrong person. She chooses divorce, and she fights to take back her place as the CEO.",
+        "She ran the company and let him take the credit.\nAudrey hides being a chief executive to protect Cornell's pride, and quietly does the work that lands him a major hotel project and then the top job at the hotel itself. She builds the ladder and watches him climb it. Then his first love Cecilia comes back, and the pressure Audrey is under, most of it from Cornell, starts pointing her toward a divorce. After enough humiliation she works out what she is worth and what she has spent it on.",
 
     # 60.9M    Daddy I'm Your Lucky Star!
     # FACTS: Lila is five when her uncle Harold and aunt Karen abandon her. Jonathan, a kind
@@ -268,7 +271,7 @@ CAPTIONS = {
     # FACTS: navigate a web of betrayal while pretending not to hear the conspiracies unfolding
     # FACTS: around her in order to bring those who wronged her to justice.
     'the-deaf-heiress-s-secret':
-        "They plot right in front of her. She hears every word.\nA deaf heiress regains her hearing just in time to catch the people closest to her plotting against her. She keeps her recovery a secret and plays a dangerous game with those who believe her disability makes her weak. While she digs into the suspicious events of her own past, she sits through conspiracy after conspiracy, pretending to hear none of it, and builds her case for bringing every one of them to justice.",
+        'She got her hearing back and told nobody.\nThe first thing the heiress hears is the people closest to her planning what to do about her. So she keeps the recovery to herself and lets them go on believing she cannot follow a word, which turns out to be the strongest position she has ever been in. She goes back through the strange things that happened to her, listens to conspiracies discussed over her head, and works out how to put every one of them in front of the truth.',
 
     # 58.4M    Their Brother Lost in Space
     # FACTS: In Their Brother Lost in Space movie, Timothy, adopted by the wealthy Snyder family,
@@ -281,7 +284,7 @@ CAPTIONS = {
     # FACTS: sacrifices. Thirty years later, Timothy succeeds on Planet Artemis, honored as a hero
     # FACTS: while his grieving family lives with the cost of their betrayal.
     'their-brother-lost-in-space':
-        "They only learned the truth after he was gone.\nThe Snyders adopt Timothy young, and he grows up devoted to his three older sisters. Everything sours when Matthew, the family's biological son, comes home and poisons them against him with lies. They cast Timothy out and blame him for things he never did. He keeps protecting them anyway, quietly, and in the end he volunteers for Project Hail Mary, the mission that sends a single rare gene carrier into space to find humanity a new home. The Snyders discover Matthew's schemes and Timothy's sacrifices when it is too late to thank him. Thirty years on, he is honoured as a hero on Planet Artemis, and his grieving family lives with what their betrayal cost.",
+        'The adopted son they cast out volunteered to save them all.\nTimothy grew up in the wealthy Snyder family devoted to his three older sisters, until their biological son Matthew came back and lied until they turned on him. Blamed for things that were never his, thrown out, Timothy keeps repaying them anyway. He saves them, he gives things up for them, and then he quietly puts his name down for Project Hail Mary, the mission that sends one person with a rare gene out to find humanity somewhere else. They only learn what Matthew did, and what Timothy did, once he is already gone.',
 
     # 58.3M    You Drive Me Crazy
     # FACTS: In You Drive Me Crazy movie, 6 years ago, car restorer Yasmin was drugged and had a
@@ -324,7 +327,7 @@ CAPTIONS = {
     # FACTS: walk away… or will losing her push him into a spiral of obsession, regret, and the fight
     # FACTS: of his life?
     'the-day-the-champion-racer-lost-his-bride':
-        "Five years in, she learns she's the practice girlfriend.\nAlexis gives five years of her heart to Ryder Kane, the golden boy of the racing world, and on the day she plans to propose she learns the truth. Ryder never saw her as a partner, just a practice girlfriend. Shattered, she accepts a surprise proposal from the billionaire Everett Hale and cuts Ryder out of her life for good. Now Ryder has to live with what he threw away, and losing her is pushing him toward the fight of his life.",
+        'Five years in, she found out she was practice.\nAlexis gave everything she had to Ryder Kane, who wins everything the racing world has to offer, and spent those years certain they were building the same thing. On the day she planned to propose, she learns what she actually was to him. A placeholder. Shattered, she says yes to a proposal from the billionaire Everett Hale instead and removes Ryder from her life entirely. Now he has to live in what he did, and watching her go turns into obsession and regret and the hardest fight he has ever been in.',
 
     # 57.4M    Reborn for the Lycan King
     # FACTS: In Reborn for the Lycan King movie, reborn after her stepsister’s deadly betrayal, Diana
@@ -332,7 +335,7 @@ CAPTIONS = {
     # FACTS: with Ivy still plotting and her bond with Alex unclear, Diana must fight to change her
     # FACTS: fate—before it’s too late.
     'reborn-for-the-lycan-king':
-        "Her arrow chose the hidden Lycan King.\nDiana is reborn after her stepsister's betrayal killed her the first time. When she shoots an arrow to choose her mate, it lands on Alexander, the hidden Lycan King. But Ivy is still plotting, the bond with Alexander is far from certain, and Diana has to fight to change her fate before it catches up with her again.",
+        'She fired an arrow to pick a mate. It found a king.\nDiana comes back from a betrayal that killed her, the one her own stepsister arranged, and she gets to choose again. The arrow lands on Alexander, who is hiding what he really is, which is the Lycan King. Ivy is still scheming in the background and the bond between Diana and Alex refuses to settle into anything she can rely on. She has one chance to bend her fate away from where it went last time, and not long to do it.',
 
     # 57.3M    In Love with the Alpha
     # FACTS: After getting her wolf, Maya learns that the alpha of her pack, Liam, is her fated mate.
@@ -376,7 +379,7 @@ CAPTIONS = {
     # FACTS: cheated and makes them his slaves. Only when the life of their son is threatened, is
     # FACTS: there a chance for Blaze to realize the truth, but will it be too late then?
     'betrayed-alpha-queen-rises-from-the-ashes':
-        "He made his own son a slave over a birthmark.\nNessa is hides her identity as Wolf Queen and has her wolf sealed so she can run away with her fated mate, Alpha Blaze Ashclaw. Then Blaze sees the birthmark on their son, decides it proves Nessa cheated, and he makes slaves of them both. Only when the boy's life is threatened does Blaze get a chance to see the tragic truth. But Blaze's regret might come too late.",
+        "He made his own son a slave over a birthmark.\nNessa hides her identity as Wolf Queen and has her wolf sealed so she can run away with her fated mate, Alpha Blaze Ashclaw. Then Blaze sees the birthmark on their son, decides it proves Nessa cheated, and he makes slaves of them both. Only when the boy's life is threatened does Blaze get a chance to see the tragic truth. But Blaze's regret might come too late.",
 
     # 56.0M    Secret Strangers in Love
     # FACTS: When the fate of a business marriage seems inevitable, Emma Watson, the heiress of the
@@ -426,14 +429,14 @@ CAPTIONS = {
     # FACTS: misunderstandings and plots by Hamilton's evil VP, Bianca, threaten to destroy their
     # FACTS: relationship before they can confess that they really love each other.
     'daisy-tucker-and-mr-nyc':
-        "A flash marriage to the boss himself.\nOne flash marriage later, country girl Daisy finds herself married to her new boss, Hamilton Smith, the owner of Smith Media. They are falling for each other, but between honest misunderstandings and the plotting of Hamilton's evil VP Bianca, the marriage might not survive long enough for either of them to say so.",
+        'A flash marriage, and her husband turns out to be her boss.\nDaisy is a country girl who signs the papers before she has met the man properly, and then walks into work to find Hamilton Smith, who owns Smith Media, sitting on the other side of the desk. It could be funny. It would be, if his vice president Bianca were not busy building misunderstandings between them faster than either can clear them up, and neither of them has yet managed to say out loud that this stopped being an arrangement a while ago.',
 
     # 54.1M    Hello, Let's Get Married
     # FACTS: Married moments after meeting for the first time, new couple Maya Moore and Ethan
     # FACTS: Armstrong attempt to make their spontaneous marriage work despite interference from
     # FACTS: their enemies and Maya’s mysterious past.
     'hello-let-s-get-married':
-        "Married minutes after hello.\nMaya Moore and Ethan Armstrong get married moments after meeting for the first time. Now they have to make the marriage work, with enemies interfering from every side and Maya's own mysterious past waiting for its moment.",
+        'Married within minutes of meeting.\nMaya Moore and Ethan Armstrong do it on the spot, and then have to work out how two strangers stay married. Their enemies are keen to help it fail, and Maya has a past she has not explained to anybody, least of all her husband.',
 
     # 53.8M    Infatuated with the CEO
     # FACTS: Infatuated With The CEO movie talks about Emma Caldwell who ends up sleeping with August
@@ -442,7 +445,7 @@ CAPTIONS = {
     # FACTS: breaking up with him. August Hughes, despite being called a Casanova by the tabloids,
     # FACTS: chases after Emma, wanting her to be more than a one-night stand.
     'infatuated-with-the-ceo':
-        "The tabloid Casanova wants more than one night.\nEmma Caldwell finds out her fiance Derek is cheating, and ends up in bed with August Hughes, her business partner. To keep the scandal quiet she keeps up appearances with Derek, who manipulates her into staying. August has been called a Casanova by every tabloid going, but he chases Emma anyway, and what he wants from her is more than a one night stand.",
+        'She slept with his business partner the night she found out.\nEmma Caldwell learns Derek has been cheating and ends up with August Hughes, who happens to be her partner in business. To keep the scandal off her, she pretends everything with Derek is fine, and Derek talks her out of leaving him at every turn. August has a reputation the tabloids enjoy, and he ignores all of it to come after Emma properly, because one night was never what he was after.',
 
     # 53.4M    My Stolen Billionaire Life
     # FACTS: Switched at birth, Allie had no idea who she really was until she fell for Xander
@@ -503,7 +506,7 @@ CAPTIONS = {
     # FACTS: Heather's sister, conspires a revenge plan to ruin Heather's happiness. Heather has to
     # FACTS: find a way to break the magic spell to protect her love.
     'fated-to-my-forbidden-vampire':
-        'Bound by a blood oath, hunted by her own sister.\nHeather grew up being called unwanted, the orphan nobody chose. But Theo chooses her. They are tied together by a blood oath, and for once she is wanted and loved. Then her sister Fiona starts scheming to ruin her happiness, and Heather has to find a way to foil her sisters cursed plans if she wants to protect her love.',
+        "Bound by a blood oath, hunted by her own sister.\nHeather grew up being called unwanted, the orphan nobody chose. But Theo chooses her. They are tied together by a blood oath, and for once she is wanted and loved. Then her sister Fiona starts scheming to ruin her happiness, and Heather has to find a way to foil her sister's cursed plans if she wants to protect her love.",
 
     # 51.7M    Breaking the Deal with My Hockey Bad Boy
     # FACTS: Breaking the Deal with My Hockey Bad Boy movie shows Jane Wellsy has a secret — she's
@@ -515,7 +518,7 @@ CAPTIONS = {
     # FACTS: there's a warm, kind heart under Zach's cold bad boy persona, ready to heal her broken
     # FACTS: heart and face the world at her side...
     'breaking-the-deal-with-my-hockey-bad-boy':
-        "Her worst enemy is keeping her best secret.\nJane Wellsy has a secret crush on her stepbrother Nate, and the only person who knows is her worst enemy, hockey bad boy Zach Gates. Worse, Nate's new girlfriend turns out to be Melissa, the girl who bullied Jane through high school. When Melissa finds Jane's smutty story and demands to know if it is about Nate, Zach swoops in with a cover: a fake relationship with him. But suprisingly the more time they spend together, the more Jane finds a warm, kind heart under all that cold bad boy bravado, one ready to heal hers.",
+        "Her worst enemy is keeping her best secret.\nJane Wellsy has a secret crush on her stepbrother Nate, and the only person who knows is her worst enemy, hockey bad boy Zach Gates. Worse, Nate's new girlfriend turns out to be Melissa, the girl who bullied Jane through high school. When Melissa finds Jane's smutty story and demands to know if it is about Nate, Zach swoops in with a cover: a fake relationship with him. But surprisingly the more time they spend together, the more Jane finds a warm, kind heart under all that cold bad boy bravado, one ready to heal hers.",
 
     # 51.4M    Captured and Bound By My CEO
     # FACTS: In Captured and bound by my CEO movie, Lydia's father is dying and the family's company
@@ -524,7 +527,7 @@ CAPTIONS = {
     # FACTS: enemy, Declan, to bring her down. With Lydia being the longtime crush of Declan, she's
     # FACTS: about to win over her brother.
     'captured-and-bound-by-my-ceo':
-        "Their secret weapon is in love with her.\nLydia's father is dying and the family company is drowning, and she is next in line to run it. Her brother and her boyfriend would rather she didn't, so they join hands with a shared enemy, Declan, to bring her down. What they don't know is that Declan has had a crush on Lydia for years, and their weapon is about to switch sides.",
+        'Her brother and her boyfriend went to her enemy for help.\nHer father is dying, the family company is going under, and she is the one due to take it over. Neither her brother nor the man she is with wants that, so they take their problem to Declan, who has every reason to want the family brought down. What none of them factored in is that Declan has wanted Lydia for a very long time.',
 
     # 51.2M    Fatal Attraction: A Dark Mafia Romance
     # FACTS: To avenge her mother, Daisy disguises herself as a dancer to get close to the dangerous
@@ -532,7 +535,7 @@ CAPTIONS = {
     # FACTS: irresistibly drawn to her deadly charm. Will Daisy manage to walk away unscathed, or
     # FACTS: will she be entangled in passion with Hogan?
     'fatal-attraction-a-dark-mafia-romance':
-        "She's dancing for the man she came to destroy.\nTo avenge her mother, Daisy disguises herself as a dancer and gets close to Hogan, a dangerous mafia boss. Hogan suspects her from the start and finds himself drawn to her anyway. Now the question is whether Daisy walks away unscathed, or ends up entangled with Hogan instead.",
+        'She went in as a dancer to get close enough to kill him.\nDaisy is there for her mother, and the man she is working her way toward is Hogan, who is as dangerous as everybody says. He suspects her almost immediately, which does nothing to stop him wanting her. Now she is deep inside something that was supposed to be a plan, and the question is whether she gets out of it clean or does not get out of it at all.',
 
     # 50.9M    A Fated Encounter
     # FACTS: A Fated Encounter movie summary talks about Emma Brown who is forced by her father Henry
@@ -540,7 +543,7 @@ CAPTIONS = {
     # FACTS: the rumor Tommy turns out to be a handsome and wealthy man. Soon Emma starts to fall for
     # FACTS: Tommy despite stating their relationship is just a contract to please their families.
     'a-fated-encounter':
-        "She married him in her sister's place.\nEmma Brown's father forces her to take her sister Bella's place and marry Tommy Anderson to save the family business. The rumors said to expect the worst, but Tommy turns out to be handsome and wealthy. They keep calling it a contract to please their families. Emma keeps falling for him anyway.",
+        "Her father sold her into her sister's wedding.\nHenry needs the business saved, so Emma Brown is told to take Bella's place and marry Tommy Anderson. The rumours about Tommy had prepared her for something much worse than the handsome, wealthy man who actually turns up. Emma keeps saying out loud that this is a contract and nothing more, that it exists to keep two families happy. She is also falling for him, which was never in the arrangement.",
 
     # 50.8M    I Have Five Kick-Ass Brothers
     # FACTS: In I Have Five Kick-Ass Brothers movie, Raina "Smith" Lincoln has to leave her life of
@@ -587,7 +590,7 @@ CAPTIONS = {
     # FACTS: teaches her how a woman is supposed to be loved. Can Ava learn to love again or will her
     # FACTS: abusive ex catch her before she has the chance?
     'saved-by-the-sexy-cowboy':
-        "On the run from one man, safe with another.\nAva's abusive ex wants her back and he doesn't care what it will take. Running is all she has, until a cowboy stands between them. He saves her, and then he shows her what being loved is actually supposed to feel like. In the meantime Her ex is still hunting her from the shadows. Will Ava learn to love again before he arrives and tries to destroy it all.",
+        "On the run from one man, safe with another.\nAva's abusive ex wants her back and he doesn't care what it will take. Running is all she has, until a cowboy stands between them. He saves her, and then he shows her what being loved is actually supposed to feel like. In the meantime her ex is still hunting her from the shadows. Will Ava learn to love again before he arrives and tries to destroy it all.",
 
     # 49.4M    The Lost Son Returns as the Duke
     # FACTS: In The Lost Son Returns as the Duke movie: Kidnapped as a child, Arthur, Duke of Mercia,
@@ -602,7 +605,7 @@ CAPTIONS = {
     # FACTS: to be with Pete Davis, just to get brutally dumped. She decides to show the world who
     # FACTS: she is - the richest heiress in the country...but no one seems to believe her?
     'sit-down-be-humble':
-        "She revealed everything. Nobody believed her.\nNobody knows Stacy Van Ness is the heiress to Napa Valley's biggest winery, which is exactly how she wanted it while she was with Pete Davis. Then he dumps her, brutally. So much for being loved without the money. Stacy decides the world can know exactly who she is, the richest heiress in the country. One problem: no one believes a word of it.",
+        'She hid the winery to be loved for herself. He dumped her anyway.\nStacy Van Ness is heir to the biggest winery in Napa Valley and told Pete Davis none of it, wanting to be wanted as she was. He binned her regardless, and brutally. So she decides she is done hiding and sets about telling the world exactly who she is, which is the richest heiress in the country. Nobody believes a word of it.',
 
     # 48.8M    The Return of My Mafia Husband
     # FACTS: The Return of My Mafia Husband movie summary is all about Leo Marino who keeps his
@@ -610,7 +613,7 @@ CAPTIONS = {
     # FACTS: After being in a coma for eight years, he finds Olivia still waiting by his side as he
     # FACTS: proposes to her. But a don can't marry a nobody as he promises to give Olivia the world.
     'the-return-of-my-mafia-husband':
-        "She waited eight years for a man she didn't really know.\nLeo Marino never tells Olivia Gray that he is the don of the Marino family. She is an ordinary girl, and she loves him as an ordinary man. When he wakes from eight years in a coma, Olivia is still there at his side, so he proposes. But a don cannot marry a nobody, but Leo intends to defy it all to give Olivia the world.",
+        "She waited eight years for a man she didn't really know.\nLeo Marino never tells Olivia Gray that he is the don of the Marino family. She is an ordinary girl, and she loves him as an ordinary man. When he wakes from eight years in a coma, Olivia is still there at his side, so he proposes. A don cannot marry a nobody, but Leo intends to defy it all to give Olivia the world.",
 
     # 48.7M    Fuel to Our Fire: My Racer Stepbrother
     # FACTS: In Fuel to Our Fire My Racer Stepbrother movie, struggling to pay the bills to support
@@ -706,7 +709,7 @@ CAPTIONS = {
     # FACTS: janitor is the billionaire behind the AI matchmaking system, using their marriage to
     # FACTS: test her true feelings...
     'the-janitor-billionaire-his-swapped-bride':
-        "The janitor built the machine that matched them.\nWhen her stepsister Bianca steals her AI matched partner, Nora is pushed into marrying a janitor instead and becomes the laughingstock of her family. What nobody knows is that the janitor is the billionaire behind the AI matchmaking system itself, and this marriage is his way of testing whether her feelings are real.",
+        'Her stepsister took the match. She got the cleaner.\nThe algorithm paired Nora with someone, and Bianca simply took him, which leaves Nora married off to a janitor and laughed at by her own family for it. She wears the humiliation because there is nothing else to do with it. What nobody in that family knows is who they actually handed her to. He built the matchmaking system. He owns it. And he is using this marriage to find out whether she means a word of what she says.',
 
     # 45.7M    You Are My Destiny
     # FACTS: In You Are My Destiny movie, Logan was blind and abandoned—until Giselle saved him, and
@@ -717,7 +720,7 @@ CAPTIONS = {
     # FACTS: for. When the truth finally comes out, will he win them back—or has he already lost them
     # FACTS: forever?
     'you-are-my-destiny':
-        "She gave him her eyes. Then she disappeared.\nLogan was blind and abandoned until Giselle saved him and loved him. She gave up everything for him, even her corneas. By the time he could see, she was gone, and he never knew she was pregnant. Five years later Logan returns as the heir of the Hale family, with no idea that his wife and their ailing daughter are the very people he has been searching for. When the truth comes out, can he win them back, or has he already lost them for good?",
+        'She gave him her corneas and then disappeared.\nLogan was blind and abandoned before Giselle found him, and she gave up everything she had for him, including her own sight. He opened his eyes to a world he could finally see and a woman who was already gone. What he never learned is that she was pregnant, and that fate would quietly hand her to him as a wife anyway. Five years on he comes back as the Hale heir, looking for the person he lost, with no idea she and their sick daughter are already in front of him.',
 
     # 45.5M    I'm Pregnant, Let's Break Up!
     # FACTS: Monica, a talent manager, and Adonis, an A-list star, have been in secret relationship
@@ -727,7 +730,7 @@ CAPTIONS = {
     # FACTS: later, their paths cross again, and Monica is now an acclaimed film director. This time,
     # FACTS: will Adonis win back his love?
     'i-m-pregnant-let-s-break-up':
-        "She left carrying his child. He noticed too late.\nMonica has spent three years in a secret relationship with Adonis, an A list star who has never once said how he feels. Pregnant and done waiting, she walks away, and only then does Adonis realize she is all he needs. Years later their paths cross again. Monica is an acclaimed film director now, and this time it is Adonis doing the chasing.",
+        'Three years in secret, and he never once said it.\nMonica manages talent and Adonis is an A list star, and what they have has been hidden the whole time. She has loved him without hearing a word back. Pregnant now, she decides to end it and go, and losing her is what finally makes him understand what she was. Years later they are in the same room again, only now Monica is an acclaimed film director, and he has to find a way to earn her twice.',
 
     # 45.5M    My Billionaire Ever After
     # FACTS: Aria Walker needs a husband to get out of an arranged marriage. When her long-term
@@ -736,7 +739,7 @@ CAPTIONS = {
     # FACTS: actually a billionaire CEO. Aria's selfish family and bitter best friend try to sabotage
     # FACTS: her at every turn, but with Norman's support, Aria's marriage only gets stronger.
     'my-billionaire-ever-after':
-        "The food truck guy is a billionaire.\nAria Walker needs a husband fast to get out of an arranged marriage, and instead her long term boyfriend announces he is leaving her for her best friend. So Aria turns to Norman Hill, an old acquaintance who works a food truck. As far as she knows. Norman is actually a billionaire CEO, and while her selfish family and bitter best friend try to sabotage her at every turn, his support only makes the marriage stronger.",
+        'She needed a husband fast. She married the food truck guy.\nAria Walker has an arranged marriage bearing down on her and no way out, and then her boyfriend of years announces he is leaving her for her best friend. So she turns to Norman Hill, an old acquaintance who sells food out of a truck, and asks him to marry her. Norman is a billionaire, which is not something he mentions. Her family and her former friend spend the marriage trying to break it from every angle, and every attempt leaves the two of them closer than before.',
 
     # 45.0M    Nanny to My Hot Bully
     # FACTS: In Nanny to My Hot Bully movie, Abbi is Felix's rival... and nanny. Things take a
@@ -753,14 +756,14 @@ CAPTIONS = {
     # FACTS: battles, will their whirlwind romance blossom into true love, or will their pasts tear
     # FACTS: them apart?
     'runaway-billionaire-becomes-my-groom':
-        "Two broken hearts, one impulsive wedding.\nLeft heartbroken at the altar, Liana marries Jacob on impulse, a mysterious billionaire carrying pain of his own. What starts as a cold agreement slowly turns into passion and healing. Between meddling exes, family drama and corporate battles, the question is whether this whirlwind becomes true love or their pasts tear it apart.",
+        'Left at the altar, married by the end of the day.\nLiana is still in the dress when she marries Jacob, a mysterious billionaire carrying something painful of his own. It begins as an arrangement, cold on both sides, and turns into something that actually mends the pair of them. Between meddling exes, family and a corporate fight neither of them can duck, the question is whether the pasts they brought in get the last word.',
 
     # 44.6M    Straight A Pregnancy
     # FACTS: After a one-night stand with Ben, the hottest guy on campus, Kelsey realizes she's
     # FACTS: pregnant...and decides to keep the baby. But will Ben stick around - or will he stay a
     # FACTS: flirty fratboy forever?
     'straight-a-pregnancy':
-        "One night with the campus heartthrob, one baby on the way.\nA one night stand with Ben, the hottest guy on campus, leaves Kelsey pregnant, and she decides to keep the baby. Now everything hangs on Ben. Does he step up, or stay a flirty frat boy forever?",
+        'One night with the hottest boy on campus.\nKelsey works out she is pregnant not long after, and decides she is keeping the baby regardless of what anyone else plans to do. The open question is Ben. He can grow into this, or he can stay exactly the flirty fratboy everyone already knows he is, and she will find out which along with the rest of us.',
 
     # 44.4M    Fatal Attraction: The Hybrid Princess
     # FACTS: Natalie is a hybrid. She is a werewolf, dragon and vampire, and due to this, she is
@@ -783,7 +786,7 @@ CAPTIONS = {
     # FACTS: love with Chloe for years, and pull her out of their "friend-zone"? And what will Chloe
     # FACTS: do, when she finds out Mateo is secretly a billaionire CEO?
     'i-flash-married-my-best-friend':
-        "Best friends, one wild night, one flash marriage.\nChloe and Mateo have been best friends for years, right up until one night together lands them in a flash marriage. Mateo has been in love with her the whole time and never said so. Now he has to decide whether to confess and pull them out of the friend zone for good, and Chloe still has to find out her best friend turned husband is secretly a billionaire CEO.",
+        'Best friends for years, married by morning.\nChloe and Mateo have one night that neither of them planned and wake up in a flash marriage. Mateo has been in love with her for a very long time and has never once said so, and this is either the moment he does or the moment he loses his nerve completely. Chloe has her own discovery coming, which is that her best friend has been a billionaire chief executive the entire time she has known him.',
 
     # 43.9M    The Quarterback's First Love
     # FACTS: In The Quarterback’s First Love movie, after her quarterback fiancee’s betrayal,
@@ -791,7 +794,7 @@ CAPTIONS = {
     # FACTS: oddly familiar, she faces new challenges as her ex, the cheer captain, and Cameron's
     # FACTS: mother plot to tear them apart.
     'the-quarterback-s-first-love':
-        "The new guy feels strangely familiar.\nWhen her quarterback fiance betrays her, cheerleader Maddie's whole life unravels. Then she meets Cameron, another football player, and something about him feels oddly familiar. Whatever is growing between them, her ex, the cheer captain and Cameron's own mother are all working to tear it apart.",
+        "Her fiance betrayed her, and the new boy feels familiar.\nMaddie is a cheerleader whose life comes apart when the quarterback she was going to marry does what he does. Cameron plays football too, and there is something about him she cannot place and cannot leave alone. Getting anywhere near him means going through three people who want it stopped: her ex, the cheer captain, and Cameron's own mother.",
 
     # 43.2M    Homeless Billionaire Baby Daddy
     # FACTS: Daisy and Alex share a one night stand and part ways on one fateful night -- which
@@ -809,7 +812,7 @@ CAPTIONS = {
     # FACTS: becomes pregnant with his child. Alpha Alfred rescues Lyra from Alpha Roland and brings
     # FACTS: her back to his pack. To protect her, Alfred and Lyra form a Fake Luna contract.
     'two-alphas-are-in-love-with-me':
-        "One escape, one night, one Fake Luna contract.\nLyra has no wolf, and for seven years she has been held captive and abused in the Wolfsbane pack under Alpha Roland. During one of her escapes she has an accidental one night stand with Alpha Alfred, the strongest Alpha of the Moonshadow pack, and falls pregnant. Alfred takes her out of Roland's reach and brings her home to his pack, and to keep her safe they sign a Fake Luna contract.",
+        "Seven years captive, and she got out pregnant.\nLyra is wolfless and has spent seven years in the Wolfsbane pack, where Alpha Roland hurt her whenever he felt like it. During one of her attempts to run, she ends up spending a night with Alpha Alfred of Moonshadow, the strongest Alpha there is, and comes away carrying his child. Alfred takes her out of Roland's reach and brings her home to his own pack, and the two of them sign a Fake Luna contract to keep her safe there.",
 
     # 42.7M    The Hart-Breaker
     # FACTS: Nerdy girl Pearl is determined to catch the eye of her longtime crush, but is clueless
@@ -818,7 +821,7 @@ CAPTIONS = {
     # FACTS: Pearl catches the attention of the guy she wants and sparks do fly... but in the wrong
     # FACTS: direction.
     'the-hart-breaker':
-        "The plan worked. The sparks went the wrong way.\nPearl is a nerdy girl set on catching her longtime crush's eye, with no idea how. After a shocking run in with Ethan Hart, the school's biggest bad boy, she strikes a deal with him to finally get noticed. It works. The guy she wanted starts paying attention, and the sparks start flying, just not in the direction anyone planned.",
+        "She made a deal with the school's worst boy.\nPearl has wanted the same boy for years and has no idea how to make him look at her. Then a startling run in with Ethan Hart, who is trouble in every sense the school understands, turns into an arrangement. With Ethan coaching her, the boy she wanted finally notices, and there are sparks. They are simply not coming from the direction she planned.",
 
     # 42.5M    How to Kiss a Vampire
     # FACTS: In How to Kiss a Vampire movie, eight years after Vincent abandoned her, Ella—now a
@@ -828,14 +831,14 @@ CAPTIONS = {
     # FACTS: man who broke her heart now acting like her savior? And why does he seem... not entirely
     # FACTS: human? Can Ella trust him again—or is he hiding more than just a mask?
     'how-to-kiss-a-vampire':
-        "Pushed off a roof, caught by a masked man.\nElla is raising her child alone when someone pushes her off a rooftop, and a masked man catches her out of the air. She wakes to a face she has not seen in eight years: Vincent, the man who abandoned her. He denies the mask is his. He also insists she move in with him, because his enemies have her in their sights. The man who broke her heart is suddenly her protector, he may not be entirely human, and the mask is clearly not the only thing he is hiding.",
+        'A masked man caught her mid fall. Then Vincent denied it.\nEight years after he left, Ella is a single mother being pushed off a roof, and something flying catches her. She wakes up with Vincent beside her, insisting it was not him, insisting his enemies are coming for her and that she has to move in with him where he can watch her. The man who broke her is suddenly the one keeping her alive, and the more she watches him, the less human he seems.',
 
     # 42.3M    The Divorced Wife is a Genius Surgeon
     # FACTS: 8 months pregnant, Alyssa is abandoned by her husband for his mistress and their
     # FACTS: lovechild Lilly. Little do they know, Alyssa is actually Jane Davenport M.D.--heiress to
     # FACTS: the Davenport fortune, and the only heart surgeon in the world that can save Lilly.
     'the-divorced-wife-is-a-genius-surgeon':
-        "The wife he left is the only one who can save his child.\nHe walks out on his eight months pregnant wife for his mistress and their lovechild Lilly. Bad move. Alyssa is not just the wife he discarded. She is Jane Davenport, heiress to the Davenport fortune, and the one heart surgeon on earth who can save Lilly's life.",
+        "He left his pregnant wife for the other woman's child.\nAlyssa is eight months gone when her husband walks out for his mistress and their daughter Lilly. Neither of them has any idea who they just discarded. She is Jane Davenport, the Davenport money is hers, and of every heart surgeon alive she is the one who can save the little girl he left her for.",
 
     # 41.9M    Mafia's Tender Torture
     # FACTS: Vesper, who is determined to raise money to save her father, finds Raymond, the boss of
@@ -859,7 +862,7 @@ CAPTIONS = {
     # FACTS: employee. To make matters worse, her husband won't believe her, and thinking that she's
     # FACTS: hiding their daughter from him, continuously makes her life a living hell.
     'sadness-knows-no-boundaries':
-        "He cost them their daughter. He blames her.\nCharlotte Hasting's daughter dies because of her husband's negligence and his favoritism for a pretty employee. He will not accept it. Convinced that Charlotte is hiding their daughter from him, he makes her life a living hell, and she is left to carry the grief and the blame at the same time.",
+        'Her daughter died and he thinks she is hiding the child.\nCharlotte Hasting loses her little girl because her husband was not paying attention, too busy with the pretty employee he favours. He refuses to believe what happened. He has decided instead that Charlotte has taken their daughter away from him somewhere, and he makes her pay for it every single day.',
 
     # 41.2M    My Dark Romeo
     # FACTS: After Romeo Costa ruins Dallas Townsend's reputation at the debutante ball and forces
@@ -867,7 +870,7 @@ CAPTIONS = {
     # FACTS: family she’s always dreamed of. But Romeo is not easy to break. And Dallas isn't the
     # FACTS: type of girl to give up.
     'my-dark-romeo':
-        "She plans to break the husband she never chose.\nIt starts with ruin. Romeo Costa wrecks Dallas Townsend's reputation at the debutante ball, then forces a wedding on her. Dallas answers with a plan: seduce her unwanted husband, break his one rule, and claim the family she has always dreamed of. He does not break easily. She does not give up.",
+        "He ruined her at the debutante ball, then married her.\nRomeo Costa took Dallas Townsend's reputation apart in front of everyone and forced her into a marriage she never agreed to. Dallas decides that if this is where she has ended up, she will use it. The plan is to seduce him, get him to break the one rule he lives by, and build the family she has always wanted out of the wreckage. He does not break easily. She does not give up.",
 
     # 40.7M    Return of the Reaper
     # FACTS: Isaac Kane is a single father with a dark secret: he was once the most feared killer on
@@ -876,7 +879,7 @@ CAPTIONS = {
     # FACTS: crime family, he must break his vow... and kill his way through the Russian Mafia, while
     # FACTS: re-taking his place as a near-mythic killer that haunts the nightmares of the wicked.
     'return-of-the-reaper':
-        "They kidnapped the wrong man's daughter.\nIsaac Kane is a struggling single father with a dark secret. He was once the most feared killer on the planet, until he promised his dying wife he would never kill again. Then a major crime family takes his daughter, and the vow breaks with everything else. Isaac cuts his way through the Russian Mafia and back into the legend the wicked still have nightmares about.",
+        'He promised his dying wife he would never kill again.\nIsaac Kane keeps that promise. He raises his daughter alone, scrapes by, and lets the world forget what he used to be, which was the deadliest man on it. Then a crime family takes the girl, and the promise becomes the thing standing between him and getting her back. He breaks it. What comes out of retirement is not a struggling father but the near mythic figure the wicked still have nightmares about, and he goes through the Russian mafia one man at a time.',
 
     # 40.7M    Wrong
     # FACTS: In the movie Wrong, based on the novel by Jana Aston, Sophie Tisdale has a foolproof
@@ -886,7 +889,7 @@ CAPTIONS = {
     # FACTS: to have a thing for your campus gynecologist...and why doesn't Sophie really seem to
     # FACTS: care?
     'wrong':
-        "Her crush is her gynecologist. She's not even sorry.\nSophie Tisdale has a foolproof plan to lose her virginity before senior year ends, until someone warns her that her chosen partner has a bet running on filming it. The someone is Luke, her gorgeous coffee shop regular, who also happens to be her new pelvic examiner. It is probably wrong to have a thing for your campus gynecologist. Sophie doesn't seem to care. Based on the novel by Jana Aston.",
+        'Her plan was simple until someone mentioned the bet.\nSophie Tisdale has decided she is not finishing senior year a virgin, and she has picked the boy and set the timeline. Then she finds out he has money riding on whether he can film it. The person who tells her is Luke, the beautiful regular from her coffee shop, who is also, awkwardly, the man who has just become her campus gynaecologist. Wanting him is a terrible idea for about nine different reasons. Sophie cannot make herself care about a single one. Based on the novel by Jana Aston.',
 
     # 40.6M    Good with Her Hands
     # FACTS: Years after an unexpected separation, Bella and Adam—once college classmates who fell in
@@ -897,7 +900,7 @@ CAPTIONS = {
     # FACTS: spark between Bella and Adam grows stronger, but both must decide if this second chance
     # FACTS: will allow their long-dormant love to flourish into something lasting.
     'good-with-her-hands':
-        "Her first love walks into her office needing help.\nBella and Adam fell in love at first sight in college and were pulled apart before it could go anywhere. Years later Bella is a successful doctor, and the patient who walks into her office is Adam, her first love, now an NHL superstar in need of help. A twist of fate binds them in a contract relationship, and their unfinished love gets its second chance. The spark is still there. What they have to decide is whether it can last this time.",
+        'Her first love walks into her surgery, years too late.\nBella and Adam fell for each other on sight in college, and then something separated them and that was that. She is a successful doctor now. He is an NHL superstar, and he is standing in her office needing help. Everything they buried comes straight back up, and a contract relationship neither expected hands them the second chance at each other they never finished. The longer it goes on, the harder it gets to call it a contract.',
 
     # 40.6M    Stop! That Homeless Man Is an American Hero!
     # FACTS: In Stop That Homeless Man Is an American Hero movie, Ethan escorts his fallen comrade's
@@ -908,7 +911,7 @@ CAPTIONS = {
     # FACTS: about to take a turn for the worse, Ethan's old army subordinate– now the Director of
     # FACTS: the FBI– appears! Will Ethan's true identity as an American hero finally be revealed?
     'stop-that-homeless-man-is-an-american-hero':
-        "He took the abuse to protect his friend's ashes.\nEthan is escorting a fallen comrade's ashes home when the local sheriff stops him and decides he is a homeless vagrant. Dragged into the station, humiliated and tortured, Ethan endures all of it, because protecting his friend's ashes is all that matters. Then the sheriff goes too far and desecrates them. That is the moment Ethan's old army subordinate walks in, and he is now the Director of the FBI. The whole town is about to learn what kind of man they laid hands on.",
+        "He is carrying his friend's ashes home. The sheriff calls him a vagrant.\nEthan is escorting a fallen comrade back where he belongs when a local sheriff decides what he is looking at. Ethan is taken in, questioned, humiliated and hurt, and he takes all of it, because putting up a fight means letting go of the ashes. Then the sheriff does the one thing Ethan cannot allow, and desecrates them. What none of these men know is who Ethan used to command, and his old subordinate now runs the FBI.",
 
     # 40.5M    After Divorce, I Built A Fabulous Life
     # FACTS: In After Divorce I Built A Fabulous Life movie, once a talented designer, Mia married
@@ -925,7 +928,7 @@ CAPTIONS = {
     # FACTS: threatened again, her father hires Jack as her personal bodyguard. When they're forced
     # FACTS: to spend every second together, will they be able to resist each other?
     'the-heiress-and-her-possessive-bodyguard':
-        "Her new bodyguard is the enemy who once saved her.\nThree years ago Jack Hawkins saved the heiress Grace Christensen from a stalker. When they meet again, a misunderstanding has turned them into enemies. Then Grace's safety is threatened once more, and her father hires Jack as her personal bodyguard. Forced together every second of the day, neither is doing a very good job of resisting the other.",
+        'He saved her once. Now her father is paying him to stay.\nJack Hawkins got Grace Christensen away from a stalker three years ago, and when they meet again a misunderstanding turns the two of them into enemies instead. Then somebody starts threatening her again, and her father hires the one man he trusts to keep her alive. So they are together every hour of every day, disliking each other loudly, and it is getting harder to keep that up.',
 
     # 40.3M    Monster in His Eyes
     # FACTS: In Monster in His Eyes movie, based on the book MONSTER IN HIS EYES by J.M. Darhower!
@@ -935,7 +938,7 @@ CAPTIONS = {
     # FACTS: everything for desire, curiosity, and forbidden love. Can she survive his world, and
     # FACTS: dare to love the man everyone warns her to fear?
     'monster-in-his-eyes':
-        "Everyone warns her about him. She moves closer.\nKarissa Reed is nineteen and trapped between a controlling mother and her abusive ex Tommy, until Naz Conti pulls her out. Naz is a dangerous ex con and a mafia boss, and instead of running, Karissa is drawn to the danger. She challenges him to let her be his, risking everything for desire, curiosity and a forbidden love. Surviving his world is one thing. Daring to love the man everyone fears is another. Based on the novel by J.M. Darhower.",
+        'Rescued by a mafia boss, and she asked him to keep her.\nKarissa Reed is nineteen and boxed in on both sides, by a controlling mother and by Tommy, the ex who hurt her. Naz Conti gets her out, and Naz is an ex convict who runs a mafia family and is exactly as dangerous as the warnings say. Instead of running from that, she asks him to make her his, and every kiss after that costs her more than the last one. Based on the book by J.M. Darhower.',
 
     # 40.2M    OMG, I'm Surrounded by Three Princes
     # FACTS: Erin, a down-and-out street vendor, is betrayed by her fiancé and best friend, but no
@@ -956,7 +959,7 @@ CAPTIONS = {
     # FACTS: can do is keep his friends close, and enemies closer — but maybe Chris is getting a
     # FACTS: little too close...
     'tutoring-my-rival-boy':
-        "Tutoring the enemy who knows his secret.\nChris Blanning is the valedictorian at a snobby private school, already dealing with bullies, and when his scholarship stops covering tuition he has to tutor his worst enemy. Lucien Alaric is the spoiled bad boy Chris just caught trying to charm their teacher into changing his grades, and in return Lucien has worked out Chris's deepest, dirtiest secret. The plan is to keep his enemy close. The problem is that Chris might be getting a little too close.",
+        'He has to tutor the boy he most despises.\nChris Blanning tops the year at a private school full of snobs, which buys him bullies rather than friends, and his scholarship does not stretch far enough to cover the fees. So he has to take the tutoring work, and the pupil is Lucien Alaric, the spoiled troublemaker he watched trying to charm a teacher into changing his grades. Worse, Lucien has worked out the secret Chris has kept from everyone. Keep your enemies close, then. Chris may be keeping this one closer than he means to.',
 
     # 40.0M    I Married as the Replacement Bride
     # FACTS: Martina is the perfect Mafia daughter. Beautiful, quiet, and — most important of all —
@@ -974,7 +977,7 @@ CAPTIONS = {
     # FACTS: fall for him, while Olivia bets she can resist his seduction… but just how long can she
     # FACTS: last against her boss’ sexy advances?
     'boss-me-around-if-you-dare':
-        "New job, new boss, same man from last night.\nOlivia is falsely accused of sleeping with her boss and fired for it, so the new job at Wilder Conglomerate is meant to be a fresh start. Then she meets her new boss. Theo Wilder is the man she hooked up with last night. Olivia says they cannot possibly work together, and Theo offers a bet instead: he says he can make her fall for him, she swears she can resist. The bet is on.",
+        'Fired for sleeping with her boss. Then she met the new one.\nOlivia never touched the last one, but the accusation cost her the job anyway. The fresh start at Wilder Conglomerate lasts until she looks up and finds Theo Wilder behind the desk, the man she went home with the previous night. She says this cannot work. He proposes a bet instead: he reckons he can make her fall for him, she reckons she can hold out. Neither of them is being remotely sensible, and neither is backing down.',
 
     # 39.7M    Falling for My Divorce Lawyer
     # FACTS: Evie wants to get away from her abusive, cheating husband, but he refuse to let her go.
@@ -1014,7 +1017,7 @@ CAPTIONS = {
     # FACTS: CEO. As time passes, Leo begins to fall for Chloe ultimately becoming utterly devoted to
     # FACTS: her.
     'the-billionaire-firefighter-and-his-sweet-wife':
-        "Her groom left her in the fire. A stranger walked in.\nA fire breaks out on Chloe's wedding day, and her fiance Kevin leaves her in it to save his stepsister Rachel. It is Leo who runs into the flames for her. To reclaim her mother's inheritance, Chloe impulsively marries him, with no idea Leo is a billionaire CEO. As time passes he falls for her completely, until he is utterly devoted to his sweet wife.",
+        "He left her in the fire to carry out his stepsister.\nOn the day of the wedding the building goes up, and Kevin makes his choice in front of everyone: he goes for Rachel and leaves Chloe where she is. Leo is the one who comes through the flames for her. Chloe needs a husband to claim her mother's inheritance, so she marries the man who saved her, on impulse, without knowing he is a billionaire. He falls for her slowly and then completely, which is more than the first one managed.",
 
     # 39.1M    Divorce Tears from the Alpha, but I Shine Alone
     # FACTS: Ella fell in love with Holden, the Alpha of the High Mountain Wolf Clan, when they were
@@ -1025,7 +1028,7 @@ CAPTIONS = {
     # FACTS: abort Ella's unborn child. She divorces him and leaves with the baby, then reuniting
     # FACTS: with her own clan, the Silver Snow Clan, and learns she's their long-lost princess.
     'divorce-tears-from-the-alpha-but-i-shine-alone':
-        "She left the alpha and found out she's a princess.\nElla loved Holden from childhood, when the Alpha of the High Mountain Wolf Clan promised to protect her, and a witch's prophecy about destined mates made her his Luna. But Holden believed she only married him for the title, and he grew to hate her. With his childhood sweetheart Ivy scheming in the background, Ella overhears a plan to end her pregnancy, and that is enough. She divorces him, leaves with her baby, and finds her way back to her own people, the Silver Snow Clan, where she learns she is their long lost princess.",
+        'He decided she only married him for the title.\nElla loved Holden from childhood, after he promised to keep her safe, and a witch put a prophecy over the pair of them that made her his Luna. Holden convinced himself she was in it to be Luna and nothing more, and grew to hate her for it. Ivy, the girl he grew up with, works on that until Ella believes the two of them are together, and then Ella overhears him planning to end her pregnancy. She divorces him, leaves carrying the baby, finds her way to the Silver Snow Clan and learns she is their lost princess.',
 
     # 39.0M    The Virgin Stripper and the Hockey Star
     # FACTS: In The Virgin Stripper and the Hockey Star movie, Jenna leads a double life: by day,
@@ -1035,7 +1038,7 @@ CAPTIONS = {
     # FACTS: enigmatic dancer, Angel, unaware she’s the same girl he spars with at school. But the
     # FACTS: deeper their bond grows, the closer they come to unraveling each other’s truths.
     'the-virgin-stripper-and-the-hockey-star':
-        "The dancer he can't forget is his school rival.\nBy day Jenna is a quiet, unassuming student. By night she dances as Angel, a stripper paying off her sister's medical bills. The two worlds collide when Casper, her cocky school rival and the star of the hockey team, walks into the club and cannot take his eyes off a dancer he doesn't recognize. The closer they get, the closer both of them come to the truths they are hiding.",
+        "Her school rival just walked into the club.\nJenna is quiet and unremarkable in lecture halls, and nobody there has any idea she dances under the name Angel to keep up with her sister's medical bills. The two halves of her life stay apart until the night Casper turns up. He is the cocky boy she trades insults with all week and the hockey team's biggest name, and he is captivated by the dancer in front of him without once recognising the girl underneath. Every week they get closer, and every week there is more for each of them to lose when the truth comes apart.",
 
     # 38.9M    Dear Professor, You Are My Baby Daddy
     # FACTS: Med student Cora never expected to get pregnant—let alone with the baby of Damon
@@ -1047,7 +1050,7 @@ CAPTIONS = {
     # FACTS: and hidden bloodlines come to light, Cora must face the ultimate question— Can she truly
     # FACTS: find happiness... and reunite with the family she never knew she had?
     'dear-professor-you-are-my-baby-daddy':
-        "Her baby's father is her new professor.\nMed student Cora never planned to get pregnant, least of all by Damon Hawkins, the city's most eligible billionaire bachelor and her new visiting professor. She meant to keep the child a secret, but Damon kept pushing past her walls, right up to the moment he went down on one knee. What was supposed to be a fleeting romance turns into tenderness and indulgent love. Then the dangerous secrets start surfacing, betrayal and hidden bloodlines among them. Can she hold on to her happiness, and find her way back to the family she never knew she had?",
+        'She was going to keep the baby a secret from him.\nCora is a med student, and the last man she expected to be pregnant by is Damon Hawkins, the most eligible billionaire in the city and, as of this term, the visiting professor taking her class. Her plan is silence. His plan is to keep pushing until she lets him in, and it ends with him on one knee. What she assumed would be brief turns into something unexpectedly tender, and then the secrets start surfacing, about betrayal and about a bloodline nobody told her she had.',
 
     # 38.9M    Waterboy
     # FACTS: Student Body President Kaden Russell just made an enemy of Star Quarterback Donovan
@@ -1057,7 +1060,7 @@ CAPTIONS = {
     # FACTS: forced proximity stirs up feelings Donovan never expected, and when their rivalry turns
     # FACTS: romantic, both boys have to decide what they’re willing to risk for love.
     'waterboy':
-        "His punishment is fetching water for his enemy.\nIt starts as a war over school funds. Student body president Kaden Russell takes one cruel remark from star quarterback Donovan Miller and answers it by dyeing the football uniforms rainbow. Then the prank gets Donovan injured, and Kaden's punishment is serving him as waterboy. Day after day at his enemy's side, Donovan starts feeling things he never expected, and when rivalry tips into romance, both boys have to decide what love is worth risking.",
+        "He dyed their uniforms rainbow. Then someone got hurt.\nKaden Russell runs the student body and Donovan Miller is the star quarterback, and a fight over activity funds ends with Donovan saying something cruel enough to earn what comes next. Kaden's revenge is the uniforms. The prank gets Donovan injured mid game, and Kaden is sentenced to serve as his waterboy for it. Being stuck together stirs up something Donovan did not see coming, and both of them have to decide what they are prepared to risk.",
 
     # 38.4M    Daddy Forgot, but Mommy Remembers
     # FACTS: Nicole loses everything the night she’s framed—her freedom, her child, and the love of
@@ -1067,7 +1070,7 @@ CAPTIONS = {
     # FACTS: resurface, and Lila, their stolen daughter, is the unexpected thread pulling them back
     # FACTS: together. He doesn’t remember her. But his heart never forgets.
     'daddy-forgot-but-mommy-remembers':
-        "He doesn't remember her. His heart does.\nThe night Nicole is framed she loses everything: her freedom, her child, and the love of her life. Seven years later she comes back as the nanny in the very house that destroyed her. Ethan, her former fiance, is still haunted by the woman he lost, and he starts to feel something for the new nanny without realizing who she is. Between them stands Lila, the daughter who was taken from her, quietly pulling her parents back together.",
+        "She works as the nanny in the house that ruined her.\nThe night Nicole was framed cost her her freedom, her daughter and the man she loved, all at once. Seven years later she walks back in through the servants' entrance of the same home. Ethan has never stopped grieving the woman he lost, and starts falling for the new nanny without once realising he already did this. Secrets build, memories keep surfacing, and Lila, the daughter taken from them, is the thread quietly pulling the three of them back together. He does not remember her. Something in him never stopped.",
 
     # 38.0M    Pretty Baby
     # FACTS: In Pretty Baby movie, Rosy Dolores, the city's most sought-after escort, enters a fake
@@ -1075,7 +1078,7 @@ CAPTIONS = {
     # FACTS: away from her at birth. Unbeknownst to her, Tad's charming daughter, Lily, is the very
     # FACTS: child she's been searching for.
     'pretty-baby':
-        "The child she's searching for calls him daddy.\nRosy Dolores, the city's most sought after escort, agrees to a fake engagement with Tad Williams, a billionaire single father, because it gets her closer to finding the daughter taken from her at birth. She has no idea that Lily, Tad's charming little girl, is the very child she has been searching for.",
+        "She took the fake engagement to find her stolen daughter.\nRosy Dolores is the most sought after escort in the city, and the deal with billionaire single father Tad Williams is a means to an end. The baby taken from her at birth is somewhere, and this gets her close enough to look. What she does not know, while she is searching, is that Tad's daughter Lily, who has taken a shine to her, is the child she is looking for.",
 
     # 37.9M    When Wife Won't Forgive
     # FACTS: In When Wife Won't Forgive movie, on their 25th wedding anniversary, Anne discovers her
@@ -1086,7 +1089,7 @@ CAPTIONS = {
     # FACTS: publishing company, and removes Jonathan from his position. Jonathan finally realizes
     # FACTS: that Anne who played housewife for 25 years was actually a wealthy heiress.
     'when-wife-won-t-forgive':
-        "He kicked out the wife who owned his publisher.\nOn their twenty fifth wedding anniversary, Anne discovers her bestselling author husband Jonathan has been having an affair. He assumes he is about to be made CEO of his publishing company, so he throws her out without a second thought. Anne decides forgiveness is off the table. She resumes her seat as Chairwoman of the elite publishing house and removes Jonathan from his position, which is how he learns that the woman who played housewife for twenty five years was a wealthy heiress all along.",
+        "Twenty five years a housewife, and he threw her out.\nAnne finds out about the affair on their anniversary, and Jonathan does not even pretend to be sorry. He is about to run the publishing company, or so he believes, so he puts his wife on the street without a second thought. Anne stops forgiving him. She walks back into the chairwoman's office at an elite publishing house, which is hers and always has been, and removes him from his job herself. The woman he treated as a homemaker for a quarter of a century was an heiress the entire time.",
 
     # 37.8M    Selling My Virginity to the Mafia King
     # FACTS: In Selling My Virginity to the Mafia King movie, desperate to save her dying sister,
@@ -1094,7 +1097,7 @@ CAPTIONS = {
     # FACTS: man in the Mafia. Will she ever be able to trust the man who bought her love... or will
     # FACTS: trusting him cost her everything?
     'selling-my-virginity-to-the-mafia-king':
-        "The highest bidder runs the Mafia.\nDesperate to save her dying sister, Tessa puts her virginity up for auction, and the man who claims her is the most dangerous in the Mafia. Now she has to decide whether she can ever trust a man who bought his way into her life, or whether trusting him will cost her everything.",
+        'Her sister was dying, so she put herself up for auction.\nTessa is out of options and out of time, and the money has to come from somewhere. The man who wins her is the most dangerous person in the Mafia, which is not what she pictured when she agreed to this. Now she has to work out whether a man who bought her can be trusted with anything at all, and what it costs her if she decides wrong.',
 
     # 37.8M    What Doesn't Break Me
     # FACTS: Raised in rural poverty, Taylor gets into MIT, but her father and older brother rip up
@@ -1107,7 +1110,7 @@ CAPTIONS = {
     # FACTS: find her sister, and bring justice to those who crushed her? And when the truth comes
     # FACTS: out—what punishment awaits those who looked down upon Taylor?
     'what-doesn-t-break-me':
-        "They sold her. She came back owning everything.\nTaylor grows up in rural poverty and earns a place at MIT, and her father and older brother respond by tearing up the acceptance letter and selling her to a rich old man. With her mother and little sister's help she escapes, and loses contact with them both. Seven years later Taylor is the richest person in the world. She comes home to find her mother beaten and her sister sold by that same brother, who now works for her without knowing it, and who calls her a whore in front of a full banquet hall. Now she has a sister to find, a name to prove, and a punishment to hand down.",
+        "They tore up her acceptance letter and sold her.\nTaylor got into MIT out of rural poverty, and her father and brother destroyed the letter and sold her to a rich old man for the cash. Her mother and little sister got her out, and the cost of escaping was losing them both. Seven years later she is the richest person on earth and comes home in glory, to find her mother beaten and her sister sold by the same brother. At the dinner thrown in honour of the planet's richest chief executive, that brother, now her employee, looks straight at her and calls her a whore.",
 
     # 37.7M    CEO and the Country Girl
     # FACTS: In CEO and the Country Girl movie, when her sister betrays her and a ruthless CEO
@@ -1117,7 +1120,7 @@ CAPTIONS = {
     # FACTS: legacy—turns enemies into something dangerously close to lovers, and turning their
     # FACTS: worlds upside down.
     'ceo-and-the-country-girl':
-        "The man sent to take her farm is trying to save it.\nWith her own sister working against her and a ruthless CEO targeting the family farm, small town cowgirl Avery Rogers has plenty to fight. The man sent to take her land is Tyler Sinclair, a corporate heir, and every clash between them throws sparks. Then Tyler makes a bold bid of his own, a small town cookout to save Avery and her father's legacy, and the two enemies drift somewhere dangerously close to lovers.",
+        'Her sister sold her out, and the buyer sent his heir.\nAvery Rogers is a small town cowgirl with a temper, and the family farm is the thing a ruthless company wants. Tyler Sinclair is the corporate heir sent to take it off her, which goes about as well as anyone would expect, right up until it starts going differently. What turns it is a cookout, and Tyler making a very public bid to save Avery and everything her father built.',
 
     # 37.1M    Never Underestimate Girl Math
     # FACTS: In Never Underestimate Girl movie Math, Zosha is a poor orphan who gets bullied by all
@@ -1148,7 +1151,7 @@ CAPTIONS = {
     # FACTS: fulfill his dream of going to college, or will a group of bullies drive him to drop out
     # FACTS: again?
     'mafia-boss-takes-high-school':
-        "The new kid getting bullied runs a crime family.\nOne day he is a high level mafioso. The next he is inside the body of a bullied high schooler, holding an unexpected second chance at the diploma he never got. Street smarts carried him to the top of a crime family. Whether they can carry him past a pack of bullies and all the way to college is another matter.",
+        "A mafia boss wakes up in a bullied teenager's body.\nHe is high level, he is used to being obeyed, and he is now sitting in a classroom in the body of a boy everyone pushes around. He decides to take it as a second chance at the school years he never finished. Whether the instincts that kept him alive on the street are any use here is another matter, because there is a group of bullies working hard on making him drop out all over again.",
 
     # 36.6M    Corrupting My Billionaire Boss's Heart
     # FACTS: In Corrupting My Billionaire Boss's Heart movie, when Lyla Walker starts working at the
@@ -1156,7 +1159,7 @@ CAPTIONS = {
     # FACTS: buttoned-up billionaire CEO Royce Kennedy. She's ready to risk everything for their
     # FACTS: forbidden relationship, unaware of the promise he made to her dying father.
     'corrupting-my-billionaire-boss-s-heart':
-        "He made her dying father a promise.\nRoyce Kennedy runs the world's most elite country club buttoned all the way up, and Lyla Walker's arrival undoes him one temptation at a time. She would risk everything for what is growing between them. He is carrying something she knows nothing about: a promise made to her dying father.",
+        'He made a promise to her dying father. She has no idea.\nLyla Walker takes a job at the most exclusive country club there is and brings a great deal of chaos with her, most of it landing on Royce Kennedy, the buttoned up billionaire who runs the place. She is willing to risk everything she has for something the two of them are not supposed to have. What she is missing is the promise he gave her father, and what keeping it is going to cost him.',
 
     # 36.4M    Tempting the Mafia Twins
     # FACTS: In Tempting the Mafia Twins movie, Genesis discovers her mob boss husband, Kiefer's
@@ -1167,7 +1170,7 @@ CAPTIONS = {
     # FACTS: ago, it was all a misunderstanding. Kiefer O’Reilly, the ruthless mafia boss, only wants
     # FACTS: one thing—to win Genesis’s love back.
     'tempting-the-mafia-twins':
-        "She ran from a killer. He just wants her back.\nGenesis discovers her mob boss husband Kiefer's affair, and his mistress's schemes cost her one of her twin babies. She reports him to the authorities and runs while still pregnant. Seven years later he finds her on the street, and Genesis is certain her murderous husband has come to kill her. Instead he drags her home, where the truth is waiting: seven years ago it was all a misunderstanding, and the only thing Kiefer wants now is to win her love back.",
+        "She turned her mob boss husband in and ran, still pregnant.\nGenesis finds out about Kiefer's affair, and his mistress's scheming costs her one of the twins she is carrying. So she goes to the authorities and disappears with the other. Seven years later they meet on a street and she is certain the man in front of her has come to finish it. He takes her home instead, and there she learns that what ended her marriage was a misunderstanding, and that the ruthless Kiefer O'Reilly wants one thing, which is her back.",
 
     # 36.3M    Nero: Made Men
     # FACTS: Based on the novel by Sarah Brianne. Elle's life is turned upside down when Nero, the
@@ -1177,7 +1180,7 @@ CAPTIONS = {
     # FACTS: just a part of Nero's mission, as the heir to a Mafia Empire? As for Nero, he has
     # FACTS: somehow fallen head over heels for this girl who has no idea the danger she was in.
     'nero-made-men':
-        "She's his mission. He forgot that part.\nElle's life turns upside down the day Nero, the untouchable bad boy, steps in to save her from her school bully. One smile from him makes every girl swoon, and Elle can hardly believe he wants her, or decide whether he can be trusted. What she doesn't know is that she is part of a mission for Nero, the heir to a Mafia empire. What Nero didn't plan on is falling head over heels for a girl with no idea of the danger she is in. Based on the novel by Sarah Brianne.",
+        'He saved her from a bully. She was an assignment.\nElle cannot believe her luck when Nero steps in, because Nero is the untouchable one, the boy whose smile takes the whole school apart. She looks at him and wonders whether someone with that reputation can be trusted with anything. What she does not know is that she is a job, part of what the heir to a Mafia empire has been sent to do. What Nero did not plan on is falling completely for a girl who has no idea how much danger she is standing in. Based on the novel by Sarah Brianne.',
 
     # 36.3M    The Alpha's Daughter
     # FACTS: “The Alpha’s Daughter” Daphne Sinclair’s life shatters when her father, a powerful
@@ -1186,7 +1189,7 @@ CAPTIONS = {
     # FACTS: hostile environment, forging alliances and seeking justice. New situations are
     # FACTS: stressful, avoiding danger at the same time sucks. Survival game?
     'the-alpha-s-daughter':
-        "Her father was murdered on her birthday.\nDaphne Sinclair's world shatters when her father, a powerful Alpha, is murdered on her eighteenth birthday. Alpha Atlas's betrayal turns her grief into a hunger for revenge. Alone in hostile territory, Daphne forges her alliances carefully, grows into her own power, and goes after justice one dangerous step at a time.",
+        'Her father was murdered on her eighteenth birthday.\nDaphne Sinclair was the daughter of a powerful Alpha, and losing him is only the first thing that goes. Alpha Atlas is behind the betrayal, and knowing that gives her something to point herself at. What follows is Daphne working out who she is now, in a place that wants her gone, building alliances one careful conversation at a time and staying alive long enough to make somebody answer for it.',
 
     # 36.2M    My Dear Brother is Obsessed With Me
     # FACTS: Clyde enlists small time actress, Violet, to play the role of his long-lost sister,
@@ -1206,7 +1209,7 @@ CAPTIONS = {
     # FACTS: secretly pined for after a one-night stand, and Sam’s off-limit older brother were the
     # FACTS: same person.
     'a-hamptons-summer-affair-with-my-bff-s-brother':
-        "One rule: don't fall for his brother. Too late.\nOlive Parry agrees to play her best friend Sam's fake girlfriend, and in return he covers what it costs to save her little brother from his evil foster mom. There is one condition: do not fall in love with Sam's older brother. Easy enough, until Olive discovers that the stranger she has been pining for since a one night stand and Sam's off limits older brother are the same man.",
+        "One rule for the summer. Do not touch his brother.\nOlive Parry agrees to be Sam's fake girlfriend, and in exchange he covers what it costs to get her little brother away from a cruel foster mother. It is a fair trade with one condition attached, and Olive has no trouble agreeing to it. The arrangement runs beautifully until she works out that the man she has been quietly thinking about since a one night stand and the brother she is forbidden to want are the same person.",
 
     # 36.1M    Rules of Protection: The Bodyguard I Hate
     # FACTS: In Rules of Protection The Bodyguard I Hate movie, Elena and Ace used to be engaged for
@@ -1224,7 +1227,7 @@ CAPTIONS = {
     # FACTS: romance takes a dark turn as men in Leah's life begin to mysteriously disappear, and now
     # FACTS: she must face Ryan's chilling secrets, and confront her love for him.
     'billionaire-ceo-s-secret-obsession':
-        "The men in her life keep disappearing.\nDr. Leah Anderson falls for Ryan Carter, a hot, seductive billionaire whose obsession makes him a dangerous man to love. The romance takes a dark turn when the men in Leah's life begin to disappear, one after another. Now she has to face Ryan's chilling secrets, and decide what to do about the fact that she loves him anyway.",
+        'The men in her life keep disappearing.\nDr Leah Anderson falls for Ryan Carter, who is rich and seductive and wants her with an intensity that should probably worry her more than it does. The romance is genuinely passionate. It also gets darker, one man at a time, as people around her stop being around, and Leah has to look straight at what her lover has been doing and decide what she feels about him now she knows.',
 }
 
 FACTS = {

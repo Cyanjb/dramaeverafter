@@ -29,7 +29,7 @@ CAPTIONS = {
     # FACTS: d maybe her heart—to a man born of violence is her greatest betrayal or her only chance at survi
     # FACTS: val.
     'bound-by-honor':
-        'Married off at eighteen to the man Chicago fears.\nAria is a sheltered mafia princess from Chicago, forced into an arranged marriage with Luca, the cold and dangerously seductive heir of the New York mafia. Luca is a man born of violence and passion is quick to ignite between them. What Aria has to work out is whether giving her body, and possibly her heart, to this man is the worst betrayal she could commit or the only thing that will  keep her alive.',
+        'Married off at eighteen to the man Chicago fears.\nAria is a sheltered mafia princess from Chicago, forced into an arranged marriage with Luca, the cold and dangerously seductive heir of the New York mafia. Luca is a man born of violence and passion is quick to ignite between them. What Aria has to work out is whether giving her body, and possibly her heart, to this man is the worst betrayal she could commit or the only thing that will keep her alive.',
 
     # FACTS: Best friends Ella and Leah married the Harper brothers, firefighter Charles and doctor Noah. On 
     # FACTS: their third anniversary, Charles’s first love locks Ella inside a burning room. When Ella begs C
@@ -38,7 +38,7 @@ CAPTIONS = {
     # FACTS: of miserable marriages, the best friends decide to file for divorce from the Harper brothers tog
     # FACTS: ether.
     'brides-in-smoke':
-        "He went to find his ex's cat while his wife burned.\nElla and Leah are best friends married to the Harper brothers, firefighter Charles and doctor Noah. On their third anniversary, Charles's first love locks Ella in a burning room, and when Ella begs him for help he brushes her off to go and find hid ex's cat. Leah runs in after her and calls Noah to save Ella with tragic consequences. After years of unhappy marriage for the two women, they file for divorce from the Harper brothers together.",
+        "He went to find his ex's cat while his wife burned.\nElla and Leah are best friends married to the Harper brothers, firefighter Charles and doctor Noah. On their third anniversary, Charles's first love locks Ella in a burning room, and when Ella begs him for help he brushes her off to go and find his ex's cat. Leah runs in after her and calls Noah to save Ella with tragic consequences. After years of unhappy marriage for the two women, they file for divorce from the Harper brothers together.",
 
     # FACTS: Fay Thompson thought she understood the mafia world -- but the arrival of a scheming rival, a sh
     # FACTS: ocking pregnancy, and her lover's arrest will force her to become the Mafia Queen she was always
@@ -61,7 +61,7 @@ CAPTIONS = {
     # FACTS:  nose. Eventually, Damian exposes his brother's crimes, saves Bella, and they unite to defend th
     # FACTS: eir mafia throne.
     'in-bed-with-my-brother-in-law':
-        "Revenge sex with a stranger who turns out to be family.\nBella's arranged marriage is already a nightmare so when she catches her fiance with another woman it's the last straw. Bella in and act of defiance goes out and sleeps with the first stranger she finds to level the score. The stranger tutns out to be Damian Gotti, her fiance's brother and the mafia boss the whole family answers to. Dragged back into the Gotti house, Bella is surrounded by secrets that could get her killed and a want she is not allowed to have, and Damian pursues and seduces her relentlessly right under his brother's nose. And in the end it is Damian who lays his brother's crimes out in the open, Damian who rescues her and together they unite to rule the mafia family.",
+        "Revenge sex with a stranger who turns out to be family.\nBella's arranged marriage is already a nightmare so when she catches her fiance with another woman it's the last straw. Bella in an act of defiance goes out and sleeps with the first stranger she finds to level the score. The stranger turns out to be Damian Gotti, her fiance's brother and the mafia boss the whole family answers to. Dragged back into the Gotti house, Bella is surrounded by secrets that could get her killed and a want she is not allowed to have, and Damian pursues and seduces her relentlessly right under his brother's nose. And in the end it is Damian who lays his brother's crimes out in the open, Damian who rescues her and together they unite to rule the mafia family.",
 
     # FACTS: In My Billionaire Boss Won't Let Me Quit movie, seeking a fresh start after years of managing cr
     # FACTS: ises, Grace takes on a new job, only to be swept into a fake marriage by her enigmatic boss, Mas
@@ -87,14 +87,14 @@ CAPTIONS = {
     # FACTS: nd and best friend just helped the killer escape justice. The pampered princess is gone. Now she
     # FACTS: 's coming for every last one of them, to take back the justice they owe her sister.
     'shattered-vows':
-        "Her husband helped her sister's killer walk free.\nPrincess Venessa grew up sheltered until the night her sister was murdered, and everything she believed about her own life died alongside her. The betrayal underneath it is the part that guts her. The man she married and the friend she trusted most had both leaned on the scales so the murderer would never answer for her sisters death. Whoever she was before that night, died with their betrayal. What is left is a woman going after every one of them, one at a time, to collect the justice her sister was owed and never got.",
+        "Her husband helped her sister's killer walk free.\nPrincess Venessa grew up sheltered until the night her sister was murdered, and everything she believed about her own life died alongside her. The betrayal underneath it is the part that guts her. The man she married and the friend she trusted most had both leaned on the scales so the murderer would never answer for her sister's death. Whoever she was before that night, died with their betrayal. What is left is a woman going after every one of them, one at a time, to collect the justice her sister was owed and never got.",
 
     # FACTS: In Sold to the Warlord Born for the Sky movie, a sheltered northern princess who was sold into m
     # FACTS: arriage to the dragon-riding warlord of the brutal Blackclaw horde must decide whether surrender
     # FACTS: ing to the man who bought her is her greatest betrayal or the only thing that can save her dying
     # FACTS:  people.
     'sold-to-the-warlord-born-for-the-sky':
-        "Sold to a warlord.\nA sheltered northern princess is sold into marriage with the dragon riding warlord of the brutal Blackclaw horde. With a new way of life before her she now has a hard decision to make. Surrendering to the man who bought her may be the worst thing she could do, bit it's also the only thing that can save her dying people.",
+        "Sold to a warlord.\nA sheltered northern princess is sold into marriage with the dragon riding warlord of the brutal Blackclaw horde. With a new way of life before her she now has a hard decision to make. Surrendering to the man who bought her may be the worst thing she could do, but it's also the only thing that can save her dying people.",
 
     # FACTS: Pampered real alpha princess Evie is framed and sent to the ruthless Werewolf Military Academy b
     # FACTS: y her own family. They believe she is living comfortably, completely unaware that under the fake
@@ -138,6 +138,6 @@ CAPTIONS = {
     # FACTS: even walls. Learning his mother was injured saving him, he gathers three sacred relics to heal h
     # FACTS: er. But crimson eyes in distant mist hint a greater threat.
     'zero-to-alpha-return-of-the-wolf-king':
-        'Exiled for having no wolf, he returns with twenty years of training.\nNory could not awaken his wolf form, so he was thrown out like trash. In a twist of fate he is taken in by three Masters beyond Sacred Rank who spend two decades training him to be the best of the best. When he returns to see his mother, he enters the Clan Tournament and shatters the test stone. Leading to showdowns where he defeats every opponent, which is when three Gold Leaders realize he is the savior they were looking for. When vampires invade and  his mother is hurt saving him, he seeks the three sacred relics he needs to heal her.',
+        'Exiled for having no wolf, he returns with twenty years of training.\nNory could not awaken his wolf form, so he was thrown out like trash. In a twist of fate he is taken in by three Masters beyond Sacred Rank who spend two decades training him to be the best of the best. When he returns to see his mother, he enters the Clan Tournament and shatters the test stone. Leading to showdowns where he defeats every opponent, which is when three Gold Leaders realize he is the savior they were looking for. When vampires invade and his mother is hurt saving him, he seeks the three sacred relics he needs to heal her.',
 
 }
