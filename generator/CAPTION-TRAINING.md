@@ -285,3 +285,46 @@ Eli Baran has spent thousands of years inside a lamp granting wishes in threes. 
 **True Luna**
 Getting her wolf came with a warning attached.
 Emma is a true Luna, which is a rare thing to be and a powerful one. Her wolf arrives with a warning alongside it, because the rogue king is coming for her. At the same time she finds her mate and it should be the best thing that has ever happened to her, but he rejects her instead.
+
+## BATCH FOUR, HER EDITS, 6 Sep 2026
+
+129 written, 55 came back edited, 74 ticked untouched. 11.8% of the words
+in the edited ones changed, about 5% across the whole batch. Down from
+batch one, so the voice is landing, but the pattern in what she changes is
+consistent and worth writing into the next batch rather than waiting to be
+corrected again.
+
+WHAT SHE ACTUALLY CHANGES (45 of 55 were body only, 2 hook only, 8 both):
+- SHE LENGTHENS MORE OFTEN THAN SHE TRIMS. 17 bodies lengthened against 3
+  trimmed. Where I stop at the setup she adds the consequence: my
+  'pregnant-by-my-ex-s-dad' ended on the encounter, hers ends on "their
+  night left behind a little surprise." Write the payoff, do not imply it.
+- NAMES AND SPECIFICS GO IN. 33 edits are a name, a company, a number I had
+  generalised: Brooklyn, Mia Sparks, Mars Motor Group, the Bourne Syndicate.
+  If the source names it, name it.
+- SHE TALKS TO THE READER. "Wait until he finds out the truth of what really
+  happened." "But hold the phone for one more zinger." "Wait for the drama
+  when they find out." I write closed endings; she leaves the door open and
+  addresses the reader directly. Her captions ask a question or make a
+  promise far more than mine do.
+- QUESTION ENDINGS ARE FINE. Several of hers close on one: "Will Leila
+  accept his confession?" I had been treating a question as a weak landing.
+  She does not.
+- HOOKS SHE REWROTE (10) got SHORTER and more concrete. "Two rules. He's
+  about to wreck both of them." "Don't bully the nanny." Her hooks are
+  often two beats with a full stop between them.
+
+HEAVIEST REWRITES, worth reading side by side: never-reject-a-wolf-princess
+(36.5%), fuel-to-our-fire-my-racer-stepbrother (36.4%), saved-by-the-sexy-cowboy
+(33.8%). LIGHTEST, so these are the register to copy: the-nurse-s-secret-marriage
+(1.0%), the-bad-ass-heiress-returns-after-divorce (1.1%), lassoed-by-a-cowboy-s-love
+(1.1%).
+
+ONE MECHANICAL OVERRIDE, and the only thing of hers that was changed: she
+wrote "The most important.. don't fall in love" in
+playing-by-the-billionaire-s-rules, and a two-dot ellipsis is on her own
+hard-ban list, so it reads "The most important one,". Flagged to her.
+
+GATE FALSE POSITIVE FOUND AND FIXED: her "Mr Nice Guy" was reported as two
+invented proper nouns. IDIOMS in caption_pipeline.py now carries the known
+capitalised phrases. Add to that tuple, never loosen the name rule.

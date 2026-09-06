@@ -166,6 +166,9 @@ def load_facts():
     return facts
 
 
+IDIOMS = ("Mr Nice Guy", "Mr Right", "Prince Charming", "Mr Wrong")
+
+
 def proper_nouns(text):
     """Capitalised words that are NOT sentence initial.
 
@@ -176,6 +179,12 @@ def proper_nouns(text):
     """
     out = []
     for sent in re.split(r"(?<=[.!?])\s+|\n+", text):
+        # Capitalised IDIOMS are not names. "Mr Nice Guy" is the English phrase
+        # for a pushover, not a character, and flagging it told Cyan her own
+        # approved wording had invented two people (6 Sep 2026). Strip the known
+        # ones before looking for names; add to the tuple, never loosen the rule.
+        for idiom in IDIOMS:
+            sent = sent.replace(idiom, "")
         for w in re.findall(r"[A-Za-z][A-Za-z']*", sent)[1:]:
             if re.match(r"^[A-Z][a-z]{2,}$", w):
                 out.append(w)
