@@ -74,6 +74,11 @@ jobs:
         run: |
           cd generator && python3 build.py
 
+      # SITE-CHECKS.md as code: a failure here stops the publish, so a broken
+      # build turns the Actions run red instead of going live.
+      - name: Check the built site
+        run: python3 generator/check_site.py
+
       - name: Show what changed
         run: |
           git add -A

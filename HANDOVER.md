@@ -73,6 +73,15 @@ RECOVERY STATE (5 Sep):
   the next build once it gains a synopsis or cast.
 - Do NOT mass-"Request indexing"; it does nothing for a demotion.
 
+## SITE-CHECKS EXISTS (6 Sep, Cyan asked for a checklist)
+
+SITE-CHECKS.md is the plain-words list of what must always work (search,
+rails, pins, tropes, sitemap/noindex, redirects) and check_site.py is the
+same list as code: it runs in the weekly workflow between build and push,
+and a FAIL stops the publish. THE TWO ARE TWINS - a new must-keep-working
+behavior gets a line in both, in the same commit. Run it locally after any
+build: python3 generator/check_site.py.
+
 ## STANDING RULE: EMAIL (Cyan, 2 Sep)
 
 Claude can send email via the Gmail connector as cyan@dramaeverafter.com
