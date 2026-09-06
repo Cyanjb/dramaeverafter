@@ -1,126 +1,65 @@
-## ReelShort weekly scrape, 2026-09-03
+## ReelShort weekly scrape, 2026-09-06
 
 | | |
 |---|---|
-| Requests | 287 |
-| Books seen | 2324 |
-| Known titles refreshed | 733 |
-| View counts that moved | 50 |
-| Snapshot rows written | 17 |
-| New titles created | 16 |
-| Held for a ruling (match_queue) | 2 |
-| Credits added | 0 |
-| Episode counts / posters / links / years filled | 8 / 0 / 0 / 0 |
+| Requests | 1438 |
+| Books seen | 2256 |
+| Known titles refreshed | 780 |
+| View counts that moved | 407 |
+| Snapshot rows written | 807 |
+| New titles created | 27 |
+| Held for a ruling (match_queue) | 0 |
+| Credits added | 2 |
+| Episode counts / posters / links / years filled | 7 / 2 / 0 / 32 |
 | Delisted (404, not deleted) | 0 |
-| Catalogue only (genre sweep or sitemap, under 10M views), not imported | 1562 |
-| Excluded as unscripted (ReelTalk and kin) | 10 |
-| Skipped: no title or slug / URL unconfirmed | 1 / 2 |
-| ReelShort rows still older than 45 days | 9 |
-| Rulings applied from the wanted file / lines still unmatched | 68 / 17 |
-| Tropes from ReelShort's tag pages (vocabulary only) / tag names unknown | 68 / 2 |
-| Umbrella tropes added | high fantasy 186 |
-| Linked on Cyan's confirmed_same rulings | 4 |
-| Platform page says AI-generated, no ruling yet | 0 |
-| Scrape errors | 41 |
+| Catalogue only (genre sweep or sitemap, under 10M views), not imported | 1364 |
+| Excluded as unscripted (ReelTalk and kin) | 80 |
+| Skipped: no title or slug / URL unconfirmed | 0 / 1 |
+| ReelShort rows still older than 45 days | 7 |
+| Rulings applied from the wanted file / lines still unmatched | 1 / 17 |
+| Tropes from ReelShort's tag pages (vocabulary only) / tag names unknown | 27 / 5 |
+| Umbrella tropes added | 0 |
+| Linked on Cyan's confirmed_same rulings | 0 |
+| Platform page says AI-generated, no ruling yet | 113 |
+| Scrape errors | 34 |
 
-Routes: detail {"delisted": 0, "failed": 6, "ok": 2, "targets": 8}, genres {"books": 1582, "failed": 4, "pages": 233, "pages_listed": 7}, wanted {"file": "reelshort_wanted.txt", "held": 122, "resolved": 15, "searched": 46, "unresolved": 31, "urls": 2}
+Routes: detail {"delisted": 0, "failed": 2, "ok": 178, "targets": 180}, fandom {"hrefs": 34, "posts": 100, "status": 200}, genres {"books": 1671, "failed": 0, "pages": 238, "pages_listed": 7}, home {"books": 125, "hrefs": 0, "status": 200}, tags {"books": 603, "failed": 1, "pages": 987, "pages_listed": 939}, wanted {"file": "reelshort_wanted.txt", "held": 138, "resolved": 0, "searched": 31, "unresolved": 31, "urls": 30}
 
 ### New titles (needs_check): each one needs a caption
 
 These are live with no synopsis of ours. Platform text is never copied (Cyan, 14 Aug). The synopsis each page published is banked in the staging JSON as the fact source; `caption_pipeline.py next` picks them up by reach and the /dea-captions skill writes them for Cyan's review.
 
-- Divorced and Desired! My Trio of Elite Suitors (`divorced-and-desired-my-trio-of-elite-suitors`) 19.2M via genres
-- Late Bloomer (`late-bloomer`) 2.2M via genres, wanted
-- Legally Bound To Love (`legally-bound-to-love`) 15.9M via wanted
-- The Rabbit Bride Who Rejected Her Alpha King (`the-rabbit-bride-who-rejected-her-alpha-king`) 2.2M via wanted
-- My Two Dangerous Roommates Crave Me (`my-two-dangerous-roommates-crave-me`) 3.3M via wanted
-- Daddy We're Done (`daddy-we-re-done`) 4.3M via wanted
-- My Fireplace Ships to Dragon Realm (`my-fireplace-ships-to-dragon-realm`) 6.2M via wanted
-- Caught! The Ruthless Alpha's Runaway Luna (`caught-the-ruthless-alpha-s-runaway-luna`) 2.7M via wanted
-- The Dragon's Return: Reclaiming My Throne (`the-dragon-s-return-reclaiming-my-throne`) 775.3K via wanted
-- My Boss Is My Secret Online Dom (`my-boss-is-my-secret-online-dom`) 792.1K via genres, wanted
-- CEO's Irresistible Wet Nurse (`ceo-s-irresistible-wet-nurse`) 840.2K via wanted
-- Faked My Death, Destroyed The Billionaire (`faked-my-death-destroyed-the-billionaire`) 878.3K via wanted
-- 100-Day Contract：Mafia’s Dangerous Desire (`100-day-contract-mafia-s-dangerous-desire`) 2.0M via wanted
-- Fake Husband, Hidden King (`fake-husband-hidden-king`) 2.5M via genres, wanted
-- Love Has A Deadline (`love-has-a-deadline`) 373.6K via wanted
-- He Paid for One Night, Then Wanted Forever (`he-paid-for-one-night-then-wanted-forever`) 1.0M via wanted
-
-### Held for Cyan's ruling
-
-- 'CEO Queen: A Mother’s Revenge' vs existing `ceo-queen-a-mother-s-revenge`: same slug
-- 'Luna Reborn: Alpha's Second Chance' vs existing `luna-reborn-alpha-s-second-chance`: same slug
+- Positively Pregnant (`positively-pregnant`) 966.2K via detail, home
+- Paper Marriage (`paper-marriage`) 1.0M via detail, home
+- The Alpha Heir Gave Me to His Brother (`the-alpha-heir-gave-me-to-his-brother`) 4.3M via genres, home
+- Betrayed, Then Birthed Titans (`betrayed-then-birthed-titans`) 2.3M via genres, home
+- The Boy Raised Me is Mine (`the-boy-raised-me-is-mine`) 467.9K via detail, home
+- My Royal Rebound (`my-royal-rebound`) 3.9M via detail, home
+- Mafia's Desire for the Wet Nurse (`mafia-s-desire-for-the-wet-nurse`) 6.9M via detail, home
+- My Hot Firefighter Ex (`my-hot-firefighter-ex`) 2.3M via detail, home
+- Salt Kiss (`salt-kiss`) 783.8K via genres, home
+- The Wolves’ Regret for Their Rabbit (`the-wolves-regret-for-their-rabbit`) 1.0M via detail, home
+- Sister Stole My Mate, I Got the Dragon King (`sister-stole-my-mate-i-got-the-dragon-king`) 2.6M via detail, home
+- The Mafia's Stolen Bride (`the-mafia-s-stolen-bride`) 3.2M via detail, home
+- Bound to the Ruthless Beast (`bound-to-the-ruthless-beast`) 1.6M via detail, home
+- Romance Lessons with My Quarterback (`romance-lessons-with-my-quarterback`) 1.3M via detail, fandom
+- The Mafia Boss's Contract Bride (`the-mafia-boss-s-contract-bride`) 572.1K via detail, home
+- You Can't Stop My Super X-Ray Vision (`you-can-t-stop-my-super-x-ray-vision`) 2.1M via detail, home
+- From Puppet Bride to Alpha Queen (`from-puppet-bride-to-alpha-queen`) 1.9M via detail, home
+- Obsessed by My Ex's Boss (`obsessed-by-my-ex-s-boss`) 519.1K via detail, home
+- After I Took Back My Love (`after-i-took-back-my-love`) 320.6K via genres, home
+- Firefighter Husband Burned His Daughter, Driven to Desperate Regret (`firefighter-husband-burned-his-daughter-driven-to-desperate-regret`) 326.0K via detail, home
+- Daughter of the Four Norse God-Kings (`daughter-of-the-four-norse-god-kings`) 411.6K via genres, home
+- Tempted by My Bad Boy Stepbrother (`tempted-by-my-bad-boy-stepbrother`) 3.1M via detail, home
+- A Mother's Vengeance (`a-mother-s-vengeance`) 2.6M via detail, home
+- I Watched Them Love Her (`i-watched-them-love-her`) 353.3K via genres, home
+- After the 330-Pound Fat Wolf Left, the Alpha Went Crazy with Regret (`after-the-330-pound-fat-wolf-left-the-alpha-went-crazy-with-regret`) 391.0K via genres, home
+- Bound by Crimson and Silver (`bound-by-crimson-and-silver`) 375.5K via detail, home
+- Goodbye My Ex, I'm Marrying the Dragon Prince FINAL (`goodbye-my-ex-i-m-marrying-the-dragon-prince-final`) 372.2K via detail, home
 
 ### Rulings applied (Cyan, via the wanted file)
 
-- `a-cinderella-for-wolf-king` ai=yes
-- `the-lycan-s-savage-luna` ai=yes
-- `breathe` trope +age gap
-- `rent-a-mom-for-the-billionaire-twins` trope +age gap
-- `love-has-a-deadline` trope +high fantasy
-- `pucked-in-the-friend-zone` ai=no
-- `keeping-the-cowboy-s-baby` ai=no
-- `keeping-the-cowboy-s-baby` trope +cowboy
-- `keeping-the-cowboy-s-baby` trope +forbidden love
-- `the-alpha-and-his-nanny-luna` trope +werewolf
-- `the-alpha-and-his-nanny-luna` trope +luna
-- `the-ugly-girl-turned-pretty` ai=yes
-- `the-ugly-girl-turned-pretty` trope +playing dumb
-- `hate-to-love-you` ai=no
-- `make-my-cheating-husband-pay-the-price` ai=yes
-- `make-my-cheating-husband-pay-the-price` trope +billionaire
-- `100-day-contract-mafia-s-dangerous-desire` ai=yes
-- `100-day-contract-mafia-s-dangerous-desire` trope +mafia
-- `100-day-contract-mafia-s-dangerous-desire` trope +revenge
-- `my-boss-is-my-secret-online-dom` ai=yes
-- `my-boss-is-my-secret-online-dom` trope +playing dumb
-- `how-to-land-a-movie-star` ai=no
-- `how-to-land-a-movie-star` trope +workplace
-- `how-to-land-a-movie-star` trope +rom-com
-- `the-fake-dating-spell` ai=yes
-- `the-fake-dating-spell` trope +young adult
-- `the-fake-dating-spell` trope +fake dating
-- `my-fireplace-ships-to-dragon-realm` trope +dragon
-- `my-fireplace-ships-to-dragon-realm` trope +high fantasy
-- `nanny-to-my-hot-bully` ai=no
-- `nanny-to-my-hot-bully` trope +young adult
-- `the-tutor-trap` ai=no
-- `once-upon-a-breakup` ai=no
-- `once-upon-a-breakup` trope +young adult
-- `the-seduction-game` ai=no
-- `the-seduction-game` trope +young adult
-- `the-rabbit-bride-who-rejected-her-alpha-king` ai=yes
-- `the-rabbit-bride-who-rejected-her-alpha-king` trope +playing dumb
-- `offside-with-the-hockey-star` ai=yes
-- `offside-with-the-hockey-star` trope +young adult
-- `offside-with-the-hockey-star` trope +love triangle
-- `my-two-dangerous-roommates-crave-me` ai=yes
-- `my-two-dangerous-roommates-crave-me` trope +bl
-- `my-two-dangerous-roommates-crave-me` trope +love triangle
-- `blitzed-by-my-rival-s-obsession` trope +bl
-- `daddy-we-re-done` ai=yes
-- `your-husband-is-mine` ai=no
-- `your-husband-is-mine` trope +billionaire
-- `he-paid-for-one-night-then-wanted-forever` ai=yes
-- `he-paid-for-one-night-then-wanted-forever` trope +billionaire
-- `the-dragon-s-return-reclaiming-my-throne` trope +dragon
-- `the-dragon-s-return-reclaiming-my-throne` trope +high fantasy
-- `chained-by-hades-the-underworld-king` trope +high fantasy
-- `reborn-to-love-mr-right` ai=no
-- `hating-and-loving-my-adopted-brother` ai=no
-- `the-virgin-s-bucket-list` ai=no
-- `legally-bound-to-love` ai=no
-- `faked-my-death-destroyed-the-billionaire` ai=yes
-- `faked-my-death-destroyed-the-billionaire` trope +billionaire
-- `faked-my-death-destroyed-the-billionaire` trope +revenge
-- `caught-the-ruthless-alpha-s-runaway-luna` ai=yes
-- `caught-the-ruthless-alpha-s-runaway-luna` trope +werewolf
-- `fake-husband-hidden-king` ai=yes
-- `fake-husband-hidden-king` trope +billionaire
-- `fake-husband-hidden-king` trope +secret identity
-- `a-cinderella-for-wolf-king` trope +werewolf
-- `a-cinderella-for-wolf-king` trope +fated mates
-- `the-alpha-king-sold-me-to-the-war-god` trope +werewolf
+- `reborn-in-flames` trope +apocalypse
 
 ### Wanted-file lines that matched no held title (still waiting)
 
@@ -144,24 +83,85 @@ These are live with no synopsis of ours. Platform text is never copied (Cyan, 14
 
 ### ReelShort tag names not in our vocabulary (Cyan decides; count of books)
 
-- drama (201)
-- survival (1)
+- drama (209)
+- survival (28)
+- post-apocalyptic (5)
+- zombie (5)
+- cult (1)
 
-### Linked to ReelShort on Cyan's confirmed_same rulings
+### ReelShort's own page says AI-generated, awaiting Cyan's ruling
 
-- `pregnant-by-the-billionaire` https://www.reelshort.com/movie/pregnant-by-the-billionaire-669ff9a361704e7f8e045c5f
-- `the-heiress-blacklisted-her-husband` https://www.reelshort.com/movie/the-heiress-blacklisted-her-husband-677db481a3cc638b8f0d8a59
-- `i-m-the-one-in-charge` https://www.reelshort.com/movie/i-m-the-one-in-charge-69ae3bf4fe655b0dec0c3f53
-- `sweet-temptation` https://www.reelshort.com/movie/sweet-temptation-6a7d21ead4f206c4400f1499
+- `a-mother-s-vengeance`
+- `a-sweet-contract-with-the-mafia-boss`
+- `abandoned-pawn-unrivaled-dragon-king`
+- `accidentally-pregnant-forever-spoiled`
+- `after-divorce-i-built-a-fabulous-life`
+- `art-of-falling-in-love`
+- `below-the-red-line`
+- `blood-rose-crushing-the-cartel`
+- `boss-your-wife-s-a-whole-detective`
+- `bound-by-crimson-and-silver`
+- `bound-to-the-ruthless-beast`
+- `breaking-my-bodyguard`
+- `brides-in-smoke`
+- `ceo-and-the-country-girl`
+- `ceo-s-irresistible-wet-nurse`
+- `ceo-that-intern-is-actually-your-wife`
+- `clubhouse-of-desire`
+- `clumsy-cupid`
+- `creation-itself-is-love`
+- `crossing-the-line-to-love`
+- `crowned-in-his-claws`
+- `cursed-alpha-s-fated-luna`
+- `dirty-work`
+- `dungeons-of-ecstasy`
+- `firefighter-husband-burned-his-daughter-driven-to-desperate-regret`
+- `forced-to-marry-my-ruined-ex-the-duke-s-revenge`
+- `from-jail-to-the-top`
+- `from-puppet-bride-to-alpha-queen`
+- `golden-feather-temptation-game`
+- `goodbye-my-ex-i-m-marrying-the-dragon-prince-final`
+- `heiress-returns-boss-s-defense-and-love`
+- `hold-me-in-the-dark`
+- `how-to-trap-president-s-son`
+- `i-became-the-ceo-s-most-beloved`
+- `i-gave-my-flame-up`
+- `i-hate-to-love-my-british-bad-boy`
+- `i-m-pregnant-it-s-not-yours`
+- `in-love-with-my-bestie-s-son`
+- `king-of-gold`
+- `kiss-me-99-times-a-day`
+- `knocked-up-by-the-wolf-duke`
+- `little-miss-fortune`
+- `love-has-a-deadline`
+- `love-on-the-sidelines`
+- `love-trap-with-my-dashing-knight`
+- `mafia-boss-owns-my-body`
+- `mafia-heiress-s-forbidden-obssession`
+- `mafia-mamma-s-hot-lover`
+- `mafia-s-desire-for-the-wet-nurse`
+- `mated-to-the-alpha-and-his-beta`
+- `models-vs-werewolves`
+- `mommy-s-little-savior`
+- `my-billionaire-boss-won-t-let-me-quit`
+- `my-cold-hearted-mafia-king`
+- `my-fireplace-ships-to-dragon-realm`
+- `my-first-love-pays-to-watch-me-strip`
+- `my-homeless-bride-is-a-culinary-legend`
+- `my-hot-firefighter-ex`
+- `my-marriage-with-the-god-of-death`
+- `my-royal-rebound`
 
-98 ReelShort tag listing pages discovered (add to reelshort_tags.txt to sweep them).
+40 ReelShort tag listing pages discovered (add to reelshort_tags.txt to sweep them).
+
+### Credits added (exact name, one person)
+
+- Bound by Duty: Casey Schryer
+- Bound by Duty: Chase Mattson
 
 ### Errors
 
-- {"page": 1, "route": "tags", "status": 404, "url": "https://www.reelshort.com/tags/movie-moods/k%C4%B1yamet-movies-676d210d4582b53a14081a1e"}
-- {"page": 1, "route": "tags", "status": 404, "url": "https://www.reelshort.com/tags/movie-moods/%E6%AE%AD%E5%B1%8D-movies-676d210d4582b53a14081a0e"}
-- {"page": 4, "route": "tags", "status": 404, "url": "https://www.reelshort.com/tags/movie-themes/survival-movies-676d210d4582b53a140819ca"}
-- {"page": 1, "route": "tags", "status": 404, "url": "https://www.reelshort.com/tags/movie-moods/cult-movies-676d210d4582b53a140819e1"}
+- {"page": 1, "route": "tags", "status": 404, "url": "https://www.reelshort.com/tags/movie-actresses/nicole-provonsil-movies-676d210a4582b53a1408183e"}
 - {"query": "Seducing the God of Olympus", "route": "wanted", "status": "search: 2 exact of 12 results"}
 - {"query": "The Dragon Lord's Regret", "route": "wanted", "status": "search: 0 exact of 12 results"}
 - {"query": "Light and Roses: Tears of a Vampire", "route": "wanted", "status": "search: 0 exact of 12 results"}
@@ -188,3 +188,6 @@ These are live with no synopsis of ours. Platform text is never copied (Cyan, 14
 - {"query": "Taming the Lion", "route": "wanted", "status": "search: 0 exact of 12 results"}
 - {"query": "Waking Up Pregnant", "route": "wanted", "status": "search: 0 exact of 12 results"}
 - {"query": "The Mafia Boss Has a Gun", "route": "wanted", "status": "search: 0 exact of 12 results"}
+- {"query": "Darling Don't Run", "route": "wanted", "status": "search: 0 exact of 12 results"}
+- {"query": "Legally Bound", "route": "wanted", "status": "search: 0 exact of 12 results"}
+- {"query": "Unexpected", "route": "wanted", "status": "search: 0 exact of 12 results"}
