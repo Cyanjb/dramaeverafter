@@ -51,10 +51,29 @@ love-in-my-hands DOES have a synopsis on its page; it never needed
 Cyan, it needed a reachable network.
 
 RECOVERY STATE (5 Sep):
-- Batch four captions (129, into the 35M reach tier) WRITTEN, all gates
-  passed, staged UNAPPROVED in generator/staging/captions_2026_09_02_b4.py.
-  Cyan is reviewing on the artifact page. Apply + build + push when she
-  finishes. Then keep batching: 646 scraped synopses is the number to zero.
+- BATCH FOUR IS DONE AND LIVE (6 Sep). Cyan reviewed all 129: 55 came
+  back rewritten and were applied VERBATIM, the other 74 ticked (READ
+  MEANS DONE). Approved file:
+  generator/staging/captions_approved_2026_09_02_b4.py. Her edit rate is
+  11.8% of words in the edited ones, ~5% across the batch and falling;
+  what she actually changes is written up in CAPTION-TRAINING.md, and the
+  short version is she LENGTHENS more than she trims, puts back the names
+  I generalise, and talks to the reader with open endings and questions.
+  Two things to keep: a two-dot ellipsis in her text was mechanically
+  fixed and flagged (her own hard-ban list), and her "Mr Nice Guy" exposed
+  a real gate false positive now fixed by the IDIOMS tuple in
+  caption_pipeline.py - add to that tuple, never loosen the name rule.
+- WIDGET BATCH OPEN, awaiting her (6 Sep): 15 drafts staged UNAPPROVED in
+  generator/staging/captions_2026_09_06_widget.py, on the artifact page
+  https://claude.ai/code/artifact/544403b2-b379-40aa-9b88-f5be67694fc3 .
+  These are the 12 flesh-out titles ABOVE the top-300 floor plus the AI
+  titles and front-page titles with no caption, so they need her eye.
+  Generated with generator/make_review_page.py, which is the durable
+  review-page generator and encodes her workflow. THREE could not be
+  drafted and need her or a better source: first-daughter-forbidden-duty
+  (no platform link on the row), when-the-wolf-fell-in-love (platform text
+  is truncated boilerplate), the-mafias-stolen-bride-twin-switch
+  (marketing blurb, no story).
 - Extensionless-to-.html 301 rules are IN _redirects but DORMANT, verified
   5 Sep: Netlify's Pretty URLs post-processing answers /titles/foo itself,
   so non-forced rules never fire (and forced 301! would LOOP - never use
