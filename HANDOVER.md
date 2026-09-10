@@ -171,6 +171,38 @@ needing a ruling from her:
   both kept as separate rows for now because that is what ReelShort
   publishes. This is exactly the alt_titles case the GSC work found.
 
+## THE VERDICT DATE IS 29 AUG, NOT 1 SEP (10 Sep coverage export)
+
+The coverage chart adds the piece the performance data could not show.
+Indexed pages HALVED on 29 August, 1,941 -> 896, with not-indexed jumping
+8,594 -> 10,292 the same day. Clicks then ran normally for three more
+days (2,084 / 2,036 / 1,939 impressions on 29, 30, 31 Aug) before the
+1 Sep cliff.
+
+So the sequence is: Google removed about a thousand pages from the index
+on 29 Aug, and the traffic consequence surfaced three days later. The
+decision date is 29 August. Anything looking for a cause should look at
+what the site looked like THEN, not at 1 September.
+
+COVERAGE LAGS FURTHER THAN PERFORMANCE. This export is dated 10 Sep and
+its chart still ends 4 Sep, six days behind, where the performance export
+ran two to three days behind. So neither export type has yet covered a
+single day after the 5 Sep recovery work. Do not read any of these
+numbers as the fix failing.
+
+ISSUE COUNTS MOVED, 5 Sep -> 10 Sep, and this IS after the fix:
+  Crawled - currently not indexed      83 -> 1,756   (+1,673)
+  Discovered - currently not indexed   8,093 -> 7,664 (-429)
+  Alternative page w/ proper canonical 411 -> 864     (+453)
+The +1,673 is consistent with Google crawling the pages that got noindex
+on 5 Sep and filing them accordingly, and the canonical rise is
+consistent with the where-to-watch twins resolving. CONSISTENT IS NOT
+CONFIRMED: the same movement would also appear if Google had crawled
+1,673 pages and judged them not worth indexing on its own. The two
+readings are told apart by WHICH URLs are in that bucket, so the next
+useful export is the Coverage DRILLDOWN for "Crawled - currently not
+indexed". Ask Cyan for it rather than guessing.
+
 ## THE REAL SHAPE OF THE COLLAPSE (6 Sep exports, data ends 4 Sep)
 
 CORRECTS the earlier "traffic died overnight" reading. The 28-day chart

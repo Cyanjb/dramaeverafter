@@ -107,8 +107,14 @@ The corpus has the pairs; these are the headlines.
   part where she holds them accountable." The spoiler rule protects the turn,
   not the premise; where the title announces the reveal, put it in.
 - **Keep the audience's vocabulary.** CEO, flash marriage, contract marriage,
-  mate bond, Luna, Alpha, second chance. These are how people browse. The gate
-  fails a paraphrased genre term.
+  mate bond, Luna, Alpha, second chance, and from her 10 Sep 2026 ruling:
+  misunderstood, misunderstanding, heir, heiress, mistress, reborn. These are how
+  people browse and the gate fails a paraphrased one. Two consequences worth
+  understanding rather than memorising. Dodging a phrase shared with the platform
+  is NEVER a reason to lose one of these words: keep the word and move the
+  sentence around it. And the rule points at you, not at her, so a caption she
+  wrote is exempt (declare `HER_OWN` in the batch) because choosing not to use a
+  word the source used is an editorial call, not a paraphrase.
 - **Contractions carry the register**, except where a line wants weight.
 - **Plain subject-verb order.** Twisted syntax is almost always the tell that a
   sentence was rotated to dodge its source rather than rewritten.

@@ -79,11 +79,20 @@ REJECTED = [
 # 'one night stand' is deliberately NOT on this list: Cyan's own 20 Aug rewrites
 # turned it into 'one night with a stranger' and 'a fling' twice, so it is
 # ordinary wording to her, not protected vocabulary like the marriage terms.
+# ADDED 10 Sep 2026, Cyan, ruling on the de-lift review: "misunderstood /
+# misunderstanding and flash marriage are all part of the drama vocab and
+# shouldn't be changed, heir and heiress and mistress and reborn are also some".
+# She said it while rejecting de-lift rewrites that had swapped these words out
+# to dodge a phrase shared with the platform. The point generalises: a word the
+# genre runs on is not a phrase to be varied, and dodging a source match is
+# never a reason to lose one. If a match falls on one of these, keep the word
+# and move the sentence around it.
 GENRE_TERMS = [
     "flash marr", "contract marr", "marriage contract", "fake marr",
     "fated mate", "mate bond", "second chance",
     "age gap", "love triangle", "silver fox", "contract bride",
     "substitute bride", "contract engagement",
+    "misunderst", "heir", "heiress", "mistress", "reborn",
 ]
 
 # An aside must stand alone: cover the hook and body and it still has to make sense.
@@ -279,9 +288,16 @@ def validate(tid, cap, fact, title):
         errs.append("INVENTED PROPER NOUN %s - not in the fact source" % invented)
     # Genre terms the source uses must survive into the caption (or already be in
     # the title). A paraphrase here is a real fault, so it FAILS, not warns.
+    # Matching is on a WORD BOUNDARY at the start of the term. These are stems so
+    # "flash marr" still catches "flash marries", but a bare substring test made
+    # "heir" match inside "their" and failed 20 clean captions the moment Cyan's
+    # 10 Sep vocabulary went in. The stem may end mid-word; it may not start
+    # mid-word.
     capside = (cap + " " + title).lower()
+    factside = (fact or "").lower()
     lost = [t for t in GENRE_TERMS
-            if t in (fact or "").lower() and t not in capside]
+            if re.search(r"\b" + re.escape(t), factside)
+            and not re.search(r"\b" + re.escape(t), capside)]
     if lost:
         errs.append("GENRE TERM paraphrased away %s - keep the platform's term" % lost)
     return errs
@@ -414,6 +430,8 @@ def load_sources(path):
 
 def cmd_check(path):
     caps, extra = load_batch(path)
+    extra_ns = {}
+    exec(compile(io.open(path, encoding="utf-8").read(), path, "exec"), extra_ns)
     sources = load_sources(path)
     q = {r["tid"]: r for r in build_queue()}
     # Cyan's rule: be clear what the original source IS. A caption whose source
@@ -428,6 +446,13 @@ def cmd_check(path):
             print("  NOTE %-44s unknown source kind %r" % (tid[:42], kind))
         elif kind == "fansite":
             print("  WARN %-44s FAN SITE source, names unverified" % tid[:42])
+    # CYAN'S OWN CAPTIONS ARE EXEMPT FROM THE GENRE-TERM FAIL. A batch may declare
+    # HER_OWN = {title_id, ...}. The rule exists to stop a WRITER paraphrasing away
+    # the words the audience browses by; when Cyan herself read the source and chose
+    # not to use one, that is an editorial call, not a paraphrase, and a gate that
+    # overrules her is backwards. 10 Sep 2026: it failed two captions she had just
+    # written and ticked. It still prints, so nothing is hidden.
+    her_own = set(extra_ns.get("HER_OWN") or ())
     todo = [t for t, c in caps.items() if not c.strip()]
     done = {t: c for t, c in caps.items() if c.strip()}
     print("batch %s: %d filled, %d still blank" % (os.path.basename(path), len(done), len(todo)))
@@ -440,6 +465,12 @@ def cmd_check(path):
             fails += 1
             continue
         errs = validate(tid, cap, fact, r.get("title", ""))
+        if tid in her_own:
+            keep = [e for e in errs if not e.startswith("GENRE TERM")]
+            for e in errs:
+                if e.startswith("GENRE TERM"):
+                    print("  NOTE %-46s %s (her wording, exempt)" % (tid[:44], e))
+            errs = keep
         if errs:
             print("  FAIL %-46s %s" % (tid[:44], "; ".join(errs)))
             fails += 1
