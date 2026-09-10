@@ -110,6 +110,26 @@ SiteVerificationNotCompleted; the key file needs a few minutes to be
 seen). Cyan verified the site in Bing Webmaster Tools the same day;
 "no info yet" there is normal for the first days.
 
+CREDIT MIS-FILING FOUND 10 SEP, A CLEANUP QUEUE. Cyan asked whether
+Falling for My Ex's Mafia Dad was two shows with one name. It was one
+show carrying three credits that belong to Love Is a Dangerous Dance
+(Jack and Elliot Hargrove, Hannah Thatcher), filed by the
+reelshort_fandom_cast source. ReelShort's own page (the "actors" block
+in __NEXT_DATA__, the billed leads) named only Tim Stein and Brittany
+Pirozzoli. Fixed by hand, and an audit of every actor+character pair
+credited on two titles that are not sequels found 29 such pairs. The
+five title pairs sharing 2+ of them were checked against ReelShort's
+billed actors and are DISTINCT shows, so one side of each shared credit
+is wrong: Love Me Two Times / Straight A Pregnancy (3), How to Tame a
+Silver Fox / Surrender to My Professor (3), My Ex is in the Navy SEALs /
+The Deaf Heiress's Secret (2), Married for Green Card / The Double Life
+of My Billionaire Husband (2), Married In A Heartbeat / The Nurse's
+Secret Marriage (2), plus the singletons. The audit is the block in this
+session's transcript; worth making a generator script. Resolving each
+needs evidence (the fandom post the credit came from, or ReelShort's
+page) or Cyan's eye; never a guess. Also merged 10 Sep: Timothy Stein
+-> tim-stein, Gabrielle Brown -> gabrielle-faith-brown (8 shared titles).
+
 SHIPPED 10 SEP, Cyan's go: GoatCounter on every page (build.py
 GOATCOUNTER = "dramaeverafter"; the account must exist at
 dramaeverafter.goatcounter.com with that code, or change the constant
