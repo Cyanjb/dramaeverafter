@@ -184,11 +184,43 @@ Google ranking the extensionless form in live results, /actors/blake-manning
 at position 1, /actors/damien-picketts at 6, /actors/patric-palkens at 11,
 and 25 pages in all carrying 38 of the week's 97 impressions. Two URLs
 splitting one page's signals is the textbook cause of the thing that
-happened on 29 Aug. This is the strongest evidence yet for the toggle
-Cyan already has queued: switch Netlify Pretty URLs OFF, at which point
-the dormant _redirects rules wake up and 301 the extensionless form to
-the .html. www is already handled (www.dramaeverafter.com 301s to apex,
-verified live 10 Sep).
+happened on 29 Aug. www is already handled (www.dramaeverafter.com 301s
+to apex, verified live 10 Sep).
+
+CORRECTION, SAME DAY: I told Cyan the Netlify Pretty URLs toggle was the
+fix. IT IS NOT. She switched it off on 10 Sep and the duplicate survived.
+What the toggle actually controls is the OTHER direction, .html being
+redirected to the extensionless form, and it did stop doing that
+(/actors/blake-manning.html now returns 200 with no redirect). What
+serves foo.html at /foo is Netlify's DEFAULT static file resolution. It
+is not a setting and there is no switch for it.
+
+And our _redirects rules are non-forced, so an existing file always beats
+them. Proof, all live on 10 Sep after a fresh deploy with a cache-buster:
+
+  /search                      (no file)   301 -> /browse.html   rule fires
+  /actors/not-a-real-person    (no file)   301                   rule fires
+  /actors/blake-manning        (file)      200                   rule loses
+
+A forced 301! is the only rule type that beats a file, and it very likely
+loops, for a reason the 5 Sep note got WRONG. The 5 Sep note blamed
+Pretty URLs. The real mechanism is that Netlify's :slug matches one whole
+path segment and "blake-manning.html" IS one whole path segment, so the
+redirect target re-matches the same rule and walks to .html.html forever.
+That happens whether Pretty URLs is on or off. This is reasoning, NOT
+tested: the cheap test is a forced rule on /apps/ alone, 16 pages, one
+revert. Do that before building anything.
+
+If it does loop, _redirects cannot express this fix at all. The two real
+options are a Netlify edge function (301 only when the last path segment
+has no dot, which is what makes it non-recursive) or leaving the canonical
+tags to do the job.
+
+CYAN'S RULING, 10 Sep: leave it. Every page already carries a correct
+canonical pointing at the .html form, which is the supported way to tell
+Google which URL wins. Google is partly ignoring it, so the duplicate
+stays a live suspect in the 29 Aug deindexing, but it is not being acted
+on. Do not reopen this without her.
 
 THE 341 ARE THE REAL REMAINING PROBLEM, AND MOST OF IT IS STALE. 251 of
 them were last crawled on 29 August, the verdict day, before any fix
