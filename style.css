@@ -325,6 +325,16 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
 .known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
 .known-for .more{color:var(--wine);font-size:13.5px;text-decoration:none}.known-for .more:hover{color:var(--wine-hover)}
+.glance{background:var(--plum);color:var(--paper);padding:40px 20px 44px}
+.glance .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+.glance h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,3vw,30px);line-height:1.15;color:var(--paper);margin:0}
+.glance a{color:var(--paper);text-decoration:underline;text-decoration-color:rgba(201,150,46,.55);text-underline-offset:3px}
+.glance a:hover{text-decoration-color:var(--gold)}
+.glance-facts{display:grid;grid-template-columns:1fr;gap:18px 40px;margin:22px 0 0}
+.glance-facts dt{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.glance-facts dd{margin:0;font-size:16px;line-height:1.55;color:#e6dbe1}
+.glance .report{font-size:15px;color:#c7b6c0;margin:26px 0 0;padding-top:18px;border-top:1px solid rgba(251,247,242,.14)}
+@media(min-width:760px){.glance{padding:48px 40px 52px}.glance-facts{grid-template-columns:repeat(3,1fr)}.glance-facts .span{grid-column:1/-1}}
 .facts{background:var(--plum);color:var(--paper);padding:40px 20px 48px}
 .facts .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
 .facts h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,32px);color:var(--paper);margin:0}

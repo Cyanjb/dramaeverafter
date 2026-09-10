@@ -809,6 +809,16 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
 .known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
 .known-for .more{color:var(--wine);font-size:13.5px;text-decoration:none}.known-for .more:hover{color:var(--wine-hover)}
+.glance{background:var(--plum);color:var(--paper);padding:40px 20px 44px}
+.glance .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+.glance h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,3vw,30px);line-height:1.15;color:var(--paper);margin:0}
+.glance a{color:var(--paper);text-decoration:underline;text-decoration-color:rgba(201,150,46,.55);text-underline-offset:3px}
+.glance a:hover{text-decoration-color:var(--gold)}
+.glance-facts{display:grid;grid-template-columns:1fr;gap:18px 40px;margin:22px 0 0}
+.glance-facts dt{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.glance-facts dd{margin:0;font-size:16px;line-height:1.55;color:#e6dbe1}
+.glance .report{font-size:15px;color:#c7b6c0;margin:26px 0 0;padding-top:18px;border-top:1px solid rgba(251,247,242,.14)}
+@media(min-width:760px){.glance{padding:48px 40px 52px}.glance-facts{grid-template-columns:repeat(3,1fr)}.glance-facts .span{grid-column:1/-1}}
 .facts{background:var(--plum);color:var(--paper);padding:40px 20px 48px}
 .facts .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
 .facts h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,32px);color:var(--paper);margin:0}
@@ -1608,15 +1618,28 @@ for t in titles:
                    "acceptedAnswer": {"@type": "Answer",
                        "text": (" ".join(_free) + " " if _free else "")
                                + "Most vertical drama apps unlock early episodes free, then charge coins or a subscription for the rest."}})
-    ld = [ld, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faq_qs}]
-    # The visible twin of the FAQ node: same questions, same answers, the raw
-    # watch URL dropped because the button above already carries it. Google
-    # only honours FAQ markup whose text is on the page.
+    # Claude Design handoff, 10 Sep 2026 (Cyan: "I don't like the FAQ thing"):
+    # the page ends with an always-open "At a glance" band, the facts stated
+    # once with no questions. The FAQPage node goes with the fold-outs: FAQ
+    # markup must match visible questions, and Google stopped showing FAQ
+    # rich results for sites like this in 2023. TVSeries carries the facts.
     _checked = month_label(title_checked(t))
-    faq_html = "".join(
-        f'<details{" open" if i == 0 else ""}><summary>{q["name"]}</summary>'
-        f'<p>{_URL_TAIL.sub(".", q["acceptedAnswer"]["text"])}</p></details>'
-        for i, q in enumerate(faq_qs))
+    _apps = []
+    for a in _avails:
+        pl = platforms.get(a["platform_id"])
+        if not pl: continue
+        href = (a.get("direct_link") or "").strip() or f'{pre}apps/{slug(pl["name"])}.html'
+        _apps.append(f'<a href="{href}">{pl["name"]}</a>')
+    glance_where = (" &middot; ".join(_apps) + (f" &middot; checked {_checked}" if _checked else "")) if _apps \
+        else "Platform verification in progress"
+    glance_length = " &middot; ".join(x for x in (ep, status_label.lower()) if x) or "Episode count not verified yet"
+    glance_cost = " ".join(_free) if _free else "Early episodes free, then coins or a subscription"
+    _cast_bits = []
+    for c in _cast:
+        pr = p_by_id[c["person_id"]]
+        ch = (c.get("character_name") or "").strip().replace("/", " / ").replace("  ", " ")
+        _cast_bits.append(f'<a href="{pre}actors/{pslug(pr)}.html">{pr["name"]}</a>' + (f" as {ch}" if ch else ""))
+    glance_cast = " &middot; ".join(_cast_bits)
     body = f"""
 <nav class="crumb"><a href="{pre}index.html">Home</a><span>/</span>{f'<a href="{pre}index.html">{origin_of(t).title()}</a><span>/</span>' if d else ''}<span class="current">{t['primary_title']}</span></nav>
 <section class="split-hero">
@@ -1644,8 +1667,17 @@ for t in titles:
 <div class="section-head pad"><h2>If you liked this</h2><span class="hint" style="font-size:13.5px;color:var(--tert)">{" &middot; ".join(tropes_of(t)[:2])}</span></div>
 <div class="rail">{similar_html}</div>
 </section>''' if similar_html else ''}
-<section class="faq"><div class="wrap"><h2>Quick answers</h2>{faq_html}
-<p class="note">Spotted it on another app? Report it and help the database grow.</p></div></section>
+<section class="glance" id="at-a-glance" aria-labelledby="glance-heading">
+<p class="eyebrow">At a glance</p>
+<h2 id="glance-heading">{t['primary_title']}</h2>
+<dl class="glance-facts">
+<div><dt>Where to watch</dt><dd>{glance_where}</dd></div>
+<div><dt>Length</dt><dd>{glance_length}</dd></div>
+<div><dt>Cost</dt><dd>{glance_cost}</dd></div>
+{f'<div class="span"><dt>Cast</dt><dd>{glance_cast}</dd></div>' if glance_cast else ''}
+</dl>
+<p class="report">Spotted it on another app? <a href="{pre}contact.html">Report it</a> and help the database grow.</p>
+</section>
 {FAV_JS}{SHARE_JS}"""
     html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
                 title_desc(t),
