@@ -127,7 +127,14 @@ def main():
     lines = [l.rstrip("\n") for l in open(path, encoding="utf-8")] if os.path.exists(path) else []
     rule = f"/actors/{a.lose}.html  /actors/{a.keep}.html  301"
     if rule not in lines:
-        lines.append(rule)
+        # BEFORE the generic /:slug rules, never appended after them: :slug
+        # matches "name.html" as one segment, so a specific rule placed later
+        # never fires and the old URL 301s to name.html.html forever
+        # (found live 10 Sep 2026). check_site guards the order.
+        first = next((i for i, l in enumerate(lines) if ":slug" in l), len(lines))
+        while first > 0 and lines[first - 1].startswith("#"):
+            first -= 1
+        lines.insert(first, rule)
     open(path, "w", encoding="utf-8").write("\n".join(lines).rstrip() + "\n")
 
     stale = os.path.join(REPO, "actors", f"{a.lose}.html")

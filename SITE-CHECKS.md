@@ -51,6 +51,11 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   meta. Thin pages are noindexed AND out of the sitemap, together.
 
 **Redirects**
+- Every specific old-URL 301 (a merged actor or title) sits BEFORE the
+  generic /:slug rules. Placed after, it never fires: :slug swallows
+  "name.html" as one segment and the old URL 301s to name.html.html
+  without end (found live 10 Sep). merge_person.py and merge_title.py
+  insert in the right place.
 - _redirects never contains a forced 301!/302! (verified 5 Sep: with
   Netlify Pretty URLs on, a forced rule loops forever).
 - /data, /generator, /references, /design-system and every root .md file
