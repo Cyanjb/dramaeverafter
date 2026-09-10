@@ -367,7 +367,8 @@ def actor_tile(p, pre="", ring_size="rail", on_warm=False, cls=""):
 
 def person_row(name, sub, img, href, size="sm"):
     return (f'<a class="person-row {"sm" if size == "sm" else ""}" href="{href}">'
-            f'{actor_ring(name, img, size)}<span class="stack"><span class="name">{name}</span><span class="sub">{sub}</span></span></a>')
+            f'{actor_ring(name, img, size)}<span class="stack"><span class="name">{name}</span>'
+            + (f'<span class="sub">{sub}</span>' if sub else '') + '</span></a>')
 
 def rail(cards, extra_cls=""):
     return f'<div class="rail {extra_cls}">%s</div>' % "".join(cards)
@@ -605,6 +606,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .rail-item .poster--empty .ttl{font-size:17px}
 .rail-item.sm .poster--empty .ttl{font-size:15px}
 .actor-tile .stack,.person-row .stack{display:block}
+.actor-tile .name,.actor-tile .sub,.person-row .name,.person-row .sub{display:block}
 .bio{max-width:62ch}
 .bio h2{font-size:20px;margin-bottom:8px}
 .bio p{font-size:16px;line-height:1.65;color:#3E3238;text-wrap:pretty}
@@ -632,6 +634,8 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .person-row.sm{padding:12px 14px;gap:13px}
 .person-row .name{font-size:15.5px;color:var(--ink);line-height:1.3}
 .person-row .sub{font-size:13px;color:var(--tert)}
+.person-row .sub .as-line{display:block;margin-top:2px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:16px;line-height:1.25;color:var(--plum)}
+.person-row .sub .as-word{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-weight:400;font-size:13px;color:var(--tert);margin-right:2px}
 
 /* ---------- chips (feed the existing filter JS: data-g / data-v) ---------- */
 .chip{display:inline-flex;align-items:baseline;gap:7px;padding:8px 14px;border:1px solid var(--chip-bd);background:var(--paper);border-radius:999px;font-size:15px;font-family:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
@@ -1480,13 +1484,24 @@ for t in titles:
     sl = tslug(t)
     d, pre = tdir(t), "../" * tdepth(t)
     cast_html = ""
-    for c in credits_by_title.get(t["title_id"], []):
+    # Cyan, 10 Sep: the leads come first. A credited lead leads; after that
+    # the actors with the most titles in the database, who are the faces a
+    # reader recognises. Stable, so equal rows keep their credits order.
+    _cast = [c for c in credits_by_title.get(t["title_id"], []) if c["person_id"] in p_by_id]
+    _cast.sort(key=lambda c: (0 if (c.get("role") or "").strip().lower() == "lead" else 1,
+                              -len(credits_by_person.get(c["person_id"], []))))
+    for c in _cast:
         pr = p_by_id.get(c["person_id"])
         if not pr: continue
-        role = (c["role"] or "").replace("+", " · ").title() or "Cast"
-        n_titles = len(credits_by_person.get(c["person_id"], []))
-        cast_html += person_row(pr["name"],
-                                 f"{role} · {n_titles} title{'s' if n_titles != 1 else ''}",
+        # Same caption rule as the actor page (Claude Design handoff, 10 Sep):
+        # the part, as "as Elijah Baran", in the display serif; no "Actor"
+        # label, no Lead badge. A row with no credited character falls back
+        # to the actor's title count, so it never reads empty.
+        # No title count on a cast row (Cyan: "random titles"); the actor's
+        # own page carries it. Without a character the row is name and ring.
+        ch = (c.get("character_name") or "").strip().replace("/", " / ").replace("  ", " ")
+        sub = f'<span class="as-line"><span class="as-word">as</span> {ch}</span>' if ch else ""
+        cast_html += person_row(pr["name"], sub,
                                  (pr.get("photo_ref") or "").strip(), f"{pre}actors/{pslug(pr)}.html", "md")
     # Set is for the overlap test below only. Anything rendered reads from tropes_of()
     # directly: set order follows Python's per-process string hash, so displaying from
