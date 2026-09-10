@@ -360,7 +360,7 @@ def sort_select(target_id, label="Sort"):
 
 def actor_tile(p, pre="", ring_size="rail", on_warm=False, cls=""):
     n = len(credits_by_person.get(p["person_id"], []))
-    sub = known_as(p) or f'{n} title{"s" if n != 1 else ""}'
+    sub = f'{n} title{"s" if n != 1 else ""}'   # no character: no show is named on a tile (Cyan, 10 Sep)
     return (f'<a class="actor-tile{(" " + cls) if cls else ""}" href="{pre}actors/{pslug(p)}.html">'
             f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), ring_size, on_warm)}'
             f'<span class="stack"><span class="name">{p["name"]}</span>'
@@ -1194,19 +1194,6 @@ def chars_of_person(p):
     return [ch for c in credits_by_person.get(p["person_id"], []) for ch in _split_chars(c)]
 def chars_of_title(t):
     return [ch for c in credits_by_title.get(t["title_id"], []) for ch in _split_chars(c)]
-def known_as(p):
-    """The caption for a person on a tile or directory row: 'as <character>'
-    from their most-watched show that names one, or '' when none does.
-    Cyan, 10 Sep: the same rule as the cast rows, and no title counts."""
-    best, best_v = "", -1
-    for c in credits_by_person.get(p["person_id"], []):
-        ch = (c.get("character_name") or "").strip().replace("/", " / ").replace("  ", " ")
-        t = t_by_id.get(c["title_id"])
-        if ch and t is not None and title_views(t) > best_v:
-            best, best_v = ch, title_views(t)
-    return f'<span class="as-line"><span class="as-word">as</span> {best}</span>' if best else ""
-
-
 def _performer_in(p, my_pairs):
     out = []
     for c, t in my_pairs:
@@ -1398,7 +1385,9 @@ for p in directory:
         rows_html.append(f'<h2 class="idx-letter" id="letter-{L}">{L}</h2>')
     n = len(credits_by_person.get(p["person_id"], []))
     app = title_app(t_by_id[credits_by_person[p["person_id"]][0]["title_id"]]) if credits_by_person.get(p["person_id"]) and credits_by_person[p["person_id"]][0]["title_id"] in t_by_id else ""
-    sub = known_as(p) or app
+    # No character here (Cyan, 10 Sep): a name with no show beside it reads as
+    # the only part they play. Characters live where a show is named.
+    sub = f"{n} title{'s' if n != 1 else ''}" + (f" &middot; {app}" if app else "")
     rows_html.append(
         f'<a class="person-row sm" href="{pslug(p)}.html" data-n="{esc_attr(norm_search(p["name"] + " " + " ".join(chars_of_person(p))))}">'
         f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), "sm")}'
