@@ -73,6 +73,32 @@ else: ok("every search-index title has a page in titles/")
 missing = [a["s"] for a in idx["actors"] if not os.path.exists(os.path.join(ROOT, "actors", a["s"] + ".html"))]
 if missing: fail(f"{len(missing)} search-index actors have no page, e.g. {missing[:3]}")
 else: ok("every search-index actor has a page in actors/")
+# Character names (10 Sep): searchable everywhere, and one index page.
+def _norm(s):
+    s = unicodedata.normalize("NFKD", s or "")
+    s = "".join(ch for ch in s if not unicodedata.combining(ch))
+    s = s.lower().replace("\u2019", "").replace("'", "").replace("`", "")
+    return " ".join(re.sub(r"[^a-z0-9]+", " ", s).split())
+named = [r for r in rows("credits.csv") if (r.get("character_name") or "").strip()]
+by_slug_t = {t["s"]: t for t in idx["titles"]}
+by_slug_a = {a["s"]: a for a in idx["actors"]}
+lost = []
+for r in named[:200]:
+    ch = _norm(r["character_name"].split("/")[0])
+    tt = next((t for t in idx["titles"] if t["s"] == r["title_id"] or t.get("s") == r["title_id"]), None)
+    if tt is not None and ch not in tt.get("ch", ""): lost.append(r["character_name"])
+if lost: fail(f"character names missing from search-index titles, e.g. {lost[:3]}")
+else: ok(f"character names in search-index.json ({sum(1 for t in idx['titles'] if t.get('ch'))} titles, {sum(1 for a in idx['actors'] if a.get('ch'))} actors)")
+if not os.path.exists(os.path.join(ROOT, "characters.html")):
+    fail("characters.html missing (the one-page character index)")
+else:
+    ch_html = rd("characters.html")
+    n_rows = ch_html.count('class="char-row"')
+    hrefs = {h for h in re.findall(r'href="([^"#?]+)"', ch_html) if not h.startswith("http")}
+    bad = [h for h in hrefs if not os.path.exists(os.path.join(ROOT, h))]
+    if n_rows < 0.9 * len(named): fail(f"characters.html lists {n_rows} rows for {len(named)} named credits")
+    elif bad: fail(f"characters.html has {len(bad)} dead links, e.g. {bad[:3]}")
+    else: ok(f"characters.html: {n_rows} rows, every link resolves")
 
 browse = rd("browse.html")
 az = rd("actors/index.html")
@@ -180,6 +206,12 @@ if gone: fail(f"{len(gone)} sitemap URLs have no file, e.g. {gone[:3]}")
 else: ok("every sitemap URL has a file")
 if noindexed: fail(f"{len(noindexed)} sitemap URLs carry noindex (they must leave the sitemap), e.g. {noindexed[:3]}")
 else: ok("no sitemap URL carries a noindex meta")
+# The fold (10 Sep): title pages carry where-to-watch and the quick answers.
+_first_title = next((u for u in locs if "/titles/" in u), "")
+_tp = rd(_first_title.replace("https://dramaeverafter.com/", "")) if _first_title else ""
+if _tp and ('<h2>Quick answers</h2>' not in _tp or 'FAQPage' not in _tp):
+    fail(f"title page lacks the Quick answers section or FAQ schema: {_first_title}")
+elif _tp: ok("title pages carry Where to watch and Quick answers (the 10 Sep fold)")
 
 print("== redirects ==")
 red = rd("_redirects")
@@ -187,6 +219,12 @@ if re.search(r"\b30[12]!", red):
     fail("_redirects contains a FORCED redirect (301!/302!): with Pretty URLs on, that loops. Never use it (verified 5 Sep).")
 else:
     ok("_redirects has no forced redirects (the 5 Sep loop trap)")
+if os.path.isdir(os.path.join(ROOT, "where-to-watch")):
+    fail("where-to-watch/ exists: folded into the title pages on 10 Sep; a stale build left it behind")
+elif not re.search(r"^/where-to-watch/\*\s+/titles/:splat\s+301\s*$", red, re.M):
+    fail("_redirects lacks '/where-to-watch/*  /titles/:splat  301'")
+else:
+    ok("no where-to-watch/ folder, and its URLs 301 to the title pages")
 # The repo root is the publish folder (audit H3, closed 10 Sep): everything
 # that is not the site must be blocked by a forced 404, or it deploys.
 missing = [d for d in ("data", "generator", "references", "design-system")

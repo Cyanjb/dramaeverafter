@@ -28,7 +28,7 @@ counts URLs, not pages; read it as Google's memory, not the site's size.
 import csv, glob, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECTIONS = ("titles", "where-to-watch", "actors", "tropes", "apps")
+SECTIONS = ("titles", "actors", "tropes", "apps")
 
 MEANING = {
     "Alternative page with proper canonical tag":

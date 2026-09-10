@@ -25,6 +25,11 @@
 /TROPES-WANTED.md  /404.html  404!
 /scrape-summary.md  /404.html  404!
 
+# Where-to-watch pages folded into the title pages, 10 Sep 2026 (the files
+# are gone, so these plain rules fire). Same fold for any origin prefix.
+/where-to-watch/*  /titles/:splat  301
+/chinese/where-to-watch/*  /chinese/titles/:splat  301
+
 /actors/hristine-oswald.html  /actors/christine-oswald.html  301
 /actors/nick-ritac-o.html  /actors/nick-ritacco.html  301
 

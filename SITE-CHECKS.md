@@ -23,6 +23,9 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   home" must find "A Zombie Girl's Journey Home".
 - The Python normalizer in build.py and the JavaScript one shipped to
   browsers agree character for character (they must stay identical).
+- Character names are searchable (10 Sep): "elijah baran" finds Djinn
+  Under Contract on Browse and Eric Guilmette on the actors page, and
+  characters.html lists every named character with working links.
 
 **Homepage**
 - Rail order: Most watched first, New and trending directly under it
@@ -37,6 +40,11 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
 - Every internal link on the entry pages (home, browse, tropes, actors,
   platforms, contact) resolves to a real file.
 - Every trope chip on the tropes index has its page.
+
+**Title pages** (the 10 Sep fold)
+- Every title page carries Where to watch with its checked date and a
+  visible Quick answers section matching its FAQ schema. There is no
+  where-to-watch/ folder; those URLs 301 to the title page.
 
 **Sitemap and noindex** (the 1 Sep Google demotion recovery)
 - Sitemap URLs: on-domain, every one has a file, none carries a noindex

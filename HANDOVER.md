@@ -78,6 +78,25 @@ PERFORMANCE 1-7 Sep (7-day export): 1 click, 99 impressions, 66 pages,
 the 3-month Queries export for gsc_opportunities.py. One unserved query
 at position 1: "the ceo's hidden father cast".
 
+THE FOLD AND THE CHARACTER INDEX SHIPPED 10 SEP (Cyan: "do it"):
+- where-to-watch pages are GONE. They were near-copies of the title page
+  that nothing on the site linked to (only the sitemap), a doorway-page
+  profile and half the templated footprint. The title page now carries
+  the checked date in the watch card and a visible Quick answers section
+  that matches its FAQ schema (the "Is it free?" question moved over).
+  /where-to-watch/* 301s to /titles/:splat in _redirects. Sitemap 5,048
+  -> 3,153 URLs. check_site fails if the folder ever comes back.
+- Character index: search-index.json carries pre-normalized character
+  names on titles ("ch") and actors; Browse, the header search and the
+  actors directory all find "elijah baran". Actor pages show "Plays X in
+  Y", answer "Who does N play?" in the FAQ (visible + schema), carry
+  PerformanceRole in performerIn, and the meta description names the
+  first character. ONE index page, /characters.html (2,699 rows, linked
+  from the footer and the actors directory), never a page per character.
+- GoatCounter: Cyan signed up 10 Sep; her snippet matches the template
+  (code dramaeverafter). Referrers from chatgpt.com and perplexity.ai
+  will show there once main deploys.
+
 SHIPPED 10 SEP, Cyan's go: GoatCounter on every page (build.py
 GOATCOUNTER = "dramaeverafter"; the account must exist at
 dramaeverafter.goatcounter.com with that code, or change the constant

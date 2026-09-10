@@ -800,6 +800,10 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq summary{cursor:pointer;font-weight:700;font-size:15px}
 .faq p{margin-top:8px;font-size:14px;line-height:1.55;color:#D9C8D4}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
+.chars{margin-top:10px;font-size:14.5px;line-height:1.6;color:var(--sec)}
+.char-list{max-width:900px}.char-list .idx-letter{margin:26px 0 6px}
+.char-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.char-row b{min-width:200px}.char-row .sub{color:var(--tert);font-size:13px}
 
 /* ---------- footer ---------- */
 footer.site-footer{border-top:1px solid var(--line);background:var(--plum);color:#E8DCD4;padding:34px 22px 30px;display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between}
@@ -873,7 +877,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 </div>
 <div class="footer-cols">
 <div class="footer-col"><span class="h">Browse</span>
-<a href="{pre}browse.html">All titles</a><a href="{pre}actors/index.html">Actors</a><a href="{pre}tropes/index.html">Tropes</a></div>
+<a href="{pre}browse.html">All titles</a><a href="{pre}actors/index.html">Actors</a><a href="{pre}characters.html">Characters</a><a href="{pre}tropes/index.html">Tropes</a></div>
 <div class="footer-col"><span class="h">Apps</span>
 {app_links}<a href="{pre}platforms.html">All apps</a></div>
 <div class="footer-col"><span class="h">Site</span>
@@ -1096,7 +1100,7 @@ def actor_summary(p, pairs):
 for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + origins_other:
     p = os.path.join(DIST, d)
     if os.path.exists(p): shutil.rmtree(p)
-for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "my-list.html", "404.html", "robots.txt", "sitemap.xml", "style.css"]:
+for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "my-list.html", "characters.html", "404.html", "robots.txt", "sitemap.xml", "style.css"]:
     p = os.path.join(DIST, f)
     if os.path.exists(p): os.remove(p)
 for d in ["", "actors", "titles", "tropes", "apps"]:
@@ -1115,8 +1119,7 @@ lastmod = {}
 # and no bio. The carve-outs that keep a thin page indexable: popular (views in
 # the top 600, the tier carrying 98.4% of all reach), new (first seen by a
 # weekly scrape within 90 days, the New-and-trending window), or a lead credit.
-# Noindexed pages stay on the site for readers and leave sitemap.xml; the
-# where-to-watch page follows its title.
+# Noindexed pages stay on the site for readers and leave sitemap.xml.
 _SEEN_DATE = re.compile(r"weekly[_-](20\d\d-\d\d-\d\d)")
 _NEW_CUTOFF = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
 _TOP600_FLOOR = max(1, sorted((title_views(t) for t in titles), reverse=True)[:600][-1])
@@ -1135,6 +1138,30 @@ def _thin_person(p):
     if any((c.get("role") or "").strip().lower() == "lead" for c in cs): return False
     return True
 NOINDEX_PEOPLE = {p["person_id"] for p in people if _thin_person(p)}
+
+# Character names. Search Console, 6 Sep 2026: people search the CHARACTER
+# ("elijah baran actor", 421 impressions) and never the actor. We hold 2,673
+# character names in credits.csv; until 10 Sep no page had one as its subject
+# and no search box could find one. A slash separates several names for one
+# credit ("Elijah Baran/The Djinn"); each is searchable on its own.
+_URL_TAIL = re.compile(r":\s*https?://\S+$")
+def _split_chars(c):
+    return [x.strip() for x in (c.get("character_name") or "").split("/") if x.strip()]
+def chars_of_person(p):
+    return [ch for c in credits_by_person.get(p["person_id"], []) for ch in _split_chars(c)]
+def chars_of_title(t):
+    return [ch for c in credits_by_title.get(t["title_id"], []) for ch in _split_chars(c)]
+def _performer_in(p, my_pairs):
+    out = []
+    for c, t in my_pairs:
+        node = {"@type": "TVSeries", "name": t["primary_title"],
+                "url": f"{DOMAIN}/titles/{tslug(t)}.html"}
+        ch = (c.get("character_name") or "").strip()
+        if ch:
+            node["actor"] = {"@type": "PerformanceRole", "characterName": ch,
+                             "actor": {"@id": f"{DOMAIN}/actors/{pslug(p)}.html"}}
+        out.append(node)
+    return out
 
 # Actor pages
 for p in people:
@@ -1171,11 +1198,18 @@ for p in people:
     cards = "".join(poster_card(t, "../", note=note_for.get(t["title_id"], ""))
                     for t in sorted(my_titles, key=lambda x: -title_views(x)))
     plat_line = ", ".join(n for n, _ in top_plats) if top_plats else "platform verification in progress"
+    chars = [((c.get("character_name") or "").strip(), t) for c, t in my_pairs
+             if (c.get("character_name") or "").strip()]
+    chars.sort(key=lambda x: -title_views(x[1]))  # the biggest show's character leads
+    chars_html = ("<p class=\"chars\">Plays " + " &middot; ".join(
+        f'<b>{ch}</b> in <a href="../titles/{tslug(t)}.html">{t["primary_title"]}</a>'
+        for ch, t in chars) + "</p>") if chars else ""
+    chars_text = "; ".join(f"{ch} in {t['primary_title']}" for ch, t in chars)
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "jobTitle": "Actor",
+          "@id": f"{DOMAIN}/actors/{pslug(p)}.html",
           "description": (real_bio or oneliner)[:160],
           "url": f"{DOMAIN}/actors/{pslug(p)}.html",
-          "performerIn": [{"@type": "TVSeries", "name": t["primary_title"],
-                           "url": f"{DOMAIN}/titles/{tslug(t)}.html"} for t in my_titles]}
+          "performerIn": _performer_in(p, my_pairs)}
     # sameAs from the socials column - the IMDb nm URL is the identity anchor an
     # AI engine can join on. Held data only; no socials, no sameAs.
     same = [u.strip() for u in re.split(r"[;,\s]+", (p.get("socials") or ""))
@@ -1184,6 +1218,10 @@ for p in people:
         ld["sameAs"] = same
     if (p.get("photo_ref") or "").strip():
         ld["image"] = p["photo_ref"].strip()
+    if chars:
+        ld = [ld, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": f"Who does {p['name']} play?",
+             "acceptedAnswer": {"@type": "Answer", "text": f"{p['name']} plays {chars_text}."}}]}]
     body = f"""
 <nav class="crumb"><a href="../actors/index.html">Actors</a><span>/</span><span class="current">{p['name']}</span></nav>
 <section class="split-hero tight">
@@ -1191,6 +1229,7 @@ for p in people:
 <div class="info-col">
 <p class="eyebrow">Actor</p><h1>{p['name']}</h1>
 <p class="lede">{oneliner}</p>
+{chars_html}
 {social_links(p)}
 <div class="stat-figures">
 <div class="stat"><span class="n">{verified_n}</span><span class="l">titles</span></div>
@@ -1209,11 +1248,14 @@ for p in people:
 {SORT_JS}{FAV_JS}
 <section class="faq"><div class="wrap"><h2>{p['name']}: quick answers</h2>
 <details><summary>What is {p['name']} best known for?</summary><p>{p['bio_short'].split('.')[0]}.</p></details>
+{f"<details><summary>Who does {p['name']} play?</summary><p>{p['name']} plays {chars_text}.</p></details>" if chars else ''}
 <details><summary>What apps are {p['name']} dramas on?</summary><p>Verified so far: {plat_line}. Each title above links to where it streams.</p></details>
 <p class="note">Spot a missing title? This database grows weekly from fan reports.</p>
 </div></section>"""
     html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch (2026) | DramaEverAfter",
-                f"Every vertical drama {p['name']} has starred in, with platforms and where to watch.",
+                f"Every vertical drama {p['name']} has starred in"
+                + (f", including {chars[0][0]} in {chars[0][1]['primary_title']}," if chars else ",")
+                + " with platforms and where to watch.",
                 body, f"{DOMAIN}/actors/{sl}.html", ld,
                 og_image=(p.get("photo_ref") or "").strip(), og_type="profile",
                 noindex=p["person_id"] in NOINDEX_PEOPLE)
@@ -1246,7 +1288,7 @@ for p in directory:
     app = title_app(t_by_id[credits_by_person[p["person_id"]][0]["title_id"]]) if credits_by_person.get(p["person_id"]) and credits_by_person[p["person_id"]][0]["title_id"] in t_by_id else ""
     sub = f"{n} title{'s' if n != 1 else ''}" + (f" &middot; {app}" if app else "")
     rows_html.append(
-        f'<a class="person-row sm" href="{pslug(p)}.html" data-n="{esc_attr(norm_search(p["name"]))}">'
+        f'<a class="person-row sm" href="{pslug(p)}.html" data-n="{esc_attr(norm_search(p["name"] + " " + " ".join(chars_of_person(p))))}">'
         f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), "sm")}'
         f'<span class="stack"><span class="name">{p["name"]}</span><span class="sub">{sub}</span></span></a>')
 AZ_JS = """
@@ -1320,7 +1362,7 @@ popular_section = f"""
 body = f"""
 <section class="hero"><div class="inner">
 <p class="eyebrow">Directory</p><h1>Actors</h1>
-<p class="lede">{len(people):,} people, listed by surname. Only {photo_n} have a photo anywhere we can link to, so most are initials &mdash; the credit list is the useful part anyway.</p>
+<p class="lede">{len(people):,} people, listed by surname. Only {photo_n} have a photo anywhere we can link to, so most are initials &mdash; the credit list is the useful part anyway. Know the character but not the actor? <a href="../characters.html">Search by character name</a>.</p>
 <form class="aside-search" style="max-width:420px" onsubmit="return false">
 <span class="glyph" style="color:var(--wine)">&#8981;</span>
 <input type="text" id="actor-search" placeholder="Search actors" autocomplete="off" aria-label="Search actors">
@@ -1337,6 +1379,65 @@ html = page("Every Vertical Drama Actor, A-Z | DramaEverAfter",
             body, f"{DOMAIN}/actors/index.html", depth=1)
 open(os.path.join(DIST, "actors", "index.html"), "w", encoding="utf-8").write(html)
 urls.append("/actors/index.html")
+
+# Characters index, 10 Sep 2026. ONE page, on purpose: a page per character
+# would be 2,700 more templated pages, the shape the site is escaping. Every
+# named character, who plays them, in which series; filterable in the browser.
+char_rows = []
+for c in credits:
+    t, pr = t_by_id.get(c["title_id"]), p_by_id.get(c["person_id"])
+    if not t or not pr: continue
+    for ch in _split_chars(c):
+        char_rows.append((norm_search(ch), ch, pr, t))
+char_rows.sort(key=lambda r: (r[0], r[3]["primary_title"]))
+_letter, char_html = "", []
+for key, ch, pr, t in char_rows:
+    L = key[:1].upper() if key[:1].isalpha() else "#"
+    if L != _letter:
+        _letter = L
+        char_html.append(f'<h2 class="idx-letter" id="c-{L if L != "#" else "num"}">{L}</h2>')
+    char_html.append(
+        f'<div class="char-row">'
+        f'<b>{ch}</b><span class="sub">played by</span><a href="actors/{pslug(pr)}.html">{pr["name"]}</a>'
+        f'<span class="sub">in</span><a href="titles/{tslug(t)}.html">{t["primary_title"]}</a></div>')
+CHAR_JS = """
+<script>
+(function(){
+  """ + SEARCH_NORM_JS + """
+  var input=document.getElementById('char-search');
+  var rows=[].slice.call(document.querySelectorAll('#char-index .char-row'));
+  rows.forEach(function(r){ r.dataset.n=norm(r.textContent); });
+  var headers=[].slice.call(document.querySelectorAll('#char-index .idx-letter'));
+  input.addEventListener('input', function(){
+    var toks=norm(input.value).split(' ').filter(Boolean);
+    rows.forEach(function(r){ r.style.display = (!toks.length || qmatch(r.dataset.n,toks)) ? '' : 'none'; });
+    headers.forEach(function(h){
+      var next=h.nextElementSibling, show=false;
+      while(next && !next.classList.contains('idx-letter')){ if(next.style.display!=='none') show=true; next=next.nextElementSibling; }
+      h.style.display = show ? '' : 'none';
+    });
+  });
+})();
+</script>
+"""
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Who plays who</p><h1>Characters</h1>
+<p class="lede">{len(char_rows):,} named characters across {len({t["title_id"] for _, _, _, t in char_rows}):,} vertical dramas. Remember the character but not the actor? Type the name.</p>
+<form class="aside-search" style="max-width:420px" onsubmit="return false">
+<span class="glyph" style="color:var(--wine)">&#8981;</span>
+<input type="text" id="char-search" placeholder="Search a character, actor or title" autocomplete="off" aria-label="Search characters">
+</form>
+</div></section>
+<section class="pad" style="padding:28px 22px 46px">
+<div class="char-list" id="char-index">{"".join(char_html)}</div>
+</section>
+{CHAR_JS}"""
+html = page("Vertical Drama Characters A-Z: Who Plays Who | DramaEverAfter",
+            f"{len(char_rows):,} vertical drama characters and the actors who play them, with the series each one is from.",
+            body, f"{DOMAIN}/characters.html", depth=0)
+open(os.path.join(DIST, "characters.html"), "w", encoding="utf-8").write(html)
+urls.append("/characters.html")
 
 ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "dubbed": "Dubbed release"}
 
@@ -1434,9 +1535,24 @@ for t in titles:
         faq_qs.append({"@type": "Question",
                        "name": f"Who stars in {t['primary_title']}?",
                        "acceptedAnswer": {"@type": "Answer", "text": pairs + "."}})
-    if faq_qs:
-        ld = [ld, {"@context": "https://schema.org", "@type": "FAQPage",
-                   "mainEntity": faq_qs}]
+    # "Is it free?" was the where-to-watch page's second question; the fold
+    # (10 Sep) brings it here, answered from free_episode_count where held.
+    _avails = avail_by_title.get(t["title_id"], [])
+    _free = [f"{platforms[a['platform_id']]['name']}: first {a['free_episode_count']} episodes free."
+             for a in _avails if a.get("free_episode_count") and a["platform_id"] in platforms]
+    faq_qs.append({"@type": "Question", "name": f"Is {t['primary_title']} free?",
+                   "acceptedAnswer": {"@type": "Answer",
+                       "text": (" ".join(_free) + " " if _free else "")
+                               + "Most vertical drama apps unlock early episodes free, then charge coins or a subscription for the rest."}})
+    ld = [ld, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faq_qs}]
+    # The visible twin of the FAQ node: same questions, same answers, the raw
+    # watch URL dropped because the button above already carries it. Google
+    # only honours FAQ markup whose text is on the page.
+    _checked = month_label(title_checked(t))
+    faq_html = "".join(
+        f'<details{" open" if i == 0 else ""}><summary>{q["name"]}</summary>'
+        f'<p>{_URL_TAIL.sub(".", q["acceptedAnswer"]["text"])}</p></details>'
+        for i, q in enumerate(faq_qs))
     body = f"""
 <nav class="crumb"><a href="{pre}index.html">Home</a><span>/</span>{f'<a href="{pre}index.html">{origin_of(t).title()}</a><span>/</span>' if d else ''}<span class="current">{t['primary_title']}</span></nav>
 <section class="split-hero">
@@ -1446,7 +1562,7 @@ for t in titles:
 <h1>{t['primary_title']}</h1>
 <p class="views-line">{" &middot; ".join(views_bits)}</p>
 {f'<p class="book-note"><span aria-hidden="true">&#128214;</span> Based on the novel{" by " + book_of(t) if book_of(t) != "yes" else ""}</p>' if book_of(t) else ''}
-<div class="watch-card"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
+<div class="watch-card"><p class="label">Where to watch{f' &middot; checked {_checked}' if _checked else ''}</p>{watch_buttons(t['title_id'], pre)}
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
 <div class="title-actions">
 <button class="act-btn" type="button" data-fav="{tslug(t)}" aria-pressed="false">
@@ -1464,6 +1580,8 @@ for t in titles:
 <div class="section-head pad"><h2>If you liked this</h2><span class="hint" style="font-size:13.5px;color:var(--tert)">{" &middot; ".join(tropes_of(t)[:2])}</span></div>
 <div class="rail">{similar_html}</div>
 </section>''' if similar_html else ''}
+<section class="faq"><div class="wrap"><h2>Quick answers</h2>{faq_html}
+<p class="note">Spotted it on another app? Report it and help the database grow.</p></div></section>
 {FAV_JS}{SHARE_JS}"""
     html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
                 title_desc(t),
@@ -1546,45 +1664,12 @@ open(os.path.join(DIST, "tropes", "index.html"), "w", encoding="utf-8").write(ht
 urls.append("/tropes/index.html")
 
 
-# Where-to-watch pages (money keywords: "where to watch X", "is X on reelshort or dramabox")
-os.makedirs(os.path.join(DIST, "where-to-watch"), exist_ok=True)
-for t in titles:
-    sl = tslug(t)
-    d, pre = tdir(t), "../" * tdepth(t)
-    avails = avail_by_title.get(t["title_id"], [])
-    checked_lbl = month_label(title_checked(t))
-    plat_names = [platforms[a["platform_id"]]["name"] for a in avails if a["platform_id"] in platforms]
-    answer = (f"{t['primary_title']} streams on {', '.join(plat_names)}." if plat_names
-              else f"{t['primary_title']} is in our database and platform verification is in progress.")
-    free_line = ""
-    for a in avails:
-        if a.get("free_episode_count"):
-            free_line += f"<p>{platforms[a['platform_id']]['name']}: first {a['free_episode_count']} episodes free.</p>"
-    faq_items = f"""<details open><summary>Where can I watch {t['primary_title']}?</summary><p>{answer}</p></details>
-<details><summary>Is {t['primary_title']} free?</summary><p>{'See free episode counts above. ' if free_line else ''}Most vertical drama apps unlock early episodes free, then charge coins or a subscription for the rest.</p></details>"""
-    body = f"""
-<nav class="crumb"><a href="{pre}index.html">Home</a><span>/</span><span class="current">Where to Watch {t['primary_title']}</span></nav>
-<section class="hero"><div class="inner">
-<p class="eyebrow">Where to Watch</p><h1>{t['primary_title']}</h1>
-{f'<p class="lede">Checked {checked_lbl}</p>' if checked_lbl else ''}</div></section>
-<section class="pad" style="padding:26px 22px 40px">
-<p style="font-size:16px;line-height:1.6;max-width:60ch">{answer}</p>{free_line}
-<div class="watch-card" style="margin-top:16px"><p class="label">Where to watch</p>{watch_buttons(t['title_id'], pre)}
-<p class="watch-disclosure">We may earn a commission, which is what keeps this database free.</p></div>
-<p style="margin-top:16px"><a href="{pre}titles/{sl}.html">Full {t['primary_title']} page: cast, tropes and details &rarr;</a></p>
-</section>
-<section class="faq"><div class="wrap"><h2>Quick answers</h2>{faq_items}
-<p class="note">Spotted it on another app? Report it and help the database grow.</p></div></section>"""
-    html = page(f"Where to Watch {t['primary_title']}: All Platforms (2026) | DramaEverAfter",
-                f"Where to watch {t['primary_title']}: every platform it streams on" + (f", checked {checked_lbl}." if checked_lbl else "."),
-                body, f"{DOMAIN}/{d}where-to-watch/{sl}.html", depth=tdepth(t),
-                og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show",
-                noindex=t["title_id"] in NOINDEX_TITLES)
-    os.makedirs(os.path.join(DIST, d, "where-to-watch"), exist_ok=True)
-    open(os.path.join(DIST, d, "where-to-watch", f"{sl}.html"), "w", encoding="utf-8").write(html)
-    if t["title_id"] not in NOINDEX_TITLES:
-        urls.append(f"/{d}where-to-watch/{sl}.html")
-        lastmod[f"/{d}where-to-watch/{sl}.html"] = title_checked(t)
+# Where-to-watch pages: FOLDED into the title pages on 10 Sep 2026. They
+# were a near-copy of the title page with nothing on the site linking to
+# them, only the sitemap: a doorway-page profile, and half of the site's
+# templated footprint. The title page now carries the checked date and the
+# Quick answers; /where-to-watch/<slug>.html 301s to /titles/<slug>.html
+# (_redirects). The clean step above still removes a stale folder.
 
 # Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
 #
@@ -1716,6 +1801,10 @@ urls.append("/platforms.html")
 search_actors = [{"n": p["name"], "s": pslug(p),
                   "c": len(credits_by_person.get(p["person_id"], [])),
                   "i": (p.get("photo_ref") or "").strip()} for p in people]
+# Character names ride along pre-normalized (like alt titles) so "elijah
+# baran" finds Eric Guilmette in every search box on the site.
+for a, p in zip(search_actors, people):
+    if chars_of_person(p): a["ch"] = norm_search(" ".join(chars_of_person(p)))
 
 trope_counts = defaultdict(int)
 platform_counts = defaultdict(int)
@@ -1739,6 +1828,8 @@ for t in titles_root:
     # for the same show still lands here.
     if (t.get("alt_titles") or "").strip():
         entry["a"] = norm_search(t["alt_titles"])
+    if chars_of_title(t):
+        entry["ch"] = norm_search(" ".join(chars_of_title(t)))
     if t.get("year"): entry["y"] = t["year"]
     if tr_slugs: entry["tr"] = tr_slugs
     if pl_slugs: entry["pl"] = pl_slugs
@@ -1957,8 +2048,8 @@ BROWSE_JS = f"""
     D=d;
     // Search keys, built once: the display name normalized, plus any
     // pre-normalized alt titles the index carries.
-    D.titles.forEach(function(t){{ t.k=norm(t.n)+(t.a?' '+t.a:''); }});
-    D.actors.forEach(function(a){{ a.k=norm(a.n); }});
+    D.titles.forEach(function(t){{ t.k=norm(t.n)+(t.a?' '+t.a:'')+(t.ch?' '+t.ch:''); }});
+    D.actors.forEach(function(a){{ a.k=norm(a.n)+(a.ch?' '+a.ch:''); }});
     var p=new URLSearchParams(window.location.search);
     if(p.get('q')) qEl.value=p.get('q');
     ['trope','platform','origin'].forEach(function(g){{
@@ -2541,6 +2632,7 @@ open(os.path.join(DIST, "llms.txt"), "w", encoding="utf-8").write(f"""# DramaEve
   character names, episode count, tropes. Structured data: TVSeries + FAQPage.
 - /actors/<slug>.html - one page per actor: filmography with links, IMDb identity
   where held. Structured data: Person with sameAs.
+- /characters.html - every named character A to Z, who plays them, in which series.
 - /tropes/ - titles grouped by trope (published only at 5+ verified titles).
 - /browse.html - the full filterable index.
 - /sitemap.xml - every page.

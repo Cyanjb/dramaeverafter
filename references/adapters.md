@@ -168,8 +168,9 @@ Last verified: 2026-07-17. Sites change; verify structure on first fetch each se
   language) and Chinese duanju (Douyin/Kuaishou native, Chinese language, 60-107 eps) are
   different products for different audiences. Mixing them dilutes the site.
 - URL ARCHITECTURE (deliberate, do not "tidy" this):
-    english -> /titles/{slug}.html, /where-to-watch/{slug}.html      (ROOT, unchanged)
-    chinese -> /chinese/titles/{slug}.html, /chinese/where-to-watch/{slug}.html
+    english -> /titles/{slug}.html                                    (ROOT, unchanged)
+    chinese -> /chinese/titles/{slug}.html
+  (where-to-watch twins folded into the title pages 10 Sep 2026; old URLs 301.)
   English stays at the root because ~9,076 URLs are already indexed. Prefixing English with
   /english/ would 404 every one of them and destroy the accumulated SEO. Never do this.
 - Root sections (homepage, /tropes/, trope x platform pages, platform compare, the homepage

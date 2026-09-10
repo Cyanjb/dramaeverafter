@@ -318,6 +318,10 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq summary{cursor:pointer;font-weight:700;font-size:15px}
 .faq p{margin-top:8px;font-size:14px;line-height:1.55;color:#D9C8D4}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
+.chars{margin-top:10px;font-size:14.5px;line-height:1.6;color:var(--sec)}
+.char-list{max-width:900px}.char-list .idx-letter{margin:26px 0 6px}
+.char-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.char-row b{min-width:200px}.char-row .sub{color:var(--tert);font-size:13px}
 
 /* ---------- footer ---------- */
 footer.site-footer{border-top:1px solid var(--line);background:var(--plum);color:#E8DCD4;padding:34px 22px 30px;display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between}

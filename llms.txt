@@ -12,6 +12,7 @@
   character names, episode count, tropes. Structured data: TVSeries + FAQPage.
 - /actors/<slug>.html - one page per actor: filmography with links, IMDb identity
   where held. Structured data: Person with sameAs.
+- /characters.html - every named character A to Z, who plays them, in which series.
 - /tropes/ - titles grouped by trope (published only at 5+ verified titles).
 - /browse.html - the full filterable index.
 - /sitemap.xml - every page.
