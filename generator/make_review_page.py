@@ -47,6 +47,7 @@ textarea.changed{border-color:var(--gold-deep)}
 input[type=checkbox]{width:22px;height:22px;accent-color:var(--wine)}
 .out{margin-top:20px}.out textarea{min-height:220px;font-family:ui-monospace,Menlo,monospace;font-size:14px}
 .note{font-size:14px;color:var(--tert)}
+.pernote{margin:0;font-size:15px;color:var(--muted);background:var(--warm);border-left:3px solid var(--gold);padding:9px 12px}
 """
 
 JS = """
@@ -79,6 +80,20 @@ def main():
     caps, facts = cp.load_batch(src)
     sources = cp.load_sources(src)
     q = {r["tid"]: r for r in cp.build_queue()}
+    # A batch may carry NOTES = {title_id: "..."} to say something to Cyan about
+    # that specific caption: why it is here, what changed, what she is deciding.
+    # Added 10 Sep 2026 for the de-lift review, where every row needed its own
+    # reason rather than one instruction at the top of the page.
+    ns = {}
+    exec(compile(io.open(src, encoding="utf-8").read(), src, "exec"), ns)
+    notes = ns.get("NOTES", {})
+    # build_queue only lists titles that still NEED a caption, so reviewing work
+    # that is already live left every row with a blank name and no reach. Fall
+    # back to the database for those.
+    q = dict(q)
+    for t in cp.rows("titles.csv"):
+        if t["title_id"] in caps and t["title_id"] not in q:
+            q[t["title_id"]] = {"title": t.get("primary_title") or t["title_id"], "reach": 0}
     entries = [(tid, c) for tid, c in caps.items() if c.strip()]
     entries.sort(key=lambda kv: -(q.get(kv[0], {}).get("reach") or 0))
     rows = []
@@ -88,12 +103,13 @@ def main():
         src_txt = facts.get(tid) or r.get("facts", "")
         url = (sources.get(tid) or ("", ""))[1]
         link = f' · <a href="{html.escape(url)}" target="_blank" rel="noopener">platform page</a>' if url else ""
+        note_html = (f'<p class="pernote">{html.escape(notes[tid])}</p>' if notes.get(tid) else "")
         rows.append(f"""
 <section class="cap" data-id="{html.escape(tid)}">
 <div class="meta"><span>{i}</span><b>{html.escape(r.get('title', tid))}</b><span>{cp.views_label(r.get('reach') or 0)}</span></div>
 <p class="hook">{html.escape(hook)}</p>
 <p class="body">{html.escape(body.strip())}</p>
-<details><summary>What the platform says{link}</summary><p>{html.escape(" ".join(src_txt.split()))}</p></details>
+{note_html}<details><summary>What the platform says{link}</summary><p>{html.escape(" ".join(src_txt.split()))}</p></details>
 <textarea data-orig="{html.escape(cap.strip())}">{html.escape(cap.strip())}</textarea>
 <div class="row"><label><input type="checkbox"> Read</label><span class="note">Edit the box only if you would change it. Read means done.</span></div>
 </section>""")
