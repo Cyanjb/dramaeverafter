@@ -16,6 +16,107 @@ state claim below.
 
 ## STATE: pushed, clean, live. main = a3098913 plus whatever run 5 commits.
 
+## COVERAGE EXPORT READ 10 SEP: THE 10K IS REAL, AND THE DEMOTION HAS A NAME
+
+Cyan asked why GSC says she has 10K pages. She does. Her Coverage export
+(data ends 4 Sep) says Google knows 11,188 URLs: 896 indexed, 10,292 not.
+The repo publishes 9,941 html pages (3,753 titles x2 with where-to-watch,
+2,213 actors, 199 tropes, 16 apps, the root pages); 4,892 carry noindex
+since 5 Sep; 5,048 are in the sitemap. The ~1,250 extra URLs are the
+extensionless twins (Pretty URLs is STILL ON, verified live 10 Sep:
+/titles/brides-in-smoke answers 200 with a canonical) plus redirected
+old URLs. `python3 generator/gsc_coverage.py <export folder>` prints the
+two sides next to each other; run it on every Coverage export.
+
+The not-indexed reasons: 864 alternative-canonical (the twins, harmless),
+8 redirects, 7,664 discovered-not-indexed (mostly the thin pages, which
+are now noindexed and out of the sitemap, so they fade slowly), 1,756
+crawled-not-indexed (Google's page-by-page quality verdict; this is the
+bucket that matters and shrinks as captions replace platform text).
+
+THE INDEX EJECTION IS DATED: 28 -> 29 Aug, indexed 1,941 -> 896. That is
+three days before the 1 Sep click cliff and a week BEFORE our noindex
+shipped. Google threw out 1,045 pages on its own; the clicks followed.
+
+THE UPDATE: Google's August 2026 Spam Update rolled out 18-21 Aug
+(finished 21 Aug 04:51 ET), aimed at scaled content abuse, programmatic
+pages and thin affiliates. Our impressions peaked 21 Aug, the decay
+started the day the rollout finished, the ejection came 29 Aug. That is
+the profile of a site caught by it, and the diagnosis below (scaled
+content: verbatim platform synopses, castless pages, one-credit actors)
+is exactly what it targets. Recovery in the published case studies: a
+few months AFTER significant changes, and only by fixing, never by
+waiting for the next update. So: captions and cast, week after week,
+and no tricks. Do not expect the 8 Sep data to show anything yet.
+
+Also verified 10 Sep: weekly scrape run 6 fired on schedule Sunday 6 Sep
+and succeeded (first unattended run; ReelShort is current, 809 titles
+verified this month, 2,767 still July-dated because GoodShort and the
+rest have no scraper yet). The site has NO analytics of any kind; GSC is
+the only visitor count and it lags 2-3 days. 818 of the 1,896 indexable
+title pages still have no caption (they have cast, so they escaped the
+thin rule).
+
+THE DRILLDOWN ARRIVED (10 Sep, "Crawled - currently not indexed", 1,000
+of the 1,756). It settles the open question in the 29 AUG section
+below: the jump 83 -> 1,756 happened ON 29 Aug, and 540 of the sampled
+URLs were last crawled that day, a week BEFORE our noindex shipped. So
+the bucket is Google's own verdict, not Google filing our noindex (a
+recrawled noindexed page lands in "Excluded by noindex tag", never
+here). Classified against the repo: 558 of the 1,000 are pages we still
+offer for indexing and Google declined (283 actors, 238 titles, 34
+tropes, browse); 442 are pages we have since noindexed. Of the declined
+titles, 120 carry our captions, and 38 of those were crawled WITH the
+caption live (16 on 29 Aug itself) and declined anyway. Read that
+straight: page-level captions do not get a page back in while the
+site-level verdict stands. The captions are still the fix, because the
+verdict is about the site's overall profile; they are not a per-page
+switch. `gsc_coverage.py <drilldown folder>` does this classification.
+
+PERFORMANCE 1-7 Sep (7-day export): 1 click, 99 impressions, 66 pages,
+45 queries, almost all actor names. Too thin to steer by; ask Cyan for
+the 3-month Queries export for gsc_opportunities.py. One unserved query
+at position 1: "the ceo's hidden father cast".
+
+THE FOLD AND THE CHARACTER INDEX SHIPPED 10 SEP (Cyan: "do it"):
+- where-to-watch pages are GONE. They were near-copies of the title page
+  that nothing on the site linked to (only the sitemap), a doorway-page
+  profile and half the templated footprint. The title page now carries
+  the checked date in the watch card and a visible Quick answers section
+  that matches its FAQ schema (the "Is it free?" question moved over).
+  /where-to-watch/* 301s to /titles/:splat in _redirects. Sitemap 5,048
+  -> 3,153 URLs. check_site fails if the folder ever comes back.
+- Character index: search-index.json carries pre-normalized character
+  names on titles ("ch") and actors; Browse, the header search and the
+  actors directory all find "elijah baran". Actor pages show "Plays X in
+  Y", answer "Who does N play?" in the FAQ (visible + schema), carry
+  PerformanceRole in performerIn, and the meta description names the
+  first character. ONE index page, /characters.html (2,699 rows, linked
+  from the footer and the actors directory), never a page per character.
+- GoatCounter: Cyan signed up 10 Sep; her snippet matches the template
+  (code dramaeverafter). Referrers from chatgpt.com and perplexity.ai
+  will show there once main deploys.
+
+INDEXNOW SHIPPED 10 SEP (Cyan: "go ahead"): generator/indexnow.py POSTs
+changed URLs to api.indexnow.org (Bing, Yandex, Naver, Seznam, Yep). The
+key is the 32-hex .txt at the site root, found by the script, public by
+design. The weekly workflow runs `--changed <sha at run start>` after its
+push, continue-on-error; the indexnow_all dispatch input resubmits the
+whole sitemap. Deleted files are sent too, so the 3,753 old where-to-watch
+URLs drop out of Bing. FIRST FULL SUBMISSION IS STILL TO DO: it needs the
+key file live, so after this branch is merged run
+`python3 generator/indexnow.py --all` (from a sandbox, or dispatch the
+workflow with indexnow_all). Cyan still has to verify the site in Bing
+Webmaster Tools (import from Search Console) to see Bing's own reports.
+
+SHIPPED 10 SEP, Cyan's go: GoatCounter on every page (build.py
+GOATCOUNTER = "dramaeverafter"; the account must exist at
+dramaeverafter.goatcounter.com with that code, or change the constant
+and rebuild), and audit H3 closed: /data, /generator, /references,
+/design-system and every root .md are forced 404! in _redirects. Both
+have check_site.py twins. Cyan turned Pretty URLs OFF the same day; the
+extensionless 301 rules fire from the next production deploy.
+
 ## GOOGLE DEMOTION, 1 SEP (diagnosed 5 Sep) — THE RECOVERY IS THE PRIORITY
 
 Search traffic died overnight 31 Aug -> 1 Sep: 58 clicks/1,939 impressions on

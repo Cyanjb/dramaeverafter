@@ -23,6 +23,9 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   home" must find "A Zombie Girl's Journey Home".
 - The Python normalizer in build.py and the JavaScript one shipped to
   browsers agree character for character (they must stay identical).
+- Character names are searchable (10 Sep): "elijah baran" finds Djinn
+  Under Contract on Browse and Eric Guilmette on the actors page, and
+  characters.html lists every named character with working links.
 
 **Homepage**
 - Rail order: Most watched first, New and trending directly under it
@@ -38,6 +41,11 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   platforms, contact) resolves to a real file.
 - Every trope chip on the tropes index has its page.
 
+**Title pages** (the 10 Sep fold)
+- Every title page carries Where to watch with its checked date and a
+  visible Quick answers section matching its FAQ schema. There is no
+  where-to-watch/ folder; those URLs 301 to the title page.
+
 **Sitemap and noindex** (the 1 Sep Google demotion recovery)
 - Sitemap URLs: on-domain, every one has a file, none carries a noindex
   meta. Thin pages are noindexed AND out of the sitemap, together.
@@ -45,8 +53,22 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
 **Redirects**
 - _redirects never contains a forced 301!/302! (verified 5 Sep: with
   Netlify Pretty URLs on, a forced rule loops forever).
-- The extensionless 301 rule exists in the file for all five page
-  families (titles, actors, tropes, where-to-watch, apps). It is
+- /data, /generator, /references, /design-system and every root .md file
+  are blocked with a forced 404! (10 Sep: the repo root is the publish
+  folder, so anything not blocked deploys to the brand domain).
+
+**IndexNow** (10 Sep)
+- Exactly one key file (32 hex characters .txt, containing its own name)
+  sits at the site root, and the Sunday workflow runs indexnow.py after
+  its push so Bing learns what changed. A failure there never blocks a
+  publish.
+
+**Analytics** (10 Sep)
+- Every page carries the GoatCounter script; the site code lives in
+  build.py as GOATCOUNTER and nowhere else.
+- The extensionless 301 rule exists in the file for all four page
+  families (titles, actors, tropes, apps; where-to-watch was folded
+  into titles on 10 Sep and its URLs 301 there). It is
   checked so nobody deletes it, NOT because it works: see the
   known-broken list below. It fires only for paths with no file.
 

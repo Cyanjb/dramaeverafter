@@ -7,7 +7,7 @@ The cross-platform vertical drama database. This repo is the single source of tr
 - **/generator/** — build.py reads /data and writes the generated site to the repo root. Run: `cd generator && python3 build.py`
 - **/generator/staging/** — dated records of every scrape and import. A staging file is a record, not a queue.
 - **/.github/workflows/** — the unattended jobs. `weekly-scrape.yml` is the database refresh; `fetch-synopses.yml` banks platform synopses for the caption pipeline.
-- **Repo root** — the generated site (actors/, titles/, tropes/, where-to-watch/, apps/, index.html, 404.html, sitemap.xml, style.css, robots.txt, platforms.html). Netlify publishes the repo root. Never edit these by hand; the generator overwrites them on every build (style.css included: its source is the CSS block inside build.py). Only data/ and generator/ are hand-editable.
+- **Repo root** — the generated site (actors/, titles/, tropes/, apps/, characters.html, index.html, 404.html, sitemap.xml, style.css, robots.txt, platforms.html). Netlify publishes the repo root. Never edit these by hand; the generator overwrites them on every build (style.css included: its source is the CSS block inside build.py). Only data/ and generator/ are hand-editable.
 - **Hand-maintained root files the build never touches**: `_redirects`, `_headers`, `favicon.svg`, `apple-touch-icon.png`, `share.png` (the default social preview card; replace it with a designed one any time, same filename and 1200x630).
 
 ## The weekly update runs itself
