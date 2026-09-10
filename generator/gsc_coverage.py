@@ -14,6 +14,13 @@ stops being a surprise:
   KNOWN      what Google says it knows (indexed + not indexed, last day)
   PUBLISHED  html files in the repo, how many carry noindex, sitemap size
   REASONS    each "not indexed" reason with what it means for this site
+  DRILLDOWN  if the folder is a reason's drilldown export (Table.csv of
+             URLs), each URL classified against the repo: a page we have
+             noindexed ourselves, an indexable page Google declined, an
+             extensionless twin, or a file that no longer exists. The
+             first two are the whole question: the 10 Sep drilldown
+             showed the 29 Aug jump was Google's own verdict, crawled
+             before our noindex shipped, not Google filing our noindex.
 
 Nothing here writes anything. The Coverage export lags 2-3 days and
 counts URLs, not pages; read it as Google's memory, not the site's size.
@@ -74,8 +81,56 @@ def published():
     return total, noidx, sitemap
 
 
+def classify(url):
+    u = url.replace("https://dramaeverafter.com/", "").replace("https://dramaeverafter.com", "")
+    sec = u.split("/")[0] if "/" in u else "root"
+    twin = not (u.endswith(".html") or u.endswith("/") or u == "")
+    p = (u + ".html") if twin else (u + "index.html" if u.endswith("/") or u == "" else u)
+    full = os.path.join(ROOT, p)
+    if not os.path.exists(full):
+        state = "file gone"
+    elif 'content="noindex"' in open(full, encoding="utf-8").read():
+        state = "noindexed by us"
+    else:
+        state = "INDEXABLE, Google declined"
+    return sec, state, ("extensionless twin" if twin else "html"), p
+
+
+def drilldown(folder):
+    path = os.path.join(folder, "Table.csv")
+    if not os.path.exists(path):
+        return
+    rows = list(csv.DictReader(open(path, encoding="utf-8-sig")))
+    if not rows or "URL" not in rows[0]:
+        return
+    meta = os.path.join(folder, "Metadata.csv")
+    issue = ""
+    if os.path.exists(meta):
+        for r in csv.DictReader(open(meta, encoding="utf-8-sig")):
+            if r.get("Property") == "Issue":
+                issue = norm(r["Value"])
+    print(f"DRILLDOWN  {len(rows):,} URLs{' for ' + issue if issue else ''} (GSC caps the export at 1,000)")
+    crawled = sorted(set(r.get("Last crawled", "") for r in rows))
+    if crawled and crawled[0]:
+        print(f"           last crawled between {crawled[0]} and {crawled[-1]}")
+    counts, pages = {}, {}
+    for r in rows:
+        sec, state, kind, p = classify(r["URL"])
+        counts[(state, sec)] = counts.get((state, sec), 0) + 1
+        pages.setdefault(state, set()).add(p)
+    for state in ("INDEXABLE, Google declined", "noindexed by us", "file gone"):
+        n = sum(v for (s, _), v in counts.items() if s == state)
+        if not n:
+            continue
+        secs = ", ".join(f"{sec} {v}" for (s, sec), v in sorted(counts.items(), key=lambda x: -x[1]) if s == state)
+        print(f"  {n:>6,}  {state}  ({len(pages[state]):,} distinct pages: {secs})")
+
+
 def main(folder):
     chart = read_chart(folder)
+    if not os.path.exists(os.path.join(folder, "Chart.csv")) or "Indexed" not in open(os.path.join(folder, "Chart.csv"), encoding="utf-8-sig").readline():
+        drilldown(folder)
+        return
     total, noidx, sitemap = published()
     print(f"PUBLISHED  {total:,} html pages, {noidx:,} carry noindex, "
           f"{total - noidx:,} indexable, sitemap lists {sitemap:,}")

@@ -57,6 +57,27 @@ the only visitor count and it lags 2-3 days. 818 of the 1,896 indexable
 title pages still have no caption (they have cast, so they escaped the
 thin rule).
 
+THE DRILLDOWN ARRIVED (10 Sep, "Crawled - currently not indexed", 1,000
+of the 1,756). It settles the open question in the 29 AUG section
+below: the jump 83 -> 1,756 happened ON 29 Aug, and 540 of the sampled
+URLs were last crawled that day, a week BEFORE our noindex shipped. So
+the bucket is Google's own verdict, not Google filing our noindex (a
+recrawled noindexed page lands in "Excluded by noindex tag", never
+here). Classified against the repo: 558 of the 1,000 are pages we still
+offer for indexing and Google declined (283 actors, 238 titles, 34
+tropes, browse); 442 are pages we have since noindexed. Of the declined
+titles, 120 carry our captions, and 38 of those were crawled WITH the
+caption live (16 on 29 Aug itself) and declined anyway. Read that
+straight: page-level captions do not get a page back in while the
+site-level verdict stands. The captions are still the fix, because the
+verdict is about the site's overall profile; they are not a per-page
+switch. `gsc_coverage.py <drilldown folder>` does this classification.
+
+PERFORMANCE 1-7 Sep (7-day export): 1 click, 99 impressions, 66 pages,
+45 queries, almost all actor names. Too thin to steer by; ask Cyan for
+the 3-month Queries export for gsc_opportunities.py. One unserved query
+at position 1: "the ceo's hidden father cast".
+
 SHIPPED 10 SEP, Cyan's go: GoatCounter on every page (build.py
 GOATCOUNTER = "dramaeverafter"; the account must exist at
 dramaeverafter.goatcounter.com with that code, or change the constant
