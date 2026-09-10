@@ -152,7 +152,78 @@ CONFIRMED: the same movement would also appear if Google had crawled
 1,673 pages and judged them not worth indexing on its own. The two
 readings are told apart by WHICH URLs are in that bucket, so the next
 useful export is the Coverage DRILLDOWN for "Crawled - currently not
-indexed". Ask Cyan for it rather than guessing.
+indexed". ANSWERED 10 Sep: Cyan supplied it, see the next section.
+
+## THE DRILLDOWN ANSWERS IT (10 Sep, Crawled - currently not indexed)
+
+The question left open above is now settled. The drilldown export caps at
+1,000 URLs out of the 1,756, and every one of those 1,000 resolves to a
+real file on disk. Cross-referenced against the built site and the
+sitemap, they partition almost exactly three ways:
+
+  456  extensionless duplicates (/actors/jake-lively with no .html)
+  202  .html pages we NOINDEXED ourselves on 5 Sep, none in the sitemap
+  341  .html pages that are indexable AND in the sitemap
+  ---
+  999  (the 1000th is /browse)
+
+So roughly two thirds of that +1,673 is the recovery working exactly as
+designed plus a duplicate-URL leak, not Google rejecting good pages.
+Read each third separately, because the action differs.
+
+THE 202 ARE THE FIX LANDING. Google crawled the thin pages, read the
+noindex, and filed them here. That is what the tag is for. Nothing to do.
+
+THE 456 ARE THE PRETTY URLS LEAK, AND IT IS COSTING REAL RANKINGS. Every
+page exists at two URLs because Netlify Pretty URLs serves the
+extensionless path a 200. Our own HTML never links that way (19,021
+internal links checked, all .html) and the canonical tag is present and
+correct on every page, so this is Google finding the second door by
+itself. The canonical is NOT holding: the 7-day performance export shows
+Google ranking the extensionless form in live results, /actors/blake-manning
+at position 1, /actors/damien-picketts at 6, /actors/patric-palkens at 11,
+and 25 pages in all carrying 38 of the week's 97 impressions. Two URLs
+splitting one page's signals is the textbook cause of the thing that
+happened on 29 Aug. This is the strongest evidence yet for the toggle
+Cyan already has queued: switch Netlify Pretty URLs OFF, at which point
+the dormant _redirects rules wake up and 301 the extensionless form to
+the .html. www is already handled (www.dramaeverafter.com 301s to apex,
+verified live 10 Sep).
+
+THE 341 ARE THE REAL REMAINING PROBLEM, AND MOST OF IT IS STALE. 251 of
+them were last crawled on 29 August, the verdict day, before any fix
+existed. Only 14 indexable .html pages in the entire export were crawled
+on 5 Sep or later, and two of those fourteen (dungeons-of-ecstasy,
+brave-new-beginning-with-my-fire-captain) still have no caption at all,
+so Google is arguably right about them. Google has simply not come back
+to the other 327 yet. Do not treat this number as a live verdict on the
+current site until a drilldown shows a post-5-Sep crawl date.
+
+ONE THAT HURTS: /titles/eng-dub-apocalypse-romance-system.html, the page
+that earned 76 clicks, is in this bucket, last crawled 5 Sep. It has a
+455-character caption. Worth watching specifically in the next export.
+
+## THE 7-DAY PERFORMANCE EXPORT FINALLY COVERS THE FIX (10 Sep)
+
+Both Performance zips uploaded on 10 Sep are byte-identical: the same
+"Last 7 days" export twice, not a 28-day and a 7-day. The 28-day one is
+still missing. What the 7-day one does do is cover 1 to 7 Sep, so for
+the first time the window includes two days after the 5 Sep work.
+
+  date        clicks  impressions  position
+  1 Sep          0        44         26.2
+  2 Sep          0        21         43.5
+  3 Sep          0         7         13.0
+  4 Sep          0         4          3.8
+  5 Sep          0         4          3.8
+  6 Sep          0         4          3.0
+  7 Sep          1         4          5.8
+
+Read it honestly: impressions fell to four a day and have stayed there,
+which is what 896 indexed pages instead of 1,941 looks like. Position is
+the one encouraging line, 26 down to 3-6, but on four impressions that is
+noise, not a trend. Two days is far too short to judge the fix. The
+number to watch is impressions climbing back, not position.
 
 ## THE REAL SHAPE OF THE COLLAPSE (6 Sep exports, data ends 4 Sep)
 
