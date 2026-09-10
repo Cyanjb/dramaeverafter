@@ -800,7 +800,11 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq summary{cursor:pointer;font-weight:700;font-size:15px}
 .faq p{margin-top:8px;font-size:14px;line-height:1.55;color:#D9C8D4}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
-.chars{margin-top:10px;font-size:14.5px;line-height:1.6;color:var(--sec)}
+.known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
+.faq .role-list{list-style:none;margin:10px 0 0;padding:0;columns:2;column-gap:32px}
+.faq .role-list li{break-inside:avoid;padding:5px 0;font-size:14px;line-height:1.5;color:#D9C8D4}
+.faq .role-list b{color:#fff;font-weight:600}.faq .role-list a{color:#EFE4EA}
+@media(max-width:640px){.faq .role-list{columns:1}}
 .char-list{max-width:900px}.char-list .idx-letter{margin:26px 0 6px}
 .char-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
 .char-row b{min-width:200px}.char-row .sub{color:var(--tert);font-size:13px}
@@ -1201,10 +1205,18 @@ for p in people:
     chars = [((c.get("character_name") or "").strip(), t) for c, t in my_pairs
              if (c.get("character_name") or "").strip()]
     chars.sort(key=lambda x: -title_views(x[1]))  # the biggest show's character leads
-    chars_html = ("<p class=\"chars\">Plays " + " &middot; ".join(
-        f'<b>{ch}</b> in <a href="../titles/{tslug(t)}.html">{t["primary_title"]}</a>'
-        for ch, t in chars) + "</p>") if chars else ""
+    # Cyan, 10 Sep: a paragraph of 29 "X in Y" pairs is a wall. The hero
+    # carries ONE line, the character from the biggest show; every credit
+    # card below already captions its own character; the full list lives
+    # in the quick answers as a real list, two columns, collapsed.
+    chars_html = (f'<p class="known-for">Best known as <b>{chars[0][0]}</b> in '
+                  f'<a href="../titles/{tslug(chars[0][1])}.html">{chars[0][1]["primary_title"]}</a>'
+                  + (f' <span class="more">and {len(chars) - 1} more roles below</span>' if len(chars) > 1 else '')
+                  + '</p>') if chars else ""
     chars_text = "; ".join(f"{ch} in {t['primary_title']}" for ch, t in chars)
+    roles_html = ('<ul class="role-list">' + "".join(
+        f'<li><b>{ch}</b> in <a href="../titles/{tslug(t)}.html">{t["primary_title"]}</a></li>'
+        for ch, t in chars) + '</ul>') if chars else ""
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "jobTitle": "Actor",
           "@id": f"{DOMAIN}/actors/{pslug(p)}.html",
           "description": (real_bio or oneliner)[:160],
@@ -1248,7 +1260,7 @@ for p in people:
 {SORT_JS}{FAV_JS}
 <section class="faq"><div class="wrap"><h2>{p['name']}: quick answers</h2>
 <details><summary>What is {p['name']} best known for?</summary><p>{p['bio_short'].split('.')[0]}.</p></details>
-{f"<details><summary>Who does {p['name']} play?</summary><p>{p['name']} plays {chars_text}.</p></details>" if chars else ''}
+{f"<details><summary>Who does {p['name']} play?</summary>{roles_html}</details>" if chars else ''}
 <details><summary>What apps are {p['name']} dramas on?</summary><p>Verified so far: {plat_line}. Each title above links to where it streams.</p></details>
 <p class="note">Spot a missing title? This database grows weekly from fan reports.</p>
 </div></section>"""
