@@ -16,6 +16,48 @@ state claim below.
 
 ## STATE: pushed, clean, live. main = a3098913 plus whatever run 5 commits.
 
+## COVERAGE EXPORT READ 10 SEP: THE 10K IS REAL, AND THE DEMOTION HAS A NAME
+
+Cyan asked why GSC says she has 10K pages. She does. Her Coverage export
+(data ends 4 Sep) says Google knows 11,188 URLs: 896 indexed, 10,292 not.
+The repo publishes 9,941 html pages (3,753 titles x2 with where-to-watch,
+2,213 actors, 199 tropes, 16 apps, the root pages); 4,892 carry noindex
+since 5 Sep; 5,048 are in the sitemap. The ~1,250 extra URLs are the
+extensionless twins (Pretty URLs is STILL ON, verified live 10 Sep:
+/titles/brides-in-smoke answers 200 with a canonical) plus redirected
+old URLs. `python3 generator/gsc_coverage.py <export folder>` prints the
+two sides next to each other; run it on every Coverage export.
+
+The not-indexed reasons: 864 alternative-canonical (the twins, harmless),
+8 redirects, 7,664 discovered-not-indexed (mostly the thin pages, which
+are now noindexed and out of the sitemap, so they fade slowly), 1,756
+crawled-not-indexed (Google's page-by-page quality verdict; this is the
+bucket that matters and shrinks as captions replace platform text).
+
+THE INDEX EJECTION IS DATED: 28 -> 29 Aug, indexed 1,941 -> 896. That is
+three days before the 1 Sep click cliff and a week BEFORE our noindex
+shipped. Google threw out 1,045 pages on its own; the clicks followed.
+
+THE UPDATE: Google's August 2026 Spam Update rolled out 18-21 Aug
+(finished 21 Aug 04:51 ET), aimed at scaled content abuse, programmatic
+pages and thin affiliates. Our impressions peaked 21 Aug, the decay
+started the day the rollout finished, the ejection came 29 Aug. That is
+the profile of a site caught by it, and the diagnosis below (scaled
+content: verbatim platform synopses, castless pages, one-credit actors)
+is exactly what it targets. Recovery in the published case studies: a
+few months AFTER significant changes, and only by fixing, never by
+waiting for the next update. So: captions and cast, week after week,
+and no tricks. Do not expect the 8 Sep data to show anything yet.
+
+Also verified 10 Sep: weekly scrape run 6 fired on schedule Sunday 6 Sep
+and succeeded (first unattended run; ReelShort is current, 809 titles
+verified this month, 2,767 still July-dated because GoodShort and the
+rest have no scraper yet). The site has NO analytics of any kind; GSC is
+the only visitor count and it lags 2-3 days. 818 of the 1,896 indexable
+title pages still have no caption (they have cast, so they escaped the
+thin rule). Audit H3 is still open: /data/titles.csv answers 200 on the
+domain.
+
 ## GOOGLE DEMOTION, 1 SEP (diagnosed 5 Sep) — THE RECOVERY IS THE PRIORITY
 
 Search traffic died overnight 31 Aug -> 1 Sep: 58 clicks/1,939 impressions on
