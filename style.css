@@ -123,6 +123,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .rail-item .poster--empty .ttl{font-size:17px}
 .rail-item.sm .poster--empty .ttl{font-size:15px}
 .actor-tile .stack,.person-row .stack{display:block}
+.actor-tile .name,.actor-tile .sub,.person-row .name,.person-row .sub{display:block}
 .bio{max-width:62ch}
 .bio h2{font-size:20px;margin-bottom:8px}
 .bio p{font-size:16px;line-height:1.65;color:#3E3238;text-wrap:pretty}
