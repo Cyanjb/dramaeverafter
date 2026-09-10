@@ -124,10 +124,18 @@ is wrong: Love Me Two Times / Straight A Pregnancy (3), How to Tame a
 Silver Fox / Surrender to My Professor (3), My Ex is in the Navy SEALs /
 The Deaf Heiress's Secret (2), Married for Green Card / The Double Life
 of My Billionaire Husband (2), Married In A Heartbeat / The Nurse's
-Secret Marriage (2), plus the singletons. The audit is the block in this
-session's transcript; worth making a generator script. Resolving each
-needs evidence (the fandom post the credit came from, or ReelShort's
-page) or Cyan's eye; never a guess. Also merged 10 Sep: Timothy Stein
+Secret Marriage (2), plus the singletons. generator/audit_credits.py IS the
+audit (Cyan: "work the queue", 10 Sep): it reads the Sunday staging
+record, where a book's actors list is exactly the actors whose ReelShort
+tag pages list it, and removes a credit only when the character is
+duplicated on an unrelated show AND the tag page lists the other show
+but not this one. Absence alone never removes (tag pages miss ~10% of
+real credits). 10 Sep run: 13 removed (log in
+staging/credits_removed_2026-09-06.json), 4 KEEP for Cyan (the actor is
+in both shows per ReelShort, same character name: Seth Edeen x2, Stacey
+Marie Keba, Tess Dinerstein on Silver Fox / Surrender to My Professor),
+9 UNKNOWN (no tag page or a show not in the record). Run it after every
+Sunday scrape until the UNKNOWN list is empty or ruled. Also merged 10 Sep: Timothy Stein
 -> tim-stein, Gabrielle Brown -> gabrielle-faith-brown (8 shared titles).
 
 SHIPPED 10 SEP, Cyan's go: GoatCounter on every page (build.py
