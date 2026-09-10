@@ -103,11 +103,12 @@ key is the 32-hex .txt at the site root, found by the script, public by
 design. The weekly workflow runs `--changed <sha at run start>` after its
 push, continue-on-error; the indexnow_all dispatch input resubmits the
 whole sitemap. Deleted files are sent too, so the 3,753 old where-to-watch
-URLs drop out of Bing. FIRST FULL SUBMISSION IS STILL TO DO: it needs the
-key file live, so after this branch is merged run
-`python3 generator/indexnow.py --all` (from a sandbox, or dispatch the
-workflow with indexnow_all). Cyan still has to verify the site in Bing
-Webmaster Tools (import from Search Console) to see Bing's own reports.
+URLs drop out of Bing. FIRST FULL SUBMISSION DONE 10 Sep 06:34 UTC, after
+the merge put the key file live: 3,153 sitemap URLs HTTP 200, and the
+3,753 deleted where-to-watch URLs HTTP 200 (a first try at 06:10 got 403
+SiteVerificationNotCompleted; the key file needs a few minutes to be
+seen). Cyan verified the site in Bing Webmaster Tools the same day;
+"no info yet" there is normal for the first days.
 
 SHIPPED 10 SEP, Cyan's go: GoatCounter on every page (build.py
 GOATCOUNTER = "dramaeverafter"; the account must exist at
