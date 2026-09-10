@@ -45,6 +45,10 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
 **Redirects**
 - _redirects never contains a forced 301!/302! (verified 5 Sep: with
   Netlify Pretty URLs on, a forced rule loops forever).
+- The extensionless 301 exists for all five page families (titles,
+  actors, tropes, where-to-watch, apps). Live since Pretty URLs went
+  off on 10 Sep. Lose one and that family is reachable at two URLs
+  again, which is what split the rankings before 29 Aug.
 
 ## Not checkable by script - Cyan's 5-minute click-through
 
@@ -61,8 +65,8 @@ Do this after any big change, on the live site, hard refresh first:
 
 ## Known-broken or waiting, so a check would just be red
 
-- Extensionless redirects are DORMANT until Netlify Pretty URLs is
-  switched off (Cyan's toggle, see HANDOVER.md).
+- (Cleared 10 Sep: Cyan switched Netlify Pretty URLs off, the
+  extensionless redirects are live and checked above.)
 - scrape_reelshort.py's detail/wanted route parses empty since ~5 Sep
   (movie-page __NEXT_DATA__ changed); tags/genres routes carry the
   weekly run meanwhile.

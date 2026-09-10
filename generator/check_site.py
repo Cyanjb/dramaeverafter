@@ -188,6 +188,23 @@ if re.search(r"\b30[12]!", red):
 else:
     ok("_redirects has no forced redirects (the 5 Sep loop trap)")
 
+# The duplicate-URL rules, live since Netlify Pretty URLs went off on
+# 10 Sep 2026. Before that Netlify answered every extensionless path with
+# the canonical page's own content, so Google held two URLs for nearly
+# every page and split their signals: the 10 Sep coverage drilldown found
+# 456 extensionless duplicates in "Crawled - currently not indexed", and
+# the performance export had Google ranking the extensionless form of
+# /actors/blake-manning at position 1. Losing one of these rules silently
+# re-opens that, so each family is checked by name.
+missing = [f for f in ("/titles/:slug", "/actors/:slug", "/tropes/:slug",
+                       "/where-to-watch/:slug", "/apps/:slug")
+           if not re.search(re.escape(f) + r"\s+" + re.escape(f) + r"\.html\s+301\b", red)]
+if missing:
+    fail(f"_redirects is missing the extensionless 301 for {missing}: "
+         "every page would be reachable at two URLs again (10 Sep 2026)")
+else:
+    ok("extensionless paths 301 to the .html canonical, all five families")
+
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")
 for w in warns: print(f"  WARN  {w}")
