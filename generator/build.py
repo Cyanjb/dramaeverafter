@@ -632,6 +632,8 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .person-row.sm{padding:12px 14px;gap:13px}
 .person-row .name{font-size:15.5px;color:var(--ink);line-height:1.3}
 .person-row .sub{font-size:13px;color:var(--tert)}
+.person-row .sub .as-line{display:block;margin-top:2px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:16px;line-height:1.25;color:var(--plum)}
+.person-row .sub .as-word{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-weight:400;font-size:13px;color:var(--tert);margin-right:2px}
 
 /* ---------- chips (feed the existing filter JS: data-g / data-v) ---------- */
 .chip{display:inline-flex;align-items:baseline;gap:7px;padding:8px 14px;border:1px solid var(--chip-bd);background:var(--paper);border-radius:999px;font-size:15px;font-family:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
@@ -1483,10 +1485,15 @@ for t in titles:
     for c in credits_by_title.get(t["title_id"], []):
         pr = p_by_id.get(c["person_id"])
         if not pr: continue
-        role = (c["role"] or "").replace("+", " · ").title() or "Cast"
+        # Same caption rule as the actor page (Claude Design handoff, 10 Sep):
+        # the part, as "as Elijah Baran", in the display serif; no "Actor"
+        # label, no Lead badge. A row with no credited character falls back
+        # to the actor's title count, so it never reads empty.
+        ch = (c.get("character_name") or "").strip().replace("/", " / ").replace("  ", " ")
         n_titles = len(credits_by_person.get(c["person_id"], []))
-        cast_html += person_row(pr["name"],
-                                 f"{role} · {n_titles} title{'s' if n_titles != 1 else ''}",
+        sub = (f'<span class="as-line"><span class="as-word">as</span> {ch}</span>' if ch
+               else f"{n_titles} title{'s' if n_titles != 1 else ''}")
+        cast_html += person_row(pr["name"], sub,
                                  (pr.get("photo_ref") or "").strip(), f"{pre}actors/{pslug(pr)}.html", "md")
     # Set is for the overlap test below only. Anything rendered reads from tropes_of()
     # directly: set order follows Python's per-process string hash, so displaying from
