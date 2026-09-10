@@ -89,6 +89,8 @@
 /TROPES-WANTED.md /404.html  404
 /.github/*        /404.html  404
 
+/titles/the-billionaire-heiress-s-double-life.html  /titles/the-double-life-of-a-billionaire-heiress.html  301
+
 # Canonical URL form is .html; Netlify also answers extensionless paths with
 # the same content (no redirect), so Google indexed a duplicate of nearly
 # every page. Recovery hygiene, 5 Sep 2026: extensionless now 301s to the
@@ -103,4 +105,3 @@
 /platforms  /platforms.html  301
 /my-list    /my-list.html    301
 /search     /browse.html     301
-/titles/the-billionaire-heiress-s-double-life.html  /titles/the-double-life-of-a-billionaire-heiress.html  301

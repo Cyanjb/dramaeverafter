@@ -246,6 +246,15 @@ gc = [p for p in ("index.html", "browse.html", "404.html") if "data-goatcounter=
 if gc: fail(f"GoatCounter script missing from {gc}")
 else: ok("GoatCounter script on the root pages (build.py GOATCOUNTER)")
 
+# Order matters: a specific old-URL 301 placed AFTER the generic :slug rules
+# never fires, because :slug swallows "name.html" as one segment and the
+# old URL redirects to name.html.html without end (live, 10 Sep 2026).
+_lines = red.split("\n")
+_first_slug = next((i for i, l in enumerate(_lines) if ":slug" in l), len(_lines))
+_late = [l for l in _lines[_first_slug:] if re.match(r"^/(titles|actors|tropes|apps)/[^:*\s]+\.html\s+/", l)]
+if _late: fail(f"specific 301 rules sit after the generic :slug rules and never fire: {_late[:3]}")
+else: ok("every specific old-URL 301 comes before the generic :slug rules")
+
 # The duplicate-URL rules. READ THIS BEFORE TRUSTING THEM: they do NOT
 # currently fix the duplicate. Netlify serves foo.html at /foo by default
 # (that is not the Pretty URLs setting and has no toggle), and these rules
