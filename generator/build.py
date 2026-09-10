@@ -609,7 +609,8 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .bio h2{font-size:20px;margin-bottom:8px}
 .bio p{font-size:16px;line-height:1.65;color:#3E3238;text-wrap:pretty}
 .poster-card .app-name{font-size:13px;font-weight:700;color:var(--wine)}
-.poster-card .card-note{display:block;font-size:13px;color:var(--ink);line-height:1.35;text-wrap:pretty}
+.poster-card .card-note{display:block;margin-top:10px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:18px;line-height:1.25;color:var(--plum);text-wrap:pretty}
+.poster-card .card-note .as-word{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-weight:400;font-size:14px;color:var(--tert);margin-right:2px}
 .poster-card .meta{font-size:13px;color:var(--sec);line-height:1.45;text-wrap:pretty;min-width:0}
 .poster-card:hover .poster{border-color:var(--wine)}
 
@@ -801,10 +802,20 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq p{margin-top:8px;font-size:14px;line-height:1.55;color:#D9C8D4}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
 .known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
-.faq .role-list{list-style:none;margin:10px 0 0;padding:0;columns:2;column-gap:32px}
-.faq .role-list li{break-inside:avoid;padding:5px 0;font-size:14px;line-height:1.5;color:#D9C8D4}
-.faq .role-list b{color:#fff;font-weight:600}.faq .role-list a{color:#EFE4EA}
-@media(max-width:640px){.faq .role-list{columns:1}}
+.known-for .more{color:var(--wine);font-size:13.5px;text-decoration:none}.known-for .more:hover{color:var(--wine-hover)}
+.facts{background:var(--plum);color:var(--paper);padding:40px 20px 48px}
+.facts .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+.facts h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,32px);color:var(--paper);margin:0}
+.index-roles{list-style:none;margin:16px 0 0;padding:0;columns:1;column-gap:40px}
+.index-roles li{break-inside:avoid;display:grid;grid-template-columns:28px 1fr;align-items:baseline;padding:6px 0}
+.index-roles li:has(.letter){margin-top:10px}
+.index-roles .letter{font:600 20px/1 'Fraunces',Georgia,serif;color:var(--gold)}
+.index-roles a{grid-column:2;display:block;font-size:15px;line-height:1.35;text-decoration:none;color:var(--paper)}
+.index-roles b{display:block;color:var(--paper)}
+.index-roles span{font-size:13.5px;color:#c7b6c0}
+.index-roles a:hover b{color:var(--gold)}
+@media(min-width:760px){.facts{padding:48px 40px 56px}.index-roles{columns:2}}
+@media(min-width:1100px){.index-roles{columns:3}}
 .char-list{max-width:900px}.char-list .idx-letter{margin:26px 0 6px}
 .char-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
 .char-row b{min-width:200px}.char-row .sub{color:var(--tert);font-size:13px}
@@ -1175,11 +1186,14 @@ for p in people:
     my_titles = [t for _c, t in my_pairs]
     # Character name is the single most useful fact on an actor's own page, so it
     # rides along on the card caption. 1,509 of 3,585 credits have one.
+    # Claude Design handoff, 10 Sep 2026: the caption reads "as Carl Oliver",
+    # the character unmistakably the part. No "Actor" label (4,309 of 4,629
+    # credits, so it said nothing), no Lead badge, and a card with no credited
+    # character carries no caption line at all.
     note_for = {}
     for c, t in my_pairs:
-        role = (c.get("role") or "").replace("+", " &middot; ").title() or "Cast"
-        ch = (c.get("character_name") or "").strip()
-        note_for[t["title_id"]] = f"{role} &middot; {ch}" if ch else role
+        ch = (c.get("character_name") or "").strip().replace("/", " / ").replace("  ", " ")
+        if ch: note_for[t["title_id"]] = f'<span class="as-word">as</span> {ch}'
     verified_n = len(my_titles)
     plat_counts = defaultdict(int)
     for t in my_titles:
@@ -1211,12 +1225,25 @@ for p in people:
     # in the quick answers as a real list, two columns, collapsed.
     chars_html = (f'<p class="known-for">Best known as <b>{chars[0][0]}</b> in '
                   f'<a href="../titles/{tslug(chars[0][1])}.html">{chars[0][1]["primary_title"]}</a>'
-                  + (f' <span class="more">and {len(chars) - 1} more roles below</span>' if len(chars) > 1 else '')
+                  + (f' <a class="more" href="#quick-facts">All {len(chars)} roles &darr;</a>' if len(chars) > 1 else '')
                   + '</p>') if chars else ""
-    chars_text = "; ".join(f"{ch} in {t['primary_title']}" for ch, t in chars)
-    roles_html = ('<ul class="role-list">' + "".join(
-        f'<li><b>{ch}</b> in <a href="../titles/{tslug(t)}.html">{t["primary_title"]}</a></li>'
-        for ch, t in chars) + '</ul>') if chars else ""
+    # Claude Design handoff, 10 Sep 2026: an always-open "Characters, A-Z"
+    # band replaces the fold-outs. Every name and title stays visible link
+    # text; letter markers only once there are 8+ roles. Best-known-for and
+    # the apps are not repeated here, the hero already says them.
+    az = sorted(((ch.replace("/", " / ").replace("  ", " "), t) for ch, t in chars),
+                key=lambda x: (norm_search(x[0]), x[1]["primary_title"]))
+    markers = len(az) >= 8
+    _letter, roles = "", []
+    for ch, t in az:
+        k = norm_search(ch)[:1]
+        L = k.upper() if k.isalpha() else "#"
+        mark = ""
+        if markers and L != _letter:
+            _letter = L
+            mark = f'<span class="letter">{L}</span>'
+        roles.append(f'<li>{mark}<a href="../titles/{tslug(t)}.html"><b>{ch}</b><span>{t["primary_title"]}</span></a></li>')
+    roles_html = "".join(roles)
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "jobTitle": "Actor",
           "@id": f"{DOMAIN}/actors/{pslug(p)}.html",
           "description": (real_bio or oneliner)[:160],
@@ -1230,10 +1257,6 @@ for p in people:
         ld["sameAs"] = same
     if (p.get("photo_ref") or "").strip():
         ld["image"] = p["photo_ref"].strip()
-    if chars:
-        ld = [ld, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-            {"@type": "Question", "name": f"Who does {p['name']} play?",
-             "acceptedAnswer": {"@type": "Answer", "text": f"{p['name']} plays {chars_text}."}}]}]
     body = f"""
 <nav class="crumb"><a href="../actors/index.html">Actors</a><span>/</span><span class="current">{p['name']}</span></nav>
 <section class="split-hero tight">
@@ -1258,12 +1281,11 @@ for p in people:
 <div class="grid" id="credits-grid">{cards}</div>
 </section>
 {SORT_JS}{FAV_JS}
-<section class="faq"><div class="wrap"><h2>{p['name']}: quick answers</h2>
-<details><summary>What is {p['name']} best known for?</summary><p>{p['bio_short'].split('.')[0]}.</p></details>
-{f"<details><summary>Who does {p['name']} play?</summary>{roles_html}</details>" if chars else ''}
-<details><summary>What apps are {p['name']} dramas on?</summary><p>Verified so far: {plat_line}. Each title above links to where it streams.</p></details>
-<p class="note">Spot a missing title? This database grows weekly from fan reports.</p>
-</div></section>"""
+{f'''<section class="facts" id="quick-facts" aria-labelledby="facts-heading">
+<p class="eyebrow">Quick reference</p>
+<h2 id="facts-heading">Characters, A&ndash;Z</h2>
+<ul class="index-roles">{roles_html}</ul>
+</section>''' if chars else ''}"""
     html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch (2026) | DramaEverAfter",
                 f"Every vertical drama {p['name']} has starred in"
                 + (f", including {chars[0][0]} in {chars[0][1]['primary_title']}," if chars else ",")
