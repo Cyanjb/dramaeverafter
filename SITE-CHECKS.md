@@ -66,6 +66,11 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
 **Analytics** (10 Sep)
 - Every page carries the GoatCounter script; the site code lives in
   build.py as GOATCOUNTER and nowhere else.
+- The extensionless 301 rule exists in the file for all four page
+  families (titles, actors, tropes, apps; where-to-watch was folded
+  into titles on 10 Sep and its URLs 301 there). It is
+  checked so nobody deletes it, NOT because it works: see the
+  known-broken list below. It fires only for paths with no file.
 
 ## Not checkable by script - Cyan's 5-minute click-through
 
@@ -82,8 +87,29 @@ Do this after any big change, on the live site, hard refresh first:
 
 ## Known-broken or waiting, so a check would just be red
 
-- Extensionless redirects are DORMANT until Netlify Pretty URLs is
-  switched off (Cyan's toggle, see HANDOVER.md).
+- EVERY PAGE IS STILL REACHABLE AT TWO URLs, and switching off
+  Netlify Pretty URLs on 10 Sep did NOT fix it. Verified live that
+  day: /actors/blake-manning.html returns 200 with no redirect, so
+  the toggle did its own job, and /search (no file) 301s correctly,
+  so the rules are being read. But /actors/blake-manning still
+  returns 200. Netlify serves foo.html at /foo by DEFAULT, which is
+  not the Pretty URLs setting and has no toggle, and our rules are
+  non-forced, so an existing file beats them every time.
+  A forced 301! is the only rule type that wins, and it very likely
+  loops for a reason the 5 Sep note got wrong: :slug matches one
+  whole path segment, and "blake-manning.html" IS one whole segment,
+  so the target re-matches the same rule and goes to .html.html
+  forever. That is independent of Pretty URLs. UNTESTED, and the
+  cheap test is a forced rule on /apps/ alone (16 pages, one revert).
+  If it does loop, _redirects cannot express this and the options are
+  a Netlify edge function (skip any path whose last segment has a
+  dot) or leaving the canonical tags to do it.
+  Cyan's call, 10 Sep: leave it. The canonical tag on every page
+  points at the .html form and is the supported way to say so. Google
+  is partly ignoring it (the 10 Sep drilldown found 456 extensionless
+  duplicates in "Crawled - currently not indexed", and it ranked
+  /actors/blake-manning at position 1), so this stays a live suspect
+  in the 29 Aug deindexing, just not one we are acting on today.
 - scrape_reelshort.py's detail/wanted route parses empty since ~5 Sep
   (movie-page __NEXT_DATA__ changed); tags/genres routes carry the
   weekly run meanwhile.

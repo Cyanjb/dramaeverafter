@@ -246,6 +246,27 @@ gc = [p for p in ("index.html", "browse.html", "404.html") if "data-goatcounter=
 if gc: fail(f"GoatCounter script missing from {gc}")
 else: ok("GoatCounter script on the root pages (build.py GOATCOUNTER)")
 
+# The duplicate-URL rules. READ THIS BEFORE TRUSTING THEM: they do NOT
+# currently fix the duplicate. Netlify serves foo.html at /foo by default
+# (that is not the Pretty URLs setting and has no toggle), and these rules
+# are non-forced, so an existing file beats them and they fire only for
+# paths with no file. Verified live 10 Sep 2026 after Pretty URLs went
+# off: /search 301s, /actors/blake-manning still 200s.
+# They are checked anyway because they are the skeleton of the eventual
+# fix and deleting them would lose the intent. The duplicate is real and
+# unsolved: the 10 Sep coverage drilldown found 456 extensionless URLs in
+# "Crawled - currently not indexed" and Google ranked the extensionless
+# /actors/blake-manning at position 1. See SITE-CHECKS.md for the options
+# and for Cyan's 10 Sep ruling to leave it.
+missing = [f for f in ("/titles/:slug", "/actors/:slug", "/tropes/:slug", "/apps/:slug")
+           if not re.search(re.escape(f) + r"\s+" + re.escape(f) + r"\.html\s+301\b", red)]
+if missing:
+    fail(f"_redirects is missing the extensionless 301 for {missing}: "
+         "every page would be reachable at two URLs again (10 Sep 2026)")
+else:
+    ok("the extensionless 301 rules are all present (they do not fire "
+       "for real pages, see SITE-CHECKS.md)")
+
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")
 for w in warns: print(f"  WARN  {w}")

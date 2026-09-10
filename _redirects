@@ -93,7 +93,6 @@
 # canonical. Non-forced rules, so existing files always win.
 /titles/:slug          /titles/:slug.html          301
 /actors/:slug          /actors/:slug.html          301
-/where-to-watch/:slug  /where-to-watch/:slug.html  301
 /apps/:slug            /apps/:slug.html            301
 /tropes/:slug          /tropes/:slug.html          301
 /browse     /browse.html     301
