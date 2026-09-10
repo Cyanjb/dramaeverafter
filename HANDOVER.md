@@ -55,8 +55,15 @@ verified this month, 2,767 still July-dated because GoodShort and the
 rest have no scraper yet). The site has NO analytics of any kind; GSC is
 the only visitor count and it lags 2-3 days. 818 of the 1,896 indexable
 title pages still have no caption (they have cast, so they escaped the
-thin rule). Audit H3 is still open: /data/titles.csv answers 200 on the
-domain.
+thin rule).
+
+SHIPPED 10 SEP, Cyan's go: GoatCounter on every page (build.py
+GOATCOUNTER = "dramaeverafter"; the account must exist at
+dramaeverafter.goatcounter.com with that code, or change the constant
+and rebuild), and audit H3 closed: /data, /generator, /references,
+/design-system and every root .md are forced 404! in _redirects. Both
+have check_site.py twins. Cyan turned Pretty URLs OFF the same day; the
+extensionless 301 rules fire from the next production deploy.
 
 ## GOOGLE DEMOTION, 1 SEP (diagnosed 5 Sep) — THE RECOVERY IS THE PRIORITY
 

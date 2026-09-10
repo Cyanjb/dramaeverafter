@@ -29,6 +29,12 @@ SEARCH_NORM_JS = (
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA, DIST = os.path.join(os.path.dirname(ROOT), "data"), os.path.dirname(ROOT)
 DOMAIN = "https://dramaeverafter.com"
+# Visitor counter, added 10 Sep 2026 (Cyan). Until then the site had no
+# analytics at all and Search Console, which lags 2-3 days and only counts
+# Google, was the only number. GoatCounter: free, no cookies, no consent
+# banner, one script. The site code is the subdomain of the GoatCounter
+# account; change it here and rebuild, nowhere else.
+GOATCOUNTER = "dramaeverafter"
 # Derived, not hardcoded: a literal here went stale for a month, telling Google
 # every page was last touched in July while the site changed daily. Month-level
 # granularity keeps the build deterministic within any given month.
@@ -842,6 +848,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{pre}style.css">
+<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head><body>
 <header class="site-header">
 <a class="wordmark" href="{pre}index.html"><span>Drama</span><em>EverAfter</em></a>

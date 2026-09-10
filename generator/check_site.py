@@ -187,6 +187,19 @@ if re.search(r"\b30[12]!", red):
     fail("_redirects contains a FORCED redirect (301!/302!): with Pretty URLs on, that loops. Never use it (verified 5 Sep).")
 else:
     ok("_redirects has no forced redirects (the 5 Sep loop trap)")
+# The repo root is the publish folder (audit H3, closed 10 Sep): everything
+# that is not the site must be blocked by a forced 404, or it deploys.
+missing = [d for d in ("data", "generator", "references", "design-system")
+           if not re.search(rf"^/{re.escape(d)}/\*\s+\S+\s+404!", red, re.M)]
+missing += [m for m in sorted(os.listdir(ROOT)) if m.endswith(".md")
+            and not re.search(rf"^/{re.escape(m)}\s+\S+\s+404!", red, re.M)]
+if missing: fail(f"not blocked on the domain (add a 404! rule to _redirects): {missing}")
+else: ok("database, generator, references and every root .md are 404! on the domain")
+
+print("== analytics ==")
+gc = [p for p in ("index.html", "browse.html", "404.html") if "data-goatcounter=" not in rd(p)]
+if gc: fail(f"GoatCounter script missing from {gc}")
+else: ok("GoatCounter script on the root pages (build.py GOATCOUNTER)")
 
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")

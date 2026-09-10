@@ -1,3 +1,30 @@
+# Not part of the site, 10 Sep 2026 (audit H3, Cyan's go): the repo root
+# is the publish folder, so the database, the generator, the notes and the
+# references all deployed to the brand domain. 404! is forced on purpose:
+# a plain rule never fires for a path that has a file. check_site.py fails
+# the build if a folder or a root .md file is missing from this block.
+/data/*  /404.html  404!
+/generator/*  /404.html  404!
+/references/*  /404.html  404!
+/design-system/*  /404.html  404!
+/.design-sync/*  /404.html  404!
+/ACTORS-FILMOGRAPHY.md  /404.html  404!
+/ACTORS-PHOTOS.md  /404.html  404!
+/AI-CHECK.md  /404.html  404!
+/AUDIT-2026-09-02.md  /404.html  404!
+/CAST-WANTED.md  /404.html  404!
+/FLESHOUT-QUEUE.md  /404.html  404!
+/HANDOVER.md  /404.html  404!
+/LOOKUPS.md  /404.html  404!
+/POPULAR-ACTORS-LOOKUP.md  /404.html  404!
+/README.md  /404.html  404!
+/REWRITE-QUEUE.md  /404.html  404!
+/SITE-CHECKS.md  /404.html  404!
+/TITLES-INCOMPLETE.md  /404.html  404!
+/TROPE-CLEANUP-PROPOSAL.md  /404.html  404!
+/TROPES-WANTED.md  /404.html  404!
+/scrape-summary.md  /404.html  404!
+
 /actors/hristine-oswald.html  /actors/christine-oswald.html  301
 /actors/nick-ritac-o.html  /actors/nick-ritacco.html  301
 

@@ -45,6 +45,13 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
 **Redirects**
 - _redirects never contains a forced 301!/302! (verified 5 Sep: with
   Netlify Pretty URLs on, a forced rule loops forever).
+- /data, /generator, /references, /design-system and every root .md file
+  are blocked with a forced 404! (10 Sep: the repo root is the publish
+  folder, so anything not blocked deploys to the brand domain).
+
+**Analytics** (10 Sep)
+- Every page carries the GoatCounter script; the site code lives in
+  build.py as GOATCOUNTER and nowhere else.
 
 ## Not checkable by script - Cyan's 5-minute click-through
 
