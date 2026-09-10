@@ -57,7 +57,10 @@ POPULAR_MIN = 10_000_000
 # ReelShort's own tag names -> our vocabulary, where Cyan has ruled the two are
 # one thing. Anything else must match tropes.csv exactly or it is reported,
 # never invented (the trope vocabulary is hers).
-TAG_ALIASES = {"lgbtq+": "bl", "lgbtq": "bl", "rom com": "rom-com", "romcom": "rom-com"}
+TAG_ALIASES = {"lgbtq+": "bl", "lgbtq": "bl", "rom com": "rom-com", "romcom": "rom-com",
+               # Cyan, 10 Sep 2026: concealed, hidden and secret identity are one trope.
+               # Our name is "secret identity" (hidden identity folded into it 15 Aug).
+               "concealed identity": "secret identity", "hidden identity": "secret identity"}
 # UMBRELLAS. Cyan, 3 Sep 2026: "High Fantasy should definitely be a trope that
 # is linked a fair amount to, for example, the werewolves, dragons, elves, and
 # mermaids, magic, all of that." A title carrying any member gets the umbrella.
