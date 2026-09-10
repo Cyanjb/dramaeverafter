@@ -36,7 +36,7 @@ ali-badalov,ali-badalov,Ali Badalov,,actor,https://www.imdb.com/name/nm4943527/,
 carter-sirianni,carter-sirianni,Carter Sirianni,,actor,https://www.imdb.com/name/nm11419964/,,https://v-mps.crazymaplestudios.com/images/3a5ba4e0-193d-11f1-84ad-6b5693b490dc.jpg,needs_check,scrape_2026-07-14
 adam-huss,adam-huss,Adam Huss,,actor,,,,needs_check,scrape_2026-07-14
 evan-wick,evan-wick,Evan Wick,,actor,,,,needs_check,scrape_2026-07-14
-jordan-roy-frank,jordan-roy-frank,Jordan Roy Frank,,actor,https://www.imdb.com/name/nm16346660/,,https://v-mps.crazymaplestudios.com/images/359fe6e0-3f63-11f1-acb2-c14bef828c82.jpg,needs_check,scrape_2026-07-14
+jordan-roy-frank,jordan-roy-frank,Jordan Roy Frank,Jordan Frank,actor,https://www.imdb.com/name/nm16346660/,"One of the most handsome faces of vertical movies, Jordan Frank is the actor behind the scenes playing the Justin Miller character in The One I Never Forget movie.",https://v-mps.crazymaplestudios.com/images/359fe6e0-3f63-11f1-acb2-c14bef828c82.jpg,needs_check,scrape_2026-07-14
 drew-ater,drew-ater,Drew Ater,,actor,https://www.imdb.com/name/nm6900774/,,https://v-mps.crazymaplestudios.com/images/0567fac0-1684-11f0-a38f-0d66b56fc320.jpg,needs_check,scrape_2026-07-14
 aidan-miguel-browne,aidan-miguel-browne,Aidan Miguel Browne,,actor,,,,needs_check,scrape_2026-07-14
 nicholas-rodrigues,nicholas-rodrigues,Nicholas Rodrigues,,actor,,,,needs_check,scrape_2026-07-14
@@ -361,7 +361,6 @@ celina-planata,celina-planata,Celina Planata,,actor,,,,scraped,reelshort_fandom_
 michael-niklin,michael-niklin,Michael Niklin,,actor,,,,scraped,reelshort_fandom_cast
 ben-taylor,ben-taylor,Ben Taylor,,actor,,,,scraped,reelshort_fandom_cast
 jana-skorpen,jana-skorpen,Jana Skorpen,,actor,,,,scraped,reelshort_fandom_cast
-jordan-frank,jordan-frank,Jordan Frank,,actor,https://www.imdb.com/name/nm16346660/,"One of the most handsome faces of vertical movies, Jordan Frank is the actor behind the scenes playing the Justin Miller character in The One I Never Forget movie.",,scraped,reelshort_fandom_cast
 trinity-rivas,trinity-rivas,Trinity Rivas,,actor,,"As for the child actress behind Lilly’s cute-but-manipulative role, her name is Trinity Rivas!",,scraped,reelshort_fandom_cast
 james-robert-riseborough,james-robert-riseborough,James Robert Riseborough,,actor,,"James Robert Riseborough, the actor behind Luke Bennett’s role, has been starring in his short film debuts since 2023.",,scraped,reelshort_fandom_cast
 liv-kirby,liv-kirby,Liv Kirby,,actor,,Liv Kirby Liv Kirby is the actress who plays the graceful yet ferocious Dr.,,scraped,reelshort_fandom_cast
