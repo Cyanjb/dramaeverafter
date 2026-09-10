@@ -360,10 +360,11 @@ def sort_select(target_id, label="Sort"):
 
 def actor_tile(p, pre="", ring_size="rail", on_warm=False, cls=""):
     n = len(credits_by_person.get(p["person_id"], []))
+    sub = known_as(p) or f'{n} title{"s" if n != 1 else ""}'
     return (f'<a class="actor-tile{(" " + cls) if cls else ""}" href="{pre}actors/{pslug(p)}.html">'
             f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), ring_size, on_warm)}'
             f'<span class="stack"><span class="name">{p["name"]}</span>'
-            f'<span class="sub">{n} title{"s" if n != 1 else ""}</span></span></a>')
+            f'<span class="sub">{sub}</span></span></a>')
 
 def person_row(name, sub, img, href, size="sm"):
     return (f'<a class="person-row {"sm" if size == "sm" else ""}" href="{href}">'
@@ -634,8 +635,9 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .person-row.sm{padding:12px 14px;gap:13px}
 .person-row .name{font-size:15.5px;color:var(--ink);line-height:1.3}
 .person-row .sub{font-size:13px;color:var(--tert)}
-.person-row .sub .as-line{display:block;margin-top:2px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:16px;line-height:1.25;color:var(--plum)}
-.person-row .sub .as-word{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-weight:400;font-size:13px;color:var(--tert);margin-right:2px}
+.person-row .sub .as-line,.actor-tile .sub .as-line{display:block;margin-top:2px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:16px;line-height:1.25;color:var(--plum)}
+.person-row.sm .sub .as-line,.actor-tile .sub .as-line{font-size:15px}
+.person-row .sub .as-word,.actor-tile .sub .as-word{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-weight:400;font-size:13px;color:var(--tert);margin-right:2px}
 
 /* ---------- chips (feed the existing filter JS: data-g / data-v) ---------- */
 .chip{display:inline-flex;align-items:baseline;gap:7px;padding:8px 14px;border:1px solid var(--chip-bd);background:var(--paper);border-radius:999px;font-size:15px;font-family:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
@@ -1170,6 +1172,19 @@ def chars_of_person(p):
     return [ch for c in credits_by_person.get(p["person_id"], []) for ch in _split_chars(c)]
 def chars_of_title(t):
     return [ch for c in credits_by_title.get(t["title_id"], []) for ch in _split_chars(c)]
+def known_as(p):
+    """The caption for a person on a tile or directory row: 'as <character>'
+    from their most-watched show that names one, or '' when none does.
+    Cyan, 10 Sep: the same rule as the cast rows, and no title counts."""
+    best, best_v = "", -1
+    for c in credits_by_person.get(p["person_id"], []):
+        ch = (c.get("character_name") or "").strip().replace("/", " / ").replace("  ", " ")
+        t = t_by_id.get(c["title_id"])
+        if ch and t is not None and title_views(t) > best_v:
+            best, best_v = ch, title_views(t)
+    return f'<span class="as-line"><span class="as-word">as</span> {best}</span>' if best else ""
+
+
 def _performer_in(p, my_pairs):
     out = []
     for c, t in my_pairs:
@@ -1324,7 +1339,7 @@ for p in directory:
         rows_html.append(f'<h2 class="idx-letter" id="letter-{L}">{L}</h2>')
     n = len(credits_by_person.get(p["person_id"], []))
     app = title_app(t_by_id[credits_by_person[p["person_id"]][0]["title_id"]]) if credits_by_person.get(p["person_id"]) and credits_by_person[p["person_id"]][0]["title_id"] in t_by_id else ""
-    sub = f"{n} title{'s' if n != 1 else ''}" + (f" &middot; {app}" if app else "")
+    sub = known_as(p) or app
     rows_html.append(
         f'<a class="person-row sm" href="{pslug(p)}.html" data-n="{esc_attr(norm_search(p["name"] + " " + " ".join(chars_of_person(p))))}">'
         f'{actor_ring(p["name"], (p.get("photo_ref") or "").strip(), "sm")}'
