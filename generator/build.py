@@ -1241,8 +1241,10 @@ def pick_block(pre):
     t = t_by_id[PICK["title_id"]]
     app = title_app(t)
     live = _pick_live(PICK)
-    gift = (f'<a class="btn btn-gold" href="{esc_attr(PICK["link"].strip())}" rel="nofollow noopener" target="_blank" '
-            f'data-expires="{esc_attr(PICK["expires"].strip())}">{PICK.get("link_label") or "Claim it free"}</a>') if live else ""
+    _exp = (PICK.get("expires") or "").strip()
+    gift = (f'<a class="btn btn-gold" href="{esc_attr(PICK["link"].strip())}" rel="noopener" target="_blank"'
+            + (f' data-expires="{esc_attr(_exp)}"' if _exp else "")
+            + f'>{PICK.get("link_label") or "Watch it"}</a>') if live else ""
     return f"""<section class="pick" aria-labelledby="pick-heading">
 <div class="pick-inner">
 <a class="pick-poster" href="{pre}titles/{tslug(t)}.html">{poster_box(t, app)}</a>
@@ -1252,7 +1254,7 @@ def pick_block(pre):
 {f'<p class="pick-app">On {app} &middot; {t["episode_count"]} episodes</p>' if app and t.get("episode_count") else f'<p class="pick-app">On {app}</p>' if app else ''}
 <p class="pick-blurb">{PICK["blurb"]}</p>
 <div class="pick-actions">{gift}<a class="btn btn-wine" href="{pre}titles/{tslug(t)}.html">The story and cast &rarr;</a></div>
-</div></div></section>{PICK_JS if live else ''}"""
+</div></div></section>{PICK_JS if live and _exp else ''}"""
 
 # Actor pages
 for p in people:
@@ -1699,7 +1701,7 @@ for t in titles:
 <p class="views-line">{" &middot; ".join(views_bits)}</p>
 {f'<p class="book-note"><span aria-hidden="true">&#128214;</span> Based on the novel{" by " + book_of(t) if book_of(t) != "yes" else ""}</p>' if book_of(t) else ''}
 <div class="watch-card"><p class="label">Where to watch{f' &middot; checked {_checked}' if _checked else ''}</p>{watch_buttons(t['title_id'], pre)}
-{(f'<p class="pick-gift"><a class="btn btn-gold" href="{esc_attr(PICK["link"].strip())}" rel="nofollow noopener" target="_blank" data-expires="{esc_attr(PICK["expires"].strip())}">{PICK.get("link_label") or "Claim it free"}</a> <span class="hint">Cyan&rsquo;s gift link, while it lasts.</span></p>' + PICK_JS) if PICK is not None and PICK["title_id"] == t["title_id"] and _pick_live(PICK) else ''}
+
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
 <div class="title-actions">
 <button class="act-btn" type="button" data-fav="{tslug(t)}" aria-pressed="false">
