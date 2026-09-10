@@ -42,9 +42,10 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
 - Every trope chip on the tropes index has its page.
 
 **Title pages** (the 10 Sep fold)
-- Every title page carries Where to watch with its checked date and a
-  visible Quick answers section matching its FAQ schema. There is no
-  where-to-watch/ folder; those URLs 301 to the title page.
+- Every title page ends with the always-open "At a glance" band (where
+  to watch with the checked date, length, cost, cast) and carries
+  TVSeries schema; no fold-outs, no FAQ markup (Cyan's 10 Sep design).
+  There is no where-to-watch/ folder; those URLs 301 to the title page.
 
 **Sitemap and noindex** (the 1 Sep Google demotion recovery)
 - Sitemap URLs: on-domain, every one has a file, none carries a noindex

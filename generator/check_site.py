@@ -209,9 +209,9 @@ else: ok("no sitemap URL carries a noindex meta")
 # The fold (10 Sep): title pages carry where-to-watch and the quick answers.
 _first_title = next((u for u in locs if "/titles/" in u), "")
 _tp = rd(_first_title.replace("https://dramaeverafter.com/", "")) if _first_title else ""
-if _tp and ('<h2>Quick answers</h2>' not in _tp or 'FAQPage' not in _tp):
-    fail(f"title page lacks the Quick answers section or FAQ schema: {_first_title}")
-elif _tp: ok("title pages carry Where to watch and Quick answers (the 10 Sep fold)")
+if _tp and ('id="at-a-glance"' not in _tp or '"TVSeries"' not in _tp or '<details' in _tp):
+    fail(f"title page lacks the At a glance band or TVSeries schema, or still has fold-outs: {_first_title}")
+elif _tp: ok("title pages end with the At a glance band and carry TVSeries schema (10 Sep handoff)")
 
 print("== redirects ==")
 red = rd("_redirects")
