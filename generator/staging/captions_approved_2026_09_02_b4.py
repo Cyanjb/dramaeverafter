@@ -67,7 +67,7 @@ CAPTIONS = {
     # FACTS: him an offer: pass his tests, and Cain will succeed him as the new Godfather of Bourne
     # FACTS: Syndicate.
     'super-godfather-my-ex-begs-me-on-her-knees':
-        'His wife took everything. A godfather offers him the throne.\nCain Hunter is a broken man. His wife betrayed him and left him for ruin, there is nothing left of the happy life he once had. Then he is brought before the mysterious Don Ludwig, who makes him an offer: pass his tests and succeed him as the new Godfather of the Bourne Syndicate. Now the only thing Cain can think is, wait until his ex finds out.',
+        'His wife took everything. A godfather offers him the throne.\nCain Hunter is a broken man. His wife betrayed him and left him for ruin, there is nothing left of the happy life he once had. Then he is brought before the mysterious Don Ludwig, who gives him a very tempting offer. Get through what he sets, and the Bourne Syndicate is his to inherit. Now the only thing Cain can think is, wait until his ex finds out.',
 
     # 65.5M    Stop Crying, I Married Someone Better
     # FACTS: Scarlett Winters is devastated when her fiancé, Carlton Simmons, abandons her at the
@@ -144,7 +144,7 @@ CAPTIONS = {
     # FACTS: brother's last wish. He's been searching for the recipient of his brother's heart, and
     # FACTS: could that person be the wife he married on the spur of the moment?
     'unexpected-knot-married-to-a-billionaire-nurse':
-        "She thinks she married a poor nurse.\nMadeline finds out her boyfriend is cheating on her and is only after her fortune, so she ends it, and somehow ends up accidentally married to Caden, a male nurse. She assumes they are both just two hardworking people of average status, but her husband keeps showing signs of hidden wealth and power. Caden is actually the mysterious CEO of the Cashmore group, volunteering as a nurse to honour his brother's last wish. He has been searching for the person who received his brother's heart. It might just be the wife he married on the spur of the moment.",
+        "She thinks she married a poor nurse.\nMadeline finds out her boyfriend has been cheating and was only ever in it for her money, so she ends it, and somehow ends up accidentally married to Caden, a male nurse. She assumes they are both just two hardworking people of average status, but her husband keeps showing signs of hidden wealth and power. Caden is actually the mysterious CEO of the Cashmore group, volunteering as a nurse to honour his brother's last wish. He has been searching for the person who received his brother's heart. It might just be the wife he married on a whim.",
 
     # 63.1M    Never Reject A Wolf Princess
     # FACTS: In Never Reject A Wolf Princess movie: Lia was born a princess, but all she really wants
@@ -176,7 +176,7 @@ CAPTIONS = {
     # FACTS: met at the hospital. Soon, she'll find out that her strange man is her boss and
     # FACTS: ex-boyfriend's father. She'll also find out that she's pregnant for him.
     'in-love-with-dr-baby-daddy':
-        "The stranger is her boss, and her ex's father.\nSpencer dumps Jade for a brainy new girlfriend after years together, and it stings. Furious, Jade hooks up with a stranger she met at the hospital. Then she learns who he is: her boss, and even more shocking, her ex's father. But hold the phone for one more zinger, she is about to find out she is pregnant too.",
+        "The stranger is her boss, and her ex's father.\nSpencer dumps Jade for a brainy new girlfriend after years together, and it stings. Furious, Jade goes home with a stranger from the hospital. Then she learns who he is: her boss, and even more shocking, her ex's father. But hold the phone for one more zinger, she is about to find out she is pregnant too.",
 
     # 61.9M    My Husband Regrets Divorcing Me
     # FACTS: In My Husband Regrets Divorcing Me movie, Audrey hides her identity as a CEO to protect
@@ -231,7 +231,7 @@ CAPTIONS = {
     # FACTS: after six years apart, they no longer recognize each other. By chance, Violet discovers
     # FACTS: that her charming boss, Carter Watts, is actually her long-lost husband...
     'genius-baby-gets-daddy-back':
-        "Her charming new boss is the husband who left them.\nA medical mishap leaves Violet Gray pregnant with the child of a billionaire stranger, Carter Watts, and they rush into a hasty marriage for the baby's sake. Then Carter leaves on a business trip and stays away six years, while Violet raises their son Patrick alone. Out of nowhere the hotel she works at is bought by a mysterious new owner. It's Carter, but after six years apart neither recognizes the other. What will happen when Violet discovers exactly who her charming boss really is?",
+        "Her charming new boss is the husband who left them.\nA medical mishap leaves Violet Gray carrying a baby that belongs to a billionaire she has never met. Carter Watts, the unexpected baby daddy, and Violet agree on a quick marriage for the baby's sake. Then Carter leaves on a business trip and stays away for six years, while Violet raises their son Patrick alone. Out of nowhere the hotel she works at is bought by a mysterious new owner. It's Carter, but after six years apart neither recognizes the other. What will happen when Violet discovers exactly who her charming boss really is?",
 
     # 59.4M    Queen of the Court
     # FACTS: In Queen of the Court movie, after abandoning her career as a tennis star, Lily Pearson
@@ -250,7 +250,7 @@ CAPTIONS = {
     # FACTS: he promised to tear her apart and make her feel his pain. What happens when he finds out
     # FACTS: her true past intentions?
     'break-my-heart-again':
-        "She broke his heart to save his life.\nLucie ends things with Felix to keep him out of her debtors' hands, and she lets him believe the worst about why. Years later Felix is wealthy and Lucie works for him. Still carrying the hurt, he promises to tear her apart and make her feel his pain. Wait until he finds out the truth of what really happened.",
+        "She broke his heart to save his life.\nLucie ends things with Felix to keep him out of her debtors' hands, and she lets him believe the worst about why. Years later Felix is wealthy and Lucie works for him. Still carrying the hurt, he promises to take her apart until she feels every bit of what he felt. Wait until he finds out the truth of what really happened.",
 
     # 58.6M    The Hacker Heiress Strikes Back
     # FACTS: In The Hacker Heiress Strikes Back movie, in a previous life, heiress Emily was a genius
@@ -315,7 +315,7 @@ CAPTIONS = {
     # FACTS: protect her unborn baby, she agrees to a contract marriage with the mafia boss. They
     # FACTS: never thought this would lead them to true love.
     'ruthless-mafia-daddy':
-        "The sperm bank mixed her up with the mafia.\nThe day Ellie's IVF works is the day she finds out her fiance and her best friend are having an affair. She decides to raise the child alone, and then the doctor tells her about the mix up at the sperm bank. She is pregnant with the mafia boss's baby, and suddenly she is caught in a war over who inherits the family. To protect her unborn child she agrees to a contract marriage with the boss himself. Neither of them expects it to turn into the real thing.",
+        "The sperm bank mixed her up with the mafia.\nThe day Ellie's IVF works is the day she catches her fiance and her best friend together. She decides to raise the child alone, and then the doctor tells her about the mix up at the sperm bank. She is pregnant with the mafia boss's baby, and suddenly she is caught in a war over who inherits the family. To protect her unborn child she agrees to a contract marriage with the boss himself. Neither of them expects it to turn into the real thing.",
 
     # 57.7M    The Day the Champion Racer Lost His Bride
     # FACTS: In The Day the Champion Racer Lost His Bride movie, for five years, Alexis poured her
@@ -408,7 +408,7 @@ CAPTIONS = {
     # FACTS: leaving ice cold regret to be his new forever mate! But what will he do to bring her
     # FACTS: back?
     'leaving-my-alpha-husband-in-ice-cold-regret':
-        "She'd rather freeze forever than stay his.\nWhen Snow discovers her alpha husband cheating, she offers herself as the ritual sacrifice, the one who is frozen for eternity. Leaving breaks their mate bond for good, and ice cold regret becomes his new companion. The question is how far will he go to bring her back.",
+        "She'd rather freeze forever than stay his.\nSnow catches her alpha husband with someone else, and puts herself forward as the ritual sacrifice, the one who is frozen for eternity. Leaving breaks their mate bond for good, and ice cold regret becomes his new companion. The question is how far will he go to bring her back.",
 
     # 55.1M    I'm Done Being a Yes-Man
     # FACTS: In I'm Done Being a Yes-Man movie, Enzo is the mysterious heir to the Quinn Corporation.
@@ -421,7 +421,7 @@ CAPTIONS = {
     # FACTS: real personality, he's no longer in love with her. Enzo resolves to leave behind his
     # FACTS: "simp" image and make sure Stella gets what she deserves.
     'i-m-done-being-a-yes-man':
-        "She hired his killer. He woke up a month earlier.\nEnzo is the hidden heir to the Quinn Corporation, a football talent, and hopelessly infatuated with Stella, his family's chauffeur's daughter. When Stella crashes while drunk driving she convinces Enzo to take the blame, and then, afraid her secret will come out, she scams him out of his savings and takes a hit out on him. Just as Enzo is about to die, a mysterious power sends him one month into the past. This time he knows exactly who Stella is. The yes man Mr Nice Guy routine is over and done, and now she is going to get exactly what she deserves.",
+        "She hired his killer. He woke up a month earlier.\nEnzo is the hidden heir to the Quinn Corporation, a football talent, and hopelessly infatuated with Stella, his family's chauffeur's daughter. When Stella crashes while drunk driving she talks Enzo into saying he was the one driving, and then, afraid her secret will come out, she scams him out of his savings and takes a hit out on him. With Enzo moments from dying, something nobody can explain sends him back in time one month. This time he knows exactly who Stella is. The yes man Mr Nice Guy routine is over and done, and now she is going to get exactly what she deserves.",
 
     # 54.2M    Daisy Tucker and Mr. NYC
     # FACTS: In Daisy Tucker and Mr. NYC movie, after a flash marriage, country girl Daisy finds
@@ -487,7 +487,7 @@ CAPTIONS = {
     # FACTS: gradually create sparks, resolve misunderstandings, and eventually move towards a real
     # FACTS: marriage.
     'the-secret-of-my-billion-dollar-marriage':
-        "She thinks he strips. He thinks she's a gold digger.\nEmma is the heiress of the Coffman family, freshly dumped, when she meets Lucas, the billionaire of the Fischer family, in a strip club, right as her ex and his mistress walk in. To save face she asks Lucas to play her husband, and he turns it into a proper fake marriage. Emma is sure Lucas is a stripper. Lucas is sure Emma is a gold digger. Neither wants to admit who they really are, so they keep up the act at home, fend off two villains who will not leave them alone, and somewhere in the middle of all the pretending it stops being pretend.",
+        "She thinks he strips. He thinks she's a gold digger.\nEmma is the heiress of the Coffman family, freshly dumped, when she runs into Lucas, the head of the Fischer family, in a strip club, right as her ex and his mistress walk in. To save face she asks Lucas to play her husband, and he turns it into a proper fake marriage. Emma is sure Lucas is a stripper. Lucas is sure Emma is a gold digger. Neither wants to admit who they really are, so they keep up the act at home, fend off two villains who will not leave them alone, and somewhere in the middle of all the pretending it stops being pretend.",
 
     # 51.9M    After Cancer I Turn into A Badass
     # FACTS: Evelyn has long been oppressed by her stepsister, misunderstood by her husband, and
@@ -497,7 +497,7 @@ CAPTIONS = {
     # FACTS: However, her husband suddenly realizes that he has mistaken someone else for his
     # FACTS: lifesaver...
     'after-cancer-i-turn-into-a-badass':
-        "Told she's dying, she finally starts living.\nEvelyn has spent years being walked over by her stepsister, misunderstood by her husband and looked down on by her family. A terminal cancer diagnosis snaps her awake. If these are her final days she will live them her way, so she turns into a fierce diva and takes her revenge on her oblivious husband and evil stepsister. Meanwhile her husband works out that the lifesaver he has been honoring all these years was someone else entirely. Then Evelyn finds out that maybe the future isn't as bleak as she thinks.",
+        "Told she's dying, she finally starts living.\nEvelyn has spent years being walked over by her stepsister, misunderstood by her husband, and treated as less by her own family. A terminal cancer diagnosis snaps her awake. If these are her final days she will live them her way, so she turns into a fierce diva and takes her revenge on her oblivious husband and evil stepsister. Meanwhile her husband works out that the lifesaver he has been honoring all these years was someone else entirely. Then Evelyn finds out that maybe the future isn't as bleak as she thinks.",
 
     # 51.9M    Fated to My Forbidden Vampire
     # FACTS: Fated to My Forbidden Vampire Summary shows how werewolves are bound by the moon
@@ -518,7 +518,7 @@ CAPTIONS = {
     # FACTS: there's a warm, kind heart under Zach's cold bad boy persona, ready to heal her broken
     # FACTS: heart and face the world at her side...
     'breaking-the-deal-with-my-hockey-bad-boy':
-        "Her worst enemy is keeping her best secret.\nJane Wellsy has a secret crush on her stepbrother Nate, and the only person who knows is her worst enemy, hockey bad boy Zach Gates. Worse, Nate's new girlfriend turns out to be Melissa, the girl who bullied Jane through high school. When Melissa finds Jane's smutty story and demands to know if it is about Nate, Zach swoops in with a cover: a fake relationship with him. But surprisingly the more time they spend together, the more Jane finds a warm, kind heart under all that cold bad boy bravado, one ready to heal hers.",
+        "Her worst enemy is keeping her best secret.\nJane Wellsy has a secret crush on her stepbrother Nate, and the only person who knows is her worst enemy, hockey bad boy Zach Gates. Worse, Nate's new girlfriend turns out to be Melissa, the girl who bullied Jane through high school. When Melissa gets hold of the smutty story Jane wrote and wants to know whether Nate is the male lead, Zach swoops in with a cover: a fake relationship with him. But surprisingly the more time they spend together, the more Jane finds a warm, kind heart under all that cold bad boy bravado, one ready to heal hers.",
 
     # 51.4M    Captured and Bound By My CEO
     # FACTS: In Captured and bound by my CEO movie, Lydia's father is dying and the family's company
@@ -582,7 +582,7 @@ CAPTIONS = {
     # FACTS: -- and an unexpected shelter. Now Madison’s trading pearls for cowboy boots, riding
     # FACTS: bulls, horses—and maybe even a cowboy.
     'lassoed-by-a-cowboy-s-love':
-        "Stranded in Texas by her ex, saved by his uncle.\nMadison is a Manhattan heiress with everything, until she loses all of it, including the fiance who turned cruel and stranded her in Texas. Broke and desperate, she wanders into a local saloon and straight into the arms of Beau Hayes, her ex's rugged cowboy uncle. After one steamy night Beau offers her a job and unexpected shelter. So Madison trades her pearls for cowboy boots and learns to ride bulls, horses, and maybe even a cowboy.",
+        'Stranded in Texas by her ex, saved by his uncle.\nMadison is a Manhattan heiress with everything, until she loses all of it, including the fiance who turned cruel and stranded her in Texas. Broke and desperate, she wanders into a local saloon and straight into Beau Hayes, the weathered cowboy uncle her ex would rather she never met. After one very steamy night he offers her a job and somewhere to stay. So Madison trades her pearls for cowboy boots and learns to ride bulls, horses, and maybe even a cowboy.',
 
     # 49.8M    Saved by the Sexy Cowboy
     # FACTS: In Saved by the Sexy Cowboy movie, Ava is on the run from her abusive ex, who will stop
@@ -638,7 +638,7 @@ CAPTIONS = {
     # FACTS: protection but that came with a price. However, Sophie wants to break free from this
     # FACTS: bond, but she finds herself stuck as James Knight refuses to let go.
     'goodbye-my-ceo':
-        "His protection came with a price.\nChased by a gang, Sophie McKenzie runs straight into the arms of James Knight. He takes her in and offers protection, but it comes at a price. When Sophie tries to break free of the arrangement she realizes James Knight won't be letting her go anytime soon.",
+        "His protection came with a price.\nChased by a gang, Sophie McKenzie runs headlong into James Knight. He takes her in and offers protection, but it comes at a price. When Sophie tries to break free of the arrangement she realizes James Knight won't be letting her go anytime soon.",
 
     # 47.6M    You've Got Male
     # FACTS: A few minutes after getting married, Leila's husband was screwing another woman. She
@@ -838,7 +838,7 @@ CAPTIONS = {
     # FACTS: lovechild Lilly. Little do they know, Alyssa is actually Jane Davenport M.D.--heiress to
     # FACTS: the Davenport fortune, and the only heart surgeon in the world that can save Lilly.
     'the-divorced-wife-is-a-genius-surgeon':
-        "He left his pregnant wife for the other woman's child.\nAlyssa is eight months gone when her husband walks out for his mistress and their daughter Lilly. Neither of them has any idea who they just discarded. She is Jane Davenport, the Davenport money is hers, and of every heart surgeon alive she is the one who can save the little girl he left her for.",
+        "He left his pregnant wife for the other woman's child.\nAlyssa is eight months gone when her husband walks out for his mistress and their daughter Lilly. Neither of them has any idea who they just discarded. She is Jane Davenport, heiress to the Davenport money, and of every heart surgeon alive she is the one who can save the little girl he left her for.",
 
     # 41.9M    Mafia's Tender Torture
     # FACTS: Vesper, who is determined to raise money to save her father, finds Raymond, the boss of
@@ -1497,3 +1497,63 @@ SOURCES = {
 EPISODES = {
 }
 
+# Captions Cyan wrote or rewrote herself. Exempt from the genre-term FAIL:
+# choosing not to use a word the source used is her editorial call, not a
+# paraphrase, and the gate should never overrule the editor.
+HER_OWN = {
+    'a-sweet-contract-with-the-mafia-boss',
+    'accidentally-pregnant-forever-spoiled',
+    'after-cancer-i-turn-into-a-badass',
+    'betrayed-alpha-queen-rises-from-the-ashes',
+    'betraying-my-billionaire-husband',
+    'bound-to-the-rebel-wolf',
+    'break-my-heart-again',
+    'breaking-the-deal-with-my-hockey-bad-boy',
+    'caution-cute-baby-alert',
+    'daddy-i-m-your-lucky-star',
+    'fated-to-my-forbidden-vampire',
+    'fuel-to-our-fire-my-racer-stepbrother',
+    'genius-baby-gets-daddy-back',
+    'goodbye-my-ceo',
+    'hate-to-love-you',
+    'hillbilly-girlie-marries-a-billionaire',
+    'i-accidentally-hired-a-billionaire-husband',
+    'i-have-five-kick-ass-brothers',
+    'i-m-done-being-a-yes-man',
+    'in-love-with-dr-baby-daddy',
+    'kiss-me-99-times-a-day',
+    'lassoed-by-a-cowboy-s-love',
+    'leaving-my-alpha-husband-in-ice-cold-regret',
+    'married-for-green-card-stayed-for-love',
+    'mistaken-as-his-mate-the-luna-s-regret',
+    'my-boss-is-my-secret-sperm-donor',
+    'nanny-to-my-hot-bully',
+    'never-reject-a-wolf-princess',
+    'omg-i-got-married-in-vegas',
+    'operation-christmas-trap',
+    'playing-by-the-billionaire-s-rules',
+    'pregnant-by-my-ex-s-dad',
+    'puck-me-baby-one-more-time',
+    'queen-mom-rules',
+    'queen-of-the-court',
+    'rented-a-billionaire-husband-for-christmas',
+    'ruthless-mafia-daddy',
+    'saved-by-the-sexy-cowboy',
+    'secret-strangers-in-love',
+    'super-godfather-my-ex-begs-me-on-her-knees',
+    'taming-my-bullies-3',
+    'taming-the-lion-billionaire-on-bikes',
+    'the-bad-ass-heiress-returns-after-divorce',
+    'the-genius-and-the-bad-boy',
+    'the-hacker-heiress-strikes-back',
+    'the-lost-son-returns-as-the-duke',
+    'the-nurse-s-secret-marriage',
+    'the-price-of-loving-you',
+    'the-return-of-my-mafia-husband',
+    'the-secret-of-my-billion-dollar-marriage',
+    'three-brothers-spoil-me',
+    'unexpected-knot-married-to-a-billionaire-nurse',
+    'wrong-marriage-fated-groom',
+    'you-drive-me-crazy',
+    'you-ve-got-male',
+}
