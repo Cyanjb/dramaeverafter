@@ -56,7 +56,8 @@ for fname, col, universe, label in [
         ("tropes.csv", "title_id", tid_set, "titles"),
         ("credits.csv", "title_id", tid_set, "titles"),
         ("credits.csv", "person_id", pid_set, "people"),
-        ("pinned.csv", "title_id", tid_set, "titles")]:
+        ("pinned.csv", "title_id", tid_set, "titles"),
+        ("picks.csv", "title_id", tid_set, "titles")]:
     orphans = [r[col] for r in rows(fname) if r.get(col) and r[col] not in universe]
     if orphans: fail(f"{fname}: {len(orphans)} {col} rows point at no {label} row, e.g. {orphans[:3]}")
     else: ok(f"{fname}: every {col} resolves")
@@ -147,6 +148,16 @@ mw, nt = home.find("Most watched"), home.find("New and trending")
 if mw == -1 or nt == -1: fail("homepage is missing the Most watched or New and trending rail")
 elif not (mw < nt): fail("New and trending is not directly under Most watched (Cyan, 6 Sep)")
 else: ok("rail order: Most watched, then New and trending")
+# Our pick (10 Sep): the newest picks.csv row shows on the homepage above the
+# rails and its title page carries the chip; a gift link never outlives its expiry.
+_picks = rows("picks.csv")
+if _picks:
+    _pk = max(_picks, key=lambda r: r["added"])
+    _tp2 = rd(os.path.join("titles", _pk["title_id"] + ".html"))
+    if 'class="pick"' not in home or _pk["title_id"] not in home: fail("homepage lacks the Our pick block for the newest picks.csv row")
+    elif 'pick-chip' not in _tp2: fail(f"the pick's title page lacks the Our pick chip: {_pk['title_id']}")
+    elif 'data-expires' in home and 'PICK_JS' not in bsrc: fail("pick gift button has no expiry script")
+    else: ok(f"Our pick: {_pk['title_id']} on the homepage and chipped on its page")
 rail = re.search(r"New and trending.*?</section>", home, re.S)
 rail_slugs = list(dict.fromkeys(re.findall(r"titles/([a-z0-9-]+)\.html", rail.group(0)))) if rail else []
 if len(rail_slugs) < 8: fail(f"New and trending rail holds {len(rail_slugs)} titles; should be ~12")

@@ -809,6 +809,18 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
 .known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
 .known-for .more{color:var(--wine);font-size:13.5px;text-decoration:none}.known-for .more:hover{color:var(--wine-hover)}
+.pick{background:var(--blush);border-top:1px solid var(--blush-bd);border-bottom:1px solid var(--blush-bd);padding:30px 22px}
+.pick-inner{display:flex;gap:26px;align-items:center;max-width:1100px;margin:0 auto}
+.pick-poster{flex:0 0 150px;max-width:150px}.pick-poster .poster{display:block}
+.pick-body{flex:1 1 300px;min-width:0}.pick-body .eyebrow{margin-bottom:8px}
+.pick-body h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,3vw,32px);line-height:1.15;margin:0 0 6px;color:var(--plum)}
+.pick-body h2 a{color:inherit;text-decoration:none}.pick-body h2 a:hover{color:var(--wine)}
+.pick-app{margin:0 0 10px;font-size:14px;color:var(--tert)}
+.pick-blurb{margin:0 0 16px;font-size:17px;line-height:1.55;color:var(--ink);max-width:60ch;text-wrap:pretty}
+.pick-actions{display:flex;flex-wrap:wrap;gap:10px}
+.pick-chip{display:inline-block;background:var(--gold);color:#241A12;border-radius:999px;padding:2px 10px;font-size:12px;letter-spacing:.1em;margin-right:6px}
+.pick-gift{margin:12px 0 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center}.pick-gift .hint{font-size:13px;color:var(--tert)}
+@media(max-width:560px){.pick-inner{flex-direction:column;align-items:flex-start}.pick-poster{flex-basis:120px;max-width:120px}}
 .glance{background:var(--plum);color:var(--paper);padding:40px 20px 44px}
 .glance .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
 .glance h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,3vw,30px);line-height:1.15;color:var(--paper);margin:0}
@@ -1207,6 +1219,43 @@ def _performer_in(p, my_pairs):
         out.append(node)
     return out
 
+# Our pick (Cyan, 10 Sep 2026): one hand-chosen title, data/picks.csv, the
+# newest row wins. A gift link (DramaBox "gifted" links expire in 72 hours)
+# carries an expiry: the build omits the button once it is past, and the
+# page hides it client-side the moment it passes, so a stale offer never
+# shows. Without a link the block still stands: the pick is the point.
+PICKS = rows("picks.csv") if os.path.exists(os.path.join(DATA, "picks.csv")) else []
+PICK = max((r for r in PICKS if r["title_id"] in t_by_id), key=lambda r: r["added"], default=None)
+def _pick_live(r):
+    exp = (r.get("expires") or "").strip()
+    return bool((r.get("link") or "").strip()) and (not exp or exp > datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+PICK_JS = """
+<script>
+(function(){var b=document.querySelector('[data-expires]');if(!b)return;
+var t=Date.parse(b.getAttribute('data-expires'));if(isNaN(t))return;
+function tick(){if(Date.now()>t){b.hidden=true;}}tick();setInterval(tick,60000);})();
+</script>
+"""
+def pick_block(pre):
+    if PICK is None: return ""
+    t = t_by_id[PICK["title_id"]]
+    app = title_app(t)
+    live = _pick_live(PICK)
+    _exp = (PICK.get("expires") or "").strip()
+    gift = (f'<a class="btn btn-gold" href="{esc_attr(PICK["link"].strip())}" rel="noopener" target="_blank"'
+            + (f' data-expires="{esc_attr(_exp)}"' if _exp else "")
+            + f'>{PICK.get("link_label") or "Watch it"}</a>') if live else ""
+    return f"""<section class="pick" aria-labelledby="pick-heading">
+<div class="pick-inner">
+<a class="pick-poster" href="{pre}titles/{tslug(t)}.html">{poster_box(t, app)}</a>
+<div class="pick-body">
+<p class="eyebrow">Our pick this week</p>
+<h2 id="pick-heading"><a href="{pre}titles/{tslug(t)}.html">{t["primary_title"]}</a></h2>
+{f'<p class="pick-app">On {app} &middot; {t["episode_count"]} episodes</p>' if app and t.get("episode_count") else f'<p class="pick-app">On {app}</p>' if app else ''}
+<p class="pick-blurb">{PICK["blurb"]}</p>
+<div class="pick-actions">{gift}<a class="btn btn-wine" href="{pre}titles/{tslug(t)}.html">The story and cast &rarr;</a></div>
+</div></div></section>{PICK_JS if live and _exp else ''}"""
+
 # Actor pages
 for p in people:
     sl = pslug(p)
@@ -1549,6 +1598,8 @@ for t in titles:
     views_bits = [x for x in [v, genres, lang_label] if x]
     ep = f"{t['episode_count']} episodes" if t.get("episode_count") else ""
     eyebrow_bits = [x for x in ["Vertical drama", t.get("year"), ep, status_label] if x]
+    if PICK is not None and PICK["title_id"] == t["title_id"]:
+        eyebrow_bits.insert(0, '<span class="pick-chip">Our pick this week</span>')
     if t.get("data_confidence") == "needs_check": eyebrow_bits.append("community reported")
     # AI-search enrichment (Cyan, 14 Aug). The graph carries only HELD data - a
     # blank field emits nothing, because a fabricated answer in schema is worse
@@ -1650,6 +1701,7 @@ for t in titles:
 <p class="views-line">{" &middot; ".join(views_bits)}</p>
 {f'<p class="book-note"><span aria-hidden="true">&#128214;</span> Based on the novel{" by " + book_of(t) if book_of(t) != "yes" else ""}</p>' if book_of(t) else ''}
 <div class="watch-card"><p class="label">Where to watch{f' &middot; checked {_checked}' if _checked else ''}</p>{watch_buttons(t['title_id'], pre)}
+
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
 <div class="title-actions">
 <button class="act-btn" type="button" data-fav="{tslug(t)}" aria-pressed="false">
@@ -2494,7 +2546,7 @@ body = f"""
 <span><b>{len(APPS_WITH_DATA)}</b> apps</span>
 </div>
 </div></section>
-
+{pick_block("")}
 <section style="padding:40px 0 8px">
 <div class="section-head pad"><h2>Most watched</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
 <div class="rail">{"".join(poster_card(t, "", rail_item=True) for t in featured)}</div>
