@@ -93,6 +93,7 @@
 
 /actors/timothy-stein.html  /actors/tim-stein.html  301
 /actors/gabrielle-brown.html  /actors/gabrielle-faith-brown.html  301
+/actors/jordan-frank.html  /actors/jordan-roy-frank.html  301
 # Canonical URL form is .html; Netlify also answers extensionless paths with
 # the same content (no redirect), so Google indexed a duplicate of nearly
 # every page. Recovery hygiene, 5 Sep 2026: extensionless now 301s to the
