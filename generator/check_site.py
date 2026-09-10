@@ -234,6 +234,13 @@ missing += [m for m in sorted(os.listdir(ROOT)) if m.endswith(".md")
 if missing: fail(f"not blocked on the domain (add a 404! rule to _redirects): {missing}")
 else: ok("database, generator, references and every root .md are 404! on the domain")
 
+print("== indexnow ==")
+_keys = [f for f in os.listdir(ROOT) if re.fullmatch(r"[0-9a-f]{32}\.txt", f)]
+if len(_keys) != 1: fail(f"expected exactly one IndexNow key file at the root, found {_keys}")
+elif rd(_keys[0]).strip() != _keys[0][:-4]: fail(f"IndexNow key file {_keys[0]} must contain its own name")
+elif "indexnow.py" not in rd(".github/workflows/weekly-scrape.yml"): fail("weekly workflow no longer runs indexnow.py")
+else: ok("IndexNow key file present and the weekly workflow submits changes")
+
 print("== analytics ==")
 gc = [p for p in ("index.html", "browse.html", "404.html") if "data-goatcounter=" not in rd(p)]
 if gc: fail(f"GoatCounter script missing from {gc}")

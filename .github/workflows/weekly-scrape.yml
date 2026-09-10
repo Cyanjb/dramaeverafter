@@ -29,6 +29,10 @@ on:
       routes:
         description: Scrape routes, comma separated (tags,genres,home,fandom,wanted,sitemap,detail)
         default: "tags,genres,home,fandom,wanted,detail"
+      indexnow_all:
+        description: Also resubmit every sitemap URL to IndexNow (Bing), not just what changed
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -107,6 +111,19 @@ jobs:
             echo "push attempt $attempt failed, retrying"; sleep $((attempt * 5))
           done
           exit 1
+
+      # Bing's push channel (10 Sep 2026): name the pages that changed so the
+      # AI-search engines that lean on Bing see them in minutes. Never blocks
+      # a publish; at worst Bing waits for the sitemap.
+      - name: Tell Bing what changed (IndexNow)
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        continue-on-error: true
+        run: |
+          if [ "${{ github.event.inputs.indexnow_all }}" = "true" ]; then
+            python3 generator/indexnow.py --all
+          else
+            python3 generator/indexnow.py --changed "${{ github.sha }}"
+          fi
 
       - uses: actions/upload-artifact@v4
         if: always()

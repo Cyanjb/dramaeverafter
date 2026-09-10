@@ -57,6 +57,12 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   are blocked with a forced 404! (10 Sep: the repo root is the publish
   folder, so anything not blocked deploys to the brand domain).
 
+**IndexNow** (10 Sep)
+- Exactly one key file (32 hex characters .txt, containing its own name)
+  sits at the site root, and the Sunday workflow runs indexnow.py after
+  its push so Bing learns what changed. A failure there never blocks a
+  publish.
+
 **Analytics** (10 Sep)
 - Every page carries the GoatCounter script; the site code lives in
   build.py as GOATCOUNTER and nowhere else.

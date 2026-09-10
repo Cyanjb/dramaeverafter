@@ -97,6 +97,18 @@ THE FOLD AND THE CHARACTER INDEX SHIPPED 10 SEP (Cyan: "do it"):
   (code dramaeverafter). Referrers from chatgpt.com and perplexity.ai
   will show there once main deploys.
 
+INDEXNOW SHIPPED 10 SEP (Cyan: "go ahead"): generator/indexnow.py POSTs
+changed URLs to api.indexnow.org (Bing, Yandex, Naver, Seznam, Yep). The
+key is the 32-hex .txt at the site root, found by the script, public by
+design. The weekly workflow runs `--changed <sha at run start>` after its
+push, continue-on-error; the indexnow_all dispatch input resubmits the
+whole sitemap. Deleted files are sent too, so the 3,753 old where-to-watch
+URLs drop out of Bing. FIRST FULL SUBMISSION IS STILL TO DO: it needs the
+key file live, so after this branch is merged run
+`python3 generator/indexnow.py --all` (from a sandbox, or dispatch the
+workflow with indexnow_all). Cyan still has to verify the site in Bing
+Webmaster Tools (import from Search Console) to see Bing's own reports.
+
 SHIPPED 10 SEP, Cyan's go: GoatCounter on every page (build.py
 GOATCOUNTER = "dramaeverafter"; the account must exist at
 dramaeverafter.goatcounter.com with that code, or change the constant
