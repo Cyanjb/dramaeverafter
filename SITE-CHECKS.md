@@ -33,10 +33,11 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
 - The trending rail holds ~12 titles, ranked by real view growth from
   the weekly snapshots.
 - Every pin in data/pinned.csv leads the rail, in file order.
-- Our pick (10 Sep): the newest row of data/picks.csv shows as a block
-  above Most watched and its title page carries the chip. A gift link is
-  dropped by the build once its expiry passes and hidden in the browser
-  the minute it does, so a dead offer never shows.
+- Our pick (13 Sep): the newest row of data/picks.csv shows as a tip note
+  directly AFTER the Most watched strip, and its title page carries the
+  chip. One sentence, no gold button. A link with an expiry is dropped by
+  the build once it passes and hidden in the browser the minute it does,
+  so a dead offer never shows.
 
 **Pages and links**
 - tropes/index, platforms, my-list, contact, 404, robots.txt and
