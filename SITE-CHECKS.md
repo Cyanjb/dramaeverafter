@@ -28,8 +28,8 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   characters.html lists every named character with working links.
 
 **Homepage**
-- Rail order: Most watched first, New and trending directly under it
-  (Cyan, 6 Sep).
+- Rail order: Most watched right now first, New this month directly under
+  it, then Faces you keep seeing (Cyan, 6 and 13 Sep).
 - The trending rail holds ~12 titles, ranked by real view growth from
   the weekly snapshots.
 - Every pin in data/pinned.csv leads the rail, in file order.

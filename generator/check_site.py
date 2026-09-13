@@ -144,22 +144,23 @@ if norm_search:
 
 print("== homepage ==")
 home = rd("index.html")
-mw, nt = home.find("Most watched"), home.find("New and trending")
-if mw == -1 or nt == -1: fail("homepage is missing the Most watched or New and trending rail")
-elif not (mw < nt): fail("New and trending is not directly under Most watched (Cyan, 6 Sep)")
-else: ok("rail order: Most watched, then New and trending")
+mw, nt = home.find("Most watched right now"), home.find("New this month")
+if mw == -1 or nt == -1: fail("homepage is missing the Most watched or New this month rail")
+elif not (mw < nt): fail("New this month is not directly under Most watched (Cyan, 6 and 13 Sep)")
+else: ok("rail order: Most watched right now, then New this month")
 # Our pick (10 Sep): the newest picks.csv row shows on the homepage above the
 # rails and its title page carries the chip; a gift link never outlives its expiry.
 _picks = rows("picks.csv")
 if _picks:
     _pk = max(_picks, key=lambda r: r["added"])
     _tp2 = rd(os.path.join("titles", _pk["title_id"] + ".html"))
-    if 'class="tip"' not in home or _pk["title_id"] not in home: fail("homepage lacks the pick-of-the-week card for the newest picks.csv row")
-    elif home.rfind('class="rail"') > home.find('class="tip"'): fail("the pick card must sit AFTER the last poster rail, at the bottom of the page (Cyan, 13 Sep)")
+    if 'class="pick-grid' not in home or _pk["title_id"] not in home: fail("homepage lacks the pick-of-the-week card for the newest picks.csv row")
+    elif home.rfind('class="rail"') > home.find('class="pick-grid'): fail("the pick row must sit AFTER the poster rails (Cyan, 13 Sep)")
+    elif home.find("In the mood for") > home.find('class="pick-grid'): fail("the mood chips must sit above the pick row (Cyan, 13 Sep)")
     elif 'pick-chip' not in _tp2: fail(f"the pick's title page lacks the Our pick chip: {_pk['title_id']}")
     elif 'data-expires' in home and 'PICK_JS' not in bsrc: fail("pick gift button has no expiry script")
     else: ok(f"Our pick: {_pk['title_id']} on the homepage and chipped on its page")
-rail = re.search(r"New and trending.*?</section>", home, re.S)
+rail = re.search(r"New this month.*?</section>", home, re.S)
 rail_slugs = list(dict.fromkeys(re.findall(r"titles/([a-z0-9-]+)\.html", rail.group(0)))) if rail else []
 if len(rail_slugs) < 8: fail(f"New and trending rail holds {len(rail_slugs)} titles; should be ~12")
 else: ok(f"New and trending rail holds {len(rail_slugs)} titles")
