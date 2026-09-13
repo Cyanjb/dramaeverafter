@@ -809,18 +809,36 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
 .known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
 .known-for .more{color:var(--wine);font-size:13.5px;text-decoration:none}.known-for .more:hover{color:var(--wine-hover)}
-.tip{padding-top:22px;padding-bottom:4px;border-top:1px solid var(--line)}
-.tip .inner{display:flex;gap:16px;align-items:flex-start;max-width:1120px;margin:0 auto}
-.tip .thumb{flex:0 0 96px;width:96px;text-decoration:none}
-.tip .body{flex:1 1 auto;min-width:0}
-.tip .kicker{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep)}
-.tip h3{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:22px;line-height:1.15;margin:0}
+.tip{margin:32px auto;padding:0 22px}
+.tip a{color:var(--wine)}
+.tip .card{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start;background:var(--blush);border:2px solid var(--plum);border-radius:14px;padding:16px}
+.tip .kicker{grid-column:1/-1;justify-self:center;display:flex;align-items:center;gap:8px;width:max-content;max-width:100%;margin:0 auto 2px;padding:8px 16px;border-radius:999px;background:var(--plum);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);text-align:center}
+.tip .kicker .star{color:var(--gold);font-size:15px;line-height:1}
+.tip .poster{display:block;box-sizing:border-box;text-decoration:none;width:100%;aspect-ratio:9/16;border-radius:8px;overflow:hidden;background:linear-gradient(160deg,var(--blush),var(--paper) 72%);box-shadow:0 10px 22px -6px rgba(43,27,46,.34),0 2px 5px rgba(43,27,46,.18);position:relative}
+.tip .poster img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}
+.tip .poster .art{display:block;padding:10px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:13px;line-height:1.2;color:var(--plum)}
+.tip .poster .badge{position:absolute;top:0;right:0;width:38px;height:38px;border-top-right-radius:8px;background:linear-gradient(225deg,var(--gold) 52%,transparent 52.5%);z-index:1}
+.tip .poster .badge svg{position:absolute;top:5px;right:5px;width:13px;height:13px;display:block}
+.tip h3{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(21px,5.4vw,32px);line-height:1.14;margin:0}
 .tip h3 a{color:var(--plum);text-decoration:none}.tip h3 a:hover{color:var(--wine)}
-.tip .line{margin:8px 0 0;font-size:16px;line-height:1.5;max-width:60ch;text-wrap:pretty}
-.tip .foot{margin:14px 0 0;font-size:15px;color:var(--tert)}
-.tip .foot a{color:var(--wine)}
-.tip .go{font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:1px;text-decoration:none}
+.tip .line{margin:8px 0 0;font-size:16px;line-height:1.5;max-width:52ch;color:var(--ink);text-wrap:pretty}
+.tip .foot{grid-column:1/-1;margin:14px 0 0;font-size:15px;line-height:1.7;color:#7a6a62}
+.tip .go{font-weight:700;text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:1px}
 .tip .go:hover{border-color:var(--gold-deep)}
+.tip .aside{display:none}
+@media(min-width:860px){
+.tip{margin:40px auto}
+.tip .card{grid-template-columns:150px minmax(0,1fr) auto;gap:24px 32px;align-items:center;padding:28px 32px}
+.tip .kicker{margin:0 auto;padding:10px 24px 10px 20px;font-size:15px;letter-spacing:.14em}
+.tip .kicker .star{font-size:17px}
+.tip .poster{width:150px}
+.tip .poster .badge{width:44px;height:44px}
+.tip .poster .badge svg{top:6px;right:6px;width:15px;height:15px}
+.tip .aside{display:grid;gap:14px;justify-items:end;text-align:right;padding-left:32px;border-left:1px solid rgba(43,27,46,.22)}
+.tip .aside dt{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep)}
+.tip .aside dd{margin:2px 0 0;font-size:15px;color:var(--plum)}
+.tip .foot{display:none}
+}
 .pick-chip{display:inline-block;background:var(--gold);color:#241A12;border-radius:999px;padding:2px 10px;font-size:12px;letter-spacing:.1em;margin-right:6px}
 @media(min-width:760px){.tip .inner{gap:24px}}
 .glance{background:var(--plum);color:var(--paper);padding:40px 20px 44px}
@@ -1226,43 +1244,55 @@ function tick(){if(Date.now()>t){b.hidden=true;}}tick();setInterval(tick,60000);
 </script>
 """
 def pick_block(pre):
-    """The pick of the week, as a tip note (Cyan's Claude Design handoff,
-    13 Sep 2026). It replaced a blush block: this sits under Most watched in
-    the normal page column, one hairline above it, and carries ONE sentence
-    rather than a synopsis. No gold button, so the hero search keeps the only
-    primary action on the page. The kicker is editorial and changes week to
-    week, so picks.csv carries it."""
+    """The pick of the week (Cyan's third Claude Design handoff, 13 Sep 2026).
+    A bordered blush card at the BOTTOM of the homepage, above the footer,
+    sharing the rails' side padding so its left edge lines up with the first
+    poster in every row. The plum pill label is FIXED on every pick: the
+    editorial variation lives in the sentence, not the label. The facts are in
+    the markup twice by design, a right-hand list on desktop and one foot line
+    on phones, and only one is ever visible. No gold button, so the hero
+    search keeps the only primary action on the page."""
     if PICK is None: return ""
     t = t_by_id[PICK["title_id"]]
     app = title_app(t)
     href = f"{pre}titles/{tslug(t)}.html"
     exp = (PICK.get("expires") or "").strip()
-    go = ""
-    if _pick_live(PICK):
-        label = PICK.get("link_label") or (f"Watch on {app}" if app else "Watch it")
-        go = (f'<a class="go" href="{esc_attr(PICK["link"].strip())}" rel="noopener" target="_blank"'
-              + (f' data-expires="{esc_attr(exp)}"' if exp else "") + f'>{label}</a>')
-    # The foot: where to watch, how long, what kind. A part the row does not
-    # hold is dropped, never faked.
-    bits = []
-    if (t.get("episode_count") or "").strip():
-        bits.append(f'{t["episode_count"]} episodes')
-    # Same guard as trope_chip: link only where the page exists, so the tip
-    # can never emit a 404 (it did on the first build, "high fantasy").
+    live = _pick_live(PICK)
+    link = esc_attr(PICK["link"].strip()) if live else ""
+    data_exp = f' data-expires="{esc_attr(exp)}"' if (live and exp) else ""
+    # The poster carries the artwork alone: the title is not repeated on the
+    # tile (the h3 states it). With no artwork on file the tile falls back to
+    # the title in the display serif rather than an empty gradient.
+    img = (t.get("poster_ref") or "").strip()
+    art = (f'<img src="{esc_attr(img)}" alt="" loading="lazy" onerror="this.remove()">' if img
+           else f'<span class="art">{t["primary_title"]}</span>')
+    # Same guard as trope_chip: link only where the page exists, never a 404.
     trs = [tr for tr in tropes_of(t) if tr in all_tropes_set][:2]
-    if trs:
-        bits.append(", ".join(f'<a href="{pre}tropes/{slug(tr)}.html">{trope_text(tr)}</a>' for tr in trs))
-    tail = f'<span>{" &middot; ".join(bits)}</span>' if bits else ""
-    foot = (go + (" &middot; " + tail if tail else "")) if go else tail
-    return f"""<section class="tip pad" aria-labelledby="tip-heading">
-<div class="inner">
-<a class="thumb" href="{href}">{poster_box(t, app)}</a>
+    trope_html = ", ".join(f'<a href="{pre}tropes/{slug(tr)}.html">{trope_text(tr)}</a>' for tr in trs)
+    eps = f'{t["episode_count"]} episodes' if (t.get("episode_count") or "").strip() else ""
+    go_foot = (f'<a class="go" href="{link}" rel="noopener" target="_blank"{data_exp}>'
+               f'{PICK.get("link_label") or ("Watch on " + app if app else "Watch it")}</a>') if live else ""
+    foot_bits = [x for x in [go_foot, eps, trope_html] if x]
+    aside = ""
+    if live and app:
+        aside += f'<div><dt>Watch on</dt><dd><a class="go" href="{link}" rel="noopener" target="_blank"{data_exp}>{app}</a></dd></div>'
+    elif app:
+        aside += f'<div><dt>On</dt><dd>{app}</dd></div>'
+    if eps: aside += f'<div><dt>Length</dt><dd>{eps}</dd></div>'
+    if trope_html: aside += f'<div><dt>Tropes</dt><dd>{trope_html}</dd></div>'
+    return f"""<section class="tip" aria-labelledby="tip-heading">
+<div class="card">
+<p class="kicker"><span class="star" aria-hidden="true">&#9733;</span> Pick of the week</p>
+<a class="poster" href="{href}" aria-label="{esc_attr(t['primary_title'])}">
+<span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#2B1B2E"><path d="M12 1.6l3.1 6.6 7 .9-5.1 4.9 1.3 7-6.3-3.5-6.3 3.5 1.3-7L2 9.1l7-.9z"></path></svg></span>
+{art}</a>
 <div class="body">
-<p class="kicker">{PICK.get("kicker") or "Our pick this week"}</p>
 <h3 id="tip-heading"><a href="{href}">{t["primary_title"]}</a></h3>
 <p class="line">{PICK["blurb"]}</p>
-{f'<p class="foot">{foot}</p>' if foot else ''}
-</div></div></section>{PICK_JS if go and exp else ''}"""
+{f'<p class="foot">{" &middot; ".join(foot_bits)}</p>' if foot_bits else ''}
+</div>
+{f'<dl class="aside">{aside}</dl>' if aside else ''}
+</div></section>{PICK_JS if (live and exp) else ''}"""
 
 
 # Actor pages
@@ -2562,7 +2592,6 @@ body = f"""
 <div class="section-head pad"><h2>Most watched</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
 <div class="rail">{"".join(poster_card(t, "", rail_item=True) for t in featured)}</div>
 </section>
-{pick_block("")}
 
 <section class="section-warm pad" style="padding:30px 22px 44px">
 <div class="section-head"><h2>New and trending</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
@@ -2589,7 +2618,7 @@ body = f"""
 <div class="section-head"><h2>Faces you keep seeing</h2><a class="all" href="actors/index.html">All actors &rarr;</a></div>
 <div class="grid circles">{"".join(actor_tile(p, "") for p in top_actors)}</div>
 </section>
-
+{pick_block("")}
 {section_links}
 {FAV_JS}"""
 html = page("DramaEverAfter: Every Vertical Drama, Every Platform, One Place",
