@@ -2605,7 +2605,7 @@ body = f"""
 </section>
 
 <section class="section-warm" style="padding:32px 0 38px">
-<div class="section-head pad"><h2>New this month</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
+<div class="section-head pad"><h2>New and trending</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
 <div class="rail">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in new_releases)}</div>
 </section>
 

@@ -144,10 +144,10 @@ if norm_search:
 
 print("== homepage ==")
 home = rd("index.html")
-mw, nt = home.find("Most watched right now"), home.find("New this month")
-if mw == -1 or nt == -1: fail("homepage is missing the Most watched or New this month rail")
-elif not (mw < nt): fail("New this month is not directly under Most watched (Cyan, 6 and 13 Sep)")
-else: ok("rail order: Most watched right now, then New this month")
+mw, nt = home.find("Most watched right now"), home.find("New and trending")
+if mw == -1 or nt == -1: fail("homepage is missing the Most watched or New and trending rail")
+elif not (mw < nt): fail("New and trending is not directly under Most watched (Cyan, 6 and 13 Sep)")
+else: ok("rail order: Most watched right now, then New and trending")
 # Our pick (10 Sep): the newest picks.csv row shows on the homepage above the
 # rails and its title page carries the chip; a gift link never outlives its expiry.
 _picks = rows("picks.csv")
@@ -160,7 +160,7 @@ if _picks:
     elif 'pick-chip' not in _tp2: fail(f"the pick's title page lacks the Our pick chip: {_pk['title_id']}")
     elif 'data-expires' in home and 'PICK_JS' not in bsrc: fail("pick gift button has no expiry script")
     else: ok(f"Our pick: {_pk['title_id']} on the homepage and chipped on its page")
-rail = re.search(r"New this month.*?</section>", home, re.S)
+rail = re.search(r"New and trending.*?</section>", home, re.S)
 rail_slugs = list(dict.fromkeys(re.findall(r"titles/([a-z0-9-]+)\.html", rail.group(0)))) if rail else []
 if len(rail_slugs) < 8: fail(f"New and trending rail holds {len(rail_slugs)} titles; should be ~12")
 else: ok(f"New and trending rail holds {len(rail_slugs)} titles")
