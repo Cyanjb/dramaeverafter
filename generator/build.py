@@ -809,18 +809,20 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
 .known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
 .known-for .more{color:var(--wine);font-size:13.5px;text-decoration:none}.known-for .more:hover{color:var(--wine-hover)}
-.pick{background:var(--blush);border-top:1px solid var(--blush-bd);border-bottom:1px solid var(--blush-bd);padding:30px 22px}
-.pick-inner{display:flex;gap:26px;align-items:center;max-width:1100px;margin:0 auto}
-.pick-poster{flex:0 0 150px;max-width:150px}.pick-poster .poster{display:block}
-.pick-body{flex:1 1 300px;min-width:0}.pick-body .eyebrow{margin-bottom:8px}
-.pick-body h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,3vw,32px);line-height:1.15;margin:0 0 6px;color:var(--plum)}
-.pick-body h2 a{color:inherit;text-decoration:none}.pick-body h2 a:hover{color:var(--wine)}
-.pick-app{margin:0 0 10px;font-size:14px;color:var(--tert)}
-.pick-blurb{margin:0 0 16px;font-size:17px;line-height:1.55;color:var(--ink);max-width:60ch;text-wrap:pretty}
-.pick-actions{display:flex;flex-wrap:wrap;gap:10px}
+.tip{padding-top:22px;padding-bottom:4px;border-top:1px solid var(--line)}
+.tip .inner{display:flex;gap:16px;align-items:flex-start;max-width:1120px;margin:0 auto}
+.tip .thumb{flex:0 0 96px;width:96px;text-decoration:none}
+.tip .body{flex:1 1 auto;min-width:0}
+.tip .kicker{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep)}
+.tip h3{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:22px;line-height:1.15;margin:0}
+.tip h3 a{color:var(--plum);text-decoration:none}.tip h3 a:hover{color:var(--wine)}
+.tip .line{margin:8px 0 0;font-size:16px;line-height:1.5;max-width:60ch;text-wrap:pretty}
+.tip .foot{margin:14px 0 0;font-size:15px;color:var(--tert)}
+.tip .foot a{color:var(--wine)}
+.tip .go{font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:1px;text-decoration:none}
+.tip .go:hover{border-color:var(--gold-deep)}
 .pick-chip{display:inline-block;background:var(--gold);color:#241A12;border-radius:999px;padding:2px 10px;font-size:12px;letter-spacing:.1em;margin-right:6px}
-.pick-gift{margin:12px 0 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center}.pick-gift .hint{font-size:13px;color:var(--tert)}
-@media(max-width:560px){.pick-inner{flex-direction:column;align-items:flex-start}.pick-poster{flex-basis:120px;max-width:120px}}
+@media(min-width:760px){.tip .inner{gap:24px}}
 .glance{background:var(--plum);color:var(--paper);padding:40px 20px 44px}
 .glance .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
 .glance h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,3vw,30px);line-height:1.15;color:var(--paper);margin:0}
@@ -1224,24 +1226,44 @@ function tick(){if(Date.now()>t){b.hidden=true;}}tick();setInterval(tick,60000);
 </script>
 """
 def pick_block(pre):
+    """The pick of the week, as a tip note (Cyan's Claude Design handoff,
+    13 Sep 2026). It replaced a blush block: this sits under Most watched in
+    the normal page column, one hairline above it, and carries ONE sentence
+    rather than a synopsis. No gold button, so the hero search keeps the only
+    primary action on the page. The kicker is editorial and changes week to
+    week, so picks.csv carries it."""
     if PICK is None: return ""
     t = t_by_id[PICK["title_id"]]
     app = title_app(t)
-    live = _pick_live(PICK)
-    _exp = (PICK.get("expires") or "").strip()
-    gift = (f'<a class="btn btn-gold" href="{esc_attr(PICK["link"].strip())}" rel="noopener" target="_blank"'
-            + (f' data-expires="{esc_attr(_exp)}"' if _exp else "")
-            + f'>{PICK.get("link_label") or "Watch it"}</a>') if live else ""
-    return f"""<section class="pick" aria-labelledby="pick-heading">
-<div class="pick-inner">
-<a class="pick-poster" href="{pre}titles/{tslug(t)}.html">{poster_box(t, app)}</a>
-<div class="pick-body">
-<p class="eyebrow">Our pick this week</p>
-<h2 id="pick-heading"><a href="{pre}titles/{tslug(t)}.html">{t["primary_title"]}</a></h2>
-{f'<p class="pick-app">On {app} &middot; {t["episode_count"]} episodes</p>' if app and t.get("episode_count") else f'<p class="pick-app">On {app}</p>' if app else ''}
-<p class="pick-blurb">{PICK["blurb"]}</p>
-<div class="pick-actions">{gift}<a class="btn btn-wine" href="{pre}titles/{tslug(t)}.html">The story and cast &rarr;</a></div>
-</div></div></section>{PICK_JS if live and _exp else ''}"""
+    href = f"{pre}titles/{tslug(t)}.html"
+    exp = (PICK.get("expires") or "").strip()
+    go = ""
+    if _pick_live(PICK):
+        label = PICK.get("link_label") or (f"Watch on {app}" if app else "Watch it")
+        go = (f'<a class="go" href="{esc_attr(PICK["link"].strip())}" rel="noopener" target="_blank"'
+              + (f' data-expires="{esc_attr(exp)}"' if exp else "") + f'>{label}</a>')
+    # The foot: where to watch, how long, what kind. A part the row does not
+    # hold is dropped, never faked.
+    bits = []
+    if (t.get("episode_count") or "").strip():
+        bits.append(f'{t["episode_count"]} episodes')
+    # Same guard as trope_chip: link only where the page exists, so the tip
+    # can never emit a 404 (it did on the first build, "high fantasy").
+    trs = [tr for tr in tropes_of(t) if tr in all_tropes_set][:2]
+    if trs:
+        bits.append(", ".join(f'<a href="{pre}tropes/{slug(tr)}.html">{trope_text(tr)}</a>' for tr in trs))
+    tail = f'<span>{" &middot; ".join(bits)}</span>' if bits else ""
+    foot = (go + (" &middot; " + tail if tail else "")) if go else tail
+    return f"""<section class="tip pad" aria-labelledby="tip-heading">
+<div class="inner">
+<a class="thumb" href="{href}">{poster_box(t, app)}</a>
+<div class="body">
+<p class="kicker">{PICK.get("kicker") or "Our pick this week"}</p>
+<h3 id="tip-heading"><a href="{href}">{t["primary_title"]}</a></h3>
+<p class="line">{PICK["blurb"]}</p>
+{f'<p class="foot">{foot}</p>' if foot else ''}
+</div></div></section>{PICK_JS if go and exp else ''}"""
+
 
 # Actor pages
 for p in people:
@@ -2535,11 +2557,12 @@ body = f"""
 <span><b>{len(APPS_WITH_DATA)}</b> apps</span>
 </div>
 </div></section>
-{pick_block("")}
+
 <section style="padding:40px 0 8px">
 <div class="section-head pad"><h2>Most watched</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
 <div class="rail">{"".join(poster_card(t, "", rail_item=True) for t in featured)}</div>
 </section>
+{pick_block("")}
 
 <section class="section-warm pad" style="padding:30px 22px 44px">
 <div class="section-head"><h2>New and trending</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
