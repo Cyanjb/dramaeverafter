@@ -34,4 +34,4 @@ Read `styles.css` before inventing any style — every component's real CSS is t
 </Rail>
 ```
 
-Composition rules the site follows: one gold `Button` per view at most (everything else wine/outline); posters always 2:3 with the blush no-poster fallback; `PosterCard` lives inside `Rail` (with `railItem`) or `Grid`; people render as `Ring`/`ActorTile`/`PersonRow`, never raw `<img>` avatars; trope tags are `Chip`s, and a chip row ends with `ChipAll`; page frames are `SiteHeader` on `var(--paper)` and the plum `SiteFooter`/`Faq` at the bottom.
+Composition rules the site follows: one gold `Button` per view at most (everything else wine/outline); **posters are always 3:4** and stay true to the platform art (Cyan, 13 Sep 2026: ReelShort, GoodShort, NetShort, PineDrama and DramaBox all ship 3:4, so a poster is never cropped to 2:3 or 9:16), with the blush no-poster fallback; `PosterCard` lives inside `Rail` (with `railItem`) or `Grid`; people render as `Ring`/`ActorTile`/`PersonRow`, never raw `<img>` avatars; trope tags are `Chip`s, and a chip row ends with `ChipAll`; page frames are `SiteHeader` on `var(--paper)` and the plum `SiteFooter`/`Faq` at the bottom.

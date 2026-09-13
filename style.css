@@ -104,7 +104,15 @@ border:1px solid var(--wine);background:var(--paper);color:var(--wine);cursor:po
    name could be its own link left it as a plain inline box, and an absolutely-positioned
    image inside an inline containing block resolves to ZERO width -- every poster on the
    site silently vanished while the HTML still looked perfect. Do not remove. */
-.poster{display:block;position:relative;aspect-ratio:2/3;background:#F1E6E9;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+/* POSTER RATIO IS 3:4 AND STAYS 3:4 (Cyan, 13 Sep 2026: "posters should always
+   stay true to their sources"). Measured that day, the platforms ship: ReelShort
+   1080x1440, GoodShort 1080x1440, NetShort 651x868, PineDrama 1080x1440 and
+   DramaBox 600x800, all 3:4; Vigloo 640x960 and ShortMax 700x1050 are 2:3 and
+   Galatea 420x600 is 0.70, so they letterbox slightly rather than being cropped.
+   The site was 2:3 until today, which cropped a quarter off the sides of nearly
+   every poster, including the artwork's own title. check_site fails the build if
+   this moves. */
+.poster{display:block;position:relative;aspect-ratio:3/4;background:#F1E6E9;border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .poster--empty{display:flex}
 .ai-badge{position:absolute;top:6px;right:6px;z-index:3;background:rgba(43,27,46,.86);color:#F6EEE6;
 font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:2px;line-height:1}
@@ -206,7 +214,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .split-hero{display:flex;flex-wrap:wrap;gap:34px;padding:34px 22px 40px;background:linear-gradient(var(--hero-a),var(--hero-b));border-bottom:1px solid var(--line)}
 .split-hero.tight{gap:28px;padding:36px 22px 34px;align-items:flex-start}
 .split-hero .poster-col{flex:0 1 300px;min-width:0}
-.split-hero .poster-col img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;border:1px solid var(--line);border-radius:3px}
+.split-hero .poster-col img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border:1px solid var(--line);border-radius:3px}
 .split-hero .info-col{flex:1 1 400px;min-width:0}
 .views-line{margin:0 0 22px;font-size:15.5px;color:var(--sec)}
 .story{margin-top:28px;max-width:60ch}
@@ -278,7 +286,7 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .blog-sub{font-size:13.5px;color:var(--tert)}
 .blog-row{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;padding:22px 4px;border-bottom:1px solid #EFE5DC;min-width:0;text-decoration:none;color:inherit}
 .blog-row:hover{background:#FBF5EF}
-.blog-row .thumb{flex:0 0 auto;width:96px;aspect-ratio:2/3;background:var(--blush);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.blog-row .thumb{flex:0 0 auto;width:96px;aspect-ratio:3/4;background:var(--blush);border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .blog-row .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .blog-row .body{flex:1 1 240px;min-width:0}
 .blog-row h3{font-size:20px;line-height:1.2;text-wrap:pretty}
@@ -325,18 +333,36 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
 .known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
 .known-for .more{color:var(--wine);font-size:13.5px;text-decoration:none}.known-for .more:hover{color:var(--wine-hover)}
-.tip{padding-top:22px;padding-bottom:4px;border-top:1px solid var(--line)}
-.tip .inner{display:flex;gap:16px;align-items:flex-start;max-width:1120px;margin:0 auto}
-.tip .thumb{flex:0 0 96px;width:96px;text-decoration:none}
-.tip .body{flex:1 1 auto;min-width:0}
-.tip .kicker{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep)}
-.tip h3{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:22px;line-height:1.15;margin:0}
+.tip{margin:32px auto;padding:0 22px}
+.tip a{color:var(--wine)}
+.tip .card{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start;background:var(--blush);border:2px solid var(--plum);border-radius:14px;padding:16px}
+.tip .kicker{grid-column:1/-1;justify-self:center;display:flex;align-items:center;gap:8px;width:max-content;max-width:100%;margin:0 auto 2px;padding:8px 16px;border-radius:999px;background:var(--plum);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);text-align:center}
+.tip .kicker .star{color:var(--gold);font-size:15px;line-height:1}
+.tip .poster{display:block;box-sizing:border-box;text-decoration:none;width:100%;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:linear-gradient(160deg,var(--blush),var(--paper) 72%);box-shadow:0 10px 22px -6px rgba(43,27,46,.34),0 2px 5px rgba(43,27,46,.18);position:relative}
+.tip .poster img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}
+.tip .poster .art{display:block;padding:10px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:13px;line-height:1.2;color:var(--plum)}
+.tip .poster .badge{position:absolute;top:0;right:0;width:38px;height:38px;border-top-right-radius:8px;background:linear-gradient(225deg,var(--gold) 52%,transparent 52.5%);z-index:1}
+.tip .poster .badge svg{position:absolute;top:5px;right:5px;width:13px;height:13px;display:block}
+.tip h3{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(21px,5.4vw,32px);line-height:1.14;margin:0}
 .tip h3 a{color:var(--plum);text-decoration:none}.tip h3 a:hover{color:var(--wine)}
-.tip .line{margin:8px 0 0;font-size:16px;line-height:1.5;max-width:60ch;text-wrap:pretty}
-.tip .foot{margin:14px 0 0;font-size:15px;color:var(--tert)}
-.tip .foot a{color:var(--wine)}
-.tip .go{font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:1px;text-decoration:none}
+.tip .line{margin:8px 0 0;font-size:16px;line-height:1.5;max-width:52ch;color:var(--ink);text-wrap:pretty}
+.tip .foot{grid-column:1/-1;margin:14px 0 0;font-size:15px;line-height:1.7;color:#7a6a62}
+.tip .go{font-weight:700;text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:1px}
 .tip .go:hover{border-color:var(--gold-deep)}
+.tip .aside{display:none}
+@media(min-width:860px){
+.tip{margin:40px auto}
+.tip .card{grid-template-columns:150px minmax(0,1fr) auto;gap:24px 32px;align-items:center;padding:28px 32px}
+.tip .kicker{margin:0 auto;padding:10px 24px 10px 20px;font-size:15px;letter-spacing:.14em}
+.tip .kicker .star{font-size:17px}
+.tip .poster{width:150px}
+.tip .poster .badge{width:44px;height:44px}
+.tip .poster .badge svg{top:6px;right:6px;width:15px;height:15px}
+.tip .aside{display:grid;gap:14px;justify-items:end;text-align:right;padding-left:32px;border-left:1px solid rgba(43,27,46,.22)}
+.tip .aside dt{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep)}
+.tip .aside dd{margin:2px 0 0;font-size:15px;color:var(--plum)}
+.tip .foot{display:none}
+}
 .pick-chip{display:inline-block;background:var(--gold);color:#241A12;border-radius:999px;padding:2px 10px;font-size:12px;letter-spacing:.1em;margin-right:6px}
 @media(min-width:760px){.tip .inner{gap:24px}}
 .glance{background:var(--plum);color:var(--paper);padding:40px 20px 44px}

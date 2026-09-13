@@ -16,6 +16,24 @@ state claim below.
 
 ## STATE: pushed, clean, live. main = a3098913 plus whatever run 5 commits.
 
+## POSTERS ARE 3:4 AND STAY 3:4 (Cyan, 13 Sep 2026)
+
+Her words: "Poster should always stay true to their sources ie reelshort,
+dramabox and where ever else we got them make it 3:4 please remember that."
+Measured the same day across every poster host in titles.csv: ReelShort
+(crazymaplestudios) 1080x1440, GoodShort 1080x1440, NetShort 651x868,
+PineDrama 1080x1440, DramaBox 600x800 are all 3:4, which is ~2,800 of the
+~3,000 posters we hold. Vigloo 640x960 and ShortMax (cloudfront) 700x1050
+are 2:3, Galatea 420x600 is 0.70; those letterbox slightly rather than
+being cropped. The site had been 2:3 since launch, cropping about a
+quarter off the sides of nearly every poster, including the artwork's own
+title, which is what she caught on the pick card. Now 3:4 everywhere:
+.poster, the split-hero poster column, the blog thumb and the pick card.
+check_site fails the build if any of them moves, SITE-CHECKS carries the
+plain words, and .design-sync/conventions.md tells the design agent, since
+two handoffs in a row asked for 9:16. A DESIGN HANDOFF DOES NOT OVERRIDE
+THIS: the sources decide the shape.
+
 ## COVERAGE EXPORT READ 10 SEP: THE 10K IS REAL, AND THE DEMOTION HAS A NAME
 
 Cyan asked why GSC says she has 10K pages. She does. Her Coverage export

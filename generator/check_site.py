@@ -154,8 +154,8 @@ _picks = rows("picks.csv")
 if _picks:
     _pk = max(_picks, key=lambda r: r["added"])
     _tp2 = rd(os.path.join("titles", _pk["title_id"] + ".html"))
-    if 'class="tip pad"' not in home or _pk["title_id"] not in home: fail("homepage lacks the pick-of-the-week tip for the newest picks.csv row")
-    elif home.find("Most watched") > home.find('class="tip pad"'): fail("the pick tip must sit AFTER the Most watched strip (Cyan, 13 Sep)")
+    if 'class="tip"' not in home or _pk["title_id"] not in home: fail("homepage lacks the pick-of-the-week card for the newest picks.csv row")
+    elif home.rfind('class="rail"') > home.find('class="tip"'): fail("the pick card must sit AFTER the last poster rail, at the bottom of the page (Cyan, 13 Sep)")
     elif 'pick-chip' not in _tp2: fail(f"the pick's title page lacks the Our pick chip: {_pk['title_id']}")
     elif 'data-expires' in home and 'PICK_JS' not in bsrc: fail("pick gift button has no expiry script")
     else: ok(f"Our pick: {_pk['title_id']} on the homepage and chipped on its page")
@@ -245,6 +245,14 @@ missing += [m for m in sorted(os.listdir(ROOT)) if m.endswith(".md")
             and not re.search(rf"^/{re.escape(m)}\s+\S+\s+404!", red, re.M)]
 if missing: fail(f"not blocked on the domain (add a 404! rule to _redirects): {missing}")
 else: ok("database, generator, references and every root .md are 404! on the domain")
+
+# THE POSTER RULE (Cyan, 13 Sep 2026): posters stay true to their sources, 3:4.
+# A design handoff asking for 9:16 or 2:3 does not override it; the sources do.
+_css = rd("style.css")
+_bad = [m for m in re.findall(r"\.(?:poster|thumb)[^{]*\{[^}]*aspect-ratio:\s*([0-9]+\s*/\s*[0-9]+)", _css)
+        if m.replace(" ", "") != "3/4"]
+if _bad: fail(f"a poster is not 3:4, which crops the source art: {_bad} (Cyan's standing rule, 13 Sep)")
+else: ok("every poster is 3:4, true to what the platforms ship")
 
 print("== indexnow ==")
 _keys = [f for f in os.listdir(ROOT) if re.fullmatch(r"[0-9a-f]{32}\.txt", f)]
