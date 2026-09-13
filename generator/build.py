@@ -817,36 +817,41 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
 .known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
 .known-for .more{color:var(--wine);font-size:13.5px;text-decoration:none}.known-for .more:hover{color:var(--wine-hover)}
-.tip{margin:32px auto;padding:0 22px}
-.tip a{color:var(--wine)}
-.tip .card{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start;background:var(--blush);border:2px solid var(--plum);border-radius:14px;padding:16px}
-.tip .kicker{grid-column:1/-1;justify-self:center;display:flex;align-items:center;gap:8px;width:max-content;max-width:100%;margin:0 auto 2px;padding:8px 16px;border-radius:999px;background:var(--plum);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);text-align:center}
-.tip .kicker .star{color:var(--gold);font-size:15px;line-height:1}
-.tip .poster{display:block;box-sizing:border-box;text-decoration:none;width:100%;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:linear-gradient(160deg,var(--blush),var(--paper) 72%);box-shadow:0 10px 22px -6px rgba(43,27,46,.34),0 2px 5px rgba(43,27,46,.18);position:relative}
-.tip .poster img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}
-.tip .poster .art{display:block;padding:10px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:13px;line-height:1.2;color:var(--plum)}
-.tip .poster .badge{position:absolute;top:0;right:0;width:38px;height:38px;border-top-right-radius:8px;background:linear-gradient(225deg,var(--gold) 52%,transparent 52.5%);z-index:1}
-.tip .poster .badge svg{position:absolute;top:5px;right:5px;width:13px;height:13px;display:block}
-.tip h3{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(21px,5.4vw,32px);line-height:1.14;margin:0}
-.tip h3 a{color:var(--plum);text-decoration:none}.tip h3 a:hover{color:var(--wine)}
-.tip .line{margin:8px 0 0;font-size:16px;line-height:1.5;max-width:52ch;color:var(--ink);text-wrap:pretty}
-.tip .foot{grid-column:1/-1;margin:14px 0 0;font-size:15px;line-height:1.7;color:#7a6a62}
-.tip .go{font-weight:700;text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:1px}
-.tip .go:hover{border-color:var(--gold-deep)}
-.tip .aside{display:none}
-@media(min-width:860px){
-.tip{margin:40px auto}
-.tip .card{grid-template-columns:150px minmax(0,1fr) auto;gap:24px 32px;align-items:center;padding:28px 32px}
-.tip .kicker{margin:0 auto;padding:10px 24px 10px 20px;font-size:15px;letter-spacing:.14em}
-.tip .kicker .star{font-size:17px}
-.tip .poster{width:150px}
-.tip .poster .badge{width:44px;height:44px}
-.tip .poster .badge svg{top:6px;right:6px;width:15px;height:15px}
-.tip .aside{display:grid;gap:14px;justify-items:end;text-align:right;padding-left:32px;border-left:1px solid rgba(43,27,46,.22)}
-.tip .aside dt{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep)}
-.tip .aside dd{margin:2px 0 0;font-size:15px;color:var(--plum)}
-.tip .foot{display:none}
-}
+/* ---------- homepage: mood row, picks, app row, the closing band ---------- */
+.mood-row{max-width:1276px;margin:0 auto 30px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.mood-row .label{font-family:'Fraunces',Georgia,serif;font-size:19px;color:var(--plum)}
+.pick-grid{max-width:1276px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+@media(min-width:1000px){.pick-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pick-card{background:var(--blush);border:2px solid var(--plum);border-radius:14px;padding:24px 26px 26px}
+.pick-card .kicker{display:flex;align-items:center;gap:8px;width:max-content;max-width:100%;margin:0 0 20px;padding:8px 20px;border-radius:999px;background:var(--plum);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--paper)}
+.pick-card .kicker .star{color:var(--gold);font-size:15px;line-height:1}
+.pick-body{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.pick-card .poster{flex:0 0 auto;display:block;position:relative;width:150px;aspect-ratio:3/4;border:0;border-radius:8px;overflow:hidden;background:linear-gradient(160deg,var(--blush),var(--paper) 72%);box-shadow:0 12px 26px -6px rgba(43,27,46,.38),0 2px 5px rgba(43,27,46,.2)}
+.pick-card .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pick-card .poster .art{display:block;padding:10px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:13px;line-height:1.2;color:var(--plum)}
+.pick-card .poster .badge{position:absolute;top:0;right:0;width:40px;height:40px;border-top-right-radius:8px;background:linear-gradient(225deg,var(--gold) 52%,transparent 52.5%);z-index:2}
+.pick-card .poster .badge svg{position:absolute;top:6px;right:6px;width:14px;height:14px;display:block}
+.pick-text{flex:1 1 260px;min-width:0}
+.pick-text h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(22px,2.4vw,29px);line-height:1.12;color:var(--plum);margin:0 0 10px;text-wrap:pretty}
+.pick-text h2 a{color:var(--plum)}.pick-text h2 a:hover{color:var(--wine)}
+.pick-text .line{margin:0 0 16px;font-size:16px;line-height:1.5;color:var(--ink);max-width:46ch;text-wrap:pretty}
+.pick-text .foot{margin:0;padding-top:14px;border-top:1px solid rgba(43,27,46,.2);font-size:15px;line-height:1.6;color:#6f5f57}
+.pick-text .go{font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:1px}
+.pick-text .go:hover{border-color:var(--gold-deep)}
+.app-row{display:flex;flex-wrap:nowrap;justify-content:space-between;gap:20px;align-items:baseline;padding-top:4px;overflow-x:auto;scrollbar-width:none}
+.app-row::-webkit-scrollbar{display:none}
+.app-row a{flex:0 0 auto;white-space:nowrap;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(17px,1.85vw,27px);line-height:1.1;letter-spacing:-.015em;color:var(--wine);border-bottom:3px solid transparent;padding-bottom:2px}
+.app-row a:hover{color:var(--plum);border-bottom-color:var(--gold)}
+.app-row .c{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-weight:400;font-size:13.5px;color:var(--tert);letter-spacing:0}
+.about-band{background:var(--plum);color:var(--paper);padding:44px 22px 48px}
+.about-band .inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px 64px;align-items:start}
+.about-band .eyebrow{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.about-band h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3.2vw,38px);line-height:1.14;color:var(--paper);margin:0;max-width:22ch;text-wrap:pretty}
+.about-band .say{max-width:46ch}
+.about-band .say p{margin:0 0 18px}
+.about-band .lead{font-size:18px;line-height:1.5;color:#efe6ea}
+.about-band .fine{font-size:15px;line-height:1.55;color:#c7b6c0}
+.about-band .ask{font-size:16px;font-weight:700;color:var(--paper);border-bottom:2px solid var(--gold);padding-bottom:2px}
 .pick-chip{display:inline-block;background:var(--gold);color:#241A12;border-radius:999px;padding:2px 10px;font-size:12px;letter-spacing:.1em;margin-right:6px}
 @media(min-width:760px){.tip .inner{gap:24px}}
 .glance{background:var(--plum);color:var(--paper);padding:40px 20px 44px}
@@ -877,16 +882,17 @@ tr:nth-child(even) td{background:#F7F0EA}
 .char-row b{min-width:200px}.char-row .sub{color:var(--tert);font-size:13px}
 
 /* ---------- footer ---------- */
-footer.site-footer{border-top:1px solid var(--line);background:var(--plum);color:#E8DCD4;padding:34px 22px 30px;display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between}
-.footer-brand{max-width:38ch}
-.footer-brand .wordmark{font-family:'Fraunces',Georgia,serif;font-size:20px;margin-bottom:8px}
-.footer-brand .wordmark em{font-style:italic;color:var(--gold)}
-.footer-brand .wordmark span{color:#F6EEE6}
-.footer-brand p{margin:0;font-size:13.5px;line-height:1.6;color:#BCA9AF}
-.footer-cols{display:flex;gap:40px;flex-wrap:wrap;font-size:14px}
-.footer-col{display:flex;flex-direction:column;gap:8px}
-.footer-col .h{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A7480}
-.footer-col a{color:#E8DCD4}
+/* The footer went light on 13 Sep (Cyan's homepage): the plum closing band
+   now carries the dark anchor, and two plum blocks stacked read as one
+   undifferentiated slab. One line: wordmark, tagline, and the links that
+   would otherwise be orphaned on every page but the homepage. */
+footer.site-footer{border-top:1px solid var(--line);background:var(--paper);color:var(--ink);padding:30px 22px 34px}
+.site-footer .inner{max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 28px}
+.site-footer .brand{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 22px}
+.site-footer .mark{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:26px;letter-spacing:-.01em;color:var(--plum)}
+.site-footer .mark em{font-style:italic;color:var(--wine)}
+.site-footer .tag{font-size:15px;color:var(--sec)}
+.site-footer nav{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px}
 .footer-col a:hover{color:#fff}
 """
 
@@ -908,9 +914,6 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
           f'<meta name="twitter:card" content="summary_large_image">\n'
           f'<link rel="icon" href="{pre}favicon.svg" type="image/svg+xml">\n'
           f'<link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">')
-    app_links = "".join(
-        f'<a href="{pre}apps/{slug(pl["name"])}.html">{pl["name"]}</a>'
-        for pl in APPS_WITH_DATA[:3])
     q = esc_attr(nav_search_val)
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -942,17 +945,20 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 </header>
 {body}
 <footer class="site-footer">
-<div class="footer-brand">
-<div class="wordmark"><span>Drama</span><em>EverAfter</em></div>
-<p>A reader-made index of vertical dramas &mdash; which app, which cast, what next. Some links earn a commission.</p>
+<div class="inner">
+<div class="brand">
+<a class="mark" href="{pre}index.html">Drama<em>Ever</em>After</a>
+<span class="tag">Which drama. Which cast. What next.</span>
 </div>
-<div class="footer-cols">
-<div class="footer-col"><span class="h">Browse</span>
-<a href="{pre}browse.html">All titles</a><a href="{pre}actors/index.html">Actors</a><a href="{pre}characters.html">Characters</a><a href="{pre}tropes/index.html">Tropes</a></div>
-<div class="footer-col"><span class="h">Apps</span>
-{app_links}<a href="{pre}platforms.html">All apps</a></div>
-<div class="footer-col"><span class="h">Site</span>
-<a href="{pre}index.html">Home</a><a href="{pre}my-list.html">My List</a><a href="{pre}blog.html">Blog</a><a href="{pre}contact.html">Contact</a></div>
+<nav>
+<a href="{pre}browse.html">Browse</a>
+<a href="{pre}actors/index.html">Actors</a>
+<a href="{pre}characters.html">Characters</a>
+<a href="{pre}tropes/index.html">Tropes</a>
+<a href="{pre}platforms.html">Apps</a>
+<a href="{pre}my-list.html">My List</a>
+<a href="{pre}contact.html">Contact</a>
+</nav>
 </div>
 </footer>
 </body></html>"""
@@ -1240,7 +1246,14 @@ def _performer_in(p, my_pairs):
 # page hides it client-side the moment it passes, so a stale offer never
 # shows. Without a link the block still stands: the pick is the point.
 PICKS = rows("picks.csv") if os.path.exists(os.path.join(DATA, "picks.csv")) else []
-PICK = max((r for r in PICKS if r["title_id"] in t_by_id), key=lambda r: r["added"], default=None)
+# Up to TWO picks, newest first (Cyan's 13 Sep homepage: "room for a second pick
+# each week, so the two sit side by side"). One pick fills the row on its own;
+# the design's dashed "Slot open" tile is a note to her, not something a reader
+# should ever meet, so it is never rendered.
+PICK_ROWS = sorted((r for r in PICKS if r["title_id"] in t_by_id),
+                   key=lambda r: r["added"], reverse=True)[:2]
+PICK = PICK_ROWS[0] if PICK_ROWS else None
+PICK_IDS = {r["title_id"] for r in PICK_ROWS}
 def _pick_live(r):
     exp = (r.get("expires") or "").strip()
     return bool((r.get("link") or "").strip()) and (not exp or exp > datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
@@ -1251,56 +1264,44 @@ var t=Date.parse(b.getAttribute('data-expires'));if(isNaN(t))return;
 function tick(){if(Date.now()>t){b.hidden=true;}}tick();setInterval(tick,60000);})();
 </script>
 """
-def pick_block(pre):
-    """The pick of the week (Cyan's third Claude Design handoff, 13 Sep 2026).
-    A bordered blush card at the BOTTOM of the homepage, above the footer,
-    sharing the rails' side padding so its left edge lines up with the first
-    poster in every row. The plum pill label is FIXED on every pick: the
-    editorial variation lives in the sentence, not the label. The facts are in
-    the markup twice by design, a right-hand list on desktop and one foot line
-    on phones, and only one is ever visible. No gold button, so the hero
-    search keeps the only primary action on the page."""
-    if PICK is None: return ""
-    t = t_by_id[PICK["title_id"]]
+def pick_card(row, pre):
+    """One pick, as a bordered blush card (Cyan's 13 Sep homepage). Up to two
+    of these sit side by side inside .pick-grid. The plum pill label is fixed
+    on every pick: the editorial variation lives in the sentence."""
+    t = t_by_id[row["title_id"]]
     app = title_app(t)
     href = f"{pre}titles/{tslug(t)}.html"
-    exp = (PICK.get("expires") or "").strip()
-    live = _pick_live(PICK)
-    link = esc_attr(PICK["link"].strip()) if live else ""
+    exp = (row.get("expires") or "").strip()
+    live = _pick_live(row)
     data_exp = f' data-expires="{esc_attr(exp)}"' if (live and exp) else ""
-    # The poster carries the artwork alone: the title is not repeated on the
-    # tile (the h3 states it). With no artwork on file the tile falls back to
-    # the title in the display serif rather than an empty gradient.
     img = (t.get("poster_ref") or "").strip()
     art = (f'<img src="{esc_attr(img)}" alt="" loading="lazy" onerror="this.remove()">' if img
            else f'<span class="art">{t["primary_title"]}</span>')
-    # Same guard as trope_chip: link only where the page exists, never a 404.
     trs = [tr for tr in tropes_of(t) if tr in all_tropes_set][:2]
     trope_html = ", ".join(f'<a href="{pre}tropes/{slug(tr)}.html">{trope_text(tr)}</a>' for tr in trs)
     eps = f'{t["episode_count"]} episodes' if (t.get("episode_count") or "").strip() else ""
-    go_foot = (f'<a class="go" href="{link}" rel="noopener" target="_blank"{data_exp}>'
-               f'{PICK.get("link_label") or ("Watch on " + app if app else "Watch it")}</a>') if live else ""
-    foot_bits = [x for x in [go_foot, eps, trope_html] if x]
-    aside = ""
-    if live and app:
-        aside += f'<div><dt>Watch on</dt><dd><a class="go" href="{link}" rel="noopener" target="_blank"{data_exp}>{app}</a></dd></div>'
-    elif app:
-        aside += f'<div><dt>On</dt><dd>{app}</dd></div>'
-    if eps: aside += f'<div><dt>Length</dt><dd>{eps}</dd></div>'
-    if trope_html: aside += f'<div><dt>Tropes</dt><dd>{trope_html}</dd></div>'
-    return f"""<section class="tip" aria-labelledby="tip-heading">
-<div class="card">
+    go = (f'<a class="go" href="{esc_attr(row["link"].strip())}" rel="noopener" target="_blank"{data_exp}>'
+          f'{row.get("link_label") or ("Watch on " + app if app else "Watch it")}</a>') if live else ""
+    foot = " &middot; ".join(x for x in [go, eps, trope_html] if x)
+    return f"""<article class="pick-card">
 <p class="kicker"><span class="star" aria-hidden="true">&#9733;</span> Pick of the week</p>
+<div class="pick-body">
 <a class="poster" href="{href}" aria-label="{esc_attr(t['primary_title'])}">
 <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#2B1B2E"><path d="M12 1.6l3.1 6.6 7 .9-5.1 4.9 1.3 7-6.3-3.5-6.3 3.5 1.3-7L2 9.1l7-.9z"></path></svg></span>
 {art}</a>
-<div class="body">
-<h3 id="tip-heading"><a href="{href}">{t["primary_title"]}</a></h3>
-<p class="line">{PICK["blurb"]}</p>
-{f'<p class="foot">{" &middot; ".join(foot_bits)}</p>' if foot_bits else ''}
-</div>
-{f'<dl class="aside">{aside}</dl>' if aside else ''}
-</div></section>{PICK_JS if (live and exp) else ''}"""
+<div class="pick-text">
+<h2><a href="{href}">{t["primary_title"]}</a></h2>
+<p class="line">{row["blurb"]}</p>
+{f'<p class="foot">{foot}</p>' if foot else ''}
+</div></div></article>"""
+
+
+def pick_block(pre):
+    """The whole pick row: one card, or two side by side."""
+    if not PICK_ROWS: return ""
+    cards = "".join(pick_card(r, pre) for r in PICK_ROWS)
+    js = PICK_JS if any(_pick_live(r) and (r.get("expires") or "").strip() for r in PICK_ROWS) else ""
+    return f'<div class="pick-grid{" two" if len(PICK_ROWS) > 1 else ""}">{cards}</div>{js}'
 
 
 # Actor pages
@@ -1647,8 +1648,8 @@ for t in titles:
     views_bits = [x for x in [v, genres, lang_label] if x]
     ep = f"{t['episode_count']} episodes" if t.get("episode_count") else ""
     eyebrow_bits = [x for x in ["Vertical drama", t.get("year"), ep, status_label] if x]
-    if PICK is not None and PICK["title_id"] == t["title_id"]:
-        eyebrow_bits.insert(0, '<span class="pick-chip">Our pick this week</span>')
+    if t["title_id"] in PICK_IDS:
+        eyebrow_bits.insert(0, '<span class="pick-chip">Pick of the week</span>')
     if t.get("data_confidence") == "needs_check": eyebrow_bits.append("community reported")
     # AI-search enrichment (Cyan, 14 Aug). The graph carries only HELD data - a
     # blank field emits nothing, because a fabricated answer in schema is worse
@@ -2568,9 +2569,11 @@ new_releases = (pinned_trending
                 + sorted((t for t in _with_art_dated if t["title_id"] not in _recent_ids),
                          key=lambda t: (-_release_year(t), -title_views(t))))[:12]
 
+# "Where these stream", Cyan's 13 Sep homepage: one row of app names set large
+# in the display serif with their counts, instead of a grid of tiles.
 home_apps = "".join(
-    f'<a class="app-tile" href="apps/{slug(platforms[pid]["name"])}.html"><span class="n">{platforms[pid]["name"]}</span><span class="c">{n:,} title{"s" if n != 1 else ""}</span></a>'
-    for pid, n in TOP_PLATFORMS[:6] if n > 0)
+    f'<a href="apps/{slug(platforms[pid]["name"])}.html">{platforms[pid]["name"]} <span class="c">{n:,}</span></a>'
+    for pid, n in TOP_PLATFORMS[:8] if n > 0)
 
 home_tropes = sorted(all_tropes, key=lambda x: -trope_total[x])[:14]
 home_trope_chips = "".join(trope_chip(tr, "", trope_total[tr]) for tr in home_tropes)
@@ -2582,9 +2585,9 @@ section_links = "".join(
 
 body = f"""
 <section class="hero"><div class="inner">
-<p class="eyebrow">Looking for that app? that actor? that drama?</p>
-<h1>All the Drama Ever After. Find it. Watch it. Love it.</h1>
-<p class="lede">Every micro-drama we can find, the cast behind it, and the one app it actually streams on. No account, no algorithm, no autoplay.</p>
+<p class="eyebrow">The drama. The cast. Where to watch.</p>
+<h1>Find your next vertical drama <em style="font-style:italic;color:var(--wine)">obsession.</em></h1>
+<p class="lede">Discover the drama, recognise the cast, and find the official app to watch it.</p>
 <form class="hero-search-form" action="browse.html" method="get">
 <input type="search" name="q" placeholder="e.g. Silver Fox, or Sarah Moliski" aria-label="Search actors or titles">
 <button class="btn btn-gold" type="submit">Search</button>
@@ -2596,38 +2599,47 @@ body = f"""
 </div>
 </div></section>
 
-<section style="padding:40px 0 8px">
-<div class="section-head pad"><h2>Most watched</h2><a class="all" href="browse.html">All titles &rarr;</a></div>
+<section style="padding:38px 0 30px">
+<div class="section-head pad"><h2>Most watched right now</h2><a class="all" href="browse.html">All {len(titles_root):,} titles &rarr;</a></div>
 <div class="rail">{"".join(poster_card(t, "", rail_item=True) for t in featured)}</div>
 </section>
 
-<section class="section-warm pad" style="padding:30px 22px 44px">
-<div class="section-head"><h2>New and trending</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
-<div class="rail" style="padding:0">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in new_releases)}</div>
+<section class="section-warm" style="padding:32px 0 38px">
+<div class="section-head pad"><h2>New and trending</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
+<div class="rail">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in new_releases)}</div>
 </section>
 
-<section style="padding:8px 0 8px">
-<div class="section-head pad"><h2>Across every app</h2><a class="all" href="platforms.html">All {len(APPS_WITH_DATA)} apps &rarr;</a></div>
-<div class="rail">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in across_apps)}</div>
+<section style="padding:34px 0 26px">
+<div class="section-head pad"><h2>Faces you keep seeing</h2><a class="all" href="actors/index.html">All {len(people):,} actors &rarr;</a></div>
+<div class="rail">{"".join(f'<div class="rail-item actor">{actor_tile(p, "")}</div>' for p in top_actors)}</div>
 </section>
 
-<section class="section-warm pad" style="padding:34px 22px 40px">
-<h2 style="margin-bottom:6px">Browse by trope</h2>
-<p style="font-size:15px;color:var(--sec);margin-bottom:20px">The shortcut most people actually use. {len(all_tropes)} in all.</p>
-<div class="chips">{home_trope_chips}<a class="chip-all" href="tropes/index.html">All {len(all_tropes)} tropes &rarr;</a></div>
-</section>
-
-<section class="pad" style="padding:38px 22px 40px">
-<h2 style="margin-bottom:20px">Where these stream</h2>
-<div class="grid apps">{home_apps}</div>
-</section>
-
-<section class="pad" style="padding:34px 22px 46px;border-top:1px solid var(--line)">
-<div class="section-head"><h2>Faces you keep seeing</h2><a class="all" href="actors/index.html">All actors &rarr;</a></div>
-<div class="grid circles">{"".join(actor_tile(p, "") for p in top_actors)}</div>
-</section>
+<section class="pad" style="padding:30px 22px 42px;border-top:1px solid var(--line)">
+<div class="mood-row">
+<span class="label">In the mood for&hellip;</span>
+<div class="chips tight">{home_trope_chips}<a class="chip-all" href="tropes/index.html">All {len(all_tropes)} tropes &rarr;</a></div>
+</div>
 {pick_block("")}
+</section>
+
+<section class="pad" style="max-width:1320px;margin:0 auto;padding:6px 22px 46px">
+<div class="section-head"><h2>Where these stream</h2><a class="all" href="platforms.html">All {len(APPS_WITH_DATA)} apps &rarr;</a></div>
+<div class="app-row">{home_apps}</div>
+</section>
 {section_links}
+<section class="about-band">
+<div class="inner">
+<div>
+<p class="eyebrow">A little less searching. A lot more drama.</p>
+<h2>Your independent guide to the vertical drama world.</h2>
+</div>
+<div class="say">
+<p class="lead">Find titles, explore familiar faces, and follow your favourite tropes across streaming apps.</p>
+<p class="fine">{len(titles_root):,} titles and {len(people):,} actors across {len(APPS_WITH_DATA)} apps, re-checked {month_label(datetime.date.today().isoformat())}. Some watch links may earn a commission.</p>
+<p><a class="ask" href="contact.html">Something missing? Let me know &rarr;</a></p>
+</div>
+</div>
+</section>
 {FAV_JS}"""
 html = page("DramaEverAfter: Every Vertical Drama, Every Platform, One Place",
             "The searchable database of vertical dramas and micro dramas: actors, tropes, and where to watch across ReelShort, DramaBox, ShortMax and more.",

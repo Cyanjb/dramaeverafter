@@ -333,36 +333,41 @@ tr:nth-child(even) td{background:#F7F0EA}
 .faq .note{font-size:13px;color:#9b86a0;margin-top:20px}
 .known-for{margin:-12px 0 0;font-size:15px;line-height:1.6;color:var(--sec)}.known-for b{color:var(--plum)}.known-for .more{color:var(--tert);font-size:13.5px}
 .known-for .more{color:var(--wine);font-size:13.5px;text-decoration:none}.known-for .more:hover{color:var(--wine-hover)}
-.tip{margin:32px auto;padding:0 22px}
-.tip a{color:var(--wine)}
-.tip .card{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start;background:var(--blush);border:2px solid var(--plum);border-radius:14px;padding:16px}
-.tip .kicker{grid-column:1/-1;justify-self:center;display:flex;align-items:center;gap:8px;width:max-content;max-width:100%;margin:0 auto 2px;padding:8px 16px;border-radius:999px;background:var(--plum);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);text-align:center}
-.tip .kicker .star{color:var(--gold);font-size:15px;line-height:1}
-.tip .poster{display:block;box-sizing:border-box;text-decoration:none;width:100%;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:linear-gradient(160deg,var(--blush),var(--paper) 72%);box-shadow:0 10px 22px -6px rgba(43,27,46,.34),0 2px 5px rgba(43,27,46,.18);position:relative}
-.tip .poster img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}
-.tip .poster .art{display:block;padding:10px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:13px;line-height:1.2;color:var(--plum)}
-.tip .poster .badge{position:absolute;top:0;right:0;width:38px;height:38px;border-top-right-radius:8px;background:linear-gradient(225deg,var(--gold) 52%,transparent 52.5%);z-index:1}
-.tip .poster .badge svg{position:absolute;top:5px;right:5px;width:13px;height:13px;display:block}
-.tip h3{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(21px,5.4vw,32px);line-height:1.14;margin:0}
-.tip h3 a{color:var(--plum);text-decoration:none}.tip h3 a:hover{color:var(--wine)}
-.tip .line{margin:8px 0 0;font-size:16px;line-height:1.5;max-width:52ch;color:var(--ink);text-wrap:pretty}
-.tip .foot{grid-column:1/-1;margin:14px 0 0;font-size:15px;line-height:1.7;color:#7a6a62}
-.tip .go{font-weight:700;text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:1px}
-.tip .go:hover{border-color:var(--gold-deep)}
-.tip .aside{display:none}
-@media(min-width:860px){
-.tip{margin:40px auto}
-.tip .card{grid-template-columns:150px minmax(0,1fr) auto;gap:24px 32px;align-items:center;padding:28px 32px}
-.tip .kicker{margin:0 auto;padding:10px 24px 10px 20px;font-size:15px;letter-spacing:.14em}
-.tip .kicker .star{font-size:17px}
-.tip .poster{width:150px}
-.tip .poster .badge{width:44px;height:44px}
-.tip .poster .badge svg{top:6px;right:6px;width:15px;height:15px}
-.tip .aside{display:grid;gap:14px;justify-items:end;text-align:right;padding-left:32px;border-left:1px solid rgba(43,27,46,.22)}
-.tip .aside dt{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep)}
-.tip .aside dd{margin:2px 0 0;font-size:15px;color:var(--plum)}
-.tip .foot{display:none}
-}
+/* ---------- homepage: mood row, picks, app row, the closing band ---------- */
+.mood-row{max-width:1276px;margin:0 auto 30px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.mood-row .label{font-family:'Fraunces',Georgia,serif;font-size:19px;color:var(--plum)}
+.pick-grid{max-width:1276px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+@media(min-width:1000px){.pick-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pick-card{background:var(--blush);border:2px solid var(--plum);border-radius:14px;padding:24px 26px 26px}
+.pick-card .kicker{display:flex;align-items:center;gap:8px;width:max-content;max-width:100%;margin:0 0 20px;padding:8px 20px;border-radius:999px;background:var(--plum);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--paper)}
+.pick-card .kicker .star{color:var(--gold);font-size:15px;line-height:1}
+.pick-body{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.pick-card .poster{flex:0 0 auto;display:block;position:relative;width:150px;aspect-ratio:3/4;border:0;border-radius:8px;overflow:hidden;background:linear-gradient(160deg,var(--blush),var(--paper) 72%);box-shadow:0 12px 26px -6px rgba(43,27,46,.38),0 2px 5px rgba(43,27,46,.2)}
+.pick-card .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pick-card .poster .art{display:block;padding:10px;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:13px;line-height:1.2;color:var(--plum)}
+.pick-card .poster .badge{position:absolute;top:0;right:0;width:40px;height:40px;border-top-right-radius:8px;background:linear-gradient(225deg,var(--gold) 52%,transparent 52.5%);z-index:2}
+.pick-card .poster .badge svg{position:absolute;top:6px;right:6px;width:14px;height:14px;display:block}
+.pick-text{flex:1 1 260px;min-width:0}
+.pick-text h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(22px,2.4vw,29px);line-height:1.12;color:var(--plum);margin:0 0 10px;text-wrap:pretty}
+.pick-text h2 a{color:var(--plum)}.pick-text h2 a:hover{color:var(--wine)}
+.pick-text .line{margin:0 0 16px;font-size:16px;line-height:1.5;color:var(--ink);max-width:46ch;text-wrap:pretty}
+.pick-text .foot{margin:0;padding-top:14px;border-top:1px solid rgba(43,27,46,.2);font-size:15px;line-height:1.6;color:#6f5f57}
+.pick-text .go{font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:1px}
+.pick-text .go:hover{border-color:var(--gold-deep)}
+.app-row{display:flex;flex-wrap:nowrap;justify-content:space-between;gap:20px;align-items:baseline;padding-top:4px;overflow-x:auto;scrollbar-width:none}
+.app-row::-webkit-scrollbar{display:none}
+.app-row a{flex:0 0 auto;white-space:nowrap;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(17px,1.85vw,27px);line-height:1.1;letter-spacing:-.015em;color:var(--wine);border-bottom:3px solid transparent;padding-bottom:2px}
+.app-row a:hover{color:var(--plum);border-bottom-color:var(--gold)}
+.app-row .c{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-weight:400;font-size:13.5px;color:var(--tert);letter-spacing:0}
+.about-band{background:var(--plum);color:var(--paper);padding:44px 22px 48px}
+.about-band .inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px 64px;align-items:start}
+.about-band .eyebrow{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.about-band h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3.2vw,38px);line-height:1.14;color:var(--paper);margin:0;max-width:22ch;text-wrap:pretty}
+.about-band .say{max-width:46ch}
+.about-band .say p{margin:0 0 18px}
+.about-band .lead{font-size:18px;line-height:1.5;color:#efe6ea}
+.about-band .fine{font-size:15px;line-height:1.55;color:#c7b6c0}
+.about-band .ask{font-size:16px;font-weight:700;color:var(--paper);border-bottom:2px solid var(--gold);padding-bottom:2px}
 .pick-chip{display:inline-block;background:var(--gold);color:#241A12;border-radius:999px;padding:2px 10px;font-size:12px;letter-spacing:.1em;margin-right:6px}
 @media(min-width:760px){.tip .inner{gap:24px}}
 .glance{background:var(--plum);color:var(--paper);padding:40px 20px 44px}
@@ -393,14 +398,15 @@ tr:nth-child(even) td{background:#F7F0EA}
 .char-row b{min-width:200px}.char-row .sub{color:var(--tert);font-size:13px}
 
 /* ---------- footer ---------- */
-footer.site-footer{border-top:1px solid var(--line);background:var(--plum);color:#E8DCD4;padding:34px 22px 30px;display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between}
-.footer-brand{max-width:38ch}
-.footer-brand .wordmark{font-family:'Fraunces',Georgia,serif;font-size:20px;margin-bottom:8px}
-.footer-brand .wordmark em{font-style:italic;color:var(--gold)}
-.footer-brand .wordmark span{color:#F6EEE6}
-.footer-brand p{margin:0;font-size:13.5px;line-height:1.6;color:#BCA9AF}
-.footer-cols{display:flex;gap:40px;flex-wrap:wrap;font-size:14px}
-.footer-col{display:flex;flex-direction:column;gap:8px}
-.footer-col .h{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A7480}
-.footer-col a{color:#E8DCD4}
+/* The footer went light on 13 Sep (Cyan's homepage): the plum closing band
+   now carries the dark anchor, and two plum blocks stacked read as one
+   undifferentiated slab. One line: wordmark, tagline, and the links that
+   would otherwise be orphaned on every page but the homepage. */
+footer.site-footer{border-top:1px solid var(--line);background:var(--paper);color:var(--ink);padding:30px 22px 34px}
+.site-footer .inner{max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 28px}
+.site-footer .brand{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 22px}
+.site-footer .mark{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:26px;letter-spacing:-.01em;color:var(--plum)}
+.site-footer .mark em{font-style:italic;color:var(--wine)}
+.site-footer .tag{font-size:15px;color:var(--sec)}
+.site-footer nav{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px}
 .footer-col a:hover{color:#fff}
