@@ -69,6 +69,7 @@ def main():
     ap.add_argument("--keep", required=True)
     ap.add_argument("--lose", required=True)
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--evidence", default="", help="why these are the same show; recorded in match_queue")
     a = ap.parse_args()
 
     titles = load("titles.csv")
@@ -135,7 +136,12 @@ def main():
     keep["alt_titles"] = ";".join(alts)
     keep["source_urls"] = ";".join(uniq((keep.get("source_urls") or "").split(";")
                                         + (lose.get("source_urls") or "").split(";") + extra_urls))
-    for f in ("poster_ref", "year", "episode_count", "book", "imdb_id"):
+    # Fill-blank-only, never overwrite: a relisting or a second source often
+    # carries the fields the kept row is missing. Widened 13 Sep 2026 when the
+    # two Foul Play rows each held what the other lacked, one the cast and one
+    # the year, genres, tropes and synopsis.
+    for f in ("poster_ref", "year", "episode_count", "book", "imdb_id",
+              "genres", "status", "synopsis_short", "spice_level", "origin", "ai"):
         if not (keep.get(f) or "").strip() and (lose.get(f) or "").strip():
             keep[f] = lose[f]
     print(f"alt_titles now: {keep['alt_titles']!r}")
@@ -154,7 +160,7 @@ def main():
     today = datetime.date.today().isoformat()
     queue.append({"candidate_a": f"{a.keep} (existing title)",
                   "candidate_b": f"{a.lose} (ReelShort relisting, {lose['primary_title']})",
-                  "evidence": "Same cast (Marc Herrmann, Kelsey C Lynn, Michael Ursu), same episode count, same tropes; a later ReelShort listing under a new name.",
+                  "evidence": a.evidence or "Ruled the same show by hand.",
                   "status": f"confirmed_same (Cyan, {today})"})
     save("match_queue.csv", queue)
 

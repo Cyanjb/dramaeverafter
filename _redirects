@@ -95,6 +95,14 @@
 /actors/gabrielle-brown.html  /actors/gabrielle-faith-brown.html  301
 /actors/jordan-frank.html  /actors/jordan-roy-frank.html  301
 /actors/christopher-quartuccio.html  /actors/chris-quartuccio.html  301
+/titles/foulplay-for-my-brother-s-best-friend.html  /titles/foul-play-with-my-brother-s-best-friend.html  301
+/titles/clubhouse-of-desire-vigloo.html  /titles/clubhouse-of-desire.html  301
+/titles/country-gal-to-ceo-bride.html  /titles/country-gal-to-ceo-s-bride.html  301
+/titles/murder-at-the-meriweather.html  /titles/murder-at-the-merriweather.html  301
+/titles/my-firefighter-fiancee-returns-as-a-billionaire.html  /titles/my-firefighter-fiance-returns-as-a-billionaire.html  301
+/titles/the-alpha-s-mate-who-cried-wolf.html  /titles/the-alpha-mate-who-cried-wolf.html  301
+/titles/rules-of-protection-bodyguard-i-hate.html  /titles/rules-of-protection-the-bodyguard-i-hate.html  301
+/actors/kim-nu-ri.html  /actors/kim-nuri.html  301
 # Canonical URL form is .html; Netlify also answers extensionless paths with
 # the same content (no redirect), so Google indexed a duplicate of nearly
 # every page. Recovery hygiene, 5 Sep 2026: extensionless now 301s to the
