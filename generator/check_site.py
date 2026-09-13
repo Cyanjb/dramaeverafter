@@ -246,6 +246,14 @@ missing += [m for m in sorted(os.listdir(ROOT)) if m.endswith(".md")
 if missing: fail(f"not blocked on the domain (add a 404! rule to _redirects): {missing}")
 else: ok("database, generator, references and every root .md are 404! on the domain")
 
+# THE POSTER RULE (Cyan, 13 Sep 2026): posters stay true to their sources, 3:4.
+# A design handoff asking for 9:16 or 2:3 does not override it; the sources do.
+_css = rd("style.css")
+_bad = [m for m in re.findall(r"\.(?:poster|thumb)[^{]*\{[^}]*aspect-ratio:\s*([0-9]+\s*/\s*[0-9]+)", _css)
+        if m.replace(" ", "") != "3/4"]
+if _bad: fail(f"a poster is not 3:4, which crops the source art: {_bad} (Cyan's standing rule, 13 Sep)")
+else: ok("every poster is 3:4, true to what the platforms ship")
+
 print("== indexnow ==")
 _keys = [f for f in os.listdir(ROOT) if re.fullmatch(r"[0-9a-f]{32}\.txt", f)]
 if len(_keys) != 1: fail(f"expected exactly one IndexNow key file at the root, found {_keys}")

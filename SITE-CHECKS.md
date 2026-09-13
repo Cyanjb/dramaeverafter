@@ -41,6 +41,12 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   build once it passes and hidden in the browser the minute it does, so
   a dead offer never shows.
 
+**Posters** (Cyan's standing rule, 13 Sep)
+- Every poster is 3:4, because that is what the platforms ship: ReelShort,
+  GoodShort, NetShort, PineDrama and DramaBox all serve 3:4 art. Posters
+  stay true to their source and are never cropped to a prettier shape. A
+  design handoff asking for 9:16 or 2:3 does not override this.
+
 **Pages and links**
 - tropes/index, platforms, my-list, contact, 404, robots.txt and
   llms.txt all exist; contact still carries cyan@dramaeverafter.com.
