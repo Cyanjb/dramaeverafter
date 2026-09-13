@@ -690,6 +690,9 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .watch-card .label{margin:0 0 14px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--tert)}
 .watch-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--gold);color:#241A12;padding:17px 22px;font-size:18px;font-weight:700;border-radius:2px;text-decoration:none}
 .watch-btn:hover{background:var(--gold-deep);color:#fff}
+.watch-btn+.watch-btn{margin-top:10px}
+.watch-btn.alt{background:var(--paper);color:var(--wine);border:1px solid var(--wine);font-size:16px;padding:14px 20px}
+.watch-btn.alt:hover{background:var(--wine);color:#fff}
 .watch-more{display:block;margin-top:12px;font-size:14px;color:var(--wine)}
 .watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--tert);line-height:1.5}
 .watch-pending{display:inline-block;padding:13px 20px;border:1.5px dashed var(--line);border-radius:999px;color:var(--tert);font-size:14px}
@@ -964,6 +967,13 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 </body></html>"""
 
 def watch_buttons(title_id, pre=""):
+    """A button for EVERY app that carries the title, not just the first.
+
+    Cyan, 13 Sep 2026. 45 titles sit on more than one app, and until today the
+    others were a line of plain text under one button: a reader who has Vigloo
+    but not ReelShort was shown a button they could not use and a name they
+    could not click. The first app keeps the gold button, the rest are wine
+    outlines, because the house rule is one gold button per view."""
     avails = avail_by_title.get(title_id, [])
     if not avails:
         # An unreleased title has no availability for a reason, so saying "platform
@@ -973,31 +983,42 @@ def watch_buttons(title_id, pre=""):
         if t is not None and is_upcoming(t):
             return '<span class="watch-pending">Not released yet</span>'
         return '<span class="watch-pending">Platform being verified</span>'
-    a = avails[0]
-    plat = platforms.get(a["platform_id"], {})
-    name = plat.get("name", "?")
+    named = [(platforms.get(a["platform_id"], {}), a) for a in avails]
     # An upcoming title normally DOES have a known platform -- that is the whole point
     # of announcing it -- so it reaches here with an availability row and would other-
     # wise render "Watch on ReelShort" for something nobody can watch. Say "Coming to"
     # and do not link out, because the destination has nothing to play yet.
     t_up = t_by_id.get(title_id)
     if t_up is not None and is_upcoming(t_up):
-        return f'<span class="watch-pending">Coming to {name}</span>'
-    # NO direct_link -> FALL BACK TO THE PLATFORM HOMEPAGE (Cyan, 13 Aug). Until now
+        return ('<span class="watch-pending">Coming to '
+                + " and ".join(p.get("name", "?") for p, _ in named) + '</span>')
+    # NO direct_link -> FALL BACK TO THE PLATFORM HOMEPAGE (Cyan, 13 Aug). Until then
     # this wrote href="#AFFILIATE-LINK-PENDING", so 210 rows shipped a button that
     # went nowhere and announced our monetisation plans in the markup. The homepage is
     # honest: the platform does carry the title, we just do not hold its deep link.
     # WHERE NO VERIFIED HOMEPAGE EXISTS, SAY SO RATHER THAN GUESS ONE - a wrong
     # homepage is worse than none, and www.shorts.com is a domain-sale page, not the
     # app. That leaves dramapops, shortical, shorts, playlet and kalostv unlinked.
-    link = (a["direct_link"] or "").strip() or (plat.get("web_url") or "").strip()
-    if not link:
+    linked, unlinked = [], []
+    for plat, a in named:
+        name = plat.get("name", "?")
+        deep = (a["direct_link"] or "").strip()
+        link = deep or (plat.get("web_url") or "").strip()
+        (linked if link else unlinked).append((name, link, bool(deep)))
+    # A deep link beats a homepage, so whichever app we can send the reader
+    # straight into gets the gold button.
+    linked.sort(key=lambda x: not x[2])
+    if not linked:
         return '<span class="watch-pending">Platform being verified</span>'
-    out = f'<a class="watch-btn" href="{link}"><span>Watch on {name}</span><span class="arrow">&rarr;</span></a>'
-    if len(avails) > 1:
-        others = ", ".join(platforms.get(r["platform_id"], {}).get("name", "?") for r in avails[1:])
-        out += f'<span class="watch-more">Also on {others}</span>'
+    out = "".join(
+        f'<a class="watch-btn{"" if i == 0 else " alt"}" href="{link}">'
+        f'<span>Watch on {name}</span><span class="arrow">&rarr;</span></a>'
+        for i, (name, link, _deep) in enumerate(linked))
+    if unlinked:
+        out += ('<span class="watch-more">Also on '
+                + ", ".join(n for n, _l, _d in unlinked) + '</span>')
     return out
+
 
 # Favourites live ONLY in the visitor's own browser (localStorage). Nothing is sent
 # anywhere, there is no account and no backend, so there is nothing to secure and

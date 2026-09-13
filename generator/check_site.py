@@ -13,6 +13,7 @@ behavior is added that must keep working, add its check HERE and its plain
 words to SITE-CHECKS.md.
 """
 import csv, json, os, re, subprocess, sys, unicodedata
+import collections
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -225,6 +226,27 @@ _tp = rd(_first_title.replace("https://dramaeverafter.com/", "")) if _first_titl
 if _tp and ('id="at-a-glance"' not in _tp or '"TVSeries"' not in _tp or '<details' in _tp):
     fail(f"title page lacks the At a glance band or TVSeries schema, or still has fold-outs: {_first_title}")
 elif _tp: ok("title pages end with the At a glance band and carry TVSeries schema (10 Sep handoff)")
+
+# Every app that carries a title gets its own button (Cyan, 13 Sep). Before
+# that the second app was plain text a reader could not click.
+_multi = collections.Counter()
+for _r in rows("availability.csv"): _multi[_r["title_id"]] += 1
+_two = [t for t, n in _multi.items() if n > 1 and os.path.exists(os.path.join(ROOT, "titles", t + ".html"))]
+# An app may be plain text ONLY when nothing can be linked: no deep link on
+# the row and no verified homepage for the platform (Playlet, Shortical,
+# Shorts, KalosTV, DramaPops). A dead button would be worse than the text.
+_web = {p["platform_id"]: (p.get("web_url") or "").strip() for p in rows("platforms.csv")}
+_linkable = collections.Counter()
+for _r in rows("availability.csv"):
+    if (_r.get("direct_link") or "").strip() or _web.get(_r["platform_id"]):
+        _linkable[_r["title_id"]] += 1
+_short = []
+for t in _two:
+    want = _linkable[t]
+    if want < 2: continue
+    if rd(os.path.join("titles", t + ".html")).count('class="watch-btn') < want: _short.append(t)
+if _short: fail(f"{len(_short)} titles show fewer watch buttons than linkable apps, e.g. {_short[:3]}")
+else: ok(f"every linkable app has its own watch button ({len(_two)} titles on two or more apps)")
 
 print("== redirects ==")
 red = rd("_redirects")

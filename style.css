@@ -206,6 +206,9 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .watch-card .label{margin:0 0 14px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--tert)}
 .watch-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--gold);color:#241A12;padding:17px 22px;font-size:18px;font-weight:700;border-radius:2px;text-decoration:none}
 .watch-btn:hover{background:var(--gold-deep);color:#fff}
+.watch-btn+.watch-btn{margin-top:10px}
+.watch-btn.alt{background:var(--paper);color:var(--wine);border:1px solid var(--wine);font-size:16px;padding:14px 20px}
+.watch-btn.alt:hover{background:var(--wine);color:#fff}
 .watch-more{display:block;margin-top:12px;font-size:14px;color:var(--wine)}
 .watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--tert);line-height:1.5}
 .watch-pending{display:inline-block;padding:13px 20px;border:1.5px dashed var(--line);border-radius:999px;color:var(--tert);font-size:14px}

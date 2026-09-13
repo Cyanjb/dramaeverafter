@@ -41,6 +41,12 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   build once it passes and hidden in the browser the minute it does, so
   a dead offer never shows.
 
+**Watch buttons** (13 Sep)
+- A title on more than one app shows a button per app, the first gold and
+  the rest wine outline. An app appears as plain text only when nothing
+  can be linked: no deep link and no verified homepage (Playlet,
+  Shortical, Shorts, KalosTV, DramaPops). A dead button is worse.
+
 **Posters** (Cyan's standing rule, 13 Sep)
 - Every poster is 3:4, because that is what the platforms ship: ReelShort,
   GoodShort, NetShort, PineDrama and DramaBox all serve 3:4 art. Posters
