@@ -138,3 +138,36 @@ Do this after any big change, on the live site, hard refresh first:
 - scrape_reelshort.py's detail/wanted route parses empty since ~5 Sep
   (movie-page __NEXT_DATA__ changed); tags/genres routes carry the
   weekly run meanwhile.
+
+**Rail arrows** (17 Sep)
+
+Cyan asked for arrows that pop up on hover instead of a slider under
+each rail, and said not to interfere with functionality. Three things
+have to stay true, and check_site fails the build if any of them stops
+being true.
+
+- The arrows are built in JavaScript and never appear in the HTML we
+  ship. That is the whole reason a reader with JavaScript off is no
+  worse off than before: they get the plain scroll rail they always
+  had, not two buttons that do nothing. If arrow markup ever shows up
+  in a page's source, that promise is broken.
+- Everything about them sits behind `(hover:hover) and (pointer:fine)`.
+  A phone cannot hover, so a phone gets no arrows and keeps its native
+  swipe and its own scrollbar. Lose that guard and touch readers lose
+  the scrollbar AND get arrows they can never reveal. Note the words
+  also appear in the comment above the CSS, so the check looks for the
+  actual @media rule, not the phrase.
+- The arrows show on `:focus-within` as well as hover, so tabbing into
+  a rail with a keyboard brings them up. Without it a keyboard reader
+  scrolls the rail with no visible control.
+
+Two smaller things worth knowing if this ever looks wrong:
+
+- The arrow centres on the POSTER, not the card. A card is artwork plus
+  one or two lines of caption, so centring on the card sinks the arrow
+  into the text. The script measures the first poster and sets a CSS
+  variable, which is why it lands right on all three rail sizes.
+- A rail at rest sits at scrollLeft 22, not 0. scroll-snap-align snaps
+  to the first card, which starts after the rail's 22px padding. The
+  back arrow reads the padding to know it is at the start; a plain
+  "is it zero" test left the back arrow live on every rail on the site.

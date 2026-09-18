@@ -319,6 +319,34 @@ else:
     ok("the extensionless 301 rules are all present (they do not fire "
        "for real pages, see SITE-CHECKS.md)")
 
+print("== rails ==")
+# Cyan, 17 Sep 2026: arrows on hover, no slider, and "don't interfere with
+# functionality". The arrows are PROGRESSIVE ENHANCEMENT: built in script, never
+# shipped as markup, so a reader with no JavaScript gets the plain scroll rail
+# instead of dead buttons. Three things have to stay true or that promise breaks.
+_rail_pages = [f for f in ("index.html", "titles/clubhouse-of-desire.html") if os.path.exists(f)]
+# "rail-nav" appears on every page as SCRIPT TEXT, so the shipped-markup test
+# has to look for the attribute form specifically, not the bare string.
+_no_js = [f for f in _rail_pages if 'class="rail"' in rd(f)]
+_shipped = [f for f in _rail_pages if 'class="rail-nav' in rd(f)]
+_css = rd("style.css")
+if _shipped:
+    fail(f"arrow markup is in the HTML of {_shipped}: with JavaScript off those "
+         "are dead buttons. They must be built in script (build.py RAIL_JS)")
+elif not _no_js:
+    fail("no page carries a rail any more, or the rail class was renamed: "
+         "the hover-arrow script keys off class=\"rail\" (build.py RAIL_JS)")
+# Match the AT-RULE, not the bare string: the same words appear in the comment
+# above the block, so a plain substring test passes even after the guard is gone.
+elif not re.search(r"@media\s*\(\s*hover\s*:\s*hover\s*\)\s*and\s*\(\s*pointer\s*:\s*fine\s*\)", _css):
+    fail("the rail arrow CSS lost its (hover:hover) and (pointer:fine) guard: "
+         "touch readers would lose the scrollbar and get arrows they cannot hover")
+elif ".rail-wrap.has-nav:focus-within" not in _css:
+    fail("the rail arrows no longer appear on :focus-within: a keyboard reader "
+         "tabbing into a rail would scroll it with no visible control")
+else:
+    ok("rail arrows are script-built, pointer-guarded and keyboard-reachable")
+
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")
 for w in warns: print(f"  WARN  {w}")
