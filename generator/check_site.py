@@ -347,6 +347,41 @@ elif ".rail-wrap.has-nav:focus-within" not in _css:
 else:
     ok("rail arrows are script-built, pointer-guarded and keyboard-reachable")
 
+print("== phone ==")
+# Cyan, 18 Sep 2026: most visitors are on a phone, and "as long as it won't
+# wreck the desktop website". The phone pass is scoped inside max-width:759.98px
+# for exactly that reason -- a desktop restore block only puts back what someone
+# remembered to list, and her design handoff proved it by moving 40-odd desktop
+# values, so the guarantee here is structural. These checks defend both halves.
+_css = rd("style.css")
+_home, _browse = rd("index.html"), rd("browse.html")
+_title = rd("titles/clubhouse-of-desire.html") if os.path.exists("titles/clubhouse-of-desire.html") else ""
+
+if "@media (max-width:759.98px)" not in _css.replace(" ", " "):
+    fail("the phone block is gone or its breakpoint moved: every phone rule "
+         "lives inside @media (max-width:759.98px) so desktop never sees it")
+elif 'id="nav-sheet"' not in _home:
+    fail("the phone menu sheet markup is missing from the page. The header "
+         "hides .site-nav below 760px, so without the sheet a phone reader has "
+         "NO navigation at all -- only the logo")
+elif _home.count('<a href=') and 'class="nav-toggle"' not in _home:
+    fail("the hamburger button is gone but the sheet remains: nothing can open it")
+elif _home.find('id="nav-sheet"') > 0 and " hidden>" not in _home[_home.find('id="nav-sheet"'):_home.find('id="nav-sheet"') + 40]:
+    fail("the menu sheet no longer ships with `hidden`: it would cover the page "
+         "for anyone whose JavaScript has not run yet")
+elif _title and 'class="watch-sticky"' not in _title:
+    fail("the sticky watch bar is missing from title pages: on a phone the "
+         "watch button scrolls away and never comes back")
+elif 'class="filter-open"' not in _browse or 'id="filter-body"' not in _browse:
+    fail("the browse filter sheet is gone: the sidebar renders before the "
+         "results, so a phone reader scrolls ~2,000px of chips to reach a title")
+elif ".filter-open,.filter-body>.sheet-head" not in _css:
+    fail("the phone-only sheet chrome is no longer hidden by default: the "
+         "Filters button and sheet header would appear on desktop")
+else:
+    ok("phone nav, sticky watch bar and filter sheet are all present and "
+       "scoped away from desktop")
+
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")
 for w in warns: print(f"  WARN  {w}")

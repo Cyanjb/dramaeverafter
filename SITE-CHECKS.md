@@ -171,3 +171,52 @@ Two smaller things worth knowing if this ever looks wrong:
   to the first card, which starts after the rail's 22px padding. The
   back arrow reads the padding to know it is at the start; a plain
   "is it zero" test left the back arrow live on every rail on the site.
+
+**Phone pass** (18 Sep)
+
+Most visitors are on a phone, and Cyan's condition was plain: build it
+properly "as long as it won't wreck the desktop website". So the phone
+work is scoped the opposite way round to how her design handoff was
+written.
+
+The handoff was phone-first, with desktop restored inside a
+`min-width:760px` block. Measured in a real browser, that moved about
+forty things on desktop, because a restore block only puts back what
+someone remembered to list. It stretched the title-page watch card from
+440px to 902px, froze the fluid hero headline, and resized rail posters.
+
+So every phone rule here lives inside `@media (max-width:759.98px)`.
+Desktop never sees any of it. That is a structural guarantee, not a
+promise to be careful, and it is checked: desktop computed styles were
+compared before and after across four pages at 1280, 1024, 800 and 760
+and came back with **zero** differences.
+
+The three things that had to be built, because the handoff's CSS
+referred to markup the site did not have:
+
+- **Menu sheet.** The header hides the nav below 760px, so without the
+  sheet a phone reader has no navigation at all, just the logo. This is
+  the one to watch: the sheet markup ships in the HTML with `hidden`,
+  not built in script like the rail arrows, precisely because it is
+  navigation and has to survive a script that never runs. The hamburger
+  is the only part that needs JavaScript.
+- **Sticky watch bar** on title pages. The watch button is the point of
+  the page and it used to scroll away for good. An IntersectionObserver
+  on the real button brings it back, so it never doubles up, and a title
+  with no clickable button gets no bar rather than a bar that lies.
+- **Browse filter sheet.** The sidebar renders before the results, so a
+  phone reader scrolled past roughly 2,000px of filter chips to reach
+  the first title. The heading, search and active-filter summary stay in
+  the flow; the chips move behind one button. First result now lands at
+  508px instead of about 2,600px.
+
+Two details that look odd but are deliberate:
+
+- The title-page hero uses a FLOAT on phones, not flex. The watch card
+  is inside `.info-col`, so `.split-hero .watch-card{flex:1 1 100%}` does
+  nothing at all: the card is a grandchild, not a flex item. Left as
+  flex it is stuck in a 230px column and "Watch on ReelShort" wraps.
+- The "No poster" label is indented 32px on phone cards. The favourite
+  star is a fixed 32px circle and at 120px card width it lands on top of
+  the label. The badge is already the minimum comfortable tap target, so
+  the label gives way, not the badge.

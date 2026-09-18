@@ -923,6 +923,154 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--paper);colo
 .site-footer .tag{font-size:15px;color:var(--sec)}
 .site-footer nav{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px}
 .footer-col a:hover{color:#fff}
+
+/* ============================================================
+   PHONE PASS (Cyan, 18 Sep 2026). Most visitors are on a phone and
+   the phone layout was the weakest thing on the site: a 169px header
+   that clipped "My List" off the right edge, a poster that filled the
+   whole second screen, and the watch button below the fold.
+
+   DESKTOP IS FROZEN. Cyan: "I like the desktop the way it is." Her
+   design handoff was written phone-first with desktop restored above
+   760px, and when I measured that in a browser it moved 40-odd things
+   on desktop, including stretching the title-page watch card from
+   440px to 902px, because a restore block only puts back what someone
+   remembered to list. So this is scoped the other way round: every
+   rule below sits inside max-width:759.98px and desktop never sees it.
+   Elements that exist only on a phone (the sheet, the sticky bar) are
+   new markup, hidden by default, so they cannot move desktop either.
+   The guarantee is structural, not a promise to be careful.
+   ============================================================ */
+.header-icons{display:none}
+.nav-sheet[hidden]{display:none}
+.watch-sticky{display:none}
+/* Browse filter sheet: phone-only chrome inside markup desktop shares, so it
+   is hidden here rather than merely unstyled. The filters themselves keep the
+   sidebar they have always had above 760px. */
+.filter-open,.filter-body>.sheet-head,.filter-body>.sheet-foot,.sheet-scrim{display:none}
+
+@media (max-width:759.98px){
+
+  /* ---- Header: 169px -> 64px ----------------------------------
+     The six nav links wrapped to their own row AND still overflowed,
+     so "My List" was cut in half by the right edge. On a phone they
+     move into the sheet, where they get a 52px row each instead. */
+  .site-header{padding:8px 14px;flex-wrap:nowrap;gap:10px;min-height:64px}
+  .wordmark{font-size:19px}
+  .site-nav,.site-header>.site-search{display:none}
+  .header-icons{display:flex;margin-left:auto;gap:2px}
+  .search-toggle,.nav-toggle{width:44px;height:44px;display:grid;place-items:center;
+    border:0;background:transparent;color:var(--plum);font:inherit;font-size:19px;cursor:pointer}
+  /* Three bars drawn from one box, so there is no extra markup to keep
+     in sync and the button stays a single tap target. */
+  .nav-toggle .bars{display:block;width:20px;height:2px;background:var(--plum);
+    box-shadow:0 6px 0 var(--plum),0 -6px 0 var(--plum)}
+
+  /* ---- Menu sheet ---- */
+  .nav-sheet{position:fixed;inset:0;z-index:40;background:var(--paper);
+    display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;
+    padding-bottom:env(safe-area-inset-bottom)}
+  .nav-sheet .sheet-head{display:flex;align-items:center;gap:10px;padding:8px 14px;
+    min-height:64px;border-bottom:1px solid var(--line)}
+  .nav-sheet .sheet-close{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;
+    border:0;background:transparent;color:var(--plum);font:inherit;font-size:19px;cursor:pointer}
+  .nav-sheet .site-search{display:flex;flex:0 0 auto;margin:16px 14px 6px;max-width:none;height:48px}
+  .nav-sheet nav{display:flex;flex-direction:column;padding:0 14px}
+  .nav-sheet nav a{display:flex;align-items:center;min-height:52px;border-bottom:1px solid var(--line);
+    font-family:'Fraunces',Georgia,serif;font-size:20px;color:var(--plum)}
+  .nav-sheet .sheet-foot{display:flex;gap:18px;padding:20px 14px;font-size:14px}
+  .nav-sheet .sheet-foot a{color:var(--sec)}
+  html.sheet-open,html.sheet-open body{overflow:hidden}
+
+  /* ---- Title / actor hero ------------------------------------
+     A 300px poster is 400px tall at 3:4, which is most of a phone
+     screen spent on artwork before you reach the title. Beside the
+     title instead, so title, meta and the watch button all land in
+     the first screen. The poster stays 3:4 -- that rule is not up
+     for negotiation, it just gets smaller. */
+  /* FLOAT, NOT FLEX, and the reason matters. The watch card lives inside
+     .info-col, so the obvious flex rule (.split-hero .watch-card{flex:1 1 100%})
+     does nothing: the card is not a flex item of the hero, it is a grandchild.
+     Left as flex, the card is stuck in a 230px column and "Watch on ReelShort"
+     wraps onto two lines. Floating the poster lets the eyebrow and title run
+     beside it and everything taller clear to the full width, which is the
+     layout we actually wanted, with no change to the markup desktop shares. */
+  .split-hero,.split-hero.tight{display:block;padding:14px 16px 18px}
+  .split-hero .poster-col{float:left;width:112px;margin:0 14px 8px 0}
+  .split-hero .watch-card,.split-hero .title-actions,.split-hero .story{clear:left}
+  .split-hero .watch-card{max-width:none;margin-top:16px}
+  .split-hero .ring-col{float:left;width:84px;margin:0 14px 8px 0}
+  .split-hero .ring{width:84px;height:84px;font-size:28px}
+
+  /* ---- Sticky watch bar --------------------------------------
+     The watch button is the point of a title page. Once it scrolls
+     away the bar brings it back, and only then: it is translated out
+     of view until script adds .on, so it never covers the real
+     button and never appears on a page that has no button. */
+  .watch-sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;
+    padding:9px 14px calc(11px + env(safe-area-inset-bottom));
+    background:var(--paper);border-top:1px solid var(--line);
+    box-shadow:0 -6px 18px rgba(43,27,46,.09);
+    transform:translateY(110%);transition:transform .18s ease-out}
+  .watch-sticky.on{transform:translateY(0)}
+  .watch-sticky .watch-btn{margin:0;padding:14px 18px;font-size:17px}
+
+  /* ---- Rails and cards ----------------------------------------
+     Smaller cards mean more than two posters visible at a time, which
+     is what makes a rail read as a rail rather than as a wide photo. */
+  .rail{gap:12px;padding:0 16px 16px}
+  .rail-item{flex:0 0 120px}
+  .rail-item.sm{flex-basis:112px}
+  .grid{gap:16px 12px}
+  /* The favourite star is a fixed 32px circle pinned top-left. On a 174px
+     desktop card it sits clear of the "No poster" label; on a 120px phone
+     card it lands on top of it. Indent the label past the badge rather than
+     shrink the badge, because 32px is already the minimum comfortable tap
+     target and the label is the part with room to give. */
+  /* ---- Browse: filters into a sheet ---------------------------
+     The sidebar renders BEFORE the results, so on a phone you scrolled
+     past roughly 2,000px of filter chips to reach the first title. The
+     heading, the search and the active-filter summary stay in the flow
+     because they tell you what you are looking at; the 238 trope chips
+     and the rest move behind one button. */
+  .browse-aside{flex:1 1 100%;border-right:0;padding:18px 16px 12px}
+  .browse-aside h1{font-size:25px}
+  .filter-open{display:block;width:100%;min-height:48px;margin-top:4px;
+    border:1px solid var(--wine);background:var(--paper);color:var(--wine);
+    font:inherit;font-size:16px;font-weight:700;border-radius:2px;cursor:pointer}
+  .filter-body{position:fixed;left:0;right:0;bottom:0;z-index:40;max-height:86vh;
+    display:none;flex-direction:column;background:var(--paper);
+    border-top:1px solid var(--line);border-radius:12px 12px 0 0;
+    box-shadow:0 -8px 28px rgba(43,27,46,.22);padding-bottom:env(safe-area-inset-bottom)}
+  .filter-body.on{display:flex}
+  .filter-body>.sheet-head{display:flex;align-items:center;gap:12px;flex:0 0 auto;
+    padding:10px 18px 14px;border-bottom:1px solid var(--line);position:relative}
+  .filter-body .grip{position:absolute;top:6px;left:50%;transform:translateX(-50%);
+    width:42px;height:4px;border-radius:999px;background:var(--line)}
+  .filter-body .sheet-title{font-size:21px;margin:0}
+  .filter-body .sheet-close{margin-left:auto;width:44px;height:44px;display:grid;
+    place-items:center;border:0;background:transparent;color:var(--plum);
+    font:inherit;font-size:19px;cursor:pointer}
+  /* The chips scroll, the header and the button do not: the way out of a
+     sheet should never be something you have to scroll to find. */
+  .filter-scroll{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:18px 18px 4px}
+  .filter-body>.sheet-foot{display:flex;flex:0 0 auto;padding:12px 18px 16px;
+    border-top:1px solid var(--line)}
+  .filter-done{flex:1 1 auto;min-height:48px;border:0;background:var(--gold);
+    color:#241A12;font:inherit;font-size:16px;font-weight:700;border-radius:2px;cursor:pointer}
+  .sheet-scrim{display:block;position:fixed;inset:0;z-index:39;background:rgba(43,27,46,.42)}
+  .sheet-scrim[hidden]{display:none}
+
+  .rail-item .poster--empty .label{padding-left:32px}
+  /* The typographic plate is sized for a 174px desktop card. At 120px the
+     17px title overruns the plate and pushes the app name out of the bottom
+     of the artwork. These are the 467 titles with no cover art, so the plate
+     IS the poster for them and it has to hold together. */
+  .poster--empty{padding:11px 10px;gap:6px}
+  .rail-item .poster--empty .ttl,.rail-item.sm .poster--empty .ttl{font-size:13px}
+  .poster--empty .label{font-size:9.5px;letter-spacing:.12em}
+  .poster--empty .app{font-size:10px;padding-top:7px}
+}
 """
 
 def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", og_image="", og_type="website", noindex=False):
@@ -971,7 +1119,33 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 <span class="glyph">&#8981;</span>
 <input type="search" name="q" placeholder="Search a title or actor" aria-label="Search a title or actor" value="{q}">
 </form>
+<div class="header-icons">
+<button class="search-toggle" type="button" aria-controls="nav-sheet" aria-expanded="false" aria-label="Search">&#8981;</button>
+<button class="nav-toggle" type="button" aria-controls="nav-sheet" aria-expanded="false" aria-label="Menu"><span class="bars"></span></button>
+</div>
 </header>
+<div class="nav-sheet" id="nav-sheet" hidden>
+<div class="sheet-head">
+<a class="wordmark" href="{pre}index.html"><span>Drama</span><em>EverAfter</em></a>
+<button class="sheet-close" type="button" aria-label="Close menu">&#10005;</button>
+</div>
+<form class="site-search" action="{pre}browse.html" method="get">
+<span class="glyph">&#8981;</span>
+<input type="search" name="q" placeholder="Search a title or actor" aria-label="Search a title or actor" value="{q}">
+</form>
+<nav>
+<a href="{pre}browse.html">Browse</a>
+<a href="{pre}actors/index.html">Actors</a>
+<a href="{pre}characters.html">Characters</a>
+<a href="{pre}platforms.html">Apps</a>
+<a href="{pre}tropes/index.html">Tropes</a>
+<a href="{pre}blog.html">Blog</a>
+<a href="{pre}my-list.html">My List</a>
+</nav>
+<div class="sheet-foot">
+<a href="{pre}contact.html">Contact</a>
+</div>
+</div>
 {body}
 <footer class="site-footer">
 <div class="inner">
@@ -990,7 +1164,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 </nav>
 </div>
 </footer>
-{RAIL_JS}
+{RAIL_JS}{MOBILE_JS}
 </body></html>"""
 
 # Hover arrows for the poster rails (Cyan, 17 Sep 2026: "I don't want sliders
@@ -1006,6 +1180,110 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 # A rail that fits its viewport gets no arrows at all, and the arrows disable
 # themselves at each end rather than sitting there doing nothing. Scrolling is
 # never intercepted: the buttons call scrollBy, they do not manage position.
+# The phone menu sheet and the sticky watch bar (Cyan, 18 Sep 2026).
+#
+# Both are markup that already exists in the page and is hidden by CSS, NOT
+# markup built here, because unlike the rail arrows these are navigation: if
+# this script fails to run, the links still have to be reachable. That is why
+# the sheet ships in the HTML with `hidden` and why the toggle buttons are the
+# only thing that stops working without script -- and the CSS hides the sheet
+# above 760px so a desktop reader never meets either.
+#
+# The sticky bar is driven by an IntersectionObserver on the real watch button,
+# so it appears only once the real one has scrolled away. No scroll handler, no
+# guessing at offsets, and nothing at all on a page with no watch button.
+MOBILE_JS = """
+<script>
+(function(){
+  var sheet = document.getElementById('nav-sheet');
+  if(sheet){
+    var opens = document.querySelectorAll('.nav-toggle,.search-toggle');
+    var closer = sheet.querySelector('.sheet-close');
+    var field = sheet.querySelector('input[type=search]');
+    var last = null;
+    function open(focusSearch){
+      last = document.activeElement;
+      sheet.hidden = false;
+      document.documentElement.classList.add('sheet-open');
+      opens.forEach(function(b){ b.setAttribute('aria-expanded','true'); });
+      // A search tap should land in the field; a menu tap should not raise the
+      // keyboard over the links the reader came for.
+      (focusSearch && field ? field : closer).focus();
+    }
+    function close(){
+      sheet.hidden = true;
+      document.documentElement.classList.remove('sheet-open');
+      opens.forEach(function(b){ b.setAttribute('aria-expanded','false'); });
+      if(last && last.focus) last.focus();
+    }
+    opens.forEach(function(b){
+      b.addEventListener('click', function(){
+        sheet.hidden ? open(b.classList.contains('search-toggle')) : close();
+      });
+    });
+    if(closer) closer.addEventListener('click', close);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !sheet.hidden) close(); });
+    // Tapping a link navigates, but a same-page link would otherwise leave the
+    // sheet covering the page it just moved to.
+    sheet.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+    // The sheet is phone-only. Rotating a tablet past the breakpoint with it
+    // open would otherwise leave the page scroll-locked behind a hidden sheet.
+    if(window.matchMedia){
+      var wide = matchMedia('(min-width:760px)');
+      (wide.addEventListener ? wide.addEventListener.bind(wide,'change') : wide.addListener.bind(wide))(function(m){
+        if(m.matches && !sheet.hidden) close();
+      });
+    }
+  }
+
+  var fbody = document.getElementById('filter-body');
+  var fopen = document.querySelector('.filter-open');
+  if(fbody && fopen){
+    var scrim = document.querySelector('.sheet-scrim');
+    var fback = null;
+    function fclose(){
+      fbody.classList.remove('on');
+      if(scrim) scrim.hidden = true;
+      document.documentElement.classList.remove('sheet-open');
+      fopen.setAttribute('aria-expanded','false');
+      if(fback && fback.focus) fback.focus();
+    }
+    fopen.addEventListener('click', function(){
+      fback = document.activeElement;
+      fbody.classList.add('on');
+      if(scrim) scrim.hidden = false;
+      document.documentElement.classList.add('sheet-open');
+      fopen.setAttribute('aria-expanded','true');
+      var c = fbody.querySelector('.sheet-close'); if(c) c.focus();
+    });
+    fbody.querySelectorAll('.sheet-close,.filter-done').forEach(function(b){
+      b.addEventListener('click', fclose);
+    });
+    if(scrim) scrim.addEventListener('click', fclose);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && fbody.classList.contains('on')) fclose();
+    });
+    // The sheet is display:none above 760px, so a rotation past the breakpoint
+    // would otherwise leave the page scroll-locked with nothing on screen.
+    if(window.matchMedia){
+      var w2 = matchMedia('(min-width:760px)');
+      (w2.addEventListener ? w2.addEventListener.bind(w2,'change') : w2.addListener.bind(w2))(function(m){
+        if(m.matches && fbody.classList.contains('on')) fclose();
+      });
+    }
+  }
+
+  var bar = document.querySelector('.watch-sticky');
+  var real = document.querySelector('.watch-card .watch-btn');
+  if(bar && real && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      bar.classList.toggle('on', !es[0].isIntersecting);
+    }, {threshold: 0}).observe(real);
+  }
+})();
+</script>
+"""
+
 RAIL_JS = """
 <script>
 (function(){
@@ -1060,6 +1338,25 @@ RAIL_JS = """
 })();
 </script>
 """
+
+def sticky_watch(title_id, pre=""):
+    """The phone-only bar that brings the watch button back once it scrolls off.
+
+    Cyan, 18 Sep 2026: most visitors are on a phone, and on a phone the watch
+    button -- the entire point of a title page -- sits below the fold and then
+    scrolls away for good.
+
+    It carries the FIRST button only. watch_buttons may render several, but a
+    fixed bar at the bottom of a phone screen is not the place to make someone
+    choose, and the house rule is one gold button per view. A title with no
+    clickable button (unreleased, or no verified link) gets no bar at all
+    rather than a bar that lies about being able to play something.
+    """
+    m = re.search(r'<a class="watch-btn[^"]*"[^>]*>.*?</a>', watch_buttons(title_id, pre), re.S)
+    if not m:
+        return ""
+    return f'<div class="watch-sticky">{m.group(0)}</div>'
+
 
 def watch_buttons(title_id, pre=""):
     """A button for EVERY app that carries the title, not just the first.
@@ -1896,6 +2193,7 @@ for t in titles:
 </dl>
 <p class="report">Spotted it on another app? <a href="{pre}contact.html">Report it</a> and help the database grow.</p>
 </section>
+{sticky_watch(t['title_id'], pre)}
 {FAV_JS}{SHARE_JS}"""
     html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
                 title_desc(t),
@@ -2387,6 +2685,14 @@ browse_body = f"""
 <span class="txt" id="active-summary">No filters yet &mdash; showing everything</span>
 <button class="reset-pill" id="f-reset" type="button" style="display:none">Reset</button>
 </div>
+<button class="filter-open" type="button" aria-controls="filter-body" aria-expanded="false">Filters</button>
+<div class="filter-body" id="filter-body">
+<div class="sheet-head">
+<span class="grip" aria-hidden="true"></span>
+<h2 class="sheet-title">Filters</h2>
+<button class="sheet-close" type="button" aria-label="Close filters">&#10005;</button>
+</div>
+<div class="filter-scroll">
 <div class="filter-group">
 <h2>Country of origin</h2><p class="hint">Pick one</p>
 <div class="chips tight" id="f-origin">{origin_facets}</div>
@@ -2408,6 +2714,10 @@ browse_body = f"""
 <input type="checkbox" id="hide-upcoming" checked>
 <span>Hide titles not out yet</span>
 </label>
+</div>
+<div class="sheet-foot"><button class="filter-done" type="button">Show results</button></div>
+</div>
+<div class="sheet-scrim" hidden></div>
 </aside>
 <section class="results-panel">
 <div class="results-head">
