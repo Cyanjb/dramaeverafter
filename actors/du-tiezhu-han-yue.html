@@ -149,4 +149,58 @@ document.querySelectorAll('[data-app-filter-for]').forEach(function(sel){
 </nav>
 </div>
 </footer>
+
+<script>
+(function(){
+  if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  document.querySelectorAll('.rail').forEach(function(rail){
+    var wrap = document.createElement('div');
+    wrap.className = 'rail-wrap';
+    rail.parentNode.insertBefore(wrap, rail);
+    wrap.appendChild(rail);
+    function btn(dir, glyph, label){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'rail-nav rail-nav--' + dir;
+      b.setAttribute('aria-label', label);
+      b.innerHTML = '<span aria-hidden="true">' + glyph + '</span>';
+      b.addEventListener('click', function(){
+        // Just short of a full viewport, so the card at the edge stays in sight
+        // and the reader keeps their place.
+        rail.scrollBy({left: dir === 'next' ? step() : -step(), behavior: 'smooth'});
+      });
+      wrap.appendChild(b);
+      return b;
+    }
+    function step(){ return Math.max(160, rail.clientWidth - 120); }
+    var prev = btn('prev', '‹', 'Scroll left');
+    var next = btn('next', '›', 'Scroll right');
+    // A snapped rail does NOT rest at scrollLeft 0. scroll-snap-align:start snaps
+    // to the first card, which sits past the rail's 22px left padding, so a rail
+    // that has never been touched reports 22 and a naive `scrollLeft <= 2` would
+    // leave the left arrow enabled on every rail on the site. The padding is the
+    // real floor; on a browser that does not snap, scrollLeft is 0 and this is
+    // still true. Measured, not assumed, so restyling the padding cannot rot it.
+    function floorPx(){ return parseFloat(getComputedStyle(rail).paddingLeft) || 0; }
+    function sync(){
+      var over = rail.scrollWidth - rail.clientWidth;
+      // Centre the arrow on the ARTWORK, not the card: a card is poster plus one
+      // or two lines of caption, so centring on the card sinks the arrow into the
+      // text. Measuring the first poster keeps this right for all three rail
+      // flavours (full, small, actor ring) without hard-coding a height each time.
+      var art = rail.querySelector('.poster, .ring');
+      if(art && art.offsetHeight) wrap.style.setProperty('--rail-art', art.offsetHeight + 'px');
+      wrap.classList.toggle('has-nav', over > 4);
+      prev.disabled = rail.scrollLeft <= floorPx() + 2;
+      next.disabled = rail.scrollLeft >= over - 2;
+    }
+    rail.addEventListener('scroll', sync, {passive: true});
+    if(window.ResizeObserver) new ResizeObserver(sync).observe(rail);
+    // Late-loading posters change scrollWidth after first paint.
+    window.addEventListener('load', sync);
+    sync();
+  });
+})();
+</script>
+
 </body></html>

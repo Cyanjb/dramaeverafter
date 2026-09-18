@@ -549,6 +549,32 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .rail::-webkit-scrollbar{height:8px}
 .rail::-webkit-scrollbar-track{background:#EFE7DE;border-radius:4px}
 .rail::-webkit-scrollbar-thumb{background:#D9C6B8;border-radius:4px}
+/* HOVER ARROWS INSTEAD OF A SCROLLBAR, POINTER DEVICES ONLY (Cyan, 17 Sep 2026).
+   Everything here sits behind (hover:hover) and (pointer:fine), so a phone or
+   tablet keeps the rail exactly as it was: native swipe, native scrollbar. The
+   wrapper and buttons are built in script and only ever exist where the arrows
+   are usable, so nothing above this line changes for touch. */
+.rail-wrap{position:relative}
+@media (hover:hover) and (pointer:fine){
+  .rail{scrollbar-width:none}
+  .rail::-webkit-scrollbar{height:0;display:none}
+  .rail-nav{position:absolute;z-index:3;top:calc(var(--rail-art,232px) / 2);transform:translateY(-50%);
+    width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+    color:var(--wine);font-size:22px;line-height:1;cursor:pointer;padding:0;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 10px rgba(60,30,40,.18);
+    opacity:0;visibility:hidden;transition:opacity .16s ease,visibility .16s ease}
+  .rail-nav--prev{left:6px}
+  .rail-nav--next{right:6px}
+  /* Only a rail that actually overflows gets arrows, and only while the reader
+     is on it -- or tabbing through it, which is why focus-within counts. */
+  .rail-wrap.has-nav:hover .rail-nav,
+  .rail-wrap.has-nav:focus-within .rail-nav{opacity:1;visibility:visible}
+  .rail-nav:hover{background:var(--wine);color:#fff;border-color:var(--wine)}
+  .rail-nav:focus-visible{outline:2px solid var(--wine);outline-offset:2px;opacity:1;visibility:visible}
+  .rail-nav[disabled]{opacity:0!important;visibility:hidden!important;pointer-events:none}
+}
+@media (prefers-reduced-motion:reduce){.rail-nav{transition:none}}
 .rail-item{flex:0 0 174px;min-width:0;scroll-snap-align:start}
 .rail-item.sm{flex-basis:158px}
 .rail-item.actor{flex-basis:auto;text-align:center}
@@ -964,7 +990,76 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 </nav>
 </div>
 </footer>
+{RAIL_JS}
 </body></html>"""
+
+# Hover arrows for the poster rails (Cyan, 17 Sep 2026: "I don't want sliders
+# under the rails I would prefer arrows that pop up when you hover or similar,
+# don't interfere with functionality though").
+#
+# PROGRESSIVE ENHANCEMENT ON PURPOSE. The buttons are built here, in script, and
+# never ship in the HTML. With JavaScript off, or before this runs, a rail is
+# exactly what it was: a scroll container you can swipe, wheel or tab through.
+# That is why the scrollbar is hidden in CSS only under (hover:hover), so a
+# touch reader keeps the native swipe affordance and never meets a dead control.
+#
+# A rail that fits its viewport gets no arrows at all, and the arrows disable
+# themselves at each end rather than sitting there doing nothing. Scrolling is
+# never intercepted: the buttons call scrollBy, they do not manage position.
+RAIL_JS = """
+<script>
+(function(){
+  if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  document.querySelectorAll('.rail').forEach(function(rail){
+    var wrap = document.createElement('div');
+    wrap.className = 'rail-wrap';
+    rail.parentNode.insertBefore(wrap, rail);
+    wrap.appendChild(rail);
+    function btn(dir, glyph, label){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'rail-nav rail-nav--' + dir;
+      b.setAttribute('aria-label', label);
+      b.innerHTML = '<span aria-hidden="true">' + glyph + '</span>';
+      b.addEventListener('click', function(){
+        // Just short of a full viewport, so the card at the edge stays in sight
+        // and the reader keeps their place.
+        rail.scrollBy({left: dir === 'next' ? step() : -step(), behavior: 'smooth'});
+      });
+      wrap.appendChild(b);
+      return b;
+    }
+    function step(){ return Math.max(160, rail.clientWidth - 120); }
+    var prev = btn('prev', '\u2039', 'Scroll left');
+    var next = btn('next', '\u203a', 'Scroll right');
+    // A snapped rail does NOT rest at scrollLeft 0. scroll-snap-align:start snaps
+    // to the first card, which sits past the rail's 22px left padding, so a rail
+    // that has never been touched reports 22 and a naive `scrollLeft <= 2` would
+    // leave the left arrow enabled on every rail on the site. The padding is the
+    // real floor; on a browser that does not snap, scrollLeft is 0 and this is
+    // still true. Measured, not assumed, so restyling the padding cannot rot it.
+    function floorPx(){ return parseFloat(getComputedStyle(rail).paddingLeft) || 0; }
+    function sync(){
+      var over = rail.scrollWidth - rail.clientWidth;
+      // Centre the arrow on the ARTWORK, not the card: a card is poster plus one
+      // or two lines of caption, so centring on the card sinks the arrow into the
+      // text. Measuring the first poster keeps this right for all three rail
+      // flavours (full, small, actor ring) without hard-coding a height each time.
+      var art = rail.querySelector('.poster, .ring');
+      if(art && art.offsetHeight) wrap.style.setProperty('--rail-art', art.offsetHeight + 'px');
+      wrap.classList.toggle('has-nav', over > 4);
+      prev.disabled = rail.scrollLeft <= floorPx() + 2;
+      next.disabled = rail.scrollLeft >= over - 2;
+    }
+    rail.addEventListener('scroll', sync, {passive: true});
+    if(window.ResizeObserver) new ResizeObserver(sync).observe(rail);
+    // Late-loading posters change scrollWidth after first paint.
+    window.addEventListener('load', sync);
+    sync();
+  });
+})();
+</script>
+"""
 
 def watch_buttons(title_id, pre=""):
     """A button for EVERY app that carries the title, not just the first.
