@@ -220,3 +220,25 @@ Two details that look odd but are deliberate:
   star is a fixed 32px circle and at 120px card width it lands on top of
   the label. The badge is already the minimum comfortable tap target, so
   the label gives way, not the badge.
+
+**Three phone fixes** (18 Sep, from Cyan using it)
+
+- **Selected filter chips went white.** `.chip:hover:not(.off)` is (0,3,0)
+  and outranks `.chip.on` at (0,2,0), so hovering a selected chip painted
+  it `#fff` while `.on` kept the text at `#FFF8F2`. White on white, a
+  contrast ratio of 1.02:1. This was a long-standing bug on desktop too,
+  but there the mouse moves away and it clears; a touch device KEEPS
+  `:hover` after a tap, so on a phone the chip stayed unreadable until
+  you tapped something else. Fixed by excluding `.on` from the hover
+  rule and putting the whole rule behind `@media (hover:hover)`. Note
+  this does change one desktop behaviour on purpose: hovering an already
+  selected chip now darkens to wine instead of going blank.
+- **Tapping a menu link flashed the old page.** The sheet closed on tap,
+  which uncovered the page you were already on, and you looked at it for
+  the length of the request before the new page painted. Cyan called it
+  a quick cut, and it was: two transitions where there should be one.
+  The sheet now stays up during navigation and the next page replaces
+  it. A same-page link still closes it, because nothing will repaint and
+  the sheet would sit over the destination.
+- **Contact was 14px next to 20px links.** It was in a `.sheet-foot`
+  styled as small print. It is a nav item, so it moved into the nav list.

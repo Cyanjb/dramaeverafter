@@ -676,7 +676,17 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 /* ---------- chips (feed the existing filter JS: data-g / data-v) ---------- */
 .chip{display:inline-flex;align-items:baseline;gap:7px;padding:8px 14px;border:1px solid var(--chip-bd);background:var(--paper);border-radius:999px;font-size:15px;font-family:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
 .chip .c{font-size:12.5px;color:var(--tert)}
-.chip:hover:not(.off){border-color:var(--wine);background:#fff}
+/* SELECTED CHIPS MUST NOT TAKE THE HOVER BACKGROUND (Cyan, 18 Sep 2026: "whatever
+   you click on goes white"). Two faults, one line. `.chip:hover:not(.off)` is
+   (0,3,0) and beats `.chip.on` at (0,2,0), so hovering a selected chip painted it
+   #fff while .on kept the text at #FFF8F2: white on white, contrast 1.02:1. And a
+   touch device KEEPS :hover after a tap, so on a phone that illegible state stuck
+   until you tapped something else, which is where she hit it. Excluding .on fixes
+   the colour; the hover guard means a phone never enters the state at all. */
+@media (hover:hover){
+  .chip:hover:not(.off):not(.on){border-color:var(--wine);background:#fff}
+  .chip.on:hover{background:var(--wine-hover);border-color:var(--wine-hover)}
+}
 .chip.on{background:var(--wine);border-color:var(--wine);color:#FFF8F2}
 .chip.on .c{color:rgba(255,248,242,.75)}
 .chip.off{border-color:var(--chip-off-bd);background:var(--chip-off-bg);color:var(--chip-off-fg);cursor:not-allowed}
@@ -1141,10 +1151,8 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 <a href="{pre}tropes/index.html">Tropes</a>
 <a href="{pre}blog.html">Blog</a>
 <a href="{pre}my-list.html">My List</a>
-</nav>
-<div class="sheet-foot">
 <a href="{pre}contact.html">Contact</a>
-</div>
+</nav>
 </div>
 {body}
 <footer class="site-footer">
@@ -1242,9 +1250,25 @@ MOBILE_JS = """
     });
     if(closer) closer.addEventListener('click', close);
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !sheet.hidden) close(); });
-    // Tapping a link navigates, but a same-page link would otherwise leave the
-    // sheet covering the page it just moved to.
-    sheet.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+    // DO NOT CLOSE THE SHEET ON A LINK THAT NAVIGATES (Cyan, 18 Sep 2026: tapping
+    // Actors showed Browse for a second first, "almost a quick cut"). This is a
+    // static site, so every menu link is a full page load. Closing the sheet on
+    // tap uncovered the page you were ALREADY on, and you sat looking at the old
+    // page for the length of the request before the new one painted. Leaving the
+    // sheet up means the menu itself is the waiting state and the next page
+    // replaces it directly: one transition instead of two, and no glimpse of a
+    // page you just navigated away from.
+    //
+    // A same-page link still has to close it, because nothing will repaint and
+    // the sheet would sit over the destination.
+    sheet.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        var href = a.getAttribute('href') || '';
+        var samePage = href.charAt(0) === '#' ||
+                       a.pathname === location.pathname && a.search === location.search;
+        if(samePage) close();
+      });
+    });
     // The sheet is phone-only. Rotating a tablet past the breakpoint with it
     // open would otherwise leave the page scroll-locked behind a hidden sheet.
     if(window.matchMedia){
