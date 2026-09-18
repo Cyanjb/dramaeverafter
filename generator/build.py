@@ -1161,10 +1161,29 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 <a href="{pre}platforms.html">Apps</a>
 <a href="{pre}my-list.html">My List</a>
 <a href="{pre}contact.html">Contact</a>
+<a href="{pre}privacy.html">Privacy</a>
 </nav>
 </div>
 </footer>
 {RAIL_JS}{MOBILE_JS}
+<script>
+/* Outbound click counting. Fires a GoatCounter event when someone leaves for a
+   platform. Paths look like watch/reelshort/<title-id>, so filtering the events
+   list by "watch/reelshort" gives the per-platform total and the per-title detail
+   in one place. Silently does nothing if count.js has not loaded yet, which is
+   the right trade: an undercount is fine, a thrown error on every click is not. */
+document.addEventListener("click", function (e) {{
+  var a = e.target && e.target.closest ? e.target.closest("a.watch-btn") : null;
+  if (!a || !window.goatcounter || !window.goatcounter.count) return;
+  var p = a.getAttribute("data-platform") || "unknown";
+  var t = a.getAttribute("data-title") || "";
+  window.goatcounter.count({{
+    path: "watch/" + p + (t ? "/" + t : ""),
+    title: "Watch click: " + p,
+    event: true
+  }});
+}});
+</script>
 </body></html>"""
 
 # Hover arrows for the poster rails (Cyan, 17 Sep 2026: "I don't want sliders
@@ -1396,19 +1415,30 @@ def watch_buttons(title_id, pre=""):
         name = plat.get("name", "?")
         deep = (a["direct_link"] or "").strip()
         link = deep or (plat.get("web_url") or "").strip()
-        (linked if link else unlinked).append((name, link, bool(deep)))
+        (linked if link else unlinked).append((name, link, bool(deep), a["platform_id"]))
     # A deep link beats a homepage, so whichever app we can send the reader
     # straight into gets the gold button.
     linked.sort(key=lambda x: not x[2])
     if not linked:
         return '<span class="watch-pending">Platform being verified</span>'
+    # data-platform and data-title feed the outbound click counter in the footer.
+    # GoatCounter records pageviews only, so before this nothing counted how many
+    # people actually LEFT for a platform. That number decides whether affiliate
+    # work pays for itself, and it is our only independent check against whatever
+    # a platform's own dashboard reports back to us.
+    #
+    # EVERY button carries them, not just the first: since 13 Sep a title on two
+    # apps renders a button each, and counting only the first would quietly credit
+    # ReelShort for a reader who chose Vigloo. The sticky phone bar reuses the
+    # first button verbatim, attributes included, so a tap there counts the same.
     out = "".join(
-        f'<a class="watch-btn{"" if i == 0 else " alt"}" href="{link}">'
+        f'<a class="watch-btn{"" if i == 0 else " alt"}" href="{link}"'
+        f' data-platform="{esc_attr(pid)}" data-title="{esc_attr(title_id)}">'
         f'<span>Watch on {name}</span><span class="arrow">&rarr;</span></a>'
-        for i, (name, link, _deep) in enumerate(linked))
+        for i, (name, link, _deep, pid) in enumerate(linked))
     if unlinked:
         out += ('<span class="watch-more">Also on '
-                + ", ".join(n for n, _l, _d in unlinked) + '</span>')
+                + ", ".join(n for n, _l, _d, _p in unlinked) + '</span>')
     return out
 
 
@@ -1590,7 +1620,7 @@ def actor_summary(p, pairs):
 for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + origins_other:
     p = os.path.join(DIST, d)
     if os.path.exists(p): shutil.rmtree(p)
-for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "my-list.html", "characters.html", "404.html", "robots.txt", "sitemap.xml", "style.css"]:
+for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "privacy.html", "my-list.html", "characters.html", "404.html", "robots.txt", "sitemap.xml", "style.css"]:
     p = os.path.join(DIST, f)
     if os.path.exists(p): os.remove(p)
 for d in ["", "actors", "titles", "tropes", "apps"]:
@@ -2366,7 +2396,7 @@ for pid, n in TOP_PLATFORMS:
 </div>
 </div>
 <div class="app-cta"><p class="label">Get the app</p>
-{f'<a class="watch-btn" href="{esc_attr(web_url)}"><span>Open {pl["name"]}</span><span class="arrow">&rarr;</span></a>' if web_url else f'<p class="watch-pending">No public web link on file for {pl["name"]}</p>'}
+{f'<a class="watch-btn" href="{esc_attr(web_url)}" data-platform="{esc_attr(pl["platform_id"])}"><span>Open {pl["name"]}</span><span class="arrow">&rarr;</span></a>' if web_url else f'<p class="watch-pending">No public web link on file for {pl["name"]}</p>'}
 <p class="watch-disclosure">Pricing: {pl.get('pricing_model') or 'varies by title'}.{' We may earn a commission &mdash; that&rsquo;s what pays for this database.' if web_url else ''}</p>
 </div>
 </section>
@@ -3187,6 +3217,52 @@ html = page("Contact DramaEverAfter: Report a Correction or Missing Title",
             body, f"{DOMAIN}/contact.html", depth=0)
 open(os.path.join(DIST, "contact.html"), "w", encoding="utf-8").write(html)
 urls.append("/contact.html")
+
+# PRIVACY PAGE. Analytics went live across every page, so this stopped being
+# optional: POPIA and GDPR both reach an EU-indexed site run from South Africa.
+# Everything below is written from what the site ACTUALLY does, verified in this
+# file, not from a template. GoatCounter sets no cookies and stores no personal
+# data, which is why there is no consent banner and why there should not be one.
+# If analytics are ever swapped for something that does set cookies, this page and
+# that decision have to be revisited together.
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Privacy</p>
+<h1 style="max-width:24ch">What this site collects, and what it doesn&rsquo;t</h1>
+<p class="lede">Short version: no accounts, no cookies, no advertising trackers, and nothing here knows who you are.</p>
+</div></section>
+<section class="pad" style="padding:34px 22px 46px;max-width:760px">
+
+<h2>Visitor statistics</h2>
+<p>DramaEverAfter uses <a href="https://www.goatcounter.com/" rel="noopener">GoatCounter</a> to count visits. It sets no cookies and collects nothing that identifies you personally. For each page view it records the page you landed on, the site that sent you, your browser and operating system, and your country. That is all, and it is only ever read as totals.</p>
+<p>It also counts when someone taps a &ldquo;Watch on&rdquo; button, so I can see which apps and which shows people actually go on to watch. That count records the button, not the person.</p>
+<p>There is no Google Analytics, no advertising pixel, no fingerprinting and no cross-site tracking anywhere on this site.</p>
+
+<h2>My List</h2>
+<p>Saved titles live in your own browser&rsquo;s local storage. They are never sent anywhere, I cannot see them, and they do not follow you to another device. Clearing your browser data clears them.</p>
+
+<h2>The contact form</h2>
+<p>Anything typed into the form on the contact page stays in your browser. It is not transmitted or stored. If you want to reach me, email works: <a href="mailto:cyan@dramaeverafter.com">cyan@dramaeverafter.com</a>. Email you send me is kept only as long as it takes to deal with it.</p>
+
+<h2>Links to the apps</h2>
+<p>Buttons and links that take you to ReelShort, DramaBox or any other app hand you over to that company, and their privacy policy applies from that point. Some of those links earn this site a commission, which is what pays for running the database. It never changes what you are charged, and it never decides which show gets listed or how it is described.</p>
+
+<h2>Fonts and hosting</h2>
+<p>The site is hosted on Netlify and loads its typefaces from Google Fonts, so both receive your IP address in the ordinary course of serving a page, as any web host does.</p>
+
+<h2>Your rights</h2>
+<p>Because nothing collected here identifies you, there is usually no personal data of yours for me to hand over or delete. If you have emailed me and want that correspondence removed, or you want to ask what I hold, write to <a href="mailto:cyan@dramaeverafter.com">cyan@dramaeverafter.com</a> and I will sort it out.</p>
+<p>If you are an actor and want your photo or profile changed or taken down, the same address works and it gets done.</p>
+
+<h2>Changes</h2>
+<p>If what the site collects changes, this page changes with it. Last updated {UPDATED}.</p>
+
+</section>"""
+html = page("Privacy at DramaEverAfter: No Cookies, No Trackers",
+            "What DramaEverAfter collects: anonymous visit counts, no cookies, no advertising trackers, and saved titles that never leave your browser.",
+            body, f"{DOMAIN}/privacy.html", depth=0)
+open(os.path.join(DIST, "privacy.html"), "w", encoding="utf-8").write(html)
+urls.append("/privacy.html")
 
 # 404 page. Netlify serves /404.html for every missing path, at any depth, so every
 # link in it must resolve from the root: a <base> tag does that without a second

@@ -70,7 +70,7 @@
 <h1>Queen and the Beast</h1>
 <p class="views-line">172K views &middot; Romance &middot; English original</p>
 
-<div class="watch-card"><p class="label">Where to watch &middot; checked July 2026</p><a class="watch-btn" href="https://www.goodshort.com/drama/queen-and-the-beast-31001396589"><span>Watch on GoodShort</span><span class="arrow">&rarr;</span></a>
+<div class="watch-card"><p class="label">Where to watch &middot; checked July 2026</p><a class="watch-btn" href="https://www.goodshort.com/drama/queen-and-the-beast-31001396589" data-platform="goodshort" data-title="queen-and-the-beast"><span>Watch on GoodShort</span><span class="arrow">&rarr;</span></a>
 
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
 <div class="title-actions">
@@ -100,7 +100,7 @@
 </dl>
 <p class="report">Spotted it on another app? <a href="../contact.html">Report it</a> and help the database grow.</p>
 </section>
-<div class="watch-sticky"><a class="watch-btn" href="https://www.goodshort.com/drama/queen-and-the-beast-31001396589"><span>Watch on GoodShort</span><span class="arrow">&rarr;</span></a></div>
+<div class="watch-sticky"><a class="watch-btn" href="https://www.goodshort.com/drama/queen-and-the-beast-31001396589" data-platform="goodshort" data-title="queen-and-the-beast"><span>Watch on GoodShort</span><span class="arrow">&rarr;</span></a></div>
 
 <script>
 (function(){
@@ -173,6 +173,7 @@ document.addEventListener('click', function(e){
 <a href="../platforms.html">Apps</a>
 <a href="../my-list.html">My List</a>
 <a href="../contact.html">Contact</a>
+<a href="../privacy.html">Privacy</a>
 </nav>
 </div>
 </footer>
@@ -320,4 +321,22 @@ document.addEventListener('click', function(e){
 })();
 </script>
 
+<script>
+/* Outbound click counting. Fires a GoatCounter event when someone leaves for a
+   platform. Paths look like watch/reelshort/<title-id>, so filtering the events
+   list by "watch/reelshort" gives the per-platform total and the per-title detail
+   in one place. Silently does nothing if count.js has not loaded yet, which is
+   the right trade: an undercount is fine, a thrown error on every click is not. */
+document.addEventListener("click", function (e) {
+  var a = e.target && e.target.closest ? e.target.closest("a.watch-btn") : null;
+  if (!a || !window.goatcounter || !window.goatcounter.count) return;
+  var p = a.getAttribute("data-platform") || "unknown";
+  var t = a.getAttribute("data-title") || "";
+  window.goatcounter.count({
+    path: "watch/" + p + (t ? "/" + t : ""),
+    title: "Watch click: " + p,
+    event: true
+  });
+});
+</script>
 </body></html>
