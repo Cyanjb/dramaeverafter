@@ -55,10 +55,8 @@
 <a href="../tropes/index.html">Tropes</a>
 <a href="../blog.html">Blog</a>
 <a href="../my-list.html">My List</a>
-</nav>
-<div class="sheet-foot">
 <a href="../contact.html">Contact</a>
-</div>
+</nav>
 </div>
 
 <nav class="crumb"><a href="../actors/index.html">Actors</a><span>/</span><span class="current">Kylan Mackenzie</span></nav>
@@ -257,9 +255,25 @@ document.querySelectorAll('[data-app-filter-for]').forEach(function(sel){
     });
     if(closer) closer.addEventListener('click', close);
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !sheet.hidden) close(); });
-    // Tapping a link navigates, but a same-page link would otherwise leave the
-    // sheet covering the page it just moved to.
-    sheet.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+    // DO NOT CLOSE THE SHEET ON A LINK THAT NAVIGATES (Cyan, 18 Sep 2026: tapping
+    // Actors showed Browse for a second first, "almost a quick cut"). This is a
+    // static site, so every menu link is a full page load. Closing the sheet on
+    // tap uncovered the page you were ALREADY on, and you sat looking at the old
+    // page for the length of the request before the new one painted. Leaving the
+    // sheet up means the menu itself is the waiting state and the next page
+    // replaces it directly: one transition instead of two, and no glimpse of a
+    // page you just navigated away from.
+    //
+    // A same-page link still has to close it, because nothing will repaint and
+    // the sheet would sit over the destination.
+    sheet.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        var href = a.getAttribute('href') || '';
+        var samePage = href.charAt(0) === '#' ||
+                       a.pathname === location.pathname && a.search === location.search;
+        if(samePage) close();
+      });
+    });
     // The sheet is phone-only. Rotating a tablet past the breakpoint with it
     // open would otherwise leave the page scroll-locked behind a hidden sheet.
     if(window.matchMedia){

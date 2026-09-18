@@ -382,6 +382,19 @@ else:
     ok("phone nav, sticky watch bar and filter sheet are all present and "
        "scoped away from desktop")
 
+# A selected filter chip must never take the hover background. `.chip:hover:not(.off)`
+# is (0,3,0) and outranks `.chip.on` at (0,2,0), so without the :not(.on) the chip
+# paints #fff while .on keeps the text at #FFF8F2 -- white on white, 1.02:1. A touch
+# device keeps :hover after a tap, so on a phone that state stuck (Cyan, 18 Sep).
+if not re.search(r"\.chip:hover:not\(\.off\):not\(\.on\)", _css):
+    fail("the selected-chip guard is gone from .chip:hover: a chosen filter chip "
+         "renders white text on a white pill, and on a phone it stays that way")
+elif not re.search(r"@media\s*\(\s*hover\s*:\s*hover\s*\)[^@]*\.chip:hover", _css, re.S):
+    fail("the chip hover rule is no longer behind @media (hover:hover): a tap on a "
+         "phone leaves the hover state stuck on the chip")
+else:
+    ok("a selected filter chip keeps its wine fill on hover and on touch")
+
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")
 for w in warns: print(f"  WARN  {w}")
