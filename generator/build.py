@@ -1072,6 +1072,9 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--paper);colo
   .filter-scroll{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:18px 18px 4px}
   .filter-body>.sheet-foot{display:flex;flex:0 0 auto;padding:12px 18px 16px;
     border-top:1px solid var(--line)}
+  .filter-clear{flex:0 0 auto;min-height:48px;padding:0 18px;border:1px solid var(--wine);
+    background:var(--paper);color:var(--wine);font:inherit;font-size:15px;font-weight:700;
+    border-radius:2px;cursor:pointer}
   .filter-done{flex:1 1 auto;min-height:48px;border:0;background:var(--gold);
     color:#241A12;font:inherit;font-size:16px;font-weight:700;border-radius:2px;cursor:pointer}
   .sheet-scrim{display:block;position:fixed;inset:0;z-index:39;background:rgba(43,27,46,.42)}
@@ -2538,6 +2541,13 @@ for t in titles_root: origin_counts[origin_of(t)] += 1
 origin_facets = "".join(
     '<button class="chip" data-g="origin" data-v="%s" type="button" aria-pressed="false">%s<span class="c"></span></button>' % (v, lbl)
     for v, lbl in ORIGIN_BUCKETS)
+# A FILTER WITH ONE LIVE OPTION IS NOT A FILTER (Cyan, 18 Sep 2026). All 3,789
+# titles are english today, so Chinese and Dubbed rendered as permanently greyed
+# chips and the whole group read as broken -- which is exactly how she read it.
+# Hide the group until at least two buckets hold something. It comes back on its
+# own the day the data does, because this counts the data rather than a flag
+# somebody has to remember to flip.
+origin_live = sum(1 for v, _ in ORIGIN_BUCKETS if origin_counts.get(v))
 
 trope_facets, n_tropes = facet_chips("trope", trope_counts, trope_label)
 platform_facets, n_platforms = facet_chips("platform", platform_counts, platform_label)
@@ -2556,6 +2566,7 @@ BROWSE_JS = f"""
   var qEl=document.getElementById('q'), sortEl=document.getElementById('f-sort');
   var titlesOut=document.getElementById('results-titles'), actorsOut=document.getElementById('results-actors');
   var countEl=document.getElementById('result-count'), resetEl=document.getElementById('f-reset');
+  var resetSheet=document.getElementById('f-reset-sheet');
   var moreBtn=document.getElementById('f-more'), moreWrap=document.getElementById('f-more-wrap');
   var chips=[].slice.call(document.querySelectorAll('.chip[data-g]'));
   chips.forEach(function(c){{ if(!active[c.dataset.g]) active[c.dataset.g]=new Set(); }});
@@ -2669,6 +2680,9 @@ BROWSE_JS = f"""
 
     var nf=0; for(var g3 in active) nf+=active[g3].size;
     resetEl.style.display=(nf||q)?'inline-block':'none';
+    // The sheet covers the page's own Reset on a phone, so the sheet carries its
+    // own. Same handler, same show/hide rule, so they cannot disagree.
+    if(resetSheet) resetSheet.style.display=(nf||q)?'inline-block':'none';
     countEl.innerHTML='<b>'+titles.length.toLocaleString()+'</b> titles'+(q?', '+actors.length.toLocaleString()+' actors':'');
     document.getElementById('active-summary').textContent = (nf||q) ? ((nf?nf+' filter'+(nf>1?'s':'')+' on':'')+(nf&&q?', ':'')+(q?'searching \\"'+q+'\\"':'')) : 'No filters yet \\u2014 showing everything';
 
@@ -2712,9 +2726,9 @@ BROWSE_JS = f"""
     try{{ localStorage.setItem('dea_hide_upcoming', hideSoonEl.checked?'1':'0'); }}catch(e){{}}
     run();
   }});
-  resetEl.addEventListener('click',function(){{
-    for(var g in active) active[g].clear(); qEl.value=''; run();
-  }});
+  function clearAll(){{ for(var g in active) active[g].clear(); qEl.value=''; run(); }}
+  resetEl.addEventListener('click',clearAll);
+  if(resetSheet) resetSheet.addEventListener('click',clearAll);
 
   fetch('search-index.json').then(function(r){{return r.json();}}).then(function(d){{
     D=d;
@@ -2732,6 +2746,14 @@ BROWSE_JS = f"""
 }})();
 </script>
 """
+
+# Not "Country of origin": English and Chinese are languages, and Dubbed is
+# neither a language nor a country, it is which version of a release you are
+# watching. The hint says so rather than leaving Dubbed looking misfiled.
+origin_group = ("""<div class="filter-group">
+<h2>Language</h2><p class="hint">Original language, or an English dub</p>
+<div class="chips tight" id="f-origin">""" + origin_facets + """</div>
+</div>""") if origin_live > 1 else ""
 
 browse_body = f"""
 <div class="browse-layout">
@@ -2753,10 +2775,7 @@ browse_body = f"""
 <button class="sheet-close" type="button" aria-label="Close filters">&#10005;</button>
 </div>
 <div class="filter-scroll">
-<div class="filter-group">
-<h2>Country of origin</h2><p class="hint">Pick one</p>
-<div class="chips tight" id="f-origin">{origin_facets}</div>
-</div>
+{origin_group}
 <div class="filter-group">
 <h2>Trope</h2><p class="hint">{VISIBLE} most common of {n_tropes}</p>
 <div class="chips tight collapsed" id="f-trope">{trope_facets}</div>{trope_more}
@@ -2775,7 +2794,7 @@ browse_body = f"""
 <span>Hide titles not out yet</span>
 </label>
 </div>
-<div class="sheet-foot"><button class="filter-done" type="button">Show results</button></div>
+<div class="sheet-foot"><button class="filter-clear" id="f-reset-sheet" type="button" style="display:none">Clear all</button><button class="filter-done" type="button">Show results</button></div>
 </div>
 <div class="sheet-scrim" hidden></div>
 </aside>

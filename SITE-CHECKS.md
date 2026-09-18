@@ -263,3 +263,44 @@ and check_site enforces it.
 Worth knowing when testing: headless Chromium has no dynamic address bar,
 so `vh` and `dvh` resolve identically there. A desktop browser cannot
 reproduce this bug. It has to be checked on a real phone.
+
+**The language filter on browse** (18 Sep)
+
+Cyan: "you have called where the English and Chinese is the country of
+origin, and I don't think that's correct... you also have Chinese
+blurred out, and I know for a fact we do have some Chinese verticals."
+
+Both halves were right, and the second one uncovered something bigger.
+
+The label was simply wrong. English and Chinese are languages, not
+countries, and Dubbed is neither: it is which version of a release you
+are watching. It now reads **Language**, with the hint "Original
+language, or an English dub" so Dubbed does not look misfiled.
+
+The greyed Chinese chip was not a display fault. Every one of the 3,789
+titles carries `origin=english`. There are no Chinese titles in the
+database at all, and no `/chinese/` section page has ever been built.
+
+But the filter could not have worked even if there were. build.py scopes
+browse, home, tropes and platforms to ROOT_ORIGIN, and any other origin
+gets its OWN section index instead (the comment above `titles_root` says
+so). Adding Chinese titles moves them out of browse; it does not light up
+a Chinese chip. The filter was structurally dead from the day it was
+written, not merely waiting on data.
+
+So the group is hidden while browse lists one language, and it returns on
+its own if that ever stops being true. check_site counts the browse
+population rather than the whole file, which is the only way this check
+tells the truth: counting every row would say "two languages, show the
+filter" while browse still showed none of them.
+
+One consequence worth remembering: **if Chinese titles are ever added,
+they will not appear in Browse.** They get a section index at
+`/chinese/index.html`. Whether that is what we want is a design decision
+nobody has made yet, and it should be made before the titles arrive
+rather than after.
+
+Also: the sheet now carries its own **Clear all**, because the page's own
+Reset sits behind the sheet on a phone and cannot be tapped while you are
+choosing filters. Both controls run one handler and share one show/hide
+rule, so they cannot disagree.

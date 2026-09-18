@@ -409,6 +409,37 @@ if not _dvh_ok:
 else:
     ok("phone sheets are sized in dvh, so iOS chrome cannot push their heads off-screen")
 
+# The language filter appears only when BROWSE ITSELF lists more than one
+# language. That qualifier matters: build.py scopes browse, home, tropes and
+# platforms to ROOT_ORIGIN, and any other origin gets its own section index
+# instead (see the comment above titles_root). So the filter was not merely
+# empty, it was structurally dead -- adding Chinese titles moves them OUT of
+# browse, it does not light up a Chinese chip. Counting the browse population
+# rather than the whole file is what makes this check tell the truth, and it
+# still flips on its own if that scoping is ever changed.
+_root_origin = "english"
+_browse_origins = collections.Counter(
+    (r.get("origin") or _root_origin).strip().lower() for r in rows("titles.csv")
+    if (r.get("origin") or _root_origin).strip().lower() == _root_origin)
+_all_origins = collections.Counter((r.get("origin") or _root_origin).strip().lower()
+                                   for r in rows("titles.csv"))
+_live = len(_browse_origins)
+_shown = 'id="f-origin"' in _browse
+if _live > 1 and not _shown:
+    fail(f"browse now lists {_live} languages but its language filter is hidden")
+elif _live <= 1 and _shown:
+    fail("the browse language filter is showing, but browse only ever lists "
+         f"{_root_origin} titles, so its other chips can never match. If other "
+         "origins are meant to appear in browse now, titles_root is the thing "
+         "to change, not this filter")
+elif "Country of origin" in _browse:
+    fail("the language filter is labelled 'Country of origin' again: English and "
+         "Chinese are languages, and Dubbed is a release version, not a country")
+else:
+    ok(f"the browse language filter matches what browse lists "
+       f"({_live} language, group {'shown' if _shown else 'hidden'}; "
+       f"whole catalogue: {dict(_all_origins)})")
+
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")
 for w in warns: print(f"  WARN  {w}")
