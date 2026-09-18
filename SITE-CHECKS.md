@@ -242,3 +242,24 @@ Two details that look odd but are deliberate:
   the sheet would sit over the destination.
 - **Contact was 14px next to 20px links.** It was in a `.sheet-foot`
   styled as small print. It is a nav item, so it moved into the nav list.
+
+**Sheets are sized in dvh, not vh** (18 Sep)
+
+Cyan's screenshot showed the filter sheet with the word "Filters" cut
+off across the ascenders, no rounded top edge and no grip handle: the
+sheet was taller than the screen and had pushed its own head off the
+top.
+
+On iOS Safari `100vh` means the viewport WITHOUT the address bar. A
+bottom-anchored sheet capped at `86vh` is therefore taller than what the
+reader can actually see, and everything above the fold is simply gone,
+including the close button. `dvh` is the live viewport and tracks the
+browser chrome as it hides and shows.
+
+Both sheets now declare `vh` first and `dvh` second, so an older browser
+takes the fallback and everything current takes `dvh`. The order matters
+and check_site enforces it.
+
+Worth knowing when testing: headless Chromium has no dynamic address bar,
+so `vh` and `dvh` resolve identically there. A desktop browser cannot
+reproduce this bug. It has to be checked on a real phone.

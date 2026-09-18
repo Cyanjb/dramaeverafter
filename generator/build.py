@@ -977,7 +977,7 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--paper);colo
     box-shadow:0 6px 0 var(--plum),0 -6px 0 var(--plum)}
 
   /* ---- Menu sheet ---- */
-  .nav-sheet{position:fixed;inset:0;z-index:40;background:var(--paper);
+  .nav-sheet{position:fixed;inset:0;height:100vh;height:100dvh;z-index:40;background:var(--paper);
     display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;
     padding-bottom:env(safe-area-inset-bottom)}
   .nav-sheet .sheet-head{display:flex;align-items:center;gap:10px;padding:8px 14px;
@@ -1048,7 +1048,13 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--paper);colo
   .filter-open{display:block;width:100%;min-height:48px;margin-top:4px;
     border:1px solid var(--wine);background:var(--paper);color:var(--wine);
     font:inherit;font-size:16px;font-weight:700;border-radius:2px;cursor:pointer}
-  .filter-body{position:fixed;left:0;right:0;bottom:0;z-index:40;max-height:86vh;
+  /* dvh, NOT vh (Cyan's screenshot, 18 Sep: the word "Filters" had its ascenders
+     sliced off and the rounded top edge and grip were gone entirely). On iOS
+     Safari 100vh means the viewport WITHOUT the address bar, so 86vh is taller
+     than what you can actually see and a bottom-anchored sheet pushes its own
+     head off the top of the screen. dvh is the live viewport and tracks the
+     chrome; the vh line stays first as the fallback for anything older. */
+  .filter-body{position:fixed;left:0;right:0;bottom:0;z-index:40;max-height:86vh;max-height:86dvh;
     display:none;flex-direction:column;background:var(--paper);
     border-top:1px solid var(--line);border-radius:12px 12px 0 0;
     box-shadow:0 -8px 28px rgba(43,27,46,.22);padding-bottom:env(safe-area-inset-bottom)}
