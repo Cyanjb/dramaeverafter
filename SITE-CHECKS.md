@@ -41,6 +41,12 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   build once it passes and hidden in the browser the minute it does, so
   a dead offer never shows.
 
+**Watch buttons** (13 Sep)
+- A title on more than one app shows a button per app, the first gold and
+  the rest wine outline. An app appears as plain text only when nothing
+  can be linked: no deep link and no verified homepage (Playlet,
+  Shortical, Shorts, KalosTV, DramaPops). A dead button is worse.
+
 **Posters** (Cyan's standing rule, 13 Sep)
 - Every poster is 3:4, because that is what the platforms ship: ReelShort,
   GoodShort, NetShort, PineDrama and DramaBox all serve 3:4 art. Posters
@@ -132,3 +138,85 @@ Do this after any big change, on the live site, hard refresh first:
 - scrape_reelshort.py's detail/wanted route parses empty since ~5 Sep
   (movie-page __NEXT_DATA__ changed); tags/genres routes carry the
   weekly run meanwhile.
+
+**Rail arrows** (17 Sep)
+
+Cyan asked for arrows that pop up on hover instead of a slider under
+each rail, and said not to interfere with functionality. Three things
+have to stay true, and check_site fails the build if any of them stops
+being true.
+
+- The arrows are built in JavaScript and never appear in the HTML we
+  ship. That is the whole reason a reader with JavaScript off is no
+  worse off than before: they get the plain scroll rail they always
+  had, not two buttons that do nothing. If arrow markup ever shows up
+  in a page's source, that promise is broken.
+- Everything about them sits behind `(hover:hover) and (pointer:fine)`.
+  A phone cannot hover, so a phone gets no arrows and keeps its native
+  swipe and its own scrollbar. Lose that guard and touch readers lose
+  the scrollbar AND get arrows they can never reveal. Note the words
+  also appear in the comment above the CSS, so the check looks for the
+  actual @media rule, not the phrase.
+- The arrows show on `:focus-within` as well as hover, so tabbing into
+  a rail with a keyboard brings them up. Without it a keyboard reader
+  scrolls the rail with no visible control.
+
+Two smaller things worth knowing if this ever looks wrong:
+
+- The arrow centres on the POSTER, not the card. A card is artwork plus
+  one or two lines of caption, so centring on the card sinks the arrow
+  into the text. The script measures the first poster and sets a CSS
+  variable, which is why it lands right on all three rail sizes.
+- A rail at rest sits at scrollLeft 22, not 0. scroll-snap-align snaps
+  to the first card, which starts after the rail's 22px padding. The
+  back arrow reads the padding to know it is at the start; a plain
+  "is it zero" test left the back arrow live on every rail on the site.
+
+**Phone pass** (18 Sep)
+
+Most visitors are on a phone, and Cyan's condition was plain: build it
+properly "as long as it won't wreck the desktop website". So the phone
+work is scoped the opposite way round to how her design handoff was
+written.
+
+The handoff was phone-first, with desktop restored inside a
+`min-width:760px` block. Measured in a real browser, that moved about
+forty things on desktop, because a restore block only puts back what
+someone remembered to list. It stretched the title-page watch card from
+440px to 902px, froze the fluid hero headline, and resized rail posters.
+
+So every phone rule here lives inside `@media (max-width:759.98px)`.
+Desktop never sees any of it. That is a structural guarantee, not a
+promise to be careful, and it is checked: desktop computed styles were
+compared before and after across four pages at 1280, 1024, 800 and 760
+and came back with **zero** differences.
+
+The three things that had to be built, because the handoff's CSS
+referred to markup the site did not have:
+
+- **Menu sheet.** The header hides the nav below 760px, so without the
+  sheet a phone reader has no navigation at all, just the logo. This is
+  the one to watch: the sheet markup ships in the HTML with `hidden`,
+  not built in script like the rail arrows, precisely because it is
+  navigation and has to survive a script that never runs. The hamburger
+  is the only part that needs JavaScript.
+- **Sticky watch bar** on title pages. The watch button is the point of
+  the page and it used to scroll away for good. An IntersectionObserver
+  on the real button brings it back, so it never doubles up, and a title
+  with no clickable button gets no bar rather than a bar that lies.
+- **Browse filter sheet.** The sidebar renders before the results, so a
+  phone reader scrolled past roughly 2,000px of filter chips to reach
+  the first title. The heading, search and active-filter summary stay in
+  the flow; the chips move behind one button. First result now lands at
+  508px instead of about 2,600px.
+
+Two details that look odd but are deliberate:
+
+- The title-page hero uses a FLOAT on phones, not flex. The watch card
+  is inside `.info-col`, so `.split-hero .watch-card{flex:1 1 100%}` does
+  nothing at all: the card is a grandchild, not a flex item. Left as
+  flex it is stuck in a 230px column and "Watch on ReelShort" wraps.
+- The "No poster" label is indented 32px on phone cards. The favourite
+  star is a fixed 32px circle and at 120px card width it lands on top of
+  the label. The badge is already the minimum comfortable tap target, so
+  the label gives way, not the badge.

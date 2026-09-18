@@ -65,6 +65,32 @@ h1{font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.015em;text
 .rail::-webkit-scrollbar{height:8px}
 .rail::-webkit-scrollbar-track{background:#EFE7DE;border-radius:4px}
 .rail::-webkit-scrollbar-thumb{background:#D9C6B8;border-radius:4px}
+/* HOVER ARROWS INSTEAD OF A SCROLLBAR, POINTER DEVICES ONLY (Cyan, 17 Sep 2026).
+   Everything here sits behind (hover:hover) and (pointer:fine), so a phone or
+   tablet keeps the rail exactly as it was: native swipe, native scrollbar. The
+   wrapper and buttons are built in script and only ever exist where the arrows
+   are usable, so nothing above this line changes for touch. */
+.rail-wrap{position:relative}
+@media (hover:hover) and (pointer:fine){
+  .rail{scrollbar-width:none}
+  .rail::-webkit-scrollbar{height:0;display:none}
+  .rail-nav{position:absolute;z-index:3;top:calc(var(--rail-art,232px) / 2);transform:translateY(-50%);
+    width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+    color:var(--wine);font-size:22px;line-height:1;cursor:pointer;padding:0;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 10px rgba(60,30,40,.18);
+    opacity:0;visibility:hidden;transition:opacity .16s ease,visibility .16s ease}
+  .rail-nav--prev{left:6px}
+  .rail-nav--next{right:6px}
+  /* Only a rail that actually overflows gets arrows, and only while the reader
+     is on it -- or tabbing through it, which is why focus-within counts. */
+  .rail-wrap.has-nav:hover .rail-nav,
+  .rail-wrap.has-nav:focus-within .rail-nav{opacity:1;visibility:visible}
+  .rail-nav:hover{background:var(--wine);color:#fff;border-color:var(--wine)}
+  .rail-nav:focus-visible{outline:2px solid var(--wine);outline-offset:2px;opacity:1;visibility:visible}
+  .rail-nav[disabled]{opacity:0!important;visibility:hidden!important;pointer-events:none}
+}
+@media (prefers-reduced-motion:reduce){.rail-nav{transition:none}}
 .rail-item{flex:0 0 174px;min-width:0;scroll-snap-align:start}
 .rail-item.sm{flex-basis:158px}
 .rail-item.actor{flex-basis:auto;text-align:center}
@@ -206,6 +232,9 @@ padding:11px 12px;border:1px solid var(--chip-bd);background:#fff;border-radius:
 .watch-card .label{margin:0 0 14px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--tert)}
 .watch-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--gold);color:#241A12;padding:17px 22px;font-size:18px;font-weight:700;border-radius:2px;text-decoration:none}
 .watch-btn:hover{background:var(--gold-deep);color:#fff}
+.watch-btn+.watch-btn{margin-top:10px}
+.watch-btn.alt{background:var(--paper);color:var(--wine);border:1px solid var(--wine);font-size:16px;padding:14px 20px}
+.watch-btn.alt:hover{background:var(--wine);color:#fff}
 .watch-more{display:block;margin-top:12px;font-size:14px;color:var(--wine)}
 .watch-disclosure{margin:12px 0 0;font-size:12.5px;color:var(--tert);line-height:1.5}
 .watch-pending{display:inline-block;padding:13px 20px;border:1.5px dashed var(--line);border-radius:999px;color:var(--tert);font-size:14px}
@@ -410,3 +439,151 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--paper);colo
 .site-footer .tag{font-size:15px;color:var(--sec)}
 .site-footer nav{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px}
 .footer-col a:hover{color:#fff}
+
+/* ============================================================
+   PHONE PASS (Cyan, 18 Sep 2026). Most visitors are on a phone and
+   the phone layout was the weakest thing on the site: a 169px header
+   that clipped "My List" off the right edge, a poster that filled the
+   whole second screen, and the watch button below the fold.
+
+   DESKTOP IS FROZEN. Cyan: "I like the desktop the way it is." Her
+   design handoff was written phone-first with desktop restored above
+   760px, and when I measured that in a browser it moved 40-odd things
+   on desktop, including stretching the title-page watch card from
+   440px to 902px, because a restore block only puts back what someone
+   remembered to list. So this is scoped the other way round: every
+   rule below sits inside max-width:759.98px and desktop never sees it.
+   Elements that exist only on a phone (the sheet, the sticky bar) are
+   new markup, hidden by default, so they cannot move desktop either.
+   The guarantee is structural, not a promise to be careful.
+   ============================================================ */
+.header-icons{display:none}
+.nav-sheet[hidden]{display:none}
+.watch-sticky{display:none}
+/* Browse filter sheet: phone-only chrome inside markup desktop shares, so it
+   is hidden here rather than merely unstyled. The filters themselves keep the
+   sidebar they have always had above 760px. */
+.filter-open,.filter-body>.sheet-head,.filter-body>.sheet-foot,.sheet-scrim{display:none}
+
+@media (max-width:759.98px){
+
+  /* ---- Header: 169px -> 64px ----------------------------------
+     The six nav links wrapped to their own row AND still overflowed,
+     so "My List" was cut in half by the right edge. On a phone they
+     move into the sheet, where they get a 52px row each instead. */
+  .site-header{padding:8px 14px;flex-wrap:nowrap;gap:10px;min-height:64px}
+  .wordmark{font-size:19px}
+  .site-nav,.site-header>.site-search{display:none}
+  .header-icons{display:flex;margin-left:auto;gap:2px}
+  .search-toggle,.nav-toggle{width:44px;height:44px;display:grid;place-items:center;
+    border:0;background:transparent;color:var(--plum);font:inherit;font-size:19px;cursor:pointer}
+  /* Three bars drawn from one box, so there is no extra markup to keep
+     in sync and the button stays a single tap target. */
+  .nav-toggle .bars{display:block;width:20px;height:2px;background:var(--plum);
+    box-shadow:0 6px 0 var(--plum),0 -6px 0 var(--plum)}
+
+  /* ---- Menu sheet ---- */
+  .nav-sheet{position:fixed;inset:0;z-index:40;background:var(--paper);
+    display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;
+    padding-bottom:env(safe-area-inset-bottom)}
+  .nav-sheet .sheet-head{display:flex;align-items:center;gap:10px;padding:8px 14px;
+    min-height:64px;border-bottom:1px solid var(--line)}
+  .nav-sheet .sheet-close{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;
+    border:0;background:transparent;color:var(--plum);font:inherit;font-size:19px;cursor:pointer}
+  .nav-sheet .site-search{display:flex;flex:0 0 auto;margin:16px 14px 6px;max-width:none;height:48px}
+  .nav-sheet nav{display:flex;flex-direction:column;padding:0 14px}
+  .nav-sheet nav a{display:flex;align-items:center;min-height:52px;border-bottom:1px solid var(--line);
+    font-family:'Fraunces',Georgia,serif;font-size:20px;color:var(--plum)}
+  .nav-sheet .sheet-foot{display:flex;gap:18px;padding:20px 14px;font-size:14px}
+  .nav-sheet .sheet-foot a{color:var(--sec)}
+  html.sheet-open,html.sheet-open body{overflow:hidden}
+
+  /* ---- Title / actor hero ------------------------------------
+     A 300px poster is 400px tall at 3:4, which is most of a phone
+     screen spent on artwork before you reach the title. Beside the
+     title instead, so title, meta and the watch button all land in
+     the first screen. The poster stays 3:4 -- that rule is not up
+     for negotiation, it just gets smaller. */
+  /* FLOAT, NOT FLEX, and the reason matters. The watch card lives inside
+     .info-col, so the obvious flex rule (.split-hero .watch-card{flex:1 1 100%})
+     does nothing: the card is not a flex item of the hero, it is a grandchild.
+     Left as flex, the card is stuck in a 230px column and "Watch on ReelShort"
+     wraps onto two lines. Floating the poster lets the eyebrow and title run
+     beside it and everything taller clear to the full width, which is the
+     layout we actually wanted, with no change to the markup desktop shares. */
+  .split-hero,.split-hero.tight{display:block;padding:14px 16px 18px}
+  .split-hero .poster-col{float:left;width:112px;margin:0 14px 8px 0}
+  .split-hero .watch-card,.split-hero .title-actions,.split-hero .story{clear:left}
+  .split-hero .watch-card{max-width:none;margin-top:16px}
+  .split-hero .ring-col{float:left;width:84px;margin:0 14px 8px 0}
+  .split-hero .ring{width:84px;height:84px;font-size:28px}
+
+  /* ---- Sticky watch bar --------------------------------------
+     The watch button is the point of a title page. Once it scrolls
+     away the bar brings it back, and only then: it is translated out
+     of view until script adds .on, so it never covers the real
+     button and never appears on a page that has no button. */
+  .watch-sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;
+    padding:9px 14px calc(11px + env(safe-area-inset-bottom));
+    background:var(--paper);border-top:1px solid var(--line);
+    box-shadow:0 -6px 18px rgba(43,27,46,.09);
+    transform:translateY(110%);transition:transform .18s ease-out}
+  .watch-sticky.on{transform:translateY(0)}
+  .watch-sticky .watch-btn{margin:0;padding:14px 18px;font-size:17px}
+
+  /* ---- Rails and cards ----------------------------------------
+     Smaller cards mean more than two posters visible at a time, which
+     is what makes a rail read as a rail rather than as a wide photo. */
+  .rail{gap:12px;padding:0 16px 16px}
+  .rail-item{flex:0 0 120px}
+  .rail-item.sm{flex-basis:112px}
+  .grid{gap:16px 12px}
+  /* The favourite star is a fixed 32px circle pinned top-left. On a 174px
+     desktop card it sits clear of the "No poster" label; on a 120px phone
+     card it lands on top of it. Indent the label past the badge rather than
+     shrink the badge, because 32px is already the minimum comfortable tap
+     target and the label is the part with room to give. */
+  /* ---- Browse: filters into a sheet ---------------------------
+     The sidebar renders BEFORE the results, so on a phone you scrolled
+     past roughly 2,000px of filter chips to reach the first title. The
+     heading, the search and the active-filter summary stay in the flow
+     because they tell you what you are looking at; the 238 trope chips
+     and the rest move behind one button. */
+  .browse-aside{flex:1 1 100%;border-right:0;padding:18px 16px 12px}
+  .browse-aside h1{font-size:25px}
+  .filter-open{display:block;width:100%;min-height:48px;margin-top:4px;
+    border:1px solid var(--wine);background:var(--paper);color:var(--wine);
+    font:inherit;font-size:16px;font-weight:700;border-radius:2px;cursor:pointer}
+  .filter-body{position:fixed;left:0;right:0;bottom:0;z-index:40;max-height:86vh;
+    display:none;flex-direction:column;background:var(--paper);
+    border-top:1px solid var(--line);border-radius:12px 12px 0 0;
+    box-shadow:0 -8px 28px rgba(43,27,46,.22);padding-bottom:env(safe-area-inset-bottom)}
+  .filter-body.on{display:flex}
+  .filter-body>.sheet-head{display:flex;align-items:center;gap:12px;flex:0 0 auto;
+    padding:10px 18px 14px;border-bottom:1px solid var(--line);position:relative}
+  .filter-body .grip{position:absolute;top:6px;left:50%;transform:translateX(-50%);
+    width:42px;height:4px;border-radius:999px;background:var(--line)}
+  .filter-body .sheet-title{font-size:21px;margin:0}
+  .filter-body .sheet-close{margin-left:auto;width:44px;height:44px;display:grid;
+    place-items:center;border:0;background:transparent;color:var(--plum);
+    font:inherit;font-size:19px;cursor:pointer}
+  /* The chips scroll, the header and the button do not: the way out of a
+     sheet should never be something you have to scroll to find. */
+  .filter-scroll{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:18px 18px 4px}
+  .filter-body>.sheet-foot{display:flex;flex:0 0 auto;padding:12px 18px 16px;
+    border-top:1px solid var(--line)}
+  .filter-done{flex:1 1 auto;min-height:48px;border:0;background:var(--gold);
+    color:#241A12;font:inherit;font-size:16px;font-weight:700;border-radius:2px;cursor:pointer}
+  .sheet-scrim{display:block;position:fixed;inset:0;z-index:39;background:rgba(43,27,46,.42)}
+  .sheet-scrim[hidden]{display:none}
+
+  .rail-item .poster--empty .label{padding-left:32px}
+  /* The typographic plate is sized for a 174px desktop card. At 120px the
+     17px title overruns the plate and pushes the app name out of the bottom
+     of the artwork. These are the 467 titles with no cover art, so the plate
+     IS the poster for them and it has to hold together. */
+  .poster--empty{padding:11px 10px;gap:6px}
+  .rail-item .poster--empty .ttl,.rail-item.sm .poster--empty .ttl{font-size:13px}
+  .poster--empty .label{font-size:9.5px;letter-spacing:.12em}
+  .poster--empty .app{font-size:10px;padding-top:7px}
+}

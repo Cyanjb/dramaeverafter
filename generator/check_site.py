@@ -13,6 +13,7 @@ behavior is added that must keep working, add its check HERE and its plain
 words to SITE-CHECKS.md.
 """
 import csv, json, os, re, subprocess, sys, unicodedata
+import collections
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -226,6 +227,27 @@ if _tp and ('id="at-a-glance"' not in _tp or '"TVSeries"' not in _tp or '<detail
     fail(f"title page lacks the At a glance band or TVSeries schema, or still has fold-outs: {_first_title}")
 elif _tp: ok("title pages end with the At a glance band and carry TVSeries schema (10 Sep handoff)")
 
+# Every app that carries a title gets its own button (Cyan, 13 Sep). Before
+# that the second app was plain text a reader could not click.
+_multi = collections.Counter()
+for _r in rows("availability.csv"): _multi[_r["title_id"]] += 1
+_two = [t for t, n in _multi.items() if n > 1 and os.path.exists(os.path.join(ROOT, "titles", t + ".html"))]
+# An app may be plain text ONLY when nothing can be linked: no deep link on
+# the row and no verified homepage for the platform (Playlet, Shortical,
+# Shorts, KalosTV, DramaPops). A dead button would be worse than the text.
+_web = {p["platform_id"]: (p.get("web_url") or "").strip() for p in rows("platforms.csv")}
+_linkable = collections.Counter()
+for _r in rows("availability.csv"):
+    if (_r.get("direct_link") or "").strip() or _web.get(_r["platform_id"]):
+        _linkable[_r["title_id"]] += 1
+_short = []
+for t in _two:
+    want = _linkable[t]
+    if want < 2: continue
+    if rd(os.path.join("titles", t + ".html")).count('class="watch-btn') < want: _short.append(t)
+if _short: fail(f"{len(_short)} titles show fewer watch buttons than linkable apps, e.g. {_short[:3]}")
+else: ok(f"every linkable app has its own watch button ({len(_two)} titles on two or more apps)")
+
 print("== redirects ==")
 red = rd("_redirects")
 if re.search(r"\b30[12]!", red):
@@ -296,6 +318,69 @@ if missing:
 else:
     ok("the extensionless 301 rules are all present (they do not fire "
        "for real pages, see SITE-CHECKS.md)")
+
+print("== rails ==")
+# Cyan, 17 Sep 2026: arrows on hover, no slider, and "don't interfere with
+# functionality". The arrows are PROGRESSIVE ENHANCEMENT: built in script, never
+# shipped as markup, so a reader with no JavaScript gets the plain scroll rail
+# instead of dead buttons. Three things have to stay true or that promise breaks.
+_rail_pages = [f for f in ("index.html", "titles/clubhouse-of-desire.html") if os.path.exists(f)]
+# "rail-nav" appears on every page as SCRIPT TEXT, so the shipped-markup test
+# has to look for the attribute form specifically, not the bare string.
+_no_js = [f for f in _rail_pages if 'class="rail"' in rd(f)]
+_shipped = [f for f in _rail_pages if 'class="rail-nav' in rd(f)]
+_css = rd("style.css")
+if _shipped:
+    fail(f"arrow markup is in the HTML of {_shipped}: with JavaScript off those "
+         "are dead buttons. They must be built in script (build.py RAIL_JS)")
+elif not _no_js:
+    fail("no page carries a rail any more, or the rail class was renamed: "
+         "the hover-arrow script keys off class=\"rail\" (build.py RAIL_JS)")
+# Match the AT-RULE, not the bare string: the same words appear in the comment
+# above the block, so a plain substring test passes even after the guard is gone.
+elif not re.search(r"@media\s*\(\s*hover\s*:\s*hover\s*\)\s*and\s*\(\s*pointer\s*:\s*fine\s*\)", _css):
+    fail("the rail arrow CSS lost its (hover:hover) and (pointer:fine) guard: "
+         "touch readers would lose the scrollbar and get arrows they cannot hover")
+elif ".rail-wrap.has-nav:focus-within" not in _css:
+    fail("the rail arrows no longer appear on :focus-within: a keyboard reader "
+         "tabbing into a rail would scroll it with no visible control")
+else:
+    ok("rail arrows are script-built, pointer-guarded and keyboard-reachable")
+
+print("== phone ==")
+# Cyan, 18 Sep 2026: most visitors are on a phone, and "as long as it won't
+# wreck the desktop website". The phone pass is scoped inside max-width:759.98px
+# for exactly that reason -- a desktop restore block only puts back what someone
+# remembered to list, and her design handoff proved it by moving 40-odd desktop
+# values, so the guarantee here is structural. These checks defend both halves.
+_css = rd("style.css")
+_home, _browse = rd("index.html"), rd("browse.html")
+_title = rd("titles/clubhouse-of-desire.html") if os.path.exists("titles/clubhouse-of-desire.html") else ""
+
+if "@media (max-width:759.98px)" not in _css.replace(" ", " "):
+    fail("the phone block is gone or its breakpoint moved: every phone rule "
+         "lives inside @media (max-width:759.98px) so desktop never sees it")
+elif 'id="nav-sheet"' not in _home:
+    fail("the phone menu sheet markup is missing from the page. The header "
+         "hides .site-nav below 760px, so without the sheet a phone reader has "
+         "NO navigation at all -- only the logo")
+elif _home.count('<a href=') and 'class="nav-toggle"' not in _home:
+    fail("the hamburger button is gone but the sheet remains: nothing can open it")
+elif _home.find('id="nav-sheet"') > 0 and " hidden>" not in _home[_home.find('id="nav-sheet"'):_home.find('id="nav-sheet"') + 40]:
+    fail("the menu sheet no longer ships with `hidden`: it would cover the page "
+         "for anyone whose JavaScript has not run yet")
+elif _title and 'class="watch-sticky"' not in _title:
+    fail("the sticky watch bar is missing from title pages: on a phone the "
+         "watch button scrolls away and never comes back")
+elif 'class="filter-open"' not in _browse or 'id="filter-body"' not in _browse:
+    fail("the browse filter sheet is gone: the sidebar renders before the "
+         "results, so a phone reader scrolls ~2,000px of chips to reach a title")
+elif ".filter-open,.filter-body>.sheet-head" not in _css:
+    fail("the phone-only sheet chrome is no longer hidden by default: the "
+         "Filters button and sheet header would appear on desktop")
+else:
+    ok("phone nav, sticky watch bar and filter sheet are all present and "
+       "scoped away from desktop")
 
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")
