@@ -395,6 +395,20 @@ elif not re.search(r"@media\s*\(\s*hover\s*:\s*hover\s*\)[^@]*\.chip:hover", _cs
 else:
     ok("a selected filter chip keeps its wine fill on hover and on touch")
 
+# Bottom-anchored sheets must be sized in dvh, with vh only as the fallback line
+# BEFORE it. On iOS Safari 100vh is the viewport WITHOUT the address bar, so a vh
+# sheet is taller than the visible area and pushes its own header off the top of
+# the screen -- Cyan's 18 Sep screenshot had "Filters" with its ascenders sliced
+# off and no grip or rounded edge at all.
+_dvh_ok = ("max-height:86vh;max-height:86dvh" in _css and
+           "height:100vh;height:100dvh" in _css)
+if not _dvh_ok:
+    fail("a phone sheet lost its dvh sizing (or the vh fallback stopped coming "
+         "first): on iOS the sheet grows taller than the screen and its own "
+         "header and close button go off the top")
+else:
+    ok("phone sheets are sized in dvh, so iOS chrome cannot push their heads off-screen")
+
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")
 for w in warns: print(f"  WARN  {w}")
