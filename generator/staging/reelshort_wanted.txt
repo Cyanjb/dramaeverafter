@@ -111,7 +111,7 @@ I Accidentally Sexted My Enemy
 Tell Me Not to Love You
 Step Aside, I'm the King
 How to Break a DILF
-My X-Ray Vision Sees Right Through You
+My X-Ray Vision Sees Right Through You  ai=no   # Cyan ruled live-action 20 Sep 2026 (has credited human cast)
 In the Palm of His Hand
 My Secret Lover Is His Brother
 Found a Homeless Billionaire Husband for Christmas
@@ -182,7 +182,7 @@ The Seduction Game  ai=no tropes=young-adult
 The Rabbit Bride Who Rejected Her Alpha King  ai=yes tropes=playing-dumb
 Offside with the Hockey Star  ai=yes tropes=young-adult;love-triangle
 My Two Dangerous Roommates Crave Me  ai=yes tropes=bl;love-triangle
-Blitzed by My Rival's Obsession  tropes=bl;enemies-to-lovers   # Cyan thinks AI, no tag seen; page-says-AI report settles it
+Blitzed by My Rival's Obsession  ai=yes tropes=bl;enemies-to-lovers   # Cyan ruled AI 20 Sep 2026
 Waking Up Pregnant   # Cyan: poster says this, title page says Spoiled by the Daddy CEO During Pregnancy; which is right?
 Daddy We're Done  ai=yes
 Your Husband Is Mine  ai=no tropes=billionaire;revenge
@@ -262,3 +262,7 @@ Bound to the Corrupt Prince               # infographic: GRAYSON - The Corrupt P
 The Kensington Heir                       # infographic: KENSINGTON - The Royal Mafia
 Thorne: The Heartless Don                 # infographic: THORNE - The Heartless Don
 Carmichael: Untouchable                   # infographic: CARMICHAEL - The Elite Enforcer
+
+# ---- AI rulings from the Reddit-research review, Cyan 20 Sep 2026 --------------
+rose-in-chains  ai=no   # Cyan ruled live-action (has credited human cast)
+zero-to-alpha-return-of-the-wolf-king  ai=yes   # Cyan ruled AI
