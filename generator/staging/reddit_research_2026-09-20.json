@@ -1,0 +1,3003 @@
+{
+ "source": "PDF supplied by Cyan, 20 September 2026: \"DramaEverAfter Reddit Vertical-Drama Research - Enriched Master Dataset\" (233 records, compiled from r/verticaldrama-style threads plus a \"Trending AI Mafia Dramas\" infographic).",
+ "imported": "2026-09-20",
+ "policy": [
+  "DISCOVERY NOTES, NOT METADATA. The source document says so itself. Nothing here was written into titles.csv.",
+  "Every title string is preserved verbatim as supplied, including aliases the source flagged as unverified.",
+  "Platform attribution in this file is what a Reddit commenter said, not a verified listing.",
+  "AI status is what the source claimed. The ai column is set by Cyan by hand (see generator/staging/reelshort_wanted.txt); no ai value was written from this file.",
+  "NSFW is applied only where the source explicitly said so. No NSFW was inferred from a title."
+ ],
+ "counts": {
+  "in_database": 90,
+  "held": 127,
+  "match_queue": 16
+ },
+ "validation": "All 13 platform attributions that landed on an existing title agreed with availability.csv. That is a reliability signal for the rest of the platform claims, not a guarantee.",
+ "records": [
+  {
+   "n": 1,
+   "source_title": "Dear Stranger I Love You",
+   "viewer_notes": "Really fun; does not take itself too seriously; acting praised across the cast.",
+   "audience_signal": "Positive recommendation: fun tone + acting.",
+   "match": {
+    "status": "in_database",
+    "slug": "dear-stranger-i-love-you",
+    "db_title": "Dear Stranger I Love You",
+    "matched_on": "primary",
+    "db_platforms": [
+     "shorts"
+    ],
+    "db_ai": "",
+    "db_confidence": "verified",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 2,
+   "source_title": "Kissed by Claw and Fang",
+   "viewer_notes": "Effects described as “Snapchat bad,” but still fun; the two rival guys were praised for great chemistry.",
+   "audience_signal": "Chemistry outweighed weak VFX.",
+   "match": {
+    "status": "in_database",
+    "slug": "kissed-by-claw-and-fang",
+    "db_title": "Kissed by Claw and Fang",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "no",
+    "db_confidence": "verified",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 3,
+   "source_title": "Faking It with the Hockey Captain",
+   "platform": "DramaBox",
+   "viewer_notes": "Fun; commenter noted that the cast got to ad-lib a bit.",
+   "audience_signal": "Ad-lib / natural performance was a positive.",
+   "match": {
+    "status": "in_database",
+    "slug": "faking-it-with-the-hockey-captain",
+    "db_title": "Faking It with the Hockey Captain",
+    "matched_on": "primary",
+    "db_platforms": [
+     "dramabox"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 4,
+   "source_title": "The Seduction Game",
+   "platform": "ReelShort",
+   "viewer_notes": "Described as basically Cruel Intentions with a twist.",
+   "audience_signal": "Recognizable seduction-game structure with a twist.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-seduction-game",
+    "db_title": "The Seduction Game",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "no",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 5,
+   "source_title": "Life Is Not a Game",
+   "viewer_notes": "Really good acting from the whole cast. Another viewer said they loved it and rewatched it a couple of times.",
+   "audience_signal": "Acting praised. | Explicit rewatch signal.",
+   "match": {
+    "status": "in_database",
+    "slug": "life-is-not-a-game",
+    "db_title": "Life Is Not a Game",
+    "matched_on": "primary",
+    "db_platforms": [
+     "candyjar"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 6,
+   "source_title": "Cheer Up Baby",
+   "viewer_notes": "Same two leads as Life Is Not a Game; described as cute.",
+   "audience_signal": "Repeat-cast familiarity was part of appeal.",
+   "match": {
+    "status": "in_database",
+    "slug": "cheer-up-baby",
+    "db_title": "Cheer Up Baby!",
+    "matched_on": "primary",
+    "db_platforms": [
+     "pinedrama"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 7,
+   "source_title": "Fight Dirty",
+   "viewer_notes": "Described as really good; the two leads were praised for strong chemistry.",
+   "audience_signal": "Lead chemistry.",
+   "match": {
+    "status": "in_database",
+    "slug": "fight-dirty",
+    "db_title": "Fight Dirty",
+    "matched_on": "primary",
+    "db_platforms": [
+     "candyjar"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 8,
+   "source_title": "I Hate How Much I Want You",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "i-hate-how-much-i-want-you",
+    "db_title": "I Hate How Much I Want You",
+    "matched_on": "primary",
+    "db_platforms": [
+     "my-drama"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 9,
+   "source_title": "Rules of Protection: Bodyguard I Hate",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "rules-of-protection-the-bodyguard-i-hate",
+    "db_title": "Rules of Protection: The Bodyguard I Hate",
+    "matched_on": "alt",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 10,
+   "source_title": "My Boyfriend Is a Vampire",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "my-boyfriend-is-a-vampire",
+    "db_title": "My Boyfriend Is a Vampire",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 11,
+   "source_title": "The Rejected Luna Returns with a Son",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-rejected-luna-returns-with-a-son",
+    "db_title": "The Rejected Luna Returns with a Son",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 12,
+   "source_title": "Second Life, Godfather Wife",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "second-life-godfather-wife",
+    "db_title": "Second Life, Godfather Wife",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 13,
+   "source_title": "A Vampire in the Alpha's Den",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "a-vampire-in-the-alphas-den",
+    "db_title": "A Vampire in the Alpha's Den",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 14,
+   "source_title": "Accidental Surrogate for My Captain Ex",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "accidental-surrogate-for-my-captain-ex",
+    "db_title": "Accidental Surrogate for My Captain Ex",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 15,
+   "source_title": "Mr. Wrong and Mrs. Right",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "mr-wrong-and-mrs-right",
+    "db_title": "Mr. Wrong and Mrs. Right",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 16,
+   "source_title": "Fated to My Forbidden Guardian",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "fated-to-my-forbidden-guardian",
+    "db_title": "Fated to My Forbidden Guardian",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 17,
+   "source_title": "But Daddy I Love Him",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "but-daddy-i-love-him",
+    "db_title": "But Daddy I Love Him",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 18,
+   "source_title": "How We Measure Guilt in Bed",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "how-we-measure-guilt-in-bed",
+    "db_title": "How We Measure Guilt in Bed",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 19,
+   "source_title": "My Ex Is My Gyno",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 20,
+   "source_title": "Memory Reset: Mr. Restraint Begged for Love",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 21,
+   "source_title": "Hear My Love Again",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "hear-my-love-again",
+    "db_title": "Hear My Love Again",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 22,
+   "source_title": "Tell Me Not to Love You",
+   "actors": "Luke Dodge; Hannah Lowery",
+   "match": {
+    "status": "in_database",
+    "slug": "tell-me-not-to-love-you",
+    "db_title": "Tell Me Not to Love You",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 23,
+   "source_title": "Surrender to My Mob Lover",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "surrender-to-my-mob-lover",
+    "db_title": "Surrender to My Mob Lover",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 24,
+   "source_title": "Got Pregnant with My Ex-Boss' Baby",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "got-pregnant-with-my-ex-boss-baby",
+    "db_title": "Got Pregnant with My Ex Boss' Baby",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 25,
+   "source_title": "Lucifer's Bride",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "lucifer-s-bride",
+    "db_title": "Lucifer's Bride",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 26,
+   "source_title": "The Way Back Into Love",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-way-back-into-love",
+    "db_title": "The Way Back Into Love",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 27,
+   "source_title": "Cheerleader and the Beast",
+   "actors": "Blake Lewis; Neela Jolene",
+   "match": {
+    "status": "in_database",
+    "slug": "cheerleader-and-the-beast",
+    "db_title": "Cheerleader and the Beast",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 28,
+   "source_title": "Boss, Your Ex-Con Wife Is Back",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "boss-your-ex-con-wife-is-back",
+    "db_title": "Boss, Your Ex-Con Wife Is Back",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 29,
+   "source_title": "The Scent That Made Him Mine",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-scent-that-made-him-mine",
+    "db_title": "The Scent That Made Him Mine",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 30,
+   "source_title": "The Bad Boy Wants Me",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-bad-boy-wants-me",
+    "db_title": "The Bad Boy Wants Me",
+    "matched_on": "primary",
+    "db_platforms": [
+     "candyjar"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 31,
+   "source_title": "Hello Again Secret Ex Claim Your DNA Surprise",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 32,
+   "source_title": "Second Chance with My Secret Lover",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "second-chance-with-my-secret-lover",
+    "db_title": "Second Chance with My Secret Lover",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 33,
+   "source_title": "Pregnant with My Brother's Baby",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "pregnant-with-my-brothers-baby",
+    "db_title": "Pregnant with My Brother's Baby",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 34,
+   "source_title": "Mafia King's Missing Wife Back with Twins",
+   "platform": "ReelShort",
+   "aliases": "Mafia's Missing Wife, Back with Twins",
+   "match": {
+    "status": "in_database",
+    "slug": "mafias-missing-wife-back-with-twins",
+    "db_title": "Mafia's Missing Wife, Back with Twins",
+    "matched_on": "alt",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 35,
+   "source_title": "How to Kiss a Vampire",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "how-to-kiss-a-vampire",
+    "db_title": "How to Kiss a Vampire",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 36,
+   "source_title": "Divorced with a Secret Baby",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "divorced-with-a-secret-baby",
+    "db_title": "Divorced with a Secret Baby",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 37,
+   "source_title": "Hate the Way I Love You",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "hate-the-way-i-love-you",
+    "db_title": "Hate the Way I Love You",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 38,
+   "source_title": "My Mafia Pilot",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "my-mafia-pilot",
+    "db_title": "My Mafia Pilot",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 39,
+   "source_title": "No, Your Majesty",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "no-your-majesty",
+    "db_title": "No, Your Majesty",
+    "matched_on": "primary",
+    "db_platforms": [
+     "my-drama"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 40,
+   "source_title": "The Mafia's Obsession",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-mafias-obsession",
+    "db_title": "The Mafia's Obsession",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 41,
+   "source_title": "How I Made the Alpha Mine",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "how-i-made-the-alpha-mine",
+    "db_title": "How I Made the Alpha Mine",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 42,
+   "source_title": "Boss Please Behave",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "boss-please-behave",
+    "db_title": "Boss, Please Behave",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 43,
+   "source_title": "Dungeons of Ecstasy",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "dungeons-of-ecstasy",
+    "db_title": "Dungeons of Ecstasy",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 44,
+   "source_title": "Second Chance, Double Trouble",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "second-chance-double-trouble",
+    "db_title": "Second Chance, Double Trouble",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 45,
+   "source_title": "His Bride by Bet",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "his-bride-by-bet",
+    "db_title": "His Bride by Bet",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 46,
+   "source_title": "The New Professor Is My Abandoned Alpha!?",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-new-professor-is-my-abandoned-alpha",
+    "db_title": "The New Professor Is My Abandoned Alpha!?",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 47,
+   "source_title": "My Billionaire Ranch Cowboy",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "my-billionaire-ranch-cowboy",
+    "db_title": "My Billionaire Ranch Cowboy",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 48,
+   "source_title": "Mason",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "mason",
+    "db_title": "Mason",
+    "matched_on": "primary",
+    "db_platforms": [
+     "candyjar"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 49,
+   "source_title": "Mason 2",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "mason-2",
+    "db_title": "Mason 2",
+    "matched_on": "primary",
+    "db_platforms": [
+     "candyjar"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 50,
+   "source_title": "The Glow Up",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "match_queue",
+    "slug": "the-glow-up-game",
+    "db_title": "The Glow-Up Game",
+    "strength": "possible",
+    "note": "Source says \"The Glow Up\"; could be a shortened reference or a separate title"
+   }
+  },
+  {
+   "n": 51,
+   "source_title": "The Arrangement",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-arrangement",
+    "db_title": "The Arrangement",
+    "matched_on": "primary",
+    "db_platforms": [
+     "candyjar"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 52,
+   "source_title": "No Escape from the Mafia King's Embrace",
+   "platform": "DramaBox",
+   "match": {
+    "status": "in_database",
+    "slug": "no-escape-from-the-mafia-kings-embrace",
+    "db_title": "No Escape from the Mafia King's Embrace",
+    "matched_on": "primary",
+    "db_platforms": [
+     "dramabox"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 53,
+   "source_title": "Yes, My Stepbrother Sucks",
+   "platform": "GoodShort",
+   "match": {
+    "status": "in_database",
+    "slug": "yes-my-stepbrother-sucks",
+    "db_title": "Yes! My Stepbrother Sucks",
+    "matched_on": "primary",
+    "db_platforms": [
+     "goodshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 54,
+   "source_title": "My Billionaire Devil",
+   "platform": "DramaBox",
+   "aliases": "Bound by a Devil",
+   "match": {
+    "status": "in_database",
+    "slug": "bound-by-a-devil",
+    "db_title": "Bound by a Devil",
+    "matched_on": "alt",
+    "db_platforms": [
+     "dramabox"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 55,
+   "source_title": "Bound by a Devil",
+   "platform": "DramaBox",
+   "aliases": "My Billionaire Devil",
+   "match": {
+    "status": "in_database",
+    "slug": "bound-by-a-devil",
+    "db_title": "Bound by a Devil",
+    "matched_on": "primary",
+    "db_platforms": [
+     "dramabox"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 56,
+   "source_title": "Caught Between the Mafia Brothers",
+   "platform": "DreameShort",
+   "match": {
+    "status": "in_database",
+    "slug": "caught-between-the-mafia-brothers",
+    "db_title": "Caught Between the Mafia Brothers",
+    "matched_on": "primary",
+    "db_platforms": [
+     "dreameshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 57,
+   "source_title": "You Belong with Me",
+   "platform": "ReelShort",
+   "premise": "She hooks up with her awful ex's uncle, who is actually a good guy.",
+   "viewer_notes": "Female lead described as a badass who does not put up with anyone’s nonsense.",
+   "match": {
+    "status": "in_database",
+    "slug": "you-belong-with-me",
+    "db_title": "You Belong With Me",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "verified",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 58,
+   "source_title": "In the Palm of His Hand",
+   "platform": "ReelShort",
+   "match": {
+    "status": "in_database",
+    "slug": "in-the-palm-of-his-hand",
+    "db_title": "In the Palm of His Hand",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 59,
+   "source_title": "The Young Elite",
+   "platform": "MyDrama",
+   "match": {
+    "status": "in_database",
+    "slug": "the-young-elite",
+    "db_title": "The Young Elite",
+    "matched_on": "primary",
+    "db_platforms": [
+     "my-drama"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 60,
+   "source_title": "Love in Cyberpunk 2077",
+   "ai_status": "Explicitly included in a “Good AI Vertical Dramas” list.",
+   "premise": "Futuristic/TRON-style setting. A competent engineer is reassigned to care for a tech CEO who lost use of his legs after a spinal accident; her grit, strength and positivity draw him to her.",
+   "viewer_notes": "Viewer favorite; praised for competence, setting and romance.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 61,
+   "source_title": "Kiss of the Pirate King",
+   "premise": "Pirate romance / adventure.",
+   "viewer_notes": "Praised as a genuinely good movie: strong sets and costumes, solid script and cast, female lead allowed genuine rage, handsome/charming layered male lead. Later comment praises non-white actors, real boats/ocean/island locations, range, layers, and a B-plot inferred from subtext.",
+   "audience_signal": "Production quality | Female lead range | Layered male lead | Location/production design",
+   "match": {
+    "status": "in_database",
+    "slug": "kiss-of-the-pirate-king",
+    "db_title": "Kiss of the Pirate King",
+    "matched_on": "primary",
+    "db_platforms": [
+     "my-drama"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 62,
+   "source_title": "Weeping Bones",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 63,
+   "source_title": "My Tomboy Roommate",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 64,
+   "source_title": "Watch Out, My Lady Boss Is Coming",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 65,
+   "source_title": "Stay at Home Dad Is a Billionaire",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 66,
+   "source_title": "They Love Me, Too Late",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 67,
+   "source_title": "Counterfeit Heiress",
+   "viewer_notes": "Commenter noted Eastern European cast and strong accents; exceptions mentioned: dad, grandpa and brother.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 68,
+   "source_title": "Her Heart Held Hostage",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "her-heart-held-hostage",
+    "db_title": "Her Heart Held Hostage",
+    "matched_on": "primary",
+    "db_platforms": [
+     "my-drama"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 69,
+   "source_title": "Sold for the Warlord, Born for the Sky",
+   "ai_status": "Viewer comment strongly implies AI production; verify.",
+   "viewer_notes": "Called the best the viewer had seen: captivating story, setting and quality; “no typical AI mistakes”; felt real.",
+   "audience_signal": "Production quality | AI realism",
+   "match": {
+    "status": "match_queue",
+    "slug": "sold-to-the-warlord-born-for-the-sky",
+    "db_title": "Sold to the Warlord, Born for the Sky",
+    "strength": "very likely",
+    "note": "\"for the Warlord\" vs \"to the Warlord\"; rest of the title identical"
+   }
+  },
+  {
+   "n": 70,
+   "source_title": "Vicious",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "vicious",
+    "db_title": "Vicious",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 71,
+   "source_title": "Hate to Love You",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "hate-to-love-you",
+    "db_title": "Hate to Love You",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "no",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 72,
+   "source_title": "Sex Education with My Best Friend",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 73,
+   "source_title": "First Love First Sin with My Stepbrother",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 74,
+   "source_title": "Perfect Spiral",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "match_queue",
+    "slug": "the-perfect-spiral",
+    "db_title": "The Perfect Spiral",
+    "strength": "very likely",
+    "note": "Leading article only"
+   }
+  },
+  {
+   "n": 75,
+   "source_title": "Married the Mafioso I Saved",
+   "actors": "Noah Fearnley; Savannah Coffee",
+   "match": {
+    "status": "in_database",
+    "slug": "married-the-mafioso-i-saved",
+    "db_title": "Married The Mafioso I Saved",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "verified",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 76,
+   "source_title": "The Tutor Trap",
+   "actors": "Luke Dodge; Savannah Coffee",
+   "match": {
+    "status": "in_database",
+    "slug": "the-tutor-trap",
+    "db_title": "The Tutor Trap",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "no",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 77,
+   "source_title": "Breathe",
+   "actors": "Blake Lewis; Savannah Coffee",
+   "match": {
+    "status": "in_database",
+    "slug": "breathe",
+    "db_title": "Breathe",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 78,
+   "source_title": "Sex Education with My Enemy Stepbrother",
+   "actors": "Hannah Lowery; Blake Manning",
+   "match": {
+    "status": "in_database",
+    "slug": "sex-education-with-my-enemy-stepbrother",
+    "db_title": "Sex Education with My Enemy Stepbrother",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 79,
+   "source_title": "Tempted by the Wrong Brother",
+   "actors": "Nate Flores; Halle Fletcher",
+   "match": {
+    "status": "in_database",
+    "slug": "tempted-by-the-wrong-brother",
+    "db_title": "Tempted by the Wrong Brother",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 80,
+   "source_title": "Taming My Bullies",
+   "actors": "Meg Bush; Cameron Porras; Luke Dodge",
+   "match": {
+    "status": "in_database",
+    "slug": "taming-my-bullies",
+    "db_title": "Taming My Bullies",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 81,
+   "source_title": "Once Upon a Breakup",
+   "actors": "Nate Flores; Maria Barseghian",
+   "match": {
+    "status": "in_database",
+    "slug": "once-upon-a-breakup",
+    "db_title": "Once Upon A Breakup",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "no",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 82,
+   "source_title": "Claimed by My Ex's Alpha Brother",
+   "actors": "Blake Lewis; Savannah Coffee",
+   "match": {
+    "status": "in_database",
+    "slug": "claimed-by-my-ex-s-alpha-brother",
+    "db_title": "Claimed by My Ex's Alpha Brother",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 83,
+   "source_title": "The Words",
+   "actors": "Ben Armstrong; Autumn Noel",
+   "premise": "A musician fell in love with a shy girl when they were young, broke her heart and stole a song she wrote while escaping his abusive father. Now he is a famous rock star with addiction issues and she is hired as his sober companion. They appear to hate each other, but the romance remains.",
+   "viewer_notes": "Commenter called it better than any other vertical they had seen and “so hot.”",
+   "match": {
+    "status": "in_database",
+    "slug": "the-words",
+    "db_title": "The Words",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 84,
+   "source_title": "Breaking News",
+   "actors": "Noah Fearnley; Meg Bush",
+   "match": {
+    "status": "in_database",
+    "slug": "breaking-news",
+    "db_title": "Breaking News",
+    "matched_on": "primary",
+    "db_platforms": [],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 85,
+   "source_title": "Craving My British Cowboy",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 86,
+   "source_title": "The CEO Likes My Voice",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 87,
+   "source_title": "Boy Next Door",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "match_queue",
+    "slug": "next-door",
+    "db_title": "Next Door",
+    "strength": "possible",
+    "note": "Source says \"Boy Next Door\""
+   }
+  },
+  {
+   "n": 88,
+   "source_title": "My X-Ray Vision Sees Right Through You",
+   "ai_status": "Listed as a current favorite in AI-drama discussion.",
+   "aliases": "My X-Ray Sees Right Through You",
+   "viewer_notes": "Earlier recommendation called it cheesy but funny.",
+   "match": {
+    "status": "in_database",
+    "slug": "my-x-ray-vision-sees-right-through-you",
+    "db_title": "My X-Ray Vision Sees Right Through You",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 89,
+   "source_title": "My Duplicated Husband",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "my-duplicated-husband",
+    "db_title": "My Duplicated Husband",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 90,
+   "source_title": "Bound by Honor",
+   "viewer_notes": "Recommended together with its sequel; sequel title was not supplied.",
+   "match": {
+    "status": "in_database",
+    "slug": "bound-by-honor",
+    "db_title": "Bound by Honor",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 91,
+   "source_title": "A Queen for the Mafia Kings",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "a-queen-for-the-mafia-kings",
+    "db_title": "A Queen for the Mafia Kings",
+    "matched_on": "primary",
+    "db_platforms": [
+     "my-drama"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 92,
+   "source_title": "You've Been Replaced, First Love",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "you-ve-been-replaced-first-love",
+    "db_title": "You've Been Replaced, First Love",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 93,
+   "source_title": "The Cheer Scandal",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-cheer-scandal",
+    "db_title": "The Cheer Scandal",
+    "matched_on": "primary",
+    "db_platforms": [
+     "candyjar"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 94,
+   "source_title": "Scandalous",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "scandalous",
+    "db_title": "Scandalous",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 95,
+   "source_title": "Reborn for the Crown",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "reborn-for-the-crown",
+    "db_title": "Reborn for the Crown",
+    "matched_on": "primary",
+    "db_platforms": [
+     "vigloo"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 96,
+   "source_title": "Echoes of Your Heartbeat",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 97,
+   "source_title": "Not the Bride He Wanted",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "not-the-bride-he-wanted",
+    "db_title": "Not the Bride He Wanted",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 98,
+   "source_title": "Bride for Lucifer",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "bride-for-lucifer",
+    "db_title": "Bride for Lucifer",
+    "matched_on": "primary",
+    "db_platforms": [
+     "my-drama"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 99,
+   "source_title": "Waterboy",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "waterboy",
+    "db_title": "Waterboy",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 100,
+   "source_title": "The Drunk Wolf",
+   "ai_status": "Explicitly included in a “Good AI Vertical Dramas” list.",
+   "audience_signal": "Received 10 upvotes in the supplied Reddit snippet.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 101,
+   "source_title": "My Possessive Holy Knight",
+   "source_context": "Reddit commenter: “watched a ton” and listed these as top favorites.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 102,
+   "source_title": "Virgin Bride for the Ruthless Alpha",
+   "source_context": "Reddit commenter: “watched a ton” and listed these as top favorites.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 103,
+   "source_title": "The Dragon's Slave Princess Bride",
+   "source_context": "Reddit commenter: “watched a ton” and listed these as top favorites.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 104,
+   "source_title": "My Accidental Billionaire Husband",
+   "source_context": "Reddit commenter: “watched a ton” and listed these as top favorites.",
+   "match": {
+    "status": "match_queue",
+    "slug": "i-accidentally-hired-a-billionaire-husband",
+    "db_title": "I Accidentally Hired a Billionaire Husband",
+    "strength": "possible",
+    "note": "Source says \"My Accidental Billionaire Husband\""
+   }
+  },
+  {
+   "n": 105,
+   "source_title": "The Elf Prince Is My Baby Daddy",
+   "ai_status": "Discussed in AI-drama recommendation context; verify.",
+   "viewer_notes": "One commenter said it was their absolute favorite and they had watched it about ten times.",
+   "audience_signal": "Strong rewatch signal.",
+   "source_context": "Reddit commenter: “watched a ton” and listed these as top favorites.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 106,
+   "source_title": "Escaping the R18 Mafia Bosses Together",
+   "platform": "DramaWave",
+   "viewer_notes": "Super fun.",
+   "audience_signal": "Fun / high entertainment value.",
+   "source_context": "Cy: favorites found on DramaWave. | Repeatedly recommended; also repeated near romance discussion.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 107,
+   "source_title": "Oops, You Bullied the Alpha Queen",
+   "platform": "DramaWave",
+   "viewer_notes": "Badass female lead.",
+   "audience_signal": "Powerful female protagonist.",
+   "source_context": "Cy: favorites found on DramaWave.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 108,
+   "source_title": "Reborn to Escape My Mafia Stepbrother",
+   "platform": "DramaWave",
+   "viewer_notes": "Cy: “Don’t know why but just drawn to it.”",
+   "audience_signal": "Strong intuitive hook.",
+   "source_context": "Cy: favorites found on DramaWave. | Cy thought this and Escaping the R18 Mafia Bosses Together may be DramaWave exclusives; verify.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 109,
+   "source_title": "My Online Boyfriend Is a Snake",
+   "platform": "DramaWave",
+   "viewer_notes": "Short, simple and super adorable.",
+   "audience_signal": "Compact + cute.",
+   "source_context": "Cy: favorites found on DramaWave.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 110,
+   "source_title": "Reborn to Choose Mr. Right",
+   "platform": "DramaWave",
+   "viewer_notes": "Ended with a really sweet twist that was not expected.",
+   "audience_signal": "Positive surprise ending.",
+   "source_context": "Cy: favorites found on DramaWave.",
+   "match": {
+    "status": "match_queue",
+    "slug": "reborn-to-love-mr-right",
+    "db_title": "Reborn to Love Mr. Right",
+    "strength": "possible",
+    "note": "Choose vs Love; source attributes it to DramaWave, db row is a different platform listing"
+   }
+  },
+  {
+   "n": 111,
+   "source_title": "Forensic Bride: Married to My Ex's Uncle",
+   "platform": "DramaWave",
+   "viewer_notes": "Badass female lead; no ongoing miscommunication; lovely mother-in-law; praised for breaking familiar tropes.",
+   "audience_signal": "Trope subversion | Competent/badass heroine | Supportive in-law | Avoids prolonged misunderstanding",
+   "source_context": "Cy: favorites found on DramaWave. | Cy believes it should also be available on other platforms; verify.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 112,
+   "source_title": "The Lost Witch Tops Magic Exam",
+   "platform": "DramaWave",
+   "viewer_notes": "Hilarious. Female lead knows the usual “found heiress” tropes and mostly subverts the usual nonsense.",
+   "audience_signal": "Meta-awareness | Trope subversion | Comedy",
+   "source_context": "Cy: favorites found on DramaWave.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 113,
+   "source_title": "The Lycan's Savage Luna",
+   "source_context": "Appeared in a repeated Reddit favorites list. | Appeared more than once in favorites lists.",
+   "match": {
+    "status": "in_database",
+    "slug": "the-lycan-s-savage-luna",
+    "db_title": "The Lycan's Savage Luna",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "yes",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 114,
+   "source_title": "Owed by My Best Friend's Godfather",
+   "source_context": "Appeared in a repeated Reddit favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 115,
+   "source_title": "Werewolf Academy: Craving the Forbidden Alpha",
+   "source_context": "Appeared in a repeated Reddit favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 116,
+   "source_title": "Mr. Godfather, You've Got the Wrong Wife",
+   "source_context": "Appeared in a repeated Reddit favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 117,
+   "source_title": "She Ran with His Heirs",
+   "source_context": "Appeared in a repeated Reddit favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 118,
+   "source_title": "A Night with Kingston",
+   "source_context": "Appeared in a repeated Reddit favorites list. | Appeared in favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 119,
+   "source_title": "A Cinderella for Wolf King",
+   "source_context": "Appeared in a repeated Reddit favorites list.",
+   "match": {
+    "status": "in_database",
+    "slug": "a-cinderella-for-wolf-king",
+    "db_title": "A Cinderella for Wolf King",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "yes",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 120,
+   "source_title": "The Hidden Heiress of Beastmaster Academy",
+   "source_context": "Appeared in a repeated Reddit favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 121,
+   "source_title": "The Mafia King's Secret Twins",
+   "source_context": "Appeared in a repeated Reddit favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 122,
+   "source_title": "The Beastward Academy",
+   "viewer_notes": "Ongoing series; one paste said 83 episodes and another said 77, so episode count needs verification.",
+   "source_context": "Appeared in a repeated Reddit favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 123,
+   "source_title": "100-Day Slave to the Godfather",
+   "source_context": "Appeared in a repeated Reddit favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 124,
+   "source_title": "Hotel Noir, Kiss Me to Survive",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 125,
+   "source_title": "The Five Time Rejected Luna",
+   "source_context": "Recommended in a favorites list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 126,
+   "source_title": "Mr. Reid, You've Got the Wrong Wife",
+   "source_context": "Repeatedly mentioned in favorites / recycled-plot lists.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 127,
+   "source_title": "Sold to the Ice King",
+   "platform": "FlickReels",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 128,
+   "source_title": "Faking Forever with My Frenemy",
+   "source_context": "Reddit recommendation list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 129,
+   "source_title": "Blood Moon Pact",
+   "source_context": "Reddit recommendation list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 130,
+   "source_title": "Crown of Hidden Scales",
+   "premise": "Heroine disguises herself as a man.",
+   "viewer_notes": "Praised for chemistry, fun, an interesting female character and a good ending. Another commenter called it “top notch.”",
+   "audience_signal": "Gender disguise | Chemistry | Strong heroine | Strong ending",
+   "source_context": "Reddit recommendation list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 131,
+   "source_title": "Their Hidden Princess",
+   "source_context": "Reddit recommendation list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 132,
+   "source_title": "Every Version of You",
+   "ai_status": "Explicitly included in a “Good AI Vertical Dramas” list.",
+   "viewer_notes": "Praised as a love story / strong AI example.",
+   "source_context": "Reddit recommendation list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 133,
+   "source_title": "My Immortal Love",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "in_database",
+    "slug": "my-immortal-love",
+    "db_title": "My Immortal Love",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "yes",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 134,
+   "source_title": "Best Mistake Ever",
+   "premise": "They sleep together while drunk. Later she is hired at his company, where he does not recognize her because her best friend pretends she was the woman from that night.",
+   "match": {
+    "status": "match_queue",
+    "slug": "the-best-mistake-ever",
+    "db_title": "The Best Mistake Ever",
+    "strength": "very likely",
+    "note": "Leading article only"
+   }
+  },
+  {
+   "n": 135,
+   "source_title": "Forbidden Affair with My Husband",
+   "premise": "Arranged marriage; husband and wife do not recognize each other. She has a large facial birthmark and starts working at a masquerade club where she can hide her face; he owns the club.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 136,
+   "source_title": "I Kissed a CEO and He Liked It",
+   "premise": "The title was offered as essentially the premise.",
+   "match": {
+    "status": "in_database",
+    "slug": "i-kissed-a-ceo-and-he-liked-it",
+    "db_title": "I Kissed a CEO and He Liked It",
+    "matched_on": "primary",
+    "db_platforms": [
+     "dramabox"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": false
+   }
+  },
+  {
+   "n": 137,
+   "source_title": "The Triple Life of My Accidental Husband",
+   "premise": "Because of a typo, her marriage license intended for her boyfriend is issued to a stranger. She tries to unravel it and shenanigans ensue.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 138,
+   "source_title": "Reluctant Billionaire Protector",
+   "premise": "He is a casino owner; she is a pickpocket. He hires her because she can read people.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 139,
+   "source_title": "Me After You",
+   "platform": "TikTok (free, according to commenter)",
+   "premise": "Arranged marriage turns into a real relationship.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 140,
+   "source_title": "Fake Married to My Billionaire CEO",
+   "premise": "She marries a stranger after her boyfriend cheats on her.",
+   "match": {
+    "status": "in_database",
+    "slug": "fake-married-to-my-billionaire-ceo",
+    "db_title": "Fake Married to My Billionaire CEO",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "scraped",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 141,
+   "source_title": "Hearing Thoughts, the Billionaire's Family Spoils Me",
+   "premise": "Chloe, the strongest angel, is banished to Earth and possesses the lost heiress of the White family. Her family and heir Lucian can hear her inner thoughts. She exposes fake heiress Nicole’s schemes, falls for Lucian and chooses to remain human, gaining love and family.",
+   "audience_signal": "Mind-hearing mechanism | Found/lost heiress | Fake heiress exposure",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 142,
+   "source_title": "They Gave the Doomed Duke the Wrong Bride",
+   "ai_status": "Explicitly identified as AI by a reply.",
+   "premise": "Elira Ashbourne, a modern elite with a spatial/inventory ability, wakes in her ancestor’s body: a despised illegitimate daughter forced to marry disgraced Duke Vaelor. His estate is raided on the wedding night. She uses her inventory space and wits to secure resources, protects her mother-in-law and young brother-in-law through exile to the frozen North, fights wolves/officials/rivals, while the supposedly missing Duke Roderic watches from the shadows. Their survival story becomes a war for justice against the king.",
+   "viewer_notes": "Reply called it the best AI drama they had ever seen.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 143,
+   "source_title": "Taking My Sister's Place I Wed the Cold Wolf Lord",
+   "premise": "Her sister runs away on the wedding day, so she becomes the substitute bride to a cold, feared Alpha who does not believe in love. Marriage of convenience becomes a bond involving passion, secrets and destiny.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 144,
+   "source_title": "Light in Winter",
+   "premise": "Heroine marries a man who wants to die.",
+   "viewer_notes": "Called a standout: full of love and warmth, very cute and sigh-inducing.",
+   "audience_signal": "Warm romance | Emotional healing",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 145,
+   "source_title": "Everything Between Us",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 146,
+   "source_title": "The Bride Who Boarded Another Boat",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 147,
+   "source_title": "Where Sword Defends Plow Thrives",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 148,
+   "source_title": "The Genius Interpreter in Plain Sight",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 149,
+   "source_title": "The Dragon Contract",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "match_queue",
+    "slug": "the-dragon-s-contract-bride",
+    "db_title": "The Dragon's Contract Bride",
+    "strength": "possible",
+    "note": "Source says \"The Dragon Contract\""
+   }
+  },
+  {
+   "n": 150,
+   "source_title": "We Are Never Ever Getting Back Together",
+   "actors": "Jarred Harper; Molly Anderson",
+   "viewer_notes": "Described as hilarious, well written, funny, sweet and frustrating; Jarred’s assistant was singled out as funny.",
+   "match": {
+    "status": "in_database",
+    "slug": "we-are-never-ever-getting-back-together",
+    "db_title": "We Are Never Ever Getting Back Together",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "verified",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 151,
+   "source_title": "The Genius Quadruplets",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 152,
+   "source_title": "Mommy You Forgot Daddy and Me",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 153,
+   "source_title": "Atlantic Bride",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "match_queue",
+    "slug": "the-atlantic-bride",
+    "db_title": "The Atlantic Bride",
+    "strength": "very likely",
+    "note": "Leading article only"
+   }
+  },
+  {
+   "n": 154,
+   "source_title": "Mia and the Thorntons",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 155,
+   "source_title": "Waking Up as a 1955 Stepmom",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 156,
+   "source_title": "100% Compatibility",
+   "source_context": "Included among recycled-plot dramas the commenter still enjoyed.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 157,
+   "source_title": "Maid of Fate",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 158,
+   "source_title": "30 Day Love Bet",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 159,
+   "source_title": "His Forbidden Frost Mate",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 160,
+   "source_title": "The Raven's Bride",
+   "viewer_notes": "One commenter: “so good” - plot twist, funny, thriller elements, ending beyond expectation.",
+   "audience_signal": "Plot twist | Comedy | Thriller | Strong ending",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 161,
+   "source_title": "Claimed by the Dragon",
+   "premise": "Alina and Asher; dragon-king fantasy romance.",
+   "viewer_notes": "Viewer’s favorite among many dragon-king stories. Ending described as a little rushed, but graphics were outstanding, including antagonist transforming into a dragon; main characters strongly liked.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 162,
+   "source_title": "My Secret Paramour Was My Best Friend's Brother",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 163,
+   "source_title": "Loved Twice by the Hockey Star",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 164,
+   "source_title": "After My Divorce, I Became the Godfather's XXL Wife",
+   "platform": "ShortMax",
+   "match": {
+    "status": "match_queue",
+    "slug": "after-my-divorce-i-became-the-mafia-don-s-wife",
+    "db_title": "After My Divorce, I Became the Mafia Don’s Wife",
+    "strength": "possible",
+    "note": "Source (ShortMax) says \"the Godfather's XXL Wife\"; cross-platform retitling is common"
+   }
+  },
+  {
+   "n": 165,
+   "source_title": "My Crazy Rich Boyfriend",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 166,
+   "source_title": "The Playboy Who Loved Me",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 167,
+   "source_title": "Chasing the Girl He Hid",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 168,
+   "source_title": "Wrong Boyfriend, Right Captain",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 169,
+   "source_title": "Fake Dating the Quarterback",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 170,
+   "source_title": "When His Number Hit Zero, I Chose His Roommate",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 171,
+   "source_title": "My Catfish Victim Is Actually My Bestie's Brother",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 172,
+   "source_title": "My Crush Lost Me to His Rival",
+   "platform": "ShortMax",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 173,
+   "source_title": "Hot Delivery for the Mafia Girl Boss",
+   "platform": "GoodShort",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 174,
+   "source_title": "Mommy You Forgot Daddy",
+   "platform": "GoodShort",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 175,
+   "source_title": "One Night Marriage with the Hockey Star",
+   "platform": "GoodShort",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 176,
+   "source_title": "The Don's Forbidden Nun",
+   "platform": "FlickReels",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 177,
+   "source_title": "My Stepbrother, My Sin",
+   "platform": "FlickReels",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 178,
+   "source_title": "Marry My Ex's Billionaire Boss",
+   "platform": "iDrama",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 179,
+   "source_title": "Left in the Blizzard, Claimed by My Stepbrother",
+   "platform": "iDrama",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 180,
+   "source_title": "Climbing into My Sister's Fiance's Bed",
+   "platform": "DramaWave",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 181,
+   "source_title": "The Golden Cage",
+   "platform": "Vigloo",
+   "match": {
+    "status": "match_queue",
+    "slug": "my-golden-cage",
+    "db_title": "My Golden Cage",
+    "strength": "possible",
+    "note": "Source says \"The Golden Cage\" on Vigloo; same words, different article"
+   }
+  },
+  {
+   "n": 182,
+   "source_title": "The God Level Blacksmith",
+   "ai_status": "Explicitly described as an AI vertical.",
+   "premise": "Fantasy story centered on a high-level blacksmith / magic setting.",
+   "viewer_notes": "Visuals called incredible; fantasy helps disguise outfit repetition. Magic varied and believable; detailed, realistic, consistent character designs; few pronunciation issues; good pacing; characters felt real; lots of story; had heart.",
+   "audience_signal": "Visual quality | Character consistency | Pacing | Story density | Emotional heart",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 183,
+   "source_title": "The Warlord's Captured Virgin Bride",
+   "ai_status": "Explicitly included in a “Good AI Vertical Dramas” list.",
+   "audience_signal": "Repeated recommendation.",
+   "source_context": "Listed in a “top 4” within the AI-drama section.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 184,
+   "source_title": "Divorced, I Married the Godfather",
+   "ai_status": "Appeared in the user-marked AI-drama section; verify title-level AI status.",
+   "source_context": "Listed in a “top 4” within the AI-drama section.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 185,
+   "source_title": "The Boss: Maid to Wife",
+   "ai_status": "Appeared in the user-marked AI-drama section; verify title-level AI status.",
+   "source_context": "Listed in a “top 4” within the AI-drama section.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 186,
+   "source_title": "Deny Me, Dragon King",
+   "platform": "DramaBox (viewer subscribed because of it)",
+   "ai_status": "Explicitly included in a “Good AI Vertical Dramas” list.",
+   "premise": "Lovers-to-enemies-to-lovers; he falls harder.",
+   "viewer_notes": "Called “by far the best”; hot couple; some ridiculous scenes. Another viewer said it was hot and had humor that made them laugh out loud.",
+   "audience_signal": "Chemistry/attractiveness | Humor | Enemies-to-lovers",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 187,
+   "source_title": "Princess Cinderella Forsakes You",
+   "ai_status": "Explicitly included under variant title in a Good AI Vertical Dramas list.",
+   "aliases": "Prince, Cinderella Forsakes You",
+   "viewer_notes": "One viewer said it was mostly tragic backstory, with very little of the new life / male lead portion.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 188,
+   "source_title": "I Taught a Siren to Court Then Became His Mate",
+   "ai_status": "Appeared in the user-marked AI-drama section; verify.",
+   "viewer_notes": "Viewer was enjoying it; described as hot, sweet and fantasy; at the time it was not yet completed.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 189,
+   "source_title": "One Night Stand with the Empire's General",
+   "ai_status": "Explicitly called an AI short drama.",
+   "viewer_notes": "Called underrated, fairly new, very well made and obsession-worthy; appeared twice in the supplied paste.",
+   "audience_signal": "Strong positive AI-quality signal.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 190,
+   "source_title": "Bumped into the Billionaire",
+   "ai_status": "Discussed in the user-marked AI-drama section; verify.",
+   "viewer_notes": "Lovely and romantic; no slapping or revenge; nobody tortures a partner because of another woman’s deception; male lead likes her and stays focused on her.",
+   "audience_signal": "Healthy romance | Loyal male lead | Low cruelty",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 191,
+   "source_title": "The New York Godfather and His Clueless Screenwriter",
+   "ai_status": "Commenter explicitly speculated it may be a Chinese vertical remade as AI for English audiences; verify.",
+   "premise": "Godfather falls in love with the heroine at first sight; bizarre premise that he needs a screenwriter; cartoonish mafia plot; side plot with the godfather’s brother and male assistant.",
+   "viewer_notes": "Ridiculous in a hilarious, anime-like way. Side plot was positively noted.",
+   "audience_signal": "Comedy | Side plot | Cartoonish tone",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 192,
+   "source_title": "Wild Hearts Falls for Vows",
+   "ai_status": "Appeared in user-marked AI-drama section; no additional detail supplied.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 193,
+   "source_title": "No Escape from the Vampire",
+   "ai_status": "Explicitly included under “No Escape from the Vampire King” in a Good AI Vertical Dramas list.",
+   "aliases": "Taming the Thorny Rose | No Escape from the Vampire King",
+   "viewer_notes": "Vampire described as “spooky attractive”; first vertical that made the commenter genuinely chuckle multiple times. Also cited as a spicy AI example.",
+   "audience_signal": "Attractive male lead | Humor | Spicy romance",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 194,
+   "source_title": "My Blood, His Cure",
+   "ai_status": "Cited as an example in discussion of spicy / intimate AI verticals.",
+   "viewer_notes": "Mentioned in context of AI dramas with more natural kissing/intimate scenes.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 195,
+   "source_title": "The Dragon's Bride",
+   "ai_status": "Explicitly described in comparison to other AI dragon/fantasy movies.",
+   "aliases": "Claimed by the Dragon (possible alternate / thumbnail-title mismatch; verify)",
+   "viewer_notes": "Messy and “so bad it’s good,” but praised for coherence, consistent tone, some character development and an actual satisfying ending.",
+   "match": {
+    "status": "match_queue",
+    "slug": "fate-of-the-dragon-s-bride",
+    "db_title": "Fate of the Dragon’s Bride",
+    "strength": "possible",
+    "note": "Source says \"The Dragon's Bride\" and itself flags a possible thumbnail-title mismatch with \"Claimed by the Dragon\""
+   }
+  },
+  {
+   "n": 196,
+   "source_title": "Man to Man",
+   "platform": "ReelShort",
+   "ai_status": "Appeared in AI/BL recommendation context; verify.",
+   "viewer_notes": "BL recommendation.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 197,
+   "source_title": "Blitzed by My Rival's Obsession",
+   "platform": "ReelShort",
+   "ai_status": "Appeared in AI/BL recommendation context; verify.",
+   "viewer_notes": "BL recommendation.",
+   "match": {
+    "status": "in_database",
+    "slug": "blitzed-by-my-rival-s-obsession",
+    "db_title": "Blitzed by My Rival's Obsession",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 198,
+   "source_title": "Pucked by My Hockey Rival",
+   "platform": "DramaWave",
+   "ai_status": "Appeared in AI/BL recommendation context; verify.",
+   "viewer_notes": "BL recommendation.",
+   "match": {
+    "status": "match_queue",
+    "slug": "seducing-my-hockey-rival",
+    "db_title": "Seducing My Hockey Rival",
+    "strength": "possible",
+    "note": "Source (DramaWave, BL recommendation) says \"Pucked by My Hockey Rival\"; db also has \"Pucked by My Brother's Rival\", so two candidates exist"
+   }
+  },
+  {
+   "n": 199,
+   "source_title": "Marked by the Dragon's Heir",
+   "platform": "DramaWave",
+   "ai_status": "Appeared in AI/BL recommendation context; verify.",
+   "viewer_notes": "BL recommendation.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 200,
+   "source_title": "Trapped by Twin Alphas",
+   "platform": "Reel A.I.",
+   "ai_status": "Appeared in AI/BL recommendation context; verify.",
+   "viewer_notes": "BL recommendation.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 201,
+   "source_title": "Submitting to His Dark Secret",
+   "platform": "DramaBox",
+   "ai_status": "Appeared in AI recommendation context; verify.",
+   "viewer_notes": "Straight-romance recommendation.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 202,
+   "source_title": "Virgin Bride Bound to Dragon King",
+   "platform": "DramaBox",
+   "ai_status": "Appeared in AI recommendation context; verify.",
+   "viewer_notes": "Straight-romance recommendation.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 203,
+   "source_title": "No Escape from the Dragon King's Mate",
+   "platform": "DramaBox",
+   "ai_status": "Appeared in AI recommendation context; verify.",
+   "viewer_notes": "Straight-romance recommendation.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 204,
+   "source_title": "One Month to Love a Dragon",
+   "platform": "My Muse",
+   "ai_status": "Appeared in AI recommendation context; verify.",
+   "viewer_notes": "Straight-romance recommendation.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 205,
+   "source_title": "I'm Falling for a Doberman CEO",
+   "platform": "My Muse",
+   "ai_status": "Appeared in AI recommendation context; verify.",
+   "viewer_notes": "Straight-romance recommendation.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 206,
+   "source_title": "Caught in His Current",
+   "ai_status": "Discussed in AI-drama recommendation context; verify.",
+   "viewer_notes": "First one the commenter found “AMAZING”; seemed like watching real people and the storyline was good.",
+   "audience_signal": "AI realism / naturalism.",
+   "match": {
+    "status": "in_database",
+    "slug": "caught-in-his-current",
+    "db_title": "Caught in His Current",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "yes",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 207,
+   "source_title": "Overstepped Lines",
+   "ai_status": "Appeared in AI-drama recommendation context; verify.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 208,
+   "source_title": "Obsession with My Quarterback",
+   "ai_status": "Appeared in AI-drama recommendation context; verify.",
+   "match": {
+    "status": "match_queue",
+    "slug": "obsession-with-my-quarterback-step-brother",
+    "db_title": "Obsession with My Quarterback Step-brother",
+    "strength": "possible",
+    "note": "Source says \"Obsession with My Quarterback\"; likely a shortened reference"
+   }
+  },
+  {
+   "n": 209,
+   "source_title": "My Bully, My Stepbrother",
+   "ai_status": "Appeared in AI-drama recommendation context; verify.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 210,
+   "source_title": "Alex Cole",
+   "platform": "Patreon (independent artist; teasers on Instagram)",
+   "ai_status": "Appeared in AI-drama recommendation context; verify.",
+   "viewer_notes": "Called beautiful; commenter recommended watching from the first episode in the correct order.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 211,
+   "source_title": "Taming the Thorny Rose",
+   "source_context": "Title appeared in a Reddit recommendation / favorites list; no additional metadata was supplied in the pasted text.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 212,
+   "source_title": "Three Wolves, One Irresistible Pull",
+   "ai_status": "Explicitly included in a “Good AI Vertical Dramas” list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 213,
+   "source_title": "Fake Relationship with My Puppy Rival",
+   "ai_status": "Explicitly included in a “Good AI Vertical Dramas” list.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 214,
+   "source_title": "Zero to Alpha: Return of the Wolf King",
+   "ai_status": "Listed as a current favorite in AI-drama discussion.",
+   "aliases": "zero to alpha return of the wolf king",
+   "match": {
+    "status": "in_database",
+    "slug": "zero-to-alpha-return-of-the-wolf-king",
+    "db_title": "Zero to Alpha: Return of the Wolf King",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 215,
+   "source_title": "He Broke the Heart That Saved Him",
+   "ai_status": "Explicitly praised by someone who said they generally do not like AI vertical dramas.",
+   "viewer_notes": "Called “PEAK”; stressful but compelling enough to finish all 52 episodes.",
+   "audience_signal": "Completed-series / binge signal.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 216,
+   "source_title": "Driving Desire",
+   "ai_status": "Explicitly listed under “NSFW AI Verticals.”",
+   "nsfw_status": "Explicitly marked NSFW by user/source.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 217,
+   "source_title": "Claimed by My Brother's Enemy",
+   "ai_status": "Explicitly listed under “NSFW AI Verticals.”",
+   "nsfw_status": "Explicitly marked NSFW by user/source.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 218,
+   "source_title": "Forbidden Roar: My Brother, My Captain",
+   "ai_status": "Explicitly listed under “NSFW AI Verticals.”",
+   "nsfw_status": "Explicitly marked NSFW by user/source.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 219,
+   "source_title": "The Destined One",
+   "platform": "ReelShort / TikTok / YouTube",
+   "actors": "Alexander Blackwood",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: BLACKWOOD - The Cold Strategist.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 220,
+   "source_title": "Rose in Chains",
+   "platform": "ReelShort",
+   "actors": "Rose Sterling & Liam Hawthorne | Liam Hawthorne",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: STERLING - The Calm King; HAWTHORNE - The Black Emperor. | Second infographic panel: HAWTHORNE - The Black Emperor.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "in_database",
+    "slug": "rose-in-chains",
+    "db_title": "Rose in Chains",
+    "matched_on": "primary",
+    "db_platforms": [
+     "reelshort"
+    ],
+    "db_ai": "",
+    "db_confidence": "needs_check",
+    "has_synopsis": true
+   }
+  },
+  {
+   "n": 221,
+   "source_title": "The Ruthless Heir",
+   "platform": "ReelShort / TikTok",
+   "actors": "Ethan Reid",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: REID - The Feared Heir.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 222,
+   "source_title": "He Chose Her, I Married the Mafia Don",
+   "platform": "ReelShort",
+   "actors": "Dante Moretti & Valentina Romano",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: ROMANO - The Savage Don.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 223,
+   "source_title": "Forbidden Love: My Mafia Boss",
+   "platform": "ReelShort / TikTok",
+   "actors": "Adrian Grey",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: GREY - The Shadow Boss.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 224,
+   "source_title": "From Outcast to Mafia Queen",
+   "platform": "ReelShort / TikTok",
+   "actors": "Alessandro Moretti",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: MORETTI - The Vengeful Prince.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "match_queue",
+    "slug": "from-lost-heiress-to-mafia-queen",
+    "db_title": "From Lost Heiress to Mafia Queen",
+    "strength": "possible",
+    "note": "Source (AI mafia infographic) says \"From Outcast to Mafia Queen\""
+   }
+  },
+  {
+   "n": 225,
+   "source_title": "The Mafia Emperor De Luca",
+   "platform": "ReelShort / YouTube",
+   "actors": "Leon De Luca",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: DE LUCA - The Mafia Emperor.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 226,
+   "source_title": "Buried Sacrifice",
+   "platform": "ReelShort / TikTok",
+   "actors": "Dante Vitale",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: VITALE - The Silent Commander.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 227,
+   "source_title": "Mafia Prince Little Liar",
+   "platform": "ReelShort / TikTok",
+   "actors": "Aria Sinclair",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: SINCLAIR - The Ruthless Tycoon.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 228,
+   "source_title": "Bound to the Corrupt Prince",
+   "platform": "ReelShort / TikTok",
+   "actors": "Luca Grayson",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: GRAYSON - The Corrupt Prince.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 229,
+   "source_title": "The Billionaire's Unexpected Bride",
+   "platform": "ReelShort / YouTube",
+   "actors": "Nina Prescott",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: PRESCOTT - The Ruthless Billionaire.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "match_queue",
+    "slug": "the-secret-billionaire-s-unexpected-bride",
+    "db_title": "The Secret Billionaire's Unexpected Bride",
+    "strength": "likely",
+    "note": "Source drops \"Secret\"; source is the AI mafia infographic, which abbreviates titles elsewhere too"
+   }
+  },
+  {
+   "n": 230,
+   "source_title": "The Kensington Heir",
+   "platform": "ReelShort",
+   "actors": "Andrew Kensington",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: KENSINGTON - The Royal Mafia.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 231,
+   "source_title": "Thorne: The Heartless Don",
+   "platform": "ReelShort / TikTok",
+   "actors": "Damien Thorne",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: THORNE - The Heartless Don.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 232,
+   "source_title": "Carmichael: Untouchable",
+   "platform": "ReelShort / YouTube",
+   "actors": "Jasper Carmichael",
+   "ai_status": "Infographic explicitly labels this as a “Trending AI Mafia Drama.”",
+   "viewer_notes": "Infographic archetype: CARMICHAEL - The Elite Enforcer.",
+   "source_context": "Supplied “Trending AI Mafia Dramas” infographic.",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  },
+  {
+   "n": 233,
+   "source_title": "The Maid Who Ran From the Don",
+   "premise": "Mafia romance. There is an early misunderstanding, but the commenter felt it was not stupid or dragged out.",
+   "viewer_notes": "Not over-the-top but never boring; the man is very much in love with the heroine; male lead described as extremely handsome.",
+   "audience_signal": "Romance-first | Limited misunderstanding | Attractive male lead",
+   "match": {
+    "status": "held",
+    "reason": "No database row and no confident near-match. Nothing created: a Reddit mention is not evidence a title exists on a named platform."
+   }
+  }
+ ]
+}

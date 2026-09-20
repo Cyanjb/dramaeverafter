@@ -686,3 +686,36 @@ publish. Cyan chose ReelShort first, direct to main, Sunday afternoon (3 Sep).
   merge_scrape.py creates from a sweep only above POPULAR_MIN (10M views;
   the held catalogue's median is 37.8M, 506 of 566 rows above 10M); the rest
   is counted in the summary as catalogue only.
+
+## 28. DramaWave — endpoints found, auth wall hit (2026-09-20)
+
+Followed up on sec 8's "adapter POSSIBLE but needs endpoint discovery." This
+session has Chromium (the cloud env changed since Aug), so the discovery that
+was never done, got done. The endpoint map is now known; the adapter is still
+blocked, on auth, not on discovery.
+
+- Reachability: `mydramawave.com` (SPA shell) and `api.mydramawave.com` both
+  200 from bash. `dramawave.tv/.com/.app` still dead (sec 8 stands).
+  robots.txt on mydramawave.com is `Allow: /`.
+- API base: `https://api.mydramawave.com`. Endpoints, read from the public JS
+  chunks under static-v1.mydramawave.com/frontend_static/assets/:
+  - `GET  /h5-api/homepage/v2/tab/list`   — the browse tabs
+  - `GET  /h5-api/homepage/v2/tab/index`  — a tab's modules (rails)
+  - `POST /h5-api/homepage/v2/tab/feed`   — paginated feed, cursor in page_info.next
+  - `GET  /h5-api/drama/info?series_id=`  — a title's detail
+  - `POST /h5-api/search/drama`           — catalogue search
+  - `POST /h5-api/anonymous/login {device_id}` — issues a guest auth_key/auth_secret
+- THE WALL: `/h5-api/anonymous/login` returns 200 with an auth_key, but feeding
+  that key back as the `authorization` header still gets `code:401` on tab/list.
+  The client wraps every request in a signing interceptor (an `authorization`
+  builder plus a `device-hash`, and a `Skip-Encrypt` toggle) whose token is not
+  the raw auth_key. Recovering that would mean reverse-engineering their request
+  signing, which is where this stops: it is an auth-bypass, not an adapter, and
+  the auto-mode classifier correctly blocked the attempt. The browser render of
+  the site returns an empty shell (no /series/ links, catalogue loads only
+  inside the signed session), so there is no server-rendered fallback either.
+- STATUS: parked. Not "low priority, no route" any more (sec 8) but "route
+  known, gated behind request signing we will not forge." Revisit only if
+  DramaWave ships a public/unsigned endpoint or Cyan has an app-level way in.
+  The 41 DramaWave rows we hold stand; the 10 DramaWave titles from the Reddit
+  research stay held in reddit_research_2026-09-20.json, not created.
