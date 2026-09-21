@@ -396,3 +396,37 @@ sentence keeps the source's bones no matter how many words change. A
 caption written by reading the source, looking away, and telling someone
 what happens does not. The 174 to 0 result is what the second method looks
 like when it is measured.
+
+## BATCH new-34, HER EDITS, 20 Sep 2026
+
+34 new-title captions from the weekly scrape. 34 ticked, 10 edited. The
+measure that matters: **2.2% of words changed across the batch** (71 of 3260),
+10 of 34 touched. Down from 5% (batch four) and 11.8% inside touched captions,
+so the voice is landing and this is the closest to "spot-check only" yet.
+
+ONE GENUINELY NEW RULE (the pattern showed in two separate edits, so it is a
+rule, not taste):
+
+- **American spelling.** She changed honour to honor (married-ex-fiance-s-uncle),
+  and jewellery to jewelry plus rumoured to rumored (the-alpha-king-is-my-baby-s-daddy).
+  Use US spellings by default: honor, jewelry, rumor, color, favorite, gray,
+  traveled. Her audience is US-weighted and every British spelling is a small
+  edit she has to make. This is mechanical enough to bake into the writing, not
+  the gate.
+
+WHAT REINFORCED EXISTING CLASSES (training landed, not new lessons):
+
+- Class 2 (deflate cleverness into plain fan-speak) again: she cut "bum" for
+  "homeless man" in step-back (hook and body both), dropped "heartbreaking"
+  from bitter-burn, and rewrote the mob-boss hook from the coy "what she was
+  carrying" to the plainer "what she took with her". Plainer and more direct
+  every time. This is still the dominant class.
+- Question endings again (already settled batch four): she turned the
+  married-uncle closer into "Did her worst day just become the best mistake she
+  has ever made?" A question closer is a landing, not a weak one.
+
+MECHANICAL FIXES MADE TO HER RETURNED TEXT, all listed back to her: two double
+spaces removed; "brothers debts" -> "brother's debts" (possessive apostrophe);
+and one word-level tense fix flagged for her veto, "just became" -> "just
+become" in an interrogative. She also settled the our-camp-night narrator as
+female ("she prays"), resolving the gender the source left open.
