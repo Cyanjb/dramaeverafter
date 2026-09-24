@@ -63,6 +63,18 @@ for fname, col, universe, label in [
     if orphans: fail(f"{fname}: {len(orphans)} {col} rows point at no {label} row, e.g. {orphans[:3]}")
     else: ok(f"{fname}: every {col} resolves")
 
+# Research notes are not stories. 27 titles shipped "Jake Hobbs lead." or
+# "Anina Net #1 ranking title." as The story and the meta description until
+# the 24 Sep 2026 audit (removed text: generator/staging/
+# internal_notes_removed_2026-09-24.csv). Cast, book and status have columns.
+_NOTE = re.compile(r"\b(lead|credit)( and producer| vertical)?\.$|ranking title|first vertical\.$|"
+                   r"^(Based on|Inspired by) the novel by|^Announced for release|premiere \(|"
+                   r"produced/created|^Independent vertical production|on the \w+ app\.$|\bvertical\.$", re.I)
+_notes = [t["slug"] for t in titles if (s := (t.get("synopsis_short") or "").strip())
+          and "\n" not in s and len(s) < 90 and _NOTE.search(s)]
+if _notes: fail(f"{len(_notes)} titles carry a research note as their story, e.g. {_notes[:3]}: clear synopsis_short")
+else: ok("no research notes shipping as a title's story")
+
 print("== search ==")
 idx = json.loads(rd("search-index.json"))
 if len(idx.get("titles", [])) < 0.9 * len(titles):

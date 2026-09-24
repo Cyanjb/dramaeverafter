@@ -39,6 +39,10 @@ GOATCOUNTER = "dramaeverafter"
 # every page was last touched in July while the site changed daily. Month-level
 # granularity keeps the build deterministic within any given month.
 UPDATED = __import__("time").strftime("%B %Y")
+# Since 24 Sep 2026 UPDATED drives only the current-year logic of the New
+# releases rail. Nothing a reader sees is dated from the build clock: list pages
+# use newest_checked() over their titles, and the privacy page its own date.
+PRIVACY_UPDATED = "September 2026"   # the policy's own date; change it WITH the policy
 
 def rows(name):
     with open(os.path.join(DATA, name), encoding="utf-8") as f:
@@ -441,6 +445,26 @@ def title_checked(t):
     dates.append(t.get("last_verified") or "")
     dates = [x.strip() for x in dates if x.strip()]
     return max(dates) if dates else ""
+
+
+def newest_checked(ts):
+    """A list page's date: the newest title_checked among the titles it shows,
+    as ('September 2026', '2026'), or ('', '') when none is dated. Audit,
+    24 Sep 2026: trope, app and index pages said 'Updated September 2026' and
+    '(2026)' from the build clock, so a rebuild over July data manufactured
+    freshness. Same rule as month_label: display dates come from the DATA."""
+    iso = max((title_checked(t) for t in ts), default="")
+    return month_label(iso), iso[:4] if month_label(iso) else ""
+
+
+def year_tag(y):
+    """' (2024)' for a page <title>, or '' when there is no year to state."""
+    y = (y or "").strip()
+    return f" ({y})" if y.isdigit() else ""
+
+
+# The whole catalogue's newest checked date, for the apps guide and the footer.
+ALL_WHEN, ALL_YEAR = newest_checked(titles_root)
 
 
 def title_desc(t):
@@ -1888,7 +1912,7 @@ for p in people:
 <h2 id="facts-heading">Characters, A&ndash;Z</h2>
 <ul class="index-roles">{roles_html}</ul>
 </section>''' if chars else ''}"""
-    html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch (2026) | DramaEverAfter",
+    html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch | DramaEverAfter",
                 f"Every vertical drama {p['name']} has starred in"
                 + (f", including {chars[0][0]} in {chars[0][1]['primary_title']}," if chars else ",")
                 + " with platforms and where to watch.",
@@ -2258,7 +2282,9 @@ for t in titles:
 </section>
 {sticky_watch(t['title_id'], pre)}
 {FAV_JS}{SHARE_JS}"""
-    html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
+    # The title's own release year from the data, never the build clock: every
+    # title page said "(2026)", 2024 shows included (audit, 24 Sep 2026).
+    html = page(f"Where to Watch {t['primary_title']}{year_tag(t.get('year'))} | DramaEverAfter",
                 title_desc(t),
                 body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t),
                 og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show",
@@ -2273,6 +2299,7 @@ for t in titles:
 for tr in all_tropes:
     sl = slug(tr)
     matching = sorted([t for t in titles_root if tr in tropes_of(t)], key=lambda x: -title_views(x))
+    tr_when, tr_year = newest_checked(matching)
     pair_counts = defaultdict(int)
     for t in matching:
         for other in tropes_of(t):
@@ -2291,7 +2318,7 @@ for tr in all_tropes:
 <nav class="crumb"><a href="../tropes/index.html">Tropes</a><span>/</span><span class="current">{trope_heading(tr)}</span></nav>
 <section class="hero"><div class="inner">
 <p class="eyebrow">Trope</p><h1>{trope_heading(tr)}</h1>
-<p class="lede">{len(matching):,} titles carry this trope. Updated {UPDATED}.</p>
+<p class="lede">{len(matching):,} titles carry this trope.{f" Updated {tr_when}." if tr_when else ""}</p>
 {f'<div class="chips" style="align-items:center"><span class="hint" style="font-size:13px;color:var(--tert);margin-right:4px">Often paired with</span>{pair_html}</div>' if pair_html else ''}
 </div></section>
 <section class="pad" style="padding:24px 22px 46px">
@@ -2306,8 +2333,10 @@ for tr in all_tropes:
 {more_html}
 </section>
 {SORT_JS}{FAV_JS}"""
-    html = page(f"Best {trope_heading(tr)} Vertical Dramas (2026) | DramaEverAfter",
-                f"Every verified {tr} vertical drama across ReelShort, DramaBox and more. Updated {UPDATED}.",
+    # "Every verified" was untrue: most rows are needs_check (audit, 24 Sep 2026).
+    html = page(f"Best {trope_heading(tr)} Vertical Dramas{year_tag(tr_year)} | DramaEverAfter",
+                f"Every {tr} vertical drama we track across ReelShort, DramaBox and more."
+                + (f" Updated {tr_when}." if tr_when else ""),
                 body, f"{DOMAIN}/tropes/{sl}.html")
     open(os.path.join(DIST, "tropes", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/tropes/{sl}.html")
@@ -2374,15 +2403,16 @@ for tr in all_tropes:
         trs, pls = slug(tr), slug(pl["name"])
         os.makedirs(os.path.join(DIST, "tropes", trs), exist_ok=True)
         ranked_m = sorted(matching, key=lambda x: -title_views(x))[:GRID_CAP]
+        tp_when, tp_year = newest_checked(matching)
         cards = "".join(poster_card(t, "../../", show_app=False) for t in ranked_m)
         body = f"""
 <nav class="crumb"><a href="../../index.html">Home</a><span>/</span><a href="../{trs}.html">{trope_heading(tr)}</a><span>/</span><span class="current">{pl['name']}</span></nav>
 <section class="hero"><div class="inner">
 <p class="eyebrow">Trope &times; Platform</p><h1>Best {trope_heading(tr)} Dramas on {pl['name']}</h1>
-<p class="lede">{len(matching)} verified titles. Updated {UPDATED}.</p></div></section>
+<p class="lede">{len(matching)} verified titles.{f" Updated {tp_when}." if tp_when else ""}</p></div></section>
 <section class="pad" style="padding:24px 22px 46px"><div class="grid">{cards}</div></section>"""
-        html = page(f"Best {trope_heading(tr)} Vertical Dramas on {pl['name']} (2026) | DramaEverAfter",
-                    f"Every verified {tr} vertical drama on {pl['name']}. Updated {UPDATED}.",
+        html = page(f"Best {trope_heading(tr)} Vertical Dramas on {pl['name']}{year_tag(tp_year)} | DramaEverAfter",
+                    f"Every verified {tr} vertical drama on {pl['name']}." + (f" Updated {tp_when}." if tp_when else ""),
                     body, f"{DOMAIN}/tropes/{trs}/{pls}.html", depth=2)
         open(os.path.join(DIST, "tropes", trs, f"{pls}.html"), "w", encoding="utf-8").write(html)
         urls.append(f"/tropes/{trs}/{pls}.html")
@@ -2440,7 +2470,7 @@ for pid, n in TOP_PLATFORMS:
 {f'''<section class="section-warm" style="padding:28px 0 44px;margin-top:26px">
 <div class="pad"><h2 style="margin-bottom:20px">Regulars on this app</h2><div class="grid circles">{regulars_html}</div></div>
 </section>''' if regulars_html else ''}"""
-    html = page(f"{pl['name']}: Titles, Pricing and Where to Start (2026) | DramaEverAfter",
+    html = page(f"{pl['name']}: Titles, Pricing and Where to Start{year_tag(newest_checked(app_titles)[1])} | DramaEverAfter",
                 f"{pl['name']} on DramaEverAfter: {len(app_titles):,} "
                 f"title{'s' if len(app_titles) != 1 else ''}, regulars, and how to get started.",
                 body, f"{DOMAIN}/apps/{pls}.html", depth=1)
@@ -2458,14 +2488,15 @@ for p in platforms.values():
 body = f"""
 <nav class="crumb"><a href="index.html">Home</a><span>/</span><span class="current">Apps</span></nav>
 <section class="hero"><div class="inner"><p class="eyebrow">Guide</p><h1>Every vertical drama app</h1>
-<p class="lede">{len(APPS_WITH_DATA)} apps with verified catalogues, {len(platforms)} tracked in all. Updated {UPDATED}.</p></div></section>
+<p class="lede">{len(APPS_WITH_DATA)} apps with verified catalogues, {len(platforms)} tracked in all.{f" Updated {ALL_WHEN}." if ALL_WHEN else ""}</p></div></section>
 <section class="pad" style="padding:34px 22px 40px"><div class="grid apps">{app_tiles}</div></section>
 <section class="section-warm pad" style="padding:34px 22px 44px">
 <h2 style="margin-bottom:16px">Compare pricing</h2>
 <table><tr><th>Platform</th><th>Pricing</th><th>Referral links</th></tr>{prows}</table>
 </section>"""
-html = page("Vertical Drama Apps Compared (2026) | DramaEverAfter",
-            f"ReelShort, DramaBox, ShortMax and more compared: pricing and where to start. Updated {UPDATED}.",
+html = page(f"Vertical Drama Apps Compared{year_tag(ALL_YEAR)} | DramaEverAfter",
+            "ReelShort, DramaBox, ShortMax and more compared: pricing and where to start."
+            + (f" Updated {ALL_WHEN}." if ALL_WHEN else ""),
             body, f"{DOMAIN}/platforms.html", depth=0)
 open(os.path.join(DIST, "platforms.html"), "w", encoding="utf-8").write(html)
 urls.append("/platforms.html")
@@ -2819,7 +2850,7 @@ browse_body = f"""
 <h2 style="margin-bottom:18px">Actors</h2><div class="grid circles" id="results-actors"></div>
 </section>
 {FAV_JS}{BROWSE_JS}"""
-html = page("Search DramaEverAfter: Every Actor and Title (2026) | DramaEverAfter",
+html = page("Search DramaEverAfter: Every Actor and Title | DramaEverAfter",
             f"Search and filter {len(people)} vertical drama actors and {len(titles_root)} titles by trope and platform.",
             browse_body, f"{DOMAIN}/browse.html", depth=0)
 open(os.path.join(DIST, "browse.html"), "w", encoding="utf-8").write(html)
@@ -2960,7 +2991,8 @@ for o in origins_other:
 </div></section>
 <section class="pad" style="padding:26px 22px 46px"><div class="grid">{cards}</div></section>"""
     html = page(f"{heading} | DramaEverAfter",
-                f"{heading}: titles, cast and where to watch. Updated {UPDATED}.",
+                f"{heading}: titles, cast and where to watch."
+                + (f" Updated {newest_checked(o_titles)[0]}." if newest_checked(o_titles)[0] else ""),
                 body, f"{DOMAIN}/{o}/index.html", depth=1)
     os.makedirs(os.path.join(DIST, o), exist_ok=True)
     open(os.path.join(DIST, o, "index.html"), "w", encoding="utf-8").write(html)
@@ -3140,7 +3172,7 @@ body = f"""
 </div>
 <div class="say">
 <p class="lead">Find titles, explore familiar faces, and follow your favourite tropes across streaming apps.</p>
-<p class="fine">{len(titles_root):,} titles and {len(people):,} actors across {len(APPS_WITH_DATA)} apps, re-checked {month_label(datetime.date.today().isoformat())}. Some watch links may earn a commission.</p>
+<p class="fine">{len(titles_root):,} titles and {len(people):,} actors across {len(APPS_WITH_DATA)} apps, re-checked {ALL_WHEN}. Some watch links may earn a commission.</p>
 <p><a class="ask" href="contact.html">Something missing? Let me know &rarr;</a></p>
 </div>
 </div>
@@ -3304,7 +3336,7 @@ body = f"""
 <p>If you are an actor and want your photo or profile changed or taken down, the same address works and it gets done.</p>
 
 <h2>Changes</h2>
-<p>If what the site collects changes, this page changes with it. Last updated {UPDATED}.</p>
+<p>If what the site collects changes, this page changes with it. Last updated {PRIVACY_UPDATED}.</p>
 
 </section>"""
 html = page("Privacy at DramaEverAfter: No Cookies, No Trackers",
