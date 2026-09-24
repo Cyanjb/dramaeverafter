@@ -63,8 +63,16 @@ def main(min_ratio):
             and not cred[r["title_id"]] \
             and not any((a.get("direct_link") or "").strip() for a in [{}])
 
+    # A pair already ruled DIFFERENT is not asked again (24 Sep 2026: eleven
+    # REVIEW pairs were distinct shows by episode count, cast or story, and
+    # would otherwise come back every run). The ruling row names both ids.
+    ruled = {frozenset((q["candidate_a"].split()[0], q["candidate_b"].split()[0]))
+             for q in load("match_queue.csv")
+             if (q.get("status") or "").startswith("ruled_different")
+             and q.get("candidate_a") and q.get("candidate_b")}
+
     by_len = collections.defaultdict(list)
-    keyed = [(fold(r["primary_title"]), r) for r in titles if r["primary_title"].strip()]
+    keyed =[(fold(r["primary_title"]), r) for r in titles if r["primary_title"].strip()]
     for k, r in keyed:
         by_len[len(k)].append((k, r))
 
@@ -88,7 +96,7 @@ def main(min_ratio):
                        fold(r["primary_title"]) != fold(r2["primary_title"]):
                         continue
                 key = (r["title_id"], r2["title_id"])
-                if key in seen:
+                if key in seen or frozenset(key) in ruled:
                     continue
                 seen.add(key)
                 shared_cast = cred[r["title_id"]] & cred[r2["title_id"]]
