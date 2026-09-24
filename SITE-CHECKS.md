@@ -71,16 +71,26 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   meta. Thin pages are noindexed AND out of the sitemap, together.
 
 **Redirects**
-- Every specific old-URL 301 (a merged actor or title) sits BEFORE the
-  generic /:slug rules. Placed after, it never fires: :slug swallows
-  "name.html" as one segment and the old URL 301s to name.html.html
-  without end (found live 10 Sep). merge_person.py and merge_title.py
-  insert in the right place.
+- There is NO generic /titles/:slug -> :slug.html rule (nor actors,
+  tropes, apps). It never fired for a real page, and for a missing one
+  :slug swallowed "name.html" as one segment, so every unknown URL
+  looped to name.html.html.html forever instead of the 404 page (seen
+  10 Sep on a misplaced merge 301, found site-wide by the 24 Sep audit
+  and removed). A missing page now gets the real 404.
+- Every old-URL page 301 (a merged actor or title, an old trope) has an
+  extensionless twin, since nothing generic catches /titles/old-name any
+  more. merge_person.py and merge_title.py write both.
 - _redirects never contains a forced 301!/302! (verified 5 Sep: with
   Netlify Pretty URLs on, a forced rule loops forever).
 - /data, /generator, /references, /design-system and every root .md file
   are blocked with a forced 404! (10 Sep: the repo root is the publish
   folder, so anything not blocked deploys to the brand domain).
+- The 404! rules match exact case only and Netlify serves files in any
+  case, so /Data/titles.csv and /handover.md still answered 200 (24 Sep
+  audit). The real block is netlify.toml: its build command deletes those
+  paths from the deploy copy, so no capitalisation finds them. Any new
+  root folder or file that is not part of the site must be added to that
+  command, or the build fails.
 
 **IndexNow** (10 Sep)
 - Exactly one key file (32 hex characters .txt, containing its own name)
@@ -91,11 +101,10 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
 **Analytics** (10 Sep)
 - Every page carries the GoatCounter script; the site code lives in
   build.py as GOATCOUNTER and nowhere else.
-- The extensionless 301 rule exists in the file for all four page
-  families (titles, actors, tropes, apps; where-to-watch was folded
-  into titles on 10 Sep and its URLs 301 there). It is
-  checked so nobody deletes it, NOT because it works: see the
-  known-broken list below. It fires only for paths with no file.
+- where-to-watch was folded into titles on 10 Sep and its URLs 301
+  there. The extensionless duplicate of every page is still open (see
+  the known-broken list below); the generic :slug rules that used to sit
+  here as its "skeleton" were removed 24 Sep because they looped.
 
 ## Not checkable by script - Cyan's 5-minute click-through
 

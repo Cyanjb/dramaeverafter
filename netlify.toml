@@ -1,0 +1,12 @@
+# The repo root is the publish folder, so the database, the generator, the
+# notes and the references would all deploy to the brand domain. The 404!
+# rules in _redirects block them, but only in exact case: Netlify serves
+# files case-insensitively, so /Data/titles.csv and /handover.md answered
+# 200 (audit, 24 Sep 2026). No redirect rule can cover every capitalisation,
+# so the build deletes these paths from the deploy copy before publishing:
+# a file that is not uploaded cannot be served in any case. The repo itself
+# is untouched. check_site.py fails if a root folder or .md is neither part
+# of the site nor removed here.
+[build]
+  publish = "."
+  command = "rm -rf data generator references design-system docs .design-sync .claude .github && rm -f ./*.md .gitignore"

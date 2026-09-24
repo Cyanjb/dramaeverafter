@@ -268,6 +268,30 @@ missing += [m for m in sorted(os.listdir(ROOT)) if m.endswith(".md")
             and not re.search(rf"^/{re.escape(m)}\s+\S+\s+404!", red, re.M)]
 if missing: fail(f"not blocked on the domain (add a 404! rule to _redirects): {missing}")
 else: ok("database, generator, references and every root .md are 404! on the domain")
+# The 404! rules match exact case only, and Netlify serves files case-
+# insensitively: /Data/titles.csv and /handover.md answered 200 (audit,
+# 24 Sep 2026). The real block is netlify.toml's build command, which deletes
+# the non-site paths from the deploy copy. Every tracked root entry must be
+# either part of the site or removed there.
+_toml = rd("netlify.toml") if os.path.exists(os.path.join(ROOT, "netlify.toml")) else ""
+_cmd = re.search(r'^\s*command\s*=\s*"([^"]*)"', _toml, re.M)
+_pruned = set(re.findall(r"[\w.*-]+", _cmd.group(1))) if _cmd else set()
+_SITE_DIRS = {"actors", "apps", "titles", "tropes", "chinese"}
+_SITE_FILES = {"_redirects", "_headers", "netlify.toml"}
+_SITE_EXT = (".html", ".css", ".js", ".json", ".xml", ".txt", ".png", ".svg", ".ico", ".webp", ".jpg")
+try:
+    _tracked = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.split("\n")
+except (OSError, subprocess.CalledProcessError):
+    _tracked = []
+_roots = {p.split("/")[0] for p in _tracked if p}
+_leak = sorted(r for r in _roots
+               if r not in _SITE_DIRS and r not in _SITE_FILES and r not in _pruned
+               and not (r.endswith(".md") and "*.md" in _pruned)
+               and not (r in _tracked and r.endswith(_SITE_EXT)))
+if not _cmd: fail("netlify.toml has no build command: every capitalisation of /data, /generator and the notes is served (audit, 24 Sep 2026)")
+elif not _tracked: warn("git ls-files unavailable: could not check that netlify.toml removes every non-site root path")
+elif _leak: fail(f"root paths neither part of the site nor removed by netlify.toml's build command: {_leak}")
+else: ok("netlify.toml's build command removes every non-site root path, in any capitalisation")
 
 # THE POSTER RULE (Cyan, 13 Sep 2026): posters stay true to their sources, 3:4.
 # A design handoff asking for 9:16 or 2:3 does not override it; the sources do.
@@ -289,35 +313,24 @@ gc = [p for p in ("index.html", "browse.html", "404.html") if "data-goatcounter=
 if gc: fail(f"GoatCounter script missing from {gc}")
 else: ok("GoatCounter script on the root pages (build.py GOATCOUNTER)")
 
-# Order matters: a specific old-URL 301 placed AFTER the generic :slug rules
-# never fires, because :slug swallows "name.html" as one segment and the
-# old URL redirects to name.html.html without end (live, 10 Sep 2026).
+# No generic /titles/:slug -> /titles/:slug.html rule (nor actors, tropes,
+# apps). It never fired for a real page (Netlify serves foo.html at /foo
+# first, no toggle), and for a MISSING page :slug swallowed "name.html" as
+# one segment, so every unknown URL looped to name.html.html.html forever
+# instead of the 404 page (audit, 24 Sep 2026; first seen 10 Sep on a
+# misplaced merge 301). The extensionless duplicate itself stays unsolved by
+# Cyan's 10 Sep ruling; the canonical tags carry it. See SITE-CHECKS.md.
 _lines = red.split("\n")
-_first_slug = next((i for i, l in enumerate(_lines) if ":slug" in l), len(_lines))
-_late = [l for l in _lines[_first_slug:] if re.match(r"^/(titles|actors|tropes|apps)/[^:*\s]+\.html\s+/", l)]
-if _late: fail(f"specific 301 rules sit after the generic :slug rules and never fire: {_late[:3]}")
-else: ok("every specific old-URL 301 comes before the generic :slug rules")
-
-# The duplicate-URL rules. READ THIS BEFORE TRUSTING THEM: they do NOT
-# currently fix the duplicate. Netlify serves foo.html at /foo by default
-# (that is not the Pretty URLs setting and has no toggle), and these rules
-# are non-forced, so an existing file beats them and they fire only for
-# paths with no file. Verified live 10 Sep 2026 after Pretty URLs went
-# off: /search 301s, /actors/blake-manning still 200s.
-# They are checked anyway because they are the skeleton of the eventual
-# fix and deleting them would lose the intent. The duplicate is real and
-# unsolved: the 10 Sep coverage drilldown found 456 extensionless URLs in
-# "Crawled - currently not indexed" and Google ranked the extensionless
-# /actors/blake-manning at position 1. See SITE-CHECKS.md for the options
-# and for Cyan's 10 Sep ruling to leave it.
-missing = [f for f in ("/titles/:slug", "/actors/:slug", "/tropes/:slug", "/apps/:slug")
-           if not re.search(re.escape(f) + r"\s+" + re.escape(f) + r"\.html\s+301\b", red)]
-if missing:
-    fail(f"_redirects is missing the extensionless 301 for {missing}: "
-         "every page would be reachable at two URLs again (10 Sep 2026)")
-else:
-    ok("the extensionless 301 rules are all present (they do not fire "
-       "for real pages, see SITE-CHECKS.md)")
+_generic = [l.strip() for l in _lines if re.match(r"^/(titles|actors|tropes|apps)/:\w+\s", l)]
+if _generic: fail(f"generic :slug rules loop on every missing page instead of a 404: {_generic}")
+else: ok("no generic page :slug rules, so a missing page gets the 404 page, not a redirect loop")
+# Without the generic rule, an old URL's extensionless form needs its own
+# rule: every specific page 301 carries its extensionless twin.
+_srcs = {l.split()[0] for l in _lines if l.strip() and not l.startswith("#")}
+_nolone = [s for s in _srcs if re.match(r"^/(titles|actors|tropes|apps)/\S+\.html$", s)
+           and s[:-5] not in _srcs and not os.path.exists(os.path.join(ROOT, s.lstrip("/")))]
+if _nolone: fail(f"page 301s with no extensionless twin (merge_person/merge_title write both): {sorted(_nolone)[:3]}")
+else: ok("every old page 301 also redirects its extensionless form")
 
 print("== rails ==")
 # Cyan, 17 Sep 2026: arrows on hover, no slider, and "don't interfere with

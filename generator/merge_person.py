@@ -125,16 +125,18 @@ def main():
 
     path = os.path.join(REPO, "_redirects")
     lines = [l.rstrip("\n") for l in open(path, encoding="utf-8")] if os.path.exists(path) else []
-    rule = f"/actors/{a.lose}.html  /actors/{a.keep}.html  301"
-    if rule not in lines:
-        # BEFORE the generic /:slug rules, never appended after them: :slug
-        # matches "name.html" as one segment, so a specific rule placed later
-        # never fires and the old URL 301s to name.html.html forever
-        # (found live 10 Sep 2026). check_site guards the order.
-        first = next((i for i, l in enumerate(lines) if ":slug" in l), len(lines))
-        while first > 0 and lines[first - 1].startswith("#"):
-            first -= 1
-        lines.insert(first, rule)
+    # The old URL in both forms, .html and extensionless: there is no generic
+    # /actors/:slug rule to catch the bare form (it looped on missing pages,
+    # audit 24 Sep 2026), so each merge writes its own pair. check_site
+    # guards the pairing.
+    for src in (f"/actors/{a.lose}.html", f"/actors/{a.lose}"):
+        rule = f"{src}  /actors/{a.keep}.html  301"
+        if rule not in lines:
+            # With the other page 301s, above the extensionless root block.
+            first = next((i for i, l in enumerate(lines) if l.startswith("# Extensionless root pages")), len(lines))
+            while first > 0 and not lines[first - 1].strip():
+                first -= 1
+            lines.insert(first, rule)
     open(path, "w", encoding="utf-8").write("\n".join(lines).rstrip() + "\n")
 
     stale = os.path.join(REPO, "actors", f"{a.lose}.html")

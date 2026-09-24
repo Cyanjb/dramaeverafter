@@ -32,37 +32,66 @@
 /chinese/where-to-watch/*  /chinese/titles/:splat  301
 
 /actors/hristine-oswald.html  /actors/christine-oswald.html  301
+/actors/hristine-oswald  /actors/christine-oswald.html  301
 /actors/nick-ritac-o.html  /actors/nick-ritacco.html  301
+/actors/nick-ritac-o  /actors/nick-ritacco.html  301
 /actors/micharl-ursu.html  /actors/michael-ursu.html  301
+/actors/micharl-ursu  /actors/michael-ursu.html  301
 /actors/kelsey-lynn.html  /actors/kelsey-c-lynn.html  301
+/actors/kelsey-lynn  /actors/kelsey-c-lynn.html  301
 
 # Trope vocabulary cleanup, 15 Aug 2026. Folded, moved to genres, or
 # deleted as platform noise. See TROPE-CLEANUP-PROPOSAL.md.
 /tropes/campus-bullying.html  /tropes/bullying.html  301
+/tropes/campus-bullying  /tropes/bullying.html  301
 /tropes/fake-heiress.html  /tropes/heiress.html  301
+/tropes/fake-heiress  /tropes/heiress.html  301
 /tropes/female-ceo.html  /tropes/ceo.html  301
+/tropes/female-ceo  /tropes/ceo.html  301
 /tropes/hidden-identity.html  /tropes/secret-identity.html  301
+/tropes/hidden-identity  /tropes/secret-identity.html  301
 /tropes/secret-billionaire.html  /tropes/billionaire.html  301
+/tropes/secret-billionaire  /tropes/billionaire.html  301
 /tropes/secret-heiress.html  /tropes/heiress.html  301
+/tropes/secret-heiress  /tropes/heiress.html  301
 /tropes/romance.html  /browse.html  301
+/tropes/romance  /browse.html  301
 /tropes/fantasy.html  /browse.html  301
+/tropes/fantasy  /browse.html  301
 /tropes/thriller.html  /browse.html  301
+/tropes/thriller  /browse.html  301
 /tropes/animation.html  /browse.html  301
+/tropes/animation  /browse.html  301
 /tropes/drama.html  /browse.html  301
+/tropes/drama  /browse.html  301
 /tropes/comedy.html  /browse.html  301
+/tropes/comedy  /browse.html  301
 /tropes/sci-fi.html  /browse.html  301
+/tropes/sci-fi  /browse.html  301
 /tropes/sm.html  /tropes/index.html  301
+/tropes/sm  /tropes/index.html  301
 /tropes/gay.html  /tropes/index.html  301
+/tropes/gay  /tropes/index.html  301
 /tropes/anime.html  /tropes/index.html  301
+/tropes/anime  /tropes/index.html  301
 /tropes/regret.html  /tropes/index.html  301
+/tropes/regret  /tropes/index.html  301
 /tropes/marriage.html  /tropes/index.html  301
+/tropes/marriage  /tropes/index.html  301
 /tropes/family.html  /tropes/index.html  301
+/tropes/family  /tropes/index.html  301
 /tropes/chasing-love.html  /tropes/index.html  301
+/tropes/chasing-love  /tropes/index.html  301
 /tropes/getting-back-at-ex.html  /tropes/index.html  301
+/tropes/getting-back-at-ex  /tropes/index.html  301
 /tropes/dominant.html  /tropes/index.html  301
+/tropes/dominant  /tropes/index.html  301
 /tropes/small-potato.html  /tropes/index.html  301
+/tropes/small-potato  /tropes/index.html  301
 /tropes/twisted.html  /tropes/index.html  301
+/tropes/twisted  /tropes/index.html  301
 /tropes/hidden-identity/reelshort.html  /tropes/secret-identity.html  301
+/tropes/hidden-identity/reelshort  /tropes/secret-identity.html  301
 
 # The repo root is the publish directory, so everything below would otherwise be
 # served on the domain: the database CSVs, the generator, the staging files
@@ -91,27 +120,39 @@
 /.github/*        /404.html  404
 
 /titles/the-billionaire-heiress-s-double-life.html  /titles/the-double-life-of-a-billionaire-heiress.html  301
+/titles/the-billionaire-heiress-s-double-life  /titles/the-double-life-of-a-billionaire-heiress.html  301
 
 /actors/timothy-stein.html  /actors/tim-stein.html  301
+/actors/timothy-stein  /actors/tim-stein.html  301
 /actors/gabrielle-brown.html  /actors/gabrielle-faith-brown.html  301
+/actors/gabrielle-brown  /actors/gabrielle-faith-brown.html  301
 /actors/jordan-frank.html  /actors/jordan-roy-frank.html  301
+/actors/jordan-frank  /actors/jordan-roy-frank.html  301
 /actors/christopher-quartuccio.html  /actors/chris-quartuccio.html  301
+/actors/christopher-quartuccio  /actors/chris-quartuccio.html  301
 /titles/foulplay-for-my-brother-s-best-friend.html  /titles/foul-play-with-my-brother-s-best-friend.html  301
+/titles/foulplay-for-my-brother-s-best-friend  /titles/foul-play-with-my-brother-s-best-friend.html  301
 /titles/clubhouse-of-desire-vigloo.html  /titles/clubhouse-of-desire.html  301
+/titles/clubhouse-of-desire-vigloo  /titles/clubhouse-of-desire.html  301
 /titles/country-gal-to-ceo-bride.html  /titles/country-gal-to-ceo-s-bride.html  301
+/titles/country-gal-to-ceo-bride  /titles/country-gal-to-ceo-s-bride.html  301
 /titles/murder-at-the-meriweather.html  /titles/murder-at-the-merriweather.html  301
+/titles/murder-at-the-meriweather  /titles/murder-at-the-merriweather.html  301
 /titles/my-firefighter-fiancee-returns-as-a-billionaire.html  /titles/my-firefighter-fiance-returns-as-a-billionaire.html  301
+/titles/my-firefighter-fiancee-returns-as-a-billionaire  /titles/my-firefighter-fiance-returns-as-a-billionaire.html  301
 /titles/the-alpha-s-mate-who-cried-wolf.html  /titles/the-alpha-mate-who-cried-wolf.html  301
+/titles/the-alpha-s-mate-who-cried-wolf  /titles/the-alpha-mate-who-cried-wolf.html  301
 /titles/rules-of-protection-bodyguard-i-hate.html  /titles/rules-of-protection-the-bodyguard-i-hate.html  301
+/titles/rules-of-protection-bodyguard-i-hate  /titles/rules-of-protection-the-bodyguard-i-hate.html  301
 /actors/kim-nu-ri.html  /actors/kim-nuri.html  301
-# Canonical URL form is .html; Netlify also answers extensionless paths with
-# the same content (no redirect), so Google indexed a duplicate of nearly
-# every page. Recovery hygiene, 5 Sep 2026: extensionless now 301s to the
-# canonical. Non-forced rules, so existing files always win.
-/titles/:slug          /titles/:slug.html          301
-/actors/:slug          /actors/:slug.html          301
-/apps/:slug            /apps/:slug.html            301
-/tropes/:slug          /tropes/:slug.html          301
+/actors/kim-nu-ri  /actors/kim-nuri.html  301
+# Extensionless root pages 301 to the .html canonical. Non-forced, so a
+# rule fires only when no file answers the path. There is deliberately NO
+# generic /titles/:slug -> /titles/:slug.html rule (nor actors, tropes,
+# apps): it never fired for a real page (Netlify serves foo.html at /foo
+# first), and for a MISSING page :slug swallowed "name.html" and looped to
+# name.html.html.html forever instead of a 404 (audit, 24 Sep 2026).
+# Every specific page 301 above has an extensionless twin instead.
 /browse     /browse.html     301
 /blog       /blog.html       301
 /contact    /contact.html    301
