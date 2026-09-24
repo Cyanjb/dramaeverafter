@@ -93,6 +93,45 @@
 /tropes/hidden-identity/reelshort.html  /tropes/secret-identity.html  301
 /tropes/hidden-identity/reelshort  /tropes/secret-identity.html  301
 
+# Trope x app combo pages retired 24 Sep 2026 (doorway-shaped: sitemap-only,
+# mostly repeating the parent trope). Each 301s to its parent trope page.
+/tropes/age-gap/reelshort.html  /tropes/age-gap.html  301
+/tropes/age-gap/reelshort  /tropes/age-gap.html  301
+/tropes/bad-boy/reelshort.html  /tropes/bad-boy.html  301
+/tropes/bad-boy/reelshort  /tropes/bad-boy.html  301
+/tropes/billionaire/reelshort.html  /tropes/billionaire.html  301
+/tropes/billionaire/reelshort  /tropes/billionaire.html  301
+/tropes/ceo/reelshort.html  /tropes/ceo.html  301
+/tropes/ceo/reelshort  /tropes/ceo.html  301
+/tropes/contract-marriage/reelshort.html  /tropes/contract-marriage.html  301
+/tropes/contract-marriage/reelshort  /tropes/contract-marriage.html  301
+/tropes/enemies-to-lovers/reelshort.html  /tropes/enemies-to-lovers.html  301
+/tropes/enemies-to-lovers/reelshort  /tropes/enemies-to-lovers.html  301
+/tropes/fake-dating/reelshort.html  /tropes/fake-dating.html  301
+/tropes/fake-dating/reelshort  /tropes/fake-dating.html  301
+/tropes/fated-mates/reelshort.html  /tropes/fated-mates.html  301
+/tropes/fated-mates/reelshort  /tropes/fated-mates.html  301
+/tropes/forbidden-romance/reelshort.html  /tropes/forbidden-romance.html  301
+/tropes/forbidden-romance/reelshort  /tropes/forbidden-romance.html  301
+/tropes/heiress/reelshort.html  /tropes/heiress.html  301
+/tropes/heiress/reelshort  /tropes/heiress.html  301
+/tropes/high-fantasy/reelshort.html  /tropes/high-fantasy.html  301
+/tropes/high-fantasy/reelshort  /tropes/high-fantasy.html  301
+/tropes/mafia/reelshort.html  /tropes/mafia.html  301
+/tropes/mafia/reelshort  /tropes/mafia.html  301
+/tropes/one-night-stand/reelshort.html  /tropes/one-night-stand.html  301
+/tropes/one-night-stand/reelshort  /tropes/one-night-stand.html  301
+/tropes/revenge/reelshort.html  /tropes/revenge.html  301
+/tropes/revenge/reelshort  /tropes/revenge.html  301
+/tropes/second-chance/reelshort.html  /tropes/second-chance.html  301
+/tropes/second-chance/reelshort  /tropes/second-chance.html  301
+/tropes/secret-baby/reelshort.html  /tropes/secret-baby.html  301
+/tropes/secret-baby/reelshort  /tropes/secret-baby.html  301
+/tropes/secret-identity/reelshort.html  /tropes/secret-identity.html  301
+/tropes/secret-identity/reelshort  /tropes/secret-identity.html  301
+/tropes/werewolf/reelshort.html  /tropes/werewolf.html  301
+/tropes/werewolf/reelshort  /tropes/werewolf.html  301
+
 # The repo root is the publish directory, so everything below would otherwise be
 # served on the domain: the database CSVs, the generator, the staging files
 # (which hold verbatim platform synopses), the design kit and the worklists.

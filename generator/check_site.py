@@ -168,6 +168,12 @@ else:
     elif 'titles/index.html">Titles' not in rd("index.html"): fail("the footer no longer links Titles A-Z")
     else: ok(f"Titles A-Z links all {len(_sm) - ('index' in _sm)} indexable titles, and the footer links it")
 
+# Trope x app combo pages were retired 24 Sep 2026 as doorway-shaped; their
+# URLs 301 to the parent trope. No sub-folder under tropes/ may come back.
+_combo = [d for d in os.listdir(os.path.join(ROOT, "tropes")) if os.path.isdir(os.path.join(ROOT, "tropes", d))]
+if _combo: fail(f"trope x app combo pages are back (retired 24 Sep 2026 as doorway pages): tropes/{_combo[0]}/")
+else: ok("no trope x app combo pages (retired as doorway pages; their URLs 301 to the parent trope)")
+
 print("== homepage ==")
 home = rd("index.html")
 mw, nt = home.find("Most watched right now"), home.find("New and trending")

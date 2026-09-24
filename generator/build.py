@@ -152,8 +152,8 @@ origins_other = sorted({origin_of(t) for t in titles_other})
 # card, the same reason the zero-credit actors were kept out of the Popular Actors rail.
 #
 # Nothing else needs changing to make this coherent: trope_chip() already renders an
-# inert chip when a trope has no page ("so we never emit a 404"), the index and the
-# combo loop both read all_tropes, and the tropes/ directory is rmtree'd each build,
+# inert chip when a trope has no page ("so we never emit a 404"), the index reads
+# all_tropes (the combo loop that also did was retired 24 Sep 2026), and the tropes/ directory is rmtree'd each build,
 # so the withdrawn pages remove themselves.
 TROPE_MIN = 5
 _trope_page_n = defaultdict(int)
@@ -2426,47 +2426,14 @@ urls.append("/tropes/index.html")
 # Quick answers; /where-to-watch/<slug>.html 301s to /titles/<slug>.html
 # (_redirects). The clean step above still removes a stale folder.
 
-# Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
-#
-# This used to be a nested scan: for every trope, for every platform, walk all 3,407
-# titles. That is 226 x 70 x 3,407 = ~54 million iterations and it dominated the build.
-# Indexing titles by trope once, then bucketing that much smaller pool by platform,
-# produces exactly the same pages in a fraction of the time.
-_verified_root = [t for t in titles_root if t.get("data_confidence", "verified") == "verified"]
-titles_by_trope = defaultdict(list)
-for _t in _verified_root:
-    for _tr in tropes_of(_t):
-        titles_by_trope[_tr].append(_t)
-
-for tr in all_tropes:
-    pool = titles_by_trope.get(tr, [])
-    if len(pool) < 5:
-        continue
-    by_plat = defaultdict(list)
-    for _t in pool:
-        # A title can carry several availability rows for one platform; count it once.
-        for _pid in {a["platform_id"] for a in avail_by_title.get(_t["title_id"], [])}:
-            by_plat[_pid].append(_t)
-    for pid, matching in by_plat.items():
-        pl = platforms.get(pid)
-        if pl is None or len(matching) < 5:
-            continue
-        trs, pls = slug(tr), slug(pl["name"])
-        os.makedirs(os.path.join(DIST, "tropes", trs), exist_ok=True)
-        ranked_m = sorted(matching, key=lambda x: (x["title_id"] in NOINDEX_TITLES, -title_views(x)))[:GRID_CAP]
-        tp_when, tp_year = newest_checked(matching)
-        cards = "".join(poster_card(t, "../../", show_app=False) for t in ranked_m)
-        body = f"""
-<nav class="crumb"><a href="../../index.html">Home</a><span>/</span><a href="../{trs}.html">{trope_heading(tr)}</a><span>/</span><span class="current">{pl['name']}</span></nav>
-<section class="hero"><div class="inner">
-<p class="eyebrow">Trope &times; Platform</p><h1>Best {trope_heading(tr)} Dramas on {pl['name']}</h1>
-<p class="lede">{len(matching)} verified titles.{f" Updated {tp_when}." if tp_when else ""}</p></div></section>
-<section class="pad" style="padding:24px 22px 46px"><div class="grid">{cards}</div></section>"""
-        html = page(f"Best {trope_heading(tr)} Vertical Dramas on {pl['name']}{year_tag(tp_year)} | DramaEverAfter",
-                    f"Every verified {tr} vertical drama on {pl['name']}." + (f" Updated {tp_when}." if tp_when else ""),
-                    body, f"{DOMAIN}/tropes/{trs}/{pls}.html", depth=2)
-        open(os.path.join(DIST, "tropes", trs, f"{pls}.html"), "w", encoding="utf-8").write(html)
-        urls.append(f"/tropes/{trs}/{pls}.html")
+# Trope x platform combination pages: RETIRED 24 Sep 2026. Eighteen existed, all
+# /tropes/<trope>/reelshort.html. The audit found them doorway-shaped, the exact
+# profile the August 2026 spam update targets: nothing on the site linked them
+# (sitemap only), 12 of 18 listed nothing the parent trope page did not, and each
+# carried 12-40 words of its own under "Best X Vertical Dramas on ReelShort".
+# Their URLs 301 to the parent trope page (_redirects), which ranks the same
+# titles. Filtering a trope by app is Browse's job (?trope=&platform=). Do not
+# bring these back without unique content per page.
 
 # Apps: one NEW per-platform page for every app with real availability data
 # (design screen 8), plus platforms.html restyled as the "all apps" index. The
@@ -3236,7 +3203,7 @@ body = f"""
 </div>
 <div class="say">
 <p class="lead">Find titles, explore familiar faces, and follow your favourite tropes across streaming apps.</p>
-<p class="fine">{len(titles_root):,} titles and {len(people):,} actors across {len(APPS_WITH_DATA)} apps, re-checked {ALL_WHEN}. Some watch links may earn a commission.</p>
+<p class="fine">{len(titles_root):,} titles and {len(people):,} actors across {len(APPS_WITH_DATA)} apps.</p>
 <p><a class="ask" href="contact.html">Something missing? Let me know &rarr;</a></p>
 </div>
 </div>

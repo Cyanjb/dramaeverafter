@@ -79,6 +79,9 @@ had no link from any page, only the sitemap)
   footer links it from every page. Noindexed titles are left to Browse.
 - Trope pages give their capped card slots to indexable titles first.
 - Each app page lists all its indexable titles A-Z under a fold.
+- No trope x app combo pages (/tropes/<trope>/<app>.html). The 18 that
+  existed were retired 24 Sep as doorway-shaped (sitemap-only, mostly
+  repeating the parent trope) and 301 to the parent trope page.
 
 **Sitemap and noindex** (the 1 Sep Google demotion recovery)
 - Sitemap URLs: on-domain, every one has a file, none carries a noindex
