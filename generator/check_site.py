@@ -453,21 +453,32 @@ if not _dvh_ok:
 else:
     ok("phone sheets are sized in dvh, so iOS chrome cannot push their heads off-screen")
 
-# The language filter appears only when BROWSE ITSELF lists more than one
-# language. That qualifier matters: build.py scopes browse, home, tropes and
-# platforms to ROOT_ORIGIN, and any other origin gets its own section index
-# instead (see the comment above titles_root). So the filter was not merely
-# empty, it was structurally dead -- adding Chinese titles moves them OUT of
-# browse, it does not light up a Chinese chip. Counting the browse population
-# rather than the whole file is what makes this check tell the truth, and it
-# still flips on its own if that scoping is ever changed.
+# One page per show (Cyan, 24 Sep 2026): a dub listing whose original is on
+# file belongs on the original's page. A new scrape can bring one in; say so.
+_DUBMARK = re.compile(r"^\s*(\[\s*eng\s*dub\s*\]|\(\s*dubbed\s*\)|\[\s*dubbed version\s*\])\s*", re.I)
+_fold = lambda s: re.sub(r"[^a-z0-9]", "", unicodedata.normalize("NFKD", s or "").lower())
+_orig_names = {_fold(r["primary_title"]) for r in rows("titles.csv") if not _DUBMARK.match(r["primary_title"])}
+_unfolded = [r["slug"] for r in rows("titles.csv") if _DUBMARK.match(r["primary_title"])
+             and _fold(_DUBMARK.sub("", r["primary_title"])) in _orig_names]
+if _unfolded: warn(f"{len(_unfolded)} dub listings have their original on file but their own page, e.g. {_unfolded[:2]}: run generator/merge_dubs.py --apply")
+else: ok("every dub listing with an original on file shares the original's page")
+
+# The language filter appears only when browse lists more than one bucket.
+# Since 24 Sep 2026 origin is a label, not a folder: browse lists EVERY title,
+# and a title with an English-dub availability row also counts as Dubbed
+# (merge_dubs.py). So the live buckets are every origin in titles.csv plus
+# Dubbed when any availability row is version english-dub. Before that date
+# other origins were moved out of browse and this check guarded the dead chip.
 _root_origin = "english"
-_browse_origins = collections.Counter(
-    (r.get("origin") or _root_origin).strip().lower() for r in rows("titles.csv")
-    if (r.get("origin") or _root_origin).strip().lower() == _root_origin)
 _all_origins = collections.Counter((r.get("origin") or _root_origin).strip().lower()
                                    for r in rows("titles.csv"))
+_browse_origins = collections.Counter(_all_origins)
+_dubbed = {a["title_id"] for a in rows("availability.csv") if (a.get("version") or "") == "english-dub"}
+if _dubbed: _browse_origins["dubbed"] = len(_dubbed)
 _live = len(_browse_origins)
+_idx_dubbed = sum(1 for t in idx["titles"] if "dubbed" in t.get("o", []))
+if _dubbed and _idx_dubbed != len({t for t in _dubbed if os.path.exists(os.path.join(ROOT, "titles", t + ".html"))}):
+    fail(f"the Dubbed filter finds {_idx_dubbed} titles in search-index.json but {len(_dubbed)} have an English-dub row")
 _shown = 'id="f-origin"' in _browse
 if _live > 1 and not _shown:
     fail(f"browse now lists {_live} languages but its language filter is hidden")
@@ -481,8 +492,7 @@ elif "Country of origin" in _browse:
          "Chinese are languages, and Dubbed is a release version, not a country")
 else:
     ok(f"the browse language filter matches what browse lists "
-       f"({_live} language, group {'shown' if _shown else 'hidden'}; "
-       f"whole catalogue: {dict(_all_origins)})")
+       f"({_live} buckets, group {'shown' if _shown else 'hidden'}: {dict(_browse_origins)})")
 
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")

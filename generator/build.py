@@ -67,10 +67,10 @@ ROOT_ORIGIN = "english"
 # the whole index client-side, so the overflow link points there pre-filtered.
 GRID_CAP = 60
 def origin_of(t): return (t.get("origin") or ROOT_ORIGIN).strip().lower() or ROOT_ORIGIN
-def tdir(t):
-    o = origin_of(t)
-    return "" if o == ROOT_ORIGIN else o + "/"
-def tdepth(t): return 1 if origin_of(t) == ROOT_ORIGIN else 2
+# Every title page sits at /titles/, whatever its origin (24 Sep 2026, see
+# titles_root below). Kept as functions so the call sites read the same.
+def tdir(t): return ""
+def tdepth(t): return 1
 
 people = rows("people.csv")
 titles = rows("titles.csv")
@@ -138,11 +138,16 @@ def tropes_of(t):
     _tropes_cache[key] = out
     return out
 
-# Root sections (home, tropes, platforms, trope+platform pages) cover ROOT_ORIGIN only.
-# Other origins are browsed from their own section index.
-titles_root = [t for t in titles if origin_of(t) == ROOT_ORIGIN]
-titles_other = [t for t in titles if origin_of(t) != ROOT_ORIGIN]
-origins_other = sorted({origin_of(t) for t in titles_other})
+# ORIGIN IS A LABEL, NOT A FOLDER (Cyan, 24 Sep 2026). Every title lives at
+# /titles/<slug>.html whatever its origin, and origin (English, Chinese, Korean,
+# plus Dubbed from the availability rows) is a label on the page and a Browse
+# filter. The old design put other origins under /<origin>/titles/, so marking a
+# show Chinese would have moved its URL, and slugs never change. The legacy
+# chinese/ folder is cleared by the build and 301s to /titles/ (_redirects).
+titles_root = list(titles)
+titles_other = []
+origins_other = []
+LEGACY_ORIGIN_DIRS = ["chinese"]
 
 # THE 5+ RULE NOW GOVERNS PLAIN TROPE PAGES TOO (Cyan, 13 Aug). The architecture doc
 # has always said "a trope or combo page publishes only at 5+ verified titles", but
@@ -175,6 +180,17 @@ def view_num(s):
     elif s.endswith("K"): mult, s = 1000, s[:-1]
     try: return int(float(s) * mult)
     except ValueError: return 0
+
+DUB = "english-dub"
+
+def has_dub(t):
+    """An English dub is on file: an availability row with version english-dub
+    (merge_dubs.py, 24 Sep 2026). Drives the Dubbed filter and the page label."""
+    return any((a.get("version") or "") == DUB for a in avail_by_title.get(t["title_id"], []))
+
+def dub_only(t):
+    rows = avail_by_title.get(t["title_id"], [])
+    return bool(rows) and all((a.get("version") or "") == DUB for a in rows)
 
 def title_views(t):
     return max((view_num(a.get("view_count")) for a in avail_by_title.get(t["title_id"], [])), default=0)
@@ -1474,6 +1490,11 @@ def watch_buttons(title_id, pre=""):
     linked, unlinked = [], []
     for plat, a in named:
         name = plat.get("name", "?")
+        # Since 24 Sep 2026 a show can carry two rows on one app, the original and
+        # its English dub (one page per show, Cyan). Only name the version when
+        # the page has both; a dub-only page says so in its label instead.
+        if (a.get("version") or "") == DUB and len({(x.get("version") or "") for _p, x in named}) > 1:
+            name += " (English dub)"
         deep = (a["direct_link"] or "").strip()
         link = deep or (plat.get("web_url") or "").strip()
         (linked if link else unlinked).append((name, link, bool(deep), a["platform_id"]))
@@ -1678,7 +1699,7 @@ def actor_summary(p, pairs):
 
 # --------- build ---------
 # Selective clean: remove ONLY generated artifacts, never data/ or generator/
-for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + origins_other:
+for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + LEGACY_ORIGIN_DIRS:
     p = os.path.join(DIST, d)
     if os.path.exists(p): shutil.rmtree(p)
 for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "privacy.html", "my-list.html", "characters.html", "404.html", "robots.txt", "sitemap.xml", "style.css"]:
@@ -2148,7 +2169,8 @@ html = page("Every Vertical Drama Title, A-Z | DramaEverAfter",
 open(os.path.join(DIST, "titles", "index.html"), "w", encoding="utf-8").write(html)
 urls.append("/titles/index.html")
 
-ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "dubbed": "Dubbed release"}
+ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "korean": "Korean original",
+                "dubbed": "Dubbed release"}
 
 # Title pages
 for t in titles:
@@ -2159,7 +2181,7 @@ for t in titles:
     # the actors with the most titles in the database, who are the faces a
     # reader recognises. Stable, so equal rows keep their credits order.
     _cast = [c for c in credits_by_title.get(t["title_id"], []) if c["person_id"] in p_by_id]
-    _cast.sort(key=lambda c: (0 if (c.get("role") or "").strip().lower() == "lead" else 1,
+    _cast.sort(key=lambda c: ({"lead": 0, "dub_voice": 2}.get((c.get("role") or "").strip().lower(), 1),
                               -len(credits_by_person.get(c["person_id"], []))))
     for c in _cast:
         pr = p_by_id.get(c["person_id"])
@@ -2172,6 +2194,10 @@ for t in titles:
         # own page carries it. Without a character the row is name and ring.
         ch = (c.get("character_name") or "").strip().replace("/", " / ").replace("  ", " ")
         sub = f'<span class="as-line"><span class="as-word">as</span> {ch}</span>' if ch else ""
+        # A dub's voice cast is billed by the platform but never on screen
+        # (Fated Mate of the Nine-Tailed Fox, 24 Sep 2026): say what they did.
+        if (c.get("role") or "").strip().lower() == "dub_voice":
+            sub = '<span class="as-line">English dub voice</span>'
         cast_html += person_row(pr["name"], sub,
                                  (pr.get("photo_ref") or "").strip(), f"{pre}actors/{pslug(pr)}.html", "md")
     # Set is for the overlap test below only. Anything rendered reads from tropes_of()
@@ -2184,6 +2210,13 @@ for t in titles:
     similar_html = "".join(poster_card(x, pre, rail_item=True, size_sm=True) for x in similar)
     trope_html = "".join(trope_chip(tr, pre) for tr in tropes_of(t))
     lang_label = ORIGIN_LABEL.get(origin_of(t), origin_of(t).title())
+    if has_dub(t):
+        # "English original, English dub available" contradicts itself: a show
+        # with an English dub was made in another language. origin defaults to
+        # english when unknown, so until the real origin is set say only the dub.
+        known = origin_of(t) != ROOT_ORIGIN
+        lang_label = ("English dub" if dub_only(t) and not known
+                      else f"{lang_label}, English dub available" if known else "English dub available")
     v = views_label(title_views(t))
     # Genres are distinct from tropes and are set on 2,306 titles; the source data
     # mixes "romance"/"Romance" so normalise case. Status renders only when it is a
@@ -2570,7 +2603,7 @@ for t in titles_root:
     if t.get("year"): entry["y"] = t["year"]
     if tr_slugs: entry["tr"] = tr_slugs
     if pl_slugs: entry["pl"] = pl_slugs
-    entry["o"] = [origin_of(t)]
+    entry["o"] = [origin_of(t)] + (["dubbed"] if has_dub(t) else [])
     if is_ai(t): entry["ai"] = 1
     if book_of(t): entry["bk"] = 1
     if is_upcoming(t): entry["up"] = 1
@@ -2597,9 +2630,11 @@ def facet_chips(group, counts, labels):
 # Origin facet. Buckets Cyan wants exposed are declared up front, not derived from the
 # data, so the filter shows the full shape of the taxonomy even while a bucket is empty.
 # An empty bucket renders greyed out and disabled, same as any other zero-match chip.
-ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("dubbed", "Dubbed")]
+ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("korean", "Korean"), ("dubbed", "Dubbed")]
 origin_counts = defaultdict(int)
-for t in titles_root: origin_counts[origin_of(t)] += 1
+for t in titles_root:
+    origin_counts[origin_of(t)] += 1
+    if has_dub(t): origin_counts["dubbed"] += 1
 origin_facets = "".join(
     '<button class="chip" data-g="origin" data-v="%s" type="button" aria-pressed="false">%s<span class="c"></span></button>' % (v, lbl)
     for v, lbl in ORIGIN_BUCKETS)

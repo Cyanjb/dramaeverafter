@@ -115,11 +115,13 @@ def main():
     pinned = repoint("pinned.csv", "rail") if os.path.exists(os.path.join(DATA, "pinned.csv")) else None
 
     avail = load("availability.csv")
-    keep_plats = {r["platform_id"] for r in avail if r["title_id"] == a.keep}
+    # Keyed on platform AND version (24 Sep 2026): an original and its English
+    # dub on the same app are two real links, not a relisting (merge_dubs.py).
+    keep_plats = {(r["platform_id"], r.get("version") or "") for r in avail if r["title_id"] == a.keep}
     extra_urls, out = [], []
     for r in avail:
         if r["title_id"] == a.lose:
-            if r["platform_id"] in keep_plats:
+            if (r["platform_id"], r.get("version") or "") in keep_plats:
                 if (r.get("direct_link") or "").strip():
                     extra_urls.append(r["direct_link"].strip())
                 continue
