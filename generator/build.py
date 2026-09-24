@@ -943,6 +943,9 @@ tr:nth-child(even) td{background:#F7F0EA}
 .char-list{max-width:900px}.char-list .idx-letter{margin:26px 0 6px}
 .char-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
 .char-row b{min-width:200px}.char-row .sub{color:var(--tert);font-size:13px}
+.az-fold summary{cursor:pointer;font-weight:600;color:var(--wine);padding:10px 0;min-height:44px}
+.az-cols{columns:3 220px;column-gap:28px;margin-top:10px}
+.az-cols a{display:block;padding:5px 0;break-inside:avoid;font-size:14px}
 
 /* ---------- footer ---------- */
 /* The footer went light on 13 Sep (Cyan's homepage): the plum closing band
@@ -1196,6 +1199,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 </div>
 <nav>
 <a href="{pre}browse.html">Browse</a>
+<a href="{pre}titles/index.html">Titles A&ndash;Z</a>
 <a href="{pre}actors/index.html">Actors</a>
 <a href="{pre}characters.html">Characters</a>
 <a href="{pre}tropes/index.html">Tropes</a>
@@ -2062,14 +2066,18 @@ for key, ch, pr, t in char_rows:
         f'<div class="char-row">'
         f'<b>{ch}</b><span class="sub">played by</span><a href="actors/{pslug(pr)}.html">{pr["name"]}</a>'
         f'<span class="sub">in</span><a href="titles/{tslug(t)}.html">{t["primary_title"]}</a></div>')
-CHAR_JS = """
+def index_filter_js(input_id, list_id):
+    """The type-to-filter script for a lettered .char-row index (the characters
+    page, and since 24 Sep 2026 the titles A-Z). Hides non-matching rows and any
+    letter heading left with nothing under it."""
+    return """
 <script>
 (function(){
   """ + SEARCH_NORM_JS + """
-  var input=document.getElementById('char-search');
-  var rows=[].slice.call(document.querySelectorAll('#char-index .char-row'));
+  var input=document.getElementById('""" + input_id + """');
+  var rows=[].slice.call(document.querySelectorAll('#""" + list_id + """ .char-row'));
   rows.forEach(function(r){ r.dataset.n=norm(r.textContent); });
-  var headers=[].slice.call(document.querySelectorAll('#char-index .idx-letter'));
+  var headers=[].slice.call(document.querySelectorAll('#""" + list_id + """ .idx-letter'));
   input.addEventListener('input', function(){
     var toks=norm(input.value).split(' ').filter(Boolean);
     rows.forEach(function(r){ r.style.display = (!toks.length || qmatch(r.dataset.n,toks)) ? '' : 'none'; });
@@ -2082,6 +2090,7 @@ CHAR_JS = """
 })();
 </script>
 """
+CHAR_JS = index_filter_js("char-search", "char-index")
 body = f"""
 <section class="hero"><div class="inner">
 <p class="eyebrow">Who plays who</p><h1>Characters</h1>
@@ -2100,6 +2109,44 @@ html = page("Vertical Drama Characters A-Z: Who Plays Who | DramaEverAfter",
             body, f"{DOMAIN}/characters.html", depth=0)
 open(os.path.join(DIST, "characters.html"), "w", encoding="utf-8").write(html)
 urls.append("/characters.html")
+
+# Titles A-Z, 24 Sep 2026. The audit found 290 indexable title pages that no
+# page linked to, Zero to Alpha (84M views) among them: Browse renders in
+# JavaScript, trope pages stop at GRID_CAP cards and app pages at ten, so only
+# the sitemap knew them. One plain-HTML page linking every indexable title
+# fixes that in one move, the characters page's shape rather than more
+# templated pages. Noindexed titles are left to Browse: a link spent on a page
+# Google is told to skip is a link wasted.
+_az_titles = sorted((t for t in titles_root if t["title_id"] not in NOINDEX_TITLES),
+                    key=lambda t: (norm_search(t["primary_title"]), tslug(t)))
+_letter, az_html = "", []
+for t in _az_titles:
+    key = norm_search(t["primary_title"])
+    L = key[:1].upper() if key[:1].isalpha() else "#"
+    if L != _letter:
+        _letter = L
+        az_html.append(f'<h2 class="idx-letter" id="t-{L if L != "#" else "num"}">{L}</h2>')
+    meta = " &middot; ".join(x for x in (title_app(t), (t.get("year") or "").strip()) if x)
+    az_html.append(f'<div class="char-row"><a href="{tslug(t)}.html"><b>{t["primary_title"]}</b></a>'
+                   + (f'<span class="sub">{meta}</span>' if meta else "") + "</div>")
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Every title</p><h1>Titles A&ndash;Z</h1>
+<p class="lede">{len(_az_titles):,} vertical dramas with a full page here, A to Z. The rest of the catalogue is on <a href="../browse.html">Browse</a>.</p>
+<form class="aside-search" style="max-width:420px" onsubmit="return false">
+<span class="glyph" style="color:var(--wine)">&#8981;</span>
+<input type="text" id="title-search" placeholder="Search a title or app" autocomplete="off" aria-label="Search titles">
+</form>
+</div></section>
+<section class="pad" style="padding:28px 22px 46px">
+<div class="char-list" id="title-index">{"".join(az_html)}</div>
+</section>
+{index_filter_js("title-search", "title-index")}"""
+html = page("Every Vertical Drama Title, A-Z | DramaEverAfter",
+            f"{len(_az_titles):,} vertical dramas A to Z, each with its cast, story and where to watch.",
+            body, f"{DOMAIN}/titles/index.html", depth=1)
+open(os.path.join(DIST, "titles", "index.html"), "w", encoding="utf-8").write(html)
+urls.append("/titles/index.html")
 
 ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "dubbed": "Dubbed release"}
 
@@ -2307,7 +2354,11 @@ for tr in all_tropes:
     pair_html = "".join(trope_chip(o, "../", c) for o, c in sorted(pair_counts.items(), key=lambda kv: -kv[1])[:6])
     apps_here = sorted({title_app(t) for t in matching if title_app(t)})
     app_opts = "".join(f'<option value="{slug(a)}">{a}</option>' for a in apps_here)
-    shown = matching[:GRID_CAP]
+    # Indexable titles take the capped card slots first, most watched first
+    # within each group (a stable sort keeps the views order). The audit,
+    # 24 Sep 2026: trope pages spent 6,588 of their links on noindexed titles
+    # while indexable ones had no link at all. Every title stays on Browse.
+    shown = sorted(matching, key=lambda t: t["title_id"] in NOINDEX_TITLES)[:GRID_CAP]
     cards = "".join(poster_card(t, "../") for t in shown)
     more = len(matching) - len(shown)
     count_line = (f'Showing <b>{len(shown)}</b> of {len(matching):,} titles'
@@ -2402,7 +2453,7 @@ for tr in all_tropes:
             continue
         trs, pls = slug(tr), slug(pl["name"])
         os.makedirs(os.path.join(DIST, "tropes", trs), exist_ok=True)
-        ranked_m = sorted(matching, key=lambda x: -title_views(x))[:GRID_CAP]
+        ranked_m = sorted(matching, key=lambda x: (x["title_id"] in NOINDEX_TITLES, -title_views(x)))[:GRID_CAP]
         tp_when, tp_year = newest_checked(matching)
         cards = "".join(poster_card(t, "../../", show_app=False) for t in ranked_m)
         body = f"""
@@ -2440,6 +2491,18 @@ for pid, n in TOP_PLATFORMS:
     regulars = sorted(actor_tally.items(), key=lambda kv: -kv[1])[:8]
     regulars_html = "".join(actor_tile(p_by_id[pid_], "../", "app", on_warm=True) for pid_, _ in regulars if pid_ in p_by_id)
     grid_html = "".join(poster_card(t, "../", show_app=False) for t in app_titles[:10])
+    # Every indexable title on the app, A-Z, as plain links under a fold (audit,
+    # 24 Sep 2026: ReelShort's page claimed 891 titles and linked ten). A
+    # <details> keeps the page short for readers; the links are ordinary HTML.
+    app_az = sorted((t for t in app_titles if t["title_id"] not in NOINDEX_TITLES),
+                    key=lambda t: norm_search(t["primary_title"]))
+    app_az_html = (f'<section class="pad" style="padding:6px 22px 24px"><details class="az-fold">'
+                   f'<summary>All {len(app_az):,} {pl["name"]} titles with a full page, A&ndash;Z</summary>'
+                   f'<div class="az-cols">'
+                   + "".join(f'<a href="../titles/{tslug(t)}.html">{t["primary_title"]}</a>' for t in app_az)
+                   + f'</div><p class="hint" style="margin-top:12px"><a href="../browse.html?platform={pls}">'
+                   f'Filter every {pl["name"]} title on Browse &rarr;</a></p></details></section>'
+                   ) if len(app_az) > 10 else ""
     # A button with href="#" looks live and does nothing, which is worse than no
     # button: every app page shipped one of these because web_url was empty for all
     # 15 platforms. Render the CTA only when there is somewhere real to send people.
@@ -2467,6 +2530,7 @@ for pid, n in TOP_PLATFORMS:
 <div class="section-head"><h2>Most watched on {pl['name']}</h2><a class="all" href="../tropes/index.html">Browse by trope &rarr;</a></div>
 <div class="grid">{grid_html}</div>
 </section>
+{app_az_html}
 {f'''<section class="section-warm" style="padding:28px 0 44px;margin-top:26px">
 <div class="pad"><h2 style="margin-bottom:20px">Regulars on this app</h2><div class="grid circles">{regulars_html}</div></div>
 </section>''' if regulars_html else ''}"""

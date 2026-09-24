@@ -155,6 +155,19 @@ if norm_search:
         except FileNotFoundError:
             warn("node not available; JS/Python normalizer parity unchecked")
 
+# Titles A-Z (24 Sep 2026): 290 indexable title pages had no inbound link,
+# only the sitemap. The A-Z page links every sitemap title in plain HTML, and
+# the footer links the A-Z page from every page.
+if not os.path.exists(os.path.join(ROOT, "titles", "index.html")):
+    fail("titles/index.html missing (the Titles A-Z page that links every indexable title)")
+else:
+    _az = set(re.findall(r'href="([^"#?]+)\.html"', rd("titles/index.html")))
+    _sm = re.findall(r"<loc>https://dramaeverafter\.com/titles/([^<]+)\.html</loc>", rd("sitemap.xml"))
+    _unlinked = [s for s in _sm if s != "index" and s not in _az]
+    if _unlinked: fail(f"{len(_unlinked)} sitemap titles missing from Titles A-Z, e.g. {_unlinked[:3]}")
+    elif 'titles/index.html">Titles' not in rd("index.html"): fail("the footer no longer links Titles A-Z")
+    else: ok(f"Titles A-Z links all {len(_sm) - ('index' in _sm)} indexable titles, and the footer links it")
+
 print("== homepage ==")
 home = rd("index.html")
 mw, nt = home.find("Most watched right now"), home.find("New and trending")
@@ -233,7 +246,7 @@ else: ok("every sitemap URL has a file")
 if noindexed: fail(f"{len(noindexed)} sitemap URLs carry noindex (they must leave the sitemap), e.g. {noindexed[:3]}")
 else: ok("no sitemap URL carries a noindex meta")
 # The fold (10 Sep): title pages carry where-to-watch and the quick answers.
-_first_title = next((u for u in locs if "/titles/" in u), "")
+_first_title = next((u for u in locs if "/titles/" in u and not u.endswith("/titles/index.html")), "")
 _tp = rd(_first_title.replace("https://dramaeverafter.com/", "")) if _first_title else ""
 if _tp and ('id="at-a-glance"' not in _tp or '"TVSeries"' not in _tp or '<details' in _tp):
     fail(f"title page lacks the At a glance band or TVSeries schema, or still has fold-outs: {_first_title}")

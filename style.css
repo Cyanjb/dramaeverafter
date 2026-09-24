@@ -435,6 +435,9 @@ tr:nth-child(even) td{background:#F7F0EA}
 .char-list{max-width:900px}.char-list .idx-letter{margin:26px 0 6px}
 .char-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
 .char-row b{min-width:200px}.char-row .sub{color:var(--tert);font-size:13px}
+.az-fold summary{cursor:pointer;font-weight:600;color:var(--wine);padding:10px 0;min-height:44px}
+.az-cols{columns:3 220px;column-gap:28px;margin-top:10px}
+.az-cols a{display:block;padding:5px 0;break-inside:avoid;font-size:14px}
 
 /* ---------- footer ---------- */
 /* The footer went light on 13 Sep (Cyan's homepage): the plum closing band

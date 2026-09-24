@@ -66,6 +66,20 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
   TVSeries schema; no fold-outs, no FAQ markup (Cyan's 10 Sep design).
   There is no where-to-watch/ folder; those URLs 301 to the title page.
 
+- No research note ("Jake Hobbs lead.", "#1 ranking title", "Based on
+  the novel by...") ships as a title's story. Cast, book and status have
+  their own columns (24 Sep audit: 27 did).
+- Page titles and "Updated" lines are dated from the data, never the
+  build clock: a title page carries the show's own year or none, and
+  list pages the newest checked date of the titles they show (24 Sep).
+
+**Titles A-Z and internal links** (24 Sep audit: 290 indexable titles
+had no link from any page, only the sitemap)
+- /titles/index.html links every indexable title in plain HTML, and the
+  footer links it from every page. Noindexed titles are left to Browse.
+- Trope pages give their capped card slots to indexable titles first.
+- Each app page lists all its indexable titles A-Z under a fold.
+
 **Sitemap and noindex** (the 1 Sep Google demotion recovery)
 - Sitemap URLs: on-domain, every one has a file, none carries a noindex
   meta. Thin pages are noindexed AND out of the sitemap, together.
