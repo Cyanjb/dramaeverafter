@@ -622,6 +622,6 @@ RULED 25 SEP from her poster review (Trope Rulings Desk artifact), applied by th
 same script: mermaid no on all four sea-god/siren titles; plus size yes on
 the-ugly-girl-turned-pretty only; harem split into harem 7 / reverse harem 10,
 37 titles taken off harem as neither.
-STILL WAITING: four harem titles she did not rule on (keep harem until she does):
+LEFT AS HAREM on her word ("just leave the ones that are never checked"):
 her-smile-starts-a-war-of-kings, i-am-the-new-law-of-this-hellish-world,
 risen-lord-of-a-maid-kingdom, who-s-top-cultivator-me.
