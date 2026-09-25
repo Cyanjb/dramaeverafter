@@ -55,6 +55,15 @@ NEW_ROWS = [
     ("reverse-harem", "reverse harem", "reverse-harem"),
 ]
 
+# CYAN'S POSTER REVIEW, 25 Sep (Trope Rulings Desk artifact). Harem = one man with
+# several women; reverse harem = one woman with several men. "neither" drops the
+# harem tag. Unruled, harem kept: her-smile-starts-a-war-of-kings,
+# i-am-the-new-law-of-this-hellish-world, risen-lord-of-a-maid-kingdom,
+# who-s-top-cultivator-me. Mermaid "no" on all four sea-god/siren candidates;
+# plus size "no" on bully-me-i-run-the-mob and my-big-fat-fake-wedding.
+HAREM_KEEP = ['accidentally-revealed-as-campus-god-of-wealth', 'apocalypse-unlocking-s-class-power-through-my-wives', 'i-d-marry-every-monster-here']
+HAREM_TO_REVERSE = ['after-transmigration-i-got-five-demon-beasts', 'beastman-reboot-my-three-disabled-mates', 'eng-dub-beast-husbands-wanted-her-dead', 'eng-dub-i-m-the-interstellar-charm-queen', 'eng-dub-my-untamed-beastmate', 'loved-by-the-beasts-she-once-hurt', 'my-shapeshifter-husbands-went-mad-for-me', 'the-party-girl-s-royal-harem']
+HAREM_NEITHER = ['blocked-by-love', 'bound-to-love-in-a-deadly-game', 'captured-by-her-staring-eyes', 'endless-delight-forever-his-sweetheart', 'eyes-that-see-all-power-that-conquers', 'flying-back-to-the-trapped-summer', 'from-nobody-to-their-chosen-one', 'he-finally-found-me', 'he-looks-ordinary-until-reality-starts-shaking', 'kidnapped-by-the-mafia', 'left-me-their-loss-my-glow-up', 'let-me-go-my-queen', 'madam-the-ceo-is-doing-odd-jobs-again', 'mit-after-heartbreak-2', 'mrs-flee-tastic-his-runaway-wifey', 'my-female-disciples-my-power', 'my-five-daughters-and-their-mighty-mothers', 'my-pets-turn-into-goddesses', 'one-last-temptation-before-i-say-i-do', 'otome-game-villainess-my-demon-attendants-can-t-escape', 'perfect-landing-into-your-arms', 'platinum-card-villainess', 'quick-knot-whirlwind-passion', 'reckoning-with-lies-tess-s-journey-back', 'rewriting-her-bad-ending', 'shedding-pounds-seizing-power', 'shining-minna-never-say-die', 'the-child-between-our-scars', 'the-elegy-of-a-lost-romance', 'the-forbidden-escape-running-for-two', 'the-jade-keeper-s-promise', 'the-love-we-didn-t-recognize', 'the-path-to-my-true-self', 'the-soccer-king-my-ai-powered-eye', 'toppled-by-lies-rebuilt-by-power', 'wed-for-power-rise-to-empire', 'weird-game-bound-to-a-romance-system']
 # Stated outright in the title or caption, checked one by one on 25 Sep.
 ADD = {
     "plus size": [
@@ -68,6 +77,7 @@ ADD = {
         "plus-size-plus-love",
         "slimming-revolution",                   # "nearly three hundred pounds"
         "after-the-330-pound-fat-wolf-left-the-alpha-went-crazy-with-regret",
+        "the-ugly-girl-turned-pretty",           # Cyan's yes from the poster, 25 Sep
         "the-mob-boss-s-plus-size-queen",
     ],
     "mermaid": [
@@ -83,7 +93,7 @@ ADD = {
         "beastman-reboot-my-three-disabled-mates",
         "eng-dub-beast-husbands-wanted-her-dead",
         "after-transmigration-i-got-five-demon-beasts",
-    ],
+    ] + HAREM_TO_REVERSE,
 }
 UMBRELLA_FOR = {"mermaid": "high fantasy"}
 
@@ -142,10 +152,14 @@ def main():
                         seen.add(name)
                         out.append(name)
                         added[name] += 1
+        if t["title_id"] in HAREM_TO_REVERSE or t["title_id"] in HAREM_NEITHER:
+            if "harem" in seen:
+                out = [x for x in out if x.lower() != "harem"]
+                moved["harem (ruled off)"] += 1
         t["tropes"] = ";".join(out)
 
     for k, v in moved.most_common():
-        print("   %-20s -> %-16s on %d titles" % (k, MERGE[k.lower()], v))
+        print("   %-20s -> %-16s on %d titles" % (k, MERGE.get(k.lower(), "(removed)"), v))
     for k, v in added.most_common():
         print("   + %-18s on %d titles" % (k, v))
 
@@ -166,7 +180,7 @@ def main():
     for r in vocab:
         r["title_count"] = str(count.get(r["name"].lower(), 0))
     for n in ["reborn", "sweet love", "revenge", "secret identity", "contract",
-              "plus size", "mermaid", "reverse harem", "high fantasy"]:
+              "plus size", "mermaid", "reverse harem", "harem", "high fantasy"]:
         print("   %-16s now %d titles" % (n, count.get(n, 0)))
 
     rp = os.path.join(ROOT, "_redirects")

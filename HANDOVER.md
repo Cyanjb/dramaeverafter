@@ -616,14 +616,12 @@ contract (contract lovers). Contract marriage stays separate. 301s in
 _redirects; the same aliases are in TAG_ALIASES so the scrape cannot re-split.
 Cinderella covers ugly duckling. High fantasy already existed (3 Sep).
 
-New tropes: plus size (11 titles, page live), mermaid (4, no page until 5),
-reverse harem (2, no page until 5). Tagged only where title or caption says it.
-STILL WAITING ON HER EYE:
-- mermaid? secrets-of-siren, oops-my-poor-husband-is-the-sea-god,
-  the-god-of-tides, forbidden-bonds-fated-to-the-ocean-god (sea gods, not merfolk)
-- reverse harem? beastman-reboot-my-three-disabled-mates,
-  eng-dub-beast-husbands-wanted-her-dead, i-d-marry-every-monster-here,
-  after-transmigration-i-got-five-demon-beasts (no captions), and the 52 on
-  "harem", which mixes male harems with reverse ones
-- plus size? the-ugly-girl-turned-pretty, bully-me-i-run-the-mob (overweight
-  boy), my-big-fat-fake-wedding (idiom, probably not)
+New tropes: plus size (12 titles, page live), mermaid (4, no page until 5),
+reverse harem (10, page live). Tagged only where title, caption or her ruling says it.
+RULED 25 SEP from her poster review (Trope Rulings Desk artifact), applied by the
+same script: mermaid no on all four sea-god/siren titles; plus size yes on
+the-ugly-girl-turned-pretty only; harem split into harem 7 / reverse harem 10,
+37 titles taken off harem as neither.
+STILL WAITING: four harem titles she did not rule on (keep harem until she does):
+her-smile-starts-a-war-of-kings, i-am-the-new-law-of-this-hellish-world,
+risen-lord-of-a-maid-kingdom, who-s-top-cultivator-me.
