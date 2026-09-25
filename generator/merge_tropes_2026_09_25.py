@@ -79,6 +79,10 @@ ADD = {
     "reverse harem": [
         "the-three-badasses-who-want-me",        # "three fiances, one choice"
         "the-alpha-and-beta-s-shared-mate",      # "Mated to the Alpha and the Beta"
+        # Cyan's yes, 25 Sep: "more than one male partner for a female is reverse harem"
+        "beastman-reboot-my-three-disabled-mates",
+        "eng-dub-beast-husbands-wanted-her-dead",
+        "after-transmigration-i-got-five-demon-beasts",
     ],
 }
 UMBRELLA_FOR = {"mermaid": "high fantasy"}
