@@ -63,6 +63,13 @@ for fname, col, universe, label in [
     if orphans: fail(f"{fname}: {len(orphans)} {col} rows point at no {label} row, e.g. {orphans[:3]}")
     else: ok(f"{fname}: every {col} resolves")
 
+# Hidden titles (status delisted, Cyan 24 Sep 2026: the platform took the
+# show down) keep their data row but must publish nothing.
+_hidden = {t["slug"] for t in titles if (t.get("status") or "").strip().lower() == "delisted"}
+_leaked = [s for s in _hidden if os.path.exists(os.path.join(ROOT, "titles", s + ".html"))]
+if _leaked: fail(f"{len(_leaked)} delisted titles still have a page, e.g. {_leaked[:3]}")
+else: ok(f"{len(_hidden)} delisted titles hidden: no page, card or search entry")
+
 # Research notes are not stories. 27 titles shipped "Jake Hobbs lead." or
 # "Anina Net #1 ranking title." as The story and the meta description until
 # the 24 Sep 2026 audit (removed text: generator/staging/

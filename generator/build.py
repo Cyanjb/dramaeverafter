@@ -76,9 +76,16 @@ people = rows("people.csv")
 titles = rows("titles.csv")
 # Skip malformed rows that would render as ".html" (empty slug AND empty title).
 titles = [t for t in titles if (t.get("slug") or "").strip() or (t.get("primary_title") or "").strip()]
+# HIDDEN: status "delisted" (Cyan, 24 Sep 2026: "hide them"). The platform took
+# the show down, so its watch button leads nowhere; the row stays in titles.csv
+# as the record, but no page, card, search entry or credit is published, and its
+# URL answers the 404 page. Filtered here, at load, so nothing downstream can
+# link to it. Set by hand or by goodshort_origin.py; clear the status to restore.
+HIDDEN = {t["title_id"] for t in titles if (t.get("status") or "").strip().lower() == "delisted"}
+titles = [t for t in titles if t["title_id"] not in HIDDEN]
 platforms = {p["platform_id"]: p for p in rows("platforms.csv")}
-availability = rows("availability.csv")
-credits = rows("credits.csv")
+availability = [a for a in rows("availability.csv") if a["title_id"] not in HIDDEN]
+credits = [c for c in rows("credits.csv") if c["title_id"] not in HIDDEN]
 
 t_by_id = {t["title_id"]: t for t in titles}
 p_by_id = {p["person_id"]: p for p in people}
