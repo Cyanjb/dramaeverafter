@@ -60,7 +60,14 @@ POPULAR_MIN = 10_000_000
 TAG_ALIASES = {"lgbtq+": "bl", "lgbtq": "bl", "rom com": "rom-com", "romcom": "rom-com",
                # Cyan, 10 Sep 2026: concealed, hidden and secret identity are one trope.
                # Our name is "secret identity" (hidden identity folded into it 15 Aug).
-               "concealed identity": "secret identity", "hidden identity": "secret identity"}
+               "concealed identity": "secret identity", "hidden identity": "secret identity",
+               # Cyan, 25 Sep 2026 (merge_tropes_2026_09_25.py): reborn, sweet love,
+               # revenge, secret identity, contract. ReelShort's "rebirth" tag is 457 books.
+               "rebirth": "reborn", "sweet": "sweet love", "sweet romance": "sweet love",
+               "karma payback": "revenge", "karma": "revenge", "counterattack": "revenge",
+               "multiple identities": "secret identity", "contract lovers": "contract",
+               "plus-size": "plus size", "curvy": "plus size", "mermaids": "mermaid",
+               "merman": "mermaid"}
 # UMBRELLAS. Cyan, 3 Sep 2026: "High Fantasy should definitely be a trope that
 # is linked a fair amount to, for example, the werewolves, dragons, elves, and
 # mermaids, magic, all of that." A title carrying any member gets the umbrella.

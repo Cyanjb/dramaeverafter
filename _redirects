@@ -832,3 +832,20 @@
 /platforms  /platforms.html  301
 /my-list    /my-list.html    301
 /search     /browse.html     301
+# Trope merges, Cyan 25 Sep 2026 (generator/merge_tropes_2026_09_25.py)
+/tropes/rebirth.html  /tropes/reborn.html  301
+/tropes/rebirth  /tropes/reborn.html  301
+/tropes/sweet.html  /tropes/sweet-love.html  301
+/tropes/sweet  /tropes/sweet-love.html  301
+/tropes/sweet-romance.html  /tropes/sweet-love.html  301
+/tropes/sweet-romance  /tropes/sweet-love.html  301
+/tropes/karma-payback.html  /tropes/revenge.html  301
+/tropes/karma-payback  /tropes/revenge.html  301
+/tropes/karma.html  /tropes/revenge.html  301
+/tropes/karma  /tropes/revenge.html  301
+/tropes/counterattack.html  /tropes/revenge.html  301
+/tropes/counterattack  /tropes/revenge.html  301
+/tropes/multiple-identities.html  /tropes/secret-identity.html  301
+/tropes/multiple-identities  /tropes/secret-identity.html  301
+/tropes/contract-lovers.html  /tropes/contract.html  301
+/tropes/contract-lovers  /tropes/contract.html  301

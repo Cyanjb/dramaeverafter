@@ -606,3 +606,24 @@ The "still waiting" list there is dictation slips for Cyan to correct.
 4. GoodShort and NetShort scrapers, same staging shape (adapters sec 27).
 5. The year capture: check "years filled" in a summary; if zero, the field
    names in year_hint() are wrong for ReelShort's page data.
+
+## 25 SEP 2026: TROPE RULINGS APPLIED (generator/merge_tropes_2026_09_25.py)
+
+Cyan's picks for the duplicate families: reborn (rebirth), sweet love (sweet,
+sweet-love, sweet-romance; the page moved to /tropes/sweet-love.html), revenge
+(karma-payback, karma, counterattack), secret identity (multiple-identities),
+contract (contract lovers). Contract marriage stays separate. 301s in
+_redirects; the same aliases are in TAG_ALIASES so the scrape cannot re-split.
+Cinderella covers ugly duckling. High fantasy already existed (3 Sep).
+
+New tropes: plus size (11 titles, page live), mermaid (4, no page until 5),
+reverse harem (2, no page until 5). Tagged only where title or caption says it.
+STILL WAITING ON HER EYE:
+- mermaid? secrets-of-siren, oops-my-poor-husband-is-the-sea-god,
+  the-god-of-tides, forbidden-bonds-fated-to-the-ocean-god (sea gods, not merfolk)
+- reverse harem? beastman-reboot-my-three-disabled-mates,
+  eng-dub-beast-husbands-wanted-her-dead, i-d-marry-every-monster-here,
+  after-transmigration-i-got-five-demon-beasts (no captions), and the 52 on
+  "harem", which mixes male harems with reverse ones
+- plus size? the-ugly-girl-turned-pretty, bully-me-i-run-the-mob (overweight
+  boy), my-big-fat-fake-wedding (idiom, probably not)
