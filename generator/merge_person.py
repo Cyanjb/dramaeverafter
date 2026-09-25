@@ -58,6 +58,7 @@ def main():
     ap.add_argument("--keep", required=True)
     ap.add_argument("--lose", required=True)
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--evidence", default="", help="why these are one person, for the match_queue record")
     a = ap.parse_args()
 
     people, credits, queue = load("people.csv"), load("credits.csv"), load("match_queue.csv")
@@ -101,7 +102,16 @@ def main():
             out.append(x.strip())
     keep["aka_names"] = "|".join(out)
 
+    # The profile carries across too, fill-blank-only (24 Sep 2026): Kiki Frags
+    # held the photo, Kyle Fragnoli the 24 credits, and the merge kept one of each.
+    carried = []
+    for f in ("photo_ref", "bio_short", "socials"):
+        if not (keep.get(f) or "").strip() and (lose.get(f) or "").strip():
+            keep[f] = lose[f]
+            carried.append(f)
+
     print(f"credits moved   : {len(moved)}  {[c['title_id'] for c in moved]}")
+    print(f"profile carried : {carried}")
     print(f"duplicates dropped: {len(dropped)}  {[c['title_id'] for c in dropped]}")
     print(f"character names carried across: {len(filled)}")
     print(f"aka_names now   : {keep['aka_names']!r}")
@@ -114,12 +124,18 @@ def main():
     save("people.csv", people)
     save("credits.csv", credits)
 
+    import datetime
+    today = datetime.date.today().isoformat()
     ruled = 0
     for q in queue:
         pair = {q["candidate_a"].strip(), q["candidate_b"].strip().rstrip("?")}
         if pair == {a.keep, a.lose}:
-            q["status"] = "confirmed_same (Cyan, 2026-08-08)"
+            q["status"] = f"confirmed_same ({today})"
             ruled += 1
+    if not ruled and a.evidence:
+        queue.append({"candidate_a": a.keep, "candidate_b": a.lose, "evidence": a.evidence,
+                      "status": f"confirmed_same ({today})"})
+        ruled = 1
     if ruled:
         save("match_queue.csv", queue)
 
