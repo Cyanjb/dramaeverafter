@@ -1,72 +1,121 @@
-## ReelShort weekly scrape, 2026-09-20
+## ReelShort weekly scrape, 2026-09-27
 
 | | |
 |---|---|
-| Requests | 1502 |
-| Books seen | 2629 |
-| Known titles refreshed | 847 |
-| View counts that moved | 623 |
-| Snapshot rows written | 881 |
-| New titles created | 34 |
-| Held for a ruling (match_queue) | 0 |
+| Requests | 1538 |
+| Books seen | 2714 |
+| Known titles refreshed | 876 |
+| View counts that moved | 876 |
+| Snapshot rows written | 945 |
+| New titles created | 69 |
+| Held for a ruling (match_queue) | 5 |
 | Credits added | 10 |
-| Episode counts / posters / links / years filled | 0 / 0 / 0 / 8 |
-| Delisted (404, not deleted) | 1 |
-| Catalogue only (genre sweep or sitemap, under 10M views), not imported | 1658 |
-| Excluded as unscripted (ReelTalk and kin) | 82 |
+| Episode counts / posters / links / years filled | 2 / 0 / 0 / 5 |
+| Delisted (404, not deleted) | 7 |
+| Catalogue only (genre sweep or sitemap, under 10M views), not imported | 1670 |
+| Excluded as unscripted (ReelTalk and kin) | 85 |
 | Skipped: no title or slug / URL unconfirmed | 0 / 2 |
 | ReelShort rows still older than 45 days | 7 |
 | Rulings applied from the wanted file / lines still unmatched | 0 / 17 |
-| Tropes from ReelShort's tag pages (vocabulary only) / tag names unknown | 7 / 5 |
+| Tropes from ReelShort's tag pages (vocabulary only) / tag names unknown | 15 / 5 |
 | Umbrella tropes added | 0 |
 | Linked on Cyan's confirmed_same rulings | 0 |
-| Platform page says AI-generated, no ruling yet | 140 |
-| Scrape errors | 46 |
+| Platform page says AI-generated, no ruling yet | 164 |
+| Scrape errors | 45 |
 
-Routes: detail {"delisted": 1, "failed": 4, "ok": 212, "targets": 217}, fandom {"hrefs": 30, "posts": 100, "status": 200}, genres {"books": 2041, "failed": 0, "pages": 253, "pages_listed": 7}, home {"books": 127, "hrefs": 0, "status": 200}, tags {"books": 606, "failed": 1, "pages": 987, "pages_listed": 939}, wanted {"file": "reelshort_wanted.txt", "held": 140, "resolved": 2, "searched": 43, "unresolved": 41, "urls": 30}
+Routes: detail {"delisted": 7, "failed": 3, "ok": 238, "targets": 248}, fandom {"hrefs": 44, "posts": 100, "status": 200}, genres {"books": 2099, "failed": 0, "pages": 260, "pages_listed": 7}, home {"books": 127, "hrefs": 0, "status": 200}, tags {"books": 610, "failed": 1, "pages": 987, "pages_listed": 939}, wanted {"file": "reelshort_wanted.txt", "held": 142, "resolved": 0, "searched": 41, "unresolved": 41, "urls": 30}
 
 ### New titles (needs_check): each one needs a caption
 
 These are live with no synopsis of ours. Platform text is never copied (Cyan, 14 Aug). The synopsis each page published is banked in the staging JSON as the fact source; `caption_pipeline.py next` picks them up by reach and the /dea-captions skill writes them for Cyan's review.
 
-- My Hot Firefighter Ex-Boyfriend (`my-hot-firefighter-ex-boyfriend`) 3.6M via detail, home
-- Man to Man (`man-to-man`) 8.9M via wanted
-- Married Ex-Fiancé's Uncle (`married-ex-fiance-s-uncle`) 10.0M via detail, genres
-- Boyfriend from the Future (`boyfriend-from-the-future`) 1.2M via genres, home
-- The Cold CEO Who Spoiled Me Online (`the-cold-ceo-who-spoiled-me-online`) 1.9M via genres, home
-- The Destined One (`the-destined-one`) 1.1M via wanted
-- Our Camp Night Went Wrong (`our-camp-night-went-wrong`) 6.2M via detail, home
-- Honey Cut (`honey-cut`) 4.4M via fandom, home
-- Brothers in Arms (`brothers-in-arms`) 3.9M via home, tags
-- I Don't Need No Alpha Brothers (`i-don-t-need-no-alpha-brothers`) 289.0K via tags
-- Bitter Burn (`bitter-burn`) 302.8K via detail, fandom
-- Just One Kiss (`just-one-kiss`) 251.2K via tags
-- I Married the Other Woman's Billionaire Brother (`i-married-the-other-woman-s-billionaire-brother`) 3.3M via detail, home
-- I Taught Him to Court a Mate — He Chose Me (`i-taught-him-to-court-a-mate-he-chose-me`) 1.4M via genres, home
-- Sinking With My Step‑sister (`sinking-with-my-step-sister`) 1.1M via detail, home
-- The Alpha's Forbidden Mate (`the-alpha-s-forbidden-mate`) 6.7M via detail, home
-- Pregnant with the Dragon King's Sextuplets (`pregnant-with-the-dragon-king-s-sextuplets`) 7.2M via detail, home
-- One night with my billionaire CEO (`one-night-with-my-billionaire-ceo`) 2.3M via detail, home
-- The Wolf Queen Strikes Back (`the-wolf-queen-strikes-back`) 888.3K via detail, home
-- Flash Marriage to the Wild Billionaire (`flash-marriage-to-the-wild-billionaire`) 1.2M via detail, home
-- The Heirless Alpha's Miracle Omega (`the-heirless-alpha-s-miracle-omega`) 6.6M via detail, home
-- The mob boss spoils his pregnant wife (`the-mob-boss-spoils-his-pregnant-wife`) 15.6M via detail, fandom
-- The Elf Bride’s Impossible Choice (`the-elf-bride-s-impossible-choice`) 2.0M via detail, home
-- Bully Me? I Run the Mob! (`bully-me-i-run-the-mob`) 1.9M via detail, home
-- The Alpha King Is My Baby’s Daddy! (`the-alpha-king-is-my-baby-s-daddy`) 1.7M via detail, home
-- My Second Life as a Billionaire Heiress (`my-second-life-as-a-billionaire-heiress`) 1.4M via genres, home
-- I Flew Home Pregnant Only To See His Secret (`i-flew-home-pregnant-only-to-see-his-secret`) 4.2M via detail, home
-- My Possessive Ex-Husband (`my-possessive-ex-husband`) 869.4K via detail, home
-- Step Back! That Homeless Man Is Not to be Messed with (`step-back-that-homeless-man-is-not-to-be-messed-with`) 5.3M via genres, home
-- I'm Done Playing Along (`i-m-done-playing-along`) 3.1M via detail, home
-- The Slum Girl Who Became a Billionaire's Wife (`the-slum-girl-who-became-a-billionaire-s-wife`) 624.6K via detail, home
-- Bound by Secrets: Her Billionaire Doctor (`bound-by-secrets-her-billionaire-doctor`) 720.4K via genres, home
-- Quads, Mafia Divorce ——I Took the Money and Ran (`quads-mafia-divorce-i-took-the-money-and-ran`) 1.1M via genres, home
-- Married to the Demon King, the Sun God Begs for My Return (`married-to-the-demon-king-the-sun-god-begs-for-my-return`) 770.4K via detail, home
+- We Are Twins, Daddy! (`we-are-twins-daddy`) 10.5M via genres
+- One Night Stand (`one-night-stand`) 10.4M via genres
+- Mom, Love Me Again (`mom-love-me-again`) 11.3M via genres
+- Revenge-Uniting with My Rival (`revenge-uniting-with-my-rival`) 14.3M via genres
+- I'm the Dragon King & Legendary Healer (`i-m-the-dragon-king-legendary-healer`) 14.2M via genres
+- Mending a broken love (`mending-a-broken-love`) 10.8M via genres
+- I'm Really Not an Immortal (`i-m-really-not-an-immortal`) 10.4M via genres
+- Love After Rebirth: Spoiled by My Husband's Uncle (`love-after-rebirth-spoiled-by-my-husband-s-uncle`) 14.9M via genres
+- Bride of Vengeance (`bride-of-vengeance`) 10.0M via genres
+- The Bride of the Wolf King (`the-bride-of-the-wolf-king`) 14.8M via genres
+- Pampered by My Silver Fox Uncle (`pampered-by-my-silver-fox-uncle`) 11.5M via genres
+- My Rise To Power After She Left (`my-rise-to-power-after-she-left`) 12.5M via genres
+- Divorced, Devoted & Dominating (`divorced-devoted-dominating`) 11.4M via genres
+- Her Turn to Fall (`her-turn-to-fall`) 13.5M via genres
+- Hey Mommy! Time for a New Daddy! (`hey-mommy-time-for-a-new-daddy`) 11.4M via genres
+- My Fiancé, My Bodyguard (`my-fiance-my-bodyguard`) 12.3M via detail, genres
+- Fool No More, King Returns (`fool-no-more-king-returns`) 13.4M via genres
+- X-Ray Eyes, Billionaire Rise (`x-ray-eyes-billionaire-rise`) 14.1M via genres
+- The Immortal's Return (`the-immortal-s-return`) 10.1M via genres
+- Draft Dreams (`draft-dreams`) 11.8M via genres
+- Destroy My Silver Wolf Bloodline？I'll Marry a Top Alpha Then (`destroy-my-silver-wolf-bloodline-i-ll-marry-a-top-alpha-then`) 11.3M via genres
+- I'll Steal You Back (`i-ll-steal-you-back`) 2.0M via detail, home
+- The True Alpha Princess (`the-true-alpha-princess`) 12.7M via genres
+- Don’t Mess with My Lethal Fiancée (`dont-mess-with-my-lethal-fiancee`) 11.8M via detail, genres
+- The Simp Claps Back (`the-simp-claps-back`) 14.0M via genres
+- My S Rank Beast Mate (`my-s-rank-beast-mate`) 13.3M via genres
+- The Alpha Rejected Me, But the Dragon King Claimed Me (`the-alpha-rejected-me-but-the-dragon-king-claimed-me`) 11.6M via genres
+- He Pulled a Prank on Me and Lost Everything (`he-pulled-a-prank-on-me-and-lost-everything`) 14.4M via genres
+- The Mafia Boss My Husband Betrayed (`the-mafia-boss-my-husband-betrayed`) 7.8M via genres, home
+- The Boy the QB Used in Bed (`the-boy-the-qb-used-in-bed`) 8.2M via genres, home
+- You Betrayed the Wrong Alpha Queen (`you-betrayed-the-wrong-alpha-queen`) 12.6M via genres
+- The Mob Boss Demands Her Perfect Genes (`the-mob-boss-demands-her-perfect-genes`) 10.7M via genres
+- A Birthmark Exposed My Husband’s Secret (`a-birthmark-exposed-my-husband-s-secret`) 11.6M via genres
+- My Husband Gifted Me His Rival (`my-husband-gifted-me-his-rival`) 11.0M via genres
+- Abyssal Throne：The Godslayer (`abyssal-throne-the-godslayer`) 4.5M via detail, home
+- Tide of Forbidden Touch (`tide-of-forbidden-touch`) 13.2M via genres
+- Big Molly The Billionaire's Only Cure (`big-molly-the-billionaire-s-only-cure`) 7.9M via detail, home
+- Shh, Don't Let Him Find Out (`shh-don-t-let-him-find-out`) 10.2M via detail, home
+- Her Dream of Marrying Rich Turned Deadly (`her-dream-of-marrying-rich-turned-deadly`) 405.9K via fandom, genres
+- American Magician: The Last Encore (`american-magician-the-last-encore`) 699.8K via detail, home
+- The Sun God’s Beloved (`the-sun-god-s-beloved`) 618.5K via detail, home
+- You Ignored My Birthday So I Erased Myself From The Family (`you-ignored-my-birthday-so-i-erased-myself-from-the-family`) 7.9M via genres, home
+- Becoming the Heirless Dragon King's Fated Mate (`becoming-the-heirless-dragon-king-s-fated-mate`) 3.2M via detail, home
+- I Signed My Divorce Papers on the Operating Table (`i-signed-my-divorce-papers-on-the-operating-table`) 1.5M via detail, home
+- Dragonblood Alpha (`dragonblood-alpha`) 9.9M via detail, fandom
+- My X-Ray Eyes Rule the City (`my-x-ray-eyes-rule-the-city`) 643.3K via detail, home
+- Agent Badboy (`agent-badboy`) 548.9K via fandom, genres, home
+- GODFORGED: TEN SCRAPS OF IRON (`godforged-ten-scraps-of-iron`) 4.9M via fandom, genres, home
+- The Alpha's Broken Mate (`the-alpha-s-broken-mate`) 8.9M via fandom, genres
+- The Dragon Queen's Gambit (`the-dragon-queen-s-gambit`) 10.4M via detail, fandom
+- Tenth Wedding, New Groom (`tenth-wedding-new-groom`) 2.8M via detail, home
+- The Unbreakables: Super Son Returns (`the-unbreakables-super-son-returns`) 2.5M via detail, home
+- After My Three Alpha Childhood Sweethearts Abandoned Me, They Regretted It (`after-my-three-alpha-childhood-sweethearts-abandoned-me-they-regretted-it`) 767.2K via genres, home
+- Marked by the Wolf King, I Return With My Fierce Cub (`marked-by-the-wolf-king-i-return-with-my-fierce-cub`) 1.5M via detail, home
+- Five Years of Secret Love, He Married My Best Friend (`five-years-of-secret-love-he-married-my-best-friend`) 3.1M via detail, home
+- The Nether King's Bride (`the-nether-king-s-bride`) 1.2M via detail, home
+- Run, Mommy! Daddy Is Coming! (`run-mommy-daddy-is-coming`) 2.2M via detail, home
+- Five Winters With Her, Five Fridge Magnets for Me (`five-winters-with-her-five-fridge-magnets-for-me`) 2.1M via genres, home
+- The Cartel’s Contract Bride (`the-cartel-s-contract-bride`) 7.7M via detail, fandom
+- Eight Heirs for the Dragon King (`eight-heirs-for-the-dragon-king`) 1.6M via genres, home
+- Bound by Hatred (`bound-by-hatred`) 444.7K via tags
+- Dream On (`dream-on`) 479.8K via tags
+- Married Off To The Cursed Alpha Daddy (`married-off-to-the-cursed-alpha-daddy`) 11.6M via detail, home
+- At the Mercy of My Vampire Ex (`at-the-mercy-of-my-vampire-ex`) 650.2K via detail, home
+- The Dragon King's Slave Mate (`the-dragon-king-s-slave-mate`) 938.7K via detail, home
+- The Husband She Took for Granted (`the-husband-she-took-for-granted`) 1.5M via tags
+- The Triplets' Final Regret (`the-triplets-final-regret`) 16.8M via detail, home
+- LadyAid: From Dumped Pauper to Tycoon (`ladyaid-from-dumped-pauper-to-tycoon`) 1.1M via genres, home
+- The Last Daughter of House Vale (`the-last-daughter-of-house-vale`) 988.7K via detail, home
+
+### Held for Cyan's ruling
+
+- 'Divorced and Desired! My Trio of Elite Suitors' vs existing `divorced-and-desired-my-trio-of-elite-suitors`: same slug
+- 'Mom, Love Me Again' vs existing `mom-love-me-again`: same slug
+- 'I Gave My wife A Red Tasseled Spear' vs existing `i-gave-my-wife-a-red-tasseled-spear`: same slug
+- '7 Steamy Days with a Ganster' vs existing `7-steamy-days-with-a-ganster`: same slug
+- 'After the Divorce, the Heiress Takes It All' vs existing `after-the-divorce-the-heiress-takes-it-all`: same slug
 
 ### Delisted on ReelShort (404), left in place
 
 - `mafia-boss-owns-my-body` https://www.reelshort.com/movie/mafia-boss-owns-my-body-6923c6289c16eb72620ef564
+- `the-heat-after-the-ac-died` https://www.reelshort.com/movie/the-heat-after-the-ac-died-6a4358c4abdd23a03d0d6563
+- `uncle-i-don-t-want-you-anymore` https://www.reelshort.com/movie/uncle-i-don-t-want-you-anymore-6a63772875b2eafae30ae376
+- `my-two-dangerous-roommates-crave-me` https://www.reelshort.com/movie/my-two-dangerous-roommates-crave-me-6a6c022bedfbef3f380fbfb9
+- `the-summer-the-ac-broke` https://www.reelshort.com/movie/the-summer-the-ac-broke-6a44c5b8c3d931368c03b98b
+- `our-camp-night-went-wrong` https://www.reelshort.com/movie/our-camp-night-went-wrong-6a7dd5b4b2c257cfb60da399
+- `the-mob-boss-spoils-his-pregnant-wife` https://www.reelshort.com/movie/the-mob-boss-spoils-his-pregnant-wife-6a9fa78372bf93a3100ed27c
 
 ### Wanted-file lines that matched no held title (still waiting)
 
@@ -90,10 +139,10 @@ These are live with no synopsis of ours. Platform text is never copied (Cyan, 14
 
 ### ReelShort tag names not in our vocabulary (Cyan decides; count of books)
 
-- drama (265)
-- survival (24)
+- drama (304)
+- survival (29)
 - zombie (6)
-- post-apocalyptic (4)
+- post-apocalyptic (5)
 - cult (1)
 
 ### ReelShort's own page says AI-generated, awaiting Cyan's ruling
@@ -102,18 +151,22 @@ These are live with no synopsis of ours. Platform text is never copied (Cyan, 14
 - `a-ruler-in-disguise`
 - `a-sweet-contract-with-the-mafia-boss`
 - `abandoned-pawn-unrivaled-dragon-king`
+- `abyssal-throne-the-godslayer`
 - `accidentally-his-the-dragon-king-won-t-let-go`
 - `accidentally-pregnant-forever-spoiled`
 - `after-divorce-i-built-a-fabulous-life`
+- `american-magician-the-last-encore`
+- `art-of-falling-in-love`
+- `at-the-mercy-of-my-vampire-ex`
+- `becoming-the-heirless-dragon-king-s-fated-mate`
 - `below-the-red-line`
-- `bitter-burn`
+- `big-molly-the-billionaire-s-only-cure`
 - `blind-no-longer-my-wife-s-betrayal`
 - `boss-your-wife-s-a-whole-detective`
 - `bound-to-the-pharaoh`
 - `bound-to-the-ruthless-beast`
 - `breaking-my-bodyguard`
 - `brides-in-smoke`
-- `bully-me-i-run-the-mob`
 - `ceo-and-the-country-girl`
 - `ceo-s-irresistible-wet-nurse`
 - `clubhouse-of-desire`
@@ -123,9 +176,11 @@ These are live with no synopsis of ours. Platform text is never copied (Cyan, 14
 - `crowned-in-his-claws`
 - `cursed-alpha-s-fated-luna`
 - `dirty-work`
+- `dont-mess-with-my-lethal-fiancee`
+- `dragonblood-alpha`
 - `dungeons-of-ecstasy`
-- `fated-to-his-brother-s-alpha`
 - `firefighter-husband-burned-his-daughter-driven-to-desperate-regret`
+- `five-years-of-secret-love-he-married-my-best-friend`
 - `flash-marriage-to-the-wild-billionaire`
 - `from-jail-to-the-top`
 - `golden-feather-temptation-game`
@@ -134,45 +189,39 @@ These are live with no synopsis of ours. Platform text is never copied (Cyan, 14
 - `hold-me-in-the-dark`
 - `i-became-the-ceo-s-most-beloved`
 - `i-chose-the-playboy-eel-to-abandon-my-shark-lover`
-- `i-flew-home-pregnant-only-to-see-his-secret`
+- `i-gave-birth-to-the-strongest-alpha-werewolf-king`
 - `i-gave-my-flame-up`
 - `i-hate-to-love-my-british-bad-boy`
+- `i-ll-steal-you-back`
 - `i-m-done-playing-along`
 - `i-m-pregnant-it-s-not-yours`
 - `i-married-the-other-woman-s-billionaire-brother`
 - `i-secretly-gave-birth-to-god-s-five-babies`
+- `i-signed-my-divorce-papers-on-the-operating-table`
 - `in-love-with-my-bestie-s-son`
 - `is-it-just-me`
 - `king-of-gold`
 - `kiss-me-99-times-a-day`
 - `knocked-up-by-the-wolf-duke`
+- `little-miss-fortune`
 - `love-has-a-deadline`
-- `love-in-my-hands`
 - `love-on-the-sidelines`
 - `love-trap-with-my-dashing-knight`
-- `mafia-heiress-s-forbidden-obssession`
-- `mafia-mamma-s-hot-lover`
-- `mafia-s-desire-for-the-wet-nurse`
-- `married-ex-fiance-s-uncle`
-- `married-to-the-demon-king-the-sun-god-begs-for-my-return`
-- `mated-to-the-alpha-and-his-beta`
-- `models-vs-werewolves`
-- `mommy-s-little-savior`
 
 261 ReelShort tag listing pages discovered (add to reelshort_tags.txt to sweep them).
 
 ### Credits added (exact name, one person)
 
-- Brothers in Arms: Samantha Drews
-- Brothers in Arms: Marc Herrmann
-- Brothers in Arms: Ryan Vincent
-- I Don't Need No Alpha Brothers: Eric Guilmette
-- I Don't Need No Alpha Brothers: Armand Procacci
-- I Don't Need No Alpha Brothers: Katherine Gibson
-- Bitter Burn: Katelyn Rose
-- Just One Kiss: Cailin Peluso
-- Just One Kiss: Andrew Tong
-- Just One Kiss: Noah Andre
+- I Don't Need No Alpha Brothers: Chris Quartuccio
+- Bound by Hatred: Savannah Coffee
+- Bound by Hatred: Nate Flores
+- Bound by Hatred: Rhett Wellington
+- Dream On: Kimberly McClain
+- Dream On: Vera Price
+- The Husband She Took for Granted: Chris Quartuccio
+- The Husband She Took for Granted: Eric Guilmette
+- The Husband She Took for Granted: Armand Procacci
+- The Husband She Took for Granted: Katherine Gibson
 
 ### Errors
 
