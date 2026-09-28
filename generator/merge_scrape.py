@@ -341,9 +341,13 @@ def main():
                 tags_applied += 1
 
     # AI EVIDENCE: the platform page says AI-generated and Cyan has not ruled.
+    # Cyan, 28 Sep 2026: "label them automatically each week". A blank ai becomes
+    # yes; a title she ruled ai=no is never touched (the filter skips any value).
     ai_evidence = sorted({link_rows[bid]["title_id"] for bid, b in books.items()
                           if b.get("platform_says_ai") and bid in link_rows
                           and not (by_id.get(link_rows[bid]["title_id"]) or {}).get("ai")})
+    for tid in ai_evidence:
+        by_id[tid]["ai"] = "yes"
 
     # CYAN'S "SAME" RULINGS ON WEEKLY-SCRAPE MATCH_QUEUE ROWS: link the held
     # title to the ReelShort page named in the evidence, fill-blank, and take
@@ -475,7 +479,7 @@ def main():
                  % (tags_applied, len(tag_unknown)))
     lines.append("| Umbrella tropes added | %s |" % (", ".join("%s %d" % kv for kv in umbrella_added.items()) or "0"))
     lines.append("| Linked on Cyan's confirmed_same rulings | %d |" % len(linked_same))
-    lines.append("| Platform page says AI-generated, no ruling yet | %d |" % len(ai_evidence))
+    lines.append("| Platform page says AI-generated, labelled ai=yes | %d |" % len(ai_evidence))
     lines.append("| Scrape errors | %d |" % len(doc.get("errors") or []))
     lines.append("")
     lines.append("Routes: " + ", ".join("%s %s" % (k, json.dumps(v)) for k, v in routes.items()))
@@ -508,7 +512,7 @@ def main():
         lines += ["", "### Linked to ReelShort on Cyan's confirmed_same rulings", ""]
         lines += ["- `%s` %s" % x for x in linked_same]
     if ai_evidence:
-        lines += ["", "### ReelShort's own page says AI-generated, awaiting Cyan's ruling", ""]
+        lines += ["", "### Labelled AI this run: ReelShort's own page says AI-generated", ""]
         lines += ["- `%s`" % x for x in ai_evidence[:60]]
     disc = doc.get("discovered_tags") or []
     if disc:

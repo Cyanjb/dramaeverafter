@@ -151,10 +151,12 @@ everything else is an edit, that is a lie on her site.
 
 ## Who approves what
 
-- **Top 300 by reach**: Cyan reviews. Stage the batch UNAPPROVED and build her
-  a review page.
-- **Below top 300**: her 16 Aug 2026 ruling is that you write and apply without
-  her manual check. Record the approval basis in the approved file's header.
+- **Everything goes live without waiting for her.** Cyan, 28 Sep 2026: "everything
+  should be live, don't wait for me to check the captions". This replaces the
+  old split (top 300 by reach staged for her review; below top 300 applied under
+  her 16 Aug ruling). Write, pass every gate, apply. Record the approval basis in
+  the approved file's header. A review page is optional, for her to spot-check
+  later; her edits, when they come, are applied as usual.
 - **READ MEANS DONE**: a caption she ticked without editing is approved. Do not
   re-litigate it. Cyan, 28 Sep 2026: "if it has been read and edited by me please
   leave it alone". That holds even for a clean-up pass such as de-lifting: a
