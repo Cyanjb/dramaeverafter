@@ -6,7 +6,5 @@
 # synopsis is truncated platform text, so the search snippet ends mid-sentence.
 # The text on disk is NOT a usable source: fetch the full synopsis from the
 # platform page before writing.
-the-mvp-s-plus-size-love
-our-dirty-little-secret
-taming-the-mafia-boss-he-s-mine-now
-universe-exe-devouring-the-world
+
+# (the four above were captioned 28 Sep 2026 in captions_2026_09_28_new234_live_approved.py)
