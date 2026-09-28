@@ -370,7 +370,8 @@ def build_queue():
     reach, link, plat = {}, {}, {}
     for r in rows("availability.csv"):
         t = r["title_id"]
-        reach[t] = max(reach.get(t, 0), views(r.get("view_count")))
+        if r.get("platform_id") != "flextv":  # unverified counter, see build.py UNRANKED_VIEW_PLATFORMS
+            reach[t] = max(reach.get(t, 0), views(r.get("view_count")))
         if r.get("direct_link") and t not in link:
             link[t] = r["direct_link"]
             plat[t] = r.get("platform_id", "")

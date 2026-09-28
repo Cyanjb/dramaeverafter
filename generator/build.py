@@ -199,8 +199,15 @@ def dub_only(t):
     rows = avail_by_title.get(t["title_id"], [])
     return bool(rows) and all((a.get("version") or "") == DUB for a in rows)
 
+# Platforms whose counters are not comparable with the others. They stay in
+# availability.csv as the record but never rank a title (Cyan, 28 Sep 2026:
+# FlexTV's "533.6M" for Mr. Williams! Madame Is Dying put it at #9). Remove a
+# platform from this set once its numbers are verified.
+UNRANKED_VIEW_PLATFORMS = {"flextv"}
+
 def title_views(t):
-    return max((view_num(a.get("view_count")) for a in avail_by_title.get(t["title_id"], [])), default=0)
+    return max((view_num(a.get("view_count")) for a in avail_by_title.get(t["title_id"], [])
+                if a.get("platform_id") not in UNRANKED_VIEW_PLATFORMS), default=0)
 
 def views_label(n):
     if n >= 1000000000: return "%.1fB views" % (n / 1000000000.0)
