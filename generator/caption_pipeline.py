@@ -157,8 +157,37 @@ def load_facts():
     scrape's staging JSON, which holds each title's synopsis as read from the
     platform's own page. So a title the Sunday run created is tier C the moment
     it exists, not tier D: its facts are on disk, in the repo, with the URL.
-    The quarantine wins where both hold a title; newer scrapes win over older."""
+    The quarantine wins where both hold a title; newer scrapes win over older.
+
+    DramaBox's weekly files (dramabox_YYYY-MM-DD.json, 28 Sep 2026) have the
+    same shape, but a DramaBox book is filed under the title whose DramaBox
+    link in availability.csv carries its bookId, never under its house slug
+    alone: a DramaBox book whose slug collides with a title we hold goes to
+    match_queue, and its synopsis must not land on that other show. The dated
+    pattern is strict because dramabox_links_*.json and dramabox_pass_*.json
+    are other things. ReelShort is read last, so it wins where both hold a
+    title."""
     facts = {}
+    held = {}
+    for r in rows("availability.csv"):
+        m = re.search(r"dramabox(?:db|app)?\.com/(?:[a-z]{2}(?:Hans)?/)?(?:movie|drama|video)/(\d{8,})",
+                      r.get("direct_link") or "", re.I)
+        if r.get("platform_id") == "dramabox" and m:
+            held.setdefault(m.group(1), r["title_id"])
+    dated = re.compile(r"^dramabox_\d{4}-\d\d-\d\d\.json$")
+    for path in sorted(glob.glob(os.path.join(STAGING, "dramabox_*.json"))):
+        if not dated.match(os.path.basename(path)):
+            continue
+        try:
+            doc = json.load(io.open(path, encoding="utf-8"))
+        except ValueError:
+            continue
+        for bid, b in (doc.get("books") or {}).items():
+            tid = held.get(bid)
+            text = (b.get("synopsis") or "").strip()
+            if tid and text and b.get("status") == 200:
+                facts[tid] = {"copied_text": text, "kind": "platform", "url": b.get("url", ""),
+                              "from": os.path.basename(path)}
     for path in sorted(glob.glob(os.path.join(STAGING, "reelshort_*.json"))):
         try:
             doc = json.load(io.open(path, encoding="utf-8"))
