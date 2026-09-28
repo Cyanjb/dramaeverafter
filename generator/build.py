@@ -438,15 +438,49 @@ def synopsis_text(t):
     return (hook + " " + body).strip() if body else hook
 
 
-def cut_words(s, n=155):
-    """Cut at a word boundary, never mid-word. The ld+json description was being
-    sliced at 160 characters ("But the arrangement doesn't s"), and Google shows
-    that text verbatim. No trailing ellipsis: search engines add their own."""
-    s = " ".join((s or "").split())
-    if len(s) <= n:
-        return s
-    cut = s[:n].rsplit(" ", 1)[0].rstrip(",;:")
-    return cut or s[:n]
+_ABBR = re.compile(r"\b(?:Mr|Mrs|Ms|Dr|St|Jr|Sr|vs)\.$")
+
+
+def sentences(s):
+    """Split prose into sentences on . ? ! followed by a space, without breaking
+    after a title abbreviation like Mr. or Dr."""
+    out, cur = [], ""
+    for piece in re.split(r"(?<=[.?!])\s+", " ".join((s or "").split())):
+        cur = (cur + " " + piece).strip() if cur else piece
+        if not _ABBR.search(cur):
+            out.append(cur)
+            cur = ""
+    if cur:
+        out.append(cur)
+    return [x for x in out if x]
+
+
+def cut_sentences(parts, n=155):
+    """Search and share snippet that always ends on a full sentence (Cyan, 28 Sep
+    2026: "end at the last full sentence"). Whole sentences are added while they
+    fit in n characters. If the first one alone is longer, it goes in whole:
+    Google trims long snippets with its own ellipsis, which reads better than
+    ours stopping mid-thought. parts is a string or a list of strings (a caption
+    hook often has no full stop, so it is passed as its own sentence)."""
+    if isinstance(parts, str):
+        parts = [parts]
+    sents = []
+    for p in parts:
+        got = sentences(p)
+        # A hook with no end mark would run into the body ("...a fake boyfriend
+        # Brady is"); close it in the snippet only, never in the caption.
+        if got and got[-1][-1] not in ".?!\"'”…":
+            got[-1] += "."
+        sents += got
+    out = ""
+    for x in sents:
+        nxt = (out + " " + x).strip()
+        if out and len(nxt) > n:
+            break
+        out = nxt
+        if len(out) > n:
+            break
+    return out
 
 
 def month_label(iso):
@@ -494,9 +528,9 @@ def title_desc(t):
     """Meta description: the caption we wrote when there is one (825 titles had a
     synopsis and every one of them was shipping the generic template), else an
     honest template dated from the data."""
-    s = synopsis_text(t)
-    if s:
-        return cut_words(s, 155)
+    hook, body, _ = caption_parts(t)
+    if hook or body:
+        return cut_sentences([hook, body], 155)
     when = month_label(title_checked(t))
     return f"{t['primary_title']}: where to watch, cast and tropes." + (f" Checked {when}." if when else "")
 
@@ -1904,7 +1938,7 @@ for p in people:
     roles_html = "".join(roles)
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "jobTitle": "Actor",
           "@id": f"{DOMAIN}/actors/{pslug(p)}.html",
-          "description": (real_bio or oneliner)[:160],
+          "description": cut_sentences(real_bio or oneliner, 160),
           "url": f"{DOMAIN}/actors/{pslug(p)}.html",
           "performerIn": _performer_in(p, my_pairs)}
     # sameAs from the socials column - the IMDb nm URL is the identity anchor an
@@ -2244,7 +2278,7 @@ for t in titles:
     # the field competitors do not index, so it is the answer AI engines can only
     # get here.
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
-          "description": cut_words(synopsis_text(t), 160),
+          "description": cut_sentences(list(caption_parts(t)[:2]), 160),
           "url": f"{DOMAIN}/titles/{sl}.html"}
     if (t.get("episode_count") or "").strip().isdigit():
         ld["numberOfEpisodes"] = int(t["episode_count"])
