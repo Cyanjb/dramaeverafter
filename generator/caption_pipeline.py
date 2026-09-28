@@ -170,6 +170,15 @@ def load_facts():
             if tid and text and b.get("status") == 200:
                 facts[tid] = {"copied_text": text, "kind": "platform", "url": b.get("url", ""),
                               "from": os.path.basename(path)}
+    # One-off imports bank their platform synopses as {title_id: {copied_text,
+    # kind, url}} in staging/facts_trending_*.json (28 Sep 2026 onward).
+    for path in sorted(glob.glob(os.path.join(STAGING, "facts_trending_*.json"))):
+        try:
+            for tid, v in json.load(io.open(path, encoding="utf-8")).items():
+                if (v.get("copied_text") or "").strip():
+                    facts.setdefault(tid, v)
+        except ValueError:
+            continue
     if os.path.exists(FACTFILE):
         facts.update(json.load(io.open(FACTFILE, encoding="utf-8")))
     return facts

@@ -129,3 +129,22 @@ Signal combines platform views, independent mentions, and links to popular actor
 - Reddit: readable through headless Chromium (the proxy CA had to be added to the browser's NSS store). `.json` endpoints and old.reddit are blocked. r/reelshort is banned; r/Vertical_Dramas is the active hub, r/CShortDramas for Chinese live-action, r/ReelShortsNoAI for live-action only.
 - DramaWave: connection reset; still no web catalogue. ShortMax encrypts its page data (no views). NetShort and GoodShort show no cast on the web. Vigloo has a public API with view counts and cast.
 - IMDb popularity, Instagram and paywalled trade press (Variety, THR) could not be read.
+
+## Done on Cyan's rulings, 28 Sep 2026
+
+Cyan approved all four: import every title with a platform page (AI included,
+labelled), add the Chinese stars with platform-confirmed titles, and add DramaBox
+to the weekly scrape. `generator/import_trending_2026_09_28.py --apply`:
+
+- 225 titles created (needs_check), with availability rows, 92 view snapshots,
+  73 credits and 28 new people. 9 are AI-badged by their platform, 8 are dubs
+  with no original on file (their own page, marked english-dub, origin chinese).
+- 33 same-name listings went to `match_queue.csv` for a ruling (e.g. DramaBox
+  "Queen Mom Rules" against our ReelShort row). 64 chart links were already held.
+- Held, not created: "Angelina Guschyna" (close to angelina-gushchyna).
+- Synopses banked in `generator/staging/facts_trending_2026-09-28.json`, which
+  `caption_pipeline.load_facts()` now reads. 45 titles have no synopsis yet.
+- Declan Clifford credited on Unwanted True Mate, His Sweet Bella and Hero
+  Should Never Stay Low, confirmed by his DramaBox page (/name/14340).
+- Still open: Mattox on Christmas With a Country Bad Boy and the "Ramoree"
+  title fix (DramaBox search is JS-only, not confirmed yet); Genie's cast.
