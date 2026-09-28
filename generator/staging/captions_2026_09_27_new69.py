@@ -7,7 +7,7 @@ generator/staging/reelshort_2026-09-27.json and read by caption_pipeline.load_fa
 
 All 69 rank below top 300 by reach, so the 16 Aug 2026 ruling would allow
 applying without review. Cyan reviewed last week's new-title batch, so this one
-is STAGED UNAPPROVED and goes through her review page before apply.
+was STAGED UNAPPROVED for her review page.
 
 THIN SOURCES, written short from the setup only, nothing invented:
   mom-love-me-again  (140 chars; also held in match_queue as a same-slug clash)
@@ -50,7 +50,7 @@ CAPTIONS = {
 
     # 14.9M    Love After Rebirth: Spoiled by My Husband's Uncle
     'love-after-rebirth-spoiled-by-my-husband-s-uncle':
-        "Her husband killed her. This time she's marrying his uncle.\nIn her last life the man she married betrayed her and killed her. Reborn, she wakes up on the day the two families first meet, and this time she walks away from her fiance and picks his uncle instead, a powerful man nobody can quite read. People whisper that there's something wrong with him. Married life turns out to be full of surprises, not least of them triplets.",
+        "Her husband killed her. This time she's marrying his uncle.\nIn her last life the man she married betrayed her and killed her. Reborn, she wakes up on the day the two families first meet, and this time she walks away from her fiance and picks his uncle instead, a powerful man nobody can quite read. People whisper that there's something wrong with him. Married life turns out to be full of surprises, not least of them pregnancy.",
 
     # 10.0M    Bride of Vengeance
     'bride-of-vengeance':
@@ -74,7 +74,7 @@ CAPTIONS = {
 
     # 13.5M    Her Turn to Fall
     'her-turn-to-fall':
-        "He made her a business queen. She betrayed him.\nMiles gave his whole life to turning Wendy into a queen of business, and in the end she betrayed him and he was killed. Wendy was sure she could have had the perfect life with charming Jack instead. When Miles gets a second chance he drops Wendy and goes after someone else. But Wendy is reborn too, certain her success never had anything to do with Miles. This time around Miles doesn't revolve around her, he has someone new, and charming Jack is a scumbag after all. Now it's her turn to fall.",
+        "He made her a business queen. She betrayed him.\nMiles gave his whole life to turning Wendy into a queen of business, and in the end she betrayed him and he was killed. Wendy was sure she could have had the perfect life with the charming Jack instead. When Miles gets a second chance he drops Wendy and goes after someone else. But Wendy is reborn too, certain her success never had anything to do with Miles. This time around Miles doesn't revolve around her, he has someone new, and turns out Jack is a scumbag after all. Now it's her turn to fall.",
 
     # 11.4M    Hey Mommy! Time for a New Daddy!
     'hey-mommy-time-for-a-new-daddy':
@@ -90,7 +90,7 @@ CAPTIONS = {
 
     # 14.1M    X-Ray Eyes, Billionaire Rise
     'x-ray-eyes-billionaire-rise':
-        "Hit by the campus queen, he gets up with X ray vision.\nLincoln Cross is a broke student until Audrey Sterling, the campus queen, hits him, and he comes away with astonishing X ray vision. Suddenly gang heiress Vera Blackwood, the gorgeous sisters Blair Leighton and Amber Collins, and elegant Audrey herself are all falling for him, and every one of them can see he's worth a fortune. Based on a hit web novel.",
+        "Hit by the campus queen, he gets up with X ray vision.\nLincoln Cross is a broke student until Audrey Sterling, the campus queen, hits him, and he comes away with astonishing X ray vision. Suddenly gang heiress Vera Blackwood, the gorgeous sisters Blair Leighton and Amber Collins, and elegant Audrey herself are all falling for him, after all, who wouldn't want a God of Wealth? Based on a hit web novel.",
 
     # 10.1M    The Immortal's Return
     'the-immortal-s-return':
@@ -286,7 +286,7 @@ CAPTIONS = {
 
     # 16.8M    The Triplets' Final Regret
     'the-triplets-final-regret':
-        "She'd have become human for them. They kept choosing the maid's daughter.\nElisa is half human, half vampire, and she believes the Lockhart triplets are the only people she can really trust. She wants to become human for them and spend forever with one of them. Then Amber, the maid's daughter, shows up. Over and over Elisa is left behind, humiliated and robbed of her dignity, all for Amber. Finally she lets go and accepts what she is. She leaves day school, moves to night school and becomes a vampire. So when she walks in wearing her night school uniform, in the arms of a powerful vampire heir, why are the triplets who tossed her aside suddenly on their knees begging her to forgive them?",
+        "She'd have become human for them. They kept choosing the maid's daughter.\nElisa is half human, half vampire, and she believes the Lockhart triplets are the only people she can really trust. She wants to become human for them and spend forever with her chosen. Then Amber, the maid's daughter, shows up. Over and over Elisa is left behind, humiliated and robbed of her dignity, all for Amber. Finally she lets go and accepts what she is. She leaves day school, moves to night school and becomes a vampire. So when she walks in wearing her night school uniform, in the arms of a powerful vampire heir, why are the triplets who tossed her aside suddenly on their knees begging her to forgive them?",
 
     # 1.1M    LadyAid: From Dumped Pauper to Tycoon
     'ladyaid-from-dumped-pauper-to-tycoon':
