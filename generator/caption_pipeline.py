@@ -352,6 +352,14 @@ def build_queue():
                   "reach": reach.get(tid, 0), "link": link.get(tid, ""),
                   "platform": plat.get(tid, "")})
     q.sort(key=lambda r: -r["reach"])
+    # Cyan's picks go first (staging/caption_priority.txt), in the file's order.
+    pri = []
+    pf = os.path.join(STAGING, "caption_priority.txt")
+    if os.path.exists(pf):
+        pri = [l.split("#", 1)[0].strip() for l in io.open(pf, encoding="utf-8")]
+        pri = [x for x in pri if x]
+    rank = {t: i for i, t in enumerate(pri)}
+    q.sort(key=lambda r: rank.get(r["tid"], len(rank)))
     return q
 
 
