@@ -719,3 +719,47 @@ blocked, on auth, not on discovery.
   DramaWave ships a public/unsigned endpoint or Cyan has an app-level way in.
   The 41 DramaWave rows we hold stand; the 10 DramaWave titles from the Reddit
   research stay held in reddit_research_2026-09-20.json, not created.
+
+
+## 29. DramaBox is readable again; platform charts and Reddit access (2026-09-28)
+
+SUPERSEDES the DramaBox lines in sec 4, 6, 8 and 13. On 28 Sep, dramaboxdb.com and
+dramaboxapp.com both returned 200 from curl with a desktop UA. Next.js pages:
+- Chart: /channel/trending plus /2, /3, /4 (pageProps.moreData.items, 18 per page).
+- Title page /movie/{bookId}/{slug}: __NEXT_DATA__ bookInfo carries bookName,
+  viewCount (real play count), followCount, introduction, chapterCount and
+  performerList (cast with photos). Verified by hand on
+  /movie/41000121776/watch-out-im-the-lady-boss: 267,176,172 views, 64 episodes,
+  cast Brando White, Candace Mizga, Chanda Davetas, Keegan Hughes.
+- Actor search: dramaboxdb.com/search?searchValue=NAME, then /name/<id>.
+This makes DramaBox a candidate for the weekly scrape: it is where our reach
+ranking is blindest (every one of our top 100 by reach is ReelShort).
+
+REDDIT through headless Chromium works once the proxy CA is in the browser's NSS
+store: `certutil -A -d sql:$HOME/.pki/nssdb -t "C,," -n ccr -i <CA pem>` for
+the CCR interception CA certificates at the END of /root/.ccr/ca-bundle.crt
+(certutil comes from apt package libnss3-tools). Launch Chromium with
+proxy={server: HTTPS_PROXY}. www.reddit.com HTML listings, search and post
+pages load; .json endpoints and old.reddit.com are blocked. Never switch off
+certificate checks to get round this.
+
+Per-platform notes from the 28 Sep chart pass, verbatim from the research agent:
+
+Run 2026-09-28, curl with desktop Chrome UA + 1-1.5s spacing; headless Chromium (pw/rails.js, pw/click.js in scratchpad) for JS-only rails. example.com control OK, so failures below are real.
+DRAMABOX - NO LONGER BOT-WALLED (contradicts adapters.md sec 8). www.dramaboxdb.com and www.dramaboxapp.com both 200 from bash. Next.js __NEXT_DATA__: homepage pageProps.bigList + smallData rails (必看好剧 must-sees / 当前热播 trending / 精彩剧集 hidden-gems). Chart = /channel/trending, /channel/trending/2..4 (pageProps.moreData.items, 18/page, 60 total; fields bookId, bookName, introduction, chapterCount, tags, ratings, viewCountDisplay[web-only small number]). Detail /movie/{bookId}/{bookNameLower}: pageProps.bookInfo has viewCount (real plays, e.g. 267M), followCount, introduction, chapterCount, firstShelfTime, language, AND performerList [{performerId, performerName, performerAvatar, videoCount}] - cast with photos. Also /channel/must-sees, /channel/hidden-gems, /genres/{id}. dramaboxapp.com serves an older/dubbed catalogue with the same schema. Many trending titles are Chinese productions dubbed/subbed (Chinese performer names, '(DUBBED)' suffix) - set origin accordingly.
+REELSHORT homepage: __NEXT_DATA__ props.pageProps.fallback['/api/ms/hall/webInfo'].bookShelfList, shelf bookshelf_name 'TOP' (10, read_count/chapter_count/special_desc). All 10 already IN_DB. URLs in output are slug-constructed.
+SHORTMAX (shorttv.live): Nuxt __NUXT_DATA__ is ENCRYPTED (base64 blob), so rails come from rendered DOM: hero banner (9) + 'Most Popular 🔥' (7) + genre rails. No /rank page. SSR detail /drama/{slug}-{id} HTML carries h1 title, meta description (synopsis), 'N Episodes', 'Creator:' and two stat spans (exact 3:1 ratio, icons unlabeled, likely likes/saves - NOT plays; stored as likes_saves). No cast.
+GOODSHORT: homepage Nuxt state (window.__NUXT__) has columns {name, columnResourceUrl, items}; chart channels /channel/Most-Trending, /Top-in-GoodShort, /Hot-List (10 each), /Popular-Now (20). Book objects regex '{"name":..,"actionType":"BOOK"' + bracket match: bookName, bookResourceUrl, introduction, chapterCount, viewCount, viewCountDisplay (display ~3x viewCount; stored display). /hot-searches/all exists. Still no cast.
+NETSHORT: homepage self.__next_f flight -> videoListGroup groups 'Trending Now','New Releases','Recommended','Exclusive Originals','Dramas to Watch🔥' (12 each; shortPlayName, shortPlayNameUrl, shotIntroduce, totalEpisode). Also ld+json ItemList 'Trending Now' with positions. /hotseries = 7,942-item list (24/page, looks recency-ordered, not a true chart). i18n has 'Director'/'Stars' labels but episode pages carry no cast or view counts (unchanged).
+MY DRAMA: homepage flight chunks, objects '"seriesItem":{videoId,name,description,likes,tags,order,badge}' followed by '"sectionTitle"'. Sections: Most Trending (28), Top Picks In <country> (9), Must-Watch (9), VIP Series, New Releases (140), AI-Powered Picks, etc. URLs via /sitemap-series.xml (sitemap.xml is now an index: series/video/genres/actors/other). Cast from series page (actor url pairs). No views, only likes. 33 of 34 already IN_DB.
+CANDYJAR: homepage flight rails '{"title":"Trending","data":[...]}' (20); fields id,title,summary,episodesCount,releasedAt,castMembers.castMemberIds (IDs only - names not in payload). Series pages crash client-side in headless Chromium ('Application error'). URL pattern now /en/series/{kebab}-{id}.
+VIGLOO: homepage __NEXT_DATA__ pageProps.rankBundle = 'Trending Now TOP 10'. Public unsigned JSON API (needs Origin/Referer https://www.vigloo.com): api.vigloo.com/bundles/v2/PUBLIC/{bundleId}?offset=&limit= (15001132 Trending, 15001134 Ranking block (same), 15001259 all-contents grid (29), genre bundles 15001138/48/53/43/59), api.vigloo.com/bundles/rank (a second top-10, differs slightly), api.vigloo.com/rank?programIds=..&metricType=POPULARITY&periodType=ROLLING_24H (24h popularity scores). Program objects carry viewCount, likeCount, bookmarkCount, episodeCount, description, casting (free text, newline/comma separated, may be '-' or prefixed 'Cast:'). Ranking tab URL is /?tab=ranking (not /en/ranking, which 404s) and just shows the same top 10.
+PINEDRAMA: pinedrama.com homepage is now a web-NOVEL site ('PinesDramas'); drama pages still at /dramas/{slug}, listing at /genres/all (+/2..), no /dramas index (404). Only chart = 'Trending This Week' (trending_series_slug_list in the flight payload of any drama page; 6 items with name, episode_num, rating, short_desc). No views/cast.
+FLICKREELS (flickreels.net): __NUXT_DATA__ data['home-playletList'] columns: 'Roll image' (4), '🔥🔥🔥Hot Picks' (13), '7-Day Star🥇🥈🥉' (9 - weekly chart), 'All Episodes. One Go', 'Find Your Gem'. playlet fields: playlet_id, title, upload_num (episodes), introduce, tag_list. URL /playlist/{slug}/{id}/episode-1|full-movie. No views/cast.
+DREAMESHORT: homepage flight sections {id,name,style,contents[]}: 'Exclusive Originals','New Release','Popular Picks' (6 each; id,title,desc,tags). Detail /en/drama/{slug}-{id} gives chapterNum. No views/cast.
+FLEXTV (flextv.cc, not previously in DB): __NUXT_DATA__ floors; 'Top in FlexTV' floor 10604 full list at /drama/top-in-flextv-10604 (18): series_name, description, watch_num (display) / watch_num_int, collect_num, last_series_no. Values look inflated/odd (533.6M for one title).
+STARDUSTTV (stardusttv.net): 'Trending Now' rail from rendered DOM; many cards carry an 'AI' badge (ai_badge=true) = AI-generated.
+MOBOREELS: server-rendered HTML 'Trending Series'/'Popular Series' (curl fine; headless got 502). SEREAL+: 'Most Trending' rail (mostly dubbed Asian); titles only.
+DRAMAWAVE: dramawave.tv/.com connection reset; mydramawave.com still an empty shell (sec 28 signed-API wall; not retried). Titles listed are from a listicle, unranked, weak evidence. DramaReels (dramareels.app) did not respond.
+DB CHECK: lookup.py is platform-blind, so IN_DB can be a different production with the same name; each matched entry has db_platforms (platforms we already hold it on). Cross-platform same-name hits (e.g. DramaBox 'Queen Mom Rules' vs our ReelShort row, FlexTV titles vs GoodShort/NetShort rows) should go to match_queue, not be merged. Titles were looked up after stripping (DUBBED)/[Dubbed]/[ENG DUB]/(updating) markers.
+View counts are NOT comparable across platforms (DramaBox real play counts; GoodShort viewCountDisplay; Vigloo viewCount; FlexTV watch_num; ShortMax/My Drama likes only).

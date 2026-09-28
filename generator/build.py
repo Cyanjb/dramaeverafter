@@ -1763,7 +1763,8 @@ lastmod = {}
 # the top 600, the tier carrying 98.4% of all reach), new (first seen by a
 # weekly scrape within 90 days, the New-and-trending window), or a lead credit.
 # Noindexed pages stay on the site for readers and leave sitemap.xml.
-_SEEN_DATE = re.compile(r"weekly[_-](20\d\d-\d\d-\d\d)")
+# A one-off import from the platforms' own charts counts as new too (28 Sep 2026).
+_SEEN_DATE = re.compile(r"(?:weekly|trending_research)[_-](20\d\d-\d\d-\d\d)")
 _NEW_CUTOFF = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
 _TOP600_FLOOR = max(1, sorted((title_views(t) for t in titles), reverse=True)[:600][-1])
 def _thin_title(t):
