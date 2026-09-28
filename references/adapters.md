@@ -763,3 +763,15 @@ MOBOREELS: server-rendered HTML 'Trending Series'/'Popular Series' (curl fine; h
 DRAMAWAVE: dramawave.tv/.com connection reset; mydramawave.com still an empty shell (sec 28 signed-API wall; not retried). Titles listed are from a listicle, unranked, weak evidence. DramaReels (dramareels.app) did not respond.
 DB CHECK: lookup.py is platform-blind, so IN_DB can be a different production with the same name; each matched entry has db_platforms (platforms we already hold it on). Cross-platform same-name hits (e.g. DramaBox 'Queen Mom Rules' vs our ReelShort row, FlexTV titles vs GoodShort/NetShort rows) should go to match_queue, not be merged. Titles were looked up after stripping (DUBBED)/[Dubbed]/[ENG DUB]/(updating) markers.
 View counts are NOT comparable across platforms (DramaBox real play counts; GoodShort viewCountDisplay; Vigloo viewCount; FlexTV watch_num; ShortMax/My Drama likes only).
+
+DRAMABOX WEEKLY ADAPTER BUILT (28 Sep 2026, same day): generator/scrape_dramabox.py
++ generator/merge_dramabox.py, run by weekly-scrape.yml after the ReelShort merge
+(continue-on-error, so a DramaBox wall never blocks the ReelShort publish; input
+dramabox_routes=none skips it). Routes: trending, home, channels, known, cast,
+detail. robots.txt disallows /search?*, so performer ids are learned from title-page
+cast lists and kept in the staging JSON. Creation rule: chart, homepage or credited
+to someone we track always; editorial-channel-only books above 30M plays or shelved
+within 30 days. Origin is set chinese for "(DUBBED)" listings and, as an inference
+listed in the summary for checking, when every credited performer (2+) has a
+romanised Chinese name. Test merge against data/ as of 28 Sep: 85 refreshed, 154 new,
+56 held, 288 credits.
