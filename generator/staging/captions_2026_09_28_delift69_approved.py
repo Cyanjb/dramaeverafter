@@ -1,0 +1,1056 @@
+# -*- coding: utf-8 -*-
+"""APPROVED captions only. Cyan has signed off on every line in this file.
+
+Only this file is ever applied. The draft batch is a workspace.
+
+APPROVAL BASIS, 28 Sep 2026: Cyan asked for the lifted phrasing in the 27 Sep
+batch to be rewritten ("rewrite the 69 and 34"), then ruled "if it has been read
+and edited by me please leave it alone". So this touches only the 40 captions
+she had not read; see the draft header for the 15 left alone. Below top 300.
+
+WARNING: this file is REGENERATED from the draft by promote_captions.py, so an
+edit made only here is lost on the next promotion. Edit the draft too.
+"""
+
+CAPTIONS = {
+
+    # 11.8M    Don’t Mess with My Lethal Fiancée
+    'dont-mess-with-my-lethal-fiancee':
+        "He doesn't recognize her. She's his fiancee and the woman from "
+        "that night.\nScarlett is on the run when she spends one night "
+        "with Landon, a wealthy heir, and then vanishes. Later her mentor "
+        "asks her to come back as his grandson's fiancee and turn him "
+        "into an heir worth the name. She never imagined the grandson "
+        "would be Landon. He has no idea his new fiancee is the "
+        "mysterious woman he can't forget, and he can't stand the match "
+        "his grandmother made, so he treats Scarlett like an enemy. "
+        "Living together under a false identity, they keep pushing each "
+        "other away and keep getting pulled back.",
+
+    # 11.6M    The Alpha Rejected Me, But the Dragon King Claimed Me
+    'the-alpha-rejected-me-but-the-dragon-king-claimed-me':
+        "Rejected at her own wedding. Fifteen years later she comes back "
+        "an Empress.\nOn her wedding day Selene is framed. The Alpha King "
+        "rejects her, she loses her crest, and her own mother sends her "
+        "into exile. Everyone believes the cursed girl with silver eyes "
+        "is gone for good. Fifteen years on, she comes back as Empress of "
+        "the Sacred Dominion. She rules from a throne of dragon bone over "
+        "the richest crystal mines on the continent. Then her adopted son "
+        "brings home a girl whose mother is the woman who took Selene's "
+        "life from her, and Selene has no intention of forgiving. Her old "
+        "enemies close in and the lies they buried start coming out, and "
+        "one by one the people who betrayed her learn that the girl they "
+        "broke is now a queen they should be afraid of.",
+
+    # 11.6M    Married Off To The Cursed Alpha Daddy
+    'married-off-to-the-cursed-alpha-daddy':
+        "Married off to a broke, cursed Alpha. He's not what they "
+        "think.\nMeara's stepmother and half sister are cruel to her, and "
+        "they hand her over in marriage to Damian, a poor Alpha under a "
+        "curse who is raising his disabled daughter Sierra alone. With no "
+        "wolf and stuck up in the mountains, Meara struggles just to get "
+        "by, especially with Violet, a woman in the pack who wants Damian "
+        "for herself. Violet plots against her at every turn, and Meara "
+        "fights back, for the family she has now and for the wolf she "
+        "lost. But nobody has Damian right. He's no weak, cursed Alpha. "
+        "Her fated mate is the Supreme Alpha himself.",
+
+    # 11.6M    A Birthmark Exposed My Husband’s Secret
+    'a-birthmark-exposed-my-husband-s-secret':
+        "One tiny birthmark and she wants a divorce.\nVivienne and Adrian "
+        "are minutes from adopting a lovely little girl when Vivienne "
+        "sees a tiny birthmark, no bigger than a pea, on her hand. Right "
+        "there she refuses to sign and asks for a divorce. Adrian gets "
+        "down on his knees, his family calls her cruel and heartless and "
+        "mocks her for being barren, and even the little girl begs her to "
+        "stay. Nobody can understand why she would end a loving marriage "
+        "over a mark that small, and she won't tell them. Not until she "
+        "stands up at a live press conference with three reports in her "
+        "hand does the truth start coming out.",
+
+    # 11.4M    Hey Mommy! Time for a New Daddy!
+    'hey-mommy-time-for-a-new-daddy':
+        "Five years old again, with one job: protect her mom.\nTalia is "
+        "reborn at five years old, and all she cares about is keeping her "
+        "mother safe. Her charm and her hidden talents win over powerful "
+        "elders and quiet everyone who doubted her. With a tycoon for a "
+        "father, a stepfather who is even richer, and a future "
+        "billionaire husband waiting down the line, she grows up the "
+        "darling of the whole family. The littlest one in the house ends "
+        "up shining brightest.",
+
+    # 11.3M    Destroy My Silver Wolf Bloodline？I'll Marry a Top Alpha Then
+    'destroy-my-silver-wolf-bloodline-i-ll-marry-a-top-alpha-then':
+        "Six years of devotion, and on the eve of the wedding his deputy "
+        "shaved off her silver hair.\nNatalie is heir to the Warwick "
+        "silver wolf bloodline, and she can call down the moonlight to "
+        "keep her pack safe. She gives six years to Alpha Liam, and the "
+        "night before their wedding his deputy Zoe cuts off her sacred "
+        "silver hair and drugs her to drain her strength. Liam knows all "
+        "of it and lets it happen. In her despair Natalie wakes the true "
+        "mate bond she buried long ago, and it calls Nicholas, the most "
+        "powerful Alpha of them all, who has been waiting for her for "
+        "years. He brings the full weight of his clan down on the "
+        "traitors and helps her get her strength and pride back. She "
+        "leaves Liam behind, marries Nicholas, and goes from humiliated "
+        "fiancee to Luna of the Lycan Clan.",
+
+    # 11.0M    My Husband Gifted Me His Rival
+    'my-husband-gifted-me-his-rival':
+        "Every time he cheated, he gave her another man to make up for "
+        "it.\nFor three years Elena lived in a marriage where each of her "
+        "husband's affairs ended the same way, with him handing her a new "
+        "man as a kind of apology. Then his mistress gets pregnant and "
+        "wants a wedding, and Damian expects another fake divorce "
+        "followed by Elena coming back like she always does. This time "
+        "she takes the young man he picked for her, signs the papers and "
+        "leaves for good. When Damian finally learns the truth about the "
+        "betrayal that ended their marriage, she's already at another "
+        "altar, and she doesn't look back.",
+
+    # 10.7M    The Mob Boss Demands Her Perfect Genes
+    'the-mob-boss-demands-her-perfect-genes':
+        "He wants her eggs for his heir. She wants nothing to do with "
+        "him.\nChristine is an elite doctor, and mafia boss Damon has his "
+        "eye on her because her eggs are the best there are and he wants "
+        "an heir. She can't stand him, because his mob is the reason her "
+        "mother took her own life. She rushes into a wedding to get away "
+        "from him, but Damon storms the ceremony and carries her off. He "
+        "keeps her locked up in his penthouse and comes after her every "
+        "night, and every night she gives it back to him double. Slowly "
+        "she sees what's under the ice, and after someone slips her a "
+        "drug, Damon burns everything down to reach her. His twisted, "
+        "obsessive devotion is what finally breaks through, and Christine "
+        "lets the grudge go.",
+
+    # 10.4M    One Night Stand
+    'one-night-stand':
+        "One night with her boss. Now she's carrying his baby.\nEmily is "
+        "an office assistant who works hard and wants more out of life "
+        "than she has. Then she spends one passionate night with her "
+        "charming boss Richard, a one night stand that leaves her "
+        "pregnant. Nothing about her life is going to go the way she "
+        "planned.",
+
+    # 10.2M    Shh, Don't Let Him Find Out
+    'shh-don-t-let-him-find-out':
+        "The mafia godfather who saved her is her father in law.\nFor a "
+        "year Lena has been Isaac's secret wife, and she thinks he "
+        "married her for love. She has no idea she's just a pawn, there "
+        "so he can meet a family rule and get his inheritance. Then "
+        "Isaac's debts hand her over to loan sharks. One stormy night, "
+        "drugged and fighting for her life, she escapes and is rescued by "
+        "Jack Kane, the most feared mafia godfather on the West Coast and "
+        "the CEO of an empire worth billions. The man watching her with "
+        "obsessive hunger is her husband's father.",
+
+    # 10.1M    The Immortal's Return
+    'the-immortal-s-return':
+        "An unbeatable Grandmaster comes down to the mortal "
+        "world.\nArthur is a Grandmaster no one can defeat, and he steps "
+        "down into the world of mortals. He and his childhood sweetheart "
+        "fall hard for each other, while a wealthy heiress and a goddess "
+        "of martial arts fall for him too. Pulled into the brutal fight "
+        "for control of Meridian, he crushes every rival in his way on "
+        "the road to the throne at the very top.",
+
+    # 10.0M    Bride of Vengeance
+    'bride-of-vengeance':
+        "She found out about the cheating the day before the wedding. She "
+        "kept the wedding anyway.\nTalia Stone is a billionaire's "
+        "daughter with three powerful brothers, one in the military, one "
+        "in show business and one in finance. She nearly lost her legs "
+        "pulling her childhood friend Jack Chase out of an accident, and "
+        "even after top doctors saved them she stayed in a wheelchair "
+        "because her father asked her to, as a way of finding out how "
+        "Jack really felt. Then, with the wedding one day away, she "
+        "learns Jack has been sleeping with her friend Rachel. They deny "
+        "it to her face, so she plays along while planning to humiliate "
+        "them both at the ceremony. When a man named Aiden Brooks chases "
+        "down a thief and brings back her purse, she half jokingly asks "
+        "him to marry her. He says yes. The wedding is about to become a "
+        "show nobody forgets.",
+
+    # 9.9M     Dragonblood Alpha
+    'dragonblood-alpha':
+        "Abandoned as a baby for having no wolf. Raised by legends, he "
+        "woke a dragon.\nKyle was left behind as an infant because he had "
+        "no wolf spirit, and he was raised in the Beast Forest by three "
+        "Legendary Beasts. By eighteen he's a fierce fighter, and the "
+        "power of a dragon has woken inside him. Looking for his parents, "
+        "he rescues Freya, the Silvermoon Pack's princess, and goes with "
+        "her to Crimson Flame City, where he learns that Elina, a "
+        "disgraced slave abused by the two faced Alpha Alaric, is his "
+        "real mother. They've only just found each other when the "
+        "Thunderclaw Pack invades. Alaric and his cowardly heir Kent "
+        "surrender and hand Freya over to save themselves, but Kyle "
+        "stands his ground and uses his dragon and wolf blood to crush "
+        "the invaders. Behind it all the Thunderclaw Pack has joined the "
+        "Liches, an undead race set on ending the world. Against the Lich "
+        "King and his endless ghouls, with Freya's holy light and every "
+        "werewolf in the world behind him, Kyle becomes a giant silver "
+        "wolf and wins. Vodar, the ancient dragon who is his father, "
+        "wakes from his long sleep, and Kyle becomes the Crimson Flame "
+        "Pack's new Alpha with Freya at his side.",
+
+    # 8.9M     The Alpha's Broken Mate
+    'the-alpha-s-broken-mate':
+        "She went to prison for her sister. Her mate held her sister "
+        "while she lost their baby.\nHer whole family made her take the "
+        "fall for her adopted sister, and her Alpha told her seven years "
+        "would fly by. While she sat in prison and lost the baby she was "
+        "carrying, her mate was holding her sister and telling her he "
+        "loved her. When she got out she cut their soul bond herself and "
+        "went off to the war zone. Much later, full of regret, he grabbed "
+        "hold of her boots and cried out for his Luna. With her hand on "
+        "her very pregnant belly, she told him she was sorry, but the "
+        "baby was his older brother's.",
+
+    # 7.9M     Big Molly The Billionaire's Only Cure
+    'big-molly-the-billionaire-s-only-cure':
+        "The billionaire heir can't eat. Then he tries her hot "
+        "dog.\nMolly Hart and her adoptive parents run Big Molly's Hot "
+        "Dogs, a food truck. Everybody makes fun of the name, and of "
+        "Molly too, and she just makes it work for the business. Adrian "
+        "Blackwood, the heir to his family's empire, hasn't been able to "
+        "eat in days, and no doctor, private chef or nutritionist his "
+        "money can hire has been able to help. Then Charles comes home to "
+        "the estate carrying a hot dog from Molly's truck, and it's the "
+        "first thing Adrian has actually wanted to eat all week. He "
+        "starts getting better right away. Once he finds out it came from "
+        "Molly Hart's food truck, he goes looking for her. It begins as "
+        "food, money and an odd arrangement, and it turns into real love, "
+        "and neither of them can let go.",
+
+    # 7.8M     The Mafia Boss My Husband Betrayed
+    'the-mafia-boss-my-husband-betrayed':
+        "Her husband's mafia boss is hiding in her house. Her husband is "
+        "on video call.\nEmma is home alone with a crying baby and a "
+        "painful blocked milk duct while her husband is away on a mafia "
+        "job. Then Dante Vella, the boss her husband works for, breaks in "
+        "wounded, hiding from the men trying to kill him. To keep the "
+        "baby quiet she has to let him help ease her pain, and his steady "
+        "hands and how close he is stir feelings she shouldn't have. When "
+        "her husband video calls, Dante stays just out of frame and his "
+        "hand drifts lower. On the call her husband is going on about the "
+        "bounty on Dante and how he plans to collect it, and Emma "
+        "realizes the real danger isn't outside the door anymore.",
+
+    # 7.7M     The Cartel’s Contract Bride
+    'the-cartel-s-contract-bride':
+        "Sold on her wedding day to pay her fiance's gambling "
+        "debts.\nEmma is a kindergarten teacher, and on her wedding day "
+        "her fiance Kyle, buried in gambling debts, sells her to "
+        "Santiago, the man in charge of a border gang. She's forced to "
+        "sign a contract marriage for one year and becomes nanny to his "
+        "niece Sofia, who stopped speaking after losing her family. As "
+        "Emma learns to survive in his dangerous world she helps the "
+        "little girl heal, and she and Santiago slowly fall for each "
+        "other through one crisis after another. His rival Valentina, his "
+        "ambitious brother Nacho and his deadly enemy Emilio all come for "
+        "them, and Emma stops being fragile, learns to shoot to protect "
+        "herself, and fights beside Santiago to bring their enemies down. "
+        "Together they break the contract and build a real family.",
+
+    # 4.9M     GODFORGED: TEN SCRAPS OF IRON
+    'godforged-ten-scraps-of-iron':
+        "They stole his masterpiece and paid him ten scraps of rusted "
+        "iron.\nPyrrhos works the hammer at Hermon's Forge, and they call "
+        "him Emberless because the forge fire means nothing to him, and a "
+        "real smith is supposed to feel it. For a thousand nights he has "
+        "made the runeblades that bring down dragons and hydras all over "
+        "the continent. On Assessment Day the guild honors Deryk, his "
+        "senior brother, for Firstlight, a masterpiece Pyrrhos designed "
+        "and worked on for three years before someone erased his name "
+        "from the plans. When he asks for his wages and quits, his master "
+        "dumps ten rusted scraps on the anvil. Then a fine strand of pure "
+        "gold fire climbs out of the dying furnace behind him, all on its "
+        "own. With those scraps, a girl with her family's broken sword, a "
+        "back room rented from a landlord and a wartime order nobody else "
+        "will take, he builds a forge from nothing and starts proving the "
+        "guild's runes are fakes, blade by blade. That gold fire is no "
+        "accident. It comes from a bloodline reaching all the way back to "
+        "Hephaestus himself, and to a father who chose to die in his "
+        "burning workshop instead of handing over the Godslayer plans. "
+        "Delphi already has a name ready for him, but he'd rather earn "
+        "one.",
+
+    # 4.5M     Abyssal Throne：The Godslayer
+    'abyssal-throne-the-godslayer':
+        "Betrayed by the woman he loved and cast out. He came back a "
+        "Demon Lord.\nKaelen is a fallen noble, betrayed by his beloved "
+        "and driven out by humanity, and in the lightless depths of the "
+        "abyss he awakens the bloodline of the Abyssal Demon Lord. With a "
+        "cursed serpent woman at his side, he swears to tear down the "
+        "false gods and share the sun among every race. In this world "
+        "light belongs to the powerful. Human nobles bleed their own "
+        "people to power the gods' blessing and crush anyone who objects, "
+        "while demons and beast tribes are kept from the sun and hunted. "
+        "When the magic altar falls, the barrier holding the beast tribes "
+        "breaks, a flood of starving warriors, tens of thousands strong, "
+        "pours into human lands, and war swallows humans, demons, beasts "
+        "and gods alike. Kaelen has to unite his enemies and break the "
+        "gods' hold on the light.",
+
+    # 3.2M     Becoming the Heirless Dragon King's Fated Mate
+    'becoming-the-heirless-dragon-king-s-fated-mate':
+        "Sold to a violent old man, she ran into a cave and found a "
+        "dragon.\nLaura is sold off to a brutal old man and escapes into "
+        "a cave, where she forms a bond with Kyle, a silver dragon duke, "
+        "and ends up pregnant with his heir. They get married for the "
+        "baby's sake and then fall in love for real. Through rival "
+        "schemes and attempts on her life, Laura discovers she's a gifted "
+        "runemaster, has twins, starts an academy and takes her place "
+        "beside Kyle as his equal.",
+
+    # 3.1M     Five Years of Secret Love, He Married My Best Friend
+    'five-years-of-secret-love-he-married-my-best-friend':
+        "Five years as his secret. Now he's marrying her best "
+        "friend.\nHarper and Alpha Connor have been together in secret "
+        "for five years, and she's waiting for the day he goes public and "
+        "takes the wolf clan's sacred moon vow with her before the Moon "
+        "Goddess. But she finds out he's about to take that vow with "
+        "Maddie, who has been her best friend for over a decade. Connor "
+        "says it's only practical. Maddie's father is gravely ill, and "
+        "registering as her mate gets him the pack medical benefits he "
+        "needs. He begs Harper to understand, while playing the perfect "
+        "fiance in Maddie's home. All the holidays he said he was "
+        "working, he was with Maddie. Together they push Harper into "
+        "being Maddie's maid of honor, using small town gossip to keep "
+        "her quiet. On the day of the vow, Harrison of the Blackstone "
+        "Pack, Connor's biggest rival in business, crashes the ceremony "
+        "and exposes him. To protect her family from the rumors, Harper "
+        "announces in front of everyone that Harrison is her boyfriend, "
+        "and he slips straight into the role of fake boyfriend. Connor is "
+        "wrecked with regret and becomes obsessed with getting her back, "
+        "and Maddie finally admits she has always hated coming second to "
+        "Harper. Harper turns her back on both of them and walks into a "
+        "new life.",
+
+    # 2.8M     Tenth Wedding, New Groom
+    'tenth-wedding-new-groom':
+        "Jilted at her tenth wedding, and replaced by a police "
+        "dog.\nBrigid Hayes gets left at the altar at her tenth wedding, "
+        "and her fiance insults her by swapping her out for a police dog. "
+        "On the spot she marries Marco Romano, a powerful billionaire. "
+        "Her toxic ex and his scheming assistant have no idea who she's "
+        "married now, and they attack her and frame her. Marco hits back "
+        "fast, digs up their corruption and leaves them ruined in public "
+        "and in court. As the people who tormented her fall apart, Brigid "
+        "finds out Marco's devotion comes from a past they share.",
+
+    # 2.5M     The Unbreakables: Super Son Returns
+    'the-unbreakables-super-son-returns':
+        "Taken at seven. Raised by the villain who kidnapped him.\nKit "
+        "disappears at seven during a robot attack and grows up as Ash, "
+        "raised by the kidnapper Voltage. Years later Ash slips into his "
+        "own family's tryouts, where he's framed by Spark, Voltage's son "
+        "and the boy he calls brother. His birthmark almost shows, Aura's "
+        "instincts close in on the truth, and his father doesn't trust "
+        "him, until Spark scorches the mark off his skin. When Voltage "
+        "claims Ash in public the family goes to war. Ash proves whose "
+        "blood he carries and helps them get out, and at the crater his "
+        "memory comes back and he takes back the name Kit Unbreakable. "
+        "What Spark did to him is still waiting to be settled.",
+
+    # 2.2M     Run, Mommy! Daddy Is Coming!
+    'run-mommy-daddy-is-coming':
+        "Five years after one night with a CEO, their son finds his "
+        "father.\nFive years ago actress Lily and CEO Liam had a one "
+        "night stand, and since coming home she has raised their son Leo "
+        "on her own. Then Leo happens to recognize his real father, and a "
+        "DNA test proves it. Lily and Liam agree to a secret marriage and "
+        "put it in a contract. While she fights her way through show "
+        "business, dealing with rumors, rivals, the attention of movie "
+        "star Mason and the hostility of actress Lucy, Liam quietly "
+        "clears her troubles away and starts falling for her. With their "
+        "clever little boy playing matchmaker, the fake couple starts to "
+        "feel something real.",
+
+    # 2.1M     Five Winters With Her, Five Fridge Magnets for Me
+    'five-winters-with-her-five-fridge-magnets-for-me':
+        "He spent five winters in Japan with his first love. He brought "
+        "her fridge magnets.\nMaya cancels the condo she decorated by "
+        "herself and leaves her fiance Ryan. For five winters he went to "
+        "Japan with Hannah, his first love, and bought her custom "
+        "jewelry, while all Maya ever got was a fridge magnet. She starts "
+        "again somewhere new, ignoring his late apologies and the list of "
+        "47 promises he broke. He signs the papers ending it and sends "
+        "her things back, with one last magnet he picked out himself. "
+        "Maya keeps it, buys herself her favorite flowers, closes her "
+        "eyes, and stops waiting.",
+
+    # 1.6M     Eight Heirs for the Dragon King
+    'eight-heirs-for-the-dragon-king':
+        "He rejected her for her sister. His older brother didn't make "
+        "that mistake.\nIn their past life Lora's younger sister Selena "
+        "gave birth to a dragon egg, so William publicly rejects Lora and "
+        "picks Selena. They have both been reborn, and William blames "
+        "Lora for never giving him a pureblood dragon heir. It's Asher, "
+        "William's older brother, who saves her and treasures her. "
+        "Together they fight off the schemes of the royal court, and Lora "
+        "is carrying the pureblood heir William always wanted. It's "
+        "Asher's.",
+
+    # 1.5M     I Signed My Divorce Papers on the Operating Table
+    'i-signed-my-divorce-papers-on-the-operating-table':
+        "She was dying in childbirth. Her husband was outside another "
+        "woman's delivery room.\nA hard labor nearly kills her, and while "
+        "it's happening her husband is standing by for his subordinate's "
+        "widow, outside her delivery room. So she signs the divorce "
+        "papers and walks out without a second thought. Now he's the one "
+        "left with regret, and everyone around him has walked away.",
+
+    # 1.5M     Marked by the Wolf King, I Return With My Fierce Cub
+    'marked-by-the-wolf-king-i-return-with-my-fierce-cub':
+        "One full moon night with the Wolf King. She left carrying his "
+        "heir.\nOne full moon night, Werewolf King Cain can't hold "
+        "himself back and sleeps with Jenny, a human girl. She leaves "
+        "without knowing she's carrying his heir. She fights to keep the "
+        "pregnancy safe while her father ignores her, her stepmother is "
+        "cruel to her and her greedy little brother makes things worse, "
+        "and her son Sammy, half wolf and half human, is born early. To "
+        "pay the huge hospital bills she takes whatever work she can get "
+        "in the daytime and sells drinks in nightclubs after dark, "
+        "humiliated at every turn. Then, at her lowest, she meets Cain "
+        "again. Together they grow through power struggles and family "
+        "plots, protecting a love that crosses the line between their "
+        "kinds.",
+
+    # 1.5M     The Husband She Took for Granted
+    'the-husband-she-took-for-granted':
+        "He gave up science for their baby. She had an abortion for her "
+        "business partner.\nA brilliant scientist walks away from his "
+        "career to stay home with their baby, then learns his wife ended "
+        "a pregnancy so she could save her business partner. At last he "
+        "divorces her and returns to science. Now his wife, who took him "
+        "for granted all along, regrets every bit of it.",
+
+    # 1.2M     The Nether King's Bride
+    'the-nether-king-s-bride':
+        "Chosen by prophecy to bear Hades a child, or die.\nTyphon was "
+        "sealed beneath Mount Etna after he attacked Olympus, and every "
+        "six hundred years the seal weakens. With the Age of Gods ending, "
+        "Hades no longer has the power to hold it. The Prophecy Stone "
+        "says only a divine heir, a child Hades fathers with a mortal "
+        "woman who has witch blood and eyes that don't match, can make "
+        "the seal last forever. Up in the mortal world, people blame "
+        "Saintess Layra for the volcano's disasters and almost burn her "
+        "alive, until Hades saves her and takes her to the Underworld. "
+        "She is the bride the Stone has picked, and she has to give him a "
+        "child or lose her life. Bound by the Serpent Soul Pact she "
+        "fights it at first, but his care and protection slowly bring her "
+        "round. Minthe, who loves Hades, torments her out of jealousy, "
+        "and Nyx, Goddess of Night, locks her up and says a God Devouring "
+        "Curse is on her. Heartbroken, Layra tries to flee through the "
+        "Well of Reincarnation, and Hades stops her and tells her he "
+        "loves her. She falls pregnant, and he grows weaker and keeps "
+        "away from her. Then the high priest who brought her up, Alector, "
+        "tricks her into going back among mortals and seizes her, because "
+        "he has found out about her witch blood and has plans of his own.",
+
+    # 988.7K   The Last Daughter of House Vale
+    'the-last-daughter-of-house-vale':
+        "Scarred with poisoned silver by the man she came to "
+        "marry.\nSeraphina is House Vale's hidden pureblood heir, and she "
+        "comes back to honor an arranged marriage. Her fiance Damian and "
+        "his vicious foster sister humiliate her in public and scar her "
+        "with poisoned silver. What they don't know is that Damian's "
+        "family owes everything it has to Seraphina's mother, and when "
+        "she shows up she crushes them. Seraphina scars the wicked woman "
+        "right back, then locks them both into an eternal blood oath that "
+        "means they'll make each other suffer forever, until there's "
+        "nothing left of them but ash.",
+
+    # 938.7K   The Dragon King's Slave Mate
+    'the-dragon-king-s-slave-mate':
+        "His touch marked her as his mate. He hid it behind a slave "
+        "collar.\nSaria is an abused village girl when Dragon King Alarik "
+        "takes her, and his touch sets off a Mark that has never happened "
+        "before, and makes them mates. Alarik disguises the bond with a "
+        "slave collar. With Xander suspicious and Celeste scheming, Saria "
+        "lives through a slave hunt and finds out she can bend dragon "
+        "fire. Then Alarik tells her about his death curse. He has one "
+        "month to live. Xander reveals the Mark and comes after her, and "
+        "Saria turns blue fire on him and destroys him. Their first kiss "
+        "makes the bond complete, but Celeste offers to keep quiet, and "
+        "she hasn't named her price.",
+
+    # 767.2K   After My Three Alpha Childhood Sweethearts Abandoned Me, They Regretted It
+    'after-my-three-alpha-childhood-sweethearts-abandoned-me-they-regretted-it':
+        "Her three Alpha childhood sweethearts tortured her over a "
+        "lie.\nEileen is an orphan who saved the headmaster of Hatton "
+        "Academy and was adopted, and she grew up alongside three Alphas "
+        "who were her childhood sweethearts. Then Chloe frames her with "
+        "forged notes, and the three of them refuse to believe her. They "
+        "hurt her with hockey pucks, drag her behind a horse and hang her "
+        "from a flagpole. Something in her dies, and she chooses Bruno, a "
+        "fallen Alpha, instead. When the truth comes out they are crushed "
+        "by regret and sacrifice their Alpha blood so she can live. She "
+        "never looks back. She bonds with Bruno and marries him.",
+
+    # 699.8K   American Magician: The Last Encore
+    'american-magician-the-last-encore':
+        "The janitor at her failing theater might be the missing King of "
+        "Magic.\nSilas was the greatest magician in the world, a masked "
+        "vigilante known as the King of Magic, until an assassin fired at "
+        "him and the bullet killed his mentor instead. He vowed to "
+        "disappear and watch over his mentor's daughter Lyra. Now he's "
+        "hiding as the janitor at her struggling theater, quietly "
+        "guarding her and her little girl. Then her cruel ex and her "
+        "greedy uncle, along with a stream of elite magicians, come to "
+        "take everything she has, and force her into magic duels to the "
+        "death. One by one, Silas comes out of the shadows, and people "
+        "start to whisper.",
+
+    # 650.2K   At the Mercy of My Vampire Ex
+    'at-the-mercy-of-my-vampire-ex':
+        "She pushed him into the rain so he'd hate her enough to "
+        "live.\nThree years ago she threw her husband out into the rain "
+        "so he'd hate her, because hating her was what would keep him "
+        "alive. Three years later she runs into the Underground Blood "
+        "City to escape, and finds out the man who rules it is him. The "
+        "husband she supposedly killed has become a vampire godfather. He "
+        "keeps her at his side, punishes her with his hatred and ties her "
+        "to him with a blood oath, until the truth comes out. She didn't "
+        "betray him at all. Leaving was the only way to keep him alive.",
+
+    # 643.3K   My X-Ray Eyes Rule the City
+    'my-x-ray-eyes-rule-the-city':
+        "He tries to save his fiancee. She thinks he's a creep.\nLeo "
+        "Banks has X ray eyes and a special physique. When he leaves his "
+        "sect and runs into his fiancee, he tries to save her and she "
+        "takes him for a creep. Now he has to prove himself by taking "
+        "over the city, and he plans to enjoy every carefree minute of "
+        "it.",
+
+    # 618.5K   The Sun God’s Beloved
+    'the-sun-god-s-beloved':
+        "Her mother made her seduce a god for gold. She ran at dawn "
+        "carrying his child.\nKallydia, the Temple of Philotia's head "
+        "priestess, is used by her own mother for money, pushed into "
+        "seducing the Sun God Helios. A spell in the incense puts her in "
+        "his bed for one night, and by dawn she's gone, with nothing left "
+        "behind but a silver armband carrying her name. Helios had come "
+        "to care for her, but a misunderstanding convinces him she's a "
+        "social climber who plays with men, and in his anger he cuts her "
+        "off. Then Kallydia finds out she's pregnant. On her own, she "
+        "protects the faint golden light inside her through public "
+        "humiliation and her family's cruelty. When the God of War and "
+        "the Goddess of Wisdom arrive, they reveal that the gentle "
+        "maidservant they remember and the woman Helios called bad are "
+        "the same person. By the time Helios gets to her, she has been "
+        "tortured and thrown into a pit of snakes, and as she dies, her "
+        "only plea to the gods is to keep her child safe.",
+
+    # 548.9K   Agent Badboy
+    'agent-badboy':
+        "An FBI agent goes undercover as the dead mafia boss who shares "
+        "his face.\nTop FBI agent Buddy is the double of Barton, the late "
+        "head of the Logut mafia family, so he steps into Barton's life "
+        "to bring the family's arms smuggling to light. Inside, he has to "
+        "survive Luca trying to seize power and Susanna, Barton's "
+        "stepmother, probing him, and the crescent birthmark he shares "
+        "with Barton keeps him from being found out. He falls in love "
+        "with Elise, Barton's wife, earns the trust of the bodyguard "
+        "Haruko and takes control of the San Francisco docks. Once he has "
+        "the evidence, he plans one last raid with FBI Deputy Director "
+        "Helena. What they don't know is that Burke, the FBI Director, "
+        "has been working for the mafia all along. He and the Raine "
+        "family set a trap and Helena is shot. Buddy kills Burke and "
+        "Carlos in the fight, and as he dies Burke reveals that Buddy and "
+        "Barton are twins, stolen as babies and raised to be the mafia's "
+        "man inside the FBI. Now caught between two families, Buddy "
+        "chooses Elise, Susanna and Haruko, while Helena, thought dead, "
+        "moves her fingers.",
+
+    # 479.8K   Dream On
+    'dream-on':
+        "Hollywood's biggest star wants her as his fake girlfriend. He's "
+        "also her ex.\nLexington Hall is the biggest movie star around, "
+        "and when he wants Stevie as his fake girlfriend it ought to be "
+        "her Hollywood dream coming true. Except he's the ex who broke "
+        "her heart. Is this the dream, or her worst nightmare?",
+
+    # 405.9K   Her Dream of Marrying Rich Turned Deadly
+    'her-dream-of-marrying-rich-turned-deadly':
+        "She wanted to marry into the family. She destroyed the kidney "
+        "that could save its patriarch.\nDr Miles Hill is flying a kidney "
+        "to the Zeller family, the transplant that is the patriarch's "
+        "only hope, when Jane and her mother wreck the delivery and the "
+        "organ is destroyed. Without it the head of the Zeller family has "
+        "no chance of surviving. Jane had been hoping to marry into their "
+        "money, and her plan blows up in her face, taking every hope of "
+        "wealth and status with it overnight.",
+}
+
+SOURCES = {  # kind -> caption_pipeline.SOURCE_KINDS
+}
+
+FACTS = {  # the published synopsis each caption was written from
+    'dont-mess-with-my-lethal-fiancee':
+        "Scarlett disappears after a one-night stand with wealthy heir "
+        "Landon while she is on the run. Later, entrusted by her mentor, "
+        "she returns as his grandson’s fiancée to help him become a "
+        "qualified heir. What she never expected was that the man she is "
+        "supposed to manage is actually Landon. Landon does not recognize "
+        "that his fiancée is the mysterious woman from that unforgettable "
+        "night. Instead, because he resents his grandmother’s "
+        "arrangement, he treats Scarlett with hostility. In this life "
+        "together under a mistaken identity, their relationship is caught "
+        "between rejection and attraction, constantly pulling them closer "
+        "while they struggle against each other.",
+    'the-alpha-rejected-me-but-the-dragon-king-claimed-me':
+        "On her wedding day, Selene was framed, rejected by the Alpha "
+        "King, stripped of her crest, and exiled by her own mother. "
+        "Everyone believed the cursed silver-eyed girl had disappeared "
+        "forever. Fifteen years later, she returns as the Empress of the "
+        "Sacred Dominion, ruling the continent’s richest crystal mines "
+        "from a dragonbone throne. But when her adopted son brings home "
+        "the daughter of the woman who stole her life, Selene refuses to "
+        "forgive. Old enemies gather, buried lies surface, and one by "
+        "one, those who betrayed her discover that the girl they "
+        "destroyed has become the queen they must fear.",
+    'married-off-to-the-cursed-alpha-daddy':
+        "Meara's cruel stepmother and half sister marry her off to "
+        "Damian, a poor, cursed Alpha and single father to his disabled "
+        "daughter, Sierra. Wolfless and trapped in the mountains, Meara "
+        "struggles to survive—especially with Violet, the pack woman "
+        "determined to have Damian for herself. As Violet plots to "
+        "destroy her, Meara fights to protect her new family and reclaim "
+        "her wolf. But Damian isn't the weak, cursed Alpha everyone "
+        "believes him to be... He is the Supreme Alpha, and her fated "
+        "mate.",
+    'a-birthmark-exposed-my-husband-s-secret':
+        "Vivienne and Adrian are moments away from adopting a sweet "
+        "little girl when Vivienne notices a pea-sized birthmark on the "
+        "child's hand. She immediately refuses to sign and demands a "
+        "divorce. Adrian kneels. His family calls her cruel, barren, and "
+        "heartless. Even the child begs her not to leave. No one "
+        "understands why Vivienne would destroy a loving marriage over "
+        "such a tiny mark, and she refuses to explain. Not until Vivienne "
+        "unveils three reports at a live press conference does the truth "
+        "behind that tiny birthmark finally begin to surface.",
+    'hey-mommy-time-for-a-new-daddy':
+        "Reborn as a five-year-old, Talia only wants to protect her "
+        "mother. But her charm and secret talents soon win over powerful "
+        "elders and silence the doubters. With a tycoon father, an even "
+        "richer stepfather, and a future billionaire husband, she grows "
+        "up as the family's darling, proving that even the smallest star "
+        "can shine the brightest.",
+    'destroy-my-silver-wolf-bloodline-i-ll-marry-a-top-alpha-then':
+        "Destroy My Silver Wolf Bloodline? I Marry the Top Alpha Instead "
+        "is a thrilling, dark werewolf romance about ultimate revenge and "
+        "transformation. Natalie, heir to the powerful Warwick silver "
+        "wolf bloodline, carries the gift to call upon moonlight and "
+        "protect her pack. She devotes six years to Alpha Liam, only to "
+        "face brutal betrayal on the eve of their wedding. Zoe, Liam’s "
+        "deputy, deliberately shaves off her sacred silver hair—the "
+        "symbol of her legacy—and drugs her to weaken her power. Liam "
+        "knows everything but chooses to condone, trampling her love and "
+        "dignity. In despair, Natalie awakens her long-buried True Mate "
+        "bond, summoning Nicholas, the most supreme Alpha. Nicholas has "
+        "waited patiently for years and rises to defend her with "
+        "overwhelming power. He punishes the betrayers through clan and "
+        "alliance authority, helping Natalie regain her strength and "
+        "pride. Finally, she breaks free from the toxic love and marries "
+        "Nicholas, rising from a humiliated fiancée to the revered Luna "
+        "of the Lycan Clan. It is a dark epic of blood, loyalty, and true "
+        "love, celebrating a glorious rebirth from ruin.",
+    'my-husband-gifted-me-his-rival':
+        "For three years, Elena endured a marriage where every affair "
+        "ended the same way—her husband handed her another man as "
+        "compensation. When his pregnant mistress demanded a wedding, he "
+        "expected another fake divorce and another obedient return. "
+        "Instead, Elena accepted the young man he chose, signed the "
+        "papers, and walked away for good. By the time Damian uncovered "
+        "the truth behind the betrayal that destroyed their marriage, she "
+        "was already standing at another altar. This time, the bride "
+        "never looked back.",
+    'the-mob-boss-demands-her-perfect-genes':
+        "Elite doc Christine catches mafia boss Damon's eye—her eggs are "
+        "top-tier, and he wants his heir. She hates his guts: same mob "
+        "that drove her mom to suicide. She rushes a wedding to escape, "
+        "but Damon crashes the ceremony and snatches her. Locked in his "
+        "penthouse, he comes at her hard every night; she fights back "
+        "twice as hard. But slowly she sees past the ice—when someone "
+        "drugs her, Damon burns it all down to save her. That twisted, "
+        "obsessed devotion cracks her open. Christine drops the grudge. "
+        "They end up together, damaged but locked in.",
+    'one-night-stand':
+        "In the heart of a bustling city, we meet Emily, a dedicated and "
+        "hardworking office assistant striving for a better life. When a "
+        "passionate one-night stand with her charismatic boss, Richard, "
+        "leads to an unexpected pregnancy, her world takes an unexpected "
+        "turn...",
+    'shh-don-t-let-him-find-out':
+        "Lena has been secretly married to Isaac for a year. She believes "
+        "they married for love, never realizing she is nothing more than "
+        "a pawn he uses to satisfy a family rule and qualify for the "
+        "inheritance. Her false sense of peace shatters when Isaac's debt "
+        "puts her in the hands of loan sharks. On a stormy night, a "
+        "drugged Lena fights for her life and escapes, only to be rescued "
+        "by Jack Kane, the West Coast's most ruthless mafia godfather and "
+        "the CEO of a multibillion-dollar empire. The man looking at her "
+        "with obsessive hunger is also her father-in-law.",
+    'the-immortal-s-return':
+        "Invincible Grandmaster Arthur descends into the mortal world. He "
+        "sparks a fiery romance with his childhood sweetheart while "
+        "captivating a martial arts goddess and a wealthy heiress. Thrust "
+        "into Meridian's brutal war for supremacy, Arthur ruthlessly "
+        "crushes every rival, sweeping aside all obstacles to claim his "
+        "throne at the absolute peak.",
+    'bride-of-vengeance':
+        "Talia Stone comes from a wealthy family. Her dad is a "
+        "billionaire and her three brothers are bigwigs in the military, "
+        "showbiz and finance world. She saved her childhood friend Jack "
+        "Chase in an accident and almost lost her legs. Talia's legs were "
+        "saved by top doctors in the field, but she remained in a "
+        "wheelchair at her dad's request, as a test for Jack's feelings. "
+        "The day before their wedding, Talia found out Jack was cheating "
+        "with her friend Rachel. Enraged by the pair's brazen denial, "
+        "Talia pretended to turn the other cheek while setting up a plan "
+        "to humiliate them at the wedding. She then met Aiden Brooks who "
+        "got her purse back from a thief and asked him half-jokingly to "
+        "marry her. To her surprise, Aiden said yes. The next day, "
+        "Talia's supposed wedding turned into a big stage for drama.",
+    'dragonblood-alpha':
+        "In Dragonblood Alpha movie, abandoned as an infant for lacking a "
+        "\"wolf spirit,\" Kyle is raised by three Legendary Beasts in the "
+        "Beast Forest. Eighteen years later, he has not only grown into a "
+        "fierce fighter but also awakened the hidden power of a dragon "
+        "within him. Seeking his parents, Kyle rescues Freya, the "
+        "Princess of the Silvermoon Pack, and follows her to the Crimson "
+        "Flame City. There, he discovers that Elina, a disgraced slave "
+        "tormented by the pack's hypocritical Alpha, Alaric, is actually "
+        "his birth mother. Just as they reunite, the Thunderclaw Pack "
+        "launches a devastating invasion. While Alaric and the cowardly "
+        "heir Kent surrender and betray Freya to save themselves, Kyle "
+        "steps forward, unleashing his dragon-wolf bloodline to crush the "
+        "invaders. However, a darker conspiracy emerges: the Thunderclaw "
+        "Pack has allied with the Liches, an evil undead race bent on "
+        "destroying the world. Facing the terrifying Lich King and an "
+        "endless army of ghouls, Kyle is empowered by Freya's holy light "
+        "and the united strength of every werewolf worldwide. "
+        "Transforming into a colossal silver wolf, Kyle defeats the Lich "
+        "King and saves the realm. In the end, his father, the ancient "
+        "dragon Vodar, awakens from his slumber, reuniting their family. "
+        "Kyle claims his rightful place as the new Alpha of the Crimson "
+        "Flame Pack and finds true love with Freya.",
+    'the-alpha-s-broken-mate':
+        "In The Alpha's Broken Mate movie, my entire family forced me to "
+        "take the blame for my adopted sister, and my Alpha told me, "
+        "\"Seven years will pass in no time\". While I was in prison for "
+        "her, losing the child in my womb, my Alpha mate was holding her "
+        "in his arms and saying, \"I love you\". After I was released, I "
+        "severed our soul bond with my own hands and left for the war "
+        "zone. Later, filled with regret, he clutched my boots and cried, "
+        "\"My Luna\". I touched my heavily pregnant belly and said, "
+        "\"Sorry, but I'm already carrying your older brother's child\".",
+    'big-molly-the-billionaire-s-only-cure':
+        "Molly Hart runs a street food truck called Big Molly’s Hot Dogs "
+        "with her adoptive parents. People love to joke about the "
+        "name—and about Molly herself—but she never lets it get to her. "
+        "If anything, she turns it into part of the brand. Meanwhile, "
+        "Adrian Blackwood, heir to the Blackwood empire, has gone days "
+        "without being able to eat. The best doctors, private chefs, and "
+        "nutritionists money can buy have all failed to help him. Then "
+        "Charles brings one of Molly’s hot dogs back to the estate. What "
+        "was meant to be a simple meal unexpectedly catches Adrian’s "
+        "attention. For the first time in days, he willingly takes a "
+        "bite—and his condition immediately begins to improve. The moment "
+        "Adrian learns the hot dog came from a food-truck girl named "
+        "Molly Hart, he sets out to find her. Neither of them expects "
+        "that a relationship beginning with food, money, and a very "
+        "unusual arrangement will eventually turn into something neither "
+        "can walk away from: real dependence, real desire, and real love.",
+    'the-mafia-boss-my-husband-betrayed':
+        "Emma is alone after her husband leaves on a mafia mission, "
+        "trapped by a painful blocked milk duct and a crying baby. Then "
+        "Dante Vella, her husband’s wounded mafia boss, breaks into her "
+        "home, hiding from killers outside. To keep the baby quiet, Emma "
+        "has no choice but to let him help relieve her most private pain. "
+        "But his steady hands and dangerous closeness awaken feelings she "
+        "should never have. When her husband suddenly video-calls, Dante "
+        "stays just outside the frame, his hand moving from the ache he "
+        "was supposed to soothe toward the shadow beneath her skirt. As "
+        "her husband talks about hunting Dante for a bounty, Emma "
+        "realizes the real danger is no longer outside the door.",
+    'the-cartel-s-contract-bride':
+        "On her wedding day, kindergarten teacher Emma was sold by her "
+        "fiancé Kyle, who was tangled in gambling debts, to the border "
+        "group leader Santiago. She was forced to sign a one-year "
+        "contract marriage and also became the nanny for his niece Sofia, "
+        "who had developed aphasia after losing her family. While "
+        "adapting to the dangerous world of the group, Emma helps heal "
+        "the girl, and they gradually develop genuine feelings amidst "
+        "numerous crises. Facing attacks from rival Valentina, ambitious "
+        "brother Nacho, and deadly enemy Emilio, Emma sheds her frailty, "
+        "learns to use a gun for self-protection, and together with "
+        "Santiago, crushes their enemies' schemes, breaks the contract's "
+        "chains, finds true love, and builds a complete family",
+    'godforged-ten-scraps-of-iron':
+        "Pyrrhos is the hammer-hand at Hermon's Forge — a nobody they "
+        "call Emberless, because he can't feel forge fire the way a real "
+        "smith should. He's spent a thousand nights making the runeblades "
+        "that kill dragons and hydras across the continent. On Assessment "
+        "Day, he watches the guild crown his senior brother Deryk for a "
+        "masterpiece called Firstlight: Pyrrhos's design, his three years "
+        "of work, his signature scraped off the plans. When he demands "
+        "his wages and walks, his master upends a sack on the anvil — ten "
+        "rusted scraps. Then, in the dying furnace behind him, a thread "
+        "of pure gold flame rises on its own. Ten scraps is his starting "
+        "stake. With a girl carrying a broken family sword, a landlord's "
+        "back room, and a wartime order no one else will fill, he builds "
+        "a forge out of nothing and starts scraping the paint off the "
+        "guild's fake runes one blade at a time. But the fire in his "
+        "hands isn't luck. It answers to a bloodline that traces back to "
+        "Hephaestus himself, to a father who burned with his workshop "
+        "rather than surrender the plans for the Godslayer, and to an "
+        "order of ashes still hunting the seven fragments he scattered. "
+        "Delphi has a name waiting for him. He'd rather earn one.",
+    'abyssal-throne-the-godslayer':
+        "Kaelen, a fallen noble, is betrayed by his beloved and exiled by "
+        "humanity—only to awaken the Abyssal Demon Lord's supreme "
+        "bloodline in the lightless abyss. He rises with a cursed "
+        "serpent-woman by his side, vowing to tear down the hypocritical "
+        "gods and divide the sun among all races. In this world, light is "
+        "a weapon of the powerful. Human nobles drain their own kind's "
+        "blood to fuel \"divine sanction\" and oppress dissenters. The "
+        "demons and beast tribes are the true victims—starved of sunlight "
+        "and hunted. The protagonist's struggle is a war against class "
+        "oppression. When the magic altar is destroyed, an energy tsunami "
+        "shatters the barrier confining the beast tribes. Tens of "
+        "thousands of starving warriors surge into human "
+        "territory—igniting a colossal war that engulfs humans, demons, "
+        "beasts, and gods. Kaelen must unite enemies, break the gods' "
+        "monopoly on light, and reshape the world.",
+    'becoming-the-heirless-dragon-king-s-fated-mate':
+        "Laura, sold to a violent old man, escapes into a cave and bonds "
+        "with silver dragon duke Kyle—becoming pregnant with his heir. "
+        "They marry for the child, then fall in love. Despite rival "
+        "schemes and assassination attempts, Laura discovers runemaster "
+        "talent, gives birth to twins, founds an academy, and stands "
+        "equal beside Kyle.",
+    'five-years-of-secret-love-he-married-my-best-friend':
+        "Harper has been in a secret romantic relationship with Alpha "
+        "Connor for five long years. She waits patiently, hoping her "
+        "lover will make their bond public and stand with her under the "
+        "Moon Goddess for a sacred wolf‑clan moon‑vow ceremony. Instead, "
+        "she discovers Connor is about to hold this very ritual with "
+        "Maddie — her best friend of more than ten years. Connor claims "
+        "registering as Maddie's official mate and going through the vow "
+        "ceremony is only a practical measure. Maddie's father is "
+        "critically ill and requires the spousal‑level pack medical "
+        "benefits to afford his treatment. He begs Harper for "
+        "understanding, yet he comfortably plays the perfect fiancé in "
+        "Maddie's household. All those times he turned down Harper's "
+        "invitations to go home for holidays under the excuse of work, he "
+        "was actually staying by Maddie's side. To make the farce "
+        "complete, Connor and Maddie pressure Harper into working as "
+        "Maddie's maid of honor. They weaponize small‑town gossip and "
+        "community reputation, forcing her to swallow five years of "
+        "devotion and heartbreak for the sake of their dignified "
+        "ceremony. On the day of the moon‑vow, Harrison, Connor's fierce "
+        "business rival from the Blackstone Pack, crashes the event and "
+        "exposes Connor's hypocrisy. To shield her family from vicious "
+        "local rumors, Harper makes a desperate public lie: she announces "
+        "Harrison is her boyfriend. Harrison quickly plays along and "
+        "slips into the fake‑boyfriend role. Plunged into regret after "
+        "losing Harper, Connor spirals into obsessive pursuit, desperate "
+        "to annul his mate record with Maddie and win her back. Maddie, "
+        "in turn, pours out years of pent‑up jealousy, confessing how she "
+        "has always resented living in Harper's shadow. With her "
+        "five‑year secret romance shattered beyond repair, Harper turns "
+        "her back on her self‑delusional ex‑lover and her treacherous "
+        "best friend. She refuses to compromise for a broken "
+        "relationship, reclaims her self‑respect, and steps forward "
+        "toward a new life.",
+    'tenth-wedding-new-groom':
+        "Abandoned at her tenth wedding—and insultingly replaced by a K-9 "
+        "dog—Brigid Hayes marries powerful billionaire Marco Romano on "
+        "the spot. Ignorant of her new status, her toxic ex-fiancé and "
+        "his scheming assistant physically attack and frame her. Marco "
+        "swiftly retaliates, uncovering their official corruption and "
+        "bringing them to complete public and legal ruin. As her "
+        "tormentors crumble, Brigid discovers Marco's devotion stems from "
+        "a deep, shared past.",
+    'the-unbreakables-super-son-returns':
+        "Kit vanishes at age seven in a robot attack, raised by kidnapper "
+        "Voltage as \"Ash.\" Later, Ash infiltrates his family's tryouts, "
+        "framed by brother Spark, Voltage's son. His birthmark nearly "
+        "surfaces, Aura's intuition circles, and their father doubts him, "
+        "until Spark burns the mark away. When Voltage publicly claims "
+        "Ash, the family erupts into war. Ash proves his bloodline and "
+        "helps them escape. He regains his memory at the crater, reclaims "
+        "the name Kit Unbreakable, Spark's betrayal unresolved.",
+    'run-mommy-daddy-is-coming':
+        "Actress Lily had a one‑night stand with CEO Liam five years ago "
+        "and returned home raising their son Leo alone. Leo accidentally "
+        "recognizes his biological father, and a DNA test confirms their "
+        "blood ties. The two sign a contract for a secret marriage. As "
+        "Lily struggles in show business, she faces rumors and rivals’ "
+        "harassment. She also deals with the pursuit of movie star Mason "
+        "and hostility from actress Lucy. Quietly resolving troubles for "
+        "her, Liam gradually falls for her and chases her heart. With the "
+        "clever little son playing matchmaker, this fake couple slowly "
+        "develops genuine feelings for each other.",
+    'five-winters-with-her-five-fridge-magnets-for-me':
+        "After canceling the condo she decorated alone, Maya leaves her "
+        "fiancé Ryan—who spent five winters in Japan with his first love "
+        "Hannah, gifting her custom jewelry while bringing Maya only "
+        "fridge magnets. She moves to a new city, starts over, and "
+        "ignores his belated apologies and list of 47 broken promises. He "
+        "signs the dissolution agreement and sends back her belongings, "
+        "along with one last magnet he chose himself. Maya keeps the "
+        "magnet, buys her favorite flowers, and closes her eyes—no longer "
+        "waiting.",
+    'eight-heirs-for-the-dragon-king':
+        "William publicly rejects Lora for her younger sister Selena, who "
+        "bore a dragon egg in their previous life. Both reborn, William "
+        "blames Lora for failing to produce a pureblood dragon heir. His "
+        "older brother Asher saves and cherishes her. Together, they "
+        "fight royal schemes—while she carries Asher’s pureblood dragon "
+        "heir.",
+    'i-signed-my-divorce-papers-on-the-operating-table':
+        "I was dying from a difficult childbirth, yet my husband stayed "
+        "outside the delivery room of his subordinate’s widow. I signed "
+        "the divorce papers and left without hesitation. He was filled "
+        "with deep regret and ended up abandoned by everyone around him.",
+    'marked-by-the-wolf-king-i-return-with-my-fierce-cub':
+        "On the night of a full moon, the Werewolf King Cain loses "
+        "control and has a sexual encounter with a human girl named "
+        "Jenny; she subsequently leaves, unaware that she is carrying the "
+        "Wolf King's heir. She struggles to protect her pregnancy while "
+        "enduring abuse from her cold-hearted father, cruel stepmother, "
+        "and greedy younger brother, eventually giving birth prematurely "
+        "to a half-breed son, Sammy. To cover exorbitant medical bills, "
+        "she works odd jobs by day and sells alcohol in nightclubs by "
+        "night, suffering endless humiliation. Amidst this desperate "
+        "situation, she reunites with the child's father, Cain. Together, "
+        "they mature through power struggles and family conspiracies, "
+        "safeguarding a love that transcends the boundaries between their "
+        "species.",
+    'the-husband-she-took-for-granted':
+        "A gifted scientist gave up his career to be a stay-at-home "
+        "husband and dad for his baby, only to find out his wife had an "
+        "abortion to save her business partner. He finally files for "
+        "divorce, and returns to science. His wife who's taken him for "
+        "granted now regrets it all.",
+    'the-nether-king-s-bride':
+        "Typhon attacks Olympus and is sealed beneath Mount Etna, but the "
+        "seal weakens every 600 years. As the Age of Gods ends, Hades "
+        "lacks power to reinforce it. The Prophecy Stone reveals that a "
+        "divine heir—born of Hades and a mortal woman with witch blood "
+        "and different-colored eyes—can permanently strengthen the seal. "
+        "In the mortal world, Saintess Layra is blamed for volcanic "
+        "disasters and nearly burned alive. Hades saves her, taking her "
+        "to the Underworld. The Prophecy Stone has chosen her as his "
+        "bride: she must bear his child or die. Bound by the Serpent Soul "
+        "Pact, Layra resists at first, but Hades’ care and protection win "
+        "her over. They consummate their marriage. Jealous Minthe, who "
+        "loves Hades, torments Layra. Nyx, the Goddess of Night, "
+        "imprisons her and claims Layra carries a God-Devouring Curse. "
+        "Heartbroken and misled, Layra tries to escape through the Well "
+        "of Reincarnation, but Hades saves her, confessing his love. They "
+        "grow deeply in love, and Layra becomes pregnant. Hades weakens, "
+        "avoiding her. Then Alector, the high priest who raised her, "
+        "lures Layra back to the mortal world and captures her—he has "
+        "discovered her witch blood and has his own plans.",
+    'the-last-daughter-of-house-vale':
+        "Seraphina, the hidden pureblood heir of House Vale, returns to "
+        "fulfill an arranged marriage, only to be publicly humiliated and "
+        "scarred with poisoned silver by her fiancé Damian and his vile "
+        "foster sister. Unbeknownst to them, Damian’s family owes their "
+        "entire empire to Seraphina’s mother, who arrives with crushing "
+        "dominance. Scarring the wicked woman in return, Seraphina forces "
+        "the toxic pair into an unbreakable, eternal blood oath—dooming "
+        "them to torment each other until they turn to ash.",
+    'the-dragon-king-s-slave-mate':
+        "Saria, an abused village girl, is seized by Dragon King Alarik, "
+        "whose touch triggers an unprecedented Mark binding them as "
+        "mates. Alarik hides their bond behind a slave collar. Amid "
+        "Xander's suspicion and Celeste's schemes, Saria survives a slave "
+        "hunt and discovers she can bend dragon fire. Alarik reveals his "
+        "death curse: one month to live. Xander exposes the Mark and "
+        "attacks; Saria channels blue fire to destroy him. Their first "
+        "kiss seals the bond, but Celeste offers silence at an unnamed "
+        "cost.",
+    'after-my-three-alpha-childhood-sweethearts-abandoned-me-they-regretted-it':
+        "Orphan Eileen saved Hatton Academy's headmaster and was adopted, "
+        "growing up with three Alpha childhood sweethearts. Chloe framed "
+        "her with forged notes; the three men refused to believe her, "
+        "torturing her with hockey pucks, dragging her behind a horse, "
+        "and hanging her from a flagpole. Her heart died, and she chose "
+        "Bruno, a fallen Alpha. When the truth came out, the three "
+        "regretted deeply and gave up their Alpha blood to save her—but "
+        "she never looked back, bonding with Bruno and marrying him.",
+    'american-magician-the-last-encore':
+        "Silas was the world's greatest magician—a masked vigilante "
+        "called the \"King of Magic.\" When an assassin's bullet meant "
+        "for him killed his mentor, Silas vowed to vanish and protect the "
+        "man's daughter, Lyra. Now hiding as a janitor at Lyra's failing "
+        "theater, he silently guards her and her little girl. But her "
+        "vicious ex, her greedy uncle, and a parade of elite magicians "
+        "descend to seize everything—forcing her into deadly magic duels "
+        "where losing means death. One by one, Silas steps from the "
+        "shadows. Whispers spread: could this lowly janitor be the "
+        "missing King of Magic himself?",
+    'at-the-mercy-of-my-vampire-ex':
+        "Three years ago, she pushed her husband into the rain, making "
+        "him hate her enough to survive. Three years later, she escapes "
+        "into the Underground Blood City, only to find its ruler is "
+        "him—the man she \"killed\" is now a vampire godfather. He traps "
+        "her by his side, punishing her with hatred, binding her with a "
+        "blood oath, until he discovers the truth: she never betrayed "
+        "him. She left to save his life.",
+    'my-x-ray-eyes-rule-the-city':
+        "Leo Banks got a special physique and X-ray eyes. After leaving "
+        "his sect, he runs into his fiancée and tries to save her, only "
+        "to be mistaken for a creep. To prove himself, Leo now has to "
+        "dominate the city and live a carefree life.",
+    'the-sun-god-s-beloved':
+        "Kallydia, head priestess of the Temple of Philotia, is exploited "
+        "by her mother—forced to seduce the Sun God Helios for gold "
+        "coins. An enchanted incense leads to a night with him. She flees "
+        "at dawn, leaving only a silver armband engraved with her name. "
+        "Helios had grown fond of her—but after a misunderstanding, he "
+        "believes she's just a social climber who toys with men. Enraged, "
+        "he cuts all contact. Kallydia discovers she's pregnant. Alone, "
+        "she guards the faint golden light in her womb through public "
+        "humiliation and family oppression. The God of War and Goddess of "
+        "Wisdom arrive, revealing the truth: the gentle maidservant they "
+        "remember is the \"bad woman\" Helios spoke of. By the time "
+        "Helios reaches her, Kallydia has been tortured bloody and cast "
+        "into a pit of serpents. With her last breath, she begs the gods "
+        "to protect her child.",
+    'agent-badboy':
+        "In AGENT BADBOY movie, top FBI agent Buddy looks exactly like "
+        "Barton, the deceased patriarch of the Logut mafia family. He "
+        "goes undercover as Barton to expose the family’s arms smuggling. "
+        "Inside, he survives power grabs from Luca, probes from Barton’s "
+        "stepmother Susanna, and uses their shared crescent birthmark to "
+        "avoid exposure. He falls for Barton’s wife Elise, wins over "
+        "bodyguard Haruko, and secures the San Francisco docks. With "
+        "evidence in hand, he and FBI Deputy Director Helena plan a final "
+        "raid—but FBI Director Burke is the mafia’s deepest mole. He and "
+        "the Raine family spring a trap; Helena is shot. In the battle, "
+        "Buddy kills Burke and Carlos. Dying, Burke reveals Buddy and "
+        "Barton are twin brothers—stolen as infants and groomed to be a "
+        "mafia mole inside the FBI. Torn between two bloodlines, Buddy "
+        "stands with Elise, Susanna, and Haruko—as Helena, presumed dead, "
+        "twitches her fingers. Cliffhanger.",
+    'dream-on':
+        "When Lexington Hall, the biggest movie star, asks Stevie to be "
+        "his fake girlfriend, it should have been her Hollywood dream "
+        "come true. The problem? He's the ex who left her broken-hearted. "
+        "Is this a dream, or her worst nightmare?",
+    'her-dream-of-marrying-rich-turned-deadly':
+        "Dr. Miles Hill is flying with a life-saving kidney for the "
+        "Zeller family when Jane and her mother sabotage the delivery, "
+        "destroying the precious organ. Without the transplant, the "
+        "Zeller patriarch loses his only chance at survival. Jane had "
+        "dreamed of marrying into the wealthy Zeller family, but her "
+        "scheme backfires, shattering her hopes of wealth and status "
+        "overnight.",
+}
