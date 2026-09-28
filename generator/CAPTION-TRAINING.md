@@ -444,11 +444,33 @@ What she changed, all fitting existing classes (training landed):
   "and charming Jack is a scumbag after all" -> "and turns out Jack is a scumbag
   after all"; "spend forever with one of them" -> "spend forever with her chosen".
 - She put back a source hook I had dodged to pass lift_check: "who wouldn't want
-  a God of Wealth" (the platform said "a walking god of wealth"). One instance, so
-  taste on the day, not yet a rule. Watch for a second: a short, genre-flavored
-  hook phrase may be worth keeping even when the lift check would flag it.
+  a God of Wealth" (the platform said "a walking god of wealth"). One instance,
+  but she made it a rule the same day (28 Sep): "genre flavored hook phrases
+  should be kept". Now in the skill under the audience's vocabulary. Keep the
+  label (God of Wealth, Supreme Alpha, King of Magic), rewrite the clause around it.
 - She generalized "triplets" to "pregnancy" as the closing surprise, keeping the
   twist rather than spending it.
 
 Mechanical fix listed back to her: comma after "after all" and a question mark
 on "who wouldn't want a God of Wealth?".
+
+## lift_check WAS BLIND FOR ANY BATCH WITHOUT '# FACTS:' COMMENTS (found 28 Sep 2026)
+
+lift_check.py read its sources ONLY from '# FACTS:' comments in the batch file
+and silently skipped every caption without them, printing "0 of N" as if it had
+checked. The new-34 (20 Sep) and new-69 (27 Sep) batches had no such comments,
+so both were reported clean and went live. Rerun against the ReelShort book each
+page links to, at 6 words, with name-only runs filtered out: new-69 50 of 69,
+new-34 31 of 34 carry real platform phrasing. Fixed: it now falls back to the
+batch FACTS dict, then the page's linked ReelShort book, then load_facts(), and
+names every caption it still could not check (exit 1).
+
+The same rerun flags older batches too (fleshout 137 of 174 on the same filter,
+b4 48 of 129), which contradicts the "0" recorded for fleshout above. Those were
+likely checked against a different source text than today's scrape holds, so
+the older numbers need reading hit by hit before anyone trusts either figure.
+
+Also found the same day: two ReelShort books can share a slug, and load_facts()
+keys by slug, so the newer book's synopsis wins. mom-love-me-again's caption
+was written from the wrong show and went live. Write from the book the page
+LINKS to (availability.csv direct_link), not from the slug.

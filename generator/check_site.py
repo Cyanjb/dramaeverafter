@@ -375,7 +375,7 @@ print("== rails ==")
 # functionality". The arrows are PROGRESSIVE ENHANCEMENT: built in script, never
 # shipped as markup, so a reader with no JavaScript gets the plain scroll rail
 # instead of dead buttons. Three things have to stay true or that promise breaks.
-_rail_pages = [f for f in ("index.html", "titles/clubhouse-of-desire.html") if os.path.exists(f)]
+_rail_pages = [f for f in ("index.html", "titles/clubhouse-of-desire.html") if os.path.exists(os.path.join(ROOT, f))]
 # "rail-nav" appears on every page as SCRIPT TEXT, so the shipped-markup test
 # has to look for the attribute form specifically, not the bare string.
 _no_js = [f for f in _rail_pages if 'class="rail"' in rd(f)]
