@@ -67,8 +67,9 @@ Two detectors, because they catch different things:
 - **`scripts/lift_check.py`** catches what the ratio misses: a single distinctive
   phrase taken verbatim barely moves a whole-body ratio, but it is exactly what
   Google reads as duplicate and what Cyan reads as "you just changed some
-  words". Run it and read every hit. Keep names, and keep genre terms the
-  audience browses by. Rewrite everything else.
+  words". Run it and read every hit. Keep names, keep genre terms the
+  audience browses by, and keep genre-flavored hook phrases (below). Rewrite
+  everything else.
 
 ```bash
 python3 .claude/skills/dea-captions/scripts/lift_check.py <batch.py> --n 6
@@ -115,6 +116,14 @@ The corpus has the pairs; these are the headlines.
   sentence around it. And the rule points at you, not at her, so a caption she
   wrote is exempt (declare `HER_OWN` in the batch) because choosing not to use a
   word the source used is an editorial call, not a paraphrase.
+- **Keep genre-flavored hook phrases.** Cyan, 28 Sep 2026: "genre flavored hook
+  phrases should be kept". These are the short, named labels a show sells
+  itself on: God of Wealth, Supreme Alpha, King of Magic, Sacred Daughter, true
+  Luna, Dragon King. She put "who wouldn't want a God of Wealth" back after a
+  draft dodged it to pass lift_check. So a lift_check hit that is one of these
+  labels is not a lift: keep it. The boundary is the label, not the sentence
+  around it. "A walking god of wealth" keeps "God of Wealth"; a whole borrowed
+  clause is still a copy and still gets rewritten.
 - **Contractions carry the register**, except where a line wants weight.
 - **Plain subject-verb order.** Twisted syntax is almost always the tell that a
   sentence was rotated to dodge its source rather than rewritten.
