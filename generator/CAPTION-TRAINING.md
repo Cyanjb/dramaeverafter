@@ -430,3 +430,25 @@ spaces removed; "brothers debts" -> "brother's debts" (possessive apostrophe);
 and one word-level tense fix flagged for her veto, "just became" -> "just
 become" in an interrogative. She also settled the our-camp-night narrator as
 female ("she prays"), resolving the gender the source left open.
+
+## BATCH new-69, HER EDITS, 28 Sep 2026
+
+69 new-title captions from the 27 Sep scrape. She reviewed 15 (4 edited, 11
+ticked), then said "Take everything live in the meantime I will check them
+later", so the other 54 went live on that instruction. **0.3% of words changed
+across the batch** (21 of 7445), down from 2.2% on new-34. Inside the 4 touched
+captions: 21 of 379 words.
+
+What she changed, all fitting existing classes (training landed):
+- Class 2, plainer flow: "with charming Jack" -> "with the charming Jack";
+  "and charming Jack is a scumbag after all" -> "and turns out Jack is a scumbag
+  after all"; "spend forever with one of them" -> "spend forever with her chosen".
+- She put back a source hook I had dodged to pass lift_check: "who wouldn't want
+  a God of Wealth" (the platform said "a walking god of wealth"). One instance, so
+  taste on the day, not yet a rule. Watch for a second: a short, genre-flavored
+  hook phrase may be worth keeping even when the lift check would flag it.
+- She generalized "triplets" to "pregnancy" as the closing surprise, keeping the
+  twist rather than spending it.
+
+Mechanical fix listed back to her: comma after "after all" and a question mark
+on "who wouldn't want a God of Wealth?".
