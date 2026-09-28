@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """New-title captions, 28 Sep 2026, the 12 that rank in the TOP 300 by reach. Per the
 skill, Cyan reviews these: STAGED UNAPPROVED, not applied.
+
+APPROVED 28 Sep 2026, Cyan: "everything should be live, don't wait for me to check
+the captions". Applied from this file as written.
 """
 
 CAPTIONS = {
