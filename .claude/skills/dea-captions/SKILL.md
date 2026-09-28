@@ -75,6 +75,15 @@ Two detectors, because they catch different things:
 python3 .claude/skills/dea-captions/scripts/lift_check.py <batch.py> --n 6
 ```
 
+lift_check must actually see a source for every caption. Until 28 Sep 2026 it
+silently skipped any caption without `# FACTS:` comments and still printed
+"0 of N", which is how the 20 Sep and 27 Sep batches went live carrying copied
+phrasing. It now falls back to the page's linked ReelShort book and exits 1
+with a NOT CHECKED line if anything is still unsourced. Treat exit 1 as a
+failed gate. And write from the book the page LINKS to (availability.csv
+direct_link), never from the slug: two ReelShort books can share one slug.
+Retell first, then run the check; do not write and hope.
+
 ## The shape
 
 ```
@@ -147,7 +156,10 @@ everything else is an edit, that is a lie on her site.
 - **Below top 300**: her 16 Aug 2026 ruling is that you write and apply without
   her manual check. Record the approval basis in the approved file's header.
 - **READ MEANS DONE**: a caption she ticked without editing is approved. Do not
-  re-litigate it.
+  re-litigate it. Cyan, 28 Sep 2026: "if it has been read and edited by me please
+  leave it alone". That holds even for a clean-up pass such as de-lifting: a
+  caption she read or edited is never rewritten, not even to remove a lifted
+  phrase. Flag it to her instead.
 - **Her edits are verbatim, with one exception she granted on 6 Sep 2026:**
   fix obvious spelling and grammar slips, never word choice, and list every
   change back to her. Her phrasing, rhythm and vocabulary are hers even where

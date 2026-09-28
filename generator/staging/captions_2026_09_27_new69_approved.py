@@ -15,6 +15,11 @@ generator/staging/reelshort_2026-09-27.json.
 
 WARNING: this file is REGENERATED from the draft by promote_captions.py, so an
 edit made only here is lost on the next promotion. Edit the draft too.
+
+SUPERSEDED IN PART, 28 Sep 2026: 40 of these captions were de-lifted in
+captions_2026_09_28_delift69.py and mom-love-me-again was replaced by
+captions_2026_09_28_mom_fix.py. Do NOT re-apply this file with --update-ours:
+it would put the lifted text back.
 """
 
 CAPTIONS = {

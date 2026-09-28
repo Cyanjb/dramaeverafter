@@ -357,6 +357,12 @@ def main():
         if not m or tid not in by_id or m.group(2) in link_rows:
             continue
         row = plat_rows.get(tid)
+        # A same ruling on a SECOND ReelShort listing of a title we already link
+        # (a duplicate upload, e.g. divorced-and-desired, 28 Sep 2026) keeps the
+        # link we have. Relinking here would swap it for whichever book the
+        # queue row happened to name, usually the lower-view duplicate.
+        if row is not None and (row.get("direct_link") or "").strip():
+            continue
         if row is None:
             row = {k: "" for k in af}
             row.update({"title_id": tid, "platform_id": PLATFORM,
