@@ -151,12 +151,13 @@ everything else is an edit, that is a lie on her site.
 
 ## Who approves what
 
-- **Everything goes live without waiting for her.** Cyan, 28 Sep 2026: "everything
-  should be live, don't wait for me to check the captions". This replaces the
-  old split (top 300 by reach staged for her review; below top 300 applied under
-  her 16 Aug ruling). Write, pass every gate, apply. Record the approval basis in
-  the approved file's header. A review page is optional, for her to spot-check
-  later; her edits, when they come, are applied as usual.
+- **Sunday batches come to her as a pull request.** Cyan, 29 Sep 2026: "PR each
+  Sunday for me to review". The Routine "DramaEverAfter: Sunday caption PR for
+  review" (14:47 UTC Sundays) writes the batch, passes every gate, opens a PR and a
+  review page, and does NOT merge. Captions on titles shown on the homepage are
+  listed first: she checks those before they go live (28 Sep). Ad hoc batches she
+  asks for in chat can still go live on her say-so (28 Sep: "everything should be
+  live"), except homepage titles, which she checks first.
 - **READ MEANS DONE**: a caption she ticked without editing is approved. Do not
   re-litigate it. Cyan, 28 Sep 2026: "if it has been read and edited by me please
   leave it alone". That holds even for a clean-up pass such as de-lifting: a
