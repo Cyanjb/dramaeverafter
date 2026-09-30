@@ -52,7 +52,8 @@ two cannot drift on matching, CSV line endings or the tag vocabulary.
     page lists a performer's titles. A credit is added only when the name
     matches exactly one person in people.csv, by name or aka_names ('|' or ';'
     separated), role=actor, and the (title, person) pair is not already held.
-    Nobody is created. A name that matches two people is reported.
+    A name we do not hold becomes a person (Cyan, 30 Sep 2026); a near-name is
+    held for her ruling. A name that matches two people is reported.
   SYNOPSES stay in the staging JSON. synopsis_short is never written from a
     platform: the caption pipeline owns that column (no copied copy, 14 Aug).
 
@@ -62,7 +63,7 @@ Usage:
 DEA_DATA points it at another data/ directory (a copy, for a test). Exit 0 on
 success, 1 on a malformed staging file or an integrity failure.
 """
-import argparse, datetime, io, json, os, re, sys
+import argparse, datetime, difflib, io, json, os, re, sys, unicodedata
 from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -139,7 +140,7 @@ def main():
     snaps, sf = load("snapshots.csv")
     mq, mf = load("match_queue.csv")
     credits, cf = load("credits.csv")
-    people, _ = load("people.csv")
+    people, pf = load("people.csv")
     trope_rows, trf = load("tropes.csv")
 
     by_id = {t["title_id"]: t for t in titles}
@@ -233,12 +234,42 @@ def main():
             t["source_urls"] = b["url"]
         n["refreshed"] += 1
 
+    new_people, held_people = [], []
+    all_pids = {p["person_id"] for p in people}
+
+    def create_person(actor):
+        """Cyan, 30 Sep 2026: a new show's actors must get their pages. A name we
+        do not hold becomes a person (needs_check); a name only CLOSE to one we
+        hold is held for her ruling, never created."""
+        key = " ".join(actor.split()).lower()
+        fold = lambda x: re.sub(r"[^a-z0-9]", "", unicodedata.normalize("NFKD", x).encode("ascii", "ignore").decode().lower())
+        same = {pid for nm, ids in person_ids.items() if fold(nm) == fold(key) for pid in ids}
+        if len(same) == 1:                       # "Sofia López" is sofia-lopez
+            return next(iter(same))
+        close = difflib.get_close_matches(key, list(person_ids), n=1, cutoff=0.9)
+        if close:
+            held_people.append((actor.strip(), sorted(person_ids[close[0]])))
+            return ""
+        pid = re.sub(r"-{2,}", "-", re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", actor)
+                     .encode("ascii", "ignore").decode().lower())).strip("-")
+        if not pid or pid in all_pids:
+            return ""
+        people.append({k2: "" for k2 in pf} | {"person_id": pid, "slug": pid, "name": " ".join(actor.split()),
+                       "role_type": "actor", "data_confidence": "needs_check",
+                       "source": "dramabox_weekly_%s" % today})
+        all_pids.add(pid)
+        person_ids[key] = {pid}
+        new_people.append(actor.strip())
+        return pid
+
     def add_credits(tid, title_name, b):
         for actor in cast_names(b):
             pid = person_of(actor)
             if pid is None:
                 ambiguous_names[actor] += 1
                 continue
+            if not pid:
+                pid = create_person(actor)
             if not pid or (tid, pid) in credit_keys:
                 continue
             credits.append({k: "" for k in cf} | {"title_id": tid, "person_id": pid,
@@ -483,6 +514,7 @@ def main():
     lines.append("| Held for a ruling (match_queue) | %d |" % len(held))
     lines.append("| Already in match_queue, awaiting a ruling | %d |" % n["already_queued"])
     lines.append("| Credits added | %d |" % len(credits_added))
+    lines.append("| New people (actor pages) created / close names held for a ruling | %d / %d |" % (len(new_people), len(held_people)))
     lines.append("| Blank DramaBox links filled on titles we hold | %d |" % len(filled_links))
     lines.append("| Episode counts / posters / links / years filled | %d / %d / %d / %d |"
                  % (n["episodes_filled"], n["posters_filled"], n["links_filled"], n["years_filled"]))
@@ -534,6 +566,9 @@ def main():
     if doc.get("errors"):
         lines += ["", "### Errors", ""]
         lines += ["- %s" % json.dumps(e) for e in (doc["errors"])[:30]]
+    if held_people:
+        lines += ["", "### Cast names close to someone we hold (not created; Cyan rules)", ""]
+        lines += ["- %s ~ %s" % (a_, ", ".join(ids)) for a_, ids in held_people[:60]]
     summary = "\n".join(lines) + "\n"
     print(summary)
     if a.summary:
@@ -550,6 +585,7 @@ def main():
     save("snapshots.csv", sf, snaps)
     save("match_queue.csv", mf, mq)
     save("credits.csv", cf, credits)
+    save("people.csv", pf, people)
     save("tropes.csv", trf, trope_rows)
     print("written to", ms.DATA)
     return 0

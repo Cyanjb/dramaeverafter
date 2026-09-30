@@ -26,7 +26,8 @@ every one of them is enforced here rather than remembered:
   CREDITS: an actor tag page is ReelShort asserting that actor is in that
     title. A credit is added only when the name matches exactly one person in
     people.csv, role=actor, and the (title, person) pair is not already held.
-    Nobody is created: a person is a published URL and a near-name is a
+    SUPERSEDED 30 Sep 2026 (Cyan: new shows' actors must get their pages): a
+    name we do not hold becomes a person (needs_check); a near-name is still a
     ruling (READ FIRST, standing rules).
   SYNOPSES stay in the staging JSON. synopsis_short is never written from a
     platform: the caption pipeline owns that column (no copied copy, 14 Aug).
@@ -38,7 +39,7 @@ Exit 0 on success, 1 on a malformed staging file. The summary is Markdown,
 printed to stdout, appended to $GITHUB_STEP_SUMMARY when set, and written to
 --summary when given.
 """
-import argparse, csv, datetime, io, json, os, re, sys
+import argparse, csv, datetime, difflib, io, json, os, re, sys, unicodedata
 from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -153,7 +154,7 @@ def main():
     snaps, sf = load("snapshots.csv")
     mq, mf = load("match_queue.csv")
     credits, cf = load("credits.csv")
-    people, _ = load("people.csv")
+    people, pf = load("people.csv")
     trope_rows, trf = load("tropes.csv")
 
     by_id = {t["title_id"]: t for t in titles}
@@ -174,9 +175,18 @@ def main():
             link_rows[m.group(2)] = r
     snap_keys = {(s["title_id"], s["platform_id"], s["date"]) for s in snaps}
     credit_keys = {(c["title_id"], c["person_id"]) for c in credits}
-    name_count = Counter(p["name"].strip().lower() for p in people)
-    person_by_name = {p["name"].strip().lower(): p["person_id"] for p in people
-                      if name_count[p["name"].strip().lower()] == 1}
+    # Names and aka names (| or ;), accents folded. A name held by two people
+    # is ambiguous and never credited.
+    def pkey(s):
+        s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode()
+        return re.sub(r"[^a-z0-9]", "", s.lower())
+    name_ids = {}
+    for p in people:
+        for nm in [p["name"]] + re.split(r"[|;]", p.get("aka_names") or ""):
+            if pkey(nm):
+                name_ids.setdefault(pkey(nm), set()).add(p["person_id"])
+    person_ids = {p["person_id"] for p in people}
+    new_people, held_people = [], []
     mq_text = "\n".join(r["candidate_b"] + " " + r["evidence"] for r in mq)
 
     n = Counter()
@@ -220,9 +230,37 @@ def main():
             t["source_urls"] = b["url"]
         n["refreshed"] += 1
 
+    def person_for(actor):
+        """Cyan, 30 Sep 2026: a new show's actors must get their pages. A name we
+        hold is credited; a new name becomes a person (needs_check); a name only
+        CLOSE to one we hold is held for her ruling, never created."""
+        k = pkey(actor)
+        if not k:
+            return None
+        ids = name_ids.get(k, set())
+        if len(ids) == 1:
+            return next(iter(ids))
+        if len(ids) > 1:
+            return None
+        close = difflib.get_close_matches(k, list(name_ids), n=1, cutoff=0.9)
+        if close:
+            held_people.append((actor.strip(), sorted(name_ids[close[0]])))
+            return None
+        pid = re.sub(r"-{2,}", "-", re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", actor)
+                     .encode("ascii", "ignore").decode().lower())).strip("-")
+        if not pid or pid in person_ids:
+            return None
+        people.append({k2: "" for k2 in pf} | {"person_id": pid, "slug": pid, "name": actor.strip(),
+                       "role_type": "actor", "data_confidence": "needs_check",
+                       "source": "reelshort_weekly_%s" % today})
+        person_ids.add(pid)
+        name_ids[k] = {pid}
+        new_people.append(actor.strip())
+        return pid
+
     def add_credits(tid, title_name, b):
         for actor in b.get("actors") or []:
-            pid = person_by_name.get(actor.strip().lower())
+            pid = person_for(actor)
             if not pid or (tid, pid) in credit_keys:
                 continue
             credits.append({k: "" for k in cf} | {"title_id": tid, "person_id": pid,
@@ -241,7 +279,10 @@ def main():
                 continue
             if b.get("title") or b.get("views"):
                 touch(t, row, b)
-                if "tags" in (b.get("seen_via") or []):
+                # The show's own page (detail) and an actor's tag page both
+                # name its cast; a genre page does not (its actor_info is noise
+                # and the scraper blanks it).
+                if {"tags", "detail"} & set(b.get("seen_via") or []):
                     add_credits(t["title_id"], t["primary_title"], b)
             continue
 
@@ -477,6 +518,7 @@ def main():
     lines.append("| New titles created | %d |" % len(new_titles))
     lines.append("| Held for a ruling (match_queue) | %d |" % len(held))
     lines.append("| Credits added | %d |" % len(credits_added))
+    lines.append("| New people (actor pages) created / close names held for a ruling | %d / %d |" % (len(new_people), len(held_people)))
     lines.append("| Episode counts / posters / links / years filled | %d / %d / %d / %d |"
                  % (n["episodes_filled"], n["posters_filled"], n["links_filled"], n["years_filled"]))
     lines.append("| Delisted (404, not deleted) | %d |" % len(delisted_report))
@@ -535,6 +577,9 @@ def main():
     if doc.get("errors"):
         lines += ["", "### Errors", ""]
         lines += ["- %s" % json.dumps(e) for e in (doc["errors"])[:30]]
+    if held_people:
+        lines += ["", "### Cast names close to someone we hold (not created; Cyan rules)", ""]
+        lines += ["- %s ~ %s" % (a_, ", ".join(ids)) for a_, ids in held_people[:60]]
     summary = "\n".join(lines) + "\n"
     print(summary)
     if a.summary:
@@ -551,6 +596,7 @@ def main():
     save("snapshots.csv", sf, snaps)
     save("match_queue.csv", mf, mq)
     save("credits.csv", cf, credits)
+    save("people.csv", pf, people)
     save("tropes.csv", trf, trope_rows)
     print("written")
     return 0
