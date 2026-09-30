@@ -8,7 +8,7 @@ every one of them is enforced here rather than remembered:
     view_count_date update freely (CONVENTIONS.md), last_checked and
     last_verified move to the scrape date, and a snapshots.csv row is written
     with THE DATE (audit H2: 2,659 rows carried none). Every other field is
-    fill-blank-only: episode_count, poster_ref, title_as_listed, source_urls.
+    fill-blank-only (episode_count may also grow): poster_ref, title_as_listed, source_urls.
   NEW TITLE: created as data_confidence=needs_check, origin=english (never
     blank, adapters.md sec 11), slug taken from ReelShort's own URL which is
     already the house slug style. Only when the book was seen on the homepage,
@@ -203,8 +203,12 @@ def main():
             row["direct_link"] = b["url"]
             n["links_filled"] += 1
         t["last_verified"] = today
-        if not t.get("episode_count") and b.get("episodes"):
-            t["episode_count"] = b["episodes"]
+        # Episodes may GROW (30 Sep 2026: Bitter Burn was caught on release
+        # day at 1 episode and stayed at 1 while ReelShort listed 61). A larger
+        # platform count replaces ours; a smaller one never does.
+        ep_new, ep_old = (b.get("episodes") or "").strip(), (t.get("episode_count") or "").strip()
+        if ep_new.isdigit() and (not ep_old.isdigit() or int(ep_new) > int(ep_old)):
+            t["episode_count"] = ep_new
             n["episodes_filled"] += 1
         if not t.get("poster_ref") and b.get("poster"):
             t["poster_ref"] = b["poster"]
@@ -348,6 +352,14 @@ def main():
                           and not (by_id.get(link_rows[bid]["title_id"]) or {}).get("ai")})
     for tid in ai_evidence:
         by_id[tid]["ai"] = "yes"
+    # ReelShort's own is_ai flag (its FAQ answer), where Cyan has not ruled.
+    for bid, b in books.items():
+        row = link_rows.get(bid)
+        t = by_id.get(row["title_id"]) if row else None
+        if t is not None and b.get("platform_ai") in ("yes", "no") and not (t.get("ai") or "").strip():
+            t["ai"] = b["platform_ai"]
+            if b["platform_ai"] == "yes" and t["title_id"] not in ai_evidence:
+                ai_evidence.append(t["title_id"])
 
     # CYAN'S "SAME" RULINGS ON WEEKLY-SCRAPE MATCH_QUEUE ROWS: link the held
     # title to the ReelShort page named in the evidence, fill-blank, and take
