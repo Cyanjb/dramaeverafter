@@ -273,6 +273,14 @@ def books_in(data, id_to_slug):
         # read here. "total" is checked last so a tag page's own count wins.
         ep = (d.get("chapter_count") or d.get("chapterCount")
               or d.get("total") or "")
+        # A movie page's "total" counts the TRAILER too (30 Sep 2026: Bitter
+        # Burn total 62 = 1 trailer + 61 episodes). online_base lists every
+        # video with chapter_type 2 for the trailer, 1 for an episode.
+        ob = d.get("online_base")
+        if isinstance(ob, list) and ob and not (d.get("chapter_count") or d.get("chapterCount")):
+            n_ep = sum(1 for c in ob if isinstance(c, dict) and c.get("chapter_type") == 1)
+            if n_ep:
+                ep = n_ep
         pic = d.get("book_pic") or d.get("bookPic") or d.get("cover") or d.get("thumb") or ""
         actors = []
         ai = d.get("actor_info") or {}
@@ -604,10 +612,16 @@ class Run:
                     got["poster"] = og_image(html)
                 if not got.get("year"):
                     got["year"] = year_from_ldjson(html)
-                if AI_SAYS_RE.search(html):
-                    # The page itself says AI-generated (ReelShort's AI animated
-                    # originals carry this in their description). Evidence for
-                    # Cyan's ruling, never the ruling: merge_scrape reports it.
+                # AI evidence. ReelShort's own is_ai flag decides when present.
+                # BUG FIXED 30 Sep 2026: every movie page embeds the FAQ answer
+                # TEMPLATES ("Yes. {{title}} is an AI-generated animated..."), so a
+                # text match flagged all 934 pages and wrongly labelled 68 live-
+                # action shows AI on 28 Sep. The text is only a fallback now, with
+                # the {{...}} templates removed first.
+                if got.get("platform_ai"):
+                    if got["platform_ai"] == "yes":
+                        got["platform_says_ai"] = True
+                elif AI_SAYS_RE.search(re.sub(r'"[^"]*\{\{[^"]*"', "", html)):
                     got["platform_says_ai"] = True
                 true_slug =canonical_slug(html, bid) or got["slug"] or id_to_slug.get(bid, "")
                 cur = self.note(got, "detail", url=url)
