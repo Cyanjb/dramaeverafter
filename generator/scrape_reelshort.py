@@ -273,6 +273,14 @@ def books_in(data, id_to_slug):
         # read here. "total" is checked last so a tag page's own count wins.
         ep = (d.get("chapter_count") or d.get("chapterCount")
               or d.get("total") or "")
+        # A movie page's "total" counts the TRAILER too (30 Sep 2026: Bitter
+        # Burn total 62 = 1 trailer + 61 episodes). online_base lists every
+        # video with chapter_type 2 for the trailer, 1 for an episode.
+        ob = d.get("online_base")
+        if isinstance(ob, list) and ob and not (d.get("chapter_count") or d.get("chapterCount")):
+            n_ep = sum(1 for c in ob if isinstance(c, dict) and c.get("chapter_type") == 1)
+            if n_ep:
+                ep = n_ep
         pic = d.get("book_pic") or d.get("bookPic") or d.get("cover") or d.get("thumb") or ""
         actors = []
         ai = d.get("actor_info") or {}
@@ -281,6 +289,11 @@ def books_in(data, id_to_slug):
                 if isinstance(a, dict) and a.get("actor_name"):
                     actors.append(clean(a["actor_name"]))
         year = year_hint(d)
+        # The movie page's own tag list (28-30 Sep 2026: Bitter Burn showed no
+        # tropes because only tag-listing pages were read). Category 1000 is the
+        # audience (Female/Male) and 1015 the age rating: not tropes.
+        tags = [clean(t["text"]) for t in (d.get("tag_list") or [])
+                if isinstance(t, dict) and t.get("text") and str(t.get("category_id")) not in ("1000", "1015")]
         slug = id_to_slug.get(bid, "")
         if not slug:
             # The homepage rails carry books with no href in the HTML (probe,
@@ -299,7 +312,30 @@ def books_in(data, id_to_slug):
             "poster": pic if isinstance(pic, str) else "",
             "actors": actors,
             "year": year,
+            "tags": tags,
+            # ReelShort's own flags, behind its FAQ ("Is X AI-generated?", "Is X dubbed?").
+            "platform_ai": {0: "no", 1: "yes"}.get(d.get("is_ai"), ""),
+            "platform_dub": {0: "no", 1: "yes"}.get(d.get("is_dub"), ""),
         }
+
+
+def thin_titles():
+    """Held title_ids whose ReelShort page would fill a gap: no tropes, no
+    credits, or an episode count under 6 (a show caught on release day)."""
+    data = os.environ.get("DEA_DATA") or os.path.join(os.path.dirname(HERE), "data")
+    try:
+        titles = list(csv.DictReader(open(os.path.join(data, "titles.csv"), encoding="utf-8")))
+        credited = {c["title_id"] for c in csv.DictReader(open(os.path.join(data, "credits.csv"), encoding="utf-8"))}
+    except OSError:
+        return set()
+    out = set()
+    for t in titles:
+        if t.get("status") == "delisted":
+            continue
+        ep = (t.get("episode_count") or "").strip()
+        if not (t.get("tropes") or "").strip() or t["title_id"] not in credited or not ep.isdigit() or int(ep) < 6:
+            out.add(t["title_id"])
+    return out
 
 
 # --- the run ------------------------------------------------------------------
@@ -354,6 +390,9 @@ class Run:
                 cur["tags"].append(tg)
         if book.get("platform_says_ai"):
             cur["platform_says_ai"] = True
+        for k in ("platform_ai", "platform_dub"):
+            if book.get(k) and not cur.get(k):
+                cur[k] = book[k]
         if via not in cur["seen_via"]:
             cur["seen_via"].append(via)
         if url and not cur.get("url"):
@@ -573,10 +612,16 @@ class Run:
                     got["poster"] = og_image(html)
                 if not got.get("year"):
                     got["year"] = year_from_ldjson(html)
-                if AI_SAYS_RE.search(html):
-                    # The page itself says AI-generated (ReelShort's AI animated
-                    # originals carry this in their description). Evidence for
-                    # Cyan's ruling, never the ruling: merge_scrape reports it.
+                # AI evidence. ReelShort's own is_ai flag decides when present.
+                # BUG FIXED 30 Sep 2026: every movie page embeds the FAQ answer
+                # TEMPLATES ("Yes. {{title}} is an AI-generated animated..."), so a
+                # text match flagged all 934 pages and wrongly labelled 68 live-
+                # action shows AI on 28 Sep. The text is only a fallback now, with
+                # the {{...}} templates removed first.
+                if got.get("platform_ai"):
+                    if got["platform_ai"] == "yes":
+                        got["platform_says_ai"] = True
+                elif AI_SAYS_RE.search(re.sub(r'"[^"]*\{\{[^"]*"', "", html)):
                     got["platform_says_ai"] = True
                 true_slug =canonical_slug(html, bid) or got["slug"] or id_to_slug.get(bid, "")
                 cur = self.note(got, "detail", url=url)
@@ -601,6 +646,7 @@ def main():
     ap.add_argument("--out", default="")
     ap.add_argument("--routes", default="tags,genres,home,fandom,wanted,detail",
                     help="comma list from tags,genres,home,fandom,wanted,sitemap,detail")
+    ap.add_argument("--fill", type=int, default=250, help="held titles missing tropes, cast or episodes to re-read per run")
     ap.add_argument("--limit", type=int, default=0, help="cap actor tag pages and detail targets (probe runs)")
     ap.add_argument("--tag-pages-max", type=int, default=8, help="pages per actor tag")
     ap.add_argument("--genre-pages-max", type=int, default=250, help="pages per genre tag")
@@ -692,6 +738,15 @@ def main():
                 continue
             if not b.get("title") or b.get("slug_guessed") or not b.get("views"):
                 targets.append((bid, b.get("url") or "%s/movie/%s-%s" % (BASE, b["slug"], bid), None))
+        # FILL: titles we hold whose page has never been read (no tropes, no
+        # cast, or fewer than 6 episodes). Their listings always carry views, so
+        # the rule above never picked them; 311 had no tropes and 365 no cast on
+        # 30 Sep 2026. Up to --fill per run, so the backlog clears in a few weeks.
+        thin = thin_titles()
+        queued = {t[0] for t in targets}
+        fill = [(bid, url, tid) for bid, (url, tid) in known.items()
+                if tid in thin and bid not in queued][:a.fill]
+        targets += fill
         if a.limit:
             targets = targets[:a.limit]
         run.detail(targets)
