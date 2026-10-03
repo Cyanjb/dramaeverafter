@@ -111,7 +111,7 @@ I Accidentally Sexted My Enemy
 Tell Me Not to Love You
 Step Aside, I'm the King
 How to Break a DILF
-My X-Ray Vision Sees Right Through You
+My X-Ray Vision Sees Right Through You  ai=no   # Cyan ruled live-action 20 Sep 2026 (has credited human cast)
 In the Palm of His Hand
 My Secret Lover Is His Brother
 Found a Homeless Billionaire Husband for Christmas
@@ -182,7 +182,7 @@ The Seduction Game  ai=no tropes=young-adult
 The Rabbit Bride Who Rejected Her Alpha King  ai=yes tropes=playing-dumb
 Offside with the Hockey Star  ai=yes tropes=young-adult;love-triangle
 My Two Dangerous Roommates Crave Me  ai=yes tropes=bl;love-triangle
-Blitzed by My Rival's Obsession  tropes=bl;enemies-to-lovers   # Cyan thinks AI, no tag seen; page-says-AI report settles it
+Blitzed by My Rival's Obsession  ai=yes tropes=bl;enemies-to-lovers   # Cyan ruled AI 20 Sep 2026
 Waking Up Pregnant   # Cyan: poster says this, title page says Spoiled by the Daddy CEO During Pregnancy; which is right?
 Daddy We're Done  ai=yes
 Your Husband Is Mine  ai=no tropes=billionaire;revenge
@@ -237,3 +237,32 @@ https://www.reelshort.com/movie/pay-to-win-apocalypse-reset-6982bd61ba37326b560f
 https://www.reelshort.com/movie/doomsday-smuggler-trading-snacks-for-power-6982c0bf734764dc370435a5  tropes=apocalypse
 https://www.reelshort.com/movie/owning-the-specter-realm-start-with-a-five-finger-discount-6982c1d252591c5394091518  tropes=apocalypse
 https://www.reelshort.com/movie/i-swallowed-the-zerg-overmind-s-egg-6a94f45a2e175c3d910e7135  tropes=apocalypse
+
+# ---- Reddit research PDF, 20 Sep 2026 ---------------------------------------
+# From the enriched Reddit dataset Cyan supplied. These are the titles the
+# source attributes to ReelShort that are NOT in the database and did not
+# near-match an existing row. No ai= flag is set on any of them: the source is
+# Reddit and an infographic, not Cyan, and this file is her hand.
+#
+# Everything from "The Destined One" down came from a single "Trending AI Mafia
+# Dramas" infographic that names a character archetype per title. That is the
+# weakest source in the document and some of these may not exist. Left to
+# resolve by ReelShort's own search: a title that is real gets created on the
+# next run, a title that is not simply reports as still waiting. Cyan, if one
+# resolves and you rule it AI, add ai=yes on its line.
+Man to Man                                # BL recommendation; Reddit called it AI, unverified
+The Destined One                          # infographic: BLACKWOOD - The Cold Strategist
+The Ruthless Heir                         # infographic: REID - The Feared Heir
+He Chose Her, I Married the Mafia Don     # infographic: ROMANO - The Savage Don
+Forbidden Love: My Mafia Boss             # infographic: GREY - The Shadow Boss
+The Mafia Emperor De Luca                 # infographic: DE LUCA - The Mafia Emperor
+Buried Sacrifice                          # infographic: VITALE - The Silent Commander
+Mafia Prince Little Liar                  # infographic: SINCLAIR - The Ruthless Tycoon
+Bound to the Corrupt Prince               # infographic: GRAYSON - The Corrupt Prince
+The Kensington Heir                       # infographic: KENSINGTON - The Royal Mafia
+Thorne: The Heartless Don                 # infographic: THORNE - The Heartless Don
+Carmichael: Untouchable                   # infographic: CARMICHAEL - The Elite Enforcer
+
+# ---- AI rulings from the Reddit-research review, Cyan 20 Sep 2026 --------------
+rose-in-chains  ai=no   # Cyan ruled live-action (has credited human cast)
+zero-to-alpha-return-of-the-wolf-king  ai=yes   # Cyan ruled AI

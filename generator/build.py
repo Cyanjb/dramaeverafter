@@ -39,6 +39,10 @@ GOATCOUNTER = "dramaeverafter"
 # every page was last touched in July while the site changed daily. Month-level
 # granularity keeps the build deterministic within any given month.
 UPDATED = __import__("time").strftime("%B %Y")
+# Since 24 Sep 2026 UPDATED drives only the current-year logic of the New
+# releases rail. Nothing a reader sees is dated from the build clock: list pages
+# use newest_checked() over their titles, and the privacy page its own date.
+PRIVACY_UPDATED = "September 2026"   # the policy's own date; change it WITH the policy
 
 def rows(name):
     with open(os.path.join(DATA, name), encoding="utf-8") as f:
@@ -63,18 +67,25 @@ ROOT_ORIGIN = "english"
 # the whole index client-side, so the overflow link points there pre-filtered.
 GRID_CAP = 60
 def origin_of(t): return (t.get("origin") or ROOT_ORIGIN).strip().lower() or ROOT_ORIGIN
-def tdir(t):
-    o = origin_of(t)
-    return "" if o == ROOT_ORIGIN else o + "/"
-def tdepth(t): return 1 if origin_of(t) == ROOT_ORIGIN else 2
+# Every title page sits at /titles/, whatever its origin (24 Sep 2026, see
+# titles_root below). Kept as functions so the call sites read the same.
+def tdir(t): return ""
+def tdepth(t): return 1
 
 people = rows("people.csv")
 titles = rows("titles.csv")
 # Skip malformed rows that would render as ".html" (empty slug AND empty title).
 titles = [t for t in titles if (t.get("slug") or "").strip() or (t.get("primary_title") or "").strip()]
+# HIDDEN: status "delisted" (Cyan, 24 Sep 2026: "hide them"). The platform took
+# the show down, so its watch button leads nowhere; the row stays in titles.csv
+# as the record, but no page, card, search entry or credit is published, and its
+# URL answers the 404 page. Filtered here, at load, so nothing downstream can
+# link to it. Set by hand or by goodshort_origin.py; clear the status to restore.
+HIDDEN = {t["title_id"] for t in titles if (t.get("status") or "").strip().lower() == "delisted"}
+titles = [t for t in titles if t["title_id"] not in HIDDEN]
 platforms = {p["platform_id"]: p for p in rows("platforms.csv")}
-availability = rows("availability.csv")
-credits = rows("credits.csv")
+availability = [a for a in rows("availability.csv") if a["title_id"] not in HIDDEN]
+credits = [c for c in rows("credits.csv") if c["title_id"] not in HIDDEN]
 
 t_by_id = {t["title_id"]: t for t in titles}
 p_by_id = {p["person_id"]: p for p in people}
@@ -134,11 +145,16 @@ def tropes_of(t):
     _tropes_cache[key] = out
     return out
 
-# Root sections (home, tropes, platforms, trope+platform pages) cover ROOT_ORIGIN only.
-# Other origins are browsed from their own section index.
-titles_root = [t for t in titles if origin_of(t) == ROOT_ORIGIN]
-titles_other = [t for t in titles if origin_of(t) != ROOT_ORIGIN]
-origins_other = sorted({origin_of(t) for t in titles_other})
+# ORIGIN IS A LABEL, NOT A FOLDER (Cyan, 24 Sep 2026). Every title lives at
+# /titles/<slug>.html whatever its origin, and origin (English, Chinese, Korean,
+# plus Dubbed from the availability rows) is a label on the page and a Browse
+# filter. The old design put other origins under /<origin>/titles/, so marking a
+# show Chinese would have moved its URL, and slugs never change. The legacy
+# chinese/ folder is cleared by the build and 301s to /titles/ (_redirects).
+titles_root = list(titles)
+titles_other = []
+origins_other = []
+LEGACY_ORIGIN_DIRS = ["chinese"]
 
 # THE 5+ RULE NOW GOVERNS PLAIN TROPE PAGES TOO (Cyan, 13 Aug). The architecture doc
 # has always said "a trope or combo page publishes only at 5+ verified titles", but
@@ -148,8 +164,8 @@ origins_other = sorted({origin_of(t) for t in titles_other})
 # card, the same reason the zero-credit actors were kept out of the Popular Actors rail.
 #
 # Nothing else needs changing to make this coherent: trope_chip() already renders an
-# inert chip when a trope has no page ("so we never emit a 404"), the index and the
-# combo loop both read all_tropes, and the tropes/ directory is rmtree'd each build,
+# inert chip when a trope has no page ("so we never emit a 404"), the index reads
+# all_tropes (the combo loop that also did was retired 24 Sep 2026), and the tropes/ directory is rmtree'd each build,
 # so the withdrawn pages remove themselves.
 TROPE_MIN = 5
 _trope_page_n = defaultdict(int)
@@ -172,8 +188,26 @@ def view_num(s):
     try: return int(float(s) * mult)
     except ValueError: return 0
 
+DUB = "english-dub"
+
+def has_dub(t):
+    """An English dub is on file: an availability row with version english-dub
+    (merge_dubs.py, 24 Sep 2026). Drives the Dubbed filter and the page label."""
+    return any((a.get("version") or "") == DUB for a in avail_by_title.get(t["title_id"], []))
+
+def dub_only(t):
+    rows = avail_by_title.get(t["title_id"], [])
+    return bool(rows) and all((a.get("version") or "") == DUB for a in rows)
+
+# Platforms whose counters are not comparable with the others. They stay in
+# availability.csv as the record but never rank a title (Cyan, 28 Sep 2026:
+# FlexTV's "533.6M" for Mr. Williams! Madame Is Dying put it at #9). Remove a
+# platform from this set once its numbers are verified.
+UNRANKED_VIEW_PLATFORMS = {"flextv"}
+
 def title_views(t):
-    return max((view_num(a.get("view_count")) for a in avail_by_title.get(t["title_id"], [])), default=0)
+    return max((view_num(a.get("view_count")) for a in avail_by_title.get(t["title_id"], [])
+                if a.get("platform_id") not in UNRANKED_VIEW_PLATFORMS), default=0)
 
 def views_label(n):
     if n >= 1000000000: return "%.1fB views" % (n / 1000000000.0)
@@ -411,15 +445,49 @@ def synopsis_text(t):
     return (hook + " " + body).strip() if body else hook
 
 
-def cut_words(s, n=155):
-    """Cut at a word boundary, never mid-word. The ld+json description was being
-    sliced at 160 characters ("But the arrangement doesn't s"), and Google shows
-    that text verbatim. No trailing ellipsis: search engines add their own."""
-    s = " ".join((s or "").split())
-    if len(s) <= n:
-        return s
-    cut = s[:n].rsplit(" ", 1)[0].rstrip(",;:")
-    return cut or s[:n]
+_ABBR = re.compile(r"\b(?:Mr|Mrs|Ms|Dr|St|Jr|Sr|vs)\.$")
+
+
+def sentences(s):
+    """Split prose into sentences on . ? ! followed by a space, without breaking
+    after a title abbreviation like Mr. or Dr."""
+    out, cur = [], ""
+    for piece in re.split(r"(?<=[.?!])\s+", " ".join((s or "").split())):
+        cur = (cur + " " + piece).strip() if cur else piece
+        if not _ABBR.search(cur):
+            out.append(cur)
+            cur = ""
+    if cur:
+        out.append(cur)
+    return [x for x in out if x]
+
+
+def cut_sentences(parts, n=155):
+    """Search and share snippet that always ends on a full sentence (Cyan, 28 Sep
+    2026: "end at the last full sentence"). Whole sentences are added while they
+    fit in n characters. If the first one alone is longer, it goes in whole:
+    Google trims long snippets with its own ellipsis, which reads better than
+    ours stopping mid-thought. parts is a string or a list of strings (a caption
+    hook often has no full stop, so it is passed as its own sentence)."""
+    if isinstance(parts, str):
+        parts = [parts]
+    sents = []
+    for p in parts:
+        got = sentences(p)
+        # A hook with no end mark would run into the body ("...a fake boyfriend
+        # Brady is"); close it in the snippet only, never in the caption.
+        if got and got[-1][-1] not in ".?!\"'”…":
+            got[-1] += "."
+        sents += got
+    out = ""
+    for x in sents:
+        nxt = (out + " " + x).strip()
+        if out and len(nxt) > n:
+            break
+        out = nxt
+        if len(out) > n:
+            break
+    return out
 
 
 def month_label(iso):
@@ -443,13 +511,33 @@ def title_checked(t):
     return max(dates) if dates else ""
 
 
+def newest_checked(ts):
+    """A list page's date: the newest title_checked among the titles it shows,
+    as ('September 2026', '2026'), or ('', '') when none is dated. Audit,
+    24 Sep 2026: trope, app and index pages said 'Updated September 2026' and
+    '(2026)' from the build clock, so a rebuild over July data manufactured
+    freshness. Same rule as month_label: display dates come from the DATA."""
+    iso = max((title_checked(t) for t in ts), default="")
+    return month_label(iso), iso[:4] if month_label(iso) else ""
+
+
+def year_tag(y):
+    """' (2024)' for a page <title>, or '' when there is no year to state."""
+    y = (y or "").strip()
+    return f" ({y})" if y.isdigit() else ""
+
+
+# The whole catalogue's newest checked date, for the apps guide and the footer.
+ALL_WHEN, ALL_YEAR = newest_checked(titles_root)
+
+
 def title_desc(t):
     """Meta description: the caption we wrote when there is one (825 titles had a
     synopsis and every one of them was shipping the generic template), else an
     honest template dated from the data."""
-    s = synopsis_text(t)
-    if s:
-        return cut_words(s, 155)
+    hook, body, _ = caption_parts(t)
+    if hook or body:
+        return cut_sentences([hook, body], 155)
     when = month_label(title_checked(t))
     return f"{t['primary_title']}: where to watch, cast and tropes." + (f" Checked {when}." if when else "")
 
@@ -919,6 +1007,9 @@ tr:nth-child(even) td{background:#F7F0EA}
 .char-list{max-width:900px}.char-list .idx-letter{margin:26px 0 6px}
 .char-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
 .char-row b{min-width:200px}.char-row .sub{color:var(--tert);font-size:13px}
+.az-fold summary{cursor:pointer;font-weight:600;color:var(--wine);padding:10px 0;min-height:44px}
+.az-cols{columns:3 220px;column-gap:28px;margin-top:10px}
+.az-cols a{display:block;padding:5px 0;break-inside:avoid;font-size:14px}
 
 /* ---------- footer ---------- */
 /* The footer went light on 13 Sep (Cyan's homepage): the plum closing band
@@ -1171,6 +1262,7 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 </div>
 <nav>
 <a href="{pre}browse.html">Browse</a>
+<a href="{pre}titles/index.html">Titles A&ndash;Z</a>
 <a href="{pre}actors/index.html">Actors</a>
 <a href="{pre}characters.html">Characters</a>
 <a href="{pre}tropes/index.html">Tropes</a>
@@ -1444,6 +1536,11 @@ def watch_buttons(title_id, pre=""):
     linked, unlinked = [], []
     for plat, a in named:
         name = plat.get("name", "?")
+        # Since 24 Sep 2026 a show can carry two rows on one app, the original and
+        # its English dub (one page per show, Cyan). Only name the version when
+        # the page has both; a dub-only page says so in its label instead.
+        if (a.get("version") or "") == DUB and len({(x.get("version") or "") for _p, x in named}) > 1:
+            name += " (English dub)"
         deep = (a["direct_link"] or "").strip()
         link = deep or (plat.get("web_url") or "").strip()
         (linked if link else unlinked).append((name, link, bool(deep), a["platform_id"]))
@@ -1648,7 +1745,7 @@ def actor_summary(p, pairs):
 
 # --------- build ---------
 # Selective clean: remove ONLY generated artifacts, never data/ or generator/
-for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + origins_other:
+for d in ["actors", "titles", "tropes", "where-to-watch", "apps"] + LEGACY_ORIGIN_DIRS:
     p = os.path.join(DIST, d)
     if os.path.exists(p): shutil.rmtree(p)
 for f in ["index.html", "platforms.html", "browse.html", "blog.html", "contact.html", "privacy.html", "my-list.html", "characters.html", "404.html", "robots.txt", "sitemap.xml", "style.css"]:
@@ -1671,7 +1768,8 @@ lastmod = {}
 # the top 600, the tier carrying 98.4% of all reach), new (first seen by a
 # weekly scrape within 90 days, the New-and-trending window), or a lead credit.
 # Noindexed pages stay on the site for readers and leave sitemap.xml.
-_SEEN_DATE = re.compile(r"weekly[_-](20\d\d-\d\d-\d\d)")
+# A one-off import from the platforms' own charts counts as new too (28 Sep 2026).
+_SEEN_DATE = re.compile(r"(?:weekly|trending_research)[_-](20\d\d-\d\d-\d\d)")
 _NEW_CUTOFF = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
 _TOP600_FLOOR = max(1, sorted((title_views(t) for t in titles), reverse=True)[:600][-1])
 def _thin_title(t):
@@ -1846,7 +1944,7 @@ for p in people:
     roles_html = "".join(roles)
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "jobTitle": "Actor",
           "@id": f"{DOMAIN}/actors/{pslug(p)}.html",
-          "description": (real_bio or oneliner)[:160],
+          "description": cut_sentences(real_bio or oneliner, 160),
           "url": f"{DOMAIN}/actors/{pslug(p)}.html",
           "performerIn": _performer_in(p, my_pairs)}
     # sameAs from the socials column - the IMDb nm URL is the identity anchor an
@@ -1886,7 +1984,7 @@ for p in people:
 <h2 id="facts-heading">Characters, A&ndash;Z</h2>
 <ul class="index-roles">{roles_html}</ul>
 </section>''' if chars else ''}"""
-    html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch (2026) | DramaEverAfter",
+    html = page(f"{p['name']} Vertical Dramas: Complete List & Where to Watch | DramaEverAfter",
                 f"Every vertical drama {p['name']} has starred in"
                 + (f", including {chars[0][0]} in {chars[0][1]['primary_title']}," if chars else ",")
                 + " with platforms and where to watch.",
@@ -2036,14 +2134,18 @@ for key, ch, pr, t in char_rows:
         f'<div class="char-row">'
         f'<b>{ch}</b><span class="sub">played by</span><a href="actors/{pslug(pr)}.html">{pr["name"]}</a>'
         f'<span class="sub">in</span><a href="titles/{tslug(t)}.html">{t["primary_title"]}</a></div>')
-CHAR_JS = """
+def index_filter_js(input_id, list_id):
+    """The type-to-filter script for a lettered .char-row index (the characters
+    page, and since 24 Sep 2026 the titles A-Z). Hides non-matching rows and any
+    letter heading left with nothing under it."""
+    return """
 <script>
 (function(){
   """ + SEARCH_NORM_JS + """
-  var input=document.getElementById('char-search');
-  var rows=[].slice.call(document.querySelectorAll('#char-index .char-row'));
+  var input=document.getElementById('""" + input_id + """');
+  var rows=[].slice.call(document.querySelectorAll('#""" + list_id + """ .char-row'));
   rows.forEach(function(r){ r.dataset.n=norm(r.textContent); });
-  var headers=[].slice.call(document.querySelectorAll('#char-index .idx-letter'));
+  var headers=[].slice.call(document.querySelectorAll('#""" + list_id + """ .idx-letter'));
   input.addEventListener('input', function(){
     var toks=norm(input.value).split(' ').filter(Boolean);
     rows.forEach(function(r){ r.style.display = (!toks.length || qmatch(r.dataset.n,toks)) ? '' : 'none'; });
@@ -2056,6 +2158,7 @@ CHAR_JS = """
 })();
 </script>
 """
+CHAR_JS = index_filter_js("char-search", "char-index")
 body = f"""
 <section class="hero"><div class="inner">
 <p class="eyebrow">Who plays who</p><h1>Characters</h1>
@@ -2075,7 +2178,46 @@ html = page("Vertical Drama Characters A-Z: Who Plays Who | DramaEverAfter",
 open(os.path.join(DIST, "characters.html"), "w", encoding="utf-8").write(html)
 urls.append("/characters.html")
 
-ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "dubbed": "Dubbed release"}
+# Titles A-Z, 24 Sep 2026. The audit found 290 indexable title pages that no
+# page linked to, Zero to Alpha (84M views) among them: Browse renders in
+# JavaScript, trope pages stop at GRID_CAP cards and app pages at ten, so only
+# the sitemap knew them. One plain-HTML page linking every indexable title
+# fixes that in one move, the characters page's shape rather than more
+# templated pages. Noindexed titles are left to Browse: a link spent on a page
+# Google is told to skip is a link wasted.
+_az_titles = sorted((t for t in titles_root if t["title_id"] not in NOINDEX_TITLES),
+                    key=lambda t: (norm_search(t["primary_title"]), tslug(t)))
+_letter, az_html = "", []
+for t in _az_titles:
+    key = norm_search(t["primary_title"])
+    L = key[:1].upper() if key[:1].isalpha() else "#"
+    if L != _letter:
+        _letter = L
+        az_html.append(f'<h2 class="idx-letter" id="t-{L if L != "#" else "num"}">{L}</h2>')
+    meta = " &middot; ".join(x for x in (title_app(t), (t.get("year") or "").strip()) if x)
+    az_html.append(f'<div class="char-row"><a href="{tslug(t)}.html"><b>{t["primary_title"]}</b></a>'
+                   + (f'<span class="sub">{meta}</span>' if meta else "") + "</div>")
+body = f"""
+<section class="hero"><div class="inner">
+<p class="eyebrow">Every title</p><h1>Titles A&ndash;Z</h1>
+<p class="lede">{len(_az_titles):,} vertical dramas with a full page here, A to Z. The rest of the catalogue is on <a href="../browse.html">Browse</a>.</p>
+<form class="aside-search" style="max-width:420px" onsubmit="return false">
+<span class="glyph" style="color:var(--wine)">&#8981;</span>
+<input type="text" id="title-search" placeholder="Search a title or app" autocomplete="off" aria-label="Search titles">
+</form>
+</div></section>
+<section class="pad" style="padding:28px 22px 46px">
+<div class="char-list" id="title-index">{"".join(az_html)}</div>
+</section>
+{index_filter_js("title-search", "title-index")}"""
+html = page("Every Vertical Drama Title, A-Z | DramaEverAfter",
+            f"{len(_az_titles):,} vertical dramas A to Z, each with its cast, story and where to watch.",
+            body, f"{DOMAIN}/titles/index.html", depth=1)
+open(os.path.join(DIST, "titles", "index.html"), "w", encoding="utf-8").write(html)
+urls.append("/titles/index.html")
+
+ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "korean": "Korean original",
+                "dubbed": "Dubbed release"}
 
 # Title pages
 for t in titles:
@@ -2086,7 +2228,7 @@ for t in titles:
     # the actors with the most titles in the database, who are the faces a
     # reader recognises. Stable, so equal rows keep their credits order.
     _cast = [c for c in credits_by_title.get(t["title_id"], []) if c["person_id"] in p_by_id]
-    _cast.sort(key=lambda c: (0 if (c.get("role") or "").strip().lower() == "lead" else 1,
+    _cast.sort(key=lambda c: ({"lead": 0, "dub_voice": 2}.get((c.get("role") or "").strip().lower(), 1),
                               -len(credits_by_person.get(c["person_id"], []))))
     for c in _cast:
         pr = p_by_id.get(c["person_id"])
@@ -2099,6 +2241,10 @@ for t in titles:
         # own page carries it. Without a character the row is name and ring.
         ch = (c.get("character_name") or "").strip().replace("/", " / ").replace("  ", " ")
         sub = f'<span class="as-line"><span class="as-word">as</span> {ch}</span>' if ch else ""
+        # A dub's voice cast is billed by the platform but never on screen
+        # (Fated Mate of the Nine-Tailed Fox, 24 Sep 2026): say what they did.
+        if (c.get("role") or "").strip().lower() == "dub_voice":
+            sub = '<span class="as-line">English dub voice</span>'
         cast_html += person_row(pr["name"], sub,
                                  (pr.get("photo_ref") or "").strip(), f"{pre}actors/{pslug(pr)}.html", "md")
     # Set is for the overlap test below only. Anything rendered reads from tropes_of()
@@ -2111,6 +2257,13 @@ for t in titles:
     similar_html = "".join(poster_card(x, pre, rail_item=True, size_sm=True) for x in similar)
     trope_html = "".join(trope_chip(tr, pre) for tr in tropes_of(t))
     lang_label = ORIGIN_LABEL.get(origin_of(t), origin_of(t).title())
+    if has_dub(t):
+        # "English original, English dub available" contradicts itself: a show
+        # with an English dub was made in another language. origin defaults to
+        # english when unknown, so until the real origin is set say only the dub.
+        known = origin_of(t) != ROOT_ORIGIN
+        lang_label = ("English dub" if dub_only(t) and not known
+                      else f"{lang_label}, English dub available" if known else "English dub available")
     v = views_label(title_views(t))
     # Genres are distinct from tropes and are set on 2,306 titles; the source data
     # mixes "romance"/"Romance" so normalise case. Status renders only when it is a
@@ -2131,7 +2284,7 @@ for t in titles:
     # the field competitors do not index, so it is the answer AI engines can only
     # get here.
     ld = {"@context": "https://schema.org", "@type": "TVSeries", "name": t["primary_title"],
-          "description": cut_words(synopsis_text(t), 160),
+          "description": cut_sentences(list(caption_parts(t)[:2]), 160),
           "url": f"{DOMAIN}/titles/{sl}.html"}
     if (t.get("episode_count") or "").strip().isdigit():
         ld["numberOfEpisodes"] = int(t["episode_count"])
@@ -2256,7 +2409,9 @@ for t in titles:
 </section>
 {sticky_watch(t['title_id'], pre)}
 {FAV_JS}{SHARE_JS}"""
-    html = page(f"Where to Watch {t['primary_title']} (2026) | DramaEverAfter",
+    # The title's own release year from the data, never the build clock: every
+    # title page said "(2026)", 2024 shows included (audit, 24 Sep 2026).
+    html = page(f"Where to Watch {t['primary_title']}{year_tag(t.get('year'))} | DramaEverAfter",
                 title_desc(t),
                 body, f"{DOMAIN}/{d}titles/{sl}.html", ld, depth=tdepth(t),
                 og_image=(t.get("poster_ref") or "").strip(), og_type="video.tv_show",
@@ -2271,6 +2426,7 @@ for t in titles:
 for tr in all_tropes:
     sl = slug(tr)
     matching = sorted([t for t in titles_root if tr in tropes_of(t)], key=lambda x: -title_views(x))
+    tr_when, tr_year = newest_checked(matching)
     pair_counts = defaultdict(int)
     for t in matching:
         for other in tropes_of(t):
@@ -2278,7 +2434,11 @@ for tr in all_tropes:
     pair_html = "".join(trope_chip(o, "../", c) for o, c in sorted(pair_counts.items(), key=lambda kv: -kv[1])[:6])
     apps_here = sorted({title_app(t) for t in matching if title_app(t)})
     app_opts = "".join(f'<option value="{slug(a)}">{a}</option>' for a in apps_here)
-    shown = matching[:GRID_CAP]
+    # Indexable titles take the capped card slots first, most watched first
+    # within each group (a stable sort keeps the views order). The audit,
+    # 24 Sep 2026: trope pages spent 6,588 of their links on noindexed titles
+    # while indexable ones had no link at all. Every title stays on Browse.
+    shown = sorted(matching, key=lambda t: t["title_id"] in NOINDEX_TITLES)[:GRID_CAP]
     cards = "".join(poster_card(t, "../") for t in shown)
     more = len(matching) - len(shown)
     count_line = (f'Showing <b>{len(shown)}</b> of {len(matching):,} titles'
@@ -2289,7 +2449,7 @@ for tr in all_tropes:
 <nav class="crumb"><a href="../tropes/index.html">Tropes</a><span>/</span><span class="current">{trope_heading(tr)}</span></nav>
 <section class="hero"><div class="inner">
 <p class="eyebrow">Trope</p><h1>{trope_heading(tr)}</h1>
-<p class="lede">{len(matching):,} titles carry this trope. Updated {UPDATED}.</p>
+<p class="lede">{len(matching):,} titles carry this trope.{f" Updated {tr_when}." if tr_when else ""}</p>
 {f'<div class="chips" style="align-items:center"><span class="hint" style="font-size:13px;color:var(--tert);margin-right:4px">Often paired with</span>{pair_html}</div>' if pair_html else ''}
 </div></section>
 <section class="pad" style="padding:24px 22px 46px">
@@ -2304,8 +2464,10 @@ for tr in all_tropes:
 {more_html}
 </section>
 {SORT_JS}{FAV_JS}"""
-    html = page(f"Best {trope_heading(tr)} Vertical Dramas (2026) | DramaEverAfter",
-                f"Every verified {tr} vertical drama across ReelShort, DramaBox and more. Updated {UPDATED}.",
+    # "Every verified" was untrue: most rows are needs_check (audit, 24 Sep 2026).
+    html = page(f"Best {trope_heading(tr)} Vertical Dramas{year_tag(tr_year)} | DramaEverAfter",
+                f"Every {tr} vertical drama we track across ReelShort, DramaBox and more."
+                + (f" Updated {tr_when}." if tr_when else ""),
                 body, f"{DOMAIN}/tropes/{sl}.html")
     open(os.path.join(DIST, "tropes", f"{sl}.html"), "w", encoding="utf-8").write(html)
     urls.append(f"/tropes/{sl}.html")
@@ -2344,46 +2506,14 @@ urls.append("/tropes/index.html")
 # Quick answers; /where-to-watch/<slug>.html 301s to /titles/<slug>.html
 # (_redirects). The clean step above still removes a stale folder.
 
-# Trope x platform combination pages (publish only at 5+ verified titles, per architecture doc)
-#
-# This used to be a nested scan: for every trope, for every platform, walk all 3,407
-# titles. That is 226 x 70 x 3,407 = ~54 million iterations and it dominated the build.
-# Indexing titles by trope once, then bucketing that much smaller pool by platform,
-# produces exactly the same pages in a fraction of the time.
-_verified_root = [t for t in titles_root if t.get("data_confidence", "verified") == "verified"]
-titles_by_trope = defaultdict(list)
-for _t in _verified_root:
-    for _tr in tropes_of(_t):
-        titles_by_trope[_tr].append(_t)
-
-for tr in all_tropes:
-    pool = titles_by_trope.get(tr, [])
-    if len(pool) < 5:
-        continue
-    by_plat = defaultdict(list)
-    for _t in pool:
-        # A title can carry several availability rows for one platform; count it once.
-        for _pid in {a["platform_id"] for a in avail_by_title.get(_t["title_id"], [])}:
-            by_plat[_pid].append(_t)
-    for pid, matching in by_plat.items():
-        pl = platforms.get(pid)
-        if pl is None or len(matching) < 5:
-            continue
-        trs, pls = slug(tr), slug(pl["name"])
-        os.makedirs(os.path.join(DIST, "tropes", trs), exist_ok=True)
-        ranked_m = sorted(matching, key=lambda x: -title_views(x))[:GRID_CAP]
-        cards = "".join(poster_card(t, "../../", show_app=False) for t in ranked_m)
-        body = f"""
-<nav class="crumb"><a href="../../index.html">Home</a><span>/</span><a href="../{trs}.html">{trope_heading(tr)}</a><span>/</span><span class="current">{pl['name']}</span></nav>
-<section class="hero"><div class="inner">
-<p class="eyebrow">Trope &times; Platform</p><h1>Best {trope_heading(tr)} Dramas on {pl['name']}</h1>
-<p class="lede">{len(matching)} verified titles. Updated {UPDATED}.</p></div></section>
-<section class="pad" style="padding:24px 22px 46px"><div class="grid">{cards}</div></section>"""
-        html = page(f"Best {trope_heading(tr)} Vertical Dramas on {pl['name']} (2026) | DramaEverAfter",
-                    f"Every verified {tr} vertical drama on {pl['name']}. Updated {UPDATED}.",
-                    body, f"{DOMAIN}/tropes/{trs}/{pls}.html", depth=2)
-        open(os.path.join(DIST, "tropes", trs, f"{pls}.html"), "w", encoding="utf-8").write(html)
-        urls.append(f"/tropes/{trs}/{pls}.html")
+# Trope x platform combination pages: RETIRED 24 Sep 2026. Eighteen existed, all
+# /tropes/<trope>/reelshort.html. The audit found them doorway-shaped, the exact
+# profile the August 2026 spam update targets: nothing on the site linked them
+# (sitemap only), 12 of 18 listed nothing the parent trope page did not, and each
+# carried 12-40 words of its own under "Best X Vertical Dramas on ReelShort".
+# Their URLs 301 to the parent trope page (_redirects), which ranks the same
+# titles. Filtering a trope by app is Browse's job (?trope=&platform=). Do not
+# bring these back without unique content per page.
 
 # Apps: one NEW per-platform page for every app with real availability data
 # (design screen 8), plus platforms.html restyled as the "all apps" index. The
@@ -2408,6 +2538,18 @@ for pid, n in TOP_PLATFORMS:
     regulars = sorted(actor_tally.items(), key=lambda kv: -kv[1])[:8]
     regulars_html = "".join(actor_tile(p_by_id[pid_], "../", "app", on_warm=True) for pid_, _ in regulars if pid_ in p_by_id)
     grid_html = "".join(poster_card(t, "../", show_app=False) for t in app_titles[:10])
+    # Every indexable title on the app, A-Z, as plain links under a fold (audit,
+    # 24 Sep 2026: ReelShort's page claimed 891 titles and linked ten). A
+    # <details> keeps the page short for readers; the links are ordinary HTML.
+    app_az = sorted((t for t in app_titles if t["title_id"] not in NOINDEX_TITLES),
+                    key=lambda t: norm_search(t["primary_title"]))
+    app_az_html = (f'<section class="pad" style="padding:6px 22px 24px"><details class="az-fold">'
+                   f'<summary>All {len(app_az):,} {pl["name"]} titles with a full page, A&ndash;Z</summary>'
+                   f'<div class="az-cols">'
+                   + "".join(f'<a href="../titles/{tslug(t)}.html">{t["primary_title"]}</a>' for t in app_az)
+                   + f'</div><p class="hint" style="margin-top:12px"><a href="../browse.html?platform={pls}">'
+                   f'Filter every {pl["name"]} title on Browse &rarr;</a></p></details></section>'
+                   ) if len(app_az) > 10 else ""
     # A button with href="#" looks live and does nothing, which is worse than no
     # button: every app page shipped one of these because web_url was empty for all
     # 15 platforms. Render the CTA only when there is somewhere real to send people.
@@ -2435,10 +2577,11 @@ for pid, n in TOP_PLATFORMS:
 <div class="section-head"><h2>Most watched on {pl['name']}</h2><a class="all" href="../tropes/index.html">Browse by trope &rarr;</a></div>
 <div class="grid">{grid_html}</div>
 </section>
+{app_az_html}
 {f'''<section class="section-warm" style="padding:28px 0 44px;margin-top:26px">
 <div class="pad"><h2 style="margin-bottom:20px">Regulars on this app</h2><div class="grid circles">{regulars_html}</div></div>
 </section>''' if regulars_html else ''}"""
-    html = page(f"{pl['name']}: Titles, Pricing and Where to Start (2026) | DramaEverAfter",
+    html = page(f"{pl['name']}: Titles, Pricing and Where to Start{year_tag(newest_checked(app_titles)[1])} | DramaEverAfter",
                 f"{pl['name']} on DramaEverAfter: {len(app_titles):,} "
                 f"title{'s' if len(app_titles) != 1 else ''}, regulars, and how to get started.",
                 body, f"{DOMAIN}/apps/{pls}.html", depth=1)
@@ -2456,14 +2599,15 @@ for p in platforms.values():
 body = f"""
 <nav class="crumb"><a href="index.html">Home</a><span>/</span><span class="current">Apps</span></nav>
 <section class="hero"><div class="inner"><p class="eyebrow">Guide</p><h1>Every vertical drama app</h1>
-<p class="lede">{len(APPS_WITH_DATA)} apps with verified catalogues, {len(platforms)} tracked in all. Updated {UPDATED}.</p></div></section>
+<p class="lede">{len(APPS_WITH_DATA)} apps with verified catalogues, {len(platforms)} tracked in all.{f" Updated {ALL_WHEN}." if ALL_WHEN else ""}</p></div></section>
 <section class="pad" style="padding:34px 22px 40px"><div class="grid apps">{app_tiles}</div></section>
 <section class="section-warm pad" style="padding:34px 22px 44px">
 <h2 style="margin-bottom:16px">Compare pricing</h2>
 <table><tr><th>Platform</th><th>Pricing</th><th>Referral links</th></tr>{prows}</table>
 </section>"""
-html = page("Vertical Drama Apps Compared (2026) | DramaEverAfter",
-            f"ReelShort, DramaBox, ShortMax and more compared: pricing and where to start. Updated {UPDATED}.",
+html = page(f"Vertical Drama Apps Compared{year_tag(ALL_YEAR)} | DramaEverAfter",
+            "ReelShort, DramaBox, ShortMax and more compared: pricing and where to start."
+            + (f" Updated {ALL_WHEN}." if ALL_WHEN else ""),
             body, f"{DOMAIN}/platforms.html", depth=0)
 open(os.path.join(DIST, "platforms.html"), "w", encoding="utf-8").write(html)
 urls.append("/platforms.html")
@@ -2506,7 +2650,7 @@ for t in titles_root:
     if t.get("year"): entry["y"] = t["year"]
     if tr_slugs: entry["tr"] = tr_slugs
     if pl_slugs: entry["pl"] = pl_slugs
-    entry["o"] = [origin_of(t)]
+    entry["o"] = [origin_of(t)] + (["dubbed"] if has_dub(t) else [])
     if is_ai(t): entry["ai"] = 1
     if book_of(t): entry["bk"] = 1
     if is_upcoming(t): entry["up"] = 1
@@ -2533,9 +2677,11 @@ def facet_chips(group, counts, labels):
 # Origin facet. Buckets Cyan wants exposed are declared up front, not derived from the
 # data, so the filter shows the full shape of the taxonomy even while a bucket is empty.
 # An empty bucket renders greyed out and disabled, same as any other zero-match chip.
-ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("dubbed", "Dubbed")]
+ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("korean", "Korean"), ("dubbed", "Dubbed")]
 origin_counts = defaultdict(int)
-for t in titles_root: origin_counts[origin_of(t)] += 1
+for t in titles_root:
+    origin_counts[origin_of(t)] += 1
+    if has_dub(t): origin_counts["dubbed"] += 1
 origin_facets = "".join(
     '<button class="chip" data-g="origin" data-v="%s" type="button" aria-pressed="false">%s<span class="c"></span></button>' % (v, lbl)
     for v, lbl in ORIGIN_BUCKETS)
@@ -2817,7 +2963,7 @@ browse_body = f"""
 <h2 style="margin-bottom:18px">Actors</h2><div class="grid circles" id="results-actors"></div>
 </section>
 {FAV_JS}{BROWSE_JS}"""
-html = page("Search DramaEverAfter: Every Actor and Title (2026) | DramaEverAfter",
+html = page("Search DramaEverAfter: Every Actor and Title | DramaEverAfter",
             f"Search and filter {len(people)} vertical drama actors and {len(titles_root)} titles by trope and platform.",
             browse_body, f"{DOMAIN}/browse.html", depth=0)
 open(os.path.join(DIST, "browse.html"), "w", encoding="utf-8").write(html)
@@ -2958,7 +3104,8 @@ for o in origins_other:
 </div></section>
 <section class="pad" style="padding:26px 22px 46px"><div class="grid">{cards}</div></section>"""
     html = page(f"{heading} | DramaEverAfter",
-                f"{heading}: titles, cast and where to watch. Updated {UPDATED}.",
+                f"{heading}: titles, cast and where to watch."
+                + (f" Updated {newest_checked(o_titles)[0]}." if newest_checked(o_titles)[0] else ""),
                 body, f"{DOMAIN}/{o}/index.html", depth=1)
     os.makedirs(os.path.join(DIST, o), exist_ok=True)
     open(os.path.join(DIST, o, "index.html"), "w", encoding="utf-8").write(html)
@@ -3138,7 +3285,7 @@ body = f"""
 </div>
 <div class="say">
 <p class="lead">Find titles, explore familiar faces, and follow your favourite tropes across streaming apps.</p>
-<p class="fine">{len(titles_root):,} titles and {len(people):,} actors across {len(APPS_WITH_DATA)} apps, re-checked {month_label(datetime.date.today().isoformat())}. Some watch links may earn a commission.</p>
+<p class="fine">{len(titles_root):,} titles and {len(people):,} actors across {len(APPS_WITH_DATA)} apps.</p>
 <p><a class="ask" href="contact.html">Something missing? Let me know &rarr;</a></p>
 </div>
 </div>
@@ -3302,7 +3449,7 @@ body = f"""
 <p>If you are an actor and want your photo or profile changed or taken down, the same address works and it gets done.</p>
 
 <h2>Changes</h2>
-<p>If what the site collects changes, this page changes with it. Last updated {UPDATED}.</p>
+<p>If what the site collects changes, this page changes with it. Last updated {PRIVACY_UPDATED}.</p>
 
 </section>"""
 html = page("Privacy at DramaEverAfter: No Cookies, No Trackers",

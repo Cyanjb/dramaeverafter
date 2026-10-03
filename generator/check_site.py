@@ -63,6 +63,25 @@ for fname, col, universe, label in [
     if orphans: fail(f"{fname}: {len(orphans)} {col} rows point at no {label} row, e.g. {orphans[:3]}")
     else: ok(f"{fname}: every {col} resolves")
 
+# Hidden titles (status delisted, Cyan 24 Sep 2026: the platform took the
+# show down) keep their data row but must publish nothing.
+_hidden = {t["slug"] for t in titles if (t.get("status") or "").strip().lower() == "delisted"}
+_leaked = [s for s in _hidden if os.path.exists(os.path.join(ROOT, "titles", s + ".html"))]
+if _leaked: fail(f"{len(_leaked)} delisted titles still have a page, e.g. {_leaked[:3]}")
+else: ok(f"{len(_hidden)} delisted titles hidden: no page, card or search entry")
+
+# Research notes are not stories. 27 titles shipped "Jake Hobbs lead." or
+# "Anina Net #1 ranking title." as The story and the meta description until
+# the 24 Sep 2026 audit (removed text: generator/staging/
+# internal_notes_removed_2026-09-24.csv). Cast, book and status have columns.
+_NOTE = re.compile(r"\b(lead|credit)( and producer| vertical)?\.$|ranking title|first vertical\.$|"
+                   r"^(Based on|Inspired by) the novel by|^Announced for release|premiere \(|"
+                   r"produced/created|^Independent vertical production|on the \w+ app\.$|\bvertical\.$", re.I)
+_notes = [t["slug"] for t in titles if (s := (t.get("synopsis_short") or "").strip())
+          and "\n" not in s and len(s) < 90 and _NOTE.search(s)]
+if _notes: fail(f"{len(_notes)} titles carry a research note as their story, e.g. {_notes[:3]}: clear synopsis_short")
+else: ok("no research notes shipping as a title's story")
+
 print("== search ==")
 idx = json.loads(rd("search-index.json"))
 if len(idx.get("titles", [])) < 0.9 * len(titles):
@@ -143,6 +162,25 @@ if norm_search:
         except FileNotFoundError:
             warn("node not available; JS/Python normalizer parity unchecked")
 
+# Titles A-Z (24 Sep 2026): 290 indexable title pages had no inbound link,
+# only the sitemap. The A-Z page links every sitemap title in plain HTML, and
+# the footer links the A-Z page from every page.
+if not os.path.exists(os.path.join(ROOT, "titles", "index.html")):
+    fail("titles/index.html missing (the Titles A-Z page that links every indexable title)")
+else:
+    _az = set(re.findall(r'href="([^"#?]+)\.html"', rd("titles/index.html")))
+    _sm = re.findall(r"<loc>https://dramaeverafter\.com/titles/([^<]+)\.html</loc>", rd("sitemap.xml"))
+    _unlinked = [s for s in _sm if s != "index" and s not in _az]
+    if _unlinked: fail(f"{len(_unlinked)} sitemap titles missing from Titles A-Z, e.g. {_unlinked[:3]}")
+    elif 'titles/index.html">Titles' not in rd("index.html"): fail("the footer no longer links Titles A-Z")
+    else: ok(f"Titles A-Z links all {len(_sm) - ('index' in _sm)} indexable titles, and the footer links it")
+
+# Trope x app combo pages were retired 24 Sep 2026 as doorway-shaped; their
+# URLs 301 to the parent trope. No sub-folder under tropes/ may come back.
+_combo = [d for d in os.listdir(os.path.join(ROOT, "tropes")) if os.path.isdir(os.path.join(ROOT, "tropes", d))]
+if _combo: fail(f"trope x app combo pages are back (retired 24 Sep 2026 as doorway pages): tropes/{_combo[0]}/")
+else: ok("no trope x app combo pages (retired as doorway pages; their URLs 301 to the parent trope)")
+
 print("== homepage ==")
 home = rd("index.html")
 mw, nt = home.find("Most watched right now"), home.find("New and trending")
@@ -221,7 +259,7 @@ else: ok("every sitemap URL has a file")
 if noindexed: fail(f"{len(noindexed)} sitemap URLs carry noindex (they must leave the sitemap), e.g. {noindexed[:3]}")
 else: ok("no sitemap URL carries a noindex meta")
 # The fold (10 Sep): title pages carry where-to-watch and the quick answers.
-_first_title = next((u for u in locs if "/titles/" in u), "")
+_first_title = next((u for u in locs if "/titles/" in u and not u.endswith("/titles/index.html")), "")
 _tp = rd(_first_title.replace("https://dramaeverafter.com/", "")) if _first_title else ""
 if _tp and ('id="at-a-glance"' not in _tp or '"TVSeries"' not in _tp or '<details' in _tp):
     fail(f"title page lacks the At a glance band or TVSeries schema, or still has fold-outs: {_first_title}")
@@ -268,6 +306,30 @@ missing += [m for m in sorted(os.listdir(ROOT)) if m.endswith(".md")
             and not re.search(rf"^/{re.escape(m)}\s+\S+\s+404!", red, re.M)]
 if missing: fail(f"not blocked on the domain (add a 404! rule to _redirects): {missing}")
 else: ok("database, generator, references and every root .md are 404! on the domain")
+# The 404! rules match exact case only, and Netlify serves files case-
+# insensitively: /Data/titles.csv and /handover.md answered 200 (audit,
+# 24 Sep 2026). The real block is netlify.toml's build command, which deletes
+# the non-site paths from the deploy copy. Every tracked root entry must be
+# either part of the site or removed there.
+_toml = rd("netlify.toml") if os.path.exists(os.path.join(ROOT, "netlify.toml")) else ""
+_cmd = re.search(r'^\s*command\s*=\s*"([^"]*)"', _toml, re.M)
+_pruned = set(re.findall(r"[\w.*-]+", _cmd.group(1))) if _cmd else set()
+_SITE_DIRS = {"actors", "apps", "titles", "tropes", "chinese"}
+_SITE_FILES = {"_redirects", "_headers", "netlify.toml"}
+_SITE_EXT = (".html", ".css", ".js", ".json", ".xml", ".txt", ".png", ".svg", ".ico", ".webp", ".jpg")
+try:
+    _tracked = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.split("\n")
+except (OSError, subprocess.CalledProcessError):
+    _tracked = []
+_roots = {p.split("/")[0] for p in _tracked if p}
+_leak = sorted(r for r in _roots
+               if r not in _SITE_DIRS and r not in _SITE_FILES and r not in _pruned
+               and not (r.endswith(".md") and "*.md" in _pruned)
+               and not (r in _tracked and r.endswith(_SITE_EXT)))
+if not _cmd: fail("netlify.toml has no build command: every capitalisation of /data, /generator and the notes is served (audit, 24 Sep 2026)")
+elif not _tracked: warn("git ls-files unavailable: could not check that netlify.toml removes every non-site root path")
+elif _leak: fail(f"root paths neither part of the site nor removed by netlify.toml's build command: {_leak}")
+else: ok("netlify.toml's build command removes every non-site root path, in any capitalisation")
 
 # THE POSTER RULE (Cyan, 13 Sep 2026): posters stay true to their sources, 3:4.
 # A design handoff asking for 9:16 or 2:3 does not override it; the sources do.
@@ -289,42 +351,31 @@ gc = [p for p in ("index.html", "browse.html", "404.html") if "data-goatcounter=
 if gc: fail(f"GoatCounter script missing from {gc}")
 else: ok("GoatCounter script on the root pages (build.py GOATCOUNTER)")
 
-# Order matters: a specific old-URL 301 placed AFTER the generic :slug rules
-# never fires, because :slug swallows "name.html" as one segment and the
-# old URL redirects to name.html.html without end (live, 10 Sep 2026).
+# No generic /titles/:slug -> /titles/:slug.html rule (nor actors, tropes,
+# apps). It never fired for a real page (Netlify serves foo.html at /foo
+# first, no toggle), and for a MISSING page :slug swallowed "name.html" as
+# one segment, so every unknown URL looped to name.html.html.html forever
+# instead of the 404 page (audit, 24 Sep 2026; first seen 10 Sep on a
+# misplaced merge 301). The extensionless duplicate itself stays unsolved by
+# Cyan's 10 Sep ruling; the canonical tags carry it. See SITE-CHECKS.md.
 _lines = red.split("\n")
-_first_slug = next((i for i, l in enumerate(_lines) if ":slug" in l), len(_lines))
-_late = [l for l in _lines[_first_slug:] if re.match(r"^/(titles|actors|tropes|apps)/[^:*\s]+\.html\s+/", l)]
-if _late: fail(f"specific 301 rules sit after the generic :slug rules and never fire: {_late[:3]}")
-else: ok("every specific old-URL 301 comes before the generic :slug rules")
-
-# The duplicate-URL rules. READ THIS BEFORE TRUSTING THEM: they do NOT
-# currently fix the duplicate. Netlify serves foo.html at /foo by default
-# (that is not the Pretty URLs setting and has no toggle), and these rules
-# are non-forced, so an existing file beats them and they fire only for
-# paths with no file. Verified live 10 Sep 2026 after Pretty URLs went
-# off: /search 301s, /actors/blake-manning still 200s.
-# They are checked anyway because they are the skeleton of the eventual
-# fix and deleting them would lose the intent. The duplicate is real and
-# unsolved: the 10 Sep coverage drilldown found 456 extensionless URLs in
-# "Crawled - currently not indexed" and Google ranked the extensionless
-# /actors/blake-manning at position 1. See SITE-CHECKS.md for the options
-# and for Cyan's 10 Sep ruling to leave it.
-missing = [f for f in ("/titles/:slug", "/actors/:slug", "/tropes/:slug", "/apps/:slug")
-           if not re.search(re.escape(f) + r"\s+" + re.escape(f) + r"\.html\s+301\b", red)]
-if missing:
-    fail(f"_redirects is missing the extensionless 301 for {missing}: "
-         "every page would be reachable at two URLs again (10 Sep 2026)")
-else:
-    ok("the extensionless 301 rules are all present (they do not fire "
-       "for real pages, see SITE-CHECKS.md)")
+_generic = [l.strip() for l in _lines if re.match(r"^/(titles|actors|tropes|apps)/:\w+\s", l)]
+if _generic: fail(f"generic :slug rules loop on every missing page instead of a 404: {_generic}")
+else: ok("no generic page :slug rules, so a missing page gets the 404 page, not a redirect loop")
+# Without the generic rule, an old URL's extensionless form needs its own
+# rule: every specific page 301 carries its extensionless twin.
+_srcs = {l.split()[0] for l in _lines if l.strip() and not l.startswith("#")}
+_nolone = [s for s in _srcs if re.match(r"^/(titles|actors|tropes|apps)/\S+\.html$", s)
+           and s[:-5] not in _srcs and not os.path.exists(os.path.join(ROOT, s.lstrip("/")))]
+if _nolone: fail(f"page 301s with no extensionless twin (merge_person/merge_title write both): {sorted(_nolone)[:3]}")
+else: ok("every old page 301 also redirects its extensionless form")
 
 print("== rails ==")
 # Cyan, 17 Sep 2026: arrows on hover, no slider, and "don't interfere with
 # functionality". The arrows are PROGRESSIVE ENHANCEMENT: built in script, never
 # shipped as markup, so a reader with no JavaScript gets the plain scroll rail
 # instead of dead buttons. Three things have to stay true or that promise breaks.
-_rail_pages = [f for f in ("index.html", "titles/clubhouse-of-desire.html") if os.path.exists(f)]
+_rail_pages = [f for f in ("index.html", "titles/clubhouse-of-desire.html") if os.path.exists(os.path.join(ROOT, f))]
 # "rail-nav" appears on every page as SCRIPT TEXT, so the shipped-markup test
 # has to look for the attribute form specifically, not the bare string.
 _no_js = [f for f in _rail_pages if 'class="rail"' in rd(f)]
@@ -409,21 +460,32 @@ if not _dvh_ok:
 else:
     ok("phone sheets are sized in dvh, so iOS chrome cannot push their heads off-screen")
 
-# The language filter appears only when BROWSE ITSELF lists more than one
-# language. That qualifier matters: build.py scopes browse, home, tropes and
-# platforms to ROOT_ORIGIN, and any other origin gets its own section index
-# instead (see the comment above titles_root). So the filter was not merely
-# empty, it was structurally dead -- adding Chinese titles moves them OUT of
-# browse, it does not light up a Chinese chip. Counting the browse population
-# rather than the whole file is what makes this check tell the truth, and it
-# still flips on its own if that scoping is ever changed.
+# One page per show (Cyan, 24 Sep 2026): a dub listing whose original is on
+# file belongs on the original's page. A new scrape can bring one in; say so.
+_DUBMARK = re.compile(r"^\s*(\[\s*eng\s*dub\s*\]|\(\s*dubbed\s*\)|\[\s*dubbed version\s*\])\s*", re.I)
+_fold = lambda s: re.sub(r"[^a-z0-9]", "", unicodedata.normalize("NFKD", s or "").lower())
+_orig_names = {_fold(r["primary_title"]) for r in rows("titles.csv") if not _DUBMARK.match(r["primary_title"])}
+_unfolded = [r["slug"] for r in rows("titles.csv") if _DUBMARK.match(r["primary_title"])
+             and _fold(_DUBMARK.sub("", r["primary_title"])) in _orig_names]
+if _unfolded: warn(f"{len(_unfolded)} dub listings have their original on file but their own page, e.g. {_unfolded[:2]}: run generator/merge_dubs.py --apply")
+else: ok("every dub listing with an original on file shares the original's page")
+
+# The language filter appears only when browse lists more than one bucket.
+# Since 24 Sep 2026 origin is a label, not a folder: browse lists EVERY title,
+# and a title with an English-dub availability row also counts as Dubbed
+# (merge_dubs.py). So the live buckets are every origin in titles.csv plus
+# Dubbed when any availability row is version english-dub. Before that date
+# other origins were moved out of browse and this check guarded the dead chip.
 _root_origin = "english"
-_browse_origins = collections.Counter(
-    (r.get("origin") or _root_origin).strip().lower() for r in rows("titles.csv")
-    if (r.get("origin") or _root_origin).strip().lower() == _root_origin)
 _all_origins = collections.Counter((r.get("origin") or _root_origin).strip().lower()
                                    for r in rows("titles.csv"))
+_browse_origins = collections.Counter(_all_origins)
+_dubbed = {a["title_id"] for a in rows("availability.csv") if (a.get("version") or "") == "english-dub"}
+if _dubbed: _browse_origins["dubbed"] = len(_dubbed)
 _live = len(_browse_origins)
+_idx_dubbed = sum(1 for t in idx["titles"] if "dubbed" in t.get("o", []))
+if _dubbed and _idx_dubbed != len({t for t in _dubbed if os.path.exists(os.path.join(ROOT, "titles", t + ".html"))}):
+    fail(f"the Dubbed filter finds {_idx_dubbed} titles in search-index.json but {len(_dubbed)} have an English-dub row")
 _shown = 'id="f-origin"' in _browse
 if _live > 1 and not _shown:
     fail(f"browse now lists {_live} languages but its language filter is hidden")
@@ -437,8 +499,7 @@ elif "Country of origin" in _browse:
          "Chinese are languages, and Dubbed is a release version, not a country")
 else:
     ok(f"the browse language filter matches what browse lists "
-       f"({_live} language, group {'shown' if _shown else 'hidden'}; "
-       f"whole catalogue: {dict(_all_origins)})")
+       f"({_live} buckets, group {'shown' if _shown else 'hidden'}: {dict(_browse_origins)})")
 
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")

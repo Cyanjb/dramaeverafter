@@ -58,6 +58,7 @@ def main():
     ap.add_argument("--keep", required=True)
     ap.add_argument("--lose", required=True)
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--evidence", default="", help="why these are one person, for the match_queue record")
     a = ap.parse_args()
 
     people, credits, queue = load("people.csv"), load("credits.csv"), load("match_queue.csv")
@@ -101,7 +102,16 @@ def main():
             out.append(x.strip())
     keep["aka_names"] = "|".join(out)
 
+    # The profile carries across too, fill-blank-only (24 Sep 2026): Kiki Frags
+    # held the photo, Kyle Fragnoli the 24 credits, and the merge kept one of each.
+    carried = []
+    for f in ("photo_ref", "bio_short", "socials"):
+        if not (keep.get(f) or "").strip() and (lose.get(f) or "").strip():
+            keep[f] = lose[f]
+            carried.append(f)
+
     print(f"credits moved   : {len(moved)}  {[c['title_id'] for c in moved]}")
+    print(f"profile carried : {carried}")
     print(f"duplicates dropped: {len(dropped)}  {[c['title_id'] for c in dropped]}")
     print(f"character names carried across: {len(filled)}")
     print(f"aka_names now   : {keep['aka_names']!r}")
@@ -114,27 +124,35 @@ def main():
     save("people.csv", people)
     save("credits.csv", credits)
 
+    import datetime
+    today = datetime.date.today().isoformat()
     ruled = 0
     for q in queue:
         pair = {q["candidate_a"].strip(), q["candidate_b"].strip().rstrip("?")}
         if pair == {a.keep, a.lose}:
-            q["status"] = "confirmed_same (Cyan, 2026-08-08)"
+            q["status"] = f"confirmed_same ({today})"
             ruled += 1
+    if not ruled and a.evidence:
+        queue.append({"candidate_a": a.keep, "candidate_b": a.lose, "evidence": a.evidence,
+                      "status": f"confirmed_same ({today})"})
+        ruled = 1
     if ruled:
         save("match_queue.csv", queue)
 
     path = os.path.join(REPO, "_redirects")
     lines = [l.rstrip("\n") for l in open(path, encoding="utf-8")] if os.path.exists(path) else []
-    rule = f"/actors/{a.lose}.html  /actors/{a.keep}.html  301"
-    if rule not in lines:
-        # BEFORE the generic /:slug rules, never appended after them: :slug
-        # matches "name.html" as one segment, so a specific rule placed later
-        # never fires and the old URL 301s to name.html.html forever
-        # (found live 10 Sep 2026). check_site guards the order.
-        first = next((i for i, l in enumerate(lines) if ":slug" in l), len(lines))
-        while first > 0 and lines[first - 1].startswith("#"):
-            first -= 1
-        lines.insert(first, rule)
+    # The old URL in both forms, .html and extensionless: there is no generic
+    # /actors/:slug rule to catch the bare form (it looped on missing pages,
+    # audit 24 Sep 2026), so each merge writes its own pair. check_site
+    # guards the pairing.
+    for src in (f"/actors/{a.lose}.html", f"/actors/{a.lose}"):
+        rule = f"{src}  /actors/{a.keep}.html  301"
+        if rule not in lines:
+            # With the other page 301s, above the extensionless root block.
+            first = next((i for i, l in enumerate(lines) if l.startswith("# Extensionless root pages")), len(lines))
+            while first > 0 and not lines[first - 1].strip():
+                first -= 1
+            lines.insert(first, rule)
     open(path, "w", encoding="utf-8").write("\n".join(lines).rstrip() + "\n")
 
     stale = os.path.join(REPO, "actors", f"{a.lose}.html")

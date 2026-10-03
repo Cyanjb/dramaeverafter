@@ -1,0 +1,10 @@
+# Titles caption_pipeline.py `next` puts at the FRONT of the next batch, ahead of
+# the ranking by reach. One title_id per line; remove a line once it is captioned
+# (the queue also skips anything already ours, tier A).
+#
+# Cyan, 28 Sep 2026: "add those four to the next caption batch". Their stored
+# synopsis is truncated platform text, so the search snippet ends mid-sentence.
+# The text on disk is NOT a usable source: fetch the full synopsis from the
+# platform page before writing.
+
+# (the four above were captioned 28 Sep 2026 in captions_2026_09_28_new234_live_approved.py)

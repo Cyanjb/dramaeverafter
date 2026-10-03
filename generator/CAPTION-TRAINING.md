@@ -396,3 +396,81 @@ sentence keeps the source's bones no matter how many words change. A
 caption written by reading the source, looking away, and telling someone
 what happens does not. The 174 to 0 result is what the second method looks
 like when it is measured.
+
+## BATCH new-34, HER EDITS, 20 Sep 2026
+
+34 new-title captions from the weekly scrape. 34 ticked, 10 edited. The
+measure that matters: **2.2% of words changed across the batch** (71 of 3260),
+10 of 34 touched. Down from 5% (batch four) and 11.8% inside touched captions,
+so the voice is landing and this is the closest to "spot-check only" yet.
+
+ONE GENUINELY NEW RULE (the pattern showed in two separate edits, so it is a
+rule, not taste):
+
+- **American spelling.** She changed honour to honor (married-ex-fiance-s-uncle),
+  and jewellery to jewelry plus rumoured to rumored (the-alpha-king-is-my-baby-s-daddy).
+  Use US spellings by default: honor, jewelry, rumor, color, favorite, gray,
+  traveled. Her audience is US-weighted and every British spelling is a small
+  edit she has to make. This is mechanical enough to bake into the writing, not
+  the gate.
+
+WHAT REINFORCED EXISTING CLASSES (training landed, not new lessons):
+
+- Class 2 (deflate cleverness into plain fan-speak) again: she cut "bum" for
+  "homeless man" in step-back (hook and body both), dropped "heartbreaking"
+  from bitter-burn, and rewrote the mob-boss hook from the coy "what she was
+  carrying" to the plainer "what she took with her". Plainer and more direct
+  every time. This is still the dominant class.
+- Question endings again (already settled batch four): she turned the
+  married-uncle closer into "Did her worst day just become the best mistake she
+  has ever made?" A question closer is a landing, not a weak one.
+
+MECHANICAL FIXES MADE TO HER RETURNED TEXT, all listed back to her: two double
+spaces removed; "brothers debts" -> "brother's debts" (possessive apostrophe);
+and one word-level tense fix flagged for her veto, "just became" -> "just
+become" in an interrogative. She also settled the our-camp-night narrator as
+female ("she prays"), resolving the gender the source left open.
+
+## BATCH new-69, HER EDITS, 28 Sep 2026
+
+69 new-title captions from the 27 Sep scrape. She reviewed 15 (4 edited, 11
+ticked), then said "Take everything live in the meantime I will check them
+later", so the other 54 went live on that instruction. **0.3% of words changed
+across the batch** (21 of 7445), down from 2.2% on new-34. Inside the 4 touched
+captions: 21 of 379 words.
+
+What she changed, all fitting existing classes (training landed):
+- Class 2, plainer flow: "with charming Jack" -> "with the charming Jack";
+  "and charming Jack is a scumbag after all" -> "and turns out Jack is a scumbag
+  after all"; "spend forever with one of them" -> "spend forever with her chosen".
+- She put back a source hook I had dodged to pass lift_check: "who wouldn't want
+  a God of Wealth" (the platform said "a walking god of wealth"). One instance,
+  but she made it a rule the same day (28 Sep): "genre flavored hook phrases
+  should be kept". Now in the skill under the audience's vocabulary. Keep the
+  label (God of Wealth, Supreme Alpha, King of Magic), rewrite the clause around it.
+- She generalized "triplets" to "pregnancy" as the closing surprise, keeping the
+  twist rather than spending it.
+
+Mechanical fix listed back to her: comma after "after all" and a question mark
+on "who wouldn't want a God of Wealth?".
+
+## lift_check WAS BLIND FOR ANY BATCH WITHOUT '# FACTS:' COMMENTS (found 28 Sep 2026)
+
+lift_check.py read its sources ONLY from '# FACTS:' comments in the batch file
+and silently skipped every caption without them, printing "0 of N" as if it had
+checked. The new-34 (20 Sep) and new-69 (27 Sep) batches had no such comments,
+so both were reported clean and went live. Rerun against the ReelShort book each
+page links to, at 6 words, with name-only runs filtered out: new-69 50 of 69,
+new-34 31 of 34 carry real platform phrasing. Fixed: it now falls back to the
+batch FACTS dict, then the page's linked ReelShort book, then load_facts(), and
+names every caption it still could not check (exit 1).
+
+The same rerun flags older batches too (fleshout 137 of 174 on the same filter,
+b4 48 of 129), which contradicts the "0" recorded for fleshout above. Those were
+likely checked against a different source text than today's scrape holds, so
+the older numbers need reading hit by hit before anyone trusts either figure.
+
+Also found the same day: two ReelShort books can share a slug, and load_facts()
+keys by slug, so the newer book's synopsis wins. mom-love-me-again's caption
+was written from the wrong show and went live. Write from the book the page
+LINKS to (availability.csv direct_link), not from the slug.

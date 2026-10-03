@@ -67,12 +67,22 @@ Two detectors, because they catch different things:
 - **`scripts/lift_check.py`** catches what the ratio misses: a single distinctive
   phrase taken verbatim barely moves a whole-body ratio, but it is exactly what
   Google reads as duplicate and what Cyan reads as "you just changed some
-  words". Run it and read every hit. Keep names, and keep genre terms the
-  audience browses by. Rewrite everything else.
+  words". Run it and read every hit. Keep names, keep genre terms the
+  audience browses by, and keep genre-flavored hook phrases (below). Rewrite
+  everything else.
 
 ```bash
 python3 .claude/skills/dea-captions/scripts/lift_check.py <batch.py> --n 6
 ```
+
+lift_check must actually see a source for every caption. Until 28 Sep 2026 it
+silently skipped any caption without `# FACTS:` comments and still printed
+"0 of N", which is how the 20 Sep and 27 Sep batches went live carrying copied
+phrasing. It now falls back to the page's linked ReelShort book and exits 1
+with a NOT CHECKED line if anything is still unsourced. Treat exit 1 as a
+failed gate. And write from the book the page LINKS to (availability.csv
+direct_link), never from the slug: two ReelShort books can share one slug.
+Retell first, then run the check; do not write and hope.
 
 ## The shape
 
@@ -115,6 +125,14 @@ The corpus has the pairs; these are the headlines.
   sentence around it. And the rule points at you, not at her, so a caption she
   wrote is exempt (declare `HER_OWN` in the batch) because choosing not to use a
   word the source used is an editorial call, not a paraphrase.
+- **Keep genre-flavored hook phrases.** Cyan, 28 Sep 2026: "genre flavored hook
+  phrases should be kept". These are the short, named labels a show sells
+  itself on: God of Wealth, Supreme Alpha, King of Magic, Sacred Daughter, true
+  Luna, Dragon King. She put "who wouldn't want a God of Wealth" back after a
+  draft dodged it to pass lift_check. So a lift_check hit that is one of these
+  labels is not a lift: keep it. The boundary is the label, not the sentence
+  around it. "A walking god of wealth" keeps "God of Wealth"; a whole borrowed
+  clause is still a copy and still gets rewritten.
 - **Contractions carry the register**, except where a line wants weight.
 - **Plain subject-verb order.** Twisted syntax is almost always the tell that a
   sentence was rotated to dodge its source rather than rewritten.
@@ -133,12 +151,18 @@ everything else is an edit, that is a lie on her site.
 
 ## Who approves what
 
-- **Top 300 by reach**: Cyan reviews. Stage the batch UNAPPROVED and build her
-  a review page.
-- **Below top 300**: her 16 Aug 2026 ruling is that you write and apply without
-  her manual check. Record the approval basis in the approved file's header.
+- **Sunday batches come to her as a pull request.** Cyan, 29 Sep 2026: "PR each
+  Sunday for me to review". The Routine "DramaEverAfter: Sunday caption PR for
+  review" (14:47 UTC Sundays) writes the batch, passes every gate, opens a PR and a
+  review page, and does NOT merge. Captions on titles shown on the homepage are
+  listed first: she checks those before they go live (28 Sep). Ad hoc batches she
+  asks for in chat can still go live on her say-so (28 Sep: "everything should be
+  live"), except homepage titles, which she checks first.
 - **READ MEANS DONE**: a caption she ticked without editing is approved. Do not
-  re-litigate it.
+  re-litigate it. Cyan, 28 Sep 2026: "if it has been read and edited by me please
+  leave it alone". That holds even for a clean-up pass such as de-lifting: a
+  caption she read or edited is never rewritten, not even to remove a lifted
+  phrase. Flag it to her instead.
 - **Her edits are verbatim, with one exception she granted on 6 Sep 2026:**
   fix obvious spelling and grammar slips, never word choice, and list every
   change back to her. Her phrasing, rhythm and vocabulary are hers even where

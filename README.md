@@ -35,7 +35,7 @@ Run it by hand from Actions any time (`dry_run` to test without committing, `lim
 
 ## Rules
 - Slugs never change once published (URLs are permanent)
-- Trope/platform combo pages publish only at 5+ verified titles
+- Trope pages publish only at 5+ titles. Trope/platform combo pages were retired 24 Sep 2026 (doorway-shaped, 301 to the parent trope); filtering by app is Browse's job
 - One canonical page per title; alt titles live in the alt_titles column, never as separate pages
 - New titles are chosen, not swept: newest, most popular, or credited to an actor we track
 - match_queue rulings are Cyan's; nothing merges without one

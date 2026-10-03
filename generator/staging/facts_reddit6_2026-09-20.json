@@ -1,0 +1,34 @@
+{
+ "source": "Platform pages fetched live 20 Sep 2026 for six titles surfaced by the Reddit research as having no synopsis.",
+ "note": "The Reddit PDF itself is NOT a caption fact source: it carries viewer commentary, not plot. Every caption in captions_2026_09_20_reddit6.py is written from the platform text banked here.",
+ "facts": {
+  "faking-it-with-the-hockey-captain": {
+   "platform": "dramabox",
+   "url": "https://www.dramaboxdb.com/movie/42000010167/faking-it-with-the-hockey-captain",
+   "fetched": "2026-09-20",
+   "text": "Scholarship girl Julie has one reckless, electric night with the irresistibly hot new hockey captain-only to discover he's Liam, the childhood enemy she can't stand. To kill rumors and keep their exes away, they fake-date. But the chemistry feels anything but fake, and the tension between them is getting dangerously hard to resist."
+  },
+  "life-is-not-a-game": {
+   "platform": "candyjar",
+   "url": "https://candyjar.com/en/series/life-is-not-a-game-589",
+   "fetched": "2026-09-20",
+   "text": "A shy teen gamer has secretly posed as a boy online for years, forming a deep bond with her teammate Jupiter, who turns out to be TJ, the popular jock she secretly likes at school. When their esports team earns a shot at a live tournament, her hidden identity unravels, putting her friendships, her team, and her first love at risk. Now she must choose between the safety of the persona that protected her and the truth that could cost her everything."
+  },
+  "cheer-up-baby": {
+   "platform": "pinedrama",
+   "url": "https://pinedrama.com/dramas/cheer-up-baby",
+   "fetched": "2026-09-20",
+   "text": "Cheer Up Baby follows Jane, a high school mascot who hits rock bottom when a tornado destroys her home and school bullies push her to the limit. Forced into an unexpected living arrangement, she reunites with her childhood nemesis, a boy she once teased as \"Tubby.\" However, the boy she remembered is gone, replaced by the tall, handsome captain of the basketball team."
+  },
+  "fight-dirty": {
+   "platform": "candyjar",
+   "url": "https://candyjar.com/en/series/fight-dirty-634",
+   "fetched": "2026-09-20",
+   "text": "When wealthy Queen Bee Kenzie makes a deal with high school bad boy Clay to be her fake boyfriend and bodyguard, she unknowingly steps into his dangerous world of illegal underground fighting. What begins as a transactional arrangement quickly ignites into an undeniable attraction, blurring the lines between protector and lover. But when Clay's brutal fight ring catches the attention of Kenzie's District Attorney father, their worlds collide, forcing Clay to decide if he's willing to risk his freedom for the girl he's sworn to protect."
+  }
+ },
+ "no_source": {
+  "kiss-of-the-pirate-king": "My Drama link in availability.csv 404s and my-drama.com has no search route that resolves it. No fact source, so no caption.",
+  "i-kissed-a-ceo-and-he-liked-it": "No direct_link on the availability row and DramaBox search returns no match for the title. No fact source, so no caption."
+ }
+}

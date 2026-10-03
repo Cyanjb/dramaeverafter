@@ -606,3 +606,22 @@ The "still waiting" list there is dictation slips for Cyan to correct.
 4. GoodShort and NetShort scrapers, same staging shape (adapters sec 27).
 5. The year capture: check "years filled" in a summary; if zero, the field
    names in year_hint() are wrong for ReelShort's page data.
+
+## 25 SEP 2026: TROPE RULINGS APPLIED (generator/merge_tropes_2026_09_25.py)
+
+Cyan's picks for the duplicate families: reborn (rebirth), sweet love (sweet,
+sweet-love, sweet-romance; the page moved to /tropes/sweet-love.html), revenge
+(karma-payback, karma, counterattack), secret identity (multiple-identities),
+contract (contract lovers). Contract marriage stays separate. 301s in
+_redirects; the same aliases are in TAG_ALIASES so the scrape cannot re-split.
+Cinderella covers ugly duckling. High fantasy already existed (3 Sep).
+
+New tropes: plus size (12 titles, page live), mermaid (4, no page until 5),
+reverse harem (10, page live). Tagged only where title, caption or her ruling says it.
+RULED 25 SEP from her poster review (Trope Rulings Desk artifact), applied by the
+same script: mermaid no on all four sea-god/siren titles; plus size yes on
+the-ugly-girl-turned-pretty only; harem split into harem 7 / reverse harem 10,
+37 titles taken off harem as neither.
+LEFT AS HAREM on her word ("just leave the ones that are never checked"):
+her-smile-starts-a-war-of-kings, i-am-the-new-law-of-this-hellish-world,
+risen-lord-of-a-maid-kingdom, who-s-top-cultivator-me.

@@ -22,7 +22,7 @@ for is making the decision conscious: read each hit and keep it because it is a
 name or a term the audience browses by, or rewrite it because it is the
 platform's phrasing doing your work for you.
 """
-import io, json, os, re, sys
+import csv, glob, io, json, os, re, sys
 
 STOPWORDS_ONLY = re.compile(r"^(?:the|a|an|and|or|but|of|to|in|is|it|he|she|"
                             r"they|her|his|him|for|with|on|at|as|that|this|"
@@ -55,12 +55,57 @@ def runs(cap_words, src_words, n):
     return [h for h in hits if not all(STOPWORDS_ONLY.match(w) for w in h.split())]
 
 
-def load_facts(path):
-    """FACTS comments in the batch file are the source of record."""
+def load_facts(path, ns):
+    """Where each caption's source comes from, most specific first.
+
+    Until 28 Sep 2026 this read ONLY '# FACTS:' comments, and silently skipped
+    any caption without them. A 69-caption batch with no comments therefore
+    reported "0 of 69" while 51 of them carried a 6+ word lift, and that went
+    live. So now it falls back, and main() names every caption it still could
+    not check instead of passing it quietly.
+
+      1. '# FACTS:' comments above the key in the batch
+      2. the batch's FACTS dict
+      3. the ReelShort book the title's page actually LINKS to (availability.csv
+         direct_link -> book id -> synopsis in any staging/reelshort_*.json).
+         By book, not slug: two books can share a slug (mom-love-me-again did,
+         and its caption was written from the wrong one)
+      4. caption_pipeline.load_facts(), keyed by slug
+    """
     src = io.open(path, encoding="utf-8").read()
     out = {}
     for block, key in re.findall(r"((?:\s*# FACTS: [^\n]*\n)+)\s*'([a-z0-9\-]+)':", src):
         out[key] = " ".join(re.sub(r"\s*# FACTS: ", " ", block).split())
+    for k, v in (ns.get("FACTS") or {}).items():
+        if v and k not in out:
+            out[k] = v
+    root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", ".."))
+    gen = os.path.join(root, "generator")
+    books = {}
+    for f in sorted(glob.glob(os.path.join(gen, "staging", "reelshort_*.json"))):
+        try:
+            doc = json.load(io.open(f, encoding="utf-8"))
+        except ValueError:
+            continue
+        for b in (doc.get("books") or {}).values():
+            if b.get("book_id") and (b.get("synopsis") or "").strip():
+                books[b["book_id"]] = b["synopsis"]
+    av = os.path.join(root, "data", "availability.csv")
+    if os.path.exists(av):
+        for r in csv.DictReader(io.open(av, encoding="utf-8")):
+            link = (r.get("direct_link") or "").rstrip("/")
+            if r.get("platform_id") == "reelshort" and r["title_id"] not in out and link:
+                bid = link.rsplit("-", 1)[-1]
+                if bid in books:
+                    out[r["title_id"]] = books[bid]
+    sys.path.insert(0, gen)
+    try:
+        import caption_pipeline as cp
+        for k, v in cp.load_facts().items():
+            if k not in out and (v.get("copied_text") or "").strip():
+                out[k] = v["copied_text"]
+    except Exception:
+        pass
     return out
 
 
@@ -68,8 +113,9 @@ def main(path, n):
     ns = {}
     exec(compile(io.open(path, encoding="utf-8").read(), path, "exec"), ns)
     caps = ns.get("CAPTIONS", {})
-    facts = load_facts(path)
+    facts = load_facts(path, ns)
     flagged = 0
+    unchecked = [t for t in sorted(caps) if caps[t].strip() and t not in facts]
     for tid in sorted(caps):
         cap = caps[tid]
         if not cap.strip() or tid not in facts:
@@ -83,8 +129,11 @@ def main(path, n):
                 print("      %2d words  %s" % (len(h.split()), h))
     print("\n%d of %d captions carry a %d+ word run from their source."
           % (flagged, len(caps), n))
-    print("Read each one. Keep names and genre terms; rewrite the rest.")
-    return 0
+    if unchecked:
+        print("NOT CHECKED, no source found: %s" % ", ".join(unchecked))
+    print("Read each one. Keep names, genre terms and genre-flavored hook "
+          "phrases; rewrite the rest.")
+    return 1 if unchecked else 0
 
 
 if __name__ == "__main__":
