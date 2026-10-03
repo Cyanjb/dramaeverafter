@@ -345,11 +345,31 @@ document.addEventListener("click", function (e) {
   if (!a || !window.goatcounter || !window.goatcounter.count) return;
   var p = a.getAttribute("data-platform") || "unknown";
   var t = a.getAttribute("data-title") || "";
+  /* The path stays the same whether or not the promo link was live, so the
+     history of the counts stays continuous. The title says which kind of click it
+     was, so attributed taps can be set against the platform's own dashboard. */
+  var promo = a.hasAttribute("data-promo-live");
   window.goatcounter.count({
     path: "watch/" + p + (t ? "/" + t : ""),
-    title: "Watch click: " + p,
+    title: "Watch click: " + p + (promo ? " (promo)" : ""),
     event: true
   });
 });
+/* Affiliate promo links, phones only (see promo_link in build.py). A promo
+   link installs the app and opens the show, which is right on a phone and a
+   dead end (an App Store page) on a laptop, so desktop keeps the web link.
+   iPadOS reports itself as a Mac, hence the touch-point check. */
+(function () {
+  var ua = navigator.userAgent || "";
+  var phone = /Android|iPhone|iPad|iPod/i.test(ua) ||
+              (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  if (!phone) return;
+  document.querySelectorAll("a[data-promo]").forEach(function (a) {
+    var u = a.getAttribute("data-promo");
+    if (!/^https:\/\//.test(u)) return;
+    a.setAttribute("href", u);
+    a.setAttribute("data-promo-live", "");
+  });
+})();
 </script>
 </body></html>

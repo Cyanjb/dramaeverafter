@@ -218,6 +218,24 @@ def views_label(n):
 def esc_attr(s):
     return (s or "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
 
+# AFFILIATE PROMO LINKS (RS Boost, Cyan, 3 Oct 2026). ReelShort attribution is not
+# a URL parameter: each title has its own pre-minted reelslink.com/cps/ link,
+# copied by hand from the Content Hub into availability.csv promo_link, and the
+# app has one App Promotion Link in platforms.csv app_promo_link that stands in
+# for any title without its own. Copy them from Account A (yGaGnUThFlCu) only.
+#
+# The promo link NEVER replaces href. On desktop it opens an App Store listing,
+# a dead end on a laptop, so href stays the web page and the promo link rides
+# in data-promo; PROMO_JS swaps it in on phones only, where it installs the app
+# and opens the show with attribution intact. No JS, no promo link, or desktop
+# all leave the button exactly as it was. Both columns empty = no change at all.
+def promo_link(a, plat):
+    return ((a or {}).get("promo_link") or "").strip() or (plat.get("app_promo_link") or "").strip()
+
+def promo_attrs(promo):
+    # rel="sponsored" is Google's required marking for a paid link.
+    return f' data-promo="{esc_attr(promo)}" rel="sponsored noopener"' if promo else ""
+
 # Social / profile links. The socials column holds one or more URLs separated by
 # semicolons, commas or whitespace; the domain decides the label, so filling in an
 # Instagram or TikTok handle later needs no template change. Unknown domains render
@@ -1285,12 +1303,32 @@ document.addEventListener("click", function (e) {{
   if (!a || !window.goatcounter || !window.goatcounter.count) return;
   var p = a.getAttribute("data-platform") || "unknown";
   var t = a.getAttribute("data-title") || "";
+  /* The path stays the same whether or not the promo link was live, so the
+     history of the counts stays continuous. The title says which kind of click it
+     was, so attributed taps can be set against the platform's own dashboard. */
+  var promo = a.hasAttribute("data-promo-live");
   window.goatcounter.count({{
     path: "watch/" + p + (t ? "/" + t : ""),
-    title: "Watch click: " + p,
+    title: "Watch click: " + p + (promo ? " (promo)" : ""),
     event: true
   }});
 }});
+/* Affiliate promo links, phones only (see promo_link in build.py). A promo
+   link installs the app and opens the show, which is right on a phone and a
+   dead end (an App Store page) on a laptop, so desktop keeps the web link.
+   iPadOS reports itself as a Mac, hence the touch-point check. */
+(function () {{
+  var ua = navigator.userAgent || "";
+  var phone = /Android|iPhone|iPad|iPod/i.test(ua) ||
+              (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  if (!phone) return;
+  document.querySelectorAll("a[data-promo]").forEach(function (a) {{
+    var u = a.getAttribute("data-promo");
+    if (!/^https:\\/\\//.test(u)) return;
+    a.setAttribute("href", u);
+    a.setAttribute("data-promo-live", "");
+  }});
+}})();
 </script>
 </body></html>"""
 
@@ -1543,7 +1581,8 @@ def watch_buttons(title_id, pre=""):
             name += " (English dub)"
         deep = (a["direct_link"] or "").strip()
         link = deep or (plat.get("web_url") or "").strip()
-        (linked if link else unlinked).append((name, link, bool(deep), a["platform_id"]))
+        (linked if link else unlinked).append((name, link, bool(deep), a["platform_id"],
+                                               promo_link(a, plat)))
     # A deep link beats a homepage, so whichever app we can send the reader
     # straight into gets the gold button.
     linked.sort(key=lambda x: not x[2])
@@ -1561,12 +1600,12 @@ def watch_buttons(title_id, pre=""):
     # first button verbatim, attributes included, so a tap there counts the same.
     out = "".join(
         f'<a class="watch-btn{"" if i == 0 else " alt"}" href="{link}"'
-        f' data-platform="{esc_attr(pid)}" data-title="{esc_attr(title_id)}">'
+        f' data-platform="{esc_attr(pid)}" data-title="{esc_attr(title_id)}"{promo_attrs(promo)}>'
         f'<span>Watch on {name}</span><span class="arrow">&rarr;</span></a>'
-        for i, (name, link, _deep, pid) in enumerate(linked))
+        for i, (name, link, _deep, pid, promo) in enumerate(linked))
     if unlinked:
         out += ('<span class="watch-more">Also on '
-                + ", ".join(n for n, _l, _d, _p in unlinked) + '</span>')
+                + ", ".join(n for n, _l, _d, _p, _pr in unlinked) + '</span>')
     return out
 
 
@@ -2569,7 +2608,7 @@ for pid, n in TOP_PLATFORMS:
 </div>
 </div>
 <div class="app-cta"><p class="label">Get the app</p>
-{f'<a class="watch-btn" href="{esc_attr(web_url)}" data-platform="{esc_attr(pl["platform_id"])}"><span>Open {pl["name"]}</span><span class="arrow">&rarr;</span></a>' if web_url else f'<p class="watch-pending">No public web link on file for {pl["name"]}</p>'}
+{f'<a class="watch-btn" href="{esc_attr(web_url)}" data-platform="{esc_attr(pl["platform_id"])}"{promo_attrs(promo_link(None, pl))}><span>Open {pl["name"]}</span><span class="arrow">&rarr;</span></a>' if web_url else f'<p class="watch-pending">No public web link on file for {pl["name"]}</p>'}
 <p class="watch-disclosure">Pricing: {pl.get('pricing_model') or 'varies by title'}.{' We may earn a commission &mdash; that&rsquo;s what pays for this database.' if web_url else ''}</p>
 </div>
 </section>

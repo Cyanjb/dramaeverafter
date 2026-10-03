@@ -66,7 +66,7 @@
 <h1>My Step-Brother is My Ex?!</h1>
 <p class="views-line">42M views &middot; English original</p>
 
-<div class="watch-card"><p class="label">Where to watch &middot; checked September 2026</p><a class="watch-btn" href="https://www.reelshort.com/movie/my-step-brother-is-my-ex-67205068a499b3c812048542" data-platform="reelshort" data-title="my-step-brother-is-my-ex"><span>Watch on ReelShort</span><span class="arrow">&rarr;</span></a>
+<div class="watch-card"><p class="label">Where to watch &middot; checked September 2026</p><a class="watch-btn" href="https://www.reelshort.com/movie/my-step-brother-is-my-ex-67205068a499b3c812048542" data-platform="reelshort" data-title="my-step-brother-is-my-ex" data-promo="https://reelslink.com/cps/Ald1Gk" rel="sponsored noopener"><span>Watch on ReelShort</span><span class="arrow">&rarr;</span></a>
 
 <p class="watch-disclosure">Opens the app. We may earn a commission, which is what keeps this database free.</p></div>
 <div class="title-actions">
@@ -96,7 +96,7 @@
 </dl>
 <p class="report">Spotted it on another app? <a href="../contact.html">Report it</a> and help the database grow.</p>
 </section>
-<div class="watch-sticky"><a class="watch-btn" href="https://www.reelshort.com/movie/my-step-brother-is-my-ex-67205068a499b3c812048542" data-platform="reelshort" data-title="my-step-brother-is-my-ex"><span>Watch on ReelShort</span><span class="arrow">&rarr;</span></a></div>
+<div class="watch-sticky"><a class="watch-btn" href="https://www.reelshort.com/movie/my-step-brother-is-my-ex-67205068a499b3c812048542" data-platform="reelshort" data-title="my-step-brother-is-my-ex" data-promo="https://reelslink.com/cps/Ald1Gk" rel="sponsored noopener"><span>Watch on ReelShort</span><span class="arrow">&rarr;</span></a></div>
 
 <script>
 (function(){
@@ -344,11 +344,31 @@ document.addEventListener("click", function (e) {
   if (!a || !window.goatcounter || !window.goatcounter.count) return;
   var p = a.getAttribute("data-platform") || "unknown";
   var t = a.getAttribute("data-title") || "";
+  /* The path stays the same whether or not the promo link was live, so the
+     history of the counts stays continuous. The title says which kind of click it
+     was, so attributed taps can be set against the platform's own dashboard. */
+  var promo = a.hasAttribute("data-promo-live");
   window.goatcounter.count({
     path: "watch/" + p + (t ? "/" + t : ""),
-    title: "Watch click: " + p,
+    title: "Watch click: " + p + (promo ? " (promo)" : ""),
     event: true
   });
 });
+/* Affiliate promo links, phones only (see promo_link in build.py). A promo
+   link installs the app and opens the show, which is right on a phone and a
+   dead end (an App Store page) on a laptop, so desktop keeps the web link.
+   iPadOS reports itself as a Mac, hence the touch-point check. */
+(function () {
+  var ua = navigator.userAgent || "";
+  var phone = /Android|iPhone|iPad|iPod/i.test(ua) ||
+              (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  if (!phone) return;
+  document.querySelectorAll("a[data-promo]").forEach(function (a) {
+    var u = a.getAttribute("data-promo");
+    if (!/^https:\/\//.test(u)) return;
+    a.setAttribute("href", u);
+    a.setAttribute("data-promo-live", "");
+  });
+})();
 </script>
 </body></html>
