@@ -22,7 +22,13 @@ Her edit rate per batch. Falling means the training is working.
 | Batch two + three (89 page) | 20 Aug | 89 | 37 | 42% | post genre/ending rules |
 | Rewrite 60, v1 | 19 Aug | 60 | rejected | 100% | written to the length floor; "so bad I can't even fix it" |
 | Rewrite 60, v2 caps off | 21–24 Aug | 60 | 33 | 55% | shadow-writing found and fixed mid-review |
+| Batch four | 2–6 Sep | 129 | 55 | 43% | words changed: ~5% of batch, 11.8% inside touched captions |
+| Widget batch, v1 | 6 Sep | 15 | rejected | 100% | reintroduced a length cap; "these captions are terrible they seem to be cut off"; v2 approved same day |
+| new-34 (weekly scrape) | 20 Sep | 34 | 10 | 29% | words changed: 2.2% of batch |
+| new-69 (weekly scrape) | 27–28 Sep | 69 | 4 of 15 reviewed | 27% of reviewed | words changed: 0.3% of batch; other 54 live on her "check them later" |
 | **Target** | | | | **<10%** | then she spot-checks instead of reviewing |
+
+The words-changed trajectory is the clearer signal: 11.1% (batch two) → ~5% (batch four) → 2.2% (new-34) → 0.3% (new-69). See 'The measure that matters' below for why both numbers are reported.
 
 ## Class 1 — the ending is one beat, and it must land
 
