@@ -70,6 +70,32 @@ _leaked = [s for s in _hidden if os.path.exists(os.path.join(ROOT, "titles", s +
 if _leaked: fail(f"{len(_leaked)} delisted titles still have a page, e.g. {_leaked[:3]}")
 else: ok(f"{len(_hidden)} delisted titles hidden: no page, card or search entry")
 
+# Actor bios scraped from ReelShort's fandom blog carried its furniture: "Part 4:
+# Conclusions", "Watch Movie Now >>", a Height/Weight table, a paragraph about a
+# character. 73 were cleared 25 Sep 2026 (text kept in generator/staging/
+# bios_removed_2026-09-25.csv), and 18 names carried "Actor"/"Actress"/"Cast".
+_BIOJUNK = re.compile(r"\bPart \d+\s*[:.]|Watch Movie Now|Who[’']s in\b|Aspects? Details|Mini Bio|\bConclusions?\b", re.I)
+_junk_bios = [p["person_id"] for p in people if _BIOJUNK.search(p.get("bio_short") or "")]
+_prefixed = [p["person_id"] for p in people if re.match(r"^(Actor|Actress|Cast)\s", p["name"])]
+if _junk_bios: fail(f"{len(_junk_bios)} actor bios carry fandom-blog fragments, e.g. {_junk_bios[:3]}: clear bio_short")
+elif _prefixed: fail(f"{len(_prefixed)} actor names carry a scraped Actor/Actress/Cast prefix, e.g. {_prefixed[:3]}")
+else: ok("no actor bio carries fandom-blog fragments, and no name a scraped prefix")
+
+# GoodShort's tag soup (25 Sep 2026): 1,220 titles carried 15+ tropes from the
+# platform's search-tag cloud until each show's title and synopsis were read and
+# only the tropes that apply were kept (generator/goodshort_tropes.py). No cap on
+# a real show, but 15+ is the soup's signature, not a story's.
+# FAIL on GoodShort (the soup this fixed); WARN elsewhere: 39 ReelShort shows rose
+# to 15-19 tropes when ReelShort's own per-show tags were mapped on 30 Sep / 3 Oct,
+# which is Cyan's call to trim, not a reason to block the Sunday publish.
+_heavy = [t for t in titles if (t.get("status") or "").strip().lower() != "delisted"
+          and len([x for x in (t.get("tropes") or "").split(";") if x.strip()]) >= 15]
+_soup = [t["slug"] for t in _heavy if (t.get("source") or "").startswith("goodshort")]
+_other = [t["slug"] for t in _heavy if not (t.get("source") or "").startswith("goodshort")]
+if _soup: fail(f"{len(_soup)} GoodShort titles carry 15+ tropes, the tag-soup signature, e.g. {_soup[:3]}: review them (goodshort_tropes.py)")
+else: ok("no GoodShort title carries 15+ tropes (the tag-soup signature)")
+if _other: warn(f"{len(_other)} other titles carry 15+ tropes, e.g. {_other[:3]}: worth a trim review")
+
 # Research notes are not stories. 27 titles shipped "Jake Hobbs lead." or
 # "Anina Net #1 ranking title." as The story and the meta description until
 # the 24 Sep 2026 audit (removed text: generator/staging/

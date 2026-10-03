@@ -69,6 +69,16 @@ Written 6 Sep 2026, the day search silently failed on "girls" vs "Girl's".
 - No research note ("Jake Hobbs lead.", "#1 ranking title", "Based on
   the novel by...") ships as a title's story. Cast, book and status have
   their own columns (24 Sep audit: 27 did).
+- No GoodShort title carries 15+ tropes. Each GoodShort show's tropes
+  were reviewed against its own title and synopsis on 25 Sep (keep what
+  applies, drop what does not, no cap; generator/goodshort_tropes.py),
+  replacing the platform's tag cloud. Other titles at 15+ only WARN: 39
+  ReelShort shows reached 15-19 from ReelShort's own tags on 30 Sep /
+  3 Oct, which is Cyan's call to trim.
+- No actor bio carries fandom-blog fragments ("Part 4: Conclusions",
+  "Watch Movie Now >>", a Height/Weight table), and no actor name a
+  scraped "Actor"/"Actress"/"Cast" prefix (25 Sep: 73 bios cleared,
+  removed text in generator/staging/bios_removed_2026-09-25.csv).
 - Page titles and "Updated" lines are dated from the data, never the
   build clock: a title page carries the show's own year or none, and
   list pages the newest checked date of the titles they show (24 Sep).

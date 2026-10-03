@@ -820,6 +820,55 @@
 /actors/benjamin-david-thomas-shepherd  /actors/benjamin-shepherd.html  301
 /actors/park-xi-yeon.html  /actors/park-si-yeon.html  301
 /actors/park-xi-yeon  /actors/park-si-yeon.html  301
+/actors/actress-sofia-bragar.html  /actors/sofia-bragar.html  301
+/actors/actress-sofia-bragar  /actors/sofia-bragar.html  301
+/actors/actor-cameron-saffle.html  /actors/cameron-saffle.html  301
+/actors/actor-cameron-saffle  /actors/cameron-saffle.html  301
+/actors/actress-samantha-drews.html  /actors/samantha-drews.html  301
+/actors/actress-samantha-drews  /actors/samantha-drews.html  301
+/actors/actress-addison-bowman.html  /actors/addison-bowman.html  301
+/actors/actress-addison-bowman  /actors/addison-bowman.html  301
+/actors/actor-marc-herrmann.html  /actors/marc-herrmann.html  301
+/actors/actor-marc-herrmann  /actors/marc-herrmann.html  301
+/actors/cast-jade-lee.html  /actors/jade-lee.html  301
+/actors/cast-jade-lee  /actors/jade-lee.html  301
+/actors/cast-joshua-mehmet.html  /actors/joshua-mehmet.html  301
+/actors/cast-joshua-mehmet  /actors/joshua-mehmet.html  301
+/actors/cast-noah-fearnley.html  /actors/noah-fearnley.html  301
+/actors/cast-noah-fearnley  /actors/noah-fearnley.html  301
+/actors/cast-hannah-record.html  /actors/hannah-record.html  301
+/actors/cast-hannah-record  /actors/hannah-record.html  301
+/actors/cast-mark-pontarelli.html  /actors/mark-pontarelli.html  301
+/actors/cast-mark-pontarelli  /actors/mark-pontarelli.html  301
+
+# Trope pages that fell below 5 titles when GoodShort's tag soup was replaced by
+# reviewed tropes (25 Sep 2026). Each goes to its nearest living page.
+/tropes/devil.html  /tropes/dark.html  301
+/tropes/devil  /tropes/dark.html  301
+/tropes/goddess-of-war.html  /tropes/god-of-war.html  301
+/tropes/goddess-of-war  /tropes/god-of-war.html  301
+/tropes/group-favorite.html  /tropes/index.html  301
+/tropes/group-favorite  /tropes/index.html  301
+/tropes/janitor.html  /tropes/index.html  301
+/tropes/janitor  /tropes/index.html  301
+/tropes/mid-aged-love.html  /tropes/age-gap.html  301
+/tropes/mid-aged-love  /tropes/age-gap.html  301
+/tropes/princess.html  /tropes/royal.html  301
+/tropes/princess  /tropes/royal.html  301
+/tropes/professor.html  /tropes/campus.html  301
+/tropes/professor  /tropes/campus.html  301
+/tropes/puppy-love.html  /tropes/index.html  301
+/tropes/puppy-love  /tropes/index.html  301
+/tropes/queen.html  /tropes/royal.html  301
+/tropes/queen  /tropes/royal.html  301
+/tropes/society.html  /tropes/index.html  301
+/tropes/society  /tropes/index.html  301
+/tropes/top-chef.html  /tropes/index.html  301
+/tropes/top-chef  /tropes/index.html  301
+/tropes/weight-loss.html  /tropes/index.html  301
+/tropes/weight-loss  /tropes/index.html  301
+/tropes/wizard.html  /tropes/high-fantasy.html  301
+/tropes/wizard  /tropes/high-fantasy.html  301
 # Extensionless root pages 301 to the .html canonical. Non-forced, so a
 # rule fires only when no file answers the path. There is deliberately NO
 # generic /titles/:slug -> /titles/:slug.html rule (nor actors, tropes,
