@@ -304,3 +304,19 @@ Also: the sheet now carries its own **Clear all**, because the page's own
 Reset sits behind the sheet on a phone and cannot be tapped while you are
 choosing filters. Both controls run one handler and share one show/hide
 rule, so they cannot disagree.
+
+**No search icon in the phone header** (18 Sep)
+
+Cyan: "When you click on it you get the same menu as when you click on
+the three lines so it is redundancy." She is right. Both buttons opened
+the same sheet; the only difference was which element took focus. Two
+controls, one destination, is not a choice, it is clutter.
+
+The hamburger is the single opener now, and the search field sits at the
+top of the sheet where it is the first thing you see. Opening the menu
+focuses the CLOSE button rather than the search field on purpose: focusing
+the field raises the keyboard over the links the reader opened the menu
+to reach.
+
+Do not reintroduce a second opener for the same panel. If search ever
+needs its own affordance, it should go somewhere that is not the menu.

@@ -969,7 +969,7 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--paper);colo
   .wordmark{font-size:19px}
   .site-nav,.site-header>.site-search{display:none}
   .header-icons{display:flex;margin-left:auto;gap:2px}
-  .search-toggle,.nav-toggle{width:44px;height:44px;display:grid;place-items:center;
+  .nav-toggle{width:44px;height:44px;display:grid;place-items:center;
     border:0;background:transparent;color:var(--plum);font:inherit;font-size:19px;cursor:pointer}
   /* Three bars drawn from one box, so there is no extra markup to keep
      in sync and the button stays a single tap target. */
@@ -1139,7 +1139,6 @@ def page(title, desc, body, canonical, jsonld=None, depth=1, nav_search_val="", 
 <input type="search" name="q" placeholder="Search a title or actor" aria-label="Search a title or actor" value="{q}">
 </form>
 <div class="header-icons">
-<button class="search-toggle" type="button" aria-controls="nav-sheet" aria-expanded="false" aria-label="Search">&#8981;</button>
 <button class="nav-toggle" type="button" aria-controls="nav-sheet" aria-expanded="false" aria-label="Menu"><span class="bars"></span></button>
 </div>
 </header>
@@ -1233,18 +1232,17 @@ MOBILE_JS = """
 (function(){
   var sheet = document.getElementById('nav-sheet');
   if(sheet){
-    var opens = document.querySelectorAll('.nav-toggle,.search-toggle');
+    var opens = document.querySelectorAll('.nav-toggle');
     var closer = sheet.querySelector('.sheet-close');
-    var field = sheet.querySelector('input[type=search]');
     var last = null;
-    function open(focusSearch){
+    function open(){
       last = document.activeElement;
       sheet.hidden = false;
       document.documentElement.classList.add('sheet-open');
       opens.forEach(function(b){ b.setAttribute('aria-expanded','true'); });
-      // A search tap should land in the field; a menu tap should not raise the
-      // keyboard over the links the reader came for.
-      (focusSearch && field ? field : closer).focus();
+      // Focus the close button, not the search field: raising the keyboard
+      // would cover the links the reader opened the menu for.
+      closer.focus();
     }
     function close(){
       sheet.hidden = true;
@@ -1254,7 +1252,7 @@ MOBILE_JS = """
     }
     opens.forEach(function(b){
       b.addEventListener('click', function(){
-        sheet.hidden ? open(b.classList.contains('search-toggle')) : close();
+        sheet.hidden ? open() : close();
       });
     });
     if(closer) closer.addEventListener('click', close);

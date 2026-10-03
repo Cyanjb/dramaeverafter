@@ -485,7 +485,7 @@ footer.site-footer{border-top:1px solid var(--line);background:var(--paper);colo
   .wordmark{font-size:19px}
   .site-nav,.site-header>.site-search{display:none}
   .header-icons{display:flex;margin-left:auto;gap:2px}
-  .search-toggle,.nav-toggle{width:44px;height:44px;display:grid;place-items:center;
+  .nav-toggle{width:44px;height:44px;display:grid;place-items:center;
     border:0;background:transparent;color:var(--plum);font:inherit;font-size:19px;cursor:pointer}
   /* Three bars drawn from one box, so there is no extra markup to keep
      in sync and the button stays a single tap target. */

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Best Female-Empowerment Vertical Dramas (2026) | DramaEverAfter</title>
-<meta name="description" content="Every verified female-empowerment vertical drama across ReelShort, DramaBox and more. Updated September 2026.">
+<meta name="description" content="Every verified female-empowerment vertical drama across ReelShort, DramaBox and more. Updated October 2026.">
 <link rel="canonical" href="https://dramaeverafter.com/tropes/female-empowerment.html">
 <meta property="og:site_name" content="DramaEverAfter">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Best Female-Empowerment Vertical Dramas (2026) | DramaEverAfter">
-<meta property="og:description" content="Every verified female-empowerment vertical drama across ReelShort, DramaBox and more. Updated September 2026.">
+<meta property="og:description" content="Every verified female-empowerment vertical drama across ReelShort, DramaBox and more. Updated October 2026.">
 <meta property="og:url" content="https://dramaeverafter.com/tropes/female-empowerment.html">
 <meta property="og:image" content="https://dramaeverafter.com/share.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -34,7 +34,6 @@
 <input type="search" name="q" placeholder="Search a title or actor" aria-label="Search a title or actor" value="">
 </form>
 <div class="header-icons">
-<button class="search-toggle" type="button" aria-controls="nav-sheet" aria-expanded="false" aria-label="Search">&#8981;</button>
 <button class="nav-toggle" type="button" aria-controls="nav-sheet" aria-expanded="false" aria-label="Menu"><span class="bars"></span></button>
 </div>
 </header>
@@ -62,7 +61,7 @@
 <nav class="crumb"><a href="../tropes/index.html">Tropes</a><span>/</span><span class="current">Female-Empowerment</span></nav>
 <section class="hero"><div class="inner">
 <p class="eyebrow">Trope</p><h1>Female-Empowerment</h1>
-<p class="lede">19 titles carry this trope. Updated September 2026.</p>
+<p class="lede">19 titles carry this trope. Updated October 2026.</p>
 <div class="chips" style="align-items:center"><span class="hint" style="font-size:13px;color:var(--tert);margin-right:4px">Often paired with</span><a class="chip" href="../tropes/wish-fulfillment.html">wish-fulfillment<span class="c">18</span></a><a class="chip" href="../tropes/underdog-rise.html">underdog rise<span class="c">9</span></a><a class="chip" href="../tropes/modern-romance.html">modern-romance<span class="c">7</span></a><a class="chip" href="../tropes/karma-payback.html">karma-payback<span class="c">7</span></a><a class="chip" href="../tropes/revenge.html">revenge<span class="c">4</span></a><a class="chip" href="../tropes/rich-heiress.html">rich-heiress<span class="c">3</span></a></div>
 </div></section>
 <section class="pad" style="padding:24px 22px 46px">
@@ -219,18 +218,17 @@ document.querySelectorAll('[data-app-filter-for]').forEach(function(sel){
 (function(){
   var sheet = document.getElementById('nav-sheet');
   if(sheet){
-    var opens = document.querySelectorAll('.nav-toggle,.search-toggle');
+    var opens = document.querySelectorAll('.nav-toggle');
     var closer = sheet.querySelector('.sheet-close');
-    var field = sheet.querySelector('input[type=search]');
     var last = null;
-    function open(focusSearch){
+    function open(){
       last = document.activeElement;
       sheet.hidden = false;
       document.documentElement.classList.add('sheet-open');
       opens.forEach(function(b){ b.setAttribute('aria-expanded','true'); });
-      // A search tap should land in the field; a menu tap should not raise the
-      // keyboard over the links the reader came for.
-      (focusSearch && field ? field : closer).focus();
+      // Focus the close button, not the search field: raising the keyboard
+      // would cover the links the reader opened the menu for.
+      closer.focus();
     }
     function close(){
       sheet.hidden = true;
@@ -240,7 +238,7 @@ document.querySelectorAll('[data-app-filter-for]').forEach(function(sel){
     }
     opens.forEach(function(b){
       b.addEventListener('click', function(){
-        sheet.hidden ? open(b.classList.contains('search-toggle')) : close();
+        sheet.hidden ? open() : close();
       });
     });
     if(closer) closer.addEventListener('click', close);
