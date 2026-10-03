@@ -68,7 +68,18 @@ TAG_ALIASES = {"lgbtq+": "bl", "lgbtq": "bl", "rom com": "rom-com", "romcom": "r
                "karma payback": "revenge", "karma": "revenge", "counterattack": "revenge",
                "multiple identities": "secret identity", "contract lovers": "contract",
                "plus-size": "plus size", "curvy": "plus size", "mermaids": "mermaid",
-               "merman": "mermaid"}
+               "merman": "mermaid",
+               # Cyan, 3 Oct 2026, on the ReelShort tag list: same as a trope we hold.
+               "identity reveal": "secret identity", "heiress/socialite": "heiress",
+               "caught cheating": "cheating", "getting back at ex": "revenge",
+               "possessive": "possessive love", "campus lovers": "campus",
+               "affair": "love-affair", "crime lord": "mafia", "royalty/nobility": "royal",
+               "toxic romance": "toxic love", "lost child reveal": "lost child",
+               "athlete": "athletes",
+               # ...and her yes picks that fold several tags into one trope.
+               "reunion years later": "reunion", "meet again": "reunion",
+               "strong heroine": "strong female lead", "girl power": "strong female lead",
+               "strong-willed": "strong female lead"}
 # UMBRELLAS. Cyan, 3 Sep 2026: "High Fantasy should definitely be a trope that
 # is linked a fair amount to, for example, the werewolves, dragons, elves, and
 # mermaids, magic, all of that." A title carrying any member gets the umbrella.
