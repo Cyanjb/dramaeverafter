@@ -1,0 +1,5 @@
+# Every caption batch still waiting on Cyan's review, oldest first.
+# make_review_page.py --queue builds ONE standing page from all of these
+# (Cyan, 4 Oct 2026: never two review pages). Remove a line only once her
+# review of that batch has been applied.
+generator/staging/captions_2026_09_28_homepage_check.py

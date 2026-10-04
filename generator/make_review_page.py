@@ -12,10 +12,24 @@ Her rules encoded here: read means done (a ticked, unedited caption is
 approved); collect emits only captions whose text actually changed, compared
 with whitespace collapsed, so mechanical differences are never resent.
 
+ONE PAGE, ALWAYS (Cyan, 4 Oct 2026): "I can't have two, I'll lose one
+guaranteed. If there's any captions I need to review they always need to be
+kept together." So every caption waiting on her goes on ONE standing page,
+built with --queue from generator/staging/review_queue.txt (one batch file per
+line, oldest first) and republished to the SAME artifact URL every time:
+https://claude.ai/artifact/WvX4kXmHsJyaizs6fVTEe9
+Her ticks and edits live in that page's browser storage under STANDING_KEY,
+which must never change, or everything she has done on the page disappears.
+State is kept per title_id, so adding rows never disturbs the rows she has
+already done. A batch leaves the queue only once her review of it is applied.
+Titles shown on the homepage are listed first: she checks those before
+anything else (28 Sep).
+
 Usage:
+    python3 generator/make_review_page.py --queue out.html          # the standing page
     python3 generator/make_review_page.py generator/staging/captions_2026_09_02_b4.py out.html [--title "Batch four"]
 """
-import io, json, sys, html, os
+import io, json, re, sys, html, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -47,6 +61,7 @@ textarea.changed{border-color:var(--gold-deep)}
 input[type=checkbox]{width:22px;height:22px;accent-color:var(--wine)}
 .out{margin-top:20px}.out textarea{min-height:220px;font-family:ui-monospace,Menlo,monospace;font-size:14px}
 .note{font-size:14px;color:var(--tert)}
+.meta .home{color:var(--wine);font-weight:700}
 .pernote{margin:0;font-size:15px;color:var(--muted);background:var(--warm);border-left:3px solid var(--gold);padding:9px 12px}
 """
 
@@ -74,19 +89,56 @@ count();
 """
 
 
+QUEUE = os.path.join(HERE, "staging", "review_queue.txt")
+# The storage key of the standing review page. It is the key the page carried
+# when it was first published (28 Sep homepage check), kept so her saved ticks
+# and edits survive. NEVER change it.
+STANDING_KEY = "captions_2026_09_28_homepage_check.py"
+
+
+def homepage_ids():
+    """title_ids linked from the built homepage (index.html at the repo root)."""
+    try:
+        page = io.open(os.path.join(HERE, "..", "index.html"), encoding="utf-8").read()
+    except OSError:
+        return set()
+    return set(re.findall(r'href="/?titles/([^"/]+)\.html', page))
+
+
+def queued_batches():
+    out = []
+    for line in io.open(QUEUE, encoding="utf-8"):
+        line = line.split("#", 1)[0].strip()
+        if line:
+            out.append(line if os.path.isabs(line) else os.path.join(HERE, "..", line))
+    return out
+
+
 def main():
-    src, dst = sys.argv[1], sys.argv[2]
-    title = sys.argv[sys.argv.index("--title") + 1] if "--title" in sys.argv else os.path.basename(src)
-    caps, facts = cp.load_batch(src)
-    sources = cp.load_sources(src)
+    args = [a for a in sys.argv[1:]]
+    title = None
+    if "--title" in args:
+        i = args.index("--title"); title = args[i + 1]; del args[i:i + 2]
+    if "--queue" in args:
+        args.remove("--queue")
+        srcs, dst, key = queued_batches(), args[0], STANDING_KEY
+        title = title or "Captions for your review"
+    else:
+        srcs, dst = [args[0]], args[1]
+        key = os.path.basename(srcs[0])
+        title = title or key
+    caps, facts, sources, notes = {}, {}, {}, {}
+    for src in srcs:
+        c, f = cp.load_batch(src)
+        caps.update(c); facts.update(f); sources.update(cp.load_sources(src))
+        # A batch may carry NOTES = {title_id: "..."} to say something to Cyan
+        # about that specific caption: why it is here, what changed, what she
+        # is deciding. Added 10 Sep 2026 for the de-lift review.
+        ns = {}
+        exec(compile(io.open(src, encoding="utf-8").read(), src, "exec"), ns)
+        notes.update(ns.get("NOTES", {}))
     q = {r["tid"]: r for r in cp.build_queue()}
-    # A batch may carry NOTES = {title_id: "..."} to say something to Cyan about
-    # that specific caption: why it is here, what changed, what she is deciding.
-    # Added 10 Sep 2026 for the de-lift review, where every row needed its own
-    # reason rather than one instruction at the top of the page.
-    ns = {}
-    exec(compile(io.open(src, encoding="utf-8").read(), src, "exec"), ns)
-    notes = ns.get("NOTES", {})
+    home = homepage_ids()
     # build_queue only lists titles that still NEED a caption, so reviewing work
     # that is already live left every row with a blank name and no reach. Fall
     # back to the database for those.
@@ -95,7 +147,8 @@ def main():
         if t["title_id"] in caps and t["title_id"] not in q:
             q[t["title_id"]] = {"title": t.get("primary_title") or t["title_id"], "reach": 0}
     entries = [(tid, c) for tid, c in caps.items() if c.strip()]
-    entries.sort(key=lambda kv: -(q.get(kv[0], {}).get("reach") or 0))
+    entries.sort(key=lambda kv: (kv[0] not in home, -(q.get(kv[0], {}).get("reach") or 0)))
+    n_home = sum(1 for tid, _ in entries if tid in home)
     rows = []
     for i, (tid, cap) in enumerate(entries, 1):
         hook, body = (cap.strip().split("\n", 1) + [""])[:2]
@@ -106,7 +159,7 @@ def main():
         note_html = (f'<p class="pernote">{html.escape(notes[tid])}</p>' if notes.get(tid) else "")
         rows.append(f"""
 <section class="cap" data-id="{html.escape(tid)}">
-<div class="meta"><span>{i}</span><b>{html.escape(r.get('title', tid))}</b><span>{cp.views_label(r.get('reach') or 0)}</span></div>
+<div class="meta"><span>{i}</span><b>{html.escape(r.get('title', tid))}</b><span>{cp.views_label(r.get('reach') or 0)}</span>{'<span class="home">On the homepage</span>' if tid in home else ''}</div>
 <p class="hook">{html.escape(hook)}</p>
 <p class="body">{html.escape(body.strip())}</p>
 {note_html}<details><summary>What the platform says{link}</summary><p>{html.escape(" ".join(src_txt.split()))}</p></details>
@@ -116,10 +169,10 @@ def main():
     page = f"""<title>{html.escape(title)}</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <style>{CSS}</style>
-<body data-batch="{html.escape(os.path.basename(src))}">
+<body data-batch="{html.escape(key)}">
 <div class="wrap">
 <div class="top"><h1>{html.escape(title)}</h1><span class="count" id="count"></span><button class="btn ghost" id="markall" type="button">Mark all read</button><button class="btn" id="collect" type="button">Collect my edits</button></div>
-<p class="note" style="margin:14px 0 0">{len(entries)} captions, ranked by reach. Each shows exactly as it will render on the site. Your edits and ticks are saved in this browser; "Collect my edits" outputs only the captions you changed, as paste-ready blocks.</p>
+<p class="note" style="margin:14px 0 0">{len(entries)} captions{f", the {n_home} on the homepage first, then" if n_home else ","} ranked by reach. Each shows exactly as it will render on the site. Your edits and ticks are saved in this browser; "Collect my edits" outputs only the captions you changed, as paste-ready blocks.</p>
 {''.join(rows)}
 <div class="out"><h2>Paste this back to Claude</h2><textarea id="outbox" readonly placeholder="Press Collect my edits"></textarea></div>
 </div>
