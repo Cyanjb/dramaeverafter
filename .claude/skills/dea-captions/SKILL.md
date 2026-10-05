@@ -158,6 +158,15 @@ everything else is an edit, that is a lie on her site.
   listed first: she checks those before they go live (28 Sep). Ad hoc batches she
   asks for in chat can still go live on her say-so (28 Sep: "everything should be
   live"), except homepage titles, which she checks first.
+- **ONE review page, always.** Cyan, 4 Oct 2026: "I can't have two, I'll lose
+  one guaranteed. If there's any captions I need to review they always need to
+  be kept together." Never publish a second review artifact. Add the batch to
+  `generator/staging/review_queue.txt`, rebuild with
+  `make_review_page.py --queue`, and republish to the standing page,
+  https://claude.ai/artifact/WvX4kXmHsJyaizs6fVTEe9 (pass that `url`). Its
+  storage key (`STANDING_KEY` in make_review_page.py) must never change or her
+  saved ticks and edits vanish. A batch leaves the queue only once her review
+  of it has been applied.
 - **READ MEANS DONE**: a caption she ticked without editing is approved. Do not
   re-litigate it. Cyan, 28 Sep 2026: "if it has been read and edited by me please
   leave it alone". That holds even for a clean-up pass such as de-lifting: a
@@ -193,9 +202,11 @@ python3 generator/caption_pipeline.py check <batch.py>   # rules + genre terms
 python3 generator/readback.py <batch.py>                 # caption beside source
 python3 .claude/skills/dea-captions/scripts/lift_check.py <batch.py> --n 6
 
-# 4. Her review, when it needs her
-python3 generator/make_review_page.py <batch.py> out.html --title "..."
-# publish as an artifact; the storage key is per batch so widgets never collide
+# 4. Her review, when it needs her: ONE standing page, never a new one
+echo generator/staging/<batch.py> >> generator/staging/review_queue.txt
+python3 generator/make_review_page.py --queue out.html
+# republish to https://claude.ai/artifact/WvX4kXmHsJyaizs6fVTEe9 (same url),
+# homepage titles listed first; the fixed storage key keeps her ticks and edits
 
 # 5. Apply
 python3 generator/promote_captions.py <batch.py> <approved.py>
