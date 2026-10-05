@@ -1,22 +1,22 @@
 trope_id,name,slug,description,title_count
 a-nobody,a nobody,a-nobody,,6
-age-gap,age gap,age-gap,,121
-alpha,alpha,alpha,,170
+age-gap,age gap,age-gap,,122
+alpha,alpha,alpha,,176
 alternate-history,alternate-history,alternate-history,,21
 amnesia,amnesia,amnesia,,52
 ancient-times,ancient-times,ancient-times,,19
 another-world,another-world,another-world,,25
 apocalypse,apocalypse,apocalypse,,105
-athletes,athletes,athletes,,79
+athletes,athletes,athletes,,81
 attorney,attorney,attorney,,30
 bad-boy,bad boy,bad-boy,,15
 bad-girl,bad girl,bad-girl,,1
 beast,beast,beast,,12
 betrayal,betrayal,betrayal,,430
 biker,biker,biker,,1
-billionaire,billionaire,billionaire,,796
+billionaire,billionaire,billionaire,,800
 bl,bl,bl,,24
-blind-date,blind date,blind-date,,10
+blind-date,blind date,blind-date,,11
 body-swap,body swap,body-swap,,21
 bodyguard,bodyguard,bodyguard,,38
 bodyguard-romance,bodyguard romance,bodyguard-romance,,12
@@ -26,36 +26,36 @@ brothers-best-friend,brothers best friend,brothers-best-friend,,2
 bullying,bullying,bullying,,91
 business,business,business,,190
 camp-romance,camp romance,camp-romance,,1
-campus,campus,campus,,214
+campus,campus,campus,,216
 celebrity,celebrity,celebrity,,34
 ceo,CEO,ceo,,475
-cheating,cheating,cheating,,378
+cheating,cheating,cheating,,383
 childhood-sweethearts,childhood sweethearts,childhood-sweethearts,,24
 cinderella,cinderella,cinderella,,134
 college-romance,college romance,college-romance,,18
 comeback,comeback,comeback,,89
 comeback-story,comeback story,comeback-story,,67
-contract,contract,contract,,136
+contract,contract,contract,,139
 contract-marriage,contract marriage,contract-marriage,,229
 cowboy,cowboy,cowboy,,2
 crush-to-love,crush to love,crush-to-love,,59
 cute-kids,cute kids,cute-kids,,182
 dark,dark,dark,,83
-dark-romance,dark romance,dark-romance,,181
+dark-romance,dark romance,dark-romance,,182
 destined-love,destined love,destined-love,,10
 destiny,destiny,destiny,,57
 devil,devil,devil,,12
-divorce,divorce,divorce,,211
+divorce,divorce,divorce,,212
 doctor,doctor,doctor,,16
-dragon,dragon,dragon,,57
+dragon,dragon,dragon,,58
 dynamic-duo,dynamic duo,dynamic-duo,,41
 eastern-fantasy,eastern-fantasy,eastern-fantasy,,17
 empress,empress,empress,,6
-enemies-to-lovers,enemies to lovers,enemies-to-lovers,,224
+enemies-to-lovers,enemies to lovers,enemies-to-lovers,,229
 entertainment,entertainment,entertainment,,26
 escape-from-wedding,escape from wedding,escape-from-wedding,,16
 fake-dating,fake dating,fake-dating,,8
-fake-relationship,fake relationship,fake-relationship,,78
+fake-relationship,fake relationship,fake-relationship,,80
 family,family,family,,3
 family-bonds,family bonds,family-bonds,,52
 family-drama,family drama,family-drama,,198
@@ -71,7 +71,7 @@ flash-marriage,flash marriage,flash-marriage,,213
 forbidden-love,forbidden love,forbidden-love,,214
 forbidden-romance,forbidden romance,forbidden-romance,,33
 forced-love,forced love,forced-love,,26
-friends-to-lovers,friends to lovers,friends-to-lovers,,31
+friends-to-lovers,friends to lovers,friends-to-lovers,,32
 gamified-world,gamified world,gamified-world,,24
 genius,genius,genius,,15
 girl-crush,girl-crush,girl-crush,,7
@@ -79,13 +79,13 @@ god-of-war,god of war,god-of-war,,28
 goddess-of-war,goddess of war,goddess-of-war,,16
 golden-finger,golden-finger,golden-finger,,8
 good-vs-evil,good-vs-evil,good-vs-evil,,5
-group-favorite,group favorite,group-favorite,,36
+group-favorite,group favorite,group-favorite,,37
 harem,harem,harem,,25
 hate,hate,hate,,45
 hate-love,hate love,hate-love,,93
 healing,healing,healing,,7
 heir,heir,heir,,109
-heiress,heiress,heiress,,216
+heiress,heiress,heiress,,217
 highschool-romance,highschool romance,highschool-romance,,24
 historial,historial,historial,,28
 historical,historical,historical,,57
@@ -95,7 +95,7 @@ housewife,housewife,housewife,,84
 hype,hype,hype,,11
 immortal-love,immortal-love,immortal-love,,3
 immortality,immortality,immortality,,17
-independent-woman,independent woman,independent-woman,,203
+independent-woman,independent woman,independent-woman,,207
 inspirational,inspirational,inspirational,,5
 inspiring,inspiring,inspiring,,31
 interactive,interactive,interactive,,1
@@ -105,12 +105,12 @@ killer,killer,killer,,11
 lawyer,lawyer,lawyer,,21
 level-up,level-up,level-up,,5
 little-cupids,little cupids,little-cupids,,41
-lost-child,lost child,lost-child,,67
+lost-child,lost child,lost-child,,68
 love-affair,love-affair,love-affair,,83
-love-after-divorce,love-after-divorce,love-after-divorce,,51
+love-after-divorce,love-after-divorce,love-after-divorce,,52
 love-after-marriage,love after marriage,love-after-marriage,,228
-love-triangle,love triangle,love-triangle,,415
-luna,luna,luna,,88
+love-triangle,love triangle,love-triangle,,419
+luna,luna,luna,,92
 mafia,mafia,mafia,,193
 maid,maid,maid,,26
 marriage,marriage,marriage,,1
@@ -122,7 +122,7 @@ miracle-doctor,miracle doctor,miracle-doctor,,48
 miracle-encounter,miracle-encounter,miracle-encounter,,5
 misidentification,misidentification,misidentification,,131
 mistaken-identity,mistaken identity,mistaken-identity,,109
-misunderstanding,misunderstanding,misunderstanding,,420
+misunderstanding,misunderstanding,misunderstanding,,426
 modern-romance,modern-romance,modern-romance,,36
 mutual-love,mutual love,mutual-love,,160
 mystery,mystery,mystery,,109
@@ -130,7 +130,7 @@ no-strings-attached,no strings attached,no-strings-attached,,6
 nobody,nobody,nobody,,3
 office,office,office,,188
 office-romance,office romance,office-romance,,119
-one-night-stand,one night stand,one-night-stand,,232
+one-night-stand,one night stand,one-night-stand,,237
 oriental-fantasy,oriental fantasy,oriental-fantasy,,29
 palace,palace,palace,,14
 palace-intrigue,palace intrigue,palace-intrigue,,38
@@ -140,10 +140,10 @@ patriotism,patriotism,patriotism,,28
 playing-dumb,playing dumb,playing-dumb,,147
 plot-twist,plot-twist,plot-twist,,18
 political,political,political,,17
-possessive-love,possessive love,possessive-love,,150
+possessive-love,possessive love,possessive-love,,154
 power-couple,power-couple,power-couple,,11
 powerful-family,powerful-family,powerful-family,,12
-pregnancy,pregnancy,pregnancy,,352
+pregnancy,pregnancy,pregnancy,,358
 princess,princess,princess,,6
 prodigy,prodigy,prodigy,,13
 professor,professor,professor,,1
@@ -151,12 +151,12 @@ puppy-love,puppy love,puppy-love,,26
 queen,queen,queen,,3
 rags-to-riches,rags to riches,rags-to-riches,,53
 reality-show,reality show,reality-show,,5
-reborn,reborn,reborn,,437
+reborn,reborn,reborn,,439
 reclusive-master,reclusive master,reclusive-master,,7
-redemption,redemption,redemption,,279
+redemption,redemption,redemption,,283
 rejected-mate,rejected mate,rejected-mate,,10
 return-of-the-king,return-of-the-king,return-of-the-king,,3
-revenge,revenge,revenge,,844
+revenge,revenge,revenge,,852
 rich-family-feud,rich-family-feud,rich-family-feud,,11
 rich-heiress,rich-heiress,rich-heiress,,16
 rockstar,rockstar,rockstar,,2
@@ -164,19 +164,19 @@ rom-com,rom-com,rom-com,,26
 romantasy,romantasy,romantasy,,24
 romantic-comedy,romantic-comedy,romantic-comedy,,5
 romantic-marriage,romantic-marriage,romantic-marriage,,4
-royal,royal,royal,,203
+royal,royal,royal,,207
 runaway-bride,runaway bride,runaway-bride,,10
 runaway-pregnancy,runaway-pregnancy,runaway-pregnancy,,5
 rural-life,rural-life,rural-life,,12
 schemes,schemes,schemes,,66
-second-chance,second chance,second-chance,,364
+second-chance,second chance,second-chance,,366
 secret-baby,secret baby,secret-baby,,27
-secret-child,secret child,secret-child,,90
-secret-identity,secret identity,secret-identity,,797
+secret-child,secret child,secret-child,,92
+secret-identity,secret identity,secret-identity,,807
 secret-relationship,secret relationship,secret-relationship,,10
 secretary,secretary,secretary,,6
-single-dad,single dad,single-dad,,39
-single-mom,single mom,single-mom,,81
+single-dad,single dad,single-dad,,40
+single-mom,single mom,single-mom,,82
 single-parent,single-parent,single-parent,,1
 situationship,situationship,situationship,,1
 slave,slave,slave,,14
@@ -187,27 +187,27 @@ son-in-law,son in law,son-in-law,,31
 sport,sport,sport,,12
 sports-romance,sports romance,sports-romance,,21
 stand-in,stand in,stand-in,,29
-steamy,steamy,steamy,,113
+steamy,steamy,steamy,,114
 step-romance,step romance,step-romance,,1
 step-siblings,step-siblings,step-siblings,,14
 stepbrother,stepbrother,stepbrother,,8
 strangers-to-lovers,strangers to lovers,strangers-to-lovers,,2
-strong-female-lead,strong female lead,strong-female-lead,,369
-student,student,student,,170
+strong-female-lead,strong female lead,strong-female-lead,,373
+student,student,student,,172
 substitute-bride,substitute bride,substitute-bride,,48
 summer-romance,summer romance,summer-romance,,1
 super-power,super-power,super-power,,8
-superpower,superpower,superpower,,136
+superpower,superpower,superpower,,140
 superpowered,superpowered,superpowered,,3
 suspense,suspense,suspense,,42
 system,system,system,,164
 teen,teen,teen,,44
-the-chosen-one,the chosen one,the-chosen-one,,54
+the-chosen-one,the chosen one,the-chosen-one,,55
 time-travel,time travel,time-travel,,115
 top-chef,top chef,top-chef,,3
 top-professional,top-professional,top-professional,,2
 tough-guy,tough guy,tough-guy,,0
-toxic-love,toxic love,toxic-love,,331
+toxic-love,toxic love,toxic-love,,335
 toxic-relationship,toxic relationship,toxic-relationship,,89
 tragic-love,tragic-love,tragic-love,,35
 treasure-hunt,treasure-hunt,treasure-hunt,,6
@@ -218,7 +218,7 @@ underdog-story,underdog story,underdog-story,,8
 urban-fantasy,urban-fantasy,urban-fantasy,,22
 vampire,vampire,vampire,,96
 weight-loss,weight loss,weight-loss,,7
-werewolf,werewolf,werewolf,,155
+werewolf,werewolf,werewolf,,159
 werewolves,werewolves,werewolves,,14
 wish-fulfillment,wish-fulfillment,wish-fulfillment,,71
 wizard,wizard,wizard,,7
@@ -227,16 +227,16 @@ workplace,workplace,workplace,,54
 workplace-romance,workplace romance,workplace-romance,,18
 young,young,young,,42
 young-adult,young adult,young-adult,,82
-high-fantasy,high fantasy,high-fantasy,"Umbrella for werewolves, dragons, elves, mermaids and magic (Cyan, 3 Sep 2026)",215
+high-fantasy,high fantasy,high-fantasy,"Umbrella for werewolves, dragons, elves, mermaids and magic (Cyan, 3 Sep 2026)",295
 plus-size,plus size,plus-size,,12
 mermaid,mermaid,mermaid,,4
 reverse-harem,reverse harem,reverse-harem,,14
-sweet-love,sweet love,sweet-love,,489
-hidden-feelings,hidden feelings,hidden-feelings,,148
-glow-up,glow up,glow-up,,105
-all-too-late,all too late,all-too-late,,100
-reunion,reunion,reunion,,157
+sweet-love,sweet love,sweet-love,,494
+hidden-feelings,hidden feelings,hidden-feelings,,151
+glow-up,glow up,glow-up,,107
+all-too-late,all too late,all-too-late,,103
+reunion,reunion,reunion,,163
 dysfunctional-family,dysfunctional family,dysfunctional-family,,95
 first-love,first love,first-love,,94
-taboo,taboo,taboo,,78
-love-at-first-sight,love at first sight,love-at-first-sight,,60
+taboo,taboo,taboo,,79
+love-at-first-sight,love at first sight,love-at-first-sight,,62
