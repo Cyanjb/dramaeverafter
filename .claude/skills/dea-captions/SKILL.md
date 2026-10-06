@@ -93,7 +93,10 @@ BODY, the whole story, ending on what it costs somebody
 
 Hard bans, mechanical, no exceptions: dashes of any kind, exclamation marks,
 runs of four or more capitals, curly apostrophes, multi-dot ellipsis. These are
-her rules and the gate enforces them. When her own text breaks one, fix the
+her rules and the gate enforces them. Exception, Cyan 6 Oct 2026: "BDSM should stay BDSM, it's a term of the
+genre". A capitalised genre term the audience uses is kept as written; the gate
+allows the terms in `CAPS_TERMS` (caption_pipeline.py). Add to that set rather
+than rewording the term away. When her own text breaks one, fix the
 mechanical part only and tell her you did.
 
 ## The rules that produce her voice
