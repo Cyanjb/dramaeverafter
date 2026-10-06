@@ -132,6 +132,9 @@ SOURCE_LIMITED = {
 }
 
 
+# Capitalised genre terms the caps-lock rule allows (Cyan, 6 Oct 2026).
+CAPS_TERMS = {"BDSM"}
+
 def rows(name):
     with io.open(os.path.join(DATA, name), encoding="utf-8-sig", newline="") as f:
         return list(csv.DictReader(f))
@@ -287,7 +290,9 @@ def validate(tid, cap, fact, title):
         errs.append("DASH %s" % bad)
     if "!" in cap:
         errs.append("exclamation mark")
-    if re.search(r"\b[A-Z]{4,}\b", cap):
+    # Genre terms written in capitals by the audience are not caps lock.
+    # Cyan, 6 Oct 2026: "BDSM should stay BDSM, it's a term of the genre".
+    if [w for w in re.findall(r"\b[A-Z]{4,}\b", cap) if w not in CAPS_TERMS]:
         errs.append("caps lock")
     # The hook may be TWO short sentences: the approved corpus has "He is used to
     # owning things. She is not one." What it may not be is long, so cap the length

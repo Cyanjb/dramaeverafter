@@ -385,15 +385,7 @@ CAPTIONS = {
 
     # 1.1M     The complete transformation of a girl
     'the-complete-transformation-of-a-girl':
-        "She came for a paycheck. They thought she was the tester.\nGrace "
-        "Miller is a rookie lingerie designer whose sister is seriously "
-        "ill and needs surgery. To earn the money she slips into the "
-        "company Chris Sullivan runs, and someone there mistakes her for "
-        "an erotic experience tester. One mix up leads to another, and "
-        "she ends up signing a training contract for dominance and "
-        "submission. All Grace has ever wanted is for people to respect "
-        "her as a designer. Instead her work keeps getting written off as "
-        "having no desire in it at all.",
+        'She came for a paycheck. They thought she was the tester.\nGrace Miller is a rookie lingerie designer whose sister is seriously ill and needs surgery. To earn the money she slips into the company Chris Sullivan runs, and someone there mistakes her for an erotic experience tester. One mix up leads to another, and she ends up signing a BDSM training contract. All Grace has ever wanted is for people to respect her as a designer. Instead her work keeps getting written off as having no desire in it at all.',
 }
 
 SOURCES = {  # kind -> caption_pipeline.SOURCE_KINDS
