@@ -6,3 +6,8 @@ generator/staging/captions_2026_09_28_homepage_check.py
 generator/staging/captions_2026_10_05_p1.py
 generator/staging/captions_2026_10_05_p2.py
 generator/staging/captions_2026_10_05_p3.py
+generator/staging/captions_2026_10_06_p1.py
+generator/staging/captions_2026_10_06_p2.py
+generator/staging/captions_2026_10_06_p3.py
+generator/staging/captions_2026_10_06_p4.py
+generator/staging/captions_2026_10_06_p5.py
