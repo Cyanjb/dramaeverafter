@@ -1,0 +1,358 @@
+# -*- coding: utf-8 -*-
+"""APPROVED captions only. Cyan has signed off on every line in this file.
+
+Only this file is ever applied. The draft batch is a workspace.
+
+WARNING: this file is REGENERATED from the draft by promote_captions.py, so an
+edit made only here is lost on the next promotion. Edit the draft too.
+"""
+
+CAPTIONS = {
+
+    # 12.8M    Forward, Without Him
+    'forward-without-him':
+        "She went to New York to surprise them. They were the ones with "
+        "the secret.\nTaylor gets into Columbia, and that same day she "
+        "gets on a plane without telling anyone so she can celebrate with "
+        "her boyfriend Ethan and her best friend Lexi. Before she can "
+        "surprise anybody, she overhears them owning up to what they did. "
+        "Lexi had a birthday wish, and to give it to her they went into "
+        "Taylor's application behind her back, so the deadline came and "
+        "went and her spot was gone. They've been together for a year "
+        "without her knowing. Ethan has even promised Lexi he's hers "
+        "until the fall, and after that he plans to slip back into being "
+        "Taylor's boyfriend. Taylor is left standing outside with her "
+        "cupcakes and sunflowers, finally seeing that her whole life was "
+        "resting on their betrayal.",
+
+    # 11.8M    Charmed to Meet You, Too
+    'charmed-to-meet-you-too':
+        "He lost her number. Now the whole internet is looking for "
+        "her.\nLexi is a hopeless romantic, and she's been flirting with "
+        "the mystery guy next door through the Jibbitz charms on her "
+        "Crocs. They finally connect, and then Tyler never calls, and "
+        "she's heartbroken. What Lexi doesn't know is that it was an "
+        "accident. Tyler lost her number, and he's turned the search for "
+        "her into a viral hunt online. Lexi, meanwhile, has run off to a "
+        "wedding in the tropics, where a different charming stranger "
+        "catches her eye. She has no idea the little heart shaped charm "
+        "she has with her could lead her back to the guy fate won't stop "
+        "steering her toward. Will she find her way back before she falls "
+        "for someone new?",
+
+    # 7.8M     When The Black Out Comes
+    'when-the-black-out-comes':
+        "He saw the storm coming. Nobody wanted to hear it.\nJulian "
+        "Parker is a meteorologist, and he finds out a megastorm is about "
+        "to hit hard enough to knock out the city's power within hours. "
+        "He breaks into a news broadcast while it's live and tells people "
+        "what's coming, and it costs him his job. People write him off as "
+        "a conspiracy theorist. Julian won't let that stop him. With time "
+        "running out, he sets out to get portable power stations to the "
+        "people who'll need them most: hospitals, first responders and "
+        "families who are most at risk. He's mocked, arrested and turned "
+        "away again and again, but he keeps going. He's already lost his "
+        "job and his good name for trying. Will anyone listen before the "
+        "lights go out?",
+
+    # 6.8M     Swapped Bride: Awakening of the True Princess
+    'swapped-bride-awakening-of-the-true-princess':
+        "She died for a man who loved someone else. Reborn, she's letting "
+        "him go.\nThe Kingdom of Silver Moon owes the King of the "
+        "Wildlands a bride, and one princess has to go. The princesses "
+        "Maeve and Lila settle it by drawing lots over which of them gets "
+        "sent to that barren country, and Lila pleads with Maeve to go "
+        "instead. That's when the memories of her last life come back to "
+        "Maeve. In that life she stayed behind and married Asher, the "
+        "general she had loved since they were children, and they spent "
+        "the rest of their lives hating each other. When the city fell, "
+        "Asher died protecting her as she got away, and with his last "
+        "words he asked her to give him up so he could have Lila. Maeve "
+        "gave him a whole lifetime and never had his heart, so she "
+        "followed him in death off a cliff. Now she's been reborn and she "
+        "sees it all clearly. This time Asher and Lila have her blessing, "
+        "and she'll stop fighting for a heart that was never hers.",
+
+    # 4.2M     I'll Never See You Again
+    'i-ll-never-see-you-again':
+        "Seven years by his side. Another woman in his shirt.\nRenata "
+        "Salazar has been with Camden Moretti for seven years. He's her "
+        "fiance and her partner in business. When he sends her to London "
+        "to take charge of the branch there, she lets herself believe "
+        "he's finally starting to respect her. Then she gets home and "
+        "finds a woman named Isabella with Camden's shirt on. A drawer is "
+        "standing open, and inside it are wedding photos from the "
+        "Hamptons and custom Cartier rings. Renata cuts Camden off "
+        "completely. She turns down the car he arranged for her, and she "
+        "throws out his old engagement ring from Tiffany. After seven "
+        "years, she's done with him for good.",
+
+    # 2.9M     Hunted by the Alpha
+    'hunted-by-the-alpha':
+        "One night with an Alpha. A half wolf daughter he never knew "
+        "about.\nElena is a human studying medicine, and she's been "
+        "raising her daughter Kate on her own and in secret. Kate is half "
+        "wolf, and her father is Alpha Alex, the man Elena shared a bond "
+        "with for a single night. When Kate needs Lunarid, a rare "
+        "medicine, Elena has to go and find Alex, and he knows exactly "
+        "who she is from her scent and his bite mark on her. Then Kate is "
+        "kidnapped, and Alex learns the girl is his. Elena moves onto the "
+        "pack estate, where Nyx is cruel to her at every turn. Elena "
+        "comes through it, becomes Luna, and her true love is what "
+        "finally breaks the curse on Alex. She also proves Nyx sabotaged "
+        "the bloodline test. Mrs. Volkov welcomes all three of them, and "
+        "Alex asks Elena to be his wife. The secret she kept to protect "
+        "her daughter ends up giving her a whole family.",
+
+    # 2.1M     The Girl He Lost in the Flames
+    'the-girl-he-lost-in-the-flames':
+        "He gave her concert ticket to another girl. She gave up on him "
+        "for good.\nLogan has been Samantha's friend since they were "
+        "kids, which makes it worse when he hands her VIP ticket for her "
+        "idol's last ever concert to a girl named Sierra. Samantha is "
+        "done. She cuts Logan out of her life, transfers to NYU and "
+        "starts over. Logan won't leave her alone, and Sierra goes as far "
+        "as vandalizing Samantha's home and spreading lies about her. "
+        "However much Logan begs, Samantha won't forgive him. Then she "
+        "gets close to Ethan, who loves the same idol she does, and he "
+        "helps her put a stop to Logan's harassment. Logan's jealousy "
+        "boils over and he attacks Ethan. Samantha chooses Ethan, and "
+        "with her mother beside her she finally has love and peace. Logan "
+        "had her loyalty since childhood and threw it away over one "
+        "concert ticket.",
+
+    # 1.4M     Saved My Life, No More Love
+    'saved-my-life-no-more-love':
+        "Seven years at his side, and never once his.\nCoralie has loved "
+        "Malachi for seven years without a title, without a ring and "
+        "without any real place in his life. Then his first love comes "
+        "back, and Malachi proposes. It isn't about love. The proposal is "
+        "about a prenup that would hand his fortune over to another "
+        "woman. Her grandmother's last wish is ruined that same night, "
+        "and Coralie runs out of patience. She leaves New York with her "
+        "dignity and nothing more. By the time Malachi understands what "
+        "love looks like, it's too late. Coralie has stopped needing his.",
+
+    # 1.1M     The Alpha's Forbidden Bunny
+    'the-alpha-s-forbidden-bunny':
+        "One night with his ex fiancee's father. Now they're married.\nIn "
+        "a world of beastkin, Toby is a rabbit whose wedding has just "
+        "been called off. Then comes a night neither of them planned with "
+        "Enzo, the Wolf King, who also happens to be the adoptive father "
+        "of the girl Toby was supposed to marry. Afterward an arranged "
+        "marriage is forced on Toby, and Enzo is the groom. His ex and "
+        "her family keep finding new ways to humiliate him, and every "
+        "time a crisis hits, it's Enzo who gets him out of it. At first "
+        "Toby leans on Enzo because he has no choice. Before long he "
+        "can't help being devoted to him. Falling for the Wolf King means "
+        "falling for the one man he was never supposed to want.",
+
+    # 1.0M     Second Chance at Life
+    'second-chance-at-life':
+        "Eighteen years cleaning up after him. He laughed the "
+        "loudest.\nFor eighteen years Avery Ross has been the one "
+        "catching Caleb Bennett every time he falls. She fixes his "
+        "schoolwork, covers for his mistakes and gives up her own "
+        "chances, all because she thinks that's what friends do. Then "
+        "comes the freshman talent show. To prove he belongs with a "
+        "cooler crowd, Caleb pins Avery down while Bailey chops off her "
+        "hair, and the whole auditorium laughs. Caleb laughs harder than "
+        "anyone. That night Avery finally wakes up. She drops out of "
+        "college, moves back home, takes a year out and builds her life "
+        "again from nothing, all the way to a 1590 on the SAT and a place "
+        "at Columbia. Without her there, Caleb gets dumped by Bailey and "
+        "expelled, and he has to watch his family fall apart. Avery, "
+        "meanwhile, meets Lucas, a top student headed for MIT, and finds "
+        "a love where they're equals who respect each other and grow "
+        "together. Caleb leaned on her for eighteen years, and when she "
+        "was the one being held down, he laughed.",
+
+    # 841.4K   The Odyssey: A Warrior King's Homecoming
+    'the-odyssey-a-warrior-king-s-homecoming':
+        "The King of Ithaca comes home in disguise.\nThe Trojan War is "
+        "over. Odysseus kills the Cyclops, and Athena makes him King of "
+        "Ithaca. He goes home without telling anyone who he is, and his "
+        "wife's family treat him with nothing but contempt while they "
+        "pressure her into marrying a suitor named Antinous. Odysseus "
+        "proves what he's worth even after his relics are destroyed. He "
+        "survives being framed by Antinous and a kidnapping too, and "
+        "along the way a life debt costs him an ally. At the coronation "
+        "the truth about him comes out. He kills Antinous with an arrow "
+        "that rebounds, and takes back his throne and his family. "
+        "Antinous came for his wife, and it costs him his life.",
+
+    # 730.3K   Wrong Door Right Girl
+    'wrong-door-right-girl':
+        "She came to confess to one girl and ended up fake dating "
+        "another.\nPaige is a broke musician who wants a place at the "
+        "Royal Academy of Music. Just applying costs far more than she "
+        "has. At the homecoming party she works up the nerve to tell her "
+        "crush Vera how she feels, and in her panic she picks the wrong "
+        "door. Behind it is Talia, the star captain of the cheer squad, "
+        "who has just found out her boyfriend Derek is cheating on her. "
+        "Talia has an offer. If Paige plays her girlfriend until the "
+        "National Cheerleading Championship, Talia will get her into the "
+        "music club and help her raise the money. The whole campus starts "
+        "talking, Derek hits back hard, and somewhere along the way the "
+        "act stops being an act. Then Talia's controlling mother turns "
+        "her money and the media on them to split them up, Derek spreads "
+        "lies, and a bad ankle injury puts Talia's cheer future at risk. "
+        "Misunderstandings drive them apart. With her friends and her "
+        "brother behind her, Paige comes to accept who she is. She "
+        "exposes Derek and gets through her academy audition with a song "
+        "she wrote herself called \"Cheer for My Heart\", and then she "
+        "races to the championship to tell Talia how she feels in front "
+        "of everyone. They come from different worlds, and choosing each "
+        "other means standing up to everyone who says they don't belong "
+        "together.",
+}
+
+SOURCES = {  # kind -> caption_pipeline.SOURCE_KINDS
+    'forward-without-him': ('platform', 'https://www.reelshort.com/movie/forward-without-him-6ab3cc6bccf5221f6c029385'),
+    'charmed-to-meet-you-too': ('platform', 'https://www.reelshort.com/movie/charmed-to-meet-you-too-6a0563dd37f9bcda0900318a'),
+    'when-the-black-out-comes': ('platform', 'https://www.reelshort.com/movie/when-the-black-out-comes-6a4f08df981c10287204edc2'),
+    'swapped-bride-awakening-of-the-true-princess': ('platform', 'https://www.reelshort.com/movie/swapped-bride-awakening-of-the-true-princess-6ab00279b22e3e67590f8527'),
+    'i-ll-never-see-you-again': ('platform', 'https://www.reelshort.com/movie/i-ll-never-see-you-again-6ab5d43904b6a120990e87f7'),
+    'hunted-by-the-alpha': ('platform', 'https://www.reelshort.com/movie/hunted-by-the-alpha-6ab33610ae7501f30b0068ac'),
+    'the-girl-he-lost-in-the-flames': ('platform', 'https://www.reelshort.com/movie/the-girl-he-lost-in-the-flames-6ab4ef01b13ef3d23e0f74c2'),
+    'saved-my-life-no-more-love': ('platform', 'https://www.reelshort.com/movie/saved-my-life-no-more-love-6ab4ef79e39a830ab3083d12'),
+    'the-alpha-s-forbidden-bunny': ('platform', 'https://www.reelshort.com/movie/the-alpha-s-forbidden-bunny-6ab397e13282a14d03058cf7'),
+    'second-chance-at-life': ('platform', 'https://www.reelshort.com/movie/second-chance-at-life-6ab3b1316174855ed506e6e6'),
+    'the-odyssey-a-warrior-king-s-homecoming': ('platform', 'https://www.reelshort.com/movie/the-odyssey-a-warrior-king-s-homecoming-6ab1e1d70d218e897d0acbd8'),
+    'wrong-door-right-girl': ('platform', 'https://www.reelshort.com/movie/wrong-door-right-girl-6ab4957a73eff4c1e00f242b'),
+}
+
+FACTS = {  # the published synopsis each caption was written from
+    'forward-without-him':
+        "On the day Taylor's Columbia acceptance arrives, she secretly "
+        "flies to New York to surprise her boyfriend Ethan and best "
+        "friend Lexi. Instead, she overhears them confess: to grant "
+        "Lexi's birthday wish, they secretly altered Taylor's "
+        "application, making her miss the deadline and lose her spot. "
+        "They've been dating behind her back for a year. Ethan promises "
+        "Lexi he'll stay hers until fall, then return to being Taylor's "
+        "boyfriend. Taylor stands outside, holding cupcakes and "
+        "sunflowers, realizing her entire life was built on their "
+        "betrayal.",
+    'charmed-to-meet-you-too':
+        "After finally connecting with the mystery neighbor she’s been "
+        "“charming” through her Crocs Jibbitz ™ charms, hopeless romantic "
+        "Lexi is crushed when Tyler never calls—unaware he lost her "
+        "number by accident. While Tyler launches a viral online search "
+        "to find her again, Lexi escapes to a tropical wedding and sparks "
+        "an unexpected connection with another charming stranger, "
+        "unknowingly carrying the same heart-shaped Jibbitz ™ charm that "
+        "could reunite her with the guy fate keeps pulling her back "
+        "toward.",
+    'when-the-black-out-comes':
+        "Meteorologist Julian Parker discovers that a catastrophic "
+        "megastorm will cripple the city's power grid within hours. After "
+        "interrupting a live news broadcast to warn the public, he is "
+        "fired and dismissed as a conspiracy theorist. Refusing to give "
+        "up, Julian races against the clock to deliver portable power "
+        "stations to hospitals, first responders, and vulnerable "
+        "families, enduring ridicule, arrest, and rejection along the "
+        "way.",
+    'swapped-bride-awakening-of-the-true-princess':
+        "The Kingdom of Silver Moon must send a princess to wed the King "
+        "of the Wildlands. Two princesses, Maeve and Lila, draw lots to "
+        "decide who will be married off to that barren land. Lila begs "
+        "Maeve to go in her place. Then Maeve remembers her last life. "
+        "She stayed — and married Asher, the general who had been her "
+        "childhood sweetheart. Their marriage turned bitter, and they "
+        "spent a lifetime hating each other. On the day the city fell, "
+        "Asher died shielding her escape, and with his last breath he "
+        "begged her to let him be with Lila. Maeve had spent a whole life "
+        "and never won his heart. She threw herself from the cliff to "
+        "follow him in death. Reborn, Maeve finally sees clearly: this "
+        "time, she will give Asher and Lila her blessing.",
+    'i-ll-never-see-you-again':
+        "After seven years with her fiancé and business partner, Camden "
+        "Moretti, Renata Salazar was sent to London to run the branch. "
+        "She thought he was finally beginning to respect her—until, at "
+        "home, she found Isabella wearing Camden's shirt; in an open "
+        "drawer were Hamptons wedding photos and custom Cartier rings. "
+        "She cut off contact with Camden, refused the car he had "
+        "arranged, and threw away the old Tiffany engagement ring he had "
+        "once given her.",
+    'hunted-by-the-alpha':
+        "Human med student Elena secretly raises Kate, her half-wolf "
+        "daughter, from a one-night bond with Alpha Alex. Needing rare "
+        "medicine Lunarid, she finds Alex, who recognizes her by scent "
+        "and bite mark. Kate is kidnapped, Alex discovers she is his "
+        "daughter, and Elena moves into the pack estate. She survives "
+        "Nyx's cruelty, becomes Luna, breaks Alex's curse through true "
+        "love, and exposes Nyx's sabotage of a bloodline test. Mrs. "
+        "Volkov accepts the family. Alex proposes, and they marry as one.",
+    'the-girl-he-lost-in-the-flames':
+        "Samantha's childhood friend Logan betrays her, giving her VIP "
+        "ticket to her idol's final concert to another girl, Sierra. "
+        "Samantha cuts him off, switches to NYU, and rebuilds her life. "
+        "Logan keeps harassing her, while Sierra vandalizes her home and "
+        "spreads lies. Samantha refuses to forgive Logan, despite his "
+        "pleas. She grows close to Ethan, a fellow fan who helps her stop "
+        "Logan's harassment. Logan attacks Ethan in jealousy. Samantha "
+        "chooses Ethan, finally finding love and peace with her mother by "
+        "her side.",
+    'saved-my-life-no-more-love':
+        "For seven years, Coralie loved Malachi with no title, no ring, "
+        "no place in his world. Then his first love returned—and he "
+        "proposed. Not for love. For a prenup that would pour his fortune "
+        "into another woman's hands. That night, her grandmother's last "
+        "wish shattered, and so did Coralie's patience. She left New York "
+        "with nothing but dignity. When he finally learned what love "
+        "looked like, she had already stopped needing his.",
+    'the-alpha-s-forbidden-bunny':
+        "In the beastkin world, Toby (a rabbit whose impending marriage "
+        "was called off) is forced into an arranged marriage with Enzo "
+        "(the Wolf King and adoptive father of his former fiancée) "
+        "following an unexpected one-night stand. Humiliated again and "
+        "again by his ex and her family, Toby is saved by Enzo through "
+        "crisis after crisis, and what begins as forced dependence slowly "
+        "turns into helpless devotion — sparking a dangerous, forbidden "
+        "romance defined by an extreme emotional tension.",
+    'second-chance-at-life':
+        "Second Chance at Life is a 25-episode female-growth and comeback "
+        "drama. Avery Ross spends eighteen years as Caleb Bennett’s "
+        "safety net—fixing his assignments, covering his mistakes, "
+        "sacrificing her own chances, and believing it was friendship. "
+        "Then, at the freshman talent show, Caleb holds her down so "
+        "Bailey can cut off her hair, all to prove his loyalty to a "
+        "cooler crowd. The whole auditorium laughs. He laughs loudest. "
+        "That night, Avery wakes up. She withdraws from college, returns "
+        "home, takes a gap year, and rebuilds her life from zero—SAT "
+        "1590, Columbia University. Meanwhile, without Avery to clean up "
+        "his messes, Caleb is discarded by Bailey, expelled, and watches "
+        "the Bennett family collapse. Along the way, Avery meets Lucas, "
+        "an MIT-bound top student, and learns a love built on equality, "
+        "respect, and mutual growth. In the end, she is no one’s sidekick "
+        "and no one’s sacrifice—she is the lead of her own life.",
+    'the-odyssey-a-warrior-king-s-homecoming':
+        "After the Trojan War, Odysseus kills the Cyclops and is crowned "
+        "King of Ithaca by Athena. Hiding his identity, he returns home "
+        "to endure humiliation from his wife's family, who push her to "
+        "marry the suitor Antinous. He proves himself despite his relics "
+        "being destroyed, survives Antinous's frame job and kidnapping, "
+        "and loses an ally to a life debt. At the coronation, he is "
+        "exposed, kills Antinous with a rebounding arrow, and reclaims "
+        "his throne and family.",
+    'wrong-door-right-girl':
+        "Paige, a struggling aspiring musician, dreams of getting into "
+        "the Royal Academy of Music, but the application fees are "
+        "impossible. At the homecoming party, she plans to confess to her "
+        "crush Vera—but in her nervous rush, she knocks on the wrong door "
+        "and finds Talia, the star cheerleading captain, just after "
+        "discovering her boyfriend Derek's infidelity. Talia proposes a "
+        "fake-girlfriend contract: Paige pretends to date her until the "
+        "National Cheerleading Championship. In return, Talia helps Paige "
+        "join the music club and raise funds. They face campus gossip and "
+        "Derek's vicious retaliation, and their fake romance slowly turns "
+        "real. Derek spreads lies. Talia's controlling mother uses money "
+        "and media to tear them apart. A severe ankle injury threatens "
+        "Talia's cheer career. Misunderstandings pull them apart. With "
+        "support from friends and her brother, Paige accepts herself, "
+        "exposes Derek, and passes her academy audition with her original "
+        "song \"Cheer for My Heart.\" She rushes to the championship and "
+        "confesses publicly. Defying class prejudice, the two girls "
+        "bravely choose their future together.",
+}
