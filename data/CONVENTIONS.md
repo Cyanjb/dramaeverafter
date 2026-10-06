@@ -25,3 +25,7 @@
   (evidence in generator/staging/goodshort_origin.json, novelType null or ERROR).
 - credits.csv `role` = `dub_voice` for a dub's voice cast, billed by the platform but
   not on screen; the title page says "English dub voice" and lists them last.
+- YouTube is never a platform (Cyan, 6 Oct 2026: "too much piracy happens on there").
+  A show seen only on YouTube needs its original app found before it is listed; until
+  then its row stays with `status` = `delisted`. Completion is shown only where a
+  platform states it; blank `status` means we do not know, and the site says nothing.

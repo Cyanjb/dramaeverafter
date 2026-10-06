@@ -9,6 +9,20 @@ edit made only here is lost on the next promotion. Edit the draft too.
 
 CAPTIONS = {
 
+    # 294.5M   Deny Me, Dragon King
+    'deny-me-dragon-king':
+        "She spent one night with the Dragon King. Then he threw her "
+        "out.\nLyra is human, and by chance she crosses paths with Dragon "
+        "King Kael. They spend one passionate night together. Then a "
+        "prophecy turns him against her, a prophecy that turns out to be "
+        "fake, and Kael sends her away. Lyra goes on to give birth to his "
+        "daughter Amber, who is half dragon. Years pass, Amber gets sick, "
+        "and Lyra comes back because she needs a healer who can save her "
+        "little girl. Being near Kael again brings back what they once "
+        "had. Jealous rivals start scheming, and blood ties that were "
+        "kept hidden come out into the open. Now they're fighting for "
+        "their family and for a love that already broke once. A lie cost "
+        "Kael the first years of his daughter's life.",
 
     # 138.0M   Carrying His Babies, Stealing His Heart
     'carrying-his-babies-stealing-his-heart':
