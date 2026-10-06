@@ -495,23 +495,46 @@
    "year": ""
   },
   "6a277806e726ac6d5a05854a": {
-   "actors": [],
    "book_id": "6a277806e726ac6d5a05854a",
-   "episodes": "",
-   "known_title_id": "",
-   "poster": "",
-   "seen_via": [
-    "wanted"
-   ],
    "slug": "one-night-stand-with-the-empire-s-general",
+   "title": "One Night Stand with the Empire's General",
+   "views_raw": 3251740,
+   "views": "3.3M",
+   "episodes": "40",
+   "synopsis": "To reclaim the vast fortune left behind by her grandfather, Viscountess Melris takes a desperate gamble at a masquerade ball. She seduces a mysterious silver-haired, red-eyed attendant in hopes of bearing his child — a child she plans to use as leverage to secure her inheritance. What she does not realize is that the man she has entangled herself with is none other than Eric, a ruthless and unhinged grand general who takes pleasure in killing. Now, caught in his relentless pursuit, Melris must deceive the world, outwit her scoundrel husband, and eliminate the scheming maidservant — all while struggling to survive the dangerous game she has set in motion.",
+   "poster": "https://v-img.crazymaplestudios.com/v-images/book_cover_batch/204200151000005189/ed4108ad-3200-4167-a7c8-3d89ee8f3b8b.jpg",
+   "actors": [],
+   "year": "2026",
+   "tags": [
+    "One Night Stand",
+    "Misunderstanding",
+    "Secret Reveal",
+    "Divorce",
+    "Playing Dumb",
+    "Secret",
+    "Pregnancy",
+    "Beauty & Brains",
+    "Marshal/General",
+    "Royalty/Nobility",
+    "Strong-Willed",
+    "Independent Woman",
+    "Charming",
+    "Possessive",
+    "Clever",
+    "Feel-Good",
+    "Period Drama",
+    "Animation"
+   ],
+   "platform_ai": "no",
+   "platform_dub": "no",
+   "seen_via": [
+    "wanted",
+    "detail"
+   ],
    "status": 200,
-   "synopsis": "",
-   "tags": [],
-   "title": "",
    "url": "https://www.reelshort.com/movie/one-night-stand-with-the-empire-s-general-6a277806e726ac6d5a05854a",
-   "views": "",
-   "views_raw": "",
-   "year": ""
+   "slug_guessed": false,
+   "known_title_id": ""
   },
   "6a70478f9dbba6268204e166": {
    "actors": [],
@@ -809,6 +832,13 @@
    "searched": 41,
    "unresolved": 41,
    "urls": 31
+  },
+  "detail": {
+   "targets": 1,
+   "ok": 1,
+   "delisted": 0,
+   "failed": 0,
+   "note": "read in the session sandbox 6 Oct; the runner's wanted-only run had no detail route"
   }
  },
  "runs": [],
