@@ -870,6 +870,8 @@
 /tropes/weight-loss  /tropes/index.html  301
 /tropes/wizard.html  /tropes/high-fantasy.html  301
 /tropes/wizard  /tropes/high-fantasy.html  301
+/actors/telg-sadhana.html  /actors/teig-sadhana.html  301
+/actors/telg-sadhana  /actors/teig-sadhana.html  301
 # Extensionless root pages 301 to the .html canonical. Non-forced, so a
 # rule fires only when no file answers the path. There is deliberately NO
 # generic /titles/:slug -> /titles/:slug.html rule (nor actors, tropes,

@@ -418,7 +418,9 @@ def main():
         if not m or tid not in by_id or m.group(1) in link_rows:
             continue
         b = books.get(m.group(1)) or {}
-        dub = "(DUBBED)" in r.get("evidence", "")
+        # DramaBox writes the marker with full-width brackets too, "（DUBBED）"
+        # (Fortunes Unveiled, 6 Oct 2026); the scraper's own flag is the truth.
+        dub = bool(b.get("dubbed")) or bool(re.search(r"[(（]DUBBED[)）]", r.get("evidence", "")))
         row = plat_rows.get(tid)
         if row is not None and (row.get("direct_link") or "").strip():
             # A second DramaBox listing of a title we already link. The dub of
