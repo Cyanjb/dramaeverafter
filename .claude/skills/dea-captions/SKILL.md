@@ -170,6 +170,12 @@ everything else is an edit, that is a lie on her site.
   storage key (`STANDING_KEY` in make_review_page.py) must never change or her
   saved ticks and edits vanish. A batch leaves the queue only once her review
   of it has been applied.
+- **Cyan's brother can review too** (Cyan, 6 Oct 2026: "his ticks can count as
+  approved"). She shares the standing review page and the duplicate rulings page
+  with him. His ticks are approvals, exactly like hers. His edits are applied, but
+  they are NOT her voice: never log them in CAPTION-TRAINING.md as her training
+  pairs, and keep them out of her edit-rate score. His work comes back as a
+  "Collect my edits" paste that Cyan forwards and labels as his.
 - **READ MEANS DONE**: a caption she ticked without editing is approved. Do not
   re-litigate it. Cyan, 28 Sep 2026: "if it has been read and edited by me please
   leave it alone". That holds even for a clean-up pass such as de-lifting: a
