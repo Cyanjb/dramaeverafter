@@ -480,3 +480,22 @@ Also found the same day: two ReelShort books can share a slug, and load_facts()
 keys by slug, so the newer book's synopsis wins. mom-love-me-again's caption
 was written from the wrong show and went live. Write from the book the page
 LINKS to (availability.csv direct_link), not from the slug.
+
+## CALIBRATION FIVE, rs72 batch, 9 Oct 2026
+
+New session, five captions shown first (the top five by views of the 72 shows
+added from the RS Boost portal). She edited three, all small:
+
+- DRAFT: "...and she has no idea the man she slept with is her ex's father."
+  CYAN: "...and she is shocked to find out he's also her ex's father."
+  (She wrote "find out also her ex's father"; "he's" added as a listed
+  mechanical fix.) She preferred the character LIVING the reveal to the
+  narrator withholding it. The title already announces it (class 5 corollary).
+- She flagged "Suddenly Rowan wants her back, Isolde is out to ruin her, and
+  the council is demanding proof." as feeling like incomplete sentences. The
+  clause had no object: proof of WHAT. Fixed to "proof of who she really is."
+  RULE: every clause finishes its thought. A list of three short clauses where
+  one dangles reads as fragments even when it parses.
+- DRAFT: "...and a pregnancy raises the stakes." CYAN: "...and then a
+  pregnancy raises the stakes." Class 7, flow: in a chain of escalating beats
+  she wants the "then" that carries you from one to the next.
