@@ -269,3 +269,82 @@ zero-to-alpha-return-of-the-wolf-king  ai=yes   # Cyan ruled AI
 
 # ---- Cyan, 6 Oct 2026: checked against the live site, missing ----------------
 https://www.reelshort.com/movie/one-night-stand-with-the-empire-s-general-6a277806e726ac6d5a05854a
+
+# ---- RS Boost portal holes, wave 1, Cyan 9 Oct 2026 --------------------------
+# "focus on the most popular and the newest, and whatever ReelShort features;
+# I don't want to carry shows no one is watching." Featured, or top 250 by the
+# portal's 30-day recharge sort; English, not dubs. List: rs_portal_holes_2026_10_09.tsv
+https://www.reelshort.com/movie/blood-and-roses-tears-of-a-vampire-6a8e4aa6ebe437ec9c0a4834  # featured: Trending
+https://www.reelshort.com/movie/my-kids-ruin-my-ex-s-fancy-life-6a912471533d191e1d0a5726  # featured: Trending
+https://www.reelshort.com/movie/five-keys-one-hidden-king-6aa9f3cd0cf84de170032bc9  # featured: New Episodes
+https://www.reelshort.com/movie/abandoned-by-the-duke-i-m-the-divine-seraph-6a86cb6b65d0fbfc9a011c55  # featured: Zero to Hero
+https://www.reelshort.com/movie/nanny-to-the-boy-who-hates-me-6aaf3aa4bdadc9280a004fa7  # featured: New Episodes
+https://www.reelshort.com/movie/marked-by-my-duke-daddy-6aaf6c6449315e6453090bd9  # featured: New Episodes
+https://www.reelshort.com/movie/claimed-by-the-cursed-kingdom-6a1cf36a75cb6d05d00f47fb  # recharge #6
+https://www.reelshort.com/movie/immortal-grandpa-goes-viral-6a22350b86a8394e370207ff  # recharge #10
+https://www.reelshort.com/movie/the-empress-s-final-wish-6a06bb6551a5d1e3b304e6a9  # recharge #11
+https://www.reelshort.com/movie/mafia-queen-s-fake-bride-6a83b89dd41c248dae056469  # recharge #32
+https://www.reelshort.com/movie/moonlit-wilds-a-secret-yearning-6a98068fa11efb8684067d36  # recharge #54
+https://www.reelshort.com/movie/you-ll-regret-cheating-on-a-superhero-6a2b68ac6fff4c90380cdae9  # recharge #63
+https://www.reelshort.com/movie/rose-of-seoul-revenge-reborn-6a881516109908ce810c1ce6  # recharge #70
+https://www.reelshort.com/movie/dying-after-ten-years-for-his-sin-6a55ac24485f9d5b0506785a  # recharge #74
+https://www.reelshort.com/movie/99-cracks-the-scorned-sirens-final-goodbye-6a7047879dbba6268204e157  # recharge #76
+https://www.reelshort.com/movie/bound-to-my-three-fated-high-lords-6a223050fd137dd5ef0e3675  # recharge #80
+https://www.reelshort.com/movie/mr-walker-your-ex-wife-is-your-boss-6a87b49aae487843a005c104  # recharge #83
+https://www.reelshort.com/movie/came-for-the-money-stayed-for-him-6a8544182f75b2fba60697a9  # recharge #102
+https://www.reelshort.com/movie/reborn-in-the-80s-i-chose-science-over-love-6a8ba956743331814f0d4827  # recharge #103
+https://www.reelshort.com/movie/the-lawyer-she-slept-with-6a338e275fc1c89a8f035c19  # recharge #106
+https://www.reelshort.com/movie/i-seduced-my-husbands-adoptive-father-6a5062a2cfe82f6004003dad  # recharge #108
+https://www.reelshort.com/movie/splash-the-lord-of-the-tides-comes-roaring-back-6a8d515010f3a4bb8309dad3  # recharge #115
+https://www.reelshort.com/movie/kiss-the-vampire-or-die-6aad0b798f6a7e56ac09c191  # recharge #119
+https://www.reelshort.com/movie/wrath-of-zeus-s-son-2-secret-protection-from-the-janitor-6a8e902f9185ccf2230990ab  # recharge #123
+https://www.reelshort.com/movie/second-chance-no-more-mrs-nice-girl-6a1d30788e3424eb5d018b1b  # recharge #124
+https://www.reelshort.com/movie/hook-with-boyfriend-s-best-friend-6a5d836dda4a556288063f1e  # recharge #129
+https://www.reelshort.com/movie/the-day-of-betrayal-i-took-everything-6a8fce5a72320f50d207cd12  # recharge #131
+https://www.reelshort.com/movie/daddy-left-his-baby-to-die-6a9e5e483e3e3774520ffddd  # recharge #132
+https://www.reelshort.com/movie/my-vampire-lord-6a56e53486836e04ae0c6a99  # recharge #133
+https://www.reelshort.com/movie/displaced-war-god-6a8ba2809c6562e0640a54e7  # recharge #134
+https://www.reelshort.com/movie/rejected-by-the-alpha-claimed-by-his-brother-6a86742ccad37e54ae051a18  # recharge #135
+https://www.reelshort.com/movie/she-swapped-the-wrong-baby-6aa75787742a9765a10bfc80  # recharge #139
+https://www.reelshort.com/movie/they-bet-on-my-tears-6a8cf7fca29b9799aa03db2c  # recharge #143
+https://www.reelshort.com/movie/the-girl-they-regretted-losing-6a8ba4d32c15011e540b072b  # recharge #145
+https://www.reelshort.com/movie/reborn-a-flight-attendant-counterattack-6a7006698a1b1823640e172f  # recharge #147
+https://www.reelshort.com/movie/three-alphas-abandoned-me-for-that-omega-then-regretted-it-6a8670cba86ffc1fac0c417e  # recharge #148
+https://www.reelshort.com/movie/queenpins-my-enemy-my-wife-6a56e53a4ffb908818071aad  # recharge #157
+https://www.reelshort.com/movie/the-day-you-dumped-me-i-became-a-millionaire-6a45c77e2fdd0135260e2dea  # recharge #159
+https://www.reelshort.com/movie/pregnant-by-my-ex-s-father-6aa8dad9632d51a1f901d837  # recharge #162
+https://www.reelshort.com/movie/the-vampire-lords-final-salvation-6a87afcf0641e2829b07bd3d  # recharge #171
+https://www.reelshort.com/movie/the-branded-witch-is-the-prince-s-bride-6a90e77f3400f6ce3b0fad07  # recharge #172
+https://www.reelshort.com/movie/the-silent-lunas-secret-6a56e53710cf0d2533014cfd  # recharge #173
+https://www.reelshort.com/movie/dont-provoke-him-hes-the-king-of-l-a-6a82754b603b5c0ffa02aeb6  # recharge #176
+https://www.reelshort.com/movie/possessed-by-the-alpha-no-escape-6a8bb7b6c922d6c26505cd8b  # recharge #177
+https://www.reelshort.com/movie/the-fake-heiress-s-revenge-6a5840e82769ac7896097974  # recharge #178
+https://www.reelshort.com/movie/blood-oaths-and-broken-thrones-6a86749ff52297f7020402cf  # recharge #181
+https://www.reelshort.com/movie/your-uncle-is-obsessed-with-me-6a471408082122dc360d635c  # recharge #183
+https://www.reelshort.com/movie/knocked-up-by-my-ex-s-alpha-daddy-6a3ddc7b6c8a0267ae0408ca  # recharge #184
+https://www.reelshort.com/movie/my-husband-runs-the-syndicate-6a8ba21210ae054ece06c2a7  # recharge #191
+https://www.reelshort.com/movie/my-worthless-ex-husband-is-poseidon-god-of-the-sea-6a86dc2e175020bfa6012415  # recharge #192
+https://www.reelshort.com/movie/too-late-clair-collins-6a1fe6e094171de24004ffe7  # recharge #195
+https://www.reelshort.com/movie/reborn-in-the-70s-for-country-not-love-6a8babd69828929ab10d315a  # recharge #196
+https://www.reelshort.com/movie/revenge-in-my-ex-s-brother-s-bed-6a6b01dc39f964ed56043895  # recharge #197
+https://www.reelshort.com/movie/your-consort-is-back-in-the-modern-world-6a9666af470904d5580f098e  # recharge #200
+https://www.reelshort.com/movie/payout-payback-6a0d1e90cbe683eabe04f14e  # recharge #202
+https://www.reelshort.com/movie/the-god-they-called-a-fool-6a9a76ca38999d12c103c839  # recharge #203
+https://www.reelshort.com/movie/divorce-me-bow-to-my-billionaire-daughter-6a215117e35446e0970e138a  # recharge #204
+https://www.reelshort.com/movie/the-cursed-alpha-and-his-virgin-groom-6a87ae87c2e5e6251000097d  # recharge #205
+https://www.reelshort.com/movie/my-freeze-their-tears-no-forgiveness-6a6975bf5d8851c89d0fcc8d  # recharge #207
+https://www.reelshort.com/movie/the-black-drakes-second-vow-6a55d7c500cd6e27a200316a  # recharge #208
+https://www.reelshort.com/movie/i-am-the-immortal-lord-season-2-6a900bc7e259af77060af16c  # recharge #212
+https://www.reelshort.com/movie/i-calm-the-beast-tides-with-spiritwords-6a97bb7b5edcbfc5b9067696  # recharge #218
+https://www.reelshort.com/movie/addicted-to-my-ceo-doctor-6a8514607074043629031bdb  # recharge #219
+https://www.reelshort.com/movie/the-don-let-me-burn-6a8ba4d95da2c9a5c50c17f9  # recharge #220
+https://www.reelshort.com/movie/the-mafia-don-s-secret-wife-6a5d83c2142a64de2f0f292d  # recharge #221
+https://www.reelshort.com/movie/rose-drowned-in-the-kuroshio-current-6a83eecc862e4975f202e3b3  # recharge #225
+https://www.reelshort.com/movie/destiny-in-the-stars-689eff8289683ecade09778c  # recharge #233
+https://www.reelshort.com/movie/the-omega-s-command-6a9e50f2f0b3ac02d102ff76  # recharge #235
+https://www.reelshort.com/movie/lady-pale-wraith-6a9034ce5284d484dd043333  # recharge #236
+https://www.reelshort.com/movie/my-strongest-master-pretends-to-be-weak-2-6a87120b29bd6d504f03d7fe  # recharge #241
+https://www.reelshort.com/movie/my-black-python-wants-my-eggs-6a981a168259296cb909cc7d  # recharge #243
+https://www.reelshort.com/movie/transmigrated-as-a-billionaire-s-wife-6a90ebe987b0c61f9007735c  # recharge #247
+https://www.reelshort.com/movie/the-housewife-he-threw-away-is-a-billionaire-6a45cd5d6a8c4720d70d7bf9  # recharge #248
+https://www.reelshort.com/movie/the-billionaires-daughter-chose-me-to-be-her-mommy-6ab3b0f68eb57767b80f5732  # recharge #249
