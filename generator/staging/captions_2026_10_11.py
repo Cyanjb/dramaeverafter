@@ -15,6 +15,8 @@ He's looking for her master...") with no names and no story to retell; the page
 was re-read 11 Oct and holds nothing more.
 """
 
+BATCH_TAG = "New 11 Oct"
+
 CAPTIONS = {
     # 28.2M
     'my-sunset-love-affair-with-the-billionaire-ceo':

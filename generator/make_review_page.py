@@ -128,8 +128,15 @@ def main():
         key = os.path.basename(srcs[0])
         title = title or key
     caps, facts, sources, notes = {}, {}, {}, {}
+    # A batch may carry BATCH_TAG = "New 11 Oct" to label its captions on the
+    # page. The newest queued batch (the last line of review_queue.txt) is
+    # listed straight after the homepage titles, so a fresh Sunday batch is
+    # not scattered through the page (Cyan, 12 Oct 2026).
+    batch_of, tags = {}, {}
     for src in srcs:
         c, f = cp.load_batch(src)
+        for tid in c:
+            batch_of[tid] = src
         caps.update(c); facts.update(f); sources.update(cp.load_sources(src))
         # A batch may carry NOTES = {title_id: "..."} to say something to Cyan
         # about that specific caption: why it is here, what changed, what she
@@ -137,6 +144,9 @@ def main():
         ns = {}
         exec(compile(io.open(src, encoding="utf-8").read(), src, "exec"), ns)
         notes.update(ns.get("NOTES", {}))
+        if ns.get("BATCH_TAG"):
+            tags[src] = ns["BATCH_TAG"]
+    newest = srcs[-1]
     q = {r["tid"]: r for r in cp.build_queue()}
     home = homepage_ids()
     # build_queue only lists titles that still NEED a caption, so reviewing work
@@ -147,8 +157,11 @@ def main():
         if t["title_id"] in caps and t["title_id"] not in q:
             q[t["title_id"]] = {"title": t.get("primary_title") or t["title_id"], "reach": 0}
     entries = [(tid, c) for tid, c in caps.items() if c.strip()]
-    entries.sort(key=lambda kv: (kv[0] not in home, -(q.get(kv[0], {}).get("reach") or 0)))
+    entries.sort(key=lambda kv: (kv[0] not in home, batch_of.get(kv[0]) != newest,
+                                 -(q.get(kv[0], {}).get("reach") or 0)))
     n_home = sum(1 for tid, _ in entries if tid in home)
+    n_new = sum(1 for tid, _ in entries if tid not in home and batch_of.get(tid) == newest)
+    new_tag = ("tagged " + tags[newest]) if newest in tags else "from the newest batch"
     rows = []
     for i, (tid, cap) in enumerate(entries, 1):
         hook, body = (cap.strip().split("\n", 1) + [""])[:2]
@@ -159,7 +172,7 @@ def main():
         note_html = (f'<p class="pernote">{html.escape(notes[tid])}</p>' if notes.get(tid) else "")
         rows.append(f"""
 <section class="cap" data-id="{html.escape(tid)}">
-<div class="meta"><span>{i}</span><b>{html.escape(r.get('title', tid))}</b><span>{cp.views_label(r.get('reach') or 0)}</span>{'<span class="home">On the homepage</span>' if tid in home else ''}</div>
+<div class="meta"><span>{i}</span><b>{html.escape(r.get('title', tid))}</b><span>{cp.views_label(r.get('reach') or 0)}</span>{'<span class="home">On the homepage</span>' if tid in home else (f'<span class="home">{html.escape(tags[batch_of[tid]])}</span>' if batch_of.get(tid) in tags else '')}</div>
 <p class="hook">{html.escape(hook)}</p>
 <p class="body">{html.escape(body.strip())}</p>
 {note_html}<details><summary>What the platform says{link}</summary><p>{html.escape(" ".join(src_txt.split()))}</p></details>
@@ -172,7 +185,7 @@ def main():
 <body data-batch="{html.escape(key)}">
 <div class="wrap">
 <div class="top"><h1>{html.escape(title)}</h1><span class="count" id="count"></span><button class="btn ghost" id="markall" type="button">Mark all read</button><button class="btn" id="collect" type="button">Collect my edits</button></div>
-<p class="note" style="margin:14px 0 0">{len(entries)} captions{f", the {n_home} on the homepage first, then" if n_home else ","} ranked by reach. Each shows exactly as it will render on the site. Your edits and ticks are saved in this browser; "Collect my edits" outputs only the captions you changed, as paste-ready blocks.</p>
+<p class="note" style="margin:14px 0 0">{len(entries)} captions{f", the {n_home} on the homepage first" if n_home else ""}{f", then the {n_new} {html.escape(new_tag)}" if n_new and len(srcs) > 1 else ""}{", then the rest" if n_home or (n_new and len(srcs) > 1) else ""} ranked by reach. Each shows exactly as it will render on the site. Your edits and ticks are saved in this browser; "Collect my edits" outputs only the captions you changed, as paste-ready blocks.</p>
 {''.join(rows)}
 <div class="out"><h2>Paste this back to Claude</h2><textarea id="outbox" readonly placeholder="Press Collect my edits"></textarea></div>
 </div>
