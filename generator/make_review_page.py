@@ -90,6 +90,9 @@ count();
 
 
 QUEUE = os.path.join(HERE, "staging", "review_queue.txt")
+# Title ids she has already read and approved while the rest of their batch is
+# still waiting (Cyan, 12 Oct 2026: "remove the 25 i read"). Left off the page.
+DONE = os.path.join(HERE, "staging", "review_done.txt")
 # The storage key of the standing review page. It is the key the page carried
 # when it was first published (28 Sep homepage check), kept so her saved ticks
 # and edits survive. NEVER change it.
@@ -103,6 +106,14 @@ def homepage_ids():
     except OSError:
         return set()
     return set(re.findall(r'href="/?titles/([^"/]+)\.html', page))
+
+
+def done_ids():
+    try:
+        lines = io.open(DONE, encoding="utf-8").read().splitlines()
+    except OSError:
+        return set()
+    return {l.split("#", 1)[0].strip() for l in lines} - {""}
 
 
 def queued_batches():
@@ -156,12 +167,16 @@ def main():
     for t in cp.rows("titles.csv"):
         if t["title_id"] in caps and t["title_id"] not in q:
             q[t["title_id"]] = {"title": t.get("primary_title") or t["title_id"], "reach": 0}
-    entries = [(tid, c) for tid, c in caps.items() if c.strip()]
+    done = done_ids() if key == STANDING_KEY else set()
+    entries = [(tid, c) for tid, c in caps.items() if c.strip() and tid not in done]
     entries.sort(key=lambda kv: (kv[0] not in home, batch_of.get(kv[0]) != newest,
                                  -(q.get(kv[0], {}).get("reach") or 0)))
     n_home = sum(1 for tid, _ in entries if tid in home)
     n_new = sum(1 for tid, _ in entries if tid not in home and batch_of.get(tid) == newest)
     new_tag = ("tagged " + tags[newest]) if newest in tags else "from the newest batch"
+    parts = ([f"the {n_home} on the homepage"] if n_home else []) + \
+            ([f"the {n_new} {html.escape(new_tag)}"] if n_new and len(srcs) > 1 else [])
+    order = (" first, then ".join(parts[:1] + [", then ".join(parts[1:] + ["the rest"])])) if parts else "all"
     rows = []
     for i, (tid, cap) in enumerate(entries, 1):
         hook, body = (cap.strip().split("\n", 1) + [""])[:2]
@@ -185,7 +200,7 @@ def main():
 <body data-batch="{html.escape(key)}">
 <div class="wrap">
 <div class="top"><h1>{html.escape(title)}</h1><span class="count" id="count"></span><button class="btn ghost" id="markall" type="button">Mark all read</button><button class="btn" id="collect" type="button">Collect my edits</button></div>
-<p class="note" style="margin:14px 0 0">{len(entries)} captions{f", the {n_home} on the homepage first" if n_home else ""}{f", then the {n_new} {html.escape(new_tag)}" if n_new and len(srcs) > 1 else ""}{", then the rest" if n_home or (n_new and len(srcs) > 1) else ""} ranked by reach. Each shows exactly as it will render on the site. Your edits and ticks are saved in this browser; "Collect my edits" outputs only the captions you changed, as paste-ready blocks.</p>
+<p class="note" style="margin:14px 0 0">{len(entries)} captions, {order} ranked by reach. Each shows exactly as it will render on the site. Your edits and ticks are saved in this browser; "Collect my edits" outputs only the captions you changed, as paste-ready blocks.</p>
 {''.join(rows)}
 <div class="out"><h2>Paste this back to Claude</h2><textarea id="outbox" readonly placeholder="Press Collect my edits"></textarea></div>
 </div>
