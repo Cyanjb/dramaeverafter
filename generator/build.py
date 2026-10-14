@@ -1891,7 +1891,13 @@ def pick_card(row, pre):
     trs = [tr for tr in tropes_of(t) if tr in all_tropes_set][:2]
     trope_html = ", ".join(f'<a href="{pre}tropes/{slug(tr)}.html">{trope_text(tr)}</a>' for tr in trs)
     eps = f'{t["episode_count"]} episodes' if (t.get("episode_count") or "").strip() else ""
-    go = (f'<a class="go" href="{esc_attr(row["link"].strip())}" rel="noopener" target="_blank"{data_exp}>'
+    # The pick's own platform row lends its RS Boost promo link, swapped in on
+    # phones by the homepage's promo script, exactly as on the title page (14 Oct).
+    pa = next((a for a in avail_by_title.get(t["title_id"], [])
+               if (a.get("direct_link") or "").strip() == (row.get("link") or "").strip()), None)
+    promo = promo_link(pa, platforms.get(pa["platform_id"], {})) if pa else ""
+    rel = promo_attrs(promo) or ' rel="noopener"'
+    go = (f'<a class="go" href="{esc_attr(row["link"].strip())}"{rel} target="_blank"{data_exp}>'
           f'{row.get("link_label") or ("Watch on " + app if app else "Watch it")}</a>') if live else ""
     foot = " &middot; ".join(x for x in [go, eps, trope_html] if x)
     return f"""<article class="pick-card">
