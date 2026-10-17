@@ -6565,7 +6565,7 @@
    "url": "https://www.dramaboxdb.com/name/29801"
   }
  ],
- "finished_at": "2026-10-11T09:34:56+00:00",
+ "finished_at": "2026-10-11T17:48:46+00:00",
  "performers": {
   "11008": "Tess Amelia",
   "11009": "Noemi VanSlyke",
@@ -6915,6 +6915,56 @@
    "pages_listed": null
   }
  },
- "runs": [],
- "scraped_at": "2026-10-11T09:23:30+00:00"
+ "runs": [
+  {
+   "requests": 546,
+   "routes": {
+    "cast": {
+     "books": 0,
+     "failed": 267,
+     "pages_ok": 0,
+     "performers": 267
+    },
+    "channels": {
+     "hidden-gems": {
+      "books": 0,
+      "failed": 1,
+      "pages": 1,
+      "pages_listed": null
+     },
+     "must-sees": {
+      "books": 0,
+      "failed": 1,
+      "pages": 1,
+      "pages_listed": null
+     }
+    },
+    "detail": {
+     "delisted": 0,
+     "failed": 274,
+     "ok": 0,
+     "targets": 274
+    },
+    "home": {
+     "books": 0,
+     "rails": {},
+     "status": 403
+    },
+    "known": {
+     "links_held": 274
+    },
+    "robots": {
+     "status": 403
+    },
+    "trending": {
+     "books": 0,
+     "failed": 1,
+     "pages": 1,
+     "pages_listed": null
+    }
+   },
+   "scraped_at": "2026-10-11T09:23:30+00:00"
+  }
+ ],
+ "scraped_at": "2026-10-11T17:37:17+00:00"
 }
