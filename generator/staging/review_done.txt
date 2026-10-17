@@ -1,0 +1,32 @@
+# Captions Cyan has read and approved on the standing review page while the
+# rest of their batch is still waiting. make_review_page.py --queue leaves
+# these title_ids off the page. Once a whole batch is reviewed, drop its line
+# from review_queue.txt; its ids here can then go too.
+
+# 12 Oct 2026: page positions 1 to 25, all approved untouched
+# ("remove the 25 i read").
+deny-me-dragon-king  # Deny Me, Dragon King
+fortunes-unveiled-my-husband-is-a-big-shot  # Fortunes Unveiled: My Husband Is a Big Shot
+escape-with-boss-s-baby  # Escape With Boss's Baby
+the-lost-heir-his-dawn-of-reckoning  # The Lost Heir: His Dawn of Reckoning
+trails-of-hope-his-journey-back-home  # Trails of Hope: His Journey Back Home
+masked-magnate-the-dominant-son-in-law  # Masked Magnate: The Dominant Son-in-Law
+a-deal-with-my-billionaire-donor  # A Deal With My Billionaire Donor
+falling-into-a-dangerous-love  # Falling Into a Dangerous Love
+reborn-as-a-genius-baby  # Reborn as a Genius Baby
+dear-brother-your-regret-came-too-late  # Dear Brother, Your Regret Came Too Late
+i-ll-never-see-you-again  # I'll Never See You Again
+prep-school-pop-star  # Prep School Pop Star!
+watch-out-i-m-the-lady-boss  # Watch Out, I'm The Lady Boss
+the-longlost-heiress-s-return  # The Longlost Heiress's Return
+crowned-in-love-the-mother-of-three-big-shots  # Crowned in Love: The Mother of Three Big Shots
+revenge-marriage-sweet-love  # Revenge Marriage Sweet Love
+submitting-to-my-bestie-s-dad  # Submitting to My Bestie's Dad
+my-poor-husband-is-a-billionaire  # My Poor Husband is A Billionaire
+fake-dating-my-rich-nemesis  # Fake Dating My Rich Nemesis
+carrying-his-babies-stealing-his-heart  # Carrying His Babies, Stealing His Heart
+shifter-academy-taming-three-wild-mates  # Shifter Academy: Taming Three Wild Mates
+poisoned-by-his-love  # Poisoned by His Love
+step-back-i-m-the-hidden-king  # Step Back! I'm the Hidden King
+your-loser-husband-is-a-big-shot  # Your Loser Husband Is A Big Shot
+cause-you-were-never-mine  # Cause You Were Never Mine
