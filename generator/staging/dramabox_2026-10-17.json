@@ -710,6 +710,53 @@
     "detail",
     "cyan_list"
    ]
+  },
+  "42000026350": {
+   "book_id": "42000026350",
+   "title": "Sexy Professor Or Secret Husband",
+   "name": "Sexy Professor Or Secret Husband",
+   "dubbed": false,
+   "slug": "sexy-professor-or-secret-husband",
+   "db_slug": "sexy-professor-or-secret-husband",
+   "synopsis": "On her 21st birthday, broke college student Ava Wright drunkenly marries a mysterious billionaire who pays her tuition, only to discover a year later that her cold, brilliant new professor is the same man. As forbidden attraction ignites, neither realizes they're already husband and wife.",
+   "episodes": "60",
+   "tags": [
+    "Love After Marriage",
+    "Billionaire"
+   ],
+   "genres": [
+    "Romance",
+    "Billionaire"
+   ],
+   "cast": [
+    {
+     "id": "29307",
+     "name": "Lottie Guidi",
+     "photo": "https://hwztchapter.dramaboxdb.com/data/cppartner/7x0/29307/29307.jpg?time=1788493245909"
+    },
+    {
+     "id": "29511",
+     "name": "Ryan Jacobucci",
+     "photo": "https://hwztchapter.dramaboxdb.com/data/cppartner/1x1/29511/29511.jpg?time=1779502694751"
+    }
+   ],
+   "actors": [
+    "Lottie Guidi",
+    "Ryan Jacobucci"
+   ],
+   "language": "ENGLISH",
+   "first_shelf": "2026-09-08",
+   "year": "2026",
+   "poster": "https://thwztchapter.dramaboxdb.com/data/cppartner/4x2/42x0/420x0/42000026350/42000026350.jpg",
+   "follows": 60446,
+   "views": "2.0M",
+   "views_raw": 2048961,
+   "url": "https://www.dramaboxdb.com/movie/42000026350/sexy-professor-or-secret-husband",
+   "status": 200,
+   "seen_via": [
+    "detail",
+    "cyan_list"
+   ]
   }
  },
  "selection": {
