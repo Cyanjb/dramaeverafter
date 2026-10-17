@@ -11,6 +11,8 @@ my-vampire-lord. ReelShort's page and the RS Boost portal both give the
 synopsis as the placeholder "Default"; nothing else to write from.
 """
 
+BATCH_TAG = "New 9 Oct"
+
 CAPTIONS = {
     # 63.0M  Knocked Up by My Ex's Alpha Daddy
     'knocked-up-by-my-ex-s-alpha-daddy':
