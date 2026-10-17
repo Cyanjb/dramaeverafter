@@ -1,5 +1,5 @@
 trope_id,name,slug,description,title_count
-a-nobody,a nobody,a-nobody,,14
+a-nobody,a nobody,a-nobody,,15
 age-gap,age gap,age-gap,,126
 alpha,alpha,alpha,,185
 alternate-history,alternate-history,alternate-history,,21
@@ -57,7 +57,7 @@ escape-from-wedding,escape from wedding,escape-from-wedding,,16
 fake-dating,fake dating,fake-dating,,8
 fake-relationship,fake relationship,fake-relationship,,82
 family,family,family,,3
-family-bonds,family bonds,family-bonds,,90
+family-bonds,family bonds,family-bonds,,91
 family-drama,family drama,family-drama,,204
 family-ethics,family-ethics,family-ethics,,6
 family-intrigue,family intrigue,family-intrigue,,25
@@ -137,7 +137,7 @@ palace-intrigue,palace intrigue,palace-intrigue,,39
 paranormal,paranormal,paranormal,,45
 past-lives,past-lives,past-lives,,8
 patriotism,patriotism,patriotism,,28
-playing-dumb,playing dumb,playing-dumb,,162
+playing-dumb,playing dumb,playing-dumb,,163
 plot-twist,plot-twist,plot-twist,,18
 political,political,political,,17
 possessive-love,possessive love,possessive-love,,171
@@ -156,7 +156,7 @@ reclusive-master,reclusive master,reclusive-master,,7
 redemption,redemption,redemption,,304
 rejected-mate,rejected mate,rejected-mate,,10
 return-of-the-king,return-of-the-king,return-of-the-king,,3
-revenge,revenge,revenge,,978
+revenge,revenge,revenge,,979
 rich-family-feud,rich-family-feud,rich-family-feud,,11
 rich-heiress,rich-heiress,rich-heiress,,16
 rockstar,rockstar,rockstar,,2
@@ -169,14 +169,14 @@ runaway-bride,runaway bride,runaway-bride,,10
 runaway-pregnancy,runaway-pregnancy,runaway-pregnancy,,5
 rural-life,rural-life,rural-life,,12
 schemes,schemes,schemes,,66
-second-chance,second chance,second-chance,,411
+second-chance,second chance,second-chance,,413
 secret-baby,secret baby,secret-baby,,32
 secret-child,secret child,secret-child,,92
 secret-identity,secret identity,secret-identity,,892
 secret-relationship,secret relationship,secret-relationship,,10
 secretary,secretary,secretary,,6
 single-dad,single dad,single-dad,,43
-single-mom,single mom,single-mom,,92
+single-mom,single mom,single-mom,,93
 single-parent,single-parent,single-parent,,1
 situationship,situationship,situationship,,1
 slave,slave,slave,,14
@@ -202,7 +202,7 @@ superpowered,superpowered,superpowered,,3
 suspense,suspense,suspense,,44
 system,system,system,,165
 teen,teen,teen,,49
-the-chosen-one,the chosen one,the-chosen-one,,73
+the-chosen-one,the chosen one,the-chosen-one,,74
 time-travel,time travel,time-travel,,121
 top-chef,top chef,top-chef,,3
 top-professional,top-professional,top-professional,,2
@@ -226,7 +226,7 @@ women-rule,women-rule,women-rule,,4
 workplace,workplace,workplace,,55
 workplace-romance,workplace romance,workplace-romance,,18
 young,young,young,,42
-young-adult,young adult,young-adult,,84
+young-adult,young adult,young-adult,,85
 high-fantasy,high fantasy,high-fantasy,"Umbrella for werewolves, dragons, elves, mermaids and magic (Cyan, 3 Sep 2026)",325
 plus-size,plus size,plus-size,,12
 mermaid,mermaid,mermaid,,4
