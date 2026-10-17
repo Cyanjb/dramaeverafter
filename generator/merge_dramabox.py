@@ -340,7 +340,11 @@ def main():
 
         vias = set(b.get("seen_via") or [])
         views = views_num(b.get("views"))
-        why_create = ("chart #%s" % b["rank"] if "trending" in vias and b.get("rank") else
+        # "cyan_list": a book on a list Cyan chose by hand (14 Oct 2026, every
+        # missing DramaBox show with 10M+ plays plus her Reddit favourites; see
+        # select_dramabox_2026_10_14.py). Her choice is the reason to create it.
+        why_create = ("Cyan's list" if "cyan_list" in vias else
+                      "chart #%s" % b["rank"] if "trending" in vias and b.get("rank") else
                       "homepage" if vias & CREATE_ROUTES else
                       "credited to " + ", ".join(tracked(b)) if tracked(b) else
                       "%s plays" % b.get("views") if views >= POPULAR_MIN else
