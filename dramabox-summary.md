@@ -1,9 +1,9 @@
-## DramaBox weekly scrape, 2026-10-11
+## DramaBox weekly scrape, 2026-10-18
 
 | | |
 |---|---|
-| Requests | 546 |
-| Books seen | 274 |
+| Requests | 547 |
+| Books seen | 275 |
 | Known titles refreshed | 0 |
 | View counts that moved | 0 |
 | Snapshot rows written | 0 |
@@ -23,9 +23,9 @@
 | Umbrella tropes added | 0 |
 | Linked on Cyan's confirmed_same rulings | 0 |
 | Cast names matching two or more people (no credit) | 0 |
-| Scrape errors | 545 |
+| Scrape errors | 546 |
 
-Routes: cast {"books": 0, "failed": 267, "pages_ok": 0, "performers": 267}, channels {"hidden-gems": {"books": 0, "failed": 1, "pages": 1, "pages_listed": null}, "must-sees": {"books": 0, "failed": 1, "pages": 1, "pages_listed": null}}, detail {"delisted": 0, "failed": 274, "ok": 0, "targets": 274}, home {"books": 0, "rails": {}, "status": 403}, known {"links_held": 274}, robots {"status": 403}, trending {"books": 0, "failed": 1, "pages": 1, "pages_listed": null}
+Routes: cast {"books": 0, "failed": 267, "pages_ok": 0, "performers": 267}, channels {"hidden-gems": {"books": 0, "failed": 1, "pages": 1, "pages_listed": null}, "must-sees": {"books": 0, "failed": 1, "pages": 1, "pages_listed": null}}, detail {"delisted": 0, "failed": 275, "ok": 0, "targets": 275}, home {"books": 0, "rails": {}, "status": 403}, known {"links_held": 275}, robots {"status": 403}, trending {"books": 0, "failed": 1, "pages": 1, "pages_listed": null}
 
 ### Errors
 
