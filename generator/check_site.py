@@ -12,7 +12,7 @@ so a normal week of data changes cannot make them stale. When a page or
 behavior is added that must keep working, add its check HERE and its plain
 words to SITE-CHECKS.md.
 """
-import csv, json, os, re, subprocess, sys, unicodedata
+import csv, datetime, json, os, re, subprocess, sys, unicodedata
 import collections
 from collections import defaultdict
 
@@ -209,10 +209,20 @@ else: ok("no trope x app combo pages (retired as doorway pages; their URLs 301 t
 
 print("== homepage ==")
 home = rd("index.html")
-mw, nt = home.find("Most watched right now"), home.find("New and trending")
-if mw == -1 or nt == -1: fail("homepage is missing the Most watched or New and trending rail")
-elif not (mw < nt): fail("New and trending is not directly under Most watched (Cyan, 6 and 13 Sep)")
-else: ok("rail order: Most watched right now, then New and trending")
+mw, nt = home.find("Most watched right now"), home.find("<h2>Trending</h2>")
+if mw == -1 or nt == -1: fail("homepage is missing the Most watched or Trending rail")
+elif not (mw < nt): fail("Trending is not directly under Most watched (Cyan, 6 and 13 Sep)")
+elif "New and trending" in home: fail("the homepage still says New and trending (renamed Trending, Cyan 18 Oct)")
+else: ok("rail order: Most watched right now, then Trending")
+# Every card in the two homepage rails carries a poster (Cyan, 18 Oct 2026).
+for _h, _name in (("Most watched right now", "Most watched"), ("<h2>Trending</h2>", "Trending")):
+    _sec = re.search(re.escape(_h) + r".*?</section>", home, re.S)
+    # Every card draws the no-poster plate under its image, so a blank card is
+    # one whose poster link holds no <img>.
+    _links = re.findall(r'<a class="poster-link"[^>]*>(.*?)</a>', _sec.group(0), re.S) if _sec else []
+    _blank = sum(1 for _l in _links if "<img" not in _l) if _sec else -1
+    if _blank: fail(f"{_name} rail shows {_blank} card(s) with no poster")
+    else: ok(f"every {_name} card has a poster")
 # Our pick (10 Sep): the newest picks.csv row shows on the homepage above the
 # rails and its title page carries the chip; a gift link never outlives its expiry.
 _picks = rows("picks.csv")
@@ -225,16 +235,36 @@ if _picks:
     elif 'pick-chip' not in _tp2: fail(f"the pick's title page lacks the Our pick chip: {_pk['title_id']}")
     elif 'data-expires' in home and 'PICK_JS' not in bsrc: fail("pick gift button has no expiry script")
     else: ok(f"Our pick: {_pk['title_id']} on the homepage and chipped on its page")
-rail = re.search(r"New and trending.*?</section>", home, re.S)
+rail = re.search(r"<h2>Trending</h2>.*?</section>", home, re.S)
 rail_slugs = list(dict.fromkeys(re.findall(r"titles/([a-z0-9-]+)\.html", rail.group(0)))) if rail else []
-if len(rail_slugs) < 8: fail(f"New and trending rail holds {len(rail_slugs)} titles; should be ~12")
-else: ok(f"New and trending rail holds {len(rail_slugs)} titles")
+if len(rail_slugs) < 8: fail(f"Trending rail holds {len(rail_slugs)} titles; should be 8 to 20")
+else: ok(f"Trending rail holds {len(rail_slugs)} titles")
 pins = [r["title_id"] for r in rows("pinned.csv") if (r.get("rail") or "").strip() == "trending"]
 for i, p in enumerate(pins):
     if p not in rail_slugs[:len(pins)]:
-        fail(f"pinned title {p} is not leading the New and trending rail")
+        fail(f"pinned title {p} is not leading the Trending rail")
     else:
         ok(f"pin honored: {p} leads the rail")
+# data/trending.csv holds the apps' own trending charts. A row may name a show
+# we do not hold yet (it shows the day the show is added), so an unknown
+# title_id is a note, not a failure; a held, current, postered one must be on
+# the rail unless the rail is full.
+_tr = rows("trending.csv")
+_unheld = [r["title_id"] for r in _tr if r["title_id"] not in tid_set]
+if _unheld: warn(f"trending.csv: {len(_unheld)} charted shows not in titles.csv yet (they join the rail when added), e.g. {_unheld[:2]}")
+_tr_cut = (datetime.date.today() - datetime.timedelta(days=45)).isoformat()
+_t_by = {t["title_id"]: t for t in titles}
+_due = [r["title_id"] for r in _tr if r["title_id"] in _t_by and (r.get("seen") or "") >= _tr_cut
+        and (_t_by[r["title_id"]].get("poster_ref") or "").strip() and (_t_by[r["title_id"]].get("status") or "").strip().lower() != "delisted"]
+_missing = [x for x in dict.fromkeys(_due) if x not in rail_slugs]
+if _missing and len(rail_slugs) < 20: fail(f"charted trending shows missing from the Trending rail: {_missing[:3]}")
+else: ok(f"Trending rail carries the {min(len(set(_due)), 20)} current charted shows we hold")
+
+# AI or live action (Cyan, 18 Oct 2026): two chips replace the Hide AI box.
+_br = rd("browse.html")
+if 'id="hide-ai"' in _br: fail("browse still has the old Hide AI titles checkbox (replaced 18 Oct)")
+elif not ('data-g="kind" data-v="ai"' in _br and 'data-g="kind" data-v="live"' in _br): fail("browse lacks the AI and Live action filter chips")
+else: ok("browse filters AI and live action with two chips, no Hide AI box")
 
 print("== pages and links ==")
 for path, must in [("tropes/index.html", ""), ("platforms.html", ""), ("my-list.html", ""),

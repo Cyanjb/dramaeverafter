@@ -78,6 +78,13 @@
 </div>
 <div class="filter-scroll">
 <div class="filter-group">
+<h2>AI or live action</h2><p class="hint">Tick one, both or neither</p>
+<div class="chips tight" id="f-kind">
+<button class="chip" data-g="kind" data-v="live" type="button" aria-pressed="false">Live action<span class="c"></span></button>
+<button class="chip" data-g="kind" data-v="ai" type="button" aria-pressed="false">AI<span class="c"></span></button>
+</div>
+</div>
+<div class="filter-group">
 <h2>Language</h2><p class="hint">Original language, or an English dub</p>
 <div class="chips tight" id="f-origin"><button class="chip" data-g="origin" data-v="english" type="button" aria-pressed="false">English<span class="c"></span></button><button class="chip" data-g="origin" data-v="chinese" type="button" aria-pressed="false">Chinese<span class="c"></span></button><button class="chip" data-g="origin" data-v="korean" type="button" aria-pressed="false">Korean<span class="c"></span></button><button class="chip" data-g="origin" data-v="dubbed" type="button" aria-pressed="false">Dubbed<span class="c"></span></button></div>
 </div>
@@ -106,10 +113,6 @@
 <section class="results-panel">
 <div class="results-head">
 <p class="count" id="result-count">Loading&hellip;</p>
-<label class="ai-toggle" for="hide-ai" title="AI-generated titles are in by default (Cyan, 3 Sep 2026); tick to hide them">
-<input type="checkbox" id="hide-ai">
-<span>Hide AI titles</span>
-</label>
 <label class="sort-label">Sort<select id="f-sort" aria-label="Sort titles">
 <option value="views">Most watched</option>
 <option value="az">A&ndash;Z</option>
@@ -221,23 +224,26 @@
   }
 
   var onlyBookEl=document.getElementById('only-book');
-  var hideAiEl=document.getElementById('hide-ai');
   var hideSoonEl=document.getElementById('hide-upcoming');
-  // AI titles SHOW by default (Cyan, 3 Sep 2026: "AI titles should not be hidden
-  // by default but there should be a button to hide them"). The toggle sits in
-  // the results head, not at the foot of the filter panel, and the choice is
-  // remembered between visits. Before 3 Sep the default was hide.
-  try{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }catch(e){}
+  // AI OR LIVE ACTION (Cyan, 18 Oct 2026) replaces the old "Hide AI titles" box.
+  // Two chips in the 'kind' group: tick one to see only that kind, both or
+  // neither to see everything. Every title is one or the other (ai=yes is AI,
+  // anything else live action), so unlike the other groups this one ORs its
+  // picks; ANDing them would always return nothing.
+  function kindOf(t){ return t.ai ? 'ai' : 'live'; }
   // Same for unreleased titles: a search here means "what can I watch", so they
   // are out by default and opting in is one click.
   try{ var su=localStorage.getItem('dea_hide_upcoming'); if(su!==null) hideSoonEl.checked=(su==='1'); }catch(e){}
 
-  function matches(t,toks){
-    if(hideAiEl.checked && t.ai) return false;
+  function matches(t,toks,skipKind){
     if(hideSoonEl.checked && t.up) return false;
     if(onlyBookEl.checked && !t.bk) return false;
     if(toks.length && !qmatch(t.k,toks)) return false;
     for(var g in active){
+      if(g==='kind'){
+        if(!skipKind && active.kind.size && !active.kind.has(kindOf(t))) return false;
+        continue;
+      }
       var f=t[FIELD[g]], it=active[g].values(), x;
       while(!(x=it.next()).done){ if(!has(f,x.value)) return false; }
     }
@@ -264,8 +270,17 @@
     for(var i=0;i<titles.length;i++){
       var t=titles[i];
       for(var g2 in active){
+        if(g2==='kind') continue;
         var f=t[FIELD[g2]]; if(!f) continue;
         for(var j=0;j<f.length;j++) tally[g2][f[j]]=(tally[g2][f[j]]||0)+1;
+      }
+    }
+    // The kind chips count what each would show with the other filters as
+    // they are, ignoring the kind pick itself, so both stay clickable.
+    if(tally.kind){
+      for(var i2=0;i2<D.titles.length;i2++){
+        var tk=D.titles[i2];
+        if(matches(tk,toks,true)) tally.kind[kindOf(tk)]=(tally.kind[kindOf(tk)]||0)+1;
       }
     }
     for(var c=0;c<chips.length;c++){
@@ -326,10 +341,6 @@
   qEl.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,120);});
   sortEl.addEventListener('change',run);
   onlyBookEl.addEventListener('change', run);
-  hideAiEl.addEventListener('change',function(){
-    try{ localStorage.setItem('dea_hide_ai', hideAiEl.checked?'1':'0'); }catch(e){}
-    run();
-  });
   hideSoonEl.addEventListener('change',function(){
     try{ localStorage.setItem('dea_hide_upcoming', hideSoonEl.checked?'1':'0'); }catch(e){}
     run();
@@ -346,7 +357,7 @@
     D.actors.forEach(function(a){ a.k=norm(a.n)+(a.ch?' '+a.ch:''); });
     var p=new URLSearchParams(window.location.search);
     if(p.get('q')) qEl.value=p.get('q');
-    ['trope','platform','origin'].forEach(function(g){
+    ['trope','platform','origin','kind'].forEach(function(g){
       if(p.get(g) && active[g]) active[g].add(p.get(g));
     });
     run();
