@@ -2262,6 +2262,7 @@ open(os.path.join(DIST, "titles", "index.html"), "w", encoding="utf-8").write(ht
 urls.append("/titles/index.html")
 
 ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "korean": "Korean original",
+                "japanese": "Japanese original",
                 "dubbed": "Dubbed release"}
 
 # Title pages
@@ -2725,7 +2726,8 @@ def facet_chips(group, counts, labels):
 # Origin facet. Buckets Cyan wants exposed are declared up front, not derived from the
 # data, so the filter shows the full shape of the taxonomy even while a bucket is empty.
 # An empty bucket renders greyed out and disabled, same as any other zero-match chip.
-ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("korean", "Korean"), ("dubbed", "Dubbed")]
+ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("korean", "Korean"), ("japanese", "Japanese"),
+                  ("dubbed", "Dubbed")]
 origin_counts = defaultdict(int)
 for t in titles_root:
     origin_counts[origin_of(t)] += 1

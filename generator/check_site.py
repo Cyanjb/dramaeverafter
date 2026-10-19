@@ -557,6 +557,12 @@ else:
     ok(f"the browse language filter matches what browse lists "
        f"({_live} buckets, group {'shown' if _shown else 'hidden'}: {dict(_browse_origins)})")
 
+# Every origin in the data needs its own chip (Japanese added 18 Oct 2026),
+# or those titles can never be picked out in the language filter.
+_no_chip = [o for o in _all_origins if f'data-g="origin" data-v="{o}"' not in _browse]
+if _no_chip: fail(f"origins with no language chip in browse: {_no_chip}")
+else: ok(f"every origin in titles.csv has a language chip ({len(_all_origins)} origins)")
+
 print()
 print(f"{passes} ok, {len(warns)} warnings, {len(fails)} failures")
 for w in warns: print(f"  WARN  {w}")
