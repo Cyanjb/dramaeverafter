@@ -1805,7 +1805,7 @@ lastmod = {}
 # title has no synopsis and no cast; a thin actor page has at most one credit
 # and no bio. The carve-outs that keep a thin page indexable: popular (views in
 # the top 600, the tier carrying 98.4% of all reach), new (first seen by a
-# weekly scrape within 90 days, the New-and-trending window), or a lead credit.
+# weekly scrape within 90 days), or a lead credit.
 # Noindexed pages stay on the site for readers and leave sitemap.xml.
 # A one-off import from the platforms' own charts counts as new too (28 Sep 2026).
 _SEEN_DATE = re.compile(r"(?:weekly|trending_research)[_-](20\d\d-\d\d-\d\d)")
@@ -2262,6 +2262,7 @@ open(os.path.join(DIST, "titles", "index.html"), "w", encoding="utf-8").write(ht
 urls.append("/titles/index.html")
 
 ORIGIN_LABEL = {"english": "English original", "chinese": "Chinese original", "korean": "Korean original",
+                "japanese": "Japanese original",
                 "dubbed": "Dubbed release"}
 
 # Title pages
@@ -2296,7 +2297,10 @@ for t in titles:
     # directly: set order follows Python's per-process string hash, so displaying from
     # it rewrote the "If you liked this" hint on 2,267 pages every rebuild.
     my_tropes = set(tropes_of(t))
-    origin_pool = titles_root if origin_of(t) == ROOT_ORIGIN else [x for x in titles_other if origin_of(x) == origin_of(t)]
+    # Similar shows come from the same origin. This read titles_other for any
+    # non-English show, and titles_other has been empty since origin became a
+    # label (24 Sep), so no Chinese or Korean page had the rail (found 18 Oct).
+    origin_pool = [x for x in titles_root if origin_of(x) == origin_of(t)]
     similar = sorted([x for x in origin_pool if x["title_id"] != t["title_id"] and my_tropes & set(tropes_of(x))],
                       key=lambda x: -title_views(x))[:10]
     similar_html = "".join(poster_card(x, pre, rail_item=True, size_sm=True) for x in similar)
@@ -2722,7 +2726,8 @@ def facet_chips(group, counts, labels):
 # Origin facet. Buckets Cyan wants exposed are declared up front, not derived from the
 # data, so the filter shows the full shape of the taxonomy even while a bucket is empty.
 # An empty bucket renders greyed out and disabled, same as any other zero-match chip.
-ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("korean", "Korean"), ("dubbed", "Dubbed")]
+ORIGIN_BUCKETS = [("english", "English"), ("chinese", "Chinese"), ("korean", "Korean"), ("japanese", "Japanese"),
+                  ("dubbed", "Dubbed")]
 origin_counts = defaultdict(int)
 for t in titles_root:
     origin_counts[origin_of(t)] += 1
@@ -2802,23 +2807,26 @@ BROWSE_JS = f"""
   }}
 
   var onlyBookEl=document.getElementById('only-book');
-  var hideAiEl=document.getElementById('hide-ai');
   var hideSoonEl=document.getElementById('hide-upcoming');
-  // AI titles SHOW by default (Cyan, 3 Sep 2026: "AI titles should not be hidden
-  // by default but there should be a button to hide them"). The toggle sits in
-  // the results head, not at the foot of the filter panel, and the choice is
-  // remembered between visits. Before 3 Sep the default was hide.
-  try{{ var saved=localStorage.getItem('dea_hide_ai'); if(saved!==null) hideAiEl.checked=(saved==='1'); }}catch(e){{}}
+  // AI OR LIVE ACTION (Cyan, 18 Oct 2026) replaces the old "Hide AI titles" box.
+  // Two chips in the 'kind' group: tick one to see only that kind, both or
+  // neither to see everything. Every title is one or the other (ai=yes is AI,
+  // anything else live action), so unlike the other groups this one ORs its
+  // picks; ANDing them would always return nothing.
+  function kindOf(t){{ return t.ai ? 'ai' : 'live'; }}
   // Same for unreleased titles: a search here means "what can I watch", so they
   // are out by default and opting in is one click.
   try{{ var su=localStorage.getItem('dea_hide_upcoming'); if(su!==null) hideSoonEl.checked=(su==='1'); }}catch(e){{}}
 
-  function matches(t,toks){{
-    if(hideAiEl.checked && t.ai) return false;
+  function matches(t,toks,skipKind){{
     if(hideSoonEl.checked && t.up) return false;
     if(onlyBookEl.checked && !t.bk) return false;
     if(toks.length && !qmatch(t.k,toks)) return false;
     for(var g in active){{
+      if(g==='kind'){{
+        if(!skipKind && active.kind.size && !active.kind.has(kindOf(t))) return false;
+        continue;
+      }}
       var f=t[FIELD[g]], it=active[g].values(), x;
       while(!(x=it.next()).done){{ if(!has(f,x.value)) return false; }}
     }}
@@ -2845,8 +2853,17 @@ BROWSE_JS = f"""
     for(var i=0;i<titles.length;i++){{
       var t=titles[i];
       for(var g2 in active){{
+        if(g2==='kind') continue;
         var f=t[FIELD[g2]]; if(!f) continue;
         for(var j=0;j<f.length;j++) tally[g2][f[j]]=(tally[g2][f[j]]||0)+1;
+      }}
+    }}
+    // The kind chips count what each would show with the other filters as
+    // they are, ignoring the kind pick itself, so both stay clickable.
+    if(tally.kind){{
+      for(var i2=0;i2<D.titles.length;i2++){{
+        var tk=D.titles[i2];
+        if(matches(tk,toks,true)) tally.kind[kindOf(tk)]=(tally.kind[kindOf(tk)]||0)+1;
       }}
     }}
     for(var c=0;c<chips.length;c++){{
@@ -2907,10 +2924,6 @@ BROWSE_JS = f"""
   qEl.addEventListener('input',function(){{clearTimeout(timer);timer=setTimeout(run,120);}});
   sortEl.addEventListener('change',run);
   onlyBookEl.addEventListener('change', run);
-  hideAiEl.addEventListener('change',function(){{
-    try{{ localStorage.setItem('dea_hide_ai', hideAiEl.checked?'1':'0'); }}catch(e){{}}
-    run();
-  }});
   hideSoonEl.addEventListener('change',function(){{
     try{{ localStorage.setItem('dea_hide_upcoming', hideSoonEl.checked?'1':'0'); }}catch(e){{}}
     run();
@@ -2927,7 +2940,7 @@ BROWSE_JS = f"""
     D.actors.forEach(function(a){{ a.k=norm(a.n)+(a.ch?' '+a.ch:''); }});
     var p=new URLSearchParams(window.location.search);
     if(p.get('q')) qEl.value=p.get('q');
-    ['trope','platform','origin'].forEach(function(g){{
+    ['trope','platform','origin','kind'].forEach(function(g){{
       if(p.get(g) && active[g]) active[g].add(p.get(g));
     }});
     run();
@@ -2943,6 +2956,15 @@ origin_group = ("""<div class="filter-group">
 <h2>Language</h2><p class="hint">Original language, or an English dub</p>
 <div class="chips tight" id="f-origin">""" + origin_facets + """</div>
 </div>""") if origin_live > 1 else ""
+
+# AI or live action (Cyan, 18 Oct 2026). Tick one, both or neither.
+kind_group = """<div class="filter-group">
+<h2>AI or live action</h2><p class="hint">Tick one, both or neither</p>
+<div class="chips tight" id="f-kind">
+<button class="chip" data-g="kind" data-v="live" type="button" aria-pressed="false">Live action<span class="c"></span></button>
+<button class="chip" data-g="kind" data-v="ai" type="button" aria-pressed="false">AI<span class="c"></span></button>
+</div>
+</div>"""
 
 browse_body = f"""
 <div class="browse-layout">
@@ -2964,6 +2986,7 @@ browse_body = f"""
 <button class="sheet-close" type="button" aria-label="Close filters">&#10005;</button>
 </div>
 <div class="filter-scroll">
+{kind_group}
 {origin_group}
 <div class="filter-group">
 <h2>Trope</h2><p class="hint">{VISIBLE} most common of {n_tropes}</p>
@@ -2990,10 +3013,6 @@ browse_body = f"""
 <section class="results-panel">
 <div class="results-head">
 <p class="count" id="result-count">Loading&hellip;</p>
-<label class="ai-toggle" for="hide-ai" title="AI-generated titles are in by default (Cyan, 3 Sep 2026); tick to hide them">
-<input type="checkbox" id="hide-ai">
-<span>Hide AI titles</span>
-</label>
 <label class="sort-label">Sort<select id="f-sort" aria-label="Sort titles">
 <option value="views">Most watched</option>
 <option value="az">A&ndash;Z</option>
@@ -3183,7 +3202,11 @@ def spread_by_platform(pool, limit, per_platform=2, key=None):
 # Only GoodShort and ReelShort report view counts at all, so a "most watched" rail can
 # only ever honestly cover those two. Spread within them rather than letting ReelShort's
 # larger numbers take every slot.
-featured = spread_by_platform([t for t in titles_root if title_views(t)], 12, per_platform=6)
+# EVERY CARD ON THE HOMEPAGE HAS A POSTER (Cyan, 18 Oct 2026: "we should have a
+# poster for whatever's on the front page"). Two Vigloo shows were sitting here
+# as blank plates; a show with no artwork waits for one rather than taking a slot.
+featured = spread_by_platform([t for t in titles_root if title_views(t) and (t.get("poster_ref") or "").strip()],
+                              12, per_platform=6)
 
 # The variety rail. Every app that has artwork gets representation here, ranked by views
 # where we have them and by recency where we do not -- which is why it is NOT labelled
@@ -3193,43 +3216,15 @@ across_apps = spread_by_platform(
     _with_art, 14, per_platform=2,
     key=lambda t: (-title_views(t), (t.get("last_verified") or "")))
 
-# NEW RELEASES. This used to sort on last_verified, which is 2026-07 for all 3,407
-# rows because the catalogue was scraped in one pass -- so the old "Just added" rail
-# was effectively arbitrary. `year` is the only genuine release signal we hold (no
-# release-date column exists), so this is titles from the current year, newest year
-# first, ranked by views where we have them. Artwork is required so the rail is not a
-# wall of blank plates.
-_year_now = int(UPDATED.split()[-1]) if UPDATED.split()[-1].isdigit() else 2026
-def _release_year(t):
-    y = (t.get("year") or "").strip()
-    return int(y) if y.isdigit() else 0
-_with_art_dated = [t for t in titles_root
-                   if (t.get("poster_ref") or "").strip() and _release_year(t) >= _year_now - 1]
-# SINCE 3 SEP 2026 THE WEEKLY SCRAPE GIVES A REAL FIRST-SEEN DATE. A title whose
-# source is a weekly run (reelshort_weekly_2026-09-06 and kin) was first seen on
-# that date, on a platform's own new or trending rail, which is the release
-# signal this rail always wanted (Cyan, 3 Sep: "the new releases page must
-# update"). Those lead, newest run first, then by views; the year-based list
-# fills the rest so the rail never goes empty when scrapes lapse. Only titles
-# first seen within the last 90 days count as new; older weekly finds fall back
-# to the year ordering like everything else. Artwork is still required.
-_SOURCE_DATE = re.compile(r"weekly[_-](20\d\d-\d\d-\d\d)")
-def _first_seen(t):
-    m = _SOURCE_DATE.search(t.get("source") or "")
-    return m.group(1) if m else ""
-_recent_cutoff = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
-_recent = [t for t in titles_root
-           if (t.get("poster_ref") or "").strip() and _first_seen(t) >= _recent_cutoff]
-
 # TRENDING MEANS GROWING (Cyan, 6 Sep: "you have the watch numbers so you
 # should know what's popular"). The weekly snapshots give each title a view
 # count per date, so growth is measurable: views gained per day between the
 # two most recent snapshots, times the daily percentage gain. Absolute gain
 # alone hands every slot to giants that were already huge; percentage alone
 # floods the rail with 100K titles doubling overnight; the product surfaces
-# shows that are both big and accelerating. Titles seen for the first time
-# this week have no second snapshot yet, so they follow the scored ones,
-# newest first - next Sunday's run gives them a growth number.
+# shows that are both big and accelerating. A title seen for the first time
+# this week has no second snapshot yet, so it has no growth number until next
+# Sunday's run; it is not shown for being new.
 _snap_hist = defaultdict(list)
 for r in rows("snapshots.csv"):
     _v = view_num(r.get("view_count"))
@@ -3247,8 +3242,6 @@ def _trend_score(t):
     if v1 <= v0 or not v0: return 0.0
     return ((v1 - v0) / days) * (((v1 - v0) / v0) / days)
 
-_recent.sort(key=lambda t: (_trend_score(t), _first_seen(t), title_views(t)), reverse=True)
-
 # CYAN'S PINS lead the rail whatever the numbers say. data/pinned.csv is the
 # hand: a title_id with rail=trending goes first, in file order, as long as
 # the title exists and has artwork. Everything below re-ranks itself weekly;
@@ -3258,11 +3251,34 @@ _root_by_id = {t["title_id"]: t for t in titles_root}
 pinned_trending = [_root_by_id[r["title_id"]] for r in _pin_rows
                    if r["title_id"] in _root_by_id and (_root_by_id[r["title_id"]].get("poster_ref") or "").strip()]
 _pin_ids = {t["title_id"] for t in pinned_trending}
-_recent_ids = {t["title_id"] for t in _recent} | _pin_ids
-new_releases = (pinned_trending
-                + [t for t in _recent if t["title_id"] not in _pin_ids]
-                + sorted((t for t in _with_art_dated if t["title_id"] not in _recent_ids),
-                         key=lambda t: (-_release_year(t), -title_views(t))))[:12]
+
+# TRENDING, NOT NEW (Cyan, 18 Oct 2026: "new seems to just be getting us into
+# trouble"). The rail used to fall back to anything first seen lately or
+# released this year, which put shows on it for being recent rather than
+# popular. It now holds only shows with a real trending signal:
+#   1. her pins (pinned.csv), as before;
+#   2. the apps' own trending charts (data/trending.csv: DramaBox and
+#      GoodShort "Most Trending", read from her app screenshots), taken a rank
+#      at a time across the charts so no one app fills the rail. A chart row
+#      whose show we do not hold yet is skipped and lights up the day the show
+#      is added. Rows go stale after TRENDING_DAYS, so last month's chart never
+#      passes for this week's;
+#   3. shows growing fastest between our own weekly snapshots (_trend_score).
+# Artwork is still required. Nothing is padded in by date.
+TRENDING_DAYS = 45
+_chart_cutoff = (datetime.date.today() - datetime.timedelta(days=TRENDING_DAYS)).isoformat()
+_chart_rows = [r for r in rows("trending.csv") if (r.get("seen") or "") >= _chart_cutoff]
+_chart_rows.sort(key=lambda r: (int(r["rank"]) if (r.get("rank") or "").isdigit() else 999, r["platform_id"]))
+_has_art = lambda t: bool((t.get("poster_ref") or "").strip())
+charted = []
+for r in _chart_rows:
+    t = _root_by_id.get(r["title_id"])
+    if t and _has_art(t) and t["title_id"] not in _pin_ids and t not in charted:
+        charted.append(t)
+_seen_ids = _pin_ids | {t["title_id"] for t in charted}
+growing = sorted((t for t in titles_root if _has_art(t) and _trend_score(t) > 0 and t["title_id"] not in _seen_ids),
+                 key=lambda t: -_trend_score(t))
+trending = (pinned_trending + charted + growing)[:20]
 
 # "Where these stream", Cyan's 13 Sep homepage: one row of app names set large
 # in the display serif with their counts, instead of a grid of tiles.
@@ -3300,8 +3316,8 @@ body = f"""
 </section>
 
 <section class="section-warm" style="padding:32px 0 38px">
-<div class="section-head pad"><h2>New and trending</h2><a class="all" href="browse.html?sort=year">Browse by newest &rarr;</a></div>
-<div class="rail">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in new_releases)}</div>
+<div class="section-head pad"><h2>Trending</h2><a class="all" href="browse.html">Browse all titles &rarr;</a></div>
+<div class="rail">{"".join(poster_card(t, "", rail_item=True, size_sm=True) for t in trending)}</div>
 </section>
 
 <section style="padding:34px 0 26px">
