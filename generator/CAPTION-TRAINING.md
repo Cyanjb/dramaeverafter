@@ -27,6 +27,7 @@ Her edit rate per batch. Falling means the training is working.
 | new-34 (weekly scrape) | 20 Sep | 34 | 10 | 29% | words changed: 2.2% of batch |
 | new-69 (weekly scrape) | 27–28 Sep | 69 | 4 of 15 reviewed | 27% of reviewed | words changed: 0.3% of batch; other 54 live on her "check them later" |
 | Standing page, first 25 | 11–12 Oct | 25 | 0 | 0% | positions 1 to 25: the 12 homepage captions plus the 13 biggest from 28 Sep and 5–6 Oct; read and approved untouched. "you seem to be getting a hang of this" |
+| September catchup, calibration five | 26 Oct | 5 reviewed | 0 | 0% | Cyan approved all five unchanged in chat, then authorized publishing the remaining captionable backlog before her later review. No new editing lesson; the other captions remain unread. |
 | **Target** | | | | **<10%** | then she spot-checks instead of reviewing |
 
 The words-changed trajectory is the clearer signal: 11.1% (batch two) → ~5% (batch four) → 2.2% (new-34) → 0.3% (new-69) → 0% (first 25 of the standing page, 12 Oct). See 'The measure that matters' below for why both numbers are reported.
