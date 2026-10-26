@@ -13,3 +13,4 @@ generator/staging/captions_2026_10_06_p5.py
 generator/staging/captions_2026_10_06_rulings.py
 generator/staging/captions_2026_10_09_rs72.py
 generator/staging/captions_2026_10_11.py
+generator/staging/captions_2026_10_25.py
