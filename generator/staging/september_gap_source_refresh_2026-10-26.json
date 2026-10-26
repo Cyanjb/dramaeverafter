@@ -1,0 +1,54 @@
+[
+  {
+    "title_id": "the-secret-billionaire-s-unexpected-bride",
+    "url": "https://www.reelshort.com/movie/the-secret-billionaire-s-unexpected-bride-6a90edce12fd232313065336",
+    "book_id": "6a90edce12fd232313065336",
+    "status": 404
+  },
+  {
+    "title_id": "fake-angel-s-final-fall",
+    "url": "https://www.reelshort.com/movie/fake-angel-s-final-fall-6a916cb6a07eb2f5bb00297a",
+    "book_id": "6a916cb6a07eb2f5bb00297a",
+    "status": 404
+  },
+  {
+    "title_id": "dirty-work",
+    "url": "https://www.reelshort.com/movie/dirty-work-68231417a0f7a86c6d08968d",
+    "book_id": "68231417a0f7a86c6d08968d",
+    "status": 200,
+    "matched_books": [
+      {
+        "book_id": "68231417a0f7a86c6d08968d",
+        "slug": "dirty-work",
+        "title": "Dirty Work",
+        "views_raw": 4534134,
+        "views": "4.5M",
+        "episodes": "35",
+        "synopsis": "A modern romantic psychological thriller in the tone of Fifty Shades of Grey and Secretary, Assistant is dark, seductive, outrageously thought-provoking, and riveting. Directorial debut of genre filmmaker Louisa Warren (Cannibal Cabin, Hard Copy).",
+        "poster": "https://v-mps.crazymaplestudios.com/images/7df07210-ac6c-11ef-a2d6-41216ff1602c.jpg",
+        "actors": [],
+        "year": "2025",
+        "tags": [
+          "Hooking-up",
+          "Sexual-Awakening",
+          "Girl Power",
+          "Murder",
+          "Exciting",
+          "Romance",
+          "Dark Romance",
+          "Dark",
+          "U.K.",
+          "Designer",
+          "Apartment",
+          "Self-growth",
+          "Affair",
+          "BDSM",
+          "Contemporary",
+          "Modern"
+        ],
+        "platform_ai": "no",
+        "platform_dub": "no"
+      }
+    ]
+  }
+]
