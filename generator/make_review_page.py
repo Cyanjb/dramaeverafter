@@ -10,7 +10,10 @@ the repo. The page is a VIEW; the staging file stays the record.
 
 Her rules encoded here: read means done (a ticked, unedited caption is
 approved); collect emits only captions whose text actually changed, compared
-with whitespace collapsed, so mechanical differences are never resent.
+with whitespace collapsed, so mechanical differences are never resent. Since
+26 Oct 2026 it also lists the ticked title ids under READ: ticks live only in
+the viewer's browser, so without the list an approval could not leave the page
+(found when the work was handed to Codex, which cannot open the artifact).
 
 ONE PAGE, ALWAYS (Cyan, 4 Oct 2026): "I can't have two, I'll lose one
 guaranteed. If there's any captions I need to review they always need to be
@@ -82,7 +85,7 @@ document.querySelectorAll('.cap').forEach(c=>{const id=c.dataset.id;const ta=c.q
 document.getElementById('collect').addEventListener('click',()=>{const parts=[];
  document.querySelectorAll('.cap').forEach(c=>{const ta=c.querySelector('textarea');if(norm(ta.value)!==norm(ta.dataset.orig))parts.push('['+c.dataset.id+']\\n'+ta.value.trim());});
  const read=[...document.querySelectorAll('.cap')].filter(c=>c.querySelector('input').checked).map(c=>c.dataset.id);
- document.getElementById('outbox').value=(parts.length?parts.join('\\n\\n'):'(no edits)')+'\\n\\nREAD: '+read.length+' ticked';
+ document.getElementById('outbox').value=(parts.length?parts.join('\\n\\n'):'(no edits)')+'\\n\\nREAD: '+read.length+' ticked'+(read.length?'\\n'+read.join('\\n'):'');
  document.getElementById('outbox').focus();document.getElementById('outbox').select();});
 document.getElementById('markall').addEventListener('click',()=>{document.querySelectorAll('.cap').forEach(c=>{const id=c.dataset.id;c.querySelector('input').checked=true;state[id]=Object.assign(state[id]||{},{read:true});});save();});
 count();
@@ -202,7 +205,7 @@ def main():
 <div class="top"><h1>{html.escape(title)}</h1><span class="count" id="count"></span><button class="btn ghost" id="markall" type="button">Mark all read</button><button class="btn" id="collect" type="button">Collect my edits</button></div>
 <p class="note" style="margin:14px 0 0">{len(entries)} captions, {order} ranked by reach. Each shows exactly as it will render on the site. Your edits and ticks are saved in this browser; "Collect my edits" outputs only the captions you changed, as paste-ready blocks.</p>
 {''.join(rows)}
-<div class="out"><h2>Paste this back to Claude</h2><textarea id="outbox" readonly placeholder="Press Collect my edits"></textarea></div>
+<div class="out"><h2>Paste this back to Claude or Codex</h2><textarea id="outbox" readonly placeholder="Press Collect my edits"></textarea></div>
 </div>
 <script>{JS}</script>
 </body>"""
